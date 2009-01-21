@@ -2,10 +2,17 @@ PODIOBOOKS.COM 2.0
 ==================
 Last Updated: 20 Jan 2009
 
-Team lEAD: ˝Chris Miller (chris@podiobooks.com)
+Team Lead: Chris Miller (chris@podiobooks.com)
 
 License
 -------
 This software is licensed under an Attribution-NonCommercial-ShareAlike 3.0 License. Please visit http://creativecommons.org/licenses/by-nc-sa/3.0/ for a full reading of the license.
 
-Notes
+Contributors
+------------
+
+
+Purpose
+-------
+
+The purpose of the Podiobooks project is to create a platform for distributing media via either direct download or via scheduled, updated RSS feeds. Additionally, there should be a strong community element, allowing consumers to connect with each other and the author.  This software will eventually replace the current PHP-based solution at http://www.podiobooks.com.
