@@ -34,6 +34,8 @@ class TitleAdmin(admin.ModelAdmin):
 	save_on_tap = True
 	search_fields = ["name"]
 	
+class AwardAdmin(admin.ModelAdmin):
+	list_display = ('name')
 	
 class EpsiodeAdmin(admin.ModelAdmin):
 	list_display = ('seqeunce','name', 'description', 'url', 'length')
@@ -54,4 +56,5 @@ admin.site.register(Advisory)
 admin.site.register(Category)
 admin.site.register(Subscription)
 admin.site.register(Series)
+admin.site.register(Award)
 
