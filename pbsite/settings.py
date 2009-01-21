@@ -1,3 +1,4 @@
+import os
 # Django settings for pbsite project.
 
 DEBUG = True
@@ -8,6 +9,9 @@ ADMINS = (
 )
 
 MANAGERS = ADMINS
+
+# Set the root path of the project so it's not hard coded
+PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
 
 # Local DB settings. Eventually, need to break these out.
 DATABASE_ENGINE = 'mysql'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
@@ -71,7 +75,7 @@ ROOT_URLCONF = 'pbsite.urls'
 # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
 # Always use forward slashes, even on Windows.
 # Don't forget to use absolute paths, not relative paths.
-TEMPLATE_DIRS = ('/Users/ctmiller/Projects/podiooboks/pb2/django/site/templates')
+TEMPLATE_DIRS = (PROJECT_PATH + '/templates')
 
 INSTALLED_APPS = (
     'django.contrib.auth',
