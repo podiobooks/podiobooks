@@ -9,6 +9,11 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
+# Set the root path of the project so it's not hard coded
+PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
+
+
+# Local DB settings. Eventually, need to break these out.
 DATABASE_ENGINE = 'mysql'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
 DATABASE_NAME = 'pb2'             # Or path to database file if using sqlite3.
 DATABASE_USER = 'root'             # Not used with sqlite3.
