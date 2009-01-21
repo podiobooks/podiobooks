@@ -6,8 +6,12 @@ from podiobooks2.main.models import Advisory
 from podiobooks2.main.models import Category
 from podiobooks2.main.models import Subscription
 from podiobooks2.main.models import TitleCategory
+from podiobooks2.main.models import Series
 from django.contrib import admin
 
+
+class TitleInline(admin.TabularInline):
+    model = Title
 
 class EpisodeInline(admin.TabularInline):
     model = Episode
@@ -35,7 +39,12 @@ class EpsiodeAdmin(admin.ModelAdmin):
 	
 class LicenseAdmin(admin.ModelAdmin):
 	list_display = ('name')
-		
+	
+class SeriesAdmin(admin.ModelAdmin):
+	list_display = ('name')
+	inlines = [
+	        TitleInline
+	    ]
 admin.site.register(Title,TitleAdmin)
 admin.site.register(Episode)
 admin.site.register(Media)
@@ -43,4 +52,5 @@ admin.site.register(License)
 admin.site.register(Advisory)
 admin.site.register(Category)
 admin.site.register(Subscription)
+admin.site.register(Series)
 

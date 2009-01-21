@@ -45,17 +45,35 @@ class Advisory(models.Model):
 
 	def __str__(self):
 		return self.name
+
+class Series(models.Model):
+	"""(Series description)"""
+	name = models.CharField(blank=True, max_length=255)
+	description = models.TextField()
+	url = models.URLField(blank=True, verify_exists=True, null=True)
+	deleted = models.BooleanField(default=False)
+	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
+	date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
 		
+	class Admin:
+		list_display = ('',)
+		search_fields = ('',)
+
+	def __str__(self):
+		return self.name
+	
 class Title(models.Model):
 	"""(Title description)"""
 	
 	name = models.CharField(max_length=255)
+	series = models.ForeignKey(Series, null=True)
 	description = models.TextField()
 	slug = models.SlugField()
 	cover = models.ImageField(upload_to=podiobooks2.settings.MEDIA_ROOT)
 	status = models.IntegerField(default=1)
 	license = models.ForeignKey(License, null=True)
 	display_on_homepage = models.BooleanField(default = False)
+	is_hosted_at_pb = models.BooleanField(default = True)
 	advisory = models.ForeignKey(Advisory, null=True)
 	is_adult = models.BooleanField(default=False)
 	is_complete = models.BooleanField(default=False)
