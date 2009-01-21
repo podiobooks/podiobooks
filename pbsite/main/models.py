@@ -66,7 +66,7 @@ class Award(models.Model):
 	"""(Award description)"""
 	name = models.CharField(blank=True, max_length=255)
 	url = models.URLField(blank=True, verify_exists=True, null=True)
-	image = models.ImageField(upload_to=pbsite.settings.MEDIA_ROOT)
+	image = models.ImageField(upload_to=pbsite.settings.MEDIA_AWARDS)
 	deleted = models.BooleanField(default=False)
 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
@@ -85,7 +85,7 @@ class Title(models.Model):
 	series = models.ForeignKey(Series, null=True)
 	description = models.TextField()
 	slug = models.SlugField()
-	cover = models.ImageField(upload_to=pbsite.settings.MEDIA_ROOT)
+	cover = models.ImageField(upload_to=pbsite.settings.MEDIA_COVERS)
 	status = models.IntegerField(default=1)
 	license = models.ForeignKey(License, null=True)
 	display_on_homepage = models.BooleanField(default = False)
