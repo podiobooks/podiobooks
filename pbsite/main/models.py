@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 import datetime
 import pbsite
 
+
 class UserProfile(models.Model):
 	"""(UserProfile description)"""
 	user = models.ForeignKey(User)
@@ -78,6 +79,25 @@ class Award(models.Model):
 	def __str__(self):
 		return self.name
 
+# replaced Author with Contributor 
+class Contributor(models.Model):
+	"""(Contributor description)"""
+	firstname = models.CharField(max_length=255)
+	lastname = models.CharField(max_length=255)
+	displayname = models.CharField(max_length=255)
+	user = models.ForeignKey(User, null=True)
+	deleted = models.BooleanField(default=False)
+	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
+	date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
+	
+	class Admin:
+		list_display = ('',)
+		search_fields = ('',)
+
+	def __str__(self):
+		return self.displayname
+
+
 class Title(models.Model):
 	"""(Title description)"""
 	
@@ -101,6 +121,7 @@ class Title(models.Model):
 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	old_id = models.IntegerField(blank=True, null=True)
+        contributors = models.ManyToManyField(Contributor, through='TitleContributors')
 	
 	class Admin:
 		list_display = ('',)
@@ -109,22 +130,32 @@ class Title(models.Model):
 	def __str__(self):
 		return self.name
 
-class Author(models.Model):
-	"""(Author description)"""
-	firstname = models.CharField(max_length=255)
-	lastname = models.CharField(max_length=255)
-	displayname = models.CharField(max_length=255)
-	user = models.ForeignKey(User, null=True)
-	deleted = models.BooleanField(default=False)
-	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
-	date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
-	
-	class Admin:
-		list_display = ('',)
-		search_fields = ('',)
+class ContributorType(models.Model):
+        name=models.CharField(max_length=255)
 
-	def __str__(self):
-		return self.displayname
+class TitleContributors(models.Model):
+        """(Contributor description)"""
+        title = models.ForeignKey(Title)
+        contributor = models.ForeignKey(Contributor)
+        contributor_type = models.ForeignKey(ContributorType)
+        
+
+# class Author(models.Model):
+# 	"""(Author description)"""
+# 	firstname = models.CharField(max_length=255)
+# 	lastname = models.CharField(max_length=255)
+# 	displayname = models.CharField(max_length=255)
+# 	user = models.ForeignKey(User, null=True)
+# 	deleted = models.BooleanField(default=False)
+# 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
+# 	date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
+	
+# 	class Admin:
+# 		list_display = ('',)
+# 		search_fields = ('',)
+
+# 	def __str__(self):
+# 		return self.displayname
 
 class Media(models.Model):
 	"""(Media description)"""
@@ -213,19 +244,19 @@ class TitleMedia(models.Model):
 	def __str__(self):
 		return "TitleMedia"
 
-class TitleAuthor(models.Model):
-	"""(TitleAuthor description)"""
-	title = models.ForeignKey(Title)
-	author = models.ForeignKey(Author)
-	displayorder = models.IntegerField(blank=True, null=True)
-	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
+# class TitleAuthor(models.Model):
+# 	"""(TitleAuthor description)"""
+# 	title = models.ForeignKey(Title)
+# 	author = models.ForeignKey(Author)
+# 	displayorder = models.IntegerField(blank=True, null=True)
+# 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	
-	class Admin:
-		list_display = ('',)
-		search_fields = ('',)
+# 	class Admin:
+# 		list_display = ('',)
+# 		search_fields = ('',)
 
-	def __str__(self):
-		return "TitleAuthor"
+# 	def __str__(self):
+# 		return "TitleAuthor"
 
 class Episode(models.Model):
 	"""(Episode description)"""
@@ -276,9 +307,12 @@ class TitleCategory(models.Model):
 	def __str__(self):
 		return "TitleCategory"
 
+
+# Modified to handle alternate subscriptions
+# relpace last_downloaded_episode with downloaded_episodes??
 class Subscription(models.Model):
 	"""(Subscription description)"""
-	title = models.ForeignKey(Title)
+#	title = models.ForeignKey(Title)
 	user = models.ForeignKey(User)
 	day_interval = models.SmallIntegerField(default=7)
 	partner = models.ForeignKey(Partner)
@@ -297,3 +331,105 @@ class Subscription(models.Model):
 	def __str__(self):
 		return "Subscription"
 
+
+class TitleSubscription(models.Model):
+        subscription = models.ForeignKey(Subscription)
+        title = models.ForeignKey(Title)
+
+class SeriesSubscription(models.Model):
+        subscription = models.ForeignKey(Subscription)
+        series = models.ForeignKey(Series)
+
+class ContributorSubscription(models.Model):
+        subscription = models.ForeignKey(Subscription)
+        contributor = models.ForeignKey(Contributor)
+        contributor_types = models.ForeignKey(ContributorType)
+
+
+# TODO
+class Product(models.Model):
+        name = models.CharField(blank=False, max_length=255)
+        titles = models.ManyToManyField(Title,through='ProductTitles')
+        ## ??
+
+class ProductTitles(models.Model):
+        product = models.ForeignKey(Product)
+        title = models.ForeignKey(Title)
+        sequence =  models.IntegerField(blank=False, null=False)
+
+# Add Meta Tables to hold yet to be defined data without changing the 
+# DB schemea
+# don't know enough about Django to know if there is benefit 
+class LicenseMeta(models.Model):
+        licence=models.ForeignKey(License)
+	key = models.CharField(max_length=255)
+	value = models.CharField(max_length=255)
+	sequence = models.IntegerField(blank=False, null=False)
+
+class AdvisoryMeta(models.Model):
+        advisory = models.ForeignKey(Advisory)
+	key = models.CharField(max_length=255)
+	value = models.CharField(max_length=255)
+	sequence = models.IntegerField(blank=False, null=False)
+
+class SeriesMeta(models.Model):
+        series = models.ForeignKey(Series)
+	key = models.CharField(max_length=255)
+	value = models.CharField(max_length=255)
+	sequence = models.IntegerField(blank=False, null=False)
+
+class AwardMeta(models.Model):
+        award = models.ForeignKey(Award)
+	key = models.CharField(max_length=255)
+	value = models.CharField(max_length=255)
+	sequence = models.IntegerField(blank=False, null=False)
+
+class ContributorMeta(models.Model):
+        contributor = models.ForeignKey(Contributor)
+	key = models.CharField(max_length=255)
+	value = models.CharField(max_length=255)
+	sequence = models.IntegerField(blank=False, null=False)
+
+class TitleMeta(models.Model):
+        title = models.ForeignKey(Title)
+	key = models.CharField(max_length=255)
+	value = models.CharField(max_length=255)
+	sequence = models.IntegerField(blank=False, null=False)
+
+class MediaMeta(models.Model):
+        media = models.ForeignKey(Media)
+	key = models.CharField(max_length=255)
+	value = models.CharField(max_length=255)
+	sequence = models.IntegerField(blank=False, null=False)
+
+class PromoMeta(models.Model):
+        promo = models.ForeignKey(Promo)
+	key = models.CharField(max_length=255)
+	value = models.CharField(max_length=255)
+	sequence = models.IntegerField(blank=False, null=False)
+
+class PartnerMeta(models.Model):
+        partner = models.ForeignKey(Partner)
+	key = models.CharField(max_length=255)
+	value = models.CharField(max_length=255)
+	sequence = models.IntegerField(blank=False, null=False)
+
+class EpisodeMeta(models.Model):
+        episode = models.ForeignKey(Episode)
+	key = models.CharField(max_length=255)
+	value = models.CharField(max_length=255)
+	sequence = models.IntegerField(blank=False, null=False)
+
+class CategoryMeta(models.Model):
+        category = models.ForeignKey(Category)
+	key = models.CharField(max_length=255)
+	value = models.CharField(max_length=255)
+	sequence = models.IntegerField(blank=False, null=False)
+
+class SubscriptionMeta(models.Model):
+        subscription = models.ForeignKey(Subscription)
+	key = models.CharField(max_length=255)
+	value = models.CharField(max_length=255)
+	sequence = models.IntegerField(blank=False, null=False)
+        
+        
