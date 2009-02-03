@@ -346,90 +346,14 @@ class ContributorSubscription(models.Model):
         contributor_types = models.ForeignKey(ContributorType)
 
 
-# TODO
-class Product(models.Model):
-        name = models.CharField(blank=False, max_length=255)
-        titles = models.ManyToManyField(Title,through='ProductTitles')
-        ## ??
+# # TODO
+# class Product(models.Model):
+#         name = models.CharField(blank=False, max_length=255)
+#         titles = models.ManyToManyField(Title,through='ProductTitles')
+#         ## ??
 
-class ProductTitles(models.Model):
-        product = models.ForeignKey(Product)
-        title = models.ForeignKey(Title)
-        sequence =  models.IntegerField(blank=False, null=False)
-
-# Add Meta Tables to hold yet to be defined data without changing the 
-# DB schemea
-# don't know enough about Django to know if there is benefit 
-class LicenseMeta(models.Model):
-        licence=models.ForeignKey(License)
-	key = models.CharField(max_length=255)
-	value = models.CharField(max_length=255)
-	sequence = models.IntegerField(blank=False, null=False)
-
-class AdvisoryMeta(models.Model):
-        advisory = models.ForeignKey(Advisory)
-	key = models.CharField(max_length=255)
-	value = models.CharField(max_length=255)
-	sequence = models.IntegerField(blank=False, null=False)
-
-class SeriesMeta(models.Model):
-        series = models.ForeignKey(Series)
-	key = models.CharField(max_length=255)
-	value = models.CharField(max_length=255)
-	sequence = models.IntegerField(blank=False, null=False)
-
-class AwardMeta(models.Model):
-        award = models.ForeignKey(Award)
-	key = models.CharField(max_length=255)
-	value = models.CharField(max_length=255)
-	sequence = models.IntegerField(blank=False, null=False)
-
-class ContributorMeta(models.Model):
-        contributor = models.ForeignKey(Contributor)
-	key = models.CharField(max_length=255)
-	value = models.CharField(max_length=255)
-	sequence = models.IntegerField(blank=False, null=False)
-
-class TitleMeta(models.Model):
-        title = models.ForeignKey(Title)
-	key = models.CharField(max_length=255)
-	value = models.CharField(max_length=255)
-	sequence = models.IntegerField(blank=False, null=False)
-
-class MediaMeta(models.Model):
-        media = models.ForeignKey(Media)
-	key = models.CharField(max_length=255)
-	value = models.CharField(max_length=255)
-	sequence = models.IntegerField(blank=False, null=False)
-
-class PromoMeta(models.Model):
-        promo = models.ForeignKey(Promo)
-	key = models.CharField(max_length=255)
-	value = models.CharField(max_length=255)
-	sequence = models.IntegerField(blank=False, null=False)
-
-class PartnerMeta(models.Model):
-        partner = models.ForeignKey(Partner)
-	key = models.CharField(max_length=255)
-	value = models.CharField(max_length=255)
-	sequence = models.IntegerField(blank=False, null=False)
-
-class EpisodeMeta(models.Model):
-        episode = models.ForeignKey(Episode)
-	key = models.CharField(max_length=255)
-	value = models.CharField(max_length=255)
-	sequence = models.IntegerField(blank=False, null=False)
-
-class CategoryMeta(models.Model):
-        category = models.ForeignKey(Category)
-	key = models.CharField(max_length=255)
-	value = models.CharField(max_length=255)
-	sequence = models.IntegerField(blank=False, null=False)
-
-class SubscriptionMeta(models.Model):
-        subscription = models.ForeignKey(Subscription)
-	key = models.CharField(max_length=255)
-	value = models.CharField(max_length=255)
-	sequence = models.IntegerField(blank=False, null=False)
-        
+# class ProductTitles(models.Model):
+#         product = models.ForeignKey(Product)
+#         title = models.ForeignKey(Title)
+#         sequence =  models.IntegerField(blank=False, null=False)
         
