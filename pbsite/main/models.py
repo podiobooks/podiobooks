@@ -5,12 +5,12 @@ import pbsite
 
 
 class UserStatus(models.Model):
-        slug=models.SlugField()
-        name=models.CharField(blank=False, max_length=255)
+	slug=models.SlugField()
+	name=models.CharField(blank=False, max_length=255)
 
 class UserProfile(models.Model):
 	"""(UserProfile description)"""
-        slug=models.SlugField()
+	slug=models.SlugField()
 	user = models.ForeignKey(User)
 	status = models.ForeignKey(UserStatus)
 	email = models.EmailField()
@@ -26,7 +26,7 @@ class UserProfile(models.Model):
 
 class License(models.Model):
 	"""(TitleLicense description)"""
-        slug=models.SlugField()
+	slug=models.SlugField()
 	text = models.CharField(blank=False, max_length=255)
 	url = models.URLField(blank=False, verify_exists=True)
 	image_url = models.URLField(blank=False, verify_exists=True)
@@ -41,12 +41,12 @@ class License(models.Model):
 
 class Advisory(models.Model):
 	"""(Advisory description)"""
-        slug=models.SlugField()
+	slug=models.SlugField()
 	name = models.CharField(max_length=100)
 	displaytext = models.CharField(max_length=255)
 	hexcolor = models.CharField(max_length=6)
-        # rather than storing a hex-color, would it make more sense to
-        # add a css class 'Advisory_{slug}' for flexability??
+	# rather than storing a hex-color, would it make more sense to
+	# add a css class 'Advisory_{slug}' for flexability??
 
 	class Admin:
 		list_display = ('',)
@@ -57,7 +57,7 @@ class Advisory(models.Model):
 
 class Series(models.Model):
 	"""(Series description)"""
-        slug=models.SlugField()
+	slug=models.SlugField()
 	name = models.CharField(blank=True, max_length=255)
 	description = models.TextField()
 	url = models.URLField(blank=True, verify_exists=True, null=True)
@@ -74,7 +74,7 @@ class Series(models.Model):
 
 class Award(models.Model):
 	"""(Award description)"""
-        slug=models.SlugField()
+	slug=models.SlugField()
 	name = models.CharField(blank=True, max_length=255)
 	url = models.URLField(blank=True, verify_exists=True, null=True)
 	image = models.ImageField(upload_to=pbsite.settings.MEDIA_AWARDS)
@@ -92,7 +92,7 @@ class Award(models.Model):
 # replaced Author with Contributor 
 class Contributor(models.Model):
 	"""(Contributor description)"""
-        slug=models.SlugField()
+	slug=models.SlugField()
 	firstname = models.CharField(max_length=255)
 	lastname = models.CharField(max_length=255)
 	displayname = models.CharField(max_length=255)
@@ -146,9 +146,9 @@ class Title(models.Model):
 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	old_id = models.IntegerField(blank=True, null=True)
-        contributors = models.ManyToManyField(Contributor, through='TitleContributors')
-        categories = models.ManyToManyField(Category)
-        awards = models.ManyToManyField(Award)
+	contributors = models.ManyToManyField(Contributor, through='TitleContributors')
+	categories = models.ManyToManyField(Category)
+	awards = models.ManyToManyField(Award)
 	class Admin:
 		list_display = ('',)
 		search_fields = ('',)
@@ -157,14 +157,14 @@ class Title(models.Model):
 		return self.name
 
 class ContributorType(models.Model):
-        slug=models.SlugField()
-        name=models.CharField(max_length=255)
+	slug=models.SlugField()
+	name=models.CharField(max_length=255)
 
 class TitleContributors(models.Model):
-        """(Contributor description)"""
-        title = models.ForeignKey(Title)
-        contributor = models.ForeignKey(Contributor)
-        contributor_type = models.ForeignKey(ContributorType)
+	"""(Contributor description)"""
+	title = models.ForeignKey(Title)
+	contributor = models.ForeignKey(Contributor)
+	contributor_type = models.ForeignKey(ContributorType)
         
 
 # class Author(models.Model):
@@ -259,7 +259,7 @@ class TitleUrl(models.Model):
 ## 		return "TitleAward"
 
 class TitleMedia(models.Model):
-        """(TitleMedia description)"""
+	"""(TitleMedia description)"""
  	title = models.ForeignKey(Title)
  	media = models.ForeignKey(Media)
  	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
@@ -347,20 +347,20 @@ class Subscription(models.Model):
 
 
 class TitleSubscription(models.Model):
-        subscription = models.ForeignKey(Subscription)
-        title = models.ForeignKey(Title)
+	subscription = models.ForeignKey(Subscription)
+	title = models.ForeignKey(Title)
 
 class SeriesSubscription(models.Model):
-        subscription = models.ForeignKey(Subscription)
-        series = models.ForeignKey(Series)
+	subscription = models.ForeignKey(Subscription)
+	series = models.ForeignKey(Series)
 
 # ContributorSubscription is a little difference in that you can
 # declare multiple types, allowing you to say you want all items from
 # contributor X where they are a contributor of type A, B, and C
 class ContributorSubscription(models.Model):
-        subscription = models.ForeignKey(Subscription)
-        contributor = models.ForeignKey(Contributor)
-        contributor_types = models.ManyToManyField(ContributorType)
+	subscription = models.ForeignKey(Subscription)
+	contributor = models.ForeignKey(Contributor)
+	contributor_types = models.ManyToManyField(ContributorType)
 
 
 # # TODO
@@ -374,3 +374,6 @@ class ContributorSubscription(models.Model):
 #         title = models.ForeignKey(Title)
 #         sequence =  models.IntegerField(blank=False, null=False)
         
+
+# set up emacs to be in line with ctmiller's editing style
+# -*- mode: Python; indent-tabs-mode: 1; -*-
