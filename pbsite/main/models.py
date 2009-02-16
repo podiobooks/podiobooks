@@ -81,7 +81,7 @@ class Award(models.Model):
 	deleted = models.BooleanField(default=False)
 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
-	
+
 	class Admin:
 		list_display = ('',)
 		search_fields = ('',)
@@ -114,7 +114,7 @@ class Category(models.Model):
 	deleted = models.BooleanField(default=False)
 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
-	
+
 	class Admin:
 		list_display = ('',)
 		search_fields = ('',)
@@ -149,6 +149,7 @@ class Title(models.Model):
 	contributors = models.ManyToManyField(Contributor, through='TitleContributors')
 	categories = models.ManyToManyField(Category)
 	awards = models.ManyToManyField(Award)
+
 	class Admin:
 		list_display = ('',)
 		search_fields = ('',)
@@ -186,6 +187,7 @@ class TitleContributors(models.Model):
 
 class Media(models.Model):
 	"""(Media description)"""
+	title = models.ForeignKey(Title)
 	name = models.CharField(max_length=255)
 	baseurl = models.CharField(max_length=255)
 	deleted = models.BooleanField(default=False)
@@ -232,7 +234,7 @@ class Partner(models.Model):
 
 class TitleUrl(models.Model):
 	"""(TitleUrls description)"""
-	title = models.ForeignKey(Title)
+	title = models.ManyToManyField(Title)
 	url = models.URLField(blank=False, verify_exists=True)
 	linktext = models.CharField(blank=False, max_length=255)
 	displayorder = models.SmallIntegerField(blank=False, null=False, default=1)
@@ -258,11 +260,11 @@ class TitleUrl(models.Model):
 ## 	def __str__(self):
 ## 		return "TitleAward"
 
-class TitleMedia(models.Model):
-	"""(TitleMedia description)"""
- 	title = models.ForeignKey(Title)
- 	media = models.ForeignKey(Media)
- 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
+# class TitleMedia(models.Model):
+#   """(TitleMedia description)"""
+#   title = models.ForeignKey(Title)
+#   media = models.ForeignKey(Media)
+#   date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	
 ## 	class Admin:
 ## 		list_display = ('',)
