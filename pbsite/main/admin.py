@@ -5,8 +5,6 @@ from pbsite.main.models import License
 from pbsite.main.models import Advisory
 from pbsite.main.models import Category
 from pbsite.main.models import Subscription
-from pbsite.main.models import TitleCategory
-from pbsite.main.models import TitleCAward
 from pbsite.main.models import Series
 from pbsite.main.models import Award
 from django.contrib import admin
@@ -17,9 +15,6 @@ class TitleInline(admin.TabularInline):
 
 class EpisodeInline(admin.TabularInline):
     model = Episode
-
-class TitleCategoryInline(admin.TabularInline):
-    model = TitleCategory
 
 
 class TitleAdmin(admin.ModelAdmin):
