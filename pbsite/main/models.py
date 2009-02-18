@@ -16,7 +16,6 @@ class UserProfile(models.Model):
 	email = models.EmailField()
 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	
-
 	class Admin:
 		list_display = ('',)
 		search_fields = ('',)
@@ -51,6 +50,9 @@ class Advisory(models.Model):
 	class Admin:
 		list_display = ('',)
 		search_fields = ('',)
+		
+	class Meta:
+		verbose_name_plural = "advisories"
 
 	def __str__(self):
 		return self.name
@@ -68,6 +70,9 @@ class Series(models.Model):
 	class Admin:
 		list_display = ('',)
 		search_fields = ('',)
+		
+	class Meta:
+		verbose_name_plural = "series"
 
 	def __str__(self):
 		return self.name
@@ -118,6 +123,9 @@ class Category(models.Model):
 	class Admin:
 		list_display = ('',)
 		search_fields = ('',)
+		
+	class Meta:
+		verbose_name_plural = "categories"
 
 	def __str__(self):
 		return "Category"
@@ -196,6 +204,9 @@ class Media(models.Model):
 	class Admin:
 		list_display = ('',)
 		search_fields = ('',)
+
+	class Meta:
+		verbose_name_plural = "media"
 
 	def __str__(self):
 		return self.name
