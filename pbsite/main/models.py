@@ -3,12 +3,17 @@ from django.contrib.auth.models import User
 import datetime
 import pbsite
 
+
+class UserStatus(models.Model):
+	slug=models.SlugField()
+	name=models.CharField(blank=False, max_length=255)
+
 class UserProfile(models.Model):
 	"""(UserProfile description)"""
+	slug=models.SlugField()
 	user = models.ForeignKey(User)
-	status = models.IntegerField(default=1)
+	status = models.ForeignKey(UserStatus)
 	email = models.EmailField()
-	status = models.IntegerField(default=1)
 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	
 
@@ -21,6 +26,7 @@ class UserProfile(models.Model):
 
 class License(models.Model):
 	"""(TitleLicense description)"""
+	slug=models.SlugField()
 	text = models.CharField(blank=False, max_length=255)
 	url = models.URLField(blank=False, verify_exists=True)
 	image_url = models.URLField(blank=False, verify_exists=True)
@@ -35,9 +41,12 @@ class License(models.Model):
 
 class Advisory(models.Model):
 	"""(Advisory description)"""
+	slug=models.SlugField()
 	name = models.CharField(max_length=100)
 	displaytext = models.CharField(max_length=255)
 	hexcolor = models.CharField(max_length=6)
+	# rather than storing a hex-color, would it make more sense to
+	# add a css class 'Advisory_{slug}' for flexability??
 
 	class Admin:
 		list_display = ('',)
@@ -48,6 +57,7 @@ class Advisory(models.Model):
 
 class Series(models.Model):
 	"""(Series description)"""
+	slug=models.SlugField()
 	name = models.CharField(blank=True, max_length=255)
 	description = models.TextField()
 	url = models.URLField(blank=True, verify_exists=True, null=True)
@@ -64,9 +74,29 @@ class Series(models.Model):
 
 class Award(models.Model):
 	"""(Award description)"""
+	slug=models.SlugField()
 	name = models.CharField(blank=True, max_length=255)
 	url = models.URLField(blank=True, verify_exists=True, null=True)
 	image = models.ImageField(upload_to=pbsite.settings.MEDIA_AWARDS)
+	deleted = models.BooleanField(default=False)
+	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
+	date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
+
+	class Admin:
+		list_display = ('',)
+		search_fields = ('',)
+
+	def __str__(self):
+		return self.name
+
+# replaced Author with Contributor 
+class Contributor(models.Model):
+	"""(Contributor description)"""
+	slug=models.SlugField()
+	firstname = models.CharField(max_length=255)
+	lastname = models.CharField(max_length=255)
+	displayname = models.CharField(max_length=255)
+	user = models.ForeignKey(User, null=True)
 	deleted = models.BooleanField(default=False)
 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
@@ -76,7 +106,22 @@ class Award(models.Model):
 		search_fields = ('',)
 
 	def __str__(self):
-		return self.name
+		return self.displayname
+
+class Category(models.Model):
+	"""(Category description)"""
+	name = models.CharField(max_length=255)
+	deleted = models.BooleanField(default=False)
+	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
+	date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
+
+	class Admin:
+		list_display = ('',)
+		search_fields = ('',)
+
+	def __str__(self):
+		return "Category"
+
 
 class Title(models.Model):
 	"""(Title description)"""
@@ -101,7 +146,10 @@ class Title(models.Model):
 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	old_id = models.IntegerField(blank=True, null=True)
-	
+	contributors = models.ManyToManyField(Contributor, through='TitleContributors')
+	categories = models.ManyToManyField(Category)
+	awards = models.ManyToManyField(Award)
+
 	class Admin:
 		list_display = ('',)
 		search_fields = ('',)
@@ -109,25 +157,37 @@ class Title(models.Model):
 	def __str__(self):
 		return self.name
 
-class Author(models.Model):
-	"""(Author description)"""
-	firstname = models.CharField(max_length=255)
-	lastname = models.CharField(max_length=255)
-	displayname = models.CharField(max_length=255)
-	user = models.ForeignKey(User, null=True)
-	deleted = models.BooleanField(default=False)
-	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
-	date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
-	
-	class Admin:
-		list_display = ('',)
-		search_fields = ('',)
+class ContributorType(models.Model):
+	slug=models.SlugField()
+	name=models.CharField(max_length=255)
 
-	def __str__(self):
-		return self.displayname
+class TitleContributors(models.Model):
+	"""(Contributor description)"""
+	title = models.ForeignKey(Title)
+	contributor = models.ForeignKey(Contributor)
+	contributor_type = models.ForeignKey(ContributorType)
+        
+
+# class Author(models.Model):
+# 	"""(Author description)"""
+# 	firstname = models.CharField(max_length=255)
+# 	lastname = models.CharField(max_length=255)
+# 	displayname = models.CharField(max_length=255)
+# 	user = models.ForeignKey(User, null=True)
+# 	deleted = models.BooleanField(default=False)
+# 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
+# 	date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
+	
+# 	class Admin:
+# 		list_display = ('',)
+# 		search_fields = ('',)
+
+# 	def __str__(self):
+# 		return self.displayname
 
 class Media(models.Model):
 	"""(Media description)"""
+	title = models.ForeignKey(Title)
 	name = models.CharField(max_length=255)
 	baseurl = models.CharField(max_length=255)
 	deleted = models.BooleanField(default=False)
@@ -174,7 +234,7 @@ class Partner(models.Model):
 
 class TitleUrl(models.Model):
 	"""(TitleUrls description)"""
-	title = models.ForeignKey(Title)
+	title = models.ManyToManyField(Title)
 	url = models.URLField(blank=False, verify_exists=True)
 	linktext = models.CharField(blank=False, max_length=255)
 	displayorder = models.SmallIntegerField(blank=False, null=False, default=1)
@@ -187,45 +247,45 @@ class TitleUrl(models.Model):
 	def __str__(self):
 		return "TitleUrls"
 
-class TitleAward(models.Model):
-	"""(TitleAward description)"""
-	title = models.ForeignKey(Title)
-	award = models.ForeignKey(Award)
-	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
+## class TitleAward(models.Model):
+## 	"""(TitleAward description)"""
+## 	title = models.ForeignKey(Title)
+## 	award = models.ForeignKey(Award)
+## 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	
-	class Admin:
-		list_display = ('',)
-		search_fields = ('',)
+## 	class Admin:
+## 		list_display = ('',)
+## 		search_fields = ('',)
 
-	def __str__(self):
-		return "TitleAward"
+## 	def __str__(self):
+## 		return "TitleAward"
 
-class TitleMedia(models.Model):
-	"""(TitleMedia description)"""
-	title = models.ForeignKey(Title)
-	media = models.ForeignKey(Media)
-	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
+# class TitleMedia(models.Model):
+#   """(TitleMedia description)"""
+#   title = models.ForeignKey(Title)
+#   media = models.ForeignKey(Media)
+#   date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	
-	class Admin:
-		list_display = ('',)
-		search_fields = ('',)
+## 	class Admin:
+## 		list_display = ('',)
+## 		search_fields = ('',)
 
-	def __str__(self):
-		return "TitleMedia"
+## 	def __str__(self):
+## 		return "TitleMedia"
 
-class TitleAuthor(models.Model):
-	"""(TitleAuthor description)"""
-	title = models.ForeignKey(Title)
-	author = models.ForeignKey(Author)
-	displayorder = models.IntegerField(blank=True, null=True)
-	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
+# class TitleAuthor(models.Model):
+# 	"""(TitleAuthor description)"""
+# 	title = models.ForeignKey(Title)
+# 	author = models.ForeignKey(Author)
+# 	displayorder = models.IntegerField(blank=True, null=True)
+# 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	
-	class Admin:
-		list_display = ('',)
-		search_fields = ('',)
+# 	class Admin:
+# 		list_display = ('',)
+# 		search_fields = ('',)
 
-	def __str__(self):
-		return "TitleAuthor"
+# 	def __str__(self):
+# 		return "TitleAuthor"
 
 class Episode(models.Model):
 	"""(Episode description)"""
@@ -249,36 +309,26 @@ class Episode(models.Model):
 		return "Episode"
 
 		
-class Category(models.Model):
-	"""(Category description)"""
-	name = models.CharField(max_length=255)
-	deleted = models.BooleanField(default=False)
-	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
-	date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
-	
-	class Admin:
-		list_display = ('',)
-		search_fields = ('',)
-
-	def __str__(self):
-		return "Category"
 		
-class TitleCategory(models.Model):
-	"""(TitleCategory description)"""
-	title = models.ForeignKey(Title)
-	category = models.ForeignKey(Category)
-	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
+# class TitleCategory(models.Model):
+# 	"""(TitleCategory description)"""
+# 	title = models.ForeignKey(Title)
+# 	category = models.ForeignKey(Category)
+# 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	
-	class Admin:
-		list_display = ('',)
-		search_fields = ('',)
+# 	class Admin:
+# 		list_display = ('',)
+# 		search_fields = ('',)
 
-	def __str__(self):
-		return "TitleCategory"
+# 	def __str__(self):
+# 		return "TitleCategory"
 
+
+# Modified to handle alternate subscriptions
+# relpace last_downloaded_episode with downloaded_episodes??
 class Subscription(models.Model):
 	"""(Subscription description)"""
-	title = models.ForeignKey(Title)
+#	title = models.ForeignKey(Title)
 	user = models.ForeignKey(User)
 	day_interval = models.SmallIntegerField(default=7)
 	partner = models.ForeignKey(Partner)
@@ -297,3 +347,35 @@ class Subscription(models.Model):
 	def __str__(self):
 		return "Subscription"
 
+
+class TitleSubscription(models.Model):
+	subscription = models.ForeignKey(Subscription)
+	title = models.ForeignKey(Title)
+
+class SeriesSubscription(models.Model):
+	subscription = models.ForeignKey(Subscription)
+	series = models.ForeignKey(Series)
+
+# ContributorSubscription is a little difference in that you can
+# declare multiple types, allowing you to say you want all items from
+# contributor X where they are a contributor of type A, B, and C
+class ContributorSubscription(models.Model):
+	subscription = models.ForeignKey(Subscription)
+	contributor = models.ForeignKey(Contributor)
+	contributor_types = models.ManyToManyField(ContributorType)
+
+
+# # TODO
+# class Product(models.Model):
+#         name = models.CharField(blank=False, max_length=255)
+#         titles = models.ManyToManyField(Title,through='ProductTitles')
+#         ## ??
+
+# class ProductTitles(models.Model):
+#         product = models.ForeignKey(Product)
+#         title = models.ForeignKey(Title)
+#         sequence =  models.IntegerField(blank=False, null=False)
+        
+
+# set up emacs to be in line with ctmiller's editing style
+# -*- mode: Python; indent-tabs-mode: 1; -*-
