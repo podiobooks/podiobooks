@@ -26,9 +26,6 @@ MEDIA_URL = ''
 # Examples: "http://foo.com/media/", "/media/".
 ADMIN_MEDIA_PREFIX = '/media/'
 
-# Make this unique, and don't share it with anybody.
-SECRET_KEY = 'zv$+w7juz@(g!^53o0ai1u082)=jkz9my_r=3)fglrj5t8l$2#'
-
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.load_template_source',
@@ -36,10 +33,19 @@ TEMPLATE_LOADERS = (
 #     'django.template.loaders.eggs.load_template_source',
 )
 
+#List of callables that add their data to each template
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.core.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.media",
+    "django.core.context_processors.request",
+)
+
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django_authopenid.middleware.OpenIDMiddleware',
 )
 
 ROOT_URLCONF = 'pbsite.urls'
@@ -49,12 +55,22 @@ ROOT_URLCONF = 'pbsite.urls'
 # Don't forget to use absolute paths, not relative paths.
 TEMPLATE_DIRS = (PROJECT_PATH + '/templates')
 
+AUTH_PROFILE_MODULE = 'pbsite.main.UserProfile'
+
+#authopenid
+ugettext = lambda s: s
+LOGIN_URL = '/%s%s' % (ugettext('account/'), ugettext('signin/'))
+
+#django_registration
+ACCOUNT_ACTIVATION_DAYS = 14
+
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
-    #'django.contrib.sites',
+    'django.contrib.sites',
 	'django.contrib.admin',
 	'django.contrib.admindocs',
-	'pbsite.main'
+	'pbsite.main',
+    'django_authopenid',
 )
