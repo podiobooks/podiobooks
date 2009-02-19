@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block headtitle %}Podiobooks.com Home{% endblock %}
+
+{% block title %}Podiobooks.com Home{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+	<p>Welcome, {{ user.username }}</p>
+	<p><a href="/account">Manage Account</a></p>
+	<p><a href="/account/signout">Logout</a></p>
+{% else %}
+	<p><a href="account/signin">Login</a></p>
+{% endif %}
+
+{% endblock %}
