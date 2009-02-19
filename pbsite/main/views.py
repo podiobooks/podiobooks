@@ -1,8 +1,6 @@
-from django.http import HttpResponse
 from django.shortcuts import render_to_response
-from django.contrib.auth import logout
-from django.contrib.auth import authenticate
-from django.contrib.auth import login
+from django.contrib.auth.decorators import login_required
+from django.template import RequestContext
 
 def index(request):
-    return render_to_response('main/index.html', {})
+    return render_to_response('main/index.html', {}, context_instance=RequestContext(request))
