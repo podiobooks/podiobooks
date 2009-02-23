@@ -1,0 +1,10 @@
+{% load title_extras %}
+
+<ul class="titles">
+ {% for title in titles %}
+ <li class="{% title_class title %}">
+   <h3><a href="{{title.get_absolute_url}}">{{title.name}}</a></h3>
+   {% title_detail title %}
+ </li>
+ {% endfor %}
+</ul>
