@@ -55,7 +55,7 @@ ROOT_URLCONF = 'pbsite.urls'
 # Don't forget to use absolute paths, not relative paths.
 TEMPLATE_DIRS = (PROJECT_PATH + '/templates')
 
-AUTH_PROFILE_MODULE = 'pbsite.main.UserProfile'
+AUTH_PROFILE_MODULE = 'main.UserProfile'
 
 #authopenid
 ugettext = lambda s: s

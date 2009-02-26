@@ -25,7 +25,12 @@ This software depends on the following libraries being available on the Python P
 #Main
 django  # 1.x
 
+#Admin Site Documentation
+docutits # .5
+
 #For Auth OpenID:
 python-openid       # http://openidenabled.com/python-openid/   version 2.x
 django-authopenid   # http://code.google.com/p/django-authopenid/
 httplib2 			# http://code.google.com/p/httplib2
+
+#

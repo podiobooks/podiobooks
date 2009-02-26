@@ -21,12 +21,15 @@
 {% block content %}
 <p>Username: {{ user.username }}</p>
 <p>Email: {{ user.email }}</p>
+<p>Full Name: {{ user.get_full_name }}</p>
 <p>First Name: {{ user.first_name }}</p>
 <p>Last Name: {{ user.last_name }}</p>
 <p>Staff: {{ user.is_staff }}</p>
 <p>Superuser: {{ user.is_superuser }}</p>
 <p>Last Login: {{ user.last_login }}</p>
 <p>Date Joined: {{ user.date_joined }}</p>
+<p>Profile Slug: {{ user.get_profile.slug }}</p>
+
 <div id="settings-intro">
     <h4><strong>{{ user.username }}</strong> {% trans "Settings" %}</h4>
     {% blocktrans %}
