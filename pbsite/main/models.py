@@ -10,10 +10,9 @@ class UserStatus(models.Model):
 
 class UserProfile(models.Model):
 	"""(UserProfile description)"""
-	slug=models.SlugField()
+	slug = models.SlugField()
 	user = models.ForeignKey(User)
 	status = models.ForeignKey(UserStatus)
-	email = models.EmailField()
 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	
 	class Admin:

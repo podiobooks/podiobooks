@@ -2,10 +2,13 @@
 {% load i18n %}
 
 {% block head %}
-
+{% if debug %}
+<!-- pbsite/templates/authopenid/signin.html -->
+{% endif %}
 
 {% endblock %}
 
+{%block title %}Sign In to Podiobooks.com{% endblock %}
 
 {% block content %}
 {% if msg %}
