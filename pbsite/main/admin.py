@@ -7,6 +7,9 @@ from pbsite.main.models import Category
 from pbsite.main.models import Subscription
 from pbsite.main.models import Series
 from pbsite.main.models import Award
+from pbsite.main.models import Contributor
+from pbsite.main.models import ContributorType
+from pbsite.main.models import TitleContributors
 from django.contrib import admin
 
 
@@ -15,7 +18,6 @@ class TitleInline(admin.TabularInline):
 
 class EpisodeInline(admin.TabularInline):
     model = Episode
-
 
 class TitleAdmin(admin.ModelAdmin):
 	date_hierarchy = 'date_created'
@@ -53,4 +55,6 @@ admin.site.register(Category)
 admin.site.register(Subscription)
 admin.site.register(Series)
 admin.site.register(Award)
-
+admin.site.register(Contributor)
+admin.site.register(ContributorType)
+admin.site.register(TitleContributors)

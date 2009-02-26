@@ -1,0 +1,9 @@
+{% extends "main/index.html" %}
+{% load i18n %}
+{% load title_extras %}
+
+{% block bodyclass %}{{block.super}} category_detail category_{{object.slug}}{% endblock %}
+
+{% block content %}
+{% title_list object.title_set.all %}
+{% endblock %}
