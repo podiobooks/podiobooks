@@ -6,7 +6,8 @@
 	<title>{% block headtitle %}Podiobooks{% endblock %}</title>
 	{% block head %}{% endblock %}
 </head>
-<body>
+
+<body class="{% if is_popup %}popup {% endif %}{% block bodyclass %}{% endblock %}">
 <h2>{%block title %}No Title Defined{% endblock %}</h2>
 {% block content %}No Content Defined{% endblock %}
 </body>

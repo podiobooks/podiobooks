@@ -76,6 +76,10 @@ class Series(models.Model):
 	def __str__(self):
 		return self.name
 
+        @models.permalink
+        def get_absolute_url(self):
+                return ('series_detail', [self.slug])
+
 class Award(models.Model):
 	"""(Award description)"""
 	slug=models.SlugField()
@@ -93,6 +97,11 @@ class Award(models.Model):
 	def __str__(self):
 		return self.name
 
+        @models.permalink
+        def get_absolute_url(self):
+                return ('award_detail', [self.slug])
+
+
 # replaced Author with Contributor 
 class Contributor(models.Model):
 	"""(Contributor description)"""
@@ -104,10 +113,6 @@ class Contributor(models.Model):
 	deleted = models.BooleanField(default=False)
 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
-	
-	class Admin:
-		list_display = ('',)
-		search_fields = ('',)
 
 	def __str__(self):
 		return self.displayname
@@ -115,6 +120,7 @@ class Contributor(models.Model):
 class Category(models.Model):
 	"""(Category description)"""
 	name = models.CharField(max_length=255)
+        slug = models.SlugField()
 	deleted = models.BooleanField(default=False)
 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
@@ -127,22 +133,25 @@ class Category(models.Model):
 		verbose_name_plural = "categories"
 
 	def __str__(self):
-		return "Category"
+		return self.name
 
-
+        @models.permalink
+        def get_absolute_url(self):
+                return ('category_detail', [self.slug])
+        
 class Title(models.Model):
 	"""(Title description)"""
 	
 	name = models.CharField(max_length=255)
-	series = models.ForeignKey(Series, null=True)
+	series = models.ForeignKey(Series, null=True, blank=True)
 	description = models.TextField()
 	slug = models.SlugField()
 	cover = models.ImageField(upload_to=pbsite.settings.MEDIA_COVERS)
 	status = models.IntegerField(default=1)
-	license = models.ForeignKey(License, null=True)
+	license = models.ForeignKey(License, null=True, blank=True)
 	display_on_homepage = models.BooleanField(default = False)
 	is_hosted_at_pb = models.BooleanField(default = True)
-	advisory = models.ForeignKey(Advisory, null=True)
+	advisory = models.ForeignKey(Advisory, null=True, blank=True)
 	is_adult = models.BooleanField(default=False)
 	is_complete = models.BooleanField(default=False)
 	avg_audio_quality = models.DecimalField(max_digits=5, decimal_places=3, default=0)
@@ -155,7 +164,7 @@ class Title(models.Model):
 	old_id = models.IntegerField(blank=True, null=True)
 	contributors = models.ManyToManyField(Contributor, through='TitleContributors')
 	categories = models.ManyToManyField(Category)
-	awards = models.ManyToManyField(Award)
+	awards = models.ManyToManyField(Award, blank=True)
 
 	class Admin:
 		list_display = ('',)
@@ -164,16 +173,26 @@ class Title(models.Model):
 	def __str__(self):
 		return self.name
 
+        @models.permalink
+        def get_absolute_url(self):
+                return ('title_detail', [self.slug])
+
+
 class ContributorType(models.Model):
 	slug=models.SlugField()
 	name=models.CharField(max_length=255)
+
+        def __str__(self):
+		return self.name
+
+
 
 class TitleContributors(models.Model):
 	"""(Contributor description)"""
 	title = models.ForeignKey(Title)
 	contributor = models.ForeignKey(Contributor)
 	contributor_type = models.ForeignKey(ContributorType)
-        
+
 
 # class Author(models.Model):
 # 	"""(Author description)"""
