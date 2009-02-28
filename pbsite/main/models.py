@@ -5,7 +5,7 @@ import pbsite
 
 class Advisory(models.Model):
 	"""(Advisory description)"""
-	slug=models.SlugField()
+	slug = models.SlugField()
 	name = models.CharField(max_length=100)
 	displaytext = models.CharField(max_length=255)
 	hexcolor = models.CharField(max_length=6)
@@ -67,14 +67,13 @@ class Category(models.Model):
         def get_absolute_url(self):
                 return ('category_detail', [self.slug])
 
-# replaced Author with Contributor 
 class Contributor(models.Model):
 	"""(Contributor description)"""
-	slug=models.SlugField()
+	user = models.ForeignKey(User, null=True) #User is an OOTB Django Auth Model
 	firstname = models.CharField(max_length=255)
 	lastname = models.CharField(max_length=255)
 	displayname = models.CharField(max_length=255)
-	user = models.ForeignKey(User, null=True) #User is an OOTB Django Auth Model
+	slug=models.SlugField()
 	deleted = models.BooleanField(default=False)
 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
@@ -107,7 +106,7 @@ class Episode(models.Model):
 	url = models.URLField(blank=False, verify_exists=True)
 	filesize = models.IntegerField(default=0)
 	status = models.SmallIntegerField(default=1)
-	deleted = models.PositiveSmallIntegerField(default=0)
+	deleted = models.BooleanField(default=False)
 	old_id = models.IntegerField(blank=True, null=True)
 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
@@ -190,7 +189,7 @@ class Promo(models.Model):
 		
 class Series(models.Model):
 	"""(Series description)"""
-	slug=models.SlugField()
+	slug = models.SlugField()
 	name = models.CharField(blank=True, max_length=255)
 	description = models.TextField()
 	url = models.URLField(blank=True, verify_exists=True, null=True)
@@ -211,17 +210,13 @@ class Series(models.Model):
         @models.permalink
         def get_absolute_url(self):
                 return ('series_detail', [self.slug])
-
-class SeriesSubscription(models.Model):
-	subscription = models.ForeignKey('Subscription')
-	series = models.ForeignKey('Series')
-	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	
 # Modified to handle alternate subscriptions
-# relpace last_downloaded_episode with downloaded_episodes??
+# replace last_downloaded_episode with downloaded_episodes??
 class Subscription(models.Model):
-	"""(Subscription description)"""
-#	title = models.ForeignKey(Title)
+	"""A Subscription is when a user decides to add a particular title or series to their personal feed"""
+	titles = models.ManyToManyField('Title')  # You can access the relationship from Title as title.subscription_set
+	series = models.ManyToManyField('Series') # You can access the relationship from Series as series.subscription_set
 	user = models.ForeignKey(User) #User is an OOTB Django Auth Model
 	day_interval = models.SmallIntegerField(default=7)
 	partner = models.ForeignKey('Partner')
@@ -231,6 +226,7 @@ class Subscription(models.Model):
 	deleted = models.PositiveSmallIntegerField(null=False, default=0)
 	old_id = models.IntegerField(blank=True, null=True)
 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
+	date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	
 	class Admin:
 		list_display = ('',)
@@ -240,7 +236,7 @@ class Subscription(models.Model):
 		return "Subscription"
 
 class Title(models.Model):
-	"""(Title description)"""
+	"""Title is the central class, and represents the media item as a whole."""
 	
 	name = models.CharField(max_length=255)
 	series = models.ForeignKey('Series', null=True, blank=True)
@@ -254,15 +250,15 @@ class Title(models.Model):
 	advisory = models.ForeignKey('Advisory', null=True, blank=True)
 	is_adult = models.BooleanField(default=False)
 	is_complete = models.BooleanField(default=False)
-	avg_audio_quality = models.DecimalField(max_digits=5, decimal_places=3, default=0)
-	avg_narration = models.DecimalField(max_digits=5, decimal_places=3, default=0)
-	avg_writing = models.DecimalField(max_digits=5, decimal_places=3, default=0)
-	avg_overall = models.DecimalField(max_digits=5, decimal_places=3, default=0)
+	avg_audio_quality = models.FloatField(default=0)
+	avg_narration = models.FloatField(default=0)
+	avg_writing = models.FloatField(default=0)
+	avg_overall = models.FloatField(default=0)
 	deleted = models.BooleanField(default=False)
 	old_id = models.IntegerField(blank=True, null=True)
 	contributors = models.ManyToManyField('Contributor', through='TitleContributors')
 	categories = models.ManyToManyField('Category')
-	awards = models.ManyToManyField(Award, blank=True)
+	awards = models.ManyToManyField('Award', blank=True)
 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
 
@@ -282,11 +278,6 @@ class TitleContributors(models.Model):
 	title = models.ForeignKey('Title')
 	contributor = models.ForeignKey('Contributor')
 	contributor_type = models.ForeignKey('ContributorType')
-	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
-
-class TitleSubscription(models.Model):
-	subscription = models.ForeignKey('Subscription')
-	title = models.ForeignKey('Title')
 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 
 class TitleUrl(models.Model):
