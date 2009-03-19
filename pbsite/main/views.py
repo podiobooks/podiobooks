@@ -12,5 +12,9 @@ def index(request):
     
     template : main/templates/index.html
     """
-    return render_to_response('main/index.html', {}, context_instance=RequestContext(request))
+    titles = Title.objects.filter(display_on_homepage = True)
+    
+    responseData = {'titles':titles}
+    
+    return render_to_response('main/index.html', responseData, context_instance=RequestContext(request))
 
