@@ -4,6 +4,21 @@
 {% block title %}Podiobooks.com Home{% endblock %}
 
 {% block content %}
+
+<!-- Temp Styles, should be moved to global sheet -->
+<style>
+.userblock {
+	outline: 1px solid black;
+}
+.navblock {
+	outline: 1px solid black;
+}
+.featuredtitlesblock {
+	outline: 2px solid green;
+}
+</style>
+
+<div class="userblock">
 {% if user.is_authenticated %}
 	<p>Welcome, {{ user.username }}</p>
 	<p><a href="/account">Manage Account</a></p>
@@ -11,5 +26,19 @@
 {% else %}
 	<p><a href="account/signin">Login</a></p>
 {% endif %}
+</div>
+
+<div class="navblock">
+<h3><a href="title">List of Titles</a></h3>
+</div>
+
+<div class="featuredtitlesblock">
+<h1>Featured Titles</h1>
+<ul>
+{% for title in titles %}
+	<li><a href="{{title.get_absolute_url}}">{{ title.name }}</a></li>
+{% endfor %}
+</ul>
+</div>
 
 {% endblock %}
