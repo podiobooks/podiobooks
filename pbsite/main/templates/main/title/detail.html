@@ -1,5 +1,5 @@
 {% load title_extras %}
-<div class="description">{{title.description}}</div>
+<div class="description">{% autoescape off %}{{title.description}}{% endautoescape %}</div>
 <div class="cover"><img src="{{object.cover.url}}" title="{{title.name}} Cover" alt=""/></div>
 {% show_categories title %}
 
