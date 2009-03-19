@@ -9,6 +9,9 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # Home Page
     (r'^$', 'pbsite.main.views.index'),
+                       
+    # URLs from main package
+    (r'^pb/', include('pbsite.main.urls')),
 
     # Admin documentation:
     (r'^admin/doc/', include('django.contrib.admindocs.urls')),
@@ -17,18 +20,10 @@ urlpatterns = patterns('',
     (r'^admin/(.*)', admin.site.root),
     
     # authopenid
-    (r'^account/', include('django_authopenid.urls')),
-
-
-    # title
-    url(r'^title/$','django.views.generic.list_detail.object_list', { 'queryset': Title.objects.all() }, 'title_list'),
-    url(r'^title/(?P<slug>[^/]+)/$','django.views.generic.list_detail.object_detail', {'queryset': Title.objects.all() }, 'title_detail'),
-
-    # category
-    url(r'^category/$','django.views.generic.list_detail.object_list', { 'queryset': Category.objects.all() }, 'category_list'),
-    url(r'^category/(?P<slug>[^/]+)/$','django.views.generic.list_detail.object_detail', {'queryset': Category.objects.all() }, 'category_detail'),     
-                       
+    (r'^account/', include('django_authopenid.urls')),                     
                        
     # Static Content
     (r'^content/(.*)$', 'django.views.static.serve', {'document_root': os.path.join(settings.PROJECT_PATH, 'content')}),
+    
+    
 )
