@@ -5,7 +5,12 @@
 {% if debug %}
 <!-- pbsite/templates/authopenid/signin.html -->
 {% endif %}
-
+<style type="text/css">
+.openid {
+	background: #FFFFFF url('/content/images/openid-icon-small.gif') no-repeat scroll 0pt 50%;
+	padding-left: 18px;
+}
+</style>
 {% endblock %}
 
 {%block title %}Sign In to Podiobooks.com{% endblock %}
@@ -45,7 +50,6 @@
 		<legend>{% trans "Sign In Using Your OpenID URL" %}</legend>
         <div class="form-row"><label for="id_openid_ul">{% trans "OpenId URL :" %}</label><br />{{ form2.openid_url }}</div>
         <div class="submit-row "><input name="bsignin" type="submit" value="{% trans "Sign in with OpenID" %}"></div>
-		
 	</fieldset>
 </form>	
 </div>
