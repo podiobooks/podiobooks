@@ -36,25 +36,38 @@ class Command(BaseCommand):
 
         self.__migrate_table(cursor, 'bookcategory', 'main_category',
                              [
+                                AddColumn(models.SlugField(name='slug',
+                                                           default="lower(regexp_replace(name, ' ', '-'))")),
+                                AddColumn(models.BooleanField(name='deleted', default='false', null=False)),
+                                AddColumn(models.DateTimeField(name='date_created', default='now()', null=False)),
+                                AddColumn(models.DateTimeField(name='date_updated', default='now()', null=False)),
                                 DropColumn('display'),
                                 DropColumn('parentcatid'),
                                 DropColumn('itunesxml'),
-                                AddColumn(models.SlugField(name='slug',
-                                                           default="lower(regexp_replace(name, ' ', '-'))")),
-                                AddColumn(models.BooleanField(name='deleted', default='false')),
-                                AddColumn(models.DateTimeField(name='date_created', default='now()')),
-                                AddColumn(models.DateTimeField(name='date_updated', default='now()')),
                                 'category.sql'
+                             ])
+        
+        self.__migrate_table(cursor, 'partner', 'main_partner',
+                             [
+                                AddColumn(models.IntegerField(name='old_id', null=True)),
+                                AddColumn(models.BooleanField(name='deleted', default='false', null=False)),
+                                AddColumn(models.DateTimeField(name='date_updated', default='now()', null=False)),
+                                DropColumn('css'),
+                                DropColumn('enabled'),
+                                DropColumn('haslibrary'),
+                                DropColumn('headerhtml'),
+                                DropColumn('footerhtml'),
+                                'partner.sql'
                              ])
 
         self.__migrate_table(cursor, 'public.user', 'auth_user',
                              [
                                 AddColumn(models.BooleanField(name='is_staff',
-                                                              default='roleid > 2')),
+                                                              default='roleid > 2', null=False)),
                                 AddColumn(models.BooleanField(name='is_superuser',
-                                                              default='roleid = 4')),
+                                                              default='roleid = 4', null=False)),
                                 AddColumn(models.DateTimeField(name='last_login',
-                                                              default="timestamp 'epoch'")),
+                                                              default="timestamp 'epoch'", null=False)),
                                 DropColumn('userstatusid'),
                                 DropColumn('roleid'),
                                 DropColumn('partnerid'),
@@ -73,6 +86,7 @@ class Command(BaseCommand):
 
         cursor.execute('alter table %s rename to %s' % (name, new_name))
         cursor.execute('alter sequence %s_id_seq rename to %s_id_seq' % (name, new_name))
+        
         for operation in operations:
             if operation.__class__ == str:
                 op_sql = self.__load_sql(operation)
@@ -107,7 +121,7 @@ class DropColumn:
 
 
 class AddColumn:
-    def __init__(self, field):
+    def __init__(self, field, null=False):
         self.field = field
         self.table_name = None
 
@@ -115,7 +129,8 @@ class AddColumn:
     def migrate(self, cursor):
         sql = 'alter table %s add column %s %s;' % (self.table_name, self.field.name, self.field.db_type())
         cursor.execute(sql)
-        sql = 'update %s set %s = %s;' % (self.table_name, self.field.name, self.field.default)
-        cursor.execute(sql)
-        sql = 'alter table %s alter column %s set not null' % (self.table_name, self.field.name)
-        cursor.execute(sql)
+        if not self.field.null:
+            sql = 'update %s set %s = %s;' % (self.table_name, self.field.name, self.field.default)
+            cursor.execute(sql)
+            sql = 'alter table %s alter column %s set not null' % (self.table_name, self.field.name)
+            cursor.execute(sql)
