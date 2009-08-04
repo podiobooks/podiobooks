@@ -1,7 +1,8 @@
 '''
 Created on Aug 04, 2009
 
-migrate.py - Django command to migrate an initial import from PB1 to the final schema.
+migrate.py - Django command to migrate an initial import from PB1 to the final schema.  This code is specific
+to PostgreSQL and intended for production migration.  
 
 @author: cmdln
 '''
@@ -12,6 +13,8 @@ import datetime
 from django.core.management.base import BaseCommand
 from django.db import connection, transaction
 from django.db import models
+
+
 
 class Command(BaseCommand):
     def __init__(self):
@@ -28,6 +31,9 @@ class Command(BaseCommand):
 
         cursor = connection.cursor()
 
+        drop_all = self.__load_sql('drop_all.sql')
+        cursor.execute(drop_all)
+
         self.__migrate_table(cursor, 'bookcategory', 'main_category',
                              [
                                 DropColumn('display'),
@@ -41,6 +47,20 @@ class Command(BaseCommand):
                                 'category.sql'
                              ])
 
+        self.__migrate_table(cursor, 'public.user', 'auth_user',
+                             [
+                                AddColumn(models.BooleanField(name='is_staff',
+                                                              default='roleid > 2')),
+                                AddColumn(models.BooleanField(name='is_superuser',
+                                                              default='roleid = 4')),
+                                AddColumn(models.DateTimeField(name='last_login',
+                                                              default="timestamp 'epoch'")),
+                                DropColumn('userstatusid'),
+                                DropColumn('roleid'),
+                                DropColumn('partnerid'),
+                                'user.sql'
+                             ])
+
         transaction.commit_unless_managed()
 
         elapsed = datetime.datetime.now() - start
@@ -49,7 +69,8 @@ class Command(BaseCommand):
 
 
     def __migrate_table(self, cursor, name, new_name, operations):
-        print 'Migrating %s' % name
+        print 'Migrating %s to %s' % (name, new_name)
+
         cursor.execute('alter table %s rename to %s' % (name, new_name))
         cursor.execute('alter sequence %s_id_seq rename to %s_id_seq' % (name, new_name))
         for operation in operations:
