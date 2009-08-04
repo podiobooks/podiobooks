@@ -8,9 +8,9 @@ dump_base="mysqldump -u $1 -p$pwd"
 
 # these are in dependency order
 tables="bookcategory \
+partner \
 userstatus \
 role \
-partner \
 user \
 book \
 bookrating \
