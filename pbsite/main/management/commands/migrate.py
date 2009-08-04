@@ -73,6 +73,31 @@ class Command(BaseCommand):
                                 DropColumn('partnerid'),
                                 'user.sql'
                              ])
+        
+        self.__migrate_table(cursor, 'book', 'main_book',
+                             [
+                                RenameColumn('title', 'name'),
+                                DropColumnConstraint('name'),
+                                AddColumn(models.ForeignKey('Series', null=True)),
+                                AddColumn(models.SlugField(name='slug',
+                                                           default="lower(substr(regexp_replace(name, ' ', '-'), 0, 50))",
+                                                           null=False)),
+                                RenameColumn('coverimage', 'cover'),
+                                AlterColumnType(models.CharField(max_length=100,
+                                                                 default="substr(trim(both ' ' from cover), 0, 100)")),
+                                DropColumnConstraint('cover'),
+                                # TODO calculate status from standby/complete?!
+                                AddColumn(models.IntegerField(name='status', default='0')),
+                                # TODO need to match up strings to fixture values
+                                AddColumn(models.ForeignKey('License', null=True)),
+                                RenameColumn('displayonhomepage', 'display_on_homepage'),
+                                AlterColumnType(models.BooleanField(name='display_on_homepage',
+                                                                    default='display_on_homepage = 1')),
+                                DropColumnConstraint('display_on_homepage'),
+                                AddColumn(models.BooleanField(name='is_hosted_at_pb', default='true')),
+                                # TODO need to match up explicit flag to fixture values
+                                AddColumn(models.ForeignKey('Advisory', null=True)),
+                             ])
 
         transaction.commit_unless_managed()
 
@@ -116,7 +141,7 @@ class DropColumn:
 
 
     def migrate(self, cursor):
-        sql = 'alter table %s drop column %s' % (self.table_name, self.name)
+        sql = 'alter table %s drop column %s;' % (self.table_name, self.name)
         cursor.execute(sql)
 
 
@@ -132,5 +157,42 @@ class AddColumn:
         if not self.field.null:
             sql = 'update %s set %s = %s;' % (self.table_name, self.field.name, self.field.default)
             cursor.execute(sql)
-            sql = 'alter table %s alter column %s set not null' % (self.table_name, self.field.name)
+            sql = 'alter table %s alter column %s set not null;' % (self.table_name, self.field.name)
             cursor.execute(sql)
+
+
+class RenameColumn:
+    def __init__(self, old_name, new_name):
+        self.old_name
+        self.new_name = new_name
+        self.table_name = None
+
+
+    def migrate(self, cursor):
+        sql = 'alter table %s rename column %s to %s;' % (self.table_name, self.old_name, self.new_name)
+        cursor.execute(sql)
+
+
+class AlterColumnType:
+    def __init__(self, field):
+        self.field = field
+        self.table_name = None
+
+
+    def migrate(self, cursor):
+        if (self.field.default):
+            sql = 'alter table %s alter column %s type %s %s;' % (self.table_name, self.field.name, self.field.db_type, self.field.default)
+        else:
+            sql = 'alter table %s alter column %s type %s;' % (self.table_name, self.field.name, self.field.db_type)
+        cursor.execute(sql)
+
+
+class DropColumnConstraint:
+    def __init__(self, name):
+        self.name = name
+        self.table_name = None
+
+
+    def migrate(self, cursor):
+        sql = 'alter table %s alter column %s drop default;' % (self.table_name, self.name)
+        cursor.execute(sql) 
