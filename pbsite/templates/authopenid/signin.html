@@ -49,6 +49,7 @@
 	<fieldset>
 		<legend>{% trans "Sign In Using Your OpenID URL" %}</legend>
         <div class="form-row"><label for="id_openid_ul">{% trans "OpenId URL :" %}</label><br />{{ form2.openid_url }}</div>
+        <span style="font-size: 0.8em">(e.g. http://username.myopenid.com)</span>
         <div class="submit-row "><input name="bsignin" type="submit" value="{% trans "Sign in with OpenID" %}"></div>
 	</fieldset>
 </form>	
