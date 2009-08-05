@@ -4,7 +4,9 @@ import datetime
 import pbsite
 
 class Advisory(models.Model):
-	"""(Advisory description)"""
+	"""Advisories are notifications about titles for the users. These could be
+    viewed as not unlike movie ratings, but they are more descriptive. PB1
+    has three, For Kids, Family Friendly, and Adult."""
 	slug = models.SlugField()
 	name = models.CharField(max_length=100)
 	displaytext = models.CharField(max_length=255)
@@ -25,7 +27,7 @@ class Advisory(models.Model):
 		return self.name
 
 class Award(models.Model):
-	"""(Award description)"""
+    """Awards are just that: awards for a title, like winning a Parsec, etc."""
 	slug=models.SlugField()
 	name = models.CharField(blank=True, max_length=255)
 	url = models.URLField(blank=True, verify_exists=True, null=True)
@@ -46,7 +48,7 @@ class Award(models.Model):
                 return ('award_detail', [self.slug])
 
 class Category(models.Model):
-	"""(Category description)"""
+	"""Categories describe titles for easy of browsing and for recommendations."""
 	name = models.CharField(max_length=255)
         slug = models.SlugField()
 	deleted = models.BooleanField(default=False)
@@ -68,7 +70,8 @@ class Category(models.Model):
                 return ('category_detail', [self.slug])
 
 class Contributor(models.Model):
-	"""(Contributor description)"""
+	"""A contributor is one who had done work on a title. For a book, it's an
+    author or authors."""
 	user = models.ForeignKey(User, null=True) #User is an OOTB Django Auth Model
 	firstname = models.CharField(max_length=255)
 	lastname = models.CharField(max_length=255)
@@ -81,16 +84,17 @@ class Contributor(models.Model):
 	def __str__(self):
 		return self.displayname
 
-# ContributorSubscription is a little different in that you can
-# declare multiple types, allowing you to say you want all items from
-# contributor X where they are a contributor of type A, B, and C
 class ContributorSubscription(models.Model):
+    """ContributorSubscription is a little different in that you can
+    declare multiple types, allowing you to say you want all items from
+    contributor X where they are a contributor of type A, B, and C"""
 	subscription = models.ForeignKey('Subscription')
 	contributor = models.ForeignKey('Contributor')
 	contributor_types = models.ManyToManyField('ContributorType')
 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 
 class ContributorType(models.Model):
+    """Types of contributors: author, key grid, best boy, director, etc."""
 	slug=models.SlugField()
 	name=models.CharField(max_length=255)
 
@@ -98,7 +102,9 @@ class ContributorType(models.Model):
 		return self.name
 
 class Episode(models.Model):
-	"""(Episode description)"""
+	"""Titles are composed of Episodes. For a book, these are chapters or
+    divisions of the book into smaller parts. For a comic book, it would be each
+    issue of the comic."""
 	title = models.ForeignKey('Title')
 	name = models.CharField(max_length=255)
 	sequence = models.IntegerField(blank=False, null=False)
@@ -119,7 +125,8 @@ class Episode(models.Model):
 		return "Episode"
 
 class License(models.Model):
-	"""(TitleLicense description)"""
+	"""A collection of defined licenses for works. Creative Commons, All Rights
+    Reserved, etc."""
 	slug=models.SlugField()
 	text = models.CharField(blank=False, max_length=255)
 	url = models.URLField(blank=False, verify_exists=True)
@@ -136,7 +143,8 @@ class License(models.Model):
 		return self.text
 
 class Media(models.Model):
-	"""(Media description)"""
+	"""Media are links to other forms of the title. In the case of books, these
+    would be dead tree editions, epub, etc."""
 	title = models.ForeignKey('Title')
 	name = models.CharField(max_length=255)
 	baseurl = models.CharField(max_length=255)
@@ -155,7 +163,9 @@ class Media(models.Model):
 		return self.name
 
 class Partner(models.Model):
-	"""(Modelname description)"""
+	"""Partners are sites or organizations which contribute works to the system
+    who wish to be recognized in some fashion (usually a graphic and link back
+    to their site)."""
 	name = models.CharField(blank=False, max_length=255)
 	url = models.URLField(blank=False, verify_exists=True)
 	logo = models.ImageField(upload_to="/dir/path")
@@ -172,7 +182,9 @@ class Partner(models.Model):
 		return "Modelname"
 
 class Promo(models.Model):
-	"""(Promo description)"""
+	"""Promotional materials for a title. Built to allow many types of
+    material per a single title for folks what want to add some serious
+    marketing mojo to their arsenal."""
 	title = models.ForeignKey('Title')
 	display_text = models.CharField(max_length=255)
 	url = models.URLField(blank=False, verify_exists=True)
@@ -188,7 +200,10 @@ class Promo(models.Model):
 		return self.display_text
 		
 class Series(models.Model):
-	"""(Series description)"""
+    """Titles can belong to a series, wich allows for higher level grouping.
+    Additionally, we might want to allow a setting to let users autosubscribe to
+    the next book in a series automatically, or even just to subscribe to the
+    series in one fell swoop."""
 	slug = models.SlugField()
 	name = models.CharField(blank=True, max_length=255)
 	description = models.TextField()
@@ -214,7 +229,9 @@ class Series(models.Model):
 # Modified to handle alternate subscriptions
 # replace last_downloaded_episode with downloaded_episodes??
 class Subscription(models.Model):
-	"""A Subscription is when a user decides to add a particular title or series to their personal feed"""
+	"""A Subscription is when a user decides to add a particular title or series
+    to their personal feed. Subscriptions are released on a timed basis,
+    allowing for dynamic construction and caching of customized feeds."""
 	titles = models.ManyToManyField('Title')  # You can access the relationship from Title as title.subscription_set
 	series = models.ManyToManyField('Series') # You can access the relationship from Series as series.subscription_set
 	user = models.ForeignKey(User) #User is an OOTB Django Auth Model
@@ -236,7 +253,9 @@ class Subscription(models.Model):
 		return "Subscription"
 
 class Title(models.Model):
-	"""Title is the central class, and represents the media item as a whole."""
+	"""Title is the central class, and represents the media item as a whole.i
+    Example: A book. A season of a TV Series. A volume of a Comic Book. A set of
+    college lectures."""
 	
 	name = models.CharField(max_length=255)
 	series = models.ForeignKey('Series', null=True, blank=True)
@@ -274,14 +293,14 @@ class Title(models.Model):
                 return ('title_detail', [self.slug])
 
 class TitleContributors(models.Model):
-	"""(Contributor description)"""
+	"""Join table to associate contributors to titles."""
 	title = models.ForeignKey('Title')
 	contributor = models.ForeignKey('Contributor')
 	contributor_type = models.ForeignKey('ContributorType')
 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 
 class TitleUrl(models.Model):
-	"""(TitleUrls description)"""
+	"""Allows us to have several links for a book, for display. For utility."""
 	title = models.ManyToManyField('Title')
 	url = models.URLField(blank=False, verify_exists=True)
 	linktext = models.CharField(blank=False, max_length=255)
@@ -297,7 +316,8 @@ class TitleUrl(models.Model):
 		return "TitleUrls"
 
 class UserProfile(models.Model):
-	"""(UserProfile description)"""
+	"""Information about the user which we need for preferences, social needs,
+    etc."""
 	user = models.ForeignKey(User) #User is an OOTB Django Auth Model
 	slug = models.SlugField()
 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
@@ -310,87 +330,3 @@ class UserProfile(models.Model):
 	def __str__(self):
 		return "UserProfile"
 
-# class Author(models.Model):
-# 	"""(Author description)"""
-# 	firstname = models.CharField(max_length=255)
-# 	lastname = models.CharField(max_length=255)
-# 	displayname = models.CharField(max_length=255)
-# 	user = models.ForeignKey(User, null=True)
-# 	deleted = models.BooleanField(default=False)
-# 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
-# 	date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
-	
-# 	class Admin:
-# 		list_display = ('',)
-# 		search_fields = ('',)
-
-# 	def __str__(self):
-# 		return self.displayname
-
-## class TitleAward(models.Model):
-## 	"""(TitleAward description)"""
-## 	title = models.ForeignKey(Title)
-## 	award = models.ForeignKey(Award)
-## 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
-	
-## 	class Admin:
-## 		list_display = ('',)
-## 		search_fields = ('',)
-
-## 	def __str__(self):
-## 		return "TitleAward"
-
-# class TitleMedia(models.Model):
-#   """(TitleMedia description)"""
-#   title = models.ForeignKey(Title)
-#   media = models.ForeignKey(Media)
-#   date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
-	
-## 	class Admin:
-## 		list_display = ('',)
-## 		search_fields = ('',)
-
-## 	def __str__(self):
-## 		return "TitleMedia"
-
-# class TitleAuthor(models.Model):
-# 	"""(TitleAuthor description)"""
-# 	title = models.ForeignKey(Title)
-# 	author = models.ForeignKey(Author)
-# 	displayorder = models.IntegerField(blank=True, null=True)
-# 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
-	
-# 	class Admin:
-# 		list_display = ('',)
-# 		search_fields = ('',)
-
-# 	def __str__(self):
-# 		return "TitleAuthor"
-
-# class TitleCategory(models.Model):
-# 	"""(TitleCategory description)"""
-# 	title = models.ForeignKey(Title)
-# 	category = models.ForeignKey(Category)
-# 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
-	
-# 	class Admin:
-# 		list_display = ('',)
-# 		search_fields = ('',)
-
-# 	def __str__(self):
-# 		return "TitleCategory"
-
-# # TODO
-# class Product(models.Model):
-#         name = models.CharField(blank=False, max_length=255)
-#         titles = models.ManyToManyField(Title,through='ProductTitles')
-#         ## ??
-
-# class ProductTitles(models.Model):
-#         product = models.ForeignKey(Product)
-#         title = models.ForeignKey(Title)
-#         sequence =  models.IntegerField(blank=False, null=False)
-        
-
-# set up emacs to be in line with ctmiller's editing style
-# -*- mode: Python; indent-tabs-mode: 1; -*-
