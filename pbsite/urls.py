@@ -25,5 +25,7 @@ urlpatterns = patterns('',
     # Static Content
     (r'^content/(.*)$', 'django.views.static.serve', {'document_root': os.path.join(settings.PROJECT_PATH, 'content')}),
     
+    # Feeds:
+    (r'^rss/', include('pbsite.feeds.urls')),
     
 )
