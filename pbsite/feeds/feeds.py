@@ -39,3 +39,4 @@ class EpisodeFeed(Feed):
 
     def items(self, obj):
         return Episode.objects.filter(title__id__exact=obj.id).order_by('-date_created')[:30]
+    
