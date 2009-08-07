@@ -19,7 +19,7 @@ class Advisory(models.Model):
 	class Admin:
 		list_display = ('',)
 		search_fields = ('',)
-		
+
 	class Meta:
 		verbose_name_plural = "advisories"
 
@@ -27,8 +27,8 @@ class Advisory(models.Model):
 		return self.name
 
 class Award(models.Model):
-    """Awards are just that: awards for a title, like winning a Parsec, etc."""
-	slug=models.SlugField()
+	"""Awards are just that: awards for a title, like winning a Parsec, etc."""
+	slug = models.SlugField()
 	name = models.CharField(blank=True, max_length=255)
 	url = models.URLField(blank=True, verify_exists=True, null=True)
 	image = models.ImageField(upload_to=pbsite.settings.MEDIA_AWARDS)
@@ -58,7 +58,7 @@ class Category(models.Model):
 	class Admin:
 		list_display = ('',)
 		search_fields = ('',)
-		
+
 	class Meta:
 		verbose_name_plural = "categories"
 
@@ -76,7 +76,7 @@ class Contributor(models.Model):
 	firstname = models.CharField(max_length=255)
 	lastname = models.CharField(max_length=255)
 	displayname = models.CharField(max_length=255)
-	slug=models.SlugField()
+	slug = models.SlugField()
 	deleted = models.BooleanField(default=False)
 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
@@ -85,18 +85,18 @@ class Contributor(models.Model):
 		return self.displayname
 
 class ContributorSubscription(models.Model):
-    """ContributorSubscription is a little different in that you can
-    declare multiple types, allowing you to say you want all items from
-    contributor X where they are a contributor of type A, B, and C"""
+	"""ContributorSubscription is a little different in that you can
+	declare multiple types, allowing you to say you want all items from
+	contributor X where they are a contributor of type A, B, and C"""
 	subscription = models.ForeignKey('Subscription')
 	contributor = models.ForeignKey('Contributor')
 	contributor_types = models.ManyToManyField('ContributorType')
 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 
 class ContributorType(models.Model):
-    """Types of contributors: author, key grid, best boy, director, etc."""
-	slug=models.SlugField()
-	name=models.CharField(max_length=255)
+	"""Types of contributors: author, key grid, best boy, director, etc."""
+	slug = models.SlugField()
+	name = models.CharField(max_length=255)
 
         def __str__(self):
 		return self.name
@@ -116,7 +116,7 @@ class Episode(models.Model):
 	old_id = models.IntegerField(blank=True, null=True)
 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
-	
+
 	class Admin:
 		list_display = ('',)
 		search_fields = ('',)
@@ -127,7 +127,7 @@ class Episode(models.Model):
 class License(models.Model):
 	"""A collection of defined licenses for works. Creative Commons, All Rights
     Reserved, etc."""
-	slug=models.SlugField()
+	slug = models.SlugField()
 	text = models.CharField(blank=False, max_length=255)
 	url = models.URLField(blank=False, verify_exists=True)
 	image_url = models.URLField(blank=False, verify_exists=True)
@@ -151,7 +151,7 @@ class Media(models.Model):
 	deleted = models.BooleanField(default=False)
 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
-	
+
 	class Admin:
 		list_display = ('',)
 		search_fields = ('',)
@@ -173,7 +173,7 @@ class Partner(models.Model):
 	old_id = models.IntegerField(blank=True, null=True)
 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
-	
+
 	class Admin:
 		list_display = ('',)
 		search_fields = ('',)
@@ -198,12 +198,12 @@ class Promo(models.Model):
 
 	def __str__(self):
 		return self.display_text
-		
+
 class Series(models.Model):
-    """Titles can belong to a series, wich allows for higher level grouping.
-    Additionally, we might want to allow a setting to let users autosubscribe to
-    the next book in a series automatically, or even just to subscribe to the
-    series in one fell swoop."""
+	"""Titles can belong to a series, wich allows for higher level grouping.
+	Additionally, we might want to allow a setting to let users autosubscribe to
+	the next book in a series automatically, or even just to subscribe to the
+	series in one fell swoop."""
 	slug = models.SlugField()
 	name = models.CharField(blank=True, max_length=255)
 	description = models.TextField()
@@ -211,11 +211,11 @@ class Series(models.Model):
 	deleted = models.BooleanField(default=False)
 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
-		
+
 	class Admin:
 		list_display = ('',)
 		search_fields = ('',)
-		
+
 	class Meta:
 		verbose_name_plural = "series"
 
@@ -225,7 +225,7 @@ class Series(models.Model):
         @models.permalink
         def get_absolute_url(self):
                 return ('series_detail', [self.slug])
-	
+
 # Modified to handle alternate subscriptions
 # replace last_downloaded_episode with downloaded_episodes??
 class Subscription(models.Model):
@@ -244,7 +244,7 @@ class Subscription(models.Model):
 	old_id = models.IntegerField(blank=True, null=True)
 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
-	
+
 	class Admin:
 		list_display = ('',)
 		search_fields = ('',)
@@ -256,7 +256,7 @@ class Title(models.Model):
 	"""Title is the central class, and represents the media item as a whole.i
     Example: A book. A season of a TV Series. A volume of a Comic Book. A set of
     college lectures."""
-	
+
 	name = models.CharField(max_length=255)
 	series = models.ForeignKey('Series', null=True, blank=True)
 	description = models.TextField()
@@ -264,8 +264,8 @@ class Title(models.Model):
 	cover = models.ImageField(upload_to=pbsite.settings.MEDIA_COVERS)
 	status = models.IntegerField(default=1)
 	license = models.ForeignKey('License', null=True, blank=True)
-	display_on_homepage = models.BooleanField(default = False)
-	is_hosted_at_pb = models.BooleanField(default = True)
+	display_on_homepage = models.BooleanField(default=False)
+	is_hosted_at_pb = models.BooleanField(default=True)
 	advisory = models.ForeignKey('Advisory', null=True, blank=True)
 	is_adult = models.BooleanField(default=False)
 	is_complete = models.BooleanField(default=False)
@@ -322,7 +322,7 @@ class UserProfile(models.Model):
 	slug = models.SlugField()
 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
-	
+
 	class Admin:
 		list_display = ('',)
 		search_fields = ('',)
