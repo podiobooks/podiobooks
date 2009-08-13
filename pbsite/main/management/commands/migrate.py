@@ -174,7 +174,7 @@ class Command(BaseCommand):
                AlterColumnType(models.BooleanField(name='is_complete'),
                                using="is_complete = '1'"),
                RenameColumn('avgaudioquality', 'avg_audio_quality'),
-               NotNull('avg_audio_quality'),
+               SetNotNull('avg_audio_quality', '0.0'),
                Rollback()
               ]
         self.__migrate_table(cursor, 'book', 'main_book', ops)
@@ -220,10 +220,19 @@ class Command(BaseCommand):
         return sql
 
 
-class DropColumn:
-    def __init__(self, name):
-        self.name = name
+class Operation:
+    def __init__(self):
         self.table_name = None
+    
+    
+    def params(self):
+        return None
+
+
+class DropColumn(Operation):
+    def __init__(self, name):
+        Operation.__init__(self)
+        self.name = name
 
 
     def __str__(self):
@@ -234,10 +243,10 @@ class DropColumn:
         return 'alter table %s drop column %s;' % (self.table_name, self.name)
 
 
-class AddColumn:
+class AddColumn(Operation):
     def __init__(self, field, update=None):
+        Operation.__init__(self)
         self.field = field
-        self.table_name = None
         self.update = update
 
 
@@ -260,11 +269,11 @@ class AddColumn:
             sql = 'alter table %s add column %s %s null;' % (self.table_name, self.field.name, self.field.db_type())
         return sql
 
-class RenameColumn:
+class RenameColumn(Operation):
     def __init__(self, old_name, new_name):
+        Operation.__init__(self)
         self.old_name = old_name
         self.new_name = new_name
-        self.table_name = None
 
 
     def __str__(self):
@@ -275,10 +284,10 @@ class RenameColumn:
         return 'alter table %s rename column %s to %s;' % (self.table_name, self.old_name, self.new_name)
 
 
-class DropConstraint:
+class DropConstraint(Operation):
     def __init__(self, constraint):
+        Operation.__init__(self)
         self.constraint = constraint
-        self.table_name = None
 
 
     def __str__(self):
@@ -289,10 +298,10 @@ class DropConstraint:
         return 'alter table %s drop constraint %s' % (self.table_name, self.constraint)
 
 
-class AlterColumnType:
+class AlterColumnType(Operation):
     def __init__(self, field, using=None):
+        Operation.__init__(self)
         self.field = field
-        self.table_name = None
         self.using = using
 
 
@@ -307,10 +316,10 @@ class AlterColumnType:
             return 'alter table %s alter column %s type %s;' % (self.table_name, self.field.name, self.field.db_type())
 
 
-class DropDefault:
+class DropDefault(Operation):
     def __init__(self, name):
+        Operation.__init__(self)
         self.name = name
-        self.table_name = None
 
 
     def __str__(self):
@@ -321,10 +330,11 @@ class DropDefault:
         return 'alter table %s alter column %s drop default;' % (self.table_name, self.name)
 
 
-class NotNull:
-    def __init__(self, name):
+class SetNotNull(Operation):
+    def __init__(self, name, update):
+        Operation.__init__(self)
         self.name = name
-        self.table_name = None
+        self.update = update
 
 
     def __str__(self):
@@ -332,14 +342,30 @@ class NotNull:
 
 
     def migrate(self):
-        return 'alter table %s alter column %s set not null;' % (self.table_name, self.name)
+        sql = 'update %s set %s = %s;' % (self.table_name, self.name, self.update)
+        sql += '\nalter table %s alter column %s set not null;' % (self.table_name, self.name)
+        return sql
 
 
-class AddForeignKey:
+class DropNotNull(Operation):
+    def __init__(self, name):
+        Operation.__init__(self)
+        self.name = name
+
+
+    def __str__(self):
+        return 'alter column %s drop not null' % self.name
+
+
+    def migrate(self):
+        return 'alter table %s alter column %s drop not null;' % (self.table_name, self.name)
+
+
+class AddForeignKey(Operation):
     def __init__(self, column, table):
+        Operation.__init__(self)
         self.column = column
         self.foreign_table = table
-        self.table_name = None
 
 
     def __str__(self):
@@ -355,9 +381,9 @@ class AddForeignKey:
                            'foreign': self.foreign_table }
 
 
-class Rollback:
+class Rollback(Operation):
     def __init__(self):
-        self.table_name = None
+        Operation.__init__(self)
 
 
     def migrate(self):
