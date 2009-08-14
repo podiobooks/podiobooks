@@ -56,9 +56,7 @@ class Command(BaseCommand):
                                                 max_length=255),
                                using="substr(trim(both ' ' from name), 0, 255)"),
                DropDefault('name'),
-               DropColumn('display'),
-               DropColumn('parentcatid'),
-               DropColumn('itunesxml'),
+               DropColumns(['display', 'parentcatid', 'itunesxml']),
             ]
         self.__migrate_table(cursor, 'bookcategory', 'main_category', ops)
 
@@ -79,11 +77,7 @@ class Command(BaseCommand):
                RenameColumn('datecreated', 'date_created'),
                DropDefault('date_created'),
                AlterColumnType(models.DateTimeField(name='date_created')),
-               DropColumn('css'),
-               DropColumn('enabled'),
-               DropColumn('haslibrary'),
-               DropColumn('headerhtml'),
-               DropColumn('footerhtml'),
+               DropColumns(['css', 'enabled', 'haslibrary', 'headerhtml', 'footerhtml']),
             ]
         self.__migrate_table(cursor, 'partner', 'main_partner', ops)
 
@@ -128,9 +122,7 @@ class Command(BaseCommand):
                RenameColumn('datecreated', 'date_joined'),
                AlterColumnType(models.DateTimeField(name='date_joined')),
                DropDefault('date_joined'),
-               DropColumn('userstatusid'),
-               DropColumn('roleid'),
-               DropColumn('partnerid')
+               DropColumns(['userstatusid', 'roleid', 'partnerid'])
             ]
         self.__migrate_table(cursor, 'public.user', 'auth_user', ops)
 
@@ -192,7 +184,7 @@ class Command(BaseCommand):
                 if operation.__class__ == str:
                     statements.append(self.__load_sql(operation))
                 else:
-                    operation.table_name = new_name
+                    operation.set_table_name(new_name)
                     statements.append(operation.migrate())
             except Exception, e:
                 print 'Last operation loaded:\n%s' % operation
@@ -225,6 +217,10 @@ class Operation:
         self.table_name = None
     
     
+    def set_table_name(self, table_name):
+        self.table_name = table_name
+    
+    
     def params(self):
         return None
 
@@ -241,6 +237,32 @@ class DropColumn(Operation):
 
     def migrate(self):
         return 'alter table %s drop column %s;' % (self.table_name, self.name)
+    
+
+class DropColumns(Operation):
+    def __init__(self, names):
+        Operation.__init__(self)
+        self.nested = list()
+        for name in names:
+            self.nested.append(DropColumn(name))
+
+
+    def __str__(self):
+        return self.nested.__str__()
+    
+    
+    def set_table_name(self, table_name):
+        Operation.set_table_name(self, table_name)
+        [op.set_table_name(table_name) for op in self.nested]
+
+
+    def migrate(self):
+        sql = ''
+        for op in self.nested:
+            if len(sql) > 1:
+                sql += '\n'
+            sql += op.migrate()
+        return sql
 
 
 class AddColumn(Operation):
