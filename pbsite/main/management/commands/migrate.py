@@ -9,11 +9,14 @@ to PostgreSQL and intended for production migration.
 
 import os.path
 import datetime
+import urllib
+import urllib2
 
 from django.core.management.base import BaseCommand
 from django.db import connection, transaction
 from django.db import models
 
+from pbsite.main.models import License
 
 
 class Command(BaseCommand):
@@ -37,6 +40,7 @@ class Command(BaseCommand):
         self.__migrate_category(cursor)
         self.__migrate_partner(cursor)
         self.__migrate_user(cursor)
+        self.__add_licenses()
         self.__migrate_book(cursor)
 
         transaction.commit_unless_managed()
@@ -46,44 +50,77 @@ class Command(BaseCommand):
         print 'Took %s to complete migration.' % elapsed
 
 
+    def __add_licenses(self):
+        code_url_template = 'http://creativecommons.org/licenses/%s/3.0/rdf'
+        licenses = { 'by' : 'Attribution 3.0 Unported',
+                     'by-nd' : 'Attribution-No Derivative Works 3.0 Unported',
+                     'by-nc-nd' : 'Attribution-Noncommercial-No Derivative Works 3.0 Unported',
+                     'by-nc' : 'Attribution-Noncommercial 3.0 Unported',
+                     'by-nc-sa' : 'Attribution-Noncommercial-Share Alike 3.0 Unported',
+                     'by-sa' : 'Attribution-Share Alike 3.0 Unported' }
+        for (slug, text) in licenses.iteritems():
+            license = License()
+            license.slug = slug
+            
+            license.text = text
+            
+            license.url = 'http://creativecommons.org/licenses/%s/3.0/' % slug
+            license.image_url = 'http://i.creativecommons.org/l/%s/3.0/88x31.png' % slug
+            
+            url = code_url_template % slug
+            opener = urllib2.build_opener(urllib2.HTTPCookieProcessor())
+            license.code = opener.open(urllib2.Request(url)).read()
+            license.save()
+            
+
     def __migrate_category(self, cursor):
-        ops = [AddColumn(models.SlugField(name='slug'),
+        ops = [DropConstraint('bookcategory_display_check'),
+               AlterVarCharColumn('name', 255),
+               AddColumn(models.SlugField(name='slug'),
                          update="lower(regexp_replace(name, ' ', '-'))"),
                AddColumn(models.BooleanField(name='deleted', default='false', null=False)),
                AddColumn(models.DateTimeField(name='date_created', default='now()', null=False)),
                AddColumn(models.DateTimeField(name='date_updated', default='now()', null=False)),
-               AlterColumnType(models.CharField(name='name',
-                                                max_length=255),
-                               using="substr(trim(both ' ' from name), 0, 255)"),
-               DropDefault('name'),
                DropColumns(['display', 'parentcatid', 'itunesxml']),
             ]
         self.__migrate_table(cursor, 'bookcategory', 'main_category', ops)
 
 
     def __migrate_partner(self, cursor):
-        ops = [AddColumn(models.IntegerField(name='old_id', null=True)),
+        ops = [RenameColumn('datecreated', 'date_created'),
+               DropDefault('name'),
+               DropDefault('date_created'),
+               AlterVarCharColumn('url', 200),
+               AlterVarCharColumn('logo', 100),
+               AlterColumnType(models.DateTimeField(name='date_created')),
+               AddColumn(models.IntegerField(name='old_id', null=True)),
                AddColumn(models.BooleanField(name='deleted', default='false', null=False)),
                AddColumn(models.DateTimeField(name='date_updated', default='now()', null=False)),
-               DropDefault('name'),
-               DropDefault('url'),
-               AlterColumnType(models.CharField(name='url',
-                                                max_length=200),
-                               using="substr(trim(both ' ' from url), 0, 200)"),
-               DropDefault('logo'),
-               AlterColumnType(models.CharField(name='logo',
-                                                max_length=100),
-                               using="substr(trim(both ' ' from logo), 0, 100)"),
-               RenameColumn('datecreated', 'date_created'),
-               DropDefault('date_created'),
-               AlterColumnType(models.DateTimeField(name='date_created')),
                DropColumns(['css', 'enabled', 'haslibrary', 'headerhtml', 'footerhtml']),
             ]
         self.__migrate_table(cursor, 'partner', 'main_partner', ops)
 
 
     def __migrate_user(self, cursor):
-        ops = [AddColumn(models.BooleanField(name='is_staff',
+        ops = [RenameColumn('handle', 'username'),
+               RenameColumn('firstname', 'first_name'),
+               RenameColumn('lastname', 'last_name'),
+               RenameColumn('enabled', 'is_active'),
+               RenameColumn('datecreated', 'date_joined'),
+               DropConstraint('user_enabled_check'),
+               DropConstraint('user_roleid_check'),
+               DropConstraint('user_userstatusid_check'),
+               AlterVarCharColumn('username', 30),
+               AlterVarCharColumn('first_name', 30),
+               AlterVarCharColumn('last_name', 30),
+               AlterVarCharColumn('email', 75),
+               AlterVarCharColumn('password', 128),
+               DropDefault('is_active'),
+               AlterColumnType(models.BooleanField(name='is_active'),
+                               using='is_active = 1'),
+               AlterColumnType(models.DateTimeField(name='date_joined')),
+               DropDefault('date_joined'),
+               AddColumn(models.BooleanField(name='is_staff',
                                              default='false',
                                              null=False),
                          update='roleid > 2'),
@@ -93,83 +130,77 @@ class Command(BaseCommand):
                AddColumn(models.DateTimeField(name='last_login',
                                               null=False),
                          update="timestamp 'epoch'"),
-               RenameColumn('handle', 'username'),
-               AlterColumnType(models.CharField(name='username',
-                                                 max_length=30),
-                               using='trim(both ' ' from username)'),
-               DropDefault('username'),
-               RenameColumn('firstname', 'first_name'),
-               AlterColumnType(models.CharField(name='first_name',
-                                                 max_length=30),
-                               using='substr(trim(both ' ' from first_name), 0, 30)'),
-               DropDefault('first_name'),
-               RenameColumn('lastname', 'last_name'),
-               AlterColumnType(models.CharField(name='last_name',
-                                                 max_length=30),
-                               using='substr(trim(both ' ' from last_name), 0, 30)'),
-               DropDefault('last_name'),
-               AlterColumnType(models.CharField(name='email',
-                                                 max_length=75)),
-               DropDefault('email'),
-               AlterColumnType(models.CharField(name='password',
-                                                 max_length=128)),
-               DropDefault('password'),
-               DropConstraint('user_enabled_check'),
-               RenameColumn('enabled', 'is_active'),
-               DropDefault('is_active'),
-               AlterColumnType(models.BooleanField(name='is_active'),
-                               using='is_active = 1'),
-               RenameColumn('datecreated', 'date_joined'),
-               AlterColumnType(models.DateTimeField(name='date_joined')),
-               DropDefault('date_joined'),
                DropColumns(['userstatusid', 'roleid', 'partnerid'])
             ]
         self.__migrate_table(cursor, 'public.user', 'auth_user', ops)
 
 
     def __migrate_book(self, cursor):
-        ops = [
-               # TODO add FK to series in books.sql
-               RenameColumn('title', 'name'),
-               DropDefault('name'),
-               AddColumn(models.SlugField(name='slug',
-                                          null=False),
-                         update="lower(substr(regexp_replace(name, ' ', '-'), 0, 50))"),
+        ops = [RenameColumn('title', 'name'),
                RenameColumn('coverimage', 'cover'),
-               AlterColumnType(models.CharField(name='cover',
-                                                max_length=100,
-                                                default="substr(trim(both ' ' from cover), 0, 100)")),
-               DropDefault('cover'),
-               # TODO calculate status from standby/complete?!
-               AddColumn(models.IntegerField(name='status', default='0')),
-               # TODO need to match up strings to fixture values
-               AddColumn(models.IntegerField(name='license_id', null=True)),
-               AddForeignKey('license_id', 'main_license'),
-               DropConstraint('book_displayonhomepage_check'),
                RenameColumn('displayonhomepage', 'display_on_homepage'),
+               RenameColumn('explicit', 'is_adult'),
+               RenameColumn('complete', 'is_complete'),
+               RenameColumn('avgaudioquality', 'avg_audio_quality'),
+               RenameColumn('avgnarration', 'avg_narration'),
+               RenameColumn('avgwriting', 'avg_writing'),
+               RenameColumn('avgoverall', 'avg_overall'),
+               RenameColumn('enabled', 'deleted'),
+               RenameColumn('datecreated', 'date_created'),
+               DropConstraint('book_categoryid_check'),
+               DropConstraint('book_displayonhomepage_check'),
+               DropConstraint('book_explicit_check'),
+               DropConstraint('book_enabled_check'),
+               DropConstraint('book_standby_check'),
+               DropConstraint('book_userid_check'),
+               DropDefault('name'),
+               AlterVarCharColumn('cover', 100),
                DropDefault('display_on_homepage'),
                AlterColumnType(models.BooleanField(name='display_on_homepage'),
                                using='display_on_homepage = 1'),
-               AddColumn(models.BooleanField(name='is_hosted_at_pb', null=False, default='true')),
-               # TODO need to match up explicit flag to fixture values
-               AddColumn(models.IntegerField(name='advisory_id', null=True)),
-               AddForeignKey('advisory_id', 'main_advisory'),
-               DropConstraint('book_explicit_check'),
-               RenameColumn('explicit', 'is_adult'),
                DropDefault('is_adult'),
                AlterColumnType(models.BooleanField(name='is_adult'),
                                using='is_adult = 1'),
-               AddColumn(models.IntegerField(name='series_id', null=True)),
-               AddForeignKey('series_id', 'main_series'),
-               RenameColumn('complete', 'is_complete'),
                DropDefault('is_complete'),
                AlterColumnType(models.BooleanField(name='is_complete'),
                                using="is_complete = '1'"),
-               RenameColumn('avgaudioquality', 'avg_audio_quality'),
                SetNotNull('avg_audio_quality', '0.0'),
-               Rollback()
+               SetNotNull('avg_narration', '0.0'),
+               SetNotNull('avg_writing', '0.0'),
+               SetNotNull('avg_overall', '0.0'),
+               DropDefault('deleted'),
+               AlterColumnType(models.BooleanField(name='deleted',
+                                                   null=False),
+                               using="deleted = 0"),
+               AlterColumnType(models.DateTimeField(name='date_created')),
+               DropDefault('date_created'),
+               AddColumn(models.SlugField(name='slug',
+                                          null=False),
+                         update="lower(substr(regexp_replace(name, ' ', '-'), 0, 50))"),
+               AddColumn(models.IntegerField(name='status', default='1')),
+               AddColumn(models.IntegerField(name='license_id', null=True)),
+               'update_title_license.sql',
+               AddColumn(models.BooleanField(name='is_hosted_at_pb', null=False, default='true')),
+               # TODO need to match up explicit flag to fixture values
+               AddColumn(models.IntegerField(name='advisory_id', null=True)),
+               AddColumn(models.IntegerField(name='series_id', null=True)),
+               AddColumn(models.IntegerField(name='old_id', null=True)),
+               AddColumn(models.DateTimeField(name='date_updated', default='now()', null=False)),
+               AddForeignKey('advisory_id', 'main_advisory'),
+               AddForeignKey('license_id', 'main_license'),
+               AddForeignKey('series_id', 'main_series'),
+               'update_title_license.sql',
+               'insert_contributortype.sql',
+               'insert_contributor.sql',
+               DropColumn('author'),
+               DropColumn('userid'),
+               # TODO handle partnerid
+               DropColumns(['avgrating', 'webpage', 'feedurl', 'subtitle', 'standby',
+                            'discussurl', 'notes', 'bookisbn', 'audioisbn', 'ituneslink', 'ebooklink',
+                            'lululink', 'dynamicads', 'itunescategory', 'fulllocation', 'fulllength',
+                            'fullprice', 'license']),
               ]
-        self.__migrate_table(cursor, 'book', 'main_book', ops)
+        self.__migrate_table(cursor, 'book', 'main_title', ops)
 
 
     def __migrate_table(self, cursor, name, new_name, operations):
@@ -215,12 +246,12 @@ class Command(BaseCommand):
 class Operation:
     def __init__(self):
         self.table_name = None
-    
-    
+
+
     def set_table_name(self, table_name):
         self.table_name = table_name
-    
-    
+
+
     def params(self):
         return None
 
@@ -237,7 +268,7 @@ class DropColumn(Operation):
 
     def migrate(self):
         return 'alter table %s drop column %s;' % (self.table_name, self.name)
-    
+
 
 class DropColumns(Operation):
     def __init__(self, names):
@@ -249,8 +280,8 @@ class DropColumns(Operation):
 
     def __str__(self):
         return self.nested.__str__()
-    
-    
+
+
     def set_table_name(self, table_name):
         Operation.set_table_name(self, table_name)
         [op.set_table_name(table_name) for op in self.nested]
@@ -336,6 +367,32 @@ class AlterColumnType(Operation):
             return 'alter table %s alter column %s type %s using %s;' % (self.table_name, self.field.name, self.field.db_type(), self.using)
         else:
             return 'alter table %s alter column %s type %s;' % (self.table_name, self.field.name, self.field.db_type())
+
+
+class AlterVarCharColumn(Operation):
+    def __init__(self, name, max_length):
+        Operation.__init__(self)
+        self.alter = AlterColumnType(models.CharField(name=name,
+                                                      max_length=max_length),
+                                     using="substr(trim(both ' ' from %s), 0, %s)" % (name, max_length))
+        self.drop_default = DropDefault(name)
+
+
+    def set_table_name(self, table_name):
+        Operation.set_table_name(self, table_name)
+        self.alter.set_table_name(table_name)
+        self.drop_default.set_table_name(table_name)
+
+
+    def __str__(self):
+        return '%s\n%s' % (self.alter.__str__(), self.drop_default.__str__())
+
+
+    def migrate(self):
+        sql = self.alter.migrate()
+        sql += '\n'
+        sql += self.drop_default.migrate()
+        return sql
 
 
 class DropDefault(Operation):
