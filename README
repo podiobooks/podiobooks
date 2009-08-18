@@ -28,7 +28,7 @@ This software depends on the following libraries being available on the Python P
 django  # 1.x
 
 #Admin Site Documentation
-docutits # .5
+docutils # .5
 
 #For Auth OpenID:
 python-openid       # http://openidenabled.com/python-openid/   version 2.x
