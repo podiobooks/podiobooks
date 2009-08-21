@@ -43,14 +43,14 @@ class Award(models.Model):
 	def __str__(self):
 		return self.name
 
-        @models.permalink
-        def get_absolute_url(self):
-                return ('award_detail', [self.slug])
+	@models.permalink
+	def get_absolute_url(self):
+		return ('award_detail', [self.slug])
 
 class Category(models.Model):
 	"""Categories describe titles for easy of browsing and for recommendations."""
 	name = models.CharField(max_length=255)
-        slug = models.SlugField()
+	slug = models.SlugField()
 	deleted = models.BooleanField(default=False)
 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
@@ -65,9 +65,9 @@ class Category(models.Model):
 	def __str__(self):
 		return self.name
 
-        @models.permalink
-        def get_absolute_url(self):
-                return ('category_detail', [self.slug])
+	@models.permalink
+	def get_absolute_url(self):
+		return ('category_detail', [self.slug])
 
 class Contributor(models.Model):
 	"""A contributor is one who had done work on a title. For a book, it's an
@@ -98,7 +98,7 @@ class ContributorType(models.Model):
 	slug = models.SlugField()
 	name = models.CharField(max_length=255)
 
-        def __str__(self):
+	def __str__(self):
 		return self.name
 
 class Episode(models.Model):
@@ -222,9 +222,9 @@ class Series(models.Model):
 	def __str__(self):
 		return self.name
 
-        @models.permalink
-        def get_absolute_url(self):
-                return ('series_detail', [self.slug])
+	@models.permalink
+	def get_absolute_url(self):
+		return ('series_detail', [self.slug])
 
 # Modified to handle alternate subscriptions
 # replace last_downloaded_episode with downloaded_episodes??
@@ -288,9 +288,9 @@ class Title(models.Model):
 	def __str__(self):
 		return self.name
 
-        @models.permalink
-        def get_absolute_url(self):
-                return ('title_detail', [self.slug])
+	@models.permalink
+	def get_absolute_url(self):
+		return ('title_detail', [self.slug])
 
 class TitleContributors(models.Model):
 	"""Join table to associate contributors to titles."""
