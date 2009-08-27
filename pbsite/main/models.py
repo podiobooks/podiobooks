@@ -15,11 +15,7 @@ class Advisory(models.Model):
 	date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	# rather than storing a hex-color, would it make more sense to
 	# add a css class 'Advisory_{slug}' for flexibility??
-
-	class Admin:
-		list_display = ('',)
-		search_fields = ('',)
-
+		
 	class Meta:
 		verbose_name_plural = "advisories"
 
@@ -35,11 +31,7 @@ class Award(models.Model):
 	deleted = models.BooleanField(default=False)
 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
-
-	class Admin:
-		list_display = ('',)
-		search_fields = ('',)
-
+		
 	def __str__(self):
 		return self.name
 
@@ -54,11 +46,7 @@ class Category(models.Model):
 	deleted = models.BooleanField(default=False)
 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
-
-	class Admin:
-		list_display = ('',)
-		search_fields = ('',)
-
+		
 	class Meta:
 		verbose_name_plural = "categories"
 
@@ -116,11 +104,7 @@ class Episode(models.Model):
 	old_id = models.IntegerField(blank=True, null=True)
 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
-
-	class Admin:
-		list_display = ('',)
-		search_fields = ('',)
-
+		
 	def __str__(self):
 		return "Episode"
 
@@ -134,11 +118,7 @@ class License(models.Model):
 	code = models.TextField(blank=True)
 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
-
-	class Admin:
-		list_display = ('',)
-		search_fields = ('',)
-
+		
 	def __str__(self):
 		return self.text
 
@@ -151,11 +131,7 @@ class Media(models.Model):
 	deleted = models.BooleanField(default=False)
 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
-
-	class Admin:
-		list_display = ('',)
-		search_fields = ('',)
-
+		
 	class Meta:
 		verbose_name_plural = "media"
 
@@ -173,11 +149,7 @@ class Partner(models.Model):
 	old_id = models.IntegerField(blank=True, null=True)
 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
-
-	class Admin:
-		list_display = ('',)
-		search_fields = ('',)
-
+		
 	def __str__(self):
 		return "Modelname"
 
@@ -191,11 +163,7 @@ class Promo(models.Model):
 	display_order = models.SmallIntegerField(blank=False, null=False, default=1)
 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
-
-	class Admin:
-		list_display = ('',)
-		search_fields = ('',)
-
+		
 	def __str__(self):
 		return self.display_text
 
@@ -211,11 +179,7 @@ class Series(models.Model):
 	deleted = models.BooleanField(default=False)
 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
-
-	class Admin:
-		list_display = ('',)
-		search_fields = ('',)
-
+		
 	class Meta:
 		verbose_name_plural = "series"
 
@@ -244,11 +208,7 @@ class Subscription(models.Model):
 	old_id = models.IntegerField(blank=True, null=True)
 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
-
-	class Admin:
-		list_display = ('',)
-		search_fields = ('',)
-
+		
 	def __str__(self):
 		return "Subscription"
 
@@ -280,11 +240,7 @@ class Title(models.Model):
 	awards = models.ManyToManyField('Award', blank=True)
 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
-
-	class Admin:
-		list_display = ('',)
-		search_fields = ('',)
-
+		
 	def __str__(self):
 		return self.name
 
@@ -307,11 +263,7 @@ class TitleUrl(models.Model):
 	displayorder = models.SmallIntegerField(blank=False, null=False, default=1)
 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
-
-	class Admin:
-		list_display = ('',)
-		search_fields = ('',)
-
+		
 	def __str__(self):
 		return "TitleUrls"
 
@@ -322,11 +274,7 @@ class UserProfile(models.Model):
 	slug = models.SlugField()
 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
-
-	class Admin:
-		list_display = ('',)
-		search_fields = ('',)
-
+		
 	def __str__(self):
 		return "UserProfile"
 # 
