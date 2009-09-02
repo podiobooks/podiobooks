@@ -6,4 +6,11 @@
 
 {% block content %}
 File Uploaded Successfully as {{ fileName }}
+
+<h2>Validaton Results</h2>
+<pre>
+{% for result in results %}
+{{ result }}
+{% endfor %}
+</pre>
 {% endblock %}
