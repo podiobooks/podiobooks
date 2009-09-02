@@ -5,6 +5,8 @@ from django.conf import settings
 from django import forms
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render_to_response
+from django.template import Context
+from audio_validation import validate_mp3
 
 
 class UploadFileForm(forms.Form):
@@ -17,7 +19,7 @@ def handle_uploaded_file(f, destinationFileName):
         destination.write(chunk)
     destination.close()
 
-@login_required
+#@login_required
 def upload(request):
     """
     Test Upload Page
@@ -32,7 +34,9 @@ def upload(request):
             uploadedFile = request.FILES['file']
             destinationFileName = settings.PROJECT_PATH + '/author/uploads/' + uploadedFile.name
             handle_uploaded_file(uploadedFile, destinationFileName)
-            return render_to_response('author/upload_results.html', {'fileName': destinationFileName})
+            validation_results = validate_mp3(destinationFileName)
+            resultContext = Context({'results': validation_results, 'fileName': destinationFileName})
+            return render_to_response('author/upload_results.html', resultContext)
     else:
         form = UploadFileForm()
     return render_to_response('author/upload_form.html', {'form': form})
