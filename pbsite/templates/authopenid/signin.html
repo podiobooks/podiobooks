@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% load i18n %}
 
+{% block head %}
+<link rel="StyleSheet" HREF="/content/openid-selector/css/openid.css" TYPE="text/css">
+{% endblock %}
+
 {% block content %}
 {% if msg %}
 <br />
@@ -57,17 +61,13 @@
 		
 	</fieldset>
 </form>	
-</div>	
-{% endblock %}
-
-{% block extra_scripts %}
-<script type="text/javascript" src="{{ MEDIA_URL }}/js/openid-jquery.js"></script>
+</div>
+<script type="text/javascript" src="{{ MEDIA_URL }}/openid-selector/js/openid-jquery.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
     openid.init('id_openid_url');
 });
 </script>
 <!-- /Simple OpenID Selector -->
-    
 {% endblock %}
 
