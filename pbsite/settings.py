@@ -39,6 +39,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.debug",
     "django.core.context_processors.media",
     "django.core.context_processors.request",
+    'django.core.context_processors.i18n',
+    'django_authopenid.context_processors.authopenid',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -46,6 +48,10 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django_authopenid.middleware.OpenIDMiddleware',
+    'django.middleware.doc.XViewMiddleware',
+    'django.middleware.gzip.GZipMiddleware',
+#    'django.middleware.cache.CacheMiddleware',
+    'django.middleware.http.ConditionalGetMiddleware',
 )
 
 ROOT_URLCONF = 'pbsite.urls'
