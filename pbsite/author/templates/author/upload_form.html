@@ -1,0 +1,12 @@
+{% extends "main/index.html" %}
+{% load i18n %}
+{% load title_extras %}
+
+{% block bodyclass %}{{block.super}}Upload Form{% endblock %}
+
+{% block content %}
+<form action="." method="POST" enctype="multipart/form-data">
+{{ form.as_p }}
+<input type="submit" value="Submit" />
+</form>
+{% endblock %}

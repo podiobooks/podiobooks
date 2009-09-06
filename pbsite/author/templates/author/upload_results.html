@@ -1,0 +1,16 @@
+{% extends "main/index.html" %}
+{% load i18n %}
+{% load title_extras %}
+
+{% block bodyclass %}{{block.super}}File Uploaded Successfully{% endblock %}
+
+{% block content %}
+File Uploaded Successfully as {{ fileName }}
+
+<h2>Validaton Results</h2>
+<pre>
+{% for result in results %}
+{{ result }}
+{% endfor %}
+</pre>
+{% endblock %}
