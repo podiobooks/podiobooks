@@ -66,6 +66,10 @@ AUTH_PROFILE_MODULE = 'main.UserProfile'
 #authopenid
 ugettext = lambda s: s
 LOGIN_URL = '/%s%s' % (ugettext('account/'), ugettext('signin/'))
+LOGIN_REDIRECT_URL = '/'
+OPENID_SREG = {
+    "required": ['fullname', 'country']
+}
 
 #django_registration
 ACCOUNT_ACTIVATION_DAYS = 14
