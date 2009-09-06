@@ -47,7 +47,7 @@
 <p>
 {% if user.is_authenticated %}
 	Welcome, {{ user.username }}
-	| <a href="{% url django_authopenid.views.account_settings %}">Manage Account</a>
+	| Manage Account
 	| <a href="{% url django_authopenid.views.signout %}">Logout</a>
 {% else %}
 	<p><a href="{% url django_authopenid.views.signin %}">Login/Register</a>
