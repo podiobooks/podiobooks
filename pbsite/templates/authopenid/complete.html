@@ -1,10 +1,13 @@
 {% extends "base.html" %}
 {% load i18n %}
 
+{% block head %}
+{% if debug %}
+<!-- pbsite/templates/authopenid/complete.html -->
+{% endif %}
+{% endblock %}
 
-
-{% block head %}{% endblock %}
-
+{%block title %}Associate Your OpenID With a New or Existing Account{% endblock %}
 
 {% block content %}
 
