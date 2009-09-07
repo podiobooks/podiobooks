@@ -85,12 +85,13 @@ var openid = {
 	cookie_name: 'openid_provider',
 	cookie_path: '/',
 	
-	img_path: '/content/openid-selector/images/',
+	img_path: '',
 	
 	input_id: null,
 	provider_url: null,
 	
-    init: function(input_id) {
+    init: function(input_id, img_path) {
+        this.img_path = img_path;
         
         var openid_btns = $('#openid_btns');
         
