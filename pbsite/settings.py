@@ -1,8 +1,4 @@
-import os
 # Django settings for pbsite project.
-
-# Set the root path of the project so it's not hard coded
-PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
 
 # NOTE
 # see local_settings_template.py for instructions on making your local settings file
