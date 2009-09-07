@@ -6,6 +6,10 @@
 
 # local_settings.py, once created, should never be checked into source control
 
+import os
+
+# Set the root path of the project so it's not hard coded
+PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
