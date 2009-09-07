@@ -2,7 +2,9 @@
 {% load i18n %}
 
 {% block head %}
+
 <link rel="StyleSheet" HREF="/content/openid-selector/css/openid.css" TYPE="text/css">
+
 {% endblock %}
 
 {% block content %}
@@ -45,6 +47,8 @@
 	</fieldset>	
 </form>
 
+<h2>OR</h2>
+
 <form id="openid_form" name="openid_form" action="{% url user_signin %}" method="post">
     <input type="hidden" name="action" value="verify" />
     <input type="hidden" name="next" value="{{ next }}" />
@@ -65,9 +69,8 @@
 <script type="text/javascript" src="{{ MEDIA_URL }}/openid-selector/js/openid-jquery.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
-    openid.init('id_openid_url');
+    openid.init('openid_url');
 });
 </script>
-<!-- /Simple OpenID Selector -->
 {% endblock %}
 
