@@ -69,7 +69,7 @@
 <script type="text/javascript" src="{{ MEDIA_URL }}openid-selector/js/openid-jquery.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
-    openid.init('openid_url');
+    openid.init('openid_url', '{{ MEDIA_URL }}openid-selector/images/');
 });
 </script>
 {% endblock %}
