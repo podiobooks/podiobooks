@@ -159,7 +159,7 @@ var openid = {
     	var url = openid.provider_url; 
     	if (url) {
     		url = url.replace('{username}', $('#openid_username').val());
-    		openid.setOpenIdUrl(url);
+    		this.setOpenIdUrl(url);
     	}
     	return true;
     },
