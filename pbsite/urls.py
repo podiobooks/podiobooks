@@ -36,3 +36,9 @@ urlpatterns = patterns('',
     (r'^author/', include('pbsite.author.urls')),
     
 )
+
+#Only hook up the media to run through Django in a dev environment...in prod, needs to be handled by web server
+if settings.DEBUG:
+    urlpatterns += patterns('',
+        (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
+    )

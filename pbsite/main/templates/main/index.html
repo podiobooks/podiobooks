@@ -69,7 +69,7 @@
 <table>
 {% for title in titles %}
 	<tr valign="top" class="{% cycle 'row1' 'row2' %}">	
-		<td><img src="http://podiobooks.com/images/covers/{{ title.cover }}" /></td>
+		<td><img src="{{ MEDIA_URL}}images/covers/{{ title.cover }}" /></td>
 		<td>
 			<p><a href="{{ title.get_absolute_url }}">{{ title.name }}</a><p>
 			<p>{% autoescape off %}{{ title.description|truncatewords_html:100 }}{% endautoescape %} <a href="{{ title.get_absolute_url }}">[more]</a></p>
