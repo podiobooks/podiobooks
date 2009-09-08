@@ -85,6 +85,9 @@ class ContributorType(models.Model):
 	"""Types of contributors: author, key grid, best boy, director, etc."""
 	slug = models.SlugField()
 	name = models.CharField(max_length=255)
+	
+	class Meta:
+		verbose_name_plural = "Contributor Types"
 
 	def __str__(self):
 		return self.name
@@ -254,6 +257,9 @@ class TitleContributors(models.Model):
 	contributor = models.ForeignKey('Contributor')
 	contributor_type = models.ForeignKey('ContributorType')
 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
+	
+	class Meta:
+		verbose_name_plural = "Title Contributors"
 
 class TitleUrl(models.Model):
 	"""Allows us to have several links for a book, for display. For utility."""
