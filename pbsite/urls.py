@@ -4,9 +4,8 @@
 """
 
 from django.conf.urls.defaults import patterns, include
-import os
 from django.contrib import admin
-from pbsite import settings
+from settings import DEBUG, MEDIA_ROOT
 
 admin.autodiscover()
 
@@ -15,7 +14,7 @@ urlpatterns = patterns('',
     (r'^$', 'pbsite.main.views.index'),
                        
     # URLs from main package
-    (r'^pb/', include('pbsite.main.urls')),
+    (r'^content/', include('pbsite.main.urls')),
 
     # Admin documentation:
     (r'^admin/doc/', include('django.contrib.admindocs.urls')),
@@ -25,9 +24,6 @@ urlpatterns = patterns('',
     
     # authopenid
     (r'^account/', include('django_authopenid.urls')),                     
-                       
-    # Static Content
-    (r'^content/(.*)$', 'django.views.static.serve', {'document_root': os.path.join(settings.PROJECT_PATH, 'content')}),
     
     # Feeds:
     (r'^rss/', include('pbsite.feeds.urls')),
@@ -36,3 +32,9 @@ urlpatterns = patterns('',
     (r'^author/', include('pbsite.author.urls')),
     
 )
+
+#Only hook up the media to run through Django in a dev environment...in prod, needs to be handled by web server
+if DEBUG:
+    urlpatterns += patterns('',
+        (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': MEDIA_ROOT}),
+    )

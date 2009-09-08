@@ -1,10 +1,22 @@
-{% load title_extras %}
+{% extends "base.html" %}
 
-<ul class="titles">
- {% for title in titles %}
- <li class="{% title_class title %}">
-   <h3><a href="{{title.get_absolute_url}}">{{title.name}}</a></h3>
-   {% title_detail title %}
- </li>
- {% endfor %}
-</ul>
+{% block headtitle %}All Titles - Podiobooks.com{% endblock %}
+
+{% block title %}All Titles{% endblock %}
+
+{% block content %}
+<p><a href="/">Back to Home Page</a></p>
+<p><a href="{% url category_list %}">Category List</a></p>
+
+<table>
+{% for title in title_list %}
+	<tr valign="top" class="{% cycle 'row1' 'row2' %}">	
+		<td><img src="http://podiobooks.com/images/covers/{{ title.cover }}" vspace="5" hspace="5" height="80" width="53" /></td>
+		<td>
+			<p><a href="{{ title.get_absolute_url }}">{{ title.name }}</a><p>
+			<p>{% autoescape off %}{{ title.description|truncatewords_html:75 }}{% endautoescape %} <a href="{{ title.get_absolute_url }}">[more]</a></p>
+		</td>
+	</tr>
+{% endfor %}
+</table>
+{% endblock %}

@@ -1,0 +1,43 @@
+.category_inline_list {
+	list-style-type: none;
+	font-style: italic;
+	padding: 0; 
+	margin: 0; 
+}
+
+.error {
+	color: red;
+	font-weight: bold;
+}
+.featuredtitlesblock {
+	outline: 2px solid green;
+}
+.heading {
+	clear:both;
+	position:relative;
+	background: url("images/headingbackground.jpg");
+	height: 35px;
+	margin:0 0 1em 0;
+	padding:0;
+}
+.heading p {
+	float:left;
+	font: 14pt Helvetica, Verdana, Arial, sans-serif;
+	margin:0;
+	padding-top:.4em;
+}
+.menublock {
+	outline: 1px solid black;
+}
+.row1 {
+	background-color: rgb(194, 194, 194);
+}
+.row2 {
+	background-color: #ffffff;
+}
+.smalltext {
+	font: 8pt Helvetica, Verdana, Arial, sans-serif;
+	margin:0;
+	padding-top:.4em;
+	text-decoration: none;
+}

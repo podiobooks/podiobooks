@@ -1,75 +1,16 @@
 {% extends "base.html" %}
+
 {% block headtitle %}Podiobooks.com Home{% endblock %}
 
 {% block title %}Podiobooks.com Home{% endblock %}
 
 {% block content %}
-
-<!-- Temp Styles, should be moved to global sheet -->
-<style>
-.menublock {
-	outline: 1px solid black;
-}
-.featuredtitlesblock {
-	outline: 2px solid green;
-}
-.heading {
-	clear:both;
-	position:relative;
-	background: url("images/headingbackground.jpg");
-	height: 35px;
-	margin:0 0 1em 0;
-	padding:0;
-}
-
-.heading p {
-	float:left;
-	font: 14pt Helvetica, Verdana, Arial, sans-serif;
-	margin:0;
-	padding-top:.4em;
-}
-
-.smalltext {
-	font: 8pt Helvetica, Verdana, Arial, sans-serif;
-	margin:0;
-	padding-top:.4em;
-	text-decoration: none;
-}
-.row1 {
-	background-color: rgb(194, 194, 194);
-}
-.row2 {
-	background-color: #ffffff;
-}
-</style>
-
-<div class="menublock">
-<p>
-{% if user.is_authenticated %}
-	Welcome, {{ user.username }}
-	| <a href="{% url django_authopenid.views.account_settings %}">Manage Account</a>
-	| <a href="{% url django_authopenid.views.signout %}">Logout</a>
-{% else %}
-	<p><a href="{% url django_authopenid.views.signin %}">Login/Register</a>
-{% endif %}
-| Blog
-| Why Donate?
-| Search
-| FAQ
-| Staff
-| Authors
-| PBPro
-| Privacy and Legal
-| <a href="http://community.podiobooks.com/">Community</a>
-</p>
-</div>
-
 <div class="featuredtitlesblock">
 <div class="heading"><p>Selections from the Staff <span class="smalltext">(<a href="{% url title_list %}">Show all books</a>)</span></p></div>
 <table>
 {% for title in titles %}
 	<tr valign="top" class="{% cycle 'row1' 'row2' %}">	
-		<td><img src="http://podiobooks.com/images/covers/{{ title.cover }}" /></td>
+		<td><img src="{{ MEDIA_URL }}images/covers/{{ title.cover }}" /></td>
 		<td>
 			<p><a href="{{ title.get_absolute_url }}">{{ title.name }}</a><p>
 			<p>{% autoescape off %}{{ title.description|truncatewords_html:100 }}{% endautoescape %} <a href="{{ title.get_absolute_url }}">[more]</a></p>

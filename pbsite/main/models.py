@@ -43,6 +43,7 @@ class Category(models.Model):
 	"""Categories describe titles for easy of browsing and for recommendations."""
 	name = models.CharField(max_length=255)
 	slug = models.SlugField()
+	titles = models.ManyToManyField('Title', db_table="main_title_categories")
 	deleted = models.BooleanField(default=False)
 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
@@ -85,6 +86,9 @@ class ContributorType(models.Model):
 	"""Types of contributors: author, key grid, best boy, director, etc."""
 	slug = models.SlugField()
 	name = models.CharField(max_length=255)
+	
+	class Meta:
+		verbose_name_plural = "Contributor Types"
 
 	def __str__(self):
 		return self.name
@@ -236,7 +240,7 @@ class Title(models.Model):
 	deleted = models.BooleanField(default=False)
 	old_id = models.IntegerField(blank=True, null=True)
 	contributors = models.ManyToManyField('Contributor', through='TitleContributors')
-	categories = models.ManyToManyField('Category')
+	categories = models.ManyToManyField('Category', db_table="main_title_categories")
 	awards = models.ManyToManyField('Award', blank=True)
 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
@@ -254,6 +258,9 @@ class TitleContributors(models.Model):
 	contributor = models.ForeignKey('Contributor')
 	contributor_type = models.ForeignKey('ContributorType')
 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
+	
+	class Meta:
+		verbose_name_plural = "Title Contributors"
 
 class TitleUrl(models.Model):
 	"""Allows us to have several links for a book, for display. For utility."""

@@ -1,6 +1,0 @@
-<div class="categories">
-<ul>
-  {% for category in categories %} 
-  <li class="category_{{category.slug}}"><a href="{{category.get_absolute_url}}">{{category.name}}</a></li>
-  {% endfor %}
-</ul>

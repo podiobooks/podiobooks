@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block headtitle %}{{ category.name }} Category - Podiobooks.com{% endblock %}
+
+{% block title %}{{ category.name }} Category{% endblock %}
+
+{% block content %}
+
+<p><a href="{% url category_list %}">Back To Category List</a></p>
+
+<table>
+{% for title in category.titles.all %}
+	<tr valign="top" class="{% cycle 'row1' 'row2' %}">	
+		<td><img src="http://podiobooks.com/images/covers/{{ title.cover }}" vspace="5" hspace="5" height="80" width="53" /></td>
+		<td>
+			<p><a href="{{ title.get_absolute_url }}">{{ title.name }}</a><p>
+			<p>{% autoescape off %}{{ title.description|truncatewords_html:75 }}{% endautoescape %} <a href="{{ title.get_absolute_url }}">[more]</a></p>
+		</td>
+	</tr>
+{% endfor %}
+</table>
+<p><a href="{% url category_list %}">Back to Category List</a> | <a href="/">Back to Home Page</a> </p>
+{% endblock %}

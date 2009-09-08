@@ -1,5 +1,19 @@
-{% load title_extras %}
-<div class="description">{% autoescape off %}{{title.description}}{% endautoescape %}</div>
-<div class="cover"><img src="{{object.cover.url}}" title="{{title.name}} Cover" alt=""/></div>
-{% show_categories title %}
+{% extends "base.html" %}
 
+{% block headtitle %}{{ title.name }} - Podiobooks.com{% endblock %}
+
+{% block title %}{{ title.name }}{% endblock %}
+
+{% block content %}
+{% if title.categories.all %}
+<ul id="category_inline_list" class="category_inline_list"
+{% for category in title.categories.all %}
+<li>{{ category.name }}{% if not forloop.last %},{% endif %}</li>
+{% endfor %}
+</ul>
+{% endif %}
+<div class="description">{% autoescape off %}{{title.description}}{% endautoescape %}</div>
+<div class="cover"><img src="{{ MEDIA_URL }}images/covers/{{ title.cover }}" title="{{ title.name }} Cover" alt="{{ title.name }} cover art"/></div>
+
+<p><a href="{% url title_list %}">Back to Title List</a> | <a href="/">Back to Home Page</a> </p>
+{% endblock %}

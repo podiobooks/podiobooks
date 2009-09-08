@@ -14,7 +14,7 @@ class TitleFeed(Feed):
     description = "List of Titles from Podiobooks.org"
 
     def items(self):
-        return Title.objects.order_by('-date_created')[:5]
+        return Title.objects.order_by('-date_created')[:30]
     
 class EpisodeFeed(Feed):
     feed_type = iTunesFeed
@@ -39,4 +39,3 @@ class EpisodeFeed(Feed):
 
     def items(self, obj):
         return Episode.objects.filter(title__id__exact=obj.id).order_by('-date_created')[:30]
-    

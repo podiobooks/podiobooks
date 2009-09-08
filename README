@@ -34,5 +34,5 @@ docutils # .5
 python-openid       # http://openidenabled.com/python-openid/   version 2.x
 django-authopenid   # http://code.google.com/p/django-authopenid/
 httplib2 			# http://code.google.com/p/httplib2
-
+mutagen				# http://code.google.com/p/mutagen/
 #
