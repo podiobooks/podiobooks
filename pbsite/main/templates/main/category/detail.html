@@ -1,14 +1,15 @@
 {% extends "base.html" %}
 
-{% block headtitle %}All Titles - Podiobooks.com{% endblock %}
+{% block headtitle %}{{ category.name }} Category - Podiobooks.com{% endblock %}
 
-{% block title %}All Titles{% endblock %}
+{% block title %}{{ category.name }} Category{% endblock %}
 
 {% block content %}
-<p><a href="{% url category_list %}">Category List</a></p>
+
+<p><a href="{% url category_list %}">Back To Category List</a></p>
 
 <table>
-{% for title in title_list %}
+{% for title in category.titles.all %}
 	<tr valign="top" class="{% cycle 'row1' 'row2' %}">	
 		<td><img src="http://podiobooks.com/images/covers/{{ title.cover }}" vspace="5" hspace="5" height="80" width="53" /></td>
 		<td>
