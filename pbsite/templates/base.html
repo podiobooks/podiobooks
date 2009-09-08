@@ -10,7 +10,29 @@
 </head>
 
 <body class="{% if is_popup %}popup {% endif %}{% block bodyclass %}{% endblock %}">
-<h2>{%block title %}No Title Defined{% endblock %}</h2>
+{% block header %}
+<div class="menublock">
+<p>
+{% if user.is_authenticated %}
+	Welcome, {{ user.username }}
+	| Manage Account
+	| <a href="{% url django_authopenid.views.signout %}">Logout</a>
+{% else %}
+	<p><a href="{% url django_authopenid.views.signin %}">Login/Register</a>
+{% endif %}
+| Blog
+| Why Donate?
+| Search
+| FAQ
+| Staff
+| Authors
+| PBPro
+| Privacy and Legal
+| <a href="http://community.podiobooks.com/">Community</a>
+</p>
+</div>
+{% endblock %}
+<h2>{% block title %}No Title Defined{% endblock %}</h2>
 {% block content %}No Content Defined{% endblock %}
 </body>
 </html>
