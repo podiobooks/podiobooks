@@ -4,11 +4,35 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<title>{% block headtitle %}Podiobooks{% endblock %}</title>
+	<link rel="StyleSheet" HREF="{{ MEDIA_URL }}css/base.css" TYPE="text/css">
+	<script type="text/javascript" src="{{ MEDIA_URL }}scripts/jquery-1.3.1.min.js"></script>
 	{% block head %}{% endblock %}
 </head>
 
 <body class="{% if is_popup %}popup {% endif %}{% block bodyclass %}{% endblock %}">
-<h2>{%block title %}No Title Defined{% endblock %}</h2>
+{% block header %}
+<div class="menublock">
+<p>
+{% if user.is_authenticated %}
+	Welcome, {{ user.username }}
+	| Manage Account
+	| <a href="{% url django_authopenid.views.signout %}">Logout</a>
+{% else %}
+	<p><a href="{% url django_authopenid.views.signin %}">Login/Register</a>
+{% endif %}
+| Blog
+| Why Donate?
+| Search
+| FAQ
+| Staff
+| Authors
+| PBPro
+| Privacy and Legal
+| <a href="http://community.podiobooks.com/">Community</a>
+</p>
+</div>
+{% endblock %}
+<h2>{% block title %}No Title Defined{% endblock %}</h2>
 {% block content %}No Content Defined{% endblock %}
 </body>
 </html>
