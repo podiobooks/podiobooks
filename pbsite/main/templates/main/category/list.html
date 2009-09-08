@@ -11,5 +11,6 @@
   <li class="category_{{category.slug}}"><a href="{{category.get_absolute_url}}">{{ category.name }}</a> - {{ category.titles.all.count }} titles</li>
   {% endfor %}
 </ul>
+<p><a href="{% url title_list %}">Back to Title List</a> | <a href="/">Back to Home Page</a> </p>
 {% endblock %}
 
