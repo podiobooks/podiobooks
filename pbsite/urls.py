@@ -4,9 +4,8 @@
 """
 
 from django.conf.urls.defaults import patterns, include
-import os
 from django.contrib import admin
-from pbsite import settings
+from settings import DEBUG, MEDIA_ROOT
 
 admin.autodiscover()
 
@@ -35,7 +34,7 @@ urlpatterns = patterns('',
 )
 
 #Only hook up the media to run through Django in a dev environment...in prod, needs to be handled by web server
-if settings.DEBUG:
+if DEBUG:
     urlpatterns += patterns('',
-        (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
+        (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': MEDIA_ROOT}),
     )
