@@ -1,5 +1,5 @@
 import unittest
-from models import *
+from pbsite.main.models import *
 from django.template.defaultfilters import slugify
 
 class TitleTestCase(unittest.TestCase):
