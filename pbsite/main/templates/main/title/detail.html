@@ -14,4 +14,6 @@
 {% endif %}
 <div class="description">{% autoescape off %}{{title.description}}{% endautoescape %}</div>
 <div class="cover"><img src="{{ MEDIA_URL }}images/covers/{{ title.cover }}" title="{{ title.name }} Cover" alt="{{ title.name }} cover art"/></div>
+
+<p><a href="{% url category_list %}">Back to Title List</a> | <a href="/">Back to Home Page</a> </p>
 {% endblock %}
