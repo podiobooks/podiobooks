@@ -1,6 +1,5 @@
 from django.conf.urls.defaults import patterns, url
 from models import Category, Title
-from pbsite.settings import *
 
 urlpatterns = patterns('',
     
