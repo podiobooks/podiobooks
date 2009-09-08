@@ -46,3 +46,10 @@ SECRET_KEY = 'zv$+w7juz@(g!^53o0ai1u082)=jkz9my_r=3)fglrj5t8l$2#'
 
 # IP Addresses that should be treated as internal/debug users
 INTERNAL_IPS = ('127.0.0.1',)
+
+# Email Settings
+EMAIL_HOST = 'a real smtp server'
+EMAIL_HOST_USER = 'your_mailbox_username'
+EMAIL_HOST_PASSWORD = 'your_mailbox_password'
+DEFAULT_FROM_EMAIL = 'a real email address'
+SERVER_EMAIL = 'a real email address'
