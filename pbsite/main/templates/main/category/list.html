@@ -5,6 +5,8 @@
 {% block title %}All Categories{% endblock %}
 
 {% block content %}
+<p><a href="{% url home_page %}">Back to Home Page</a></p>
+<p><a href="{% url title_list %}">Title List</a></p>
 <div class="categories">
 <ul>
   {% for category in category_list %} 
