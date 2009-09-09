@@ -3,7 +3,7 @@
     pass-offs to sub-modules, who will have their own urls.py defining actions within.
 """
 
-from django.conf.urls.defaults import patterns, include
+from django.conf.urls.defaults import patterns, include, url
 from django.contrib import admin
 from settings import DEBUG, MEDIA_ROOT
 
@@ -11,7 +11,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Home Page
-    (r'^$', 'pbsite.main.views.index'),
+    url(r'^$', 'pbsite.main.views.index', name="home_page"),
                        
     # URLs from main package
     (r'^content/', include('pbsite.main.urls')),
