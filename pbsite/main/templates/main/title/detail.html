@@ -12,11 +12,11 @@
 	<tr>
 		<td align="center" width="144">
 			<div align="center">
-				<a href="{{ title.get_absolute_url }}"><img src="{{ MEDIA_URL }}images/covers/{{ title.cover }}" /></a>
+				<img src="{{ MEDIA_URL }}images/covers/{{ title.cover }}" />
 				This podiobook is <span style='color: blue; font-weight: bold'>{% if title.is_complete %}complete{% else %}not complete{% endif %}</span>
 			</div>
 		</td>
-		<td><a href="{{ title.get_absolute_url }}"><span class="booktitle">{{ title.name }}</a></span>
+		<td><span class="booktitle">{{ title.name }}</span>
 			<span class="subtitle">
 				by CONTRIBUTOR NAME
 				<br/>
