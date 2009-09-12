@@ -6,11 +6,11 @@
 
 {% block content %}
 {% if title.categories.all %}
-<ul id="category_inline_list" class="category_inline_list"
+<i>
 {% for category in title.categories.all %}
-<li>{{ category.name }}{% if not forloop.last %},{% endif %}</li>
+{{ category.name }}{% if not forloop.last %},{% endif %}</li>
 {% endfor %}
-</ul>
+</i>
 {% endif %}
 <div class="description">{% autoescape off %}{{title.description}}{% endautoescape %}</div>
 <div class="cover"><img src="{{ MEDIA_URL }}images/covers/{{ title.cover }}" title="{{ title.name }} Cover" alt="{{ title.name }} cover art"/></div>
