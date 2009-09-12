@@ -15,8 +15,8 @@
 			<ul> 
 			<li><a href="{% url home_page %}">Home</a></li>
 			{% if user.is_authenticated %}
-				<li>Welcome, {{ user.username }}</li>
-				<li>Manage Account</li>
+				<li><a href="">Welcome, {{ user.username }}</a></li>
+				<li><a href="">Manage Account</a></li>
 				<li><a href="{% url django_authopenid.views.signout %}">Logout</a></li>
 			{% else %}
 				<li><a href="{% url django_authopenid.views.signin %}">Login/Register</a></li>
