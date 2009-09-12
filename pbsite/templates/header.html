@@ -23,7 +23,12 @@
 		<div id="horznavbox"> 
 			<ul> 
 			<li><a href="{% url home_page %}">Home</a></li>
-			    <li><a href="{% url django_authopenid.views.signin %}">Log In/Register</a></li>						
+			    <li>{% if user.is_authenticated %}
+						Welcome, {{ user.username }} | Manage Account | <a href="{% url django_authopenid.views.signout %}">Logout</a>
+					{% else %}
+						<p><a href="{% url django_authopenid.views.signin %}">Login/Register</a>
+					{% endif %}
+				</li>						
 				<li><a href="http://podiobooks.com/blog">Blog</a></li> 
 				<li><a href="http://podiobooks.com/donate.php">Why Donate?</a></li> 
 				<li><a href="http://podiobooks.com/podiobooks/search.php?showall=true">Search</a></li> 
