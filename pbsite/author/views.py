@@ -3,11 +3,9 @@
 """
 from django.conf import settings
 from django import forms
-from django.contrib.auth.decorators import login_required
 from django.shortcuts import render_to_response
 from django.template import Context
 from audio_validation import validate_mp3
-
 
 class UploadFileForm(forms.Form):
     title = forms.CharField(max_length=50)
