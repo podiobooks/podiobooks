@@ -84,9 +84,9 @@ SERVER_EMAIL = 'a real email address'
 
 ### Search
 
-# SEARCH_PROVIDER = 
+SEARCH_PROVIDER = 'DEFAULT'
 
 # Sphinx
-# SEARCH_PROVIDER = SPHINX
+# SEARCH_PROVIDER = 'SPHINX'
 # SPHINX_SERVER = 'localhost'
 # SPHINX_PORT = 3312
