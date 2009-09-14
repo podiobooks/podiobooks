@@ -1,4 +1,5 @@
 from django import forms
+from django.core.cache import cache
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from pbsite.main.models import Title, Category
@@ -16,8 +17,11 @@ def index(request):
     
     template : main/templates/index.html
     """
-    titles = Title.objects.filter(display_on_homepage = True)[:5]
-    
+    titles = cache.get('homepage_title_objects')
+    if (titles == None):
+        titles = Title.objects.filter(display_on_homepage = True)[:5]
+        cache.set('homepage_title_objects', titles, 240)
+        
     responseData = {'titles':titles, 'categoryChoiceForm':CategoryChoiceForm()}
     
     return render_to_response('main/index.html', responseData, context_instance=RequestContext(request))
