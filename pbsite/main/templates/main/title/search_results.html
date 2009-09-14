@@ -6,6 +6,13 @@
 
 {% block content %}
 <a href="{% url home_page %}">Back to Home Page</a> | <a href="{% url category_list %}">Category List</a>
+<p>
+<div id="searchform">
+<form action="{% url title_search_redirect %}" method="POST">
+{{ titleSearchForm }}<input type="submit" value="Search" class="formbutton"/> 
+</form>
+</div>
+</p>
 <table>
 {% if result_count %}
 <h3>{{ result_count }} titles found whose name or description contained "{{ keywords }}"</h3>
