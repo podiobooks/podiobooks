@@ -79,3 +79,14 @@ EMAIL_HOST_USER = 'your_mailbox_username'
 EMAIL_HOST_PASSWORD = 'your_mailbox_password'
 DEFAULT_FROM_EMAIL = 'a real email address'
 SERVER_EMAIL = 'a real email address'
+
+##### PB2 Custom Variables Below Here #######
+
+### Search
+
+# SEARCH_PROVIDER = 
+
+# Sphinx
+# SEARCH_PROVIDER = SPHINX
+# SPHINX_SERVER = 'localhost'
+# SPHINX_PORT = 3312
