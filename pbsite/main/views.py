@@ -70,7 +70,6 @@ def title_search(request, keywords=None):
     if keywords != None:
         if settings.SEARCH_PROVIDER == 'SPHINX':
             search_results = Title.search.query(keywords)
-            search_results.set_options(passages=True, passages_opts={'before_match':"<font color='red'>",'after_match':'</font>','chunk_separator':' ... ','around':6,}) 
         else:
             search_results = Title.objects.filter(Q(name__icontains=keywords) | Q(description__icontains=keywords))
         result_count = len(search_results)
