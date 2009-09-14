@@ -270,6 +270,11 @@ class Title(models.Model):
 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	
+	# Optionally configure Sphinx as search engine for titles
+	if (pbsite.settings.SEARCH_PROVIDER == 'SPHINX'):
+		import djangosphinx
+		search  = djangosphinx.SphinxSearch(index="pb2_titles")
+	
 	class Meta:
 		ordering = ['name']
 		
