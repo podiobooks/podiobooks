@@ -1,16 +1,16 @@
 {% extends "base.html" %}
 
-{% block headtitle %}{{ category.name }} Category - Podiobooks.com{% endblock %}
+{% block headtitle %}Title Search Results - Podiobooks.com{% endblock %}
 
-{% block title %}{{ category.name }} Category{% endblock %}
+{% block title %}Title Search Results{% endblock %}
 
 {% block content %}
-
-<p><a href="{% url category_list %}">Back to Category List</a> | <a href="{% url home_page %}">Back to Home Page</a> </p>
-
+<a href="{% url home_page %}">Back to Home Page</a> | <a href="{% url category_list %}">Category List</a>
 <table>
-{% if category.titles.all.count %}
-{% for title in category.titles.all %}
+{% if result_count %}
+<h3>{{ result_count }} titles found whose name or description contained "{{ keywords }}"</h3>
+
+{% for title in title_list %}
 	<tr valign="top" class="{% cycle 'row1' 'row2' %}">	
 		<td><img src="http://podiobooks.com/images/covers/{{ title.cover }}" vspace="5" hspace="5" height="80" width="53" /></td>
 		<td>
@@ -19,9 +19,8 @@
 		</td>
 	</tr>
 {% endfor %}
-</table>
 {% else %}
-No titles found in this category.
+<h3>No titles found whose name or description contained "{{ keywords }}"</h3>
 {% endif %}
-<p><a href="{% url category_list %}">Back to Category List</a> | <a href="{% url home_page %}">Back to Home Page</a> </p>
+</table>
 {% endblock %}
