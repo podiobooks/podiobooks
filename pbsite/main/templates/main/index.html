@@ -8,7 +8,7 @@
 <div id="recentupdates">
 <div class="heading" align="center"><p>Browse Our Titles</p><img src="{{ MEDIA_URL }}legacy/css/images/headingbookend.jpg" width="32" height="35" /></div> 
 <div id="categories">
-<form action="{% url browse_category %}" method="POST">
+<form action="{% url category_redirect %}" method="POST">
 {{ categoryChoiceForm }}<input type="submit" value="Go!" class="formbutton"/> 
 </form>
 </div>
