@@ -7,7 +7,11 @@ from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect 
 
 class CategoryChoiceForm(forms.Form):
-    category = forms.ChoiceField(choices=Category.objects.order_by('name').all().values_list('slug', 'name'))
+    categories = cache.get('category_dropdown_values')
+    if (categories == None):
+        categories = Category.objects.order_by('name').all().values_list('slug', 'name')
+        cache.set('category_dropdown_values', categories, 240)
+    category = forms.ChoiceField(choices=categories)
 
 def index(request):
     """
