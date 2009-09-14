@@ -9,6 +9,9 @@ urlpatterns = patterns('',
 
     # category
     url(r'^category/$','django.views.generic.list_detail.object_list', { 'queryset': Category.objects.all().order_by('name'), 'template_object_name': 'category', 'template_name': 'main/category/list.html'}, 'category_list'),
-    url(r'^category/(?P<slug>[^/]+)/$','django.views.generic.list_detail.object_detail', {'queryset': Category.objects.all(), 'template_object_name': 'category', 'template_name': 'main/category/detail.html'}, 'category_detail'),     
+    url(r'^category/(?P<slug>[^/]+)/$','django.views.generic.list_detail.object_detail', {'queryset': Category.objects.all(), 'template_object_name': 'category', 'template_name': 'main/category/detail.html'}, 'category_detail'),
+    
+    # Browse Category Redirect
+    url(r'^browsecategory/$', 'pbsite.main.views.browse_category', name="browse_category"),
                        
 )

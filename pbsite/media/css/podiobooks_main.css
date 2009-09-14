@@ -1,0 +1,427 @@
+/*
+ 	Main PodioBooks Stylesheet
+*/
+
+/* -----------------Global Tag Definitions----------------------- */
+body {
+	font: 9pt Helvetica, Verdana, Arial, sans-serif;
+	color: #000000;
+	background: #FFFFFF;
+	margin:1em;
+}
+
+.table {
+	position: relative;
+	width:770px;
+	border: 1px solid #000000;
+}
+
+.tableheader {
+	font: bold 11pt Helvetica, Verdana, Arial, sans-serif;
+	position: relative;
+	width:780px;
+	background:#A0A0A0;
+	color: #FFFFFF;
+}
+
+.oddrow {
+	position: relative;
+	width:770px;
+	background:#FFFFFF;
+}
+
+.evenrow {
+	position: relative;
+	width:770px;
+	background: #faedd5;
+}
+
+.tableheader td{
+	padding:4px;
+}
+
+.oddrow td{
+	padding:4px;
+}
+
+.evenrow td{
+	padding:4px;
+}
+
+form {
+	margin:0;
+	padding:0;
+}
+
+form label{
+	font: bold 9pt Helvetica, Verdana, Arial, sans-serif;
+	color:#000000;
+}
+
+.formtextbox {
+	font: 9pt Helvetica, Verdana, Arial, sans-serif;
+	color:#000000;
+}
+
+.formbutton {
+	font: 9pt Helvetica, Verdana, Arial, sans-serif;
+	color:#000000;
+}
+
+.reqfield {
+	font: 12pt Helvetica, Verdana, Arial, sans-serif;
+	color:red;
+}
+
+.error {
+	font: 11pt Helvetica, Verdana, Arial, sans-serif;
+	color:red;
+}
+
+#site {
+	position:relative;
+	
+    margin-left: auto;
+    margin-right: auto;
+	background:#EBEBEB;
+	width: 800px;
+	/*margin: 0 auto 0 auto;*/
+}
+
+#site img {
+	border:0;
+}
+
+#site .list{
+	clear:both; 
+	position:relative;
+	/*list-style: url("images/bullet.jpg");*/
+	margin: 1em 0 0 .75em;
+	padding: 0 0 0 .75em;
+}
+
+/* from javascript RSS reader*/
+.rss_item {
+line-height: 140%;
+	padding: 0 0 .25em 0; 
+}
+
+#site .list li {
+	line-height: 140%;
+	padding: 0 0 .25em 0; 
+}
+
+#header {
+	width:800px;
+	margin: 0;
+	padding: 0;
+}
+
+#headerbox {
+	background: url("images/headerbackground.jpg");
+}
+
+#logo {
+	float: left;
+}
+
+*html #logo {
+	margin-right: -3px; /*Win IE 6 Float Fix*/
+}
+
+#tagline {
+background: url("images/titlebackground.jpg");
+				position: relative;
+	font: 8pt Helvetica, Verdana, Arial, sans-serif;
+	color: white;
+	margin:0;
+	text-decoration: none;
+}
+
+
+
+#title {
+	background: url("images/titlebackground.jpg");
+	height:70px;
+}
+
+#quicksearch {
+	position:absolute;
+	top:8px;
+	right:8px;
+	font: 8pt Helvetica, Verdana, Arial, sans-serif;
+	color:#FFFFFF;
+}
+
+#usercontrols {
+	position:absolute;
+	top:46px;
+	right:8px;
+	font: 8pt Helvetica, Verdana, Arial, sans-serif;
+	color:#FFFFFF;
+}
+
+#horznavbox {
+	background: url("images/navboxbackground.jpg");	
+	height: 23px;
+}
+
+#horznavbox ul {
+	display: block;
+	list-style: none;
+	margin:0;
+	padding:0;
+}
+
+#horznavbox li {
+	font: 8pt Helvetica, Verdana, Arial, sans-serif;
+	float:left;
+	background: url("images/navboxbackground.jpg");	
+	margin:0;
+	padding:0;
+}
+
+#horznavbox a:link, #horznavbox a:visited {
+	display: block;
+	background: url("images/navboxbackground.jpg");	
+	padding:4px 8px;
+	color:#000000;
+	text-decoration: none;
+}
+
+#horznavbox a:hover {
+	display: block;
+	background: url("images/navhighlight.jpg");	
+	padding:4px 8px;
+	color: #FFFFFF;
+}
+
+.horizhighlight {
+	display: block;
+	background: url("images/navhighlight.jpg");	
+	padding:4px 8px;
+	color: #FFFFFF;
+}
+
+#horznavbox a:active {
+	display: block;
+	background: url("images/navboxbackground.jpg");	
+	padding:4px 8px;
+	color:#000000;
+	text-decoration: none;
+}
+
+.heading {
+	clear:both;
+	position:relative;
+	background: url("images/headingbackground.jpg");
+	height: 35px;
+	margin:0 0 1em 0;
+	padding:0;
+}
+
+.heading p {
+	float:left;
+	font: 14pt Helvetica, Verdana, Arial, sans-serif;
+	margin:0;
+	padding-top:.4em;
+}
+
+.smalltext {
+	
+	font: 8pt Helvetica, Verdana, Arial, sans-serif;
+	margin:0;
+	padding-top:.4em;
+	text-decoration: none;
+}
+
+.heading h3 {
+	float:left;
+	font: 11pt Helvetica, Verdana, Arial, sans-serif;
+	margin:0;
+	padding-top:.75em;
+}
+
+.heading img {
+	float:right;
+}
+
+#content {
+	padding: 1em;
+}
+
+#recentupdates {
+	clear:left;
+	float:left;
+	width:375px;
+	height: 300px;
+}
+
+#latestnews {
+	float:right;
+	width:375px;
+}
+
+#statistics {
+	float:right;
+	width:375px;
+}
+
+.publishdate {
+	font: italic 9pt Helvetica, Verdana, Arial, sans-serif;
+}
+
+#books {
+	display:inline;
+	/*position: relative;*/
+	margin: 0 8px 0 8px;
+}
+
+#books ul {
+	list-style:none;
+	margin:0;
+	padding:0;
+}
+
+#books li{
+	clear:both;
+	position:relative;
+	background: #C2C2C2;
+	width:775px;
+	margin: 0 0 8px 0;
+	padding:0;
+}
+
+#books li img{
+	display:block;
+	
+}
+
+
+
+#books li img.read2kids{
+	display:block;
+	width: 158px;
+	height: 87px;
+}
+
+#books li img.donation{
+	display:block;
+	width: 150px;
+	height: 100px;
+}
+
+#books li table tr td{
+	vertical-align: top;
+	margin:0;
+	padding:8px;
+}
+
+#books li table tr td div{
+	font: 8pt Helvetica, Verdana, Arial, sans-serif;
+	background: #ebebeb;
+	border: 1px solid #000000;
+	padding :.75em;
+}
+
+#books .booktitle {
+	display:block;
+	font: bold 12pt Helvetica, Verdana, Arial, sans-serif;
+	color: #f26522;
+}
+
+#books .subtitle {
+	font: bold 9pt Helvetica, Verdana, Arial, sans-serif;
+	color: #000000;
+}
+
+#books p {
+	font: 9pt Helvetica, Verdana, Arial, sans-serif;
+	color: #000000;
+	margin-top:8px;
+	padding:0;
+}
+
+#books .quote {
+	font: italic 9pt Helvetica, Verdana, Arial, sans-serif;
+	color: #000000;
+	margin-top:8px;
+	padding:0;
+}
+
+/* CSS for Book Ratings */
+#books .rating {font-family: arial; font-size: 10px;}
+#books .rating select {font-family: arial;	font-size: 10px;}
+#books .rating input {font-family: arial;	font-size: 10px;}
+#books .ratingTitle {
+	display:block;
+	font: bold 10pt Helvetica, Verdana, Arial, sans-serif;
+	color: #f26522;
+}
+#books .ratingLink, #books .ratingNote, #books .ratingLink a {
+	font: 8pt Helvetica, Verdana, Arial, sans-serif; 
+	margin-left: 2px;
+	color: #000000;
+	}
+#books .ratingTable {font-family: arial;	font-size: 10px;	vertical-align: top;}
+#books .ratingTable .edit td {text-align: center; vertical-align: top}
+#books .ratingTable .edit div {font: 10px Arial; background: #C2C2C2; border: 0px; padding: 0px;}
+#books .ratingTable .show td {text-align: center; vertical-align: top}
+.noRatings {font-weight: bold; font-size: 12px;}
+#books .ratingTable tr td select {font-family: arial;	font-size: 10px;}
+#books .ratingTable tr td input {font-family: arial;	font-size: 10px;}
+#books .rate {font-weight: bold; font-family: arial;	font-size: 14px; color: black}
+
+#footer {
+	clear:both;
+	font: 8pt Helvetica, Verdana, Arial, sans-serif;
+	background: url("images/footerbackground.jpg");	
+	width:800px;
+	height: 22px;
+	color: #FFFFFF;	
+	text-align: center;
+	padding-top:8px;
+}
+
+#footer a:link, #footer a:visited, #footer a:active {
+	font: bold 8pt Helvetica, Verdana, Arial, sans-serif;
+	color: #FFFFFF;	
+	text-align: center;
+}
+
+/* -----------------Author Report Definitions----------------------- */
+.reporttable {
+		width: 400px;
+		border: 1px solid black;
+		background-color: #FFFFFF;
+}
+
+.tdheader {
+					background-color: #cccccc;
+					font-size: 10pt;
+					font-weight: bold;
+}
+
+
+/* Support for Rounded Corners */
+.rtop,.artop{display:block}
+.rtop *,.artop *{display:block;height:1px;overflow:hidden;font-size:1px}
+.artop *{border-style: solid;border-width:0 1px}
+.r1,.rl1,.re1,.rel1{margin-left:5px}
+.r1,.rr1,.re1,.rer1{margin-right:5px}
+.r2,.rl2,.re2,.rel2,.ra1,.ral1{margin-left:3px}
+.r2,.rr2,.re2,.rer2,.ra1,.rar1{margin-right:3px}
+.r3,.rl3,.re3,.rel3,.ra2,.ral2,.rs1,.rsl1,.res1,.resl1{margin-left:2px}
+.r3,.rr3,.re3,.rer3,.ra2,.rar2,.rs1,.rsr1,.res1,.resr1{margin-right:2px}
+.r4,.rl4,.rs2,.rsl2,.re4,.rel4,.ra3,.ral3,.ras1,.rasl1,.res2,.resl2{margin-left:1px}
+.r4,.rr4,.rs2,.rsr2,.re4,.rer4,.ra3,.rar3,.ras1,.rasr1,.res2,.resr2{margin-right:1px}
+.rx1,.rxl1{border-left-width:5px}
+.rx1,.rxr1{border-right-width:5px}
+.rx2,.rxl2{border-left-width:3px}
+.rx2,.rxr2{border-right-width:3px}
+.re2,.rel2,.ra1,.ral1,.rx3,.rxl3,.rxs1,.rxsl1{border-left-width:2px}
+.re2,.rer2,.ra1,.rar1,.rx3,.rxr3,.rxs1,.rxsr1{border-right-width:2px}
+.rxl1,.rxl2,.rxl3,.rxl4,.rxsl1,.rxsl2,.ral1,.ral2,.ral3,.ral4,.rasl1,.rasl2{border-right-width:0}
+.rxr1,.rxr2,.rxr3,.rxr4,.rxsr1,.rxsr2,.rar1,.rar2,.rar3,.rar4,.rasr1,.rasr2{border-left-width:0}
+.r4,.rl4,.rr4,.re4,.rel4,.rer4,.ra4,.rar4,.ral4,.rx4,.rxl4,.rxr4{height:2px}
+.rer1,.rel1,.re1,.res1,.resl1,.resr1{border-width:1px 0 0;height:0px !important;height /**/:1px}

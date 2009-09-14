@@ -2,18 +2,40 @@
 
 {% block headtitle %}{{ title.name }} - Podiobooks.com{% endblock %}
 
-{% block title %}{{ title.name }}{% endblock %}
+{% block title %}Book Information{% endblock %}
 
 {% block content %}
-{% if title.categories.all %}
-<ul id="category_inline_list" class="category_inline_list"
-{% for category in title.categories.all %}
-<li>{{ category.name }}{% if not forloop.last %},{% endif %}</li>
-{% endfor %}
+<div id="books">
+<ul>
+<li>
+<table>
+	<tr>
+		<td align="center" width="144">
+			<div align="center">
+				<img src="{{ MEDIA_URL }}images/covers/{{ title.cover }}" />
+				This podiobook is <span style='color: blue; font-weight: bold'>{% if title.is_complete %}complete{% else %}not complete{% endif %}</span>
+			</div>
+		</td>
+		<td><span class="booktitle">{{ title.name }}</span>
+			<span class="subtitle">
+				by CONTRIBUTOR NAME
+				<br/>
+				{% if title.categories.all %}
+					<i>
+					{% for category in title.categories.all %}
+						{{ category.name }}{% if not forloop.last %},{% endif %}</li>
+					{% endfor %}
+					</i>
+				{% endif %}
+			</span>
+			<br/>
+			<br/>
+			{% autoescape off %}{{ title.description }}{% endautoescape %}
+		</td>
+	</tr>
+</table>
+</li>
 </ul>
-{% endif %}
-<div class="description">{% autoescape off %}{{title.description}}{% endautoescape %}</div>
-<div class="cover"><img src="{{ MEDIA_URL }}images/covers/{{ title.cover }}" title="{{ title.name }} Cover" alt="{{ title.name }} cover art"/></div>
-
 <p><a href="{% url title_list %}">Back to Title List</a> | <a href="{% url home_page %}">Back to Home Page</a> </p>
+</div>
 {% endblock %}
