@@ -23,6 +23,7 @@
 		<td>
 			<p><a href="{{ title.get_absolute_url }}">{{ title.name }}</a><p>
 			<p>{% autoescape off %}{{ title.description|truncatewords_html:75 }}{% endautoescape %} <a href="{{ title.get_absolute_url }}">[more]</a></p>
+			{% if title._sphinx %}<!-- SPHINX META: {{ title._sphinx }}-->{% endif %}
 		</td>
 	</tr>
 {% endfor %}
