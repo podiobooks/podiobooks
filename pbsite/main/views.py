@@ -1,6 +1,17 @@
+from django import forms
+from django.core.cache import cache
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from pbsite.main.models import Title
+from pbsite.main.models import Title, Category
+from django.core.urlresolvers import reverse
+from django.http import HttpResponseRedirect 
+
+class CategoryChoiceForm(forms.Form):
+    categories = cache.get('category_dropdown_values')
+    if (categories == None):
+        categories = Category.objects.order_by('name').all().values_list('slug', 'name')
+        cache.set('category_dropdown_values', categories, 240)
+    category = forms.ChoiceField(choices=categories)
 
 def index(request):
     """
@@ -10,9 +21,26 @@ def index(request):
     
     template : main/templates/index.html
     """
-    titles = Title.objects.filter(display_on_homepage = True)
-    
-    responseData = {'titles':titles}
+    titles = cache.get('homepage_title_objects')
+    if (titles == None):
+        titles = Title.objects.filter(display_on_homepage = True)[:5]
+        cache.set('homepage_title_objects', titles, 240)
+        
+    responseData = {'titles':titles, 'categoryChoiceForm':CategoryChoiceForm()}
     
     return render_to_response('main/index.html', responseData, context_instance=RequestContext(request))
 
+def browse_category(request):
+    """
+    Redirects to the category list page for the chosen category
+
+    url: /content/browseCategory
+    
+    template : N/A
+    """
+    if request.method == 'POST': # If the form has been submitted...
+        form = CategoryChoiceForm(request.POST) # A form bound to the POST data
+        if form.is_valid(): # All validation rules pass
+            return HttpResponseRedirect(reverse('category_detail', args=[form.cleaned_data['category']]))
+        else:
+            return HttpResponseRedirect(reverse('home_page'))

@@ -24,14 +24,15 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 )
 
 MIDDLEWARE_CLASSES = (
-    'django.middleware.common.CommonMiddleware',
+    'django.middleware.gzip.GZipMiddleware',
+    'django.middleware.doc.XViewMiddleware',
+    'django.middleware.http.ConditionalGetMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.middleware.cache.UpdateCacheMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.cache.FetchFromCacheMiddleware',
     'django_authopenid.middleware.OpenIDMiddleware',
-    'django.middleware.doc.XViewMiddleware',
-    'django.middleware.gzip.GZipMiddleware',
-#    'django.middleware.cache.CacheMiddleware',
-    'django.middleware.http.ConditionalGetMiddleware',
 )
 
 ROOT_URLCONF = 'pbsite.urls'

@@ -18,8 +18,9 @@ class Advisory(models.Model):
 		
 	class Meta:
 		verbose_name_plural = "advisories"
+		ordering = ['name']
 
-	def __str__(self):
+	def __unicode__(self):
 		return self.name
 
 class Award(models.Model):
@@ -31,8 +32,11 @@ class Award(models.Model):
 	deleted = models.BooleanField(default=False)
 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
-		
-	def __str__(self):
+	
+	class Meta:
+		ordering = ['name']
+	
+	def __unicode__(self):
 		return self.name
 
 	@models.permalink
@@ -50,8 +54,9 @@ class Category(models.Model):
 		
 	class Meta:
 		verbose_name_plural = "categories"
+		ordering = ['name']
 
-	def __str__(self):
+	def __unicode__(self):
 		return self.name
 
 	@models.permalink
@@ -70,7 +75,10 @@ class Contributor(models.Model):
 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
 
-	def __str__(self):
+	class Meta:
+		ordering = ['lastname', 'firstname']
+
+	def __unicode__(self):
 		return self.displayname
 
 class ContributorSubscription(models.Model):
@@ -90,7 +98,7 @@ class ContributorType(models.Model):
 	class Meta:
 		verbose_name_plural = "Contributor Types"
 
-	def __str__(self):
+	def __unicode__(self):
 		return self.name
 
 class Episode(models.Model):
@@ -108,8 +116,11 @@ class Episode(models.Model):
 	old_id = models.IntegerField(blank=True, null=True)
 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
-		
-	def __str__(self):
+	
+	class Meta:
+		ordering = ['name']
+	
+	def __unicode__(self):
 		return "Episode"
 
 class License(models.Model):
@@ -122,8 +133,11 @@ class License(models.Model):
 	code = models.TextField(blank=True)
 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
-		
-	def __str__(self):
+	
+	class Meta:
+		ordering = ['slug']
+	
+	def __unicode__(self):
 		return self.text
 
 class Media(models.Model):
@@ -138,8 +152,9 @@ class Media(models.Model):
 		
 	class Meta:
 		verbose_name_plural = "media"
+		ordering = ['name']
 
-	def __str__(self):
+	def __unicode__(self):
 		return self.name
 
 class Partner(models.Model):
@@ -153,8 +168,11 @@ class Partner(models.Model):
 	old_id = models.IntegerField(blank=True, null=True)
 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
-		
-	def __str__(self):
+	
+	class Meta:
+		ordering = ['name']
+	
+	def __unicode__(self):
 		return "Modelname"
 
 class Promo(models.Model):
@@ -167,8 +185,11 @@ class Promo(models.Model):
 	display_order = models.SmallIntegerField(blank=False, null=False, default=1)
 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
-		
-	def __str__(self):
+	
+	class Meta:
+		ordering = ['display_text']
+	
+	def __unicode__(self):
 		return self.display_text
 
 class Series(models.Model):
@@ -186,8 +207,9 @@ class Series(models.Model):
 		
 	class Meta:
 		verbose_name_plural = "series"
+		ordering = ['name']
 
-	def __str__(self):
+	def __unicode__(self):
 		return self.name
 
 	@models.permalink
@@ -212,8 +234,11 @@ class Subscription(models.Model):
 	old_id = models.IntegerField(blank=True, null=True)
 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
-		
-	def __str__(self):
+	
+	class Meta:
+		ordering = ['user']
+	
+	def __unicode__(self):
 		return "Subscription"
 
 class Title(models.Model):
@@ -244,8 +269,11 @@ class Title(models.Model):
 	awards = models.ManyToManyField('Award', blank=True)
 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
+	
+	class Meta:
+		ordering = ['name']
 		
-	def __str__(self):
+	def __unicode__(self):
 		return self.name
 
 	@models.permalink
@@ -271,7 +299,7 @@ class TitleUrl(models.Model):
 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
 		
-	def __str__(self):
+	def __unicode__(self):
 		return "TitleUrls"
 
 class UserProfile(models.Model):
@@ -282,6 +310,6 @@ class UserProfile(models.Model):
 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
 		
-	def __str__(self):
+	def __unicode__(self):
 		return "UserProfile"
 # 
