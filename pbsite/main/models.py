@@ -47,7 +47,7 @@ class Category(models.Model):
 	"""Categories describe titles for easy of browsing and for recommendations."""
 	name = models.CharField(max_length=255)
 	slug = models.SlugField()
-	titles = models.ManyToManyField('Title', db_table="main_title_categories")
+	# Note - titles are available as title_set.all()
 	deleted = models.BooleanField(default=False)
 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
