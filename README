@@ -24,15 +24,25 @@ Required Packages
 -----------------
 This software depends on the following libraries being available on the Python Path (e.g. having been easy_installed into the site-packages directory)
 
-#Main
+# Main
 django  # 1.x
+psycopg2 # 2.x - PostgreSQL driver for Python.  Windows version: http://www.stickpeople.com/projects/python/win-psycopg/
 
-#Admin Site Documentation
+# Admin Site Documentation
 docutils # .5
 
-#For Auth OpenID:
+# For Auth OpenID:
 python-openid       # http://openidenabled.com/python-openid/   version 2.x
 django-authopenid   # http://code.google.com/p/django-authopenid/
 httplib2 			# http://code.google.com/p/httplib2
+
+# For MP3 Validation
 mutagen				# http://code.google.com/p/mutagen/
+
+# Search:
+django-sphinx 2.x # http://github.com/dcramer/django-sphinx (do a git clone of the latest)
+Sphinx # Not python, standalone daemon - http://sphinxsearch.com - make sure you compile --with-pgsql or download the binary with PostgreSQL support baked in.
+
+# Cache:
+memcached # Not python, standalone daemon - http://www.danga.com/memcached/
 #
