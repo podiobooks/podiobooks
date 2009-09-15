@@ -6,12 +6,14 @@
 
 {% block content %}
 <div id="recentupdates">
-<div class="heading" align="center"><p>Browse Our Titles</p><img src="{{ MEDIA_URL }}legacy/css/images/headingbookend.jpg" width="32" height="35" /></div> 
-<div id="categories">
-<form action="{% url category_redirect %}" method="POST">
-{{ categoryChoiceForm }}<input type="submit" value="Go!" class="formbutton"/> 
-</form>
-</div>
+	<div class="heading" align="center">
+		<p>Browse Our Titles</p><img src="{{ MEDIA_URL }}legacy/css/images/headingbookend.jpg" width="32" height="35" />
+	</div> 
+	<div id="categories">
+		<form action="{% url category_redirect %}" method="POST">
+			{{ categoryChoiceForm }}<input type="submit" value="Go!" class="formbutton"/> 
+		</form>
+	</div>
 </div>
 <div class="heading"><p>Selections from the Staff <span class="smalltext">(<a href="{% url title_list %}">Show all books</a>)</span></p><img src="{{ MEDIA_URL }}legacy/css/images/headingbookend.jpg" width="32" height="35" /></div>
 <div id="books">
