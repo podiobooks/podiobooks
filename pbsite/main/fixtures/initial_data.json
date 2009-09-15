@@ -263,11 +263,10 @@
           "pk": 12, 
           "model": "main.category", 
           "fields": {
-               "name": "Alternative History", 
                "deleted": 0, 
-               "date_updated": "2009-09-07 21:29:01", 
-               "titles": [], 
                "date_created": "2009-09-07 21:29:01", 
+               "name": "Alternative History", 
+               "date_updated": "2009-09-07 21:29:01", 
                "slug": "alternative-history"
           }
      }, 
@@ -275,11 +274,10 @@
           "pk": 20, 
           "model": "main.category", 
           "fields": {
-               "name": "Audiodrama", 
                "deleted": 0, 
-               "date_updated": "2009-09-07 21:29:01", 
-               "titles": [], 
                "date_created": "2009-09-07 21:29:01", 
+               "name": "Audiodrama", 
+               "date_updated": "2009-09-07 21:29:01", 
                "slug": "audiodrama"
           }
      }, 
@@ -287,11 +285,10 @@
           "pk": 3, 
           "model": "main.category", 
           "fields": {
-               "name": "Business", 
                "deleted": 0, 
-               "date_updated": "2009-09-07 21:29:01", 
-               "titles": [], 
                "date_created": "2009-09-07 21:29:01", 
+               "name": "Business", 
+               "date_updated": "2009-09-07 21:29:01", 
                "slug": "business"
           }
      }, 
@@ -299,11 +296,10 @@
           "pk": 28, 
           "model": "main.category", 
           "fields": {
-               "name": "Chick Lit", 
                "deleted": 0, 
-               "date_updated": "2009-09-07 21:29:01", 
-               "titles": [], 
                "date_created": "2009-09-07 21:29:01", 
+               "name": "Chick Lit", 
+               "date_updated": "2009-09-07 21:29:01", 
                "slug": "chick-lit"
           }
      }, 
@@ -311,11 +307,10 @@
           "pk": 9, 
           "model": "main.category", 
           "fields": {
-               "name": "Children", 
                "deleted": 0, 
-               "date_updated": "2009-09-07 21:29:01", 
-               "titles": [], 
                "date_created": "2009-09-07 21:29:01", 
+               "name": "Children", 
+               "date_updated": "2009-09-07 21:29:01", 
                "slug": "children"
           }
      }, 
@@ -323,11 +318,10 @@
           "pk": 26, 
           "model": "main.category", 
           "fields": {
-               "name": "Erotica", 
                "deleted": 0, 
-               "date_updated": "2009-09-07 21:29:01", 
-               "titles": [], 
                "date_created": "2009-09-07 21:29:01", 
+               "name": "Erotica", 
+               "date_updated": "2009-09-07 21:29:01", 
                "slug": "erotica"
           }
      }, 
@@ -335,11 +329,10 @@
           "pk": 8, 
           "model": "main.category", 
           "fields": {
-               "name": "Essays", 
                "deleted": 0, 
-               "date_updated": "2009-09-07 21:29:01", 
-               "titles": [], 
                "date_created": "2009-09-07 21:29:01", 
+               "name": "Essays", 
+               "date_updated": "2009-09-07 21:29:01", 
                "slug": "essays"
           }
      }, 
@@ -347,11 +340,10 @@
           "pk": 34, 
           "model": "main.category", 
           "fields": {
-               "name": "Fabulist Satire", 
                "deleted": 0, 
-               "date_updated": "2009-09-07 21:29:01", 
-               "titles": [], 
                "date_created": "2009-09-07 21:29:01", 
+               "name": "Fabulist Satire", 
+               "date_updated": "2009-09-07 21:29:01", 
                "slug": "fabulist-satire"
           }
      }, 
@@ -359,11 +351,10 @@
           "pk": 2, 
           "model": "main.category", 
           "fields": {
-               "name": "Fantasy", 
                "deleted": 0, 
-               "date_updated": "2009-09-07 21:29:01", 
-               "titles": [], 
                "date_created": "2009-09-07 21:29:01", 
+               "name": "Fantasy", 
+               "date_updated": "2009-09-07 21:29:01", 
                "slug": "fantasy"
           }
      }, 
@@ -371,15 +362,10 @@
           "pk": 7, 
           "model": "main.category", 
           "fields": {
-               "name": "Fiction", 
                "deleted": 0, 
-               "date_updated": "2009-09-07 21:29:01", 
-               "titles": [
-                    93, 
-                    169, 
-                    225
-               ], 
                "date_created": "2009-09-07 21:29:01", 
+               "name": "Fiction", 
+               "date_updated": "2009-09-07 21:29:01", 
                "slug": "fiction"
           }
      }, 
@@ -387,11 +373,10 @@
           "pk": 32, 
           "model": "main.category", 
           "fields": {
-               "name": "Historical Fantasy", 
                "deleted": 0, 
-               "date_updated": "2009-09-07 21:29:01", 
-               "titles": [], 
                "date_created": "2009-09-07 21:29:01", 
+               "name": "Historical Fantasy", 
+               "date_updated": "2009-09-07 21:29:01", 
                "slug": "historical-fantasy"
           }
      }, 
@@ -399,11 +384,10 @@
           "pk": 21, 
           "model": "main.category", 
           "fields": {
-               "name": "Historical Fiction", 
                "deleted": 0, 
-               "date_updated": "2009-09-07 21:29:01", 
-               "titles": [], 
                "date_created": "2009-09-07 21:29:01", 
+               "name": "Historical Fiction", 
+               "date_updated": "2009-09-07 21:29:01", 
                "slug": "historical-fiction"
           }
      }, 
@@ -411,11 +395,10 @@
           "pk": 19, 
           "model": "main.category", 
           "fields": {
-               "name": "History", 
                "deleted": 0, 
-               "date_updated": "2009-09-07 21:29:01", 
-               "titles": [], 
                "date_created": "2009-09-07 21:29:01", 
+               "name": "History", 
+               "date_updated": "2009-09-07 21:29:01", 
                "slug": "history"
           }
      }, 
@@ -423,15 +406,10 @@
           "pk": 11, 
           "model": "main.category", 
           "fields": {
-               "name": "Horror/Dark Fantasy", 
                "deleted": 0, 
-               "date_updated": "2009-09-07 21:29:01", 
-               "titles": [
-                    163, 
-                    229, 
-                    266
-               ], 
                "date_created": "2009-09-07 21:29:01", 
+               "name": "Horror/Dark Fantasy", 
+               "date_updated": "2009-09-07 21:29:01", 
                "slug": "horrordark-fantasy"
           }
      }, 
@@ -439,11 +417,10 @@
           "pk": 6, 
           "model": "main.category", 
           "fields": {
-               "name": "Humor", 
                "deleted": 0, 
-               "date_updated": "2009-09-07 21:29:01", 
-               "titles": [], 
                "date_created": "2009-09-07 21:29:01", 
+               "name": "Humor", 
+               "date_updated": "2009-09-07 21:29:01", 
                "slug": "humor"
           }
      }, 
@@ -451,11 +428,10 @@
           "pk": 30, 
           "model": "main.category", 
           "fields": {
-               "name": "Inspirational Fiction", 
                "deleted": 0, 
-               "date_updated": "2009-09-07 21:29:01", 
-               "titles": [], 
                "date_created": "2009-09-07 21:29:01", 
+               "name": "Inspirational Fiction", 
+               "date_updated": "2009-09-07 21:29:01", 
                "slug": "inspirational-fiction"
           }
      }, 
@@ -463,11 +439,10 @@
           "pk": 29, 
           "model": "main.category", 
           "fields": {
-               "name": "Literature", 
                "deleted": 0, 
-               "date_updated": "2009-09-07 21:29:01", 
-               "titles": [], 
                "date_created": "2009-09-07 21:29:01", 
+               "name": "Literature", 
+               "date_updated": "2009-09-07 21:29:01", 
                "slug": "literature"
           }
      }, 
@@ -475,11 +450,10 @@
           "pk": 13, 
           "model": "main.category", 
           "fields": {
-               "name": "Magical Realism", 
                "deleted": 0, 
-               "date_updated": "2009-09-07 21:29:01", 
-               "titles": [], 
                "date_created": "2009-09-07 21:29:01", 
+               "name": "Magical Realism", 
+               "date_updated": "2009-09-07 21:29:01", 
                "slug": "magical-realism"
           }
      }, 
@@ -487,11 +461,10 @@
           "pk": 5, 
           "model": "main.category", 
           "fields": {
-               "name": "Mystery", 
                "deleted": 0, 
-               "date_updated": "2009-09-07 21:29:01", 
-               "titles": [], 
                "date_created": "2009-09-07 21:29:01", 
+               "name": "Mystery", 
+               "date_updated": "2009-09-07 21:29:01", 
                "slug": "mystery"
           }
      }, 
@@ -499,11 +472,10 @@
           "pk": 18, 
           "model": "main.category", 
           "fields": {
-               "name": "Non-Fiction", 
                "deleted": 0, 
-               "date_updated": "2009-09-07 21:29:01", 
-               "titles": [], 
                "date_created": "2009-09-07 21:29:01", 
+               "name": "Non-Fiction", 
+               "date_updated": "2009-09-07 21:29:01", 
                "slug": "non-fiction"
           }
      }, 
@@ -511,11 +483,10 @@
           "pk": 17, 
           "model": "main.category", 
           "fields": {
-               "name": "Public Domain", 
                "deleted": 0, 
-               "date_updated": "2009-09-07 21:29:01", 
-               "titles": [], 
                "date_created": "2009-09-07 21:29:01", 
+               "name": "Public Domain", 
+               "date_updated": "2009-09-07 21:29:01", 
                "slug": "public-domain"
           }
      }, 
@@ -523,11 +494,10 @@
           "pk": 31, 
           "model": "main.category", 
           "fields": {
-               "name": "Romance", 
                "deleted": 0, 
-               "date_updated": "2009-09-07 21:29:01", 
-               "titles": [], 
                "date_created": "2009-09-07 21:29:01", 
+               "name": "Romance", 
+               "date_updated": "2009-09-07 21:29:01", 
                "slug": "romance"
           }
      }, 
@@ -535,24 +505,10 @@
           "pk": 1, 
           "model": "main.category", 
           "fields": {
-               "name": "Science Fiction", 
                "deleted": 0, 
-               "date_updated": "2009-09-07 21:29:01", 
-               "titles": [
-                    23, 
-                    126, 
-                    66, 
-                    21, 
-                    218, 
-                    1, 
-                    120, 
-                    109, 
-                    91, 
-                    232, 
-                    167, 
-                    135
-               ], 
                "date_created": "2009-09-07 21:29:01", 
+               "name": "Science Fiction", 
+               "date_updated": "2009-09-07 21:29:01", 
                "slug": "science-fiction"
           }
      }, 
@@ -560,11 +516,10 @@
           "pk": 33, 
           "model": "main.category", 
           "fields": {
-               "name": "Self-Help", 
                "deleted": 0, 
-               "date_updated": "2009-09-07 21:29:01", 
-               "titles": [], 
                "date_created": "2009-09-07 21:29:01", 
+               "name": "Self-Help", 
+               "date_updated": "2009-09-07 21:29:01", 
                "slug": "self-help"
           }
      }, 
@@ -572,11 +527,10 @@
           "pk": 22, 
           "model": "main.category", 
           "fields": {
-               "name": "Spirituality", 
                "deleted": 0, 
-               "date_updated": "2009-09-07 21:29:01", 
-               "titles": [], 
                "date_created": "2009-09-07 21:29:01", 
+               "name": "Spirituality", 
+               "date_updated": "2009-09-07 21:29:01", 
                "slug": "spirituality"
           }
      }, 
@@ -584,11 +538,10 @@
           "pk": 27, 
           "model": "main.category", 
           "fields": {
-               "name": "Thriller", 
                "deleted": 0, 
-               "date_updated": "2009-09-07 21:29:01", 
-               "titles": [], 
                "date_created": "2009-09-07 21:29:01", 
+               "name": "Thriller", 
+               "date_updated": "2009-09-07 21:29:01", 
                "slug": "thriller"
           }
      }, 
@@ -596,11 +549,10 @@
           "pk": 24, 
           "model": "main.category", 
           "fields": {
-               "name": "Travelogue", 
                "deleted": 0, 
-               "date_updated": "2009-09-07 21:29:01", 
-               "titles": [], 
                "date_created": "2009-09-07 21:29:01", 
+               "name": "Travelogue", 
+               "date_updated": "2009-09-07 21:29:01", 
                "slug": "travelogue"
           }
      }, 
@@ -608,11 +560,10 @@
           "pk": 10, 
           "model": "main.category", 
           "fields": {
-               "name": "Young Adult", 
                "deleted": 0, 
-               "date_updated": "2009-09-07 21:29:01", 
-               "titles": [], 
                "date_created": "2009-09-07 21:29:01", 
+               "name": "Young Adult", 
+               "date_updated": "2009-09-07 21:29:01", 
                "slug": "young-adult"
           }
      }, 
