@@ -272,8 +272,8 @@ class Title(models.Model):
 	
 	# Optionally configure Sphinx as search engine for titles
 	if (pbsite.settings.SEARCH_PROVIDER == 'SPHINX'):
-		import djangosphinx
-		search  = djangosphinx.SphinxSearch(index="pb2_titles")
+		import djangosphinx.models
+		search  = djangosphinx.models.SphinxSearch(index="pb2_titles")
 	
 	class Meta:
 		ordering = ['name']
