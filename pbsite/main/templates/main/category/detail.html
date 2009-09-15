@@ -9,8 +9,8 @@
 <p><a href="{% url category_list %}">Back to Category List</a> | <a href="{% url home_page %}">Back to Home Page</a> </p>
 
 <table>
-{% if category.titles.all.count %}
-{% for title in category.titles.all %}
+{% if category.title_set.all.count %}
+{% for title in category.title_set.all %}
 	<tr valign="top" class="{% cycle 'row1' 'row2' %}">	
 		<td><img src="http://podiobooks.com/images/covers/{{ title.cover }}" vspace="5" hspace="5" height="80" width="53" /></td>
 		<td>
