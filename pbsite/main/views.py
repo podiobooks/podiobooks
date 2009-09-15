@@ -70,10 +70,12 @@ def title_search(request, keywords=None):
     if keywords != None:
         if settings.SEARCH_PROVIDER == 'SPHINX':
             search_results = Title.search.query(keywords)
+            search_metadata = search_results._sphinx
         else:
             search_results = Title.objects.filter(Q(name__icontains=keywords) | Q(description__icontains=keywords))
+            search_metadata = None
         result_count = len(search_results)
-        response_data = {'title_list': search_results, 'keywords': keywords, 'result_count': result_count, 'titleSearchForm': form}
+        response_data = {'title_list': search_results, 'keywords': keywords, 'result_count': result_count, 'titleSearchForm': form, 'search_metadata': search_metadata}
         return render_to_response('main/title/search_results.html', response_data, context_instance=RequestContext(request))
     else:
         response_data = {'titleSearchForm': TitleSearchForm()}
