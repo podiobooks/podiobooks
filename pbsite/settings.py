@@ -23,6 +23,9 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django_authopenid.context_processors.authopenid',
 )
 
+if LOCAL_TEMPLATE_CONTEXT_PROCESSORS:
+    TEMPLATE_CONTEXT_PROCESSORS += LOCAL_TEMPLATE_CONTEXT_PROCESSORS
+
 MIDDLEWARE_CLASSES = (
     'django.middleware.gzip.GZipMiddleware',
     'django.middleware.doc.XViewMiddleware',
@@ -34,6 +37,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.cache.FetchFromCacheMiddleware',
     'django_authopenid.middleware.OpenIDMiddleware',
 )
+
+if LOCAL_MIDDLEWARE_CLASSES:
+    MIDDLEWARE_CLASSES += LOCAL_MIDDLEWARE_CLASSES
 
 ROOT_URLCONF = 'pbsite.urls'
 
@@ -62,7 +68,8 @@ INSTALLED_APPS = (
     'django.contrib.sites',
 	'django.contrib.admin',
 	'django.contrib.admindocs',
+    'registration',
+    'django_authopenid',
 	'pbsite.main',
     'pbsite.author',
-    'django_authopenid',
 )
