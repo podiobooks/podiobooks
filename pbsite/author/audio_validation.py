@@ -10,9 +10,9 @@ def validate_mp3(file_path):
     return result_list
 
 def verify_attribute(label, data, expected_value, data_label = None, expected_value_label=None):
-    status = "PASS"
+    status = "<span class='pass'>PASS</span>"
     if data != expected_value:
-        status="FAIL"
+        status="<span class='fail'>FAIL</span>"
 
     if data_label == None:
         data_label = data
