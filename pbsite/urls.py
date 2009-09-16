@@ -20,7 +20,7 @@ urlpatterns = patterns('',
     (r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     # Admin Site:
-    (r'^admin/(.*)', admin.site.root),
+    (r'^admin/', include(admin.site.urls)),
     
     # authopenid
     (r'^account/', include('django_authopenid.urls')),                     
