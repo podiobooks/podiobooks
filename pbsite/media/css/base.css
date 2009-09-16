@@ -1,4 +1,4 @@
-.error {
+.error, .errors, .errorlist {
 	color: red;
 	font-weight: bold;
 }
