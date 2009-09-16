@@ -89,6 +89,13 @@ EMAIL_HOST_PASSWORD = 'your_mailbox_password'
 DEFAULT_FROM_EMAIL = 'a real email address'
 SERVER_EMAIL = 'a real email address'
 
+# django-registration Settings
+ACCOUNT_ACTIVATION_DAYS = 14
+
+# Local add-ons to main variables
+LOCAL_MIDDLEWARE_CLASSES = None
+LOCAL_TEMPLATE_CONTEXT_PROCESSORS = None
+
 ##### PB2 Custom Variables Below Here #######
 
 ### Search
