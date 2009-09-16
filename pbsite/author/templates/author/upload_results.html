@@ -1,16 +1,22 @@
-{% extends "main/index.html" %}
-{% load i18n %}
-{% load title_extras %}
-
-{% block bodyclass %}{{block.super}}File Uploaded Successfully{% endblock %}
-
+{% extends "base.html" %}
+{% block head %}
+<style type="text/css">
+.pass {
+	color: green
+}
+.fail {
+	color: red
+}
+</style>
+{% endblock %}
+{% block headtitle %}Audio File Check Results - {{ site_name }}{% endblock %}
+{% block title %}Audio File Check Results - {{ site_name }}{% endblock %}
 {% block content %}
-File Uploaded Successfully as {{ fileName }}
-
-<h2>Validaton Results</h2>
 <pre>
+{% autoescape off %}
 {% for result in results %}
 {{ result }}
 {% endfor %}
 </pre>
+{% endautoescape %}
 {% endblock %}

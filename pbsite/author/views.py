@@ -4,11 +4,11 @@
 from django.conf import settings
 from django import forms
 from django.shortcuts import render_to_response
-from django.template import Context
+from django.template import RequestContext
 from audio_validation import validate_mp3
+import os
 
 class UploadFileForm(forms.Form):
-    title = forms.CharField(max_length=50)
     file  = forms.FileField()
 
 def handle_uploaded_file(f, destinationFileName):
@@ -30,11 +30,12 @@ def upload(request):
         form = UploadFileForm(request.POST, request.FILES)
         if form.is_valid():
             uploadedFile = request.FILES['file']
-            destinationFileName = settings.PROJECT_PATH + '/author/uploads/' + uploadedFile.name
+            destinationFileName = settings.PROJECT_PATH + '/media/uploads/mp3validation' + uploadedFile.name
             handle_uploaded_file(uploadedFile, destinationFileName)
             validation_results = validate_mp3(destinationFileName)
-            resultContext = Context({'results': validation_results, 'fileName': destinationFileName})
-            return render_to_response('author/upload_results.html', resultContext)
+            os.remove(destinationFileName)
+            response_data = {'results': validation_results, 'fileName': destinationFileName}
+            return render_to_response('author/upload_results.html', response_data, context_instance=RequestContext(request))
     else:
         form = UploadFileForm()
-    return render_to_response('author/upload_form.html', {'form': form})
+    return render_to_response('author/upload_form.html', {'form': form}, context_instance=RequestContext(request))
