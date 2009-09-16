@@ -33,7 +33,8 @@ docutils # .5
 
 # For Auth OpenID:
 python-openid       # http://openidenabled.com/python-openid/   version 2.x
-django-authopenid   # http://code.google.com/p/django-authopenid/
+django-authopenid   # http://bitbucket.org/benoitc/django-authopenid
+django-registration # http://bitbucket.org/ubernostrum/django-registration/
 httplib2 			# http://code.google.com/p/httplib2
 
 # For MP3 Validation
