@@ -1,14 +1,10 @@
 {% extends "base.html" %}
-{% load i18n %}
 
-{% block head %}
+{% block headtitle %}{{ category.name }} Category - Podiobooks.com{% endblock %}
 
-
-{% endblock %}
-
+{% block title %}Your Podiobooks.com Account has been Activated!{% endblock %}
 
 {% block content %}
-
 {% blocktrans %}
 <h1>Activation</h1>
 <p>Your account is now activated. Go <a href="/">here</a> to continue.</p>
