@@ -2,10 +2,10 @@
     URL Pattern List for Author module
 """
 
-from django.conf.urls.defaults import patterns
+from django.conf.urls.defaults import patterns, url
 
 urlpatterns = patterns('',
     
     # upload form
-    (r'^upload[/]$', 'pbsite.author.views.upload'),            
+    url(r'^upload[/]$', 'pbsite.author.views.upload', name='author_upload'),            
 )
