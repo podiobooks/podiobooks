@@ -38,7 +38,7 @@ django-registration # http://bitbucket.org/ubernostrum/django-registration/
 httplib2 			# http://code.google.com/p/httplib2
 
 # For MP3 Validation
-mutagen				# http://code.google.com/p/mutagen/
+eyeD3				# http://eyed3.nicfit.net (Must add 'eyeD3' to Forced Builtins in PyDev to work right)
 
 # Search:
 django-sphinx 2.x # http://github.com/dcramer/django-sphinx (do a git clone of the latest)
