@@ -1,11 +1,12 @@
-import mutagen.mp3
+import eyeD3
 
 def validate_mp3(file_path):
-    file = mutagen.mp3.MP3(file_path)
+    file = eyeD3.Mp3AudioFile(file_path)
     result_list = []
-    result_list.append( verify_attribute('Bitrate', file.info.bitrate, 128000) )
-    result_list.append( verify_attribute('Sample Rate', file.info.sample_rate, 44100) )
-    result_list.append( verify_attribute('Channel Mode', file.info.mode, mutagen.mp3.JOINTSTEREO, mp3_mode_label(file.info.mode), mp3_mode_label(mutagen.mp3.JOINTSTEREO)) )
+    result_list.append( verify_attribute('Bitrate', file.getBitRate()[1], 128) )
+    result_list.append( verify_attribute('Bitrate Mode', mp3_bitrate_mode_label(file.getBitRate()[0]), mp3_bitrate_mode_label(0) ) )
+    result_list.append( verify_attribute('Sample Rate', file.getSampleFreq(), 44100) )
+    result_list.append( verify_attribute('Channel Mode', file.header.mode.title(),  'Joint Stereo') )
     
     return result_list
 
@@ -20,16 +21,6 @@ def verify_attribute(label, data, expected_value, data_label = None, expected_va
         expected_value_label = expected_value
             
     return label + " " + status + ": " + "Expected: " + str(expected_value_label) + " Actual: " + str(data_label)
-
-_mp3_mode_labels = dict({
-    mutagen.mp3.STEREO : "Stereo",
-    mutagen.mp3.JOINTSTEREO : "Joint Stereo",
-    mutagen.mp3.DUALCHANNEL : "Dual Channel",
-    mutagen.mp3.MONO : "Mono"
-    })
-
-def mp3_mode_label(value):
-    return _mp3_mode_labels.setdefault(value,'Unknown')
 
 _mp3_bitrate_mode_labels = dict({
     0 : 'Constant Bitrate (CBR)',
