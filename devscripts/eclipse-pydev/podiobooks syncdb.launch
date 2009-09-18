@@ -2,7 +2,7 @@
 <launchConfiguration type="org.python.pydev.debug.regularLaunchConfigurationType">
 <stringAttribute key="org.eclipse.debug.core.ATTR_REFRESH_SCOPE" value="${project}"/>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
-<listEntry value="/podiobooks/src/podiobooks/pbsite/manage.py"/>
+<listEntry value="/podiobooks/podiobooks/pbsite/manage.py"/>
 </listAttribute>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
 <listEntry value="1"/>
