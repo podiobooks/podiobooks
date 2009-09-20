@@ -41,7 +41,7 @@ httplib2 			# http://code.google.com/p/httplib2
 eyeD3				# http://eyed3.nicfit.net (Must add 'eyeD3' to Forced Builtins in PyDev to work right)
 
 # Search:
-django-sphinx 2.x # http://github.com/dcramer/django-sphinx (do a git clone of the latest)
+django-sphinx 2.2.1 # http://github.com/dcramer/django-sphinx (do a git clone of the latest)
 Sphinx # Not python, standalone daemon - http://sphinxsearch.com - make sure you compile --with-pgsql or download the binary with PostgreSQL support baked in.
 
 # Cache:
