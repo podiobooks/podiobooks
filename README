@@ -27,6 +27,7 @@ This software depends on the following libraries being available on the Python P
 # Main
 django  # 1.x
 psycopg2 # 2.x - PostgreSQL driver for Python.  Windows version: http://www.stickpeople.com/projects/python/win-psycopg/
+PIL - Python Imaging Library is required to support the ImageFields in the model (requires .exe installer on Windows)
 
 # Admin Site Documentation
 docutils # .5
