@@ -37,6 +37,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.middleware.cache.FetchFromCacheMiddleware',
     'django_authopenid.middleware.OpenIDMiddleware',
+    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
 )
 
 if LOCAL_MIDDLEWARE_CLASSES:
@@ -69,8 +70,10 @@ INSTALLED_APPS = (
     'django.contrib.sites',
 	'django.contrib.admin',
 	'django.contrib.admindocs',
+    'django.contrib.flatpages',
     'registration',
     'django_authopenid',
+    'tinymce',
 	'pbsite.main',
     'pbsite.author',
 )

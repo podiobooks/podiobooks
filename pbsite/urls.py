@@ -31,6 +31,9 @@ urlpatterns = patterns('',
     # Author Interface:
     (r'^author/', include('pbsite.author.urls')),
     
+    #TinyMCE WYSIWYG HTML Editor:
+    (r'^tinymce/', include('tinymce.urls')),
+    
 )
 
 #Only hook up the media to run through Django in a dev environment...in prod, needs to be handled by web server

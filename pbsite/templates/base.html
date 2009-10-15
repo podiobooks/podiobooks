@@ -9,10 +9,9 @@
 {% endblock %}
 {% block legacyincludes %}{% include "legacy/header_includes.html" %}{% endblock %}
 <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/base.css" >
-<script type="text/javascript" src="{{ MEDIA_URL }}scripts/jquery-1.3.1.min.js"></script>
+<script type="text/javascript" src="{{ MEDIA_URL }}js/jquery/jquery-1.3.1.min.js"></script>
 {% block head %}{% endblock %}
 </head>
-
 <body {% block bodyid %}id="home"{% endblock %}{% block bodyclass %}{% endblock %}">
 {% block sitedivopen %}<div id="site">{% endblock %}
 {% block header %}{% include "header.html" %}{% endblock %}
