@@ -47,4 +47,7 @@ Sphinx # Not python, standalone daemon - http://sphinxsearch.com - make sure you
 
 # Cache:
 memcached # Not python, standalone daemon - http://www.danga.com/memcached/
+
+# WYSIWYG HTML Editor Integration
+django-tinymce # http://code.google.com/p/django-tinymce/
 #
