@@ -21,6 +21,7 @@ from pbsite.main.models import License
 
 class Command(BaseCommand):
     def __init__(self):
+        BaseCommand.__init__(self)
         sql_dir = os.path.abspath(__file__).split("/")
         while sql_dir and sql_dir[-1] != 'commands':
             sql_dir.pop()
@@ -35,7 +36,10 @@ class Command(BaseCommand):
         cursor = connection.cursor()
 
         drop_all = self.__load_sql('drop_all.sql')
-        cursor.execute(drop_all)
+        try:
+            cursor.execute(drop_all)
+        except:
+            pass
 
         self.__migrate_category(cursor)
         self.__migrate_partner(cursor)
