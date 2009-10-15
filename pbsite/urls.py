@@ -3,7 +3,7 @@
     pass-offs to sub-modules, who will have their own urls.py defining actions within.
 """
 
-from django.conf.urls.defaults import patterns, include, url
+from django.conf.urls.defaults import *
 from django.contrib import admin
 from settings import DEBUG, MEDIA_ROOT
 
