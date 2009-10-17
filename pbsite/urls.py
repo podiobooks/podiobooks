@@ -3,7 +3,7 @@
     pass-offs to sub-modules, who will have their own urls.py defining actions within.
 """
 
-from django.conf.urls.defaults import *
+from django.conf.urls.defaults import patterns, include, url
 from django.contrib import admin
 from settings import DEBUG, MEDIA_ROOT
 
@@ -39,5 +39,6 @@ urlpatterns = patterns('',
 #Only hook up the media to run through Django in a dev environment...in prod, needs to be handled by web server
 if DEBUG:
     urlpatterns += patterns('',
-        (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': MEDIA_ROOT}),
+        (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': MEDIA_ROOT, 'show_indexes': True}),
+        (r'^adminmedia/(?P<path>.*)$', 'django.views.static.serve', {'document_root': MEDIA_ROOT + 'admin/'}),
     )
