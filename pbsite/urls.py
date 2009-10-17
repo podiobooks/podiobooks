@@ -40,5 +40,4 @@ urlpatterns = patterns('',
 if DEBUG:
     urlpatterns += patterns('',
         (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': MEDIA_ROOT, 'show_indexes': True}),
-        (r'^adminmedia/(?P<path>.*)$', 'django.views.static.serve', {'document_root': MEDIA_ROOT + 'admin/'}),
     )
