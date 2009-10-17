@@ -45,8 +45,8 @@ class Award(models.Model):
 
 class Category(models.Model):
 	"""Categories describe titles for easy of browsing and for recommendations."""
-	name = models.CharField(max_length=255)
 	slug = models.SlugField()
+	name = models.CharField(max_length=255)
 	# Note - titles are available as title_set.all()
 	deleted = models.BooleanField(default=False)
 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
@@ -66,11 +66,11 @@ class Category(models.Model):
 class Contributor(models.Model):
 	"""A contributor is one who had done work on a title. For a book, it's an
     author or authors."""
+	slug = models.SlugField()
 	user = models.ForeignKey(User, null=True) #User is an OOTB Django Auth Model
 	firstname = models.CharField(max_length=255)
 	lastname = models.CharField(max_length=255)
 	displayname = models.CharField(max_length=255)
-	slug = models.SlugField()
 	deleted = models.BooleanField(default=False)
 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
@@ -80,6 +80,10 @@ class Contributor(models.Model):
 
 	def __unicode__(self):
 		return self.displayname
+	
+	@models.permalink
+	def get_absolute_url(self):
+		return ('contributor_detail', [self.slug])
 
 class ContributorSubscription(models.Model):
 	"""ContributorSubscription is a little different in that you can
@@ -110,7 +114,7 @@ class Episode(models.Model):
 	sequence = models.IntegerField(blank=False, null=False)
 	description = models.TextField(blank=True)
 	url = models.URLField(blank=False, verify_exists=True)
-	filesize = models.IntegerField(default=0)
+	filesize = models.FloatField(default=0)
 	status = models.SmallIntegerField(default=1)
 	deleted = models.BooleanField(default=False)
 	old_id = models.IntegerField(blank=True, null=True)
@@ -122,6 +126,10 @@ class Episode(models.Model):
 	
 	def __unicode__(self):
 		return "Episode"
+	
+	@models.permalink
+	def get_absolute_url(self):
+		return ('episode_detail', [self.slug])
 
 class License(models.Model):
 	"""A collection of defined licenses for works. Creative Commons, All Rights
@@ -198,7 +206,7 @@ class Series(models.Model):
 	the next book in a series automatically, or even just to subscribe to the
 	series in one fell swoop."""
 	slug = models.SlugField()
-	name = models.CharField(blank=True, max_length=255)
+	name = models.CharField(max_length=255)
 	description = models.TextField()
 	url = models.URLField(blank=True, verify_exists=True, null=True)
 	deleted = models.BooleanField(default=False)
