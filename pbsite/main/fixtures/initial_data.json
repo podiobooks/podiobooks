@@ -58,9 +58,9 @@
           "fields": {
                "deleted": 0, 
                "date_created": "2009-09-07 21:29:01", 
-               "name": "Alternative History", 
+               "slug": "alternative-history", 
                "date_updated": "2009-09-07 21:29:01", 
-               "slug": "alternative-history"
+               "name": "Alternative History"
           }
      }, 
      {
@@ -69,9 +69,9 @@
           "fields": {
                "deleted": 0, 
                "date_created": "2009-09-07 21:29:01", 
-               "name": "Audiodrama", 
+               "slug": "audiodrama", 
                "date_updated": "2009-09-07 21:29:01", 
-               "slug": "audiodrama"
+               "name": "Audiodrama"
           }
      }, 
      {
@@ -80,9 +80,9 @@
           "fields": {
                "deleted": 0, 
                "date_created": "2009-09-07 21:29:01", 
-               "name": "Business", 
+               "slug": "business", 
                "date_updated": "2009-09-07 21:29:01", 
-               "slug": "business"
+               "name": "Business"
           }
      }, 
      {
@@ -91,9 +91,9 @@
           "fields": {
                "deleted": 0, 
                "date_created": "2009-09-07 21:29:01", 
-               "name": "Chick Lit", 
+               "slug": "chick-lit", 
                "date_updated": "2009-09-07 21:29:01", 
-               "slug": "chick-lit"
+               "name": "Chick Lit"
           }
      }, 
      {
@@ -102,9 +102,9 @@
           "fields": {
                "deleted": 0, 
                "date_created": "2009-09-07 21:29:01", 
-               "name": "Children", 
+               "slug": "children", 
                "date_updated": "2009-09-07 21:29:01", 
-               "slug": "children"
+               "name": "Children"
           }
      }, 
      {
@@ -113,9 +113,9 @@
           "fields": {
                "deleted": 0, 
                "date_created": "2009-09-07 21:29:01", 
-               "name": "Erotica", 
+               "slug": "erotica", 
                "date_updated": "2009-09-07 21:29:01", 
-               "slug": "erotica"
+               "name": "Erotica"
           }
      }, 
      {
@@ -124,9 +124,9 @@
           "fields": {
                "deleted": 0, 
                "date_created": "2009-09-07 21:29:01", 
-               "name": "Essays", 
+               "slug": "essays", 
                "date_updated": "2009-09-07 21:29:01", 
-               "slug": "essays"
+               "name": "Essays"
           }
      }, 
      {
@@ -135,9 +135,9 @@
           "fields": {
                "deleted": 0, 
                "date_created": "2009-09-07 21:29:01", 
-               "name": "Fabulist Satire", 
+               "slug": "fabulist-satire", 
                "date_updated": "2009-09-07 21:29:01", 
-               "slug": "fabulist-satire"
+               "name": "Fabulist Satire"
           }
      }, 
      {
@@ -146,9 +146,9 @@
           "fields": {
                "deleted": 0, 
                "date_created": "2009-09-07 21:29:01", 
-               "name": "Fantasy", 
+               "slug": "fantasy", 
                "date_updated": "2009-09-07 21:29:01", 
-               "slug": "fantasy"
+               "name": "Fantasy"
           }
      }, 
      {
@@ -157,9 +157,9 @@
           "fields": {
                "deleted": 0, 
                "date_created": "2009-09-07 21:29:01", 
-               "name": "Fiction", 
+               "slug": "fiction", 
                "date_updated": "2009-09-07 21:29:01", 
-               "slug": "fiction"
+               "name": "Fiction"
           }
      }, 
      {
@@ -168,9 +168,9 @@
           "fields": {
                "deleted": 0, 
                "date_created": "2009-09-07 21:29:01", 
-               "name": "Historical Fantasy", 
+               "slug": "historical-fantasy", 
                "date_updated": "2009-09-07 21:29:01", 
-               "slug": "historical-fantasy"
+               "name": "Historical Fantasy"
           }
      }, 
      {
@@ -179,9 +179,9 @@
           "fields": {
                "deleted": 0, 
                "date_created": "2009-09-07 21:29:01", 
-               "name": "Historical Fiction", 
+               "slug": "historical-fiction", 
                "date_updated": "2009-09-07 21:29:01", 
-               "slug": "historical-fiction"
+               "name": "Historical Fiction"
           }
      }, 
      {
@@ -190,9 +190,9 @@
           "fields": {
                "deleted": 0, 
                "date_created": "2009-09-07 21:29:01", 
-               "name": "History", 
+               "slug": "history", 
                "date_updated": "2009-09-07 21:29:01", 
-               "slug": "history"
+               "name": "History"
           }
      }, 
      {
@@ -201,9 +201,9 @@
           "fields": {
                "deleted": 0, 
                "date_created": "2009-09-07 21:29:01", 
-               "name": "Horror/Dark Fantasy", 
+               "slug": "horrordark-fantasy", 
                "date_updated": "2009-09-07 21:29:01", 
-               "slug": "horrordark-fantasy"
+               "name": "Horror/Dark Fantasy"
           }
      }, 
      {
@@ -212,9 +212,9 @@
           "fields": {
                "deleted": 0, 
                "date_created": "2009-09-07 21:29:01", 
-               "name": "Humor", 
+               "slug": "humor", 
                "date_updated": "2009-09-07 21:29:01", 
-               "slug": "humor"
+               "name": "Humor"
           }
      }, 
      {
@@ -223,9 +223,9 @@
           "fields": {
                "deleted": 0, 
                "date_created": "2009-09-07 21:29:01", 
-               "name": "Inspirational Fiction", 
+               "slug": "inspirational-fiction", 
                "date_updated": "2009-09-07 21:29:01", 
-               "slug": "inspirational-fiction"
+               "name": "Inspirational Fiction"
           }
      }, 
      {
@@ -234,9 +234,9 @@
           "fields": {
                "deleted": 0, 
                "date_created": "2009-09-07 21:29:01", 
-               "name": "Literature", 
+               "slug": "literature", 
                "date_updated": "2009-09-07 21:29:01", 
-               "slug": "literature"
+               "name": "Literature"
           }
      }, 
      {
@@ -245,9 +245,9 @@
           "fields": {
                "deleted": 0, 
                "date_created": "2009-09-07 21:29:01", 
-               "name": "Magical Realism", 
+               "slug": "magical-realism", 
                "date_updated": "2009-09-07 21:29:01", 
-               "slug": "magical-realism"
+               "name": "Magical Realism"
           }
      }, 
      {
@@ -256,9 +256,9 @@
           "fields": {
                "deleted": 0, 
                "date_created": "2009-09-07 21:29:01", 
-               "name": "Mystery", 
+               "slug": "mystery", 
                "date_updated": "2009-09-07 21:29:01", 
-               "slug": "mystery"
+               "name": "Mystery"
           }
      }, 
      {
@@ -267,9 +267,9 @@
           "fields": {
                "deleted": 0, 
                "date_created": "2009-09-07 21:29:01", 
-               "name": "Non-Fiction", 
+               "slug": "non-fiction", 
                "date_updated": "2009-09-07 21:29:01", 
-               "slug": "non-fiction"
+               "name": "Non-Fiction"
           }
      }, 
      {
@@ -278,9 +278,9 @@
           "fields": {
                "deleted": 0, 
                "date_created": "2009-09-07 21:29:01", 
-               "name": "Public Domain", 
+               "slug": "public-domain", 
                "date_updated": "2009-09-07 21:29:01", 
-               "slug": "public-domain"
+               "name": "Public Domain"
           }
      }, 
      {
@@ -289,9 +289,9 @@
           "fields": {
                "deleted": 0, 
                "date_created": "2009-09-07 21:29:01", 
-               "name": "Romance", 
+               "slug": "romance", 
                "date_updated": "2009-09-07 21:29:01", 
-               "slug": "romance"
+               "name": "Romance"
           }
      }, 
      {
@@ -300,9 +300,9 @@
           "fields": {
                "deleted": 0, 
                "date_created": "2009-09-07 21:29:01", 
-               "name": "Science Fiction", 
+               "slug": "science-fiction", 
                "date_updated": "2009-09-07 21:29:01", 
-               "slug": "science-fiction"
+               "name": "Science Fiction"
           }
      }, 
      {
@@ -311,9 +311,9 @@
           "fields": {
                "deleted": 0, 
                "date_created": "2009-09-07 21:29:01", 
-               "name": "Self-Help", 
+               "slug": "self-help", 
                "date_updated": "2009-09-07 21:29:01", 
-               "slug": "self-help"
+               "name": "Self-Help"
           }
      }, 
      {
@@ -322,9 +322,9 @@
           "fields": {
                "deleted": 0, 
                "date_created": "2009-09-07 21:29:01", 
-               "name": "Spirituality", 
+               "slug": "spirituality", 
                "date_updated": "2009-09-07 21:29:01", 
-               "slug": "spirituality"
+               "name": "Spirituality"
           }
      }, 
      {
@@ -333,9 +333,9 @@
           "fields": {
                "deleted": 0, 
                "date_created": "2009-09-07 21:29:01", 
-               "name": "Thriller", 
+               "slug": "thriller", 
                "date_updated": "2009-09-07 21:29:01", 
-               "slug": "thriller"
+               "name": "Thriller"
           }
      }, 
      {
@@ -344,9 +344,9 @@
           "fields": {
                "deleted": 0, 
                "date_created": "2009-09-07 21:29:01", 
-               "name": "Travelogue", 
+               "slug": "travelogue", 
                "date_updated": "2009-09-07 21:29:01", 
-               "slug": "travelogue"
+               "name": "Travelogue"
           }
      }, 
      {
@@ -355,9 +355,69 @@
           "fields": {
                "deleted": 0, 
                "date_created": "2009-09-07 21:29:01", 
-               "name": "Young Adult", 
+               "slug": "young-adult", 
                "date_updated": "2009-09-07 21:29:01", 
-               "slug": "young-adult"
+               "name": "Young Adult"
+          }
+     }, 
+     {
+          "pk": 1, 
+          "model": "main.episode", 
+          "fields": {
+               "status": 1, 
+               "description": "When Ishmael's mother is killed in a random accident, he must find a way to leave the company-owned planet of Neris. (Chapter 1)", 
+               "sequence": 1, 
+               "url": "http://www.podiobooks.com/sample/51063/PB-QuarterShare-01.mp3", 
+               "title": 91, 
+               "deleted": 0, 
+               "date_updated": "2009-10-16 21:58:04", 
+               "filesize": 19.420000000000002, 
+               "old_id": null, 
+               "date_created": "2009-10-16 21:58:04", 
+               "name": "Episode 01"
+          }
+     }, 
+     {
+          "pk": 2, 
+          "model": "main.episode", 
+          "fields": {
+               "status": 1, 
+               "description": "Ishmael gets a job working in the galley of the Lois McKendrick and begins his adventure in the Deep Dark. (Chapter 2)", 
+               "sequence": 2, 
+               "url": "http://www.podiobooks.com/sample/51063/PB-QuarterShare-02.mp3", 
+               "title": 91, 
+               "deleted": 0, 
+               "date_updated": "2009-10-16 22:00:58", 
+               "filesize": 0.0, 
+               "old_id": null, 
+               "date_created": "2009-10-16 22:00:58", 
+               "name": "Episode 02"
+          }
+     }, 
+     {
+          "pk": 1, 
+          "model": "main.license", 
+          "fields": {
+               "code": "", 
+               "url": "http://creativecommons.org/licenses/by-nc-nd/3.0/us/", 
+               "text": "Creative Commons Attribution-NonCommercial-No Derivatives 3.0 United States License", 
+               "date_updated": "2009-10-16 21:40:45", 
+               "image_url": "http://i.creativecommons.org/l/by-nc-nd/3.0/us/88x31.png", 
+               "date_created": "2009-10-16 21:40:45", 
+               "slug": "cc-by-nc-nd-3-0-us"
+          }
+     }, 
+     {
+          "pk": 1, 
+          "model": "main.series", 
+          "fields": {
+               "description": "A Trader's Tale from the Golden Age of the Solar Clipper", 
+               "url": "", 
+               "deleted": 0, 
+               "date_updated": "2009-10-16 21:56:41", 
+               "date_created": "2009-10-16 21:56:41", 
+               "slug": "traders-tale-golden-age-solar-clipper", 
+               "name": "A Trader's Tale from the Golden Age of the Solar Clipper"
           }
      }, 
      {
@@ -395,7 +455,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:01", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.6810999999999998, 
@@ -425,7 +485,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.7608699999999997, 
@@ -455,7 +515,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.76471, 
@@ -541,7 +601,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:01", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.0499999999999998, 
@@ -657,7 +717,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.7272699999999999, 
@@ -939,7 +999,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.6799999999999997, 
@@ -967,7 +1027,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.5348800000000002, 
@@ -1135,7 +1195,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.4571399999999999, 
@@ -1191,7 +1251,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.7614700000000001, 
@@ -1219,7 +1279,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.84483, 
@@ -1247,7 +1307,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.7586199999999996, 
@@ -1303,7 +1363,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.75, 
@@ -1331,7 +1391,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.5199999999999996, 
@@ -1361,7 +1421,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.8461499999999997, 
@@ -1419,7 +1479,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:01", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.6261700000000001, 
@@ -1559,7 +1619,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.5454499999999998, 
@@ -1587,7 +1647,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.875, 
@@ -1727,7 +1787,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 3.7727300000000001, 
@@ -1783,7 +1843,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.71875, 
@@ -1895,7 +1955,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 5.0, 
@@ -1953,7 +2013,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.4608699999999999, 
@@ -2009,7 +2069,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.125, 
@@ -2121,7 +2181,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.81081, 
@@ -2177,7 +2237,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.2000000000000002, 
@@ -2205,7 +2265,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 3.25, 
@@ -2289,7 +2349,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 1, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.38462, 
@@ -2317,7 +2377,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 3.8709699999999998, 
@@ -2345,7 +2405,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.8333300000000001, 
@@ -2429,7 +2489,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.88931, 
@@ -2459,7 +2519,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.0833300000000001, 
@@ -2543,7 +2603,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 1, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.71875, 
@@ -2599,7 +2659,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:01", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.5319099999999999, 
@@ -2629,7 +2689,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.25, 
@@ -2657,7 +2717,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.0588199999999999, 
@@ -2713,7 +2773,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.2307699999999997, 
@@ -2741,7 +2801,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.2916699999999999, 
@@ -2769,7 +2829,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.6363599999999998, 
@@ -2825,7 +2885,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.0, 
@@ -2853,7 +2913,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.3421099999999999, 
@@ -2967,7 +3027,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.25, 
@@ -3051,7 +3111,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.0571400000000004, 
@@ -3135,7 +3195,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.625, 
@@ -3191,7 +3251,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.7575799999999999, 
@@ -3221,7 +3281,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.7659599999999998, 
@@ -3333,7 +3393,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.7090899999999998, 
@@ -3389,7 +3449,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.5733300000000003, 
@@ -3417,7 +3477,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.53261, 
@@ -3529,7 +3589,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.56731, 
@@ -3557,7 +3617,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.4444400000000002, 
@@ -3585,7 +3645,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.2000000000000002, 
@@ -3669,7 +3729,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.3333300000000001, 
@@ -3725,7 +3785,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.6666699999999999, 
@@ -3753,7 +3813,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.3333300000000001, 
@@ -3837,7 +3897,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.0, 
@@ -3893,7 +3953,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.75, 
@@ -4117,7 +4177,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.59091, 
@@ -4229,7 +4289,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.5833300000000001, 
@@ -4369,7 +4429,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:01", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.57592, 
@@ -4397,7 +4457,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.7808200000000003, 
@@ -4453,7 +4513,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 3.7142900000000001, 
@@ -4621,7 +4681,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 2.5, 
@@ -4677,7 +4737,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.2857099999999999, 
@@ -4705,7 +4765,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.0, 
@@ -4733,7 +4793,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:01", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.5037599999999998, 
@@ -4789,7 +4849,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.7857099999999999, 
@@ -4873,7 +4933,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 3.9230800000000001, 
@@ -4901,7 +4961,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.2000000000000002, 
@@ -4929,7 +4989,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.7629599999999996, 
@@ -5013,7 +5073,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:01", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.4800000000000004, 
@@ -5041,7 +5101,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.7810199999999998, 
@@ -5125,7 +5185,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:01", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 3.9315099999999998, 
@@ -5152,7 +5212,7 @@
           "fields": {
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
-               "series": null, 
+               "series": 1, 
                "display_on_homepage": 1, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
@@ -5170,7 +5230,7 @@
                     1
                ], 
                "name": "Quarter Share", 
-               "license": null, 
+               "license": 1, 
                "cover": "quarter_share_cover.jpg", 
                "avg_audio_quality": 4.7865599999999997, 
                "is_complete": 1
@@ -5295,7 +5355,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.63889, 
@@ -5323,7 +5383,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.7999999999999998, 
@@ -5351,7 +5411,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.1071400000000002, 
@@ -5379,7 +5439,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 3.875, 
@@ -5407,7 +5467,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:01", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.4545500000000002, 
@@ -5463,7 +5523,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.75, 
@@ -5605,7 +5665,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.6458300000000001, 
@@ -5661,7 +5721,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.1785699999999997, 
@@ -5689,7 +5749,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.8378399999999999, 
@@ -5745,7 +5805,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:01", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.66845, 
@@ -5857,7 +5917,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.0, 
@@ -5913,7 +5973,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.8534499999999996, 
@@ -5941,7 +6001,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.5, 
@@ -5997,7 +6057,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:01", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.30769, 
@@ -6053,7 +6113,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.2069000000000001, 
@@ -6137,7 +6197,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:01", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.4444400000000002, 
@@ -6249,7 +6309,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.09091, 
@@ -6277,7 +6337,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.2999999999999998, 
@@ -6305,7 +6365,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.6190499999999997, 
@@ -6333,7 +6393,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.7391300000000003, 
@@ -6585,7 +6645,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.75, 
@@ -6613,7 +6673,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.8173899999999996, 
@@ -6641,7 +6701,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:01", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.5476200000000002, 
@@ -6697,7 +6757,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.0740699999999999, 
@@ -6753,7 +6813,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.5454499999999998, 
@@ -6809,7 +6869,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.3333300000000001, 
@@ -6837,7 +6897,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.3125, 
@@ -6949,7 +7009,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 3.1428600000000002, 
@@ -7145,7 +7205,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.0769200000000003, 
@@ -7229,7 +7289,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.0, 
@@ -7369,7 +7429,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 3.8500000000000001, 
@@ -7397,7 +7457,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.5090899999999996, 
@@ -7425,7 +7485,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 1, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 3.8999999999999999, 
@@ -7565,7 +7625,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.7307699999999997, 
@@ -7649,7 +7709,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.5526299999999997, 
@@ -7845,7 +7905,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.5, 
@@ -7901,7 +7961,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 4.5454499999999998, 
@@ -8293,7 +8353,7 @@
                "advisory": null, 
                "date_updated": "2009-03-16 20:46:02", 
                "series": null, 
-               "display_on_homepage": 1, 
+               "display_on_homepage": 0, 
                "is_adult": 0, 
                "is_hosted_at_pb": 0, 
                "avg_writing": 5.0, 
