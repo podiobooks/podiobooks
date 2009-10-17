@@ -42,11 +42,10 @@
 </table>
 </li>
 </ul>
+{% if title.episode_set.all %}
 <div class="heading"><p>Chapters</p><img src="{{ MEDIA_URL }}legacy/css/images/headingbookend.jpg" width="32" height="35" /></div> 
- 
-<br clear=all /> 
- 
-<table class="table" cellpaddiing="0" border="0" cellspacing="0" align="center"> 
+<br clear=all />
+<table class="table" cellpadding="0" border="0" cellspacing="0" align="center"> 
 			<colgroup> 
 				<col width="250"></col> 
 				<col width="520"></col> 
@@ -61,7 +60,7 @@
 <tr class="{% cycle 'oddrow' 'evenrow' %}" valign="top"><td><a href="{{ episode.url }}">{{ episode.name }}</a><br/><span style="font-size: 8pt">({{ episode.filesize }}	MB)</span></td><td>{{ episode.description }}</td><td nowrap >{{ episode.date_updated|date:"d-M-Y" }}</td></tr>
 {% endfor %}
 </table>
-
+{% endif %}
 
 <p><a href="{% url title_list %}">Back to Title List</a> | <a href="{% url home_page %}">Back to Home Page</a> </p>
 </div>
