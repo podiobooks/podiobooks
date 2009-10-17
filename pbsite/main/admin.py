@@ -28,11 +28,11 @@ class CategoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("name",)}
     exclude = ("date_created", "date_updated",)
     
-class EpsiodeAdmin(admin.ModelAdmin):
+class EpisodeAdmin(admin.ModelAdmin):
     list_display = ('sequence', 'name', 'description', 'url', 'length')
 
 class LicenseAdmin(admin.ModelAdmin):
-    list_display = ('name',)
+    list_display = ('slug',)
 
 class SeriesAdmin(admin.ModelAdmin):
     list_display = ('name',)
@@ -71,8 +71,8 @@ admin.site.register(Advisory)
 admin.site.register(Category,CategoryAdmin)
 admin.site.register(Contributor)
 admin.site.register(ContributorType)
-admin.site.register(License)
-admin.site.register(Episode)
+admin.site.register(License,LicenseAdmin)
+admin.site.register(Episode,EpisodeAdmin)
 admin.site.register(Media)
 admin.site.register(Series,SeriesAdmin)
 admin.site.register(Subscription)
