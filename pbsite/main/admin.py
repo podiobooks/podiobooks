@@ -18,6 +18,7 @@ class TitleInline(admin.TabularInline):
 
 class EpisodeInline(admin.TabularInline):
     model = Episode
+    exclude = ("delete", "old_id", "date_created", "date_updated")
 
 class AwardAdmin(admin.ModelAdmin):
     list_display = ('name',)
@@ -35,17 +36,17 @@ class LicenseAdmin(admin.ModelAdmin):
 
 class SeriesAdmin(admin.ModelAdmin):
     list_display = ('name',)
-    inlines = [
-	        TitleInline
-	    ]
+    prepopulated_fields = {"slug": ("name",)}
+    exclude = ("date_created", "date_updated",)
 
 class TitleAdmin(admin.ModelAdmin):
     date_hierarchy = 'date_created'
     list_display = ('name', 'license', 'advisory', 'is_adult', 'is_complete', 'display_on_homepage','date_created','date_updated')
+    list_editable = ('display_on_homepage',)
     list_filter = ('license', 'advisory', 'display_on_homepage', 'is_complete', 'is_adult', 'date_created', 'date_updated')
     exclude = ("date_updated", "avg_overall", "avg_audio_quality", 'avg_narration', 'avg_writing')
     inlines = [
-            #TitleCategoryInline,EpisodeInline
+            EpisodeInline
         ]
     ordering = ['name']
     prepopulated_fields = {"slug": ("name",)}
@@ -73,7 +74,7 @@ admin.site.register(ContributorType)
 admin.site.register(License)
 admin.site.register(Episode)
 admin.site.register(Media)
-admin.site.register(Series)
+admin.site.register(Series,SeriesAdmin)
 admin.site.register(Subscription)
 admin.site.register(Title,TitleAdmin)
 admin.site.register(TitleContributors)
