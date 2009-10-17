@@ -30,12 +30,39 @@
 			</span>
 			<br/>
 			<br/>
-			{% autoescape off %}{{ title.description }}{% endautoescape %}
+			<p>{% autoescape off %}{{ title.description }}{% endautoescape %}</p>
+			<br />
+			{% if title.license %}
+				<a rel="license" href="{{title.license.url}}"><img alt="{{ title.license.text }} Logo" style="border-width:0" src="{{title.license.image_url}}" /></a>
+        		<br /> 
+				This work is licensed under a <a href="{{title.license.url}}">{{ title.license.text }}</a> license.
+			{% endif %}
 		</td>
 	</tr>
 </table>
 </li>
 </ul>
+<div class="heading"><p>Chapters</p><img src="{{ MEDIA_URL }}legacy/css/images/headingbookend.jpg" width="32" height="35" /></div> 
+ 
+<br clear=all /> 
+ 
+<table class="table" cellpaddiing="0" border="0" cellspacing="0" align="center"> 
+			<colgroup> 
+				<col width="250"></col> 
+				<col width="520"></col> 
+			</colgroup>	
+<tr class="tableheader"> 
+<!--td nowrap>#</td--> 
+	<td>Title</td> 
+	<td>Description</td> 
+	<td>Date Created</td> 
+</tr>
+{% for episode in title.episode_set.all %}
+<tr class="{% cycle 'oddrow' 'evenrow' %}" valign="top"><td><a href="{{ episode.url }}">{{ episode.name }}</a><br/><span style="font-size: 8pt">({{ episode.filesize }}	MB)</span></td><td>{{ episode.description }}</td><td nowrap >{{ episode.date_updated|date:"d-M-Y" }}</td></tr>
+{% endfor %}
+</table>
+
+
 <p><a href="{% url title_list %}">Back to Title List</a> | <a href="{% url home_page %}">Back to Home Page</a> </p>
 </div>
 {% endblock %}
