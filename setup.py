@@ -8,7 +8,7 @@ setup(
     name = "podiobooks",
     version = "1.0",
     url = 'http://github.com/ctmiller/podiobooks',
-    license = 'CCPL',
+    license = 'GPL',
     description = "Free Audiobook Management Site",
     long_description = read('README'),
 
@@ -24,7 +24,7 @@ setup(
         'Development Status :: 4 - Beta',
         'Framework :: Django',
         'Intended Audience :: Developers',
-        'License :: OSI Approved :: CCPL License',
+        'License :: OSI Approved :: GPL License',
         'Operating System :: OS Independent',
         'Programming Language :: Python',
         'Topic :: Internet :: WWW/HTTP',
