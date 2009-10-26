@@ -5,10 +5,10 @@ You must have the PyDev extensions for Eclipse installed to use these files.
 If you create a new PyDev project, and then pull the code from GitHub into the src directory, you end up with a structure like this:
 
 podiobooks/
-	podiobooks/
+	src/
+		podiobooks/
 		...
-		devscripts
-		pbsite
+	devscripts
 		...
 			
 			
