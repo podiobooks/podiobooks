@@ -4,15 +4,5 @@
 # exclude patterns (uncomment them if you want to use them):
 # *.[oa]
 # *~
-*.pyc
-*.log
-*.pyo
-.installed.cfg
-bin
-develop-eggs
-dist
-downloads
-eggs
-parts
-src/*.egg-info
+settings_local.py
 local_settings.py
