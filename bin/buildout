@@ -1,0 +1,12 @@
+#!/usr/bin/python
+
+import sys
+sys.path[0:0] = [
+  '/home/cyface/Applications/eclipse-py/workspace/podiobooks/eggs/setuptools-0.6c11-py2.6.egg',
+  '/home/cyface/Applications/eclipse-py/workspace/podiobooks/eggs/zc.buildout-1.4.1-py2.6.egg',
+  ]
+
+import zc.buildout.buildout
+
+if __name__ == '__main__':
+    zc.buildout.buildout.main()
