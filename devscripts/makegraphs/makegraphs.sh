@@ -34,7 +34,7 @@ if [[ "$?" != "0" ]]; then
 fi
 
 (
-    cd "${startdir}/../../pbsite"
+    cd "${startdir}/../../podiobooks/src/podiobooks"
     if [[ -f "modelviz.py" ]]; then
         echo "modelviz.py already present in $(pwd).  Aborting" 2>&1
         exit 3;
