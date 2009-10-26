@@ -6,3 +6,14 @@
 # *~
 *.pyc
 *.log
+*.pyo
+.installed.cfg
+bin
+develop-eggs
+dist
+downloads
+eggs
+parts
+src/*.egg-info
+local_settings.py
+settings_local.py
