@@ -1,0 +1,9 @@
+<VirtualHost coloradosatellite.net:8000>
+	#mod_wsgi for Django Dev
+	LoadModule wsgi_module modules/mod_wsgi.so
+	WSGIScriptAlias / "C:/Documents and Settings/tlwhit2/My Documents/Aptana Studio Workspace/podiobooks\bin/django.wsgi-script.py"
+	<Location />
+	    Order allow,deny
+	    Allow from all
+	</Location>
+</VirtualHost>
