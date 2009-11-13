@@ -99,7 +99,7 @@ For all of those items, you should be able to basically follow the Installer pro
 3) Right-Click on "Login Roles" on the left, and choose "New Login Role..."
 4) Role Name: pb2   Password: <your choice>
 5) Right-Click on "Databases" on the left, and choose "New Database..."
-6) Name: pb2     Owner: pb2
+6) Name: pb2     Owner: pb2      Encoding: UTF8
 7) Click OK and quit
 
 -----------SETUP THE DJANGO SETTINGS----------
