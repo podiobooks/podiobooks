@@ -111,11 +111,12 @@ For all of those items, you should be able to basically follow the Installer pro
 6) It will prompt you to rename, enter "settings_local.py"
 7) Double-Click on settings_local.py to edit it
 8) Find the PostgreSql database settings, and enter the password you chose for the pb2 role
+9) Look the file over, there may be other changes you need to make for your local environment
 
 -----------SYNC THE DJANGO DB----------
 1) Open Aptana Studio
 2) Open the podiobooks project if it isn't open
-3) In the toolbar, click the down arrow to the right of the green button with the white arrow in it.
+3) In the toolbar, find the green button with the white arrow in it, and click the down arrow to the right of it
 4) Choose podiobooks syncdb from the list that appears
 5) Django will try and use the settings you specified to connect to the DB and setup the tables
 6) Django will try and setup the working data from the fixture, this may take a while
