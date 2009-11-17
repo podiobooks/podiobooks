@@ -90,6 +90,7 @@ For all of those items, you should be able to basically follow the Installer pro
 2) Open the podiobooks project if it isn't open
 3) Run->External Tools->podiobooks buildout
 4) It will download all the required eggs and other bits, which will take some time
+5) It will try and create a .pydevproject file...if it fails with permissions issues (win7) you may have to add the .eggs to your project by hand in the PyDev preferences.
 
 -----------SETUP POSTGRESQL---------------
 1) Open pgAdmin III, the Postgres Admin Utility
@@ -99,7 +100,7 @@ For all of those items, you should be able to basically follow the Installer pro
 3) Right-Click on "Login Roles" on the left, and choose "New Login Role..."
 4) Role Name: pb2   Password: <your choice>
 5) Right-Click on "Databases" on the left, and choose "New Database..."
-6) Name: pb2     Owner: pb2
+6) Name: pb2     Owner: pb2      Encoding: UTF8
 7) Click OK and quit
 
 -----------SETUP THE DJANGO SETTINGS----------
@@ -134,12 +135,12 @@ For all of those items, you should be able to basically follow the Installer pro
 	</Location>
 3) This will take over the root of your server with podiobooks.  If you don't want that, you can do a virtualhost like this:
 	Listen 8000
-	<VirtualHost _default_:8000>  #The address/name here has to match your ServerName setting
+	<VirtualHost *:8000>
 		#mod_wsgi for Django Dev
 		LoadModule wsgi_module modules/mod_wsgi.so
-		WSGIScriptAlias / "C:/Documents and Settings/tlwhit2/My Documents/Aptana Studio Workspace/podiobooks\bin/django.wsgi-script.py"
+		WSGIScriptAlias / "C:/Documents and Settings/tim/My Documents/Aptana Studio Workspace/podiobooks/bin/django.wsgi-script.py"
 		<Location />
-	    	Order allow,deny
+	    		Order allow,deny
 	   	 	Allow from all
 		</Location>
 	</VirtualHost>
