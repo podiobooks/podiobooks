@@ -10,7 +10,7 @@ setup(
     url = 'http://github.com/ctmiller/podiobooks',
     license = 'GPL',
     description = "Free Audiobook Management Site",
-    long_description = read('README'),
+    long_description = read('README.txt'),
 
     author = 'PodioBooks Team',
     author_email = 'feedback@podiobooks.com',
