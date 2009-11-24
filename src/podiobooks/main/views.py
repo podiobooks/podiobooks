@@ -7,6 +7,7 @@ from podiobooks import settings
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect, Http404
 from django.db.models import Q
+import feedparser
 
 class CategoryChoiceForm(forms.Form):
     categories = cache.get('category_dropdown_values')
@@ -32,8 +33,13 @@ def index(request):
     if (titles == None):
         titles = Title.objects.filter(display_on_homepage = True)[:5]
         cache.set('homepage_title_objects', titles, 240)
+    
+    blog_feed = cache.get('hompage_blog_feed')
+    if (blog_feed == None):
+        blog_feed = feedparser.parse('http://podiobooks.com/index.xml')
+        cache.set('hompage_blog_feed', blog_feed, 240)
         
-    response_data = {'titles':titles, 'categoryChoiceForm':CategoryChoiceForm()}
+    response_data = {'titles':titles, 'blog_feed':blog_feed, 'categoryChoiceForm':CategoryChoiceForm()}
     
     return render_to_response('main/index.html', response_data, context_instance=RequestContext(request))
 
