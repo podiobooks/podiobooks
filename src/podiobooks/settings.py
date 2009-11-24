@@ -21,7 +21,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.request",
     'django.core.context_processors.i18n',
     'django_authopenid.context_processors.authopenid',
-    'podiobooks.contrib.site_info_context_processor.site',
+    'contrib.site_info_context_processor.site',
 )
 
 if LOCAL_TEMPLATE_CONTEXT_PROCESSORS:
@@ -73,7 +73,8 @@ INSTALLED_APPS = (
     'django.contrib.flatpages',
     'registration',
     'django_authopenid',
+    'contrib.django_restapi',
     'tinymce',
-	'podiobooks.main',
     'podiobooks.author',
+	'podiobooks.main',
 )
