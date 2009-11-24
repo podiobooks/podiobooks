@@ -1,48 +1,125 @@
 {% extends "base.html" %}
-
 {% block headtitle %}{{ site_name }} - Serialized audio books in podcast form{% endblock %}
-
 {% block pagetitledivopen %}{% endblock %}
-
-{% block content %}
+{% block content %}<!-- Recent Updates List -->
 <div id="recentupdates">
-	<div class="heading" align="center">
-		<p>Browse Our Titles</p><img src="{{ MEDIA_URL }}legacy/css/images/headingbookend.jpg" width="32" height="35" />
-	</div> 
-	<div id="categories">
-		<form action="{% url category_redirect %}" method="POST">
-			{{ categoryChoiceForm }}<input type="submit" value="Go!" class="formbutton"/> 
-		</form>
-	</div>
+    <div class="heading" align="center">
+        <p>Browse Our Titles</p>
+        <img src="{{ MEDIA_URL }}legacy/css/images/headingbookend.jpg" width="32" height="35" />
+    </div>
+    <div id="categories">
+        <form action="{% url category_redirect %}" method="POST">
+            {{ categoryChoiceForm }}<input type="submit" value="Go!" class="formbutton"/>
+        </form>
+		<br />
+    </div>
+    <div class="heading">
+        <p>Recent Updates</p>
+        <img src="{{ MEDIA_URL }}legacy/css/images/headingbookend.jpg" width="32" height="35" />
+    </div>
+    <ul class="list">
+        <li>
+            <span class="smalltext">11/24/09</span>: Added  X&nbsp;episode&nbsp;to <i><a href="/title/X">XXX</a></i>
+        </li>
+        <li>
+            <a href="http://www.google.com/calendar/embed?src=gf747dq15ae53jcqvsbndp1eig%40group.calendar.google.com&ctz=America/New_York" target="_blank">View our Upcoming Release Schedule</a>
+        </li>
+    </ul>
+    <center>
+        <br/>
+        <!--a href="http://www.libsyn.com" target="_blank">
+        <img src="/images/libsynsmall.jpg" style="border: 1px solid black; margin-top: 8px" width="250" height="55" alt="libsynsmall (7K)" />
+        </a-->
+        <script type="text/javascript">
+            <!--
+            google_ad_client = "pub-1276519440300441";
+            google_ad_width = 234;
+            google_ad_height = 60;
+            google_ad_format = "234x60_as";
+            google_cpa_choice = "CAEaCNclJ_iygda1OAFQFg";
+            google_kw = "science fiction, audiobooks, books, mp3";
+            google_kw_type = "broad";
+            google_ad_channel = "3950658587";
+            //-->
+        </script>
+        <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+    </center>
 </div>
-<div class="heading"><p>Selections from the Staff <span class="smalltext">(<a href="{% url title_list %}">Show all books</a>)</span></p><img src="{{ MEDIA_URL }}legacy/css/images/headingbookend.jpg" width="32" height="35" /></div>
-<div id="books">
-<ul>
-{% for title in titles %}
-<li>
-	<table>
-		<tr>
-			<td align="center"><a href="{{ title.get_absolute_url }}"><img src="{{ MEDIA_URL }}images/covers/{{ title.cover }}" /></a></td>
-			<td><a href="{{ title.get_absolute_url }}"><span class="booktitle">{{ title.name }}</a></span>
-				<span class="subtitle">
-					by CONTRIBUTOR NAME
-					<br/>
-					{% if title.categories.all %}
-						<i>
-						{% for category in title.categories.all %}
-							{{ category.name }}{% if not forloop.last %},{% endif %}</li>
-						{% endfor %}
-						</i>
-					{% endif %}
-				</span>
-				<br/>
-				{% autoescape off %}{{ title.description|truncatewords_html:100 }}{% endautoescape %} <a href="{{ title.get_absolute_url }}">[more]</a>
-			</td>
-		</tr>
-	</table>
-</li>
-{% endfor %}
+<!-- End Recent Updates List --><!-- Latest News From Blog List -->
+<div id="latestnews">
+<div class="heading">
+    <p>
+        Latest News from the <a href="/blog">Blog</a>
+    </p>
+    <img src="{{ MEDIA_URL }}legacy/css/images/headingbookend.jpg" width="32" height="35" />
+</div>
+<div align="right">
+    <a href="http://podiobooks.com/index.xml" style="text-decoration:none"><img src="{{ MEDIA_URL }}legacy/images/feed-icon.png" width="28" height="28" border="0" alt="rss-text (1K)" align="right" hspace="5" vspace="5" /></a>
+</div>
+<div id="rssfeed" name="rssfeed" style="height: 100px">
+    <ul>
+        {% for entry in blog_feed.entries|slice:":5" %}
+        <li>
+            <a href="{{ entry.link }}">{{ entry.title }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+<br/>
+</br>
+<div class="heading">
+    <p>Stats, Widgets and Promos</p>
+    <img src="{{ MEDIA_URL }}legacy/css/images/headingbookend.jpg" width="32" height="35" />
+</div>
+<ul class="list">
+    <li>XXXX episodes available for download in XXX titles</li>
+    <li>Transmitting books to XXXX members</li>
+    <li>
+        What books are hot? <a href="http://podiobooks.com/charts.php"><b>Check out the charts!</b></a>
+    </li>
+    <li>
+        <a href="http://www.frappr.com/podiobookscommembers" target="_blank">Find Podiobooks.com fans near you</a>!
+    </li>
+    <li>
+        <b><a href="/spreadtheword.php">Promos and Banners</a></b>
+        to help spread the word.
+    </li>
 </ul>
+<!-- End Latest News From Blog List -->
 </div>
-
+<div class="heading">
+    <p>
+        Selections from the Staff <span class="smalltext">(<a href="{% url title_list %}">Show all books</a>)</span>
+    </p>
+    <img src="{{ MEDIA_URL }}legacy/css/images/headingbookend.jpg" width="32" height="35" />
+</div>
+<div id="books">
+    <ul>
+        {% for title in titles %}
+        <li>
+            <table>
+                <tr>
+                    <td align="center">
+                        <a href="{{ title.get_absolute_url }}"><img src="{{ MEDIA_URL }}images/covers/{{ title.cover }}" /></a>
+                    </td>
+                    <td>
+                        <a href="{{ title.get_absolute_url }}">
+                        <span class="booktitle">{{ title.name }}</a>
+                    </span>
+                    <span class="subtitle">by CONTRIBUTOR NAME
+                        <br/>
+                        {% if title.categories.all %}<i>{% for category in title.categories.all %}
+                        {{ category.name }}{% if not forloop.last %},{% endif %}</li>
+                        {% endfor %}
+                    </i>
+                    {% endif %}</span>
+                    <br/>
+                    {% autoescape off %}{{ title.description|truncatewords_html:100 }}{% endautoescape %} <a href="{{ title.get_absolute_url }}">[more]</a>
+                </td>
+                </tr>
+            </table>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
 {% endblock %}
