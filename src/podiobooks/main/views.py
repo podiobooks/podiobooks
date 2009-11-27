@@ -34,10 +34,10 @@ def index(request):
         titles = Title.objects.filter(display_on_homepage = True)[:5]
         cache.set('homepage_title_objects', titles, 240)
     
-    blog_feed = cache.get('hompage_blog_feed')
+    blog_feed = cache.get('homepage_blog_feed')
     if (blog_feed == None):
         blog_feed = feedparser.parse('http://podiobooks.com/index.xml')
-        cache.set('hompage_blog_feed', blog_feed, 240)
+        cache.set('homepage_blog_feed', blog_feed, 240)
         
     response_data = {'titles':titles, 'blog_feed':blog_feed, 'categoryChoiceForm':CategoryChoiceForm()}
     
