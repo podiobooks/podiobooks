@@ -2,7 +2,7 @@
 
 # NOTE
 # see local_settings_template.py for instructions on making your local settings file
-from settings_local import *
+from settings_local import * #@UnusedWildImport
 
 MANAGERS = ADMINS
 
