@@ -11,6 +11,7 @@ from models import Category, Contributor, ContributorType
 from models import Episode, License, Media
 from models import Series, Subscription
 from models import Title, TitleContributors
+from models import Partner
 
 
 class TitleInline(admin.TabularInline):
@@ -25,18 +26,22 @@ class AwardAdmin(admin.ModelAdmin):
     
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('name',)
-    prepopulated_fields = {"slug": ("name",)}
-    exclude = ("date_created", "date_updated",)
+    prepopulated_fields = {'slug': ('name',)}
+    exclude = ('date_created', 'date_updated',)
     
 class EpisodeAdmin(admin.ModelAdmin):
     list_display = ('sequence', 'name', 'description', 'url', 'filesize')
 
 class LicenseAdmin(admin.ModelAdmin):
-    list_display = ('slug',)
+    list_display = ('slug','text',)
+    
+class PartnerAdmin(admin.ModelAdmin):
+    list_display = ('name','url',)
+    exclude = ('date_created', 'date_updated',)
 
 class SeriesAdmin(admin.ModelAdmin):
     list_display = ('name',)
-    prepopulated_fields = {"slug": ("name",)}
+    prepopulated_fields = {'slug': ('name',)}
     exclude = ("date_created", "date_updated",)
 
 class TitleAdmin(admin.ModelAdmin):
@@ -74,6 +79,7 @@ admin.site.register(ContributorType)
 admin.site.register(License,LicenseAdmin)
 admin.site.register(Episode,EpisodeAdmin)
 admin.site.register(Media)
+admin.site.register(Partner,PartnerAdmin)
 admin.site.register(Series,SeriesAdmin)
 admin.site.register(Subscription)
 admin.site.register(Title,TitleAdmin)
