@@ -68,18 +68,18 @@ class Contributor(models.Model):
     author or authors."""
 	slug = models.SlugField()
 	user = models.ForeignKey(User, null=True) #User is an OOTB Django Auth Model
-	firstname = models.CharField(max_length=255)
-	lastname = models.CharField(max_length=255)
-	displayname = models.CharField(max_length=255)
+	first_name = models.CharField(max_length=255)
+	last_name = models.CharField(max_length=255)
+	display_name = models.CharField(max_length=255)
 	deleted = models.BooleanField(default=False)
 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
 
 	class Meta:
-		ordering = ['lastname', 'firstname']
+		ordering = ['last_name', 'first_name']
 
 	def __unicode__(self):
-		return self.displayname
+		return self.display_name
 	
 	@models.permalink
 	def get_absolute_url(self):
@@ -257,7 +257,7 @@ class Title(models.Model):
 	name = models.CharField(max_length=255)
 	series = models.ForeignKey('Series', null=True, blank=True)
 	description = models.TextField()
-	slug = models.SlugField()
+	slug = models.SlugField(max_length=255)
 	cover = models.ImageField(upload_to=podiobooks.settings.MEDIA_COVERS)
 	status = models.IntegerField(default=1)
 	license = models.ForeignKey('License', null=True, blank=True)
