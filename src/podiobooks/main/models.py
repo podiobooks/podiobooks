@@ -85,15 +85,6 @@ class Contributor(models.Model):
 	def get_absolute_url(self):
 		return ('contributor_detail', [self.slug])
 
-class ContributorSubscription(models.Model):
-	"""ContributorSubscription is a little different in that you can
-	declare multiple types, allowing you to say you want all items from
-	contributor X where they are a contributor of type A, B, and C"""
-	subscription = models.ForeignKey('Subscription')
-	contributor = models.ForeignKey('Contributor')
-	contributor_types = models.ManyToManyField('ContributorType')
-	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
-
 class ContributorType(models.Model):
 	"""Types of contributors: author, key grid, best boy, director, etc."""
 	slug = models.SlugField()
