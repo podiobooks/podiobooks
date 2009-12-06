@@ -12,6 +12,7 @@ from django.template.defaultfilters import slugify
 
 #Define functions for use in importing chapters
 def getTitle(legacyBookID):
+    """Returns a Title object based on a Legacy Book ID"""
     try:
         foundTitle = Title.objects.get(old_id=legacyBookID)
     except:
