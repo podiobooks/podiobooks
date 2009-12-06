@@ -102,10 +102,12 @@ class Episode(models.Model):
     issue of the comic."""
 	title = models.ForeignKey('Title')
 	name = models.CharField(max_length=255)
-	sequence = models.IntegerField(blank=False, null=False)
+	sequence = models.IntegerField(blank=False, null=False) #Order in the Story
 	description = models.TextField(blank=True)
 	url = models.URLField(blank=False, verify_exists=True)
-	filesize = models.FloatField(default=0)
+	filesize = models.FloatField(default=0) #Size of the media file
+	length = models.FloatField(default=0) #Length of the media file (usually minutes (or pages))
+	contributors = models.ManyToManyField('Contributor', through='EpisodeContributors')
 	status = models.SmallIntegerField(default=1)
 	deleted = models.BooleanField(default=False)
 	old_id = models.IntegerField(blank=True, null=True)
@@ -121,6 +123,16 @@ class Episode(models.Model):
 	@models.permalink
 	def get_absolute_url(self):
 		return ('episode_detail', [self.slug])
+
+class EpisodeContributors(models.Model):
+	"""Join table to associate contributors to titles."""
+	episode = models.ForeignKey('Episode')
+	contributor = models.ForeignKey('Contributor')
+	contributor_type = models.ForeignKey('ContributorType')
+	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
+	
+	class Meta:
+		verbose_name_plural = "Episode Contributors"
 
 class License(models.Model):
 	"""A collection of defined licenses for works. Creative Commons, All Rights
