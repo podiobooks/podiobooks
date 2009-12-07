@@ -106,7 +106,12 @@
                         <a href="{{ title.get_absolute_url }}">
                         <span class="booktitle">{{ title.name }}</a>
                     </span>
-                    <span class="subtitle">by CONTRIBUTOR NAME
+                    <span class="subtitle">
+                    	{% if title.contributors.all %}
+						<i>{% for contributor in title.contributors.all %}
+                        	{{ contributor.display_name }}{% if not forloop.last %},{% endif %}</li>
+						{% endfor %}
+						{% endif %}
                         <br/>
                         {% if title.categories.all %}<i>{% for category in title.categories.all %}
                         {{ category.name }}{% if not forloop.last %},{% endif %}</li>
