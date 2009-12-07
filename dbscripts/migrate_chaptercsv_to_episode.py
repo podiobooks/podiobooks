@@ -52,7 +52,8 @@ def importChapters():
                 length = 0,
                 status = 1,
                 deleted = False,
-                date_created = row['DateCreated']
+                date_created = row['DateCreated'],
+                date_updated = row['DateUpdated']
             )
             print "episode:",
             print episode.name,
