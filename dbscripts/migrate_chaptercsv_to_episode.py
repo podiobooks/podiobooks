@@ -52,8 +52,8 @@ def importChapters():
                 sequence = row['Sequence'],
                 description = row['ShowNotes'].replace('\\',''),
                 url = row['Filename'],
-                filesize = 0,
-                length = row['Length'],
+                filesize = row['Length'],
+                length = 0,
                 status = 1,
                 deleted = False,
                 date_created = row['DateCreated']
