@@ -2,7 +2,7 @@
 This script reads in an "CSV for Excel" export from phpMyAdmin into a the new Podiobooks Schema
 
 ##############################################
-#######-----Book/Title Importer-------########
+#######-----Book Category Importer----########
 ##############################################
 """
 

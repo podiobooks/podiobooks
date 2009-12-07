@@ -16,14 +16,25 @@ from models import Partner
 
 class TitleInline(admin.TabularInline):
     model = Title
+    exclude = ("deleted", "old_id", "date_created", "date_updated")
+    
+class TitleContributorsInline(admin.TabularInline):
+    model = TitleContributors
+    exclude = ("deleted", "old_id", "date_created", "date_updated")
 
 class EpisodeInline(admin.TabularInline):
     model = Episode
-    exclude = ("delete", "old_id", "date_created", "date_updated")
+    exclude = ("deleted", "old_id", "date_created", "date_updated")
 
 class AwardAdmin(admin.ModelAdmin):
     list_display = ('name',)
-    
+
+class ContributorAdmin(admin.ModelAdmin):
+    inlines = [
+            TitleContributorsInline
+        ]
+    exclude = ("deleted", "date_created", "date_updated")
+
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('name',)
     prepopulated_fields = {'slug': ('name',)}
@@ -74,7 +85,7 @@ admin.site.register(FlatPage, TinyMCEFlatPageAdmin)
 admin.site.register(Award)
 admin.site.register(Advisory)
 admin.site.register(Category,CategoryAdmin)
-admin.site.register(Contributor)
+admin.site.register(Contributor,ContributorAdmin)
 admin.site.register(ContributorType)
 admin.site.register(License,LicenseAdmin)
 admin.site.register(Episode,EpisodeAdmin)
