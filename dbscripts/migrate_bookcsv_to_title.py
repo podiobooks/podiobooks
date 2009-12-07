@@ -33,15 +33,15 @@ def booleanClean(data):
         return int(data)
 
 def getOrCreateContributor(contributorName):
-    contributorName = contributorName.strip()
+    contributorName = contributorName.strip().replace('  ',' ').replace('\\','').replace('&apos;','\'').replace('Theater','Theatre')
     try:
-        firstNameGuess, lastNameGuess = contributorName.replace('\\','').split(" ")[:2]
+        firstNameGuess, lastNameGuess = contributorName.split(" ")[:2]
     except:
         firstNameGuess = ""
         lastNameGuess = contributorName
         
     contributor, created = Contributor.objects.get_or_create(display_name__iexact=contributorName,
-                  defaults={'slug': slugify(contributorName), 'first_name': firstNameGuess, 'last_name': lastNameGuess})
+                  defaults={'display_name':contributorName, 'slug': slugify(contributorName), 'first_name': firstNameGuess, 'last_name': lastNameGuess})
     return contributor
 
 def getOrCreateContributorType(contributorType):
