@@ -18,7 +18,13 @@
 		</td>
 		<td><span class="booktitle">{{ title.name }}</span>
 			<span class="subtitle">
-				by CONTRIBUTOR NAME
+				by {% if title.contributors.all %}
+					<i>
+					{% for contributor in title.contributors.all %}
+						{{ contributor.display_name }}{% if not forloop.last %},{% endif %}</li>
+					{% endfor %}
+					</i>
+				{% endif %}
 				<br/>
 				{% if title.categories.all %}
 					<i>
@@ -57,7 +63,7 @@
 	<td>Date Created</td> 
 </tr>
 {% for episode in title.episode_set.all %}
-<tr class="{% cycle 'oddrow' 'evenrow' %}" valign="top"><td><a href="{{ episode.url }}">{{ episode.name }}</a><br/><span style="font-size: 8pt">({{ episode.filesize }}	MB)</span></td><td>{{ episode.description }}</td><td nowrap >{{ episode.date_updated|date:"d-M-Y" }}</td></tr>
+<tr class="{% cycle 'oddrow' 'evenrow' %}" valign="top"><td><a href="{{ episode.url }}">{{ episode.name }}</a><br/><span style="font-size: 8pt">({{ episode.filesize_mb }}	MB)</span></td><td>{{ episode.description }}</td><td nowrap >{{ episode.date_updated|date:"d-M-Y" }}</td></tr>
 {% endfor %}
 </table>
 {% endif %}
