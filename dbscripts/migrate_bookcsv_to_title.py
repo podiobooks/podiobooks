@@ -49,6 +49,14 @@ def getOrCreateContributorType(contributorType):
                   defaults={'name': 'Author',})
     return contributorType
 
+def getCategory(categoryID):
+    try:
+        category = Category.objects.get(id=categoryID)
+    except:
+        category = None
+    
+    return category
+
 def importBooks():
     # Now, begin reading in the CSV and using the Django model objects to populate the DB
     
@@ -57,10 +65,6 @@ def importBooks():
     
     #Parse the Book File CSV into a dictionary based on the first row values
     bookCSVReader=csv.DictReader(bookCSVFile,dialect='excel')
-    
-    #Pull off the first row of the book file as the labels
-    bookLabelRow = bookCSVReader.next()
-    print bookLabelRow
     
     #PRE CLEANOUT
     Title.objects.all().delete()
@@ -95,6 +99,9 @@ def importBooks():
         mainContributor = getOrCreateContributor(row['Authors'][:48])
         contributorType = getOrCreateContributorType('Author')
         TitleContributors.objects.create(title=title,contributor=mainContributor,contributor_type=contributorType)
+        category = getCategory(row['CategoryID'])
+        if (category):
+            title.categories.add(category)
         print "Title: %s\tContributors: %s" % (title.name, title.contributors.values('display_name'))
         title.save()
         
