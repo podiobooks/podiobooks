@@ -29,16 +29,16 @@ class EpisodeInline(admin.TabularInline):
 class AwardAdmin(admin.ModelAdmin):
     list_display = ('name',)
 
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ('name',)
+    prepopulated_fields = {'slug': ('name',)}
+    exclude = ('date_created', 'date_updated',)
+    
 class ContributorAdmin(admin.ModelAdmin):
     inlines = [
             TitleContributorsInline
         ]
     exclude = ("deleted", "date_created", "date_updated")
-
-class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('name',)
-    prepopulated_fields = {'slug': ('name',)}
-    exclude = ('date_created', 'date_updated',)
     
 class EpisodeAdmin(admin.ModelAdmin):
     list_display = ('sequence', 'name', 'description', 'url', 'filesize')
@@ -62,7 +62,8 @@ class TitleAdmin(admin.ModelAdmin):
     list_filter = ('license', 'advisory', 'display_on_homepage', 'is_complete', 'is_adult', 'date_created', 'date_updated')
     exclude = ("date_updated", "avg_overall", "avg_audio_quality", 'avg_narration', 'avg_writing')
     inlines = [
-            EpisodeInline
+            EpisodeInline,
+            TitleContributorsInline
         ]
     ordering = ['name']
     prepopulated_fields = {"slug": ("name",)}
