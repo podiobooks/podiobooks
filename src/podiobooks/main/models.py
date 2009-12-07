@@ -114,6 +114,9 @@ class Episode(models.Model):
 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	
+	def filesize_mb(self):
+		return round(self.filesize / 1024.0 / 1024.0,2)
+	
 	class Meta:
 		ordering = ['name']
 	
