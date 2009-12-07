@@ -1,5 +1,9 @@
 """This script reads in an "CSV for Excel" export from phpMyAdmin into a the new Podiobooks Schema"""
 
+# IMPORT CATEGORIES
+from migrate_bookcategorycsv_to_category import *
+importBookCategories()
+
 # IMPORT BOOKS
 from migrate_bookcsv_to_title import *
 importBooks()
