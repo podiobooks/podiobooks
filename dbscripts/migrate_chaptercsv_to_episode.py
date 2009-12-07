@@ -28,10 +28,6 @@ def importChapters():
     #Parse the Chapter File CSV into a dictionary based on the first row values
     chapterCSVReader=csv.DictReader(chapterCSVFile,dialect='excel')
     
-    #Pull off the first row of the chapter file as the labels
-    chapterLabelRow = chapterCSVReader.next()
-    print chapterLabelRow
-    
     #PRE CLEANOUT
     Episode.objects.all().delete()
     
