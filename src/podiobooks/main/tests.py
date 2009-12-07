@@ -213,7 +213,7 @@ class TitleTestCase(unittest.TestCase):
         testUsers = User.objects.all().filter(username__startswith='test')
         
         for currentUser in testUsers:
-            print '\tUsername: ' + currentUser.username + '\tSlug: ' + currentUser.get_profile().slug
+            print '\tUsername: %s\tSlug: %s' % (currentUser.username, currentUser.get_profile().slug)
             
         # User Assertions
         self.assertEquals(len(testUsers), 3)
@@ -222,15 +222,15 @@ class TitleTestCase(unittest.TestCase):
         # SERIES
         print '\nSeries: '
         for currentSeries in Series.objects.all().filter(name__startswith='Podiobooks Series') :
-            print '\n\tName: ' + currentSeries.name
-            print '\tSlug: ' + currentSeries.slug
+            print '\n\tName: %s' % currentSeries.name
+            print '\tSlug: %s' % currentSeries.slug
             print '\tTitles:'
             for currentTitle in currentSeries.title_set.all() :
-                print '\t\tName: ' + currentTitle.name
-                print '\t\tSlug: ' + currentTitle.slug
+                print '\t\tName: %s' % currentTitle.name
+                print '\t\tSlug: %s' % currentTitle.slug
             print '\tSubscriptions:'
             for currentSubscription in currentSeries.subscription_set.all() :
-                print '\t\tUserName: ' + currentSubscription.user.username
+                print '\t\tUserName: %s' % currentSubscription.user.username
             
             # Series Assertions
             if currentSeries.name == "Podiobooks Series #1" :
@@ -245,15 +245,15 @@ class TitleTestCase(unittest.TestCase):
         # TITLES 
         print '\nTitles: '
         for currentTitle in Title.objects.all().filter(name__startswith='Podiobooks Title') :
-            print '\n\tName: ' + currentTitle.name
-            print '\tSlug: ' + currentTitle.slug
-            print '\tSeries: ' + currentTitle.series.name
+            print '\n\tName: %s' % currentTitle.name
+            print '\tSlug: %s' % currentTitle.slug
+            print '\tSeries: %s' % currentTitle.series.name
             print '\tEpisodes:'
             for currentEpisode in currentTitle.episode_set.all() :
-                print '\t\tName: ' + currentEpisode.name
+                print '\t\tName: %s' % currentEpisode.name
             print '\tSubscriptions:'
             for currentSubscription in currentTitle.subscription_set.all() :
-                print '\t\tUserName: ' + currentSubscription.user.username
+                print '\t\tUserName: %s' % currentSubscription.user.username
             
             # Title Assertions
             if currentTitle.name == "Podiobooks Title #1" :
@@ -271,15 +271,15 @@ class TitleTestCase(unittest.TestCase):
         # SUBSCRIPTIONS  
         print '\nSubscriptions'
         for currentSubscription in Subscription.objects.all() :
-            print '\n\tUser: ' + currentSubscription.user.username + ": " + currentSubscription.user.get_profile().slug
-            print '\tPartner: ' + currentSubscription.partner.name
-            print '\tLast Episode Downloaded: ' + currentSubscription.last_downloaded_episode.name
+            print '\n\tUser: %s:%s' % (currentSubscription.user.username, currentSubscription.user.get_profile().slug)
+            print '\tPartner: %s' % currentSubscription.partner.name
+            print '\tLast Episode Downloaded: %s' % currentSubscription.last_downloaded_episode.name
             print '\n\tTitles: '
             for currentTitle in currentSubscription.titles.all() :
-                print '\t\tName: ' + currentTitle.name
+                print '\t\tName: %s' % currentTitle.name
             print '\n\tSeries: '
             for currentSeries in currentSubscription.series.all() :
-                print '\t\tName: ' + currentSeries.name
+                print '\t\tName: %s' % currentSeries.name
                 
             # Subscription Assertions
             if currentSubscription.user.username == "testuser1" :
