@@ -33,23 +33,32 @@ def booleanClean(data):
         return int(data)
 
 def getOrCreateContributor(contributorName):
+    """Retrieves or creates a Contributor type based on the name of the Contributor"""
     contributorName = contributorName.strip().replace('  ',' ').replace('\\','').replace('&apos;','\'').replace('Theater','Theatre')
     try:
-        firstNameGuess, lastNameGuess = contributorName.split(" ")[:2]
+        contributorNameTokens = contributorName.split(" ")
+        if (len(contributorNameTokens) > 2):
+            firstNameGuess, middleNameGuess, lastNameGuess = contributorNameTokens[:3]
+        else:
+            firstNameGuess, lastNameGuess = contributorNameTokens[:2]
+            middleNameGuess = ""
     except:
         firstNameGuess = ""
+        middleNameGuess = ""
         lastNameGuess = contributorName
         
     contributor, created = Contributor.objects.get_or_create(display_name__iexact=contributorName,
-                  defaults={'display_name':contributorName, 'slug': slugify(contributorName), 'first_name': firstNameGuess, 'last_name': lastNameGuess})
+                  defaults={'display_name':contributorName, 'slug': slugify(contributorName), 'first_name': firstNameGuess, 'middle_name': middleNameGuess, 'last_name': lastNameGuess})
     return contributor
 
 def getOrCreateContributorType(contributorType):
+    """Retrieves or creates a Contributor type based on the name of the type"""
     contributorType, created = ContributorType.objects.get_or_create(slug='author',
                   defaults={'name': 'Author',})
     return contributorType
 
 def getCategory(categoryID):
+    """Retrieves a category by id or none if not found"""
     try:
         category = Category.objects.get(id=categoryID)
     except:
@@ -57,11 +66,20 @@ def getCategory(categoryID):
     
     return category
 
+def getPartner(partnerID):
+    """Retrieves a partner by id or none if not found"""
+    try:
+        partner = Partner.objects.get(id=partnerID)
+    except:
+        partner = None
+    
+    return partner
+
 def importBooks():
-    # Now, begin reading in the CSV and using the Django model objects to populate the DB
+    """Reads in the CSV and using the Django model objects to populate the DB"""
     
     #Open Book File for Import
-    bookCSVFile=open("podiobooks_legacy_book_table.csv") #prepare a csv file for our example
+    bookCSVFile=open("podiobooks_legacy_book_table.csv")
     
     #Parse the Book File CSV into a dictionary based on the first row values
     bookCSVReader=csv.DictReader(bookCSVFile,dialect='excel')
@@ -99,10 +117,18 @@ def importBooks():
         mainContributor = getOrCreateContributor(row['Authors'][:48])
         contributorType = getOrCreateContributorType('Author')
         TitleContributors.objects.create(title=title,contributor=mainContributor,contributor_type=contributorType)
+        print "Title: %s\tContributors: %s" % (title.name, title.contributors.values('display_name'))
+        
         category = getCategory(row['CategoryID'])
         if (category):
             title.categories.add(category)
-        print "Title: %s\tContributors: %s" % (title.name, title.contributors.values('display_name'))
+            print "Title: %s\tCategories: %s" % (title.name, title.categories.values('name'))
+        
+        partner = getPartner(row['PartnerID'])
+        if (partner):
+            title.partners.add(partner)
+            print "Title: %s\tPartners: %s" % (title.name, title.partners.values('name'))
+            
         title.save()
         
         # Create URL Objects for the URL Fields from the Book Row
@@ -146,23 +172,23 @@ if __name__ == "__main__":
 #date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
 
 # BOOK CSV FIELDS
-#"ID"
-#"Title"
-#"DateCreated"
-#"Enabled"
+#"ID" /
+#"Title"/
+#"DateCreated" /
+#"Enabled" /
 #"AvgRating"
-#"Description"
-#"Authors"
+#"Description" /
+#"Authors" /
 #"Webpage"
 #"FeedURL"
 #"UserID"
-#"Coverimage"
-#"DisplayOnHomepage"
-#"CategoryID"
-#"Explicit"
+#"Coverimage" /
+#"DisplayOnHomepage" /
+#"CategoryID" /
+#"Explicit" /
 #"Subtitle"
 #"Standby"
-#"Complete"
+#"Complete" /
 #"DiscussURL"
 #"Notes"
 #"BookISBN"
@@ -172,10 +198,10 @@ if __name__ == "__main__":
 #"LuluLink"
 #"PartnerID"
 #"DynamicAds"
-#"AvgAudioQuality"
-#"AvgNarration"
-#"AvgWriting"
-#"AvgOverall"
+#"AvgAudioQuality" /
+#"AvgNarration" /
+#"AvgWriting" /
+#"AvgOverall" /
 #"license"
 #"itunescategory"
 #"FullLocation"
