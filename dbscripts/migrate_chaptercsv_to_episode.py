@@ -23,7 +23,7 @@ def importChapters():
     """Loops through the chapter rows in the CSV and build Episode objects for them"""
     
     #Open Chapter File for Import
-    chapterCSVFile=open("podiobooks_legacy_chapter_table.csv") #prepare a csv file for our example
+    chapterCSVFile=open("podiobooks_legacy_chapter_table.csv")
     
     #Parse the Chapter File CSV into a dictionary based on the first row values
     chapterCSVReader=csv.DictReader(chapterCSVFile,dialect='excel')

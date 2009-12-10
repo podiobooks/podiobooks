@@ -30,7 +30,7 @@ def importBookCategories():
     for row in categoryCSVReader:
         print row
         
-        # Create a title object in the database based on the current book row
+        # Create an object in the database based on the current row
         category = Category.objects.create (
             id = row['ID'],
             name = row['Name'].replace('\\',''),
