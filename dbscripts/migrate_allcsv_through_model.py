@@ -4,6 +4,10 @@
 from migrate_bookcategorycsv_to_category import *
 importBookCategories()
 
+# IMPORT PARTNERS
+from migrate_partnercsv_to_partner import *
+importPartners()
+
 # IMPORT BOOKS
 from migrate_bookcsv_to_title import *
 importBooks()
