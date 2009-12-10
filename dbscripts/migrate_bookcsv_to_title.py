@@ -34,9 +34,10 @@ def booleanClean(data):
 
 def getOrCreateContributor(contributorName):
     """Retrieves or creates a Contributor type based on the name of the Contributor"""
-    contributorName = contributorName.strip().replace('  ',' ').replace('\\','').replace('&apos;','\'').replace('Theater','Theatre')
+    contributorName = contributorName.strip().replace('  ',' ').replace('\\','').replace('&apos;','\'').replace('Theater','Theatre').replace('J. C.','J.C.').replace('J. A.','J.A.').replace('J. J.','J.J.').replace('J. T.','J.T.')
     try:
-        contributorNameTokens = contributorName.split(" ")
+        contributorNameToSplit = contributorName.replace(' III','')
+        contributorNameTokens = contributorNameToSplit.split(" ")
         if (len(contributorNameTokens) > 2):
             firstNameGuess, middleNameGuess, lastNameGuess = contributorNameTokens[:3]
         else:
@@ -48,7 +49,7 @@ def getOrCreateContributor(contributorName):
         lastNameGuess = contributorName
         
     contributor, created = Contributor.objects.get_or_create(display_name__iexact=contributorName,
-                  defaults={'display_name':contributorName, 'slug': slugify(contributorName), 'first_name': firstNameGuess, 'middle_name': middleNameGuess, 'last_name': lastNameGuess})
+                  defaults={'display_name':contributorName, 'slug': slugify(contributorName), 'first_name': firstNameGuess, 'middle_name': middleNameGuess.replace(',',''), 'last_name': lastNameGuess.replace(',','')})
     return contributor
 
 def getOrCreateContributorType(contributorType):
@@ -196,7 +197,7 @@ if __name__ == "__main__":
 #"ITunesLink"
 #"EBookLink"
 #"LuluLink"
-#"PartnerID"
+#"PartnerID" /
 #"DynamicAds"
 #"AvgAudioQuality" /
 #"AvgNarration" /
