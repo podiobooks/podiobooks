@@ -282,6 +282,7 @@ class Title(models.Model):
 	old_id = models.IntegerField(blank=True, null=True)
 	contributors = models.ManyToManyField('Contributor', through='TitleContributors')
 	categories = models.ManyToManyField('Category', db_table="main_title_categories")
+	partner = models.ForeignKey('partner', null=True, blank=True)
 	awards = models.ManyToManyField('Award', blank=True)
 	# Note: episodes are available as episode_set.all()
 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
