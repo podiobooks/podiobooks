@@ -126,8 +126,8 @@ def importBooks():
         
         partner = getPartner(row['PartnerID'])
         if (partner):
-            title.partners.add(partner)
-            print "Title: %s\tPartners: %s" % (title.name, title.partners.values('name'))
+            title.partner = partner
+            print "Title: %s\tPartner: %s" % (title.name, title.partner.name)
             
         title.save()
         
