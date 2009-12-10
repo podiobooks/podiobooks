@@ -69,6 +69,7 @@ class Contributor(models.Model):
 	slug = models.SlugField()
 	user = models.ForeignKey(User, null=True) #User is an OOTB Django Auth Model
 	first_name = models.CharField(max_length=255)
+	middle_name = models.CharField(max_length=255)
 	last_name = models.CharField(max_length=255)
 	display_name = models.CharField(max_length=255)
 	deleted = models.BooleanField(default=False)
