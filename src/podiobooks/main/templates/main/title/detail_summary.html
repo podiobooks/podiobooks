@@ -1,0 +1,72 @@
+{% load title_templatetags %}
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/dojo/1.3/dojo/dojo.xd.js" djConfig="parseOnLoad: true"></script>
+
+<style type="text/css">
+	.title-summary {
+		height: 250px;
+		width: 250px;
+		font-size: 15px;
+		font-family: "Arial Narrow";
+	}
+	.title-summary-header {
+		background-color: #EFFBFB;
+		padding: 5px;
+		border-bottom: 2px solid #A9D0F5;
+	}
+	.title-summary-name {
+		font-size: 17px;
+		font-weight: bold;
+		font-family: "Arial Black";
+	}
+	.title-summary-contributors {
+		font-size: 16px;
+	}
+	.title-summary-description {
+		background-color: #00000;
+	}
+	.title-summary-more {
+		font-weight: bold;
+		color: red;
+	}
+	.title-summary-footer {
+		margin-top: 5px;
+		border-top: 2px solid #A9D0F5;
+	}
+	.title-summary-episodes {
+		float: left;
+	}
+	.title-summary-episodes-complete {
+		float: left;
+		vertical-align: text-top;
+		background-image: url("{{ MEDIA_URL }}images/complete.png");
+		background-repeat: no-repeat;
+		background-position: left top;
+		padding-top: 1px;
+		margin-bottom: 1px;
+		margin-left: 30px;
+		width: 52px;
+	}
+	.title-summary-categories {
+		float: right;
+	}
+</style>
+
+<div class="title-summary">
+	<div class="title-summary-header">
+		<div class="title-summary-name">{{ title.name }}</div>
+		<div class="title-summary-contributors">{% show_contributors title %}</div>
+	</div>
+	<div class="title-summary-description">
+		{% autoescape off %}{{ title.description|striptags|truncatewords_html:35 }}{% endautoescape %}
+		<span class="title-summary-more">[Click Book Cover For More]</span>
+	</div>
+	<div class="title-summary-footer">
+		<span class="title-summary-episodes">{{ title.episode_set.all|length }} episodes</span>
+		{% if title.is_complete %}
+			<div class="title-summary-episodes-complete">&nbsp;</div>
+		{% endif %}
+		<span class="title-summary-categories">{% show_categories title %}</span>
+		<div>&nbsp;</div>
+	</div>
+</div>
