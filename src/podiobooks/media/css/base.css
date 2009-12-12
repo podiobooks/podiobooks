@@ -20,3 +20,9 @@
 	padding-top:.4em;
 	text-decoration: none;
 }
+.category-list {
+	font-style:italic;
+}
+.contributor-list {
+	font-style:italic;
+}
