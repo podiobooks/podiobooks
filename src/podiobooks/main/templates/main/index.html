@@ -1,5 +1,12 @@
 {% extends "base.html" %}
 {% block headtitle %}{{ site_name }} - Serialized audio books in podcast form{% endblock %}
+{% block head %}
+	<script type="text/javascript">
+		dojo.require("dijit.Tooltip");
+		dojo.require("pbwidgets.book_desc.BookDesc");
+		dojo.require("dojo.parser");
+	</script>
+{% endblock %}
 {% block pagetitledivopen %}{% endblock %}
 {% block content %}<!-- Recent Updates List -->
 <div id="recentupdates">
@@ -100,7 +107,7 @@
             <table>
                 <tr>
                     <td align="center">
-                        <a href="{{ title.get_absolute_url }}"><img src="{{ MEDIA_URL }}images/covers/{{ title.cover }}" /></a>
+                        <span dojoType="pbwidgets.book_desc.BookDesc" titleId="{{ title.id }}"><a href="{{ title.get_absolute_url }}"><img src="{{ MEDIA_URL }}images/covers/{{ title.cover }}" /></a></span>
                     </td>
                     <td>
                         <a href="{{ title.get_absolute_url }}">
