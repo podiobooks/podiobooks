@@ -5,7 +5,7 @@ from django.template import RequestContext
 from podiobooks.main.models import Title, Category
 from podiobooks import settings
 from django.core.urlresolvers import reverse
-from django.http import HttpResponseRedirect, Http404
+from django.http import HttpResponseRedirect
 from django.db.models import Q
 import feedparser
 
@@ -84,7 +84,7 @@ def title_search(request, keywords=None):
                 exclusions['is_adult']=True
             if (completed_only):
                 exclusions['is_complete']=False
-            search_results = Title.search.query(keywords).exclude(**exclusions)
+            search_results = Title.search.query(keywords).exclude(**exclusions) #@UndefinedVariable
             search_metadata = search_results._sphinx
         else:
             if (not include_adult):
