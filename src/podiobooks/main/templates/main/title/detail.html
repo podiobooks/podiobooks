@@ -13,8 +13,7 @@
 	<tr>
 		<td align="center" width="144">
 			<div align="center">
-				<img src="{{ MEDIA_URL }}images/covers/{{ title.cover }}" />
-				This podiobook is <span style='color: blue; font-weight: bold'>{% if title.is_complete %}complete{% else %}not complete{% endif %}</span>
+				{% show_titlecover title %}
 			</div>
 		</td>
 		<td><span class="booktitle">{{ title.name }}</span>
@@ -38,7 +37,7 @@
 </li>
 </ul>
 {% if title.episode_set.all %}
-<div class="heading"><p>Chapters</p><img src="{{ MEDIA_URL }}legacy/css/images/headingbookend.jpg" width="32" height="35" /></div> 
+{% show_heading "Chapters" %}
 <br clear=all />
 <table class="table" cellpadding="0" border="0" cellspacing="0" align="center"> 
 			<colgroup> 
