@@ -1,4 +1,7 @@
 {% extends "base.html" %}
+{% load main_templatetags %}
+{% load title_templatetags %}
+
 {% block headtitle %}{{ site_name }} - Serialized audio books in podcast form{% endblock %}
 {% block head %}
 	<script type="text/javascript">
@@ -10,20 +13,14 @@
 {% block pagetitledivopen %}{% endblock %}
 {% block content %}<!-- Recent Updates List -->
 <div id="recentupdates">
-    <div class="heading" align="center">
-        <p>Browse Our Titles</p>
-        <img src="{{ MEDIA_URL }}legacy/css/images/headingbookend.jpg" width="32" height="35" />
-    </div>
+    {% show_heading "Browse Our Titles" %}
     <div id="categories">
         <form action="{% url category_redirect %}" method="POST">
             {{ categoryChoiceForm }}<input type="submit" value="Go!" class="formbutton"/>
         </form>
 		<br />
     </div>
-    <div class="heading">
-        <p>Recent Updates</p>
-        <img src="{{ MEDIA_URL }}legacy/css/images/headingbookend.jpg" width="32" height="35" />
-    </div>
+    {% show_heading "Recent Updates" %}
     <ul class="list">
         <li>
             <span class="smalltext">11/24/09</span>: Added  X&nbsp;episode&nbsp;to <i><a href="/title/X">XXX</a></i>
@@ -53,13 +50,8 @@
     </center>
 </div>
 <!-- End Recent Updates List --><!-- Latest News From Blog List -->
-<div id="latestnews">
-<div class="heading">
-    <p>
-        Latest News from the <a href="http://podiobooks.com/blog">Blog</a>
-    </p>
-    <img src="{{ MEDIA_URL }}legacy/css/images/headingbookend.jpg" width="32" height="35" />
-</div>
+<div id="latestnews"> 
+{% show_heading "Latest News from the <a href="http://podiobooks.com/blog">Blog</a>" %}
 <div align="right">
     <a href="http://podiobooks.com/index.xml" style="text-decoration:none"><img src="{{ MEDIA_URL }}legacy/images/feed-icon.png" width="28" height="28" border="0" alt="rss-text (1K)" align="right" hspace="5" vspace="5" /></a>
 </div>
@@ -74,10 +66,7 @@
 </div>
 <br/>
 </br>
-<div class="heading">
-    <p>Stats, Widgets and Promos</p>
-    <img src="{{ MEDIA_URL }}legacy/css/images/headingbookend.jpg" width="32" height="35" />
-</div>
+{% show_heading "Stats, Widgets and Promos" %}
 <ul class="list">
     <li>XXXX episodes available for download in XXX titles</li>
     <li>Transmitting books to XXXX members</li>
@@ -107,7 +96,7 @@
             <table>
                 <tr>
                     <td align="center">
-                        <span dojoType="pbwidgets.book_desc.BookDesc" titleId="{{ title.id }}"><a href="{{ title.get_absolute_url }}"><img src="{{ MEDIA_URL }}images/covers/{{ title.cover }}" /></a></span>
+                        <span dojoType="pbwidgets.book_desc.BookDesc" titleId="{{ title.id }}">{% show_titlecover title %}</span>
                     </td>
                     <td>
                         <a href="{{ title.get_absolute_url }}">
