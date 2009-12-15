@@ -26,3 +26,11 @@
 .contributor-list {
 	font-style:italic;
 }
+.title-complete-notice {
+	font-size:smaller;
+	text-decoration:none;
+}
+.title-complete-notice-indicator {
+	color: blue;
+	font-weight: bold;
+}
