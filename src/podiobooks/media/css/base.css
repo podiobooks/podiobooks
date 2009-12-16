@@ -34,3 +34,6 @@
 	color: blue;
 	font-weight: bold;
 }
+.title-hover {
+	cursor: pointer;
+}
