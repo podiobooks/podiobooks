@@ -15,11 +15,10 @@ TEMPLATE_LOADERS = (
 
 #List of callables that add their data to each template
 TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.core.context_processors.debug",
     "django.core.context_processors.auth",
     "django.core.context_processors.media",
     "django.core.context_processors.request",
-    'django.core.context_processors.i18n',
-    "django.core.context_processors.debug",
     'django_authopenid.context_processors.authopenid',
     'contrib.site_info_context_processor.site',
 )
