@@ -34,12 +34,13 @@ def index(request):
         titles = Title.objects.filter(display_on_homepage = True)[:5]
         cache.set('homepage_title_objects', titles, 240)
     
-    blog_feed = cache.get('homepage_blog_feed')
-    if (blog_feed == None):
+    blog_feed_entries = cache.get('homepage_blog_feed_entries')
+    if (blog_feed_entries == None):
         blog_feed = feedparser.parse('http://podiobooks.com/index.xml')
-        cache.set('homepage_blog_feed', blog_feed, 240)
+        blog_feed_entries = blog_feed.entries[:20]
+        cache.set('homepage_blog_feed_entries', blog_feed_entries, 240)
         
-    response_data = {'titles':titles, 'blog_feed':blog_feed, 'categoryChoiceForm':CategoryChoiceForm()}
+    response_data = {'titles':titles, 'blog_feed_entries':blog_feed_entries, 'categoryChoiceForm':CategoryChoiceForm()}
     
     return render_to_response('main/index.html', response_data, context_instance=RequestContext(request))
 
