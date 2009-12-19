@@ -10,15 +10,14 @@ MANAGERS = ADMINS
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.load_template_source',
     'django.template.loaders.app_directories.load_template_source',
-#     'django.template.loaders.eggs.load_template_source',
 )
 
 #List of callables that add their data to each template
 TEMPLATE_CONTEXT_PROCESSORS = (
-    "django.core.context_processors.debug",
-    "django.core.context_processors.auth",
-    "django.core.context_processors.media",
-    "django.core.context_processors.request",
+    'django.core.context_processors.debug',
+    'django.core.context_processors.auth',
+    'django.core.context_processors.media',
+    'django.core.context_processors.request',
     'django_authopenid.context_processors.authopenid',
     'contrib.site_info_context_processor.site',
 )
@@ -29,14 +28,16 @@ if LOCAL_TEMPLATE_CONTEXT_PROCESSORS:
 MIDDLEWARE_CLASSES = (
     'django.middleware.gzip.GZipMiddleware',
     'django.middleware.doc.XViewMiddleware',
-    'django.middleware.http.ConditionalGetMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django_authopenid.middleware.OpenIDMiddleware',
     'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.cache.FetchFromCacheMiddleware',
-    'django_authopenid.middleware.OpenIDMiddleware',
+    'contrib.stats_middleware.StatsMiddleware',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
+    'django.middleware.http.SetRemoteAddrFromForwardedFor',
+    'django.middleware.http.ConditionalGetMiddleware',
 )
 
 if LOCAL_MIDDLEWARE_CLASSES:
