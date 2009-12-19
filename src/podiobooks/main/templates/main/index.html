@@ -57,7 +57,7 @@
 </div>
 <div id="rssfeed" name="rssfeed" style="height: 100px">
     <ul>
-        {% for entry in blog_feed.entries|slice:":5" %}
+        {% for entry in blog_feed_entries|slice:":5" %}
         <li>
             <a href="{{ entry.link }}">{{ entry.title }}</a>
         </li>
