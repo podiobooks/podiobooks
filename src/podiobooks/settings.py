@@ -36,7 +36,6 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.cache.FetchFromCacheMiddleware',
     'contrib.stats_middleware.StatsMiddleware',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
-    'django.middleware.http.SetRemoteAddrFromForwardedFor',
     'django.middleware.http.ConditionalGetMiddleware',
 )
 
