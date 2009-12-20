@@ -52,7 +52,8 @@ TEMPLATE_DIRS = (TEMPLATE_ROOT,)
 if TEMPLATE_THEMES:
     for theme in reversed(TEMPLATE_THEMES):
         TEMPLATE_DIRS = (TEMPLATE_ROOT + '/themes/' + theme,) + TEMPLATE_DIRS
-#TEMPLATE_DIRS += TEMPLATE_ROOT
+else:
+    TEMPLATE_DIRS = (TEMPLATE_ROOT + '/themes/base',) + TEMPLATE_DIRS
 
 
 AUTH_PROFILE_MODULE = 'main.UserProfile'
