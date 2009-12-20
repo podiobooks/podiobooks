@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block headtitle %}All Categories - {{ site_name }}{% endblock %}
+
+{% block title %}All Categories{% endblock %}
+
+{% block content %}
+<p><a href="{% url home_page %}">Back to Home Page</a></p>
+<p><a href="{% url title_list %}">Title List</a></p>
+<div class="categories">
+<ul>
+  {% for category in category_list %} 
+  <li class="category_{{category.slug}}"><a href="{{category.get_absolute_url}}">{{ category.name }}</a> - {{ category.title_set.all.count }} titles</li>
+  {% endfor %}
+</ul>
+<p><a href="{% url title_list %}">Back to Title List</a> | <a href="/">Back to Home Page</a> </p>
+{% endblock %}
+
