@@ -14,7 +14,7 @@ PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
-# TEMPLATE_THEMES = ('tim1', 'legacy')
+# TEMPLATE_THEMES = ('tim1', 'legacy',)
 
 # Cache Settings
 # CACHE_BACKEND = 'memcached://127.0.0.1:11211/'
