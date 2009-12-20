@@ -9,7 +9,7 @@
 {% endblock %}
 <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/base.css" >
 <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/dojo/1.4/dijit/themes/tundra/tundra.css">
-{% block legacyincludes %}{% include "legacy/header_includes.html" %}{% endblock %}
+{% block legacyincludes %}{% include "header_includes.html" %}{% endblock %}
 {% if debug %}
 	<script type="text/javascript">
 		var isDebug = true;
@@ -37,7 +37,7 @@
 <body {% block bodyid %}id="home"{% endblock %}{% block bodyclass %}{% endblock %}">
 {% block sitedivopen %}<div id="site">{% endblock %}
 {% block header %}{% include "header.html" %}{% endblock %}
-{% block pagetitledivopen %}<div class="heading"><p>{% block title %}No Title Defined{% endblock %}</p><img src="{{ MEDIA_URL }}legacy/css/images/headingbookend.jpg" width="32" height="35" /></div>{% endblock %}
+{% block pagetitledivopen %}<div class="heading"><p>{% block title %}No Title Defined{% endblock %}</p><img src="{{ MEDIA_URL }}themes/legacy/css/images/headingbookend.jpg" width="32" height="35" /></div>{% endblock %}
 {% block contentdivopen %}<div id="content">{% endblock %}
 {% block content %}No Content Defined{% endblock %}
 {% block contentdivclose %}</div>{% endblock %}

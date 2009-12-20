@@ -47,9 +47,12 @@ ROOT_URLCONF = 'podiobooks.urls'
 # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
 # Always use forward slashes, even on Windows.
 # Don't forget to use absolute paths, not relative paths.
-TEMPLATE_DIRS = (PROJECT_PATH + '/templates')
-if TEMPLATE_THEME:
-    TEMPLATE_DIRS = (TEMPLATE_DIRS + '/themes/' + TEMPLATE_THEME, TEMPLATE_DIRS)
+TEMPLATE_ROOT = PROJECT_PATH + '/templates'
+TEMPLATE_DIRS = (TEMPLATE_ROOT,)
+if TEMPLATE_THEMES:
+    for theme in reversed(TEMPLATE_THEMES):
+        TEMPLATE_DIRS = (TEMPLATE_ROOT + '/themes/' + theme,) + TEMPLATE_DIRS
+#TEMPLATE_DIRS += TEMPLATE_ROOT
 
 
 AUTH_PROFILE_MODULE = 'main.UserProfile'
