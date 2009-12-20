@@ -1,42 +1,21 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <title>{% block headtitle %}{{ site_name }}{% endblock %}</title>
 {% block metatags %}
-<meta name="Keywords" content="audio books, audiobooks, books, novels, podcast, podcasting, podiobooks" /> 
-<meta name="Description" content="Free audio books delivered as podcasts. Subscribe for free to any book and start from chapter one. Podiobooks.com" />
+<meta name="Keywords" content="Base Keyword 1, Base Keyword 2" /> 
+<meta name="Description" content="Base Description" />
 {% endblock %}
+{% block basestyles %}
 <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/base.css" >
-<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/dojo/1.4/dijit/themes/tundra/tundra.css">
-{% if debug %}
-	<script type="text/javascript">
-		var isDebug = true;
-	</script>
-{% else %}
-	<script type="text/javascript">
-		var isDebug = false;
-	</script>
-{% endif %}
-<script type="text/javascript">
-	//This block is used to be able to bootstrap in the CDN and local stuff side by side
-	//It has to load before the call to the dojo js
-    djConfig={
-      parseOnLoad: true,
-      isDebug: isDebug,
-      baseUrl: "/",
-      modulePaths: { pbwidgets: "{{ MEDIA_URL }}/js/pbwidgets" }
-    };
-</script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/dojo/1.4/dojo/dojo.xd.js">
-</script>
+{% endblock %}
 {% block head %}{% endblock %}
 </head>
 <body {% block bodyid %}id="home"{% endblock %}{% block bodyclass %}{% endblock %}">
 {% block sitedivopen %}<div id="site">{% endblock %}
 {% block header %}{% include "header.html" %}{% endblock %}
-{% block pagetitledivopen %}<div class="heading"><p>{% block title %}No Title Defined{% endblock %}</p><img src="{{ MEDIA_URL }}themes/legacy/css/images/headingbookend.jpg" width="32" height="35" /></div>{% endblock %}
+{% block pagetitledivopen %}<div class="heading"><p>{% block title %}No Title Defined{% endblock %}</p>{% endblock %}
 {% block contentdivopen %}<div id="content">{% endblock %}
 {% block content %}No Content Defined{% endblock %}
 {% block contentdivclose %}</div>{% endblock %}
