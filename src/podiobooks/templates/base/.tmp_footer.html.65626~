@@ -1,0 +1,26 @@
+<!-- Footer --> 
+<div id="footer">
+	Text and Layout copyright &copy;2005-2009 Podiobooks.com. All rights reserved. See <a href="http://podiobooks.com/legal.php">legal notes</a> for audio file rights.
+	<script language="Javascript" type="text/javascript"> 
+		
+		<!-- // hide from old browsers
+	  
+		//variables
+		var user = "feedback"; 
+		var domain = "podiobooks.com"; 
+		var subject = "Podiobooks Feedback"; 
+		var bodytext = ""; 
+	  
+		//output
+		document.write('&nbsp;&nbsp;<a href=\"mailto:' + user + '@' + domain + '?subject=' + subject + '&body=' + bodytext + '\">'); 
+		document.write('Send Us Feedback</a>');
+		// -->
+	   
+		
+ 	</script> 
+&nbsp;&nbsp;<a href="http://www.podiobooks.com/blog/problem-tracking/">Report A Problem</a> 
+</div> 
+{% if debug %}
+<!-- STATS: Total: %(totTime).2f Python: %(pyTime).2f DB: %(dbTime).2f Queries: %(queries)d -->
+{% endif %}
+<!-- End Footer -->
