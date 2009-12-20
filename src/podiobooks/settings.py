@@ -48,6 +48,9 @@ ROOT_URLCONF = 'podiobooks.urls'
 # Always use forward slashes, even on Windows.
 # Don't forget to use absolute paths, not relative paths.
 TEMPLATE_DIRS = (PROJECT_PATH + '/templates')
+if TEMPLATE_THEME:
+    TEMPLATE_DIRS = (TEMPLATE_DIRS + '/themes/' + TEMPLATE_THEME, TEMPLATE_DIRS)
+
 
 AUTH_PROFILE_MODULE = 'main.UserProfile'
 
