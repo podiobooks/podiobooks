@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <title>Hello, Ajax world!</title>
+        <script type="text/javascript">
+            //This block is used to be able to bootstrap in the CDN and local stuff side by side
+            //It has to load before the call to the dojo js
+            djConfig = {
+                parseOnLoad: true,
+                isDebug: true,
+                baseUrl: "/",
+                modulePaths: {
+                    pbwidgets: "media/js/pbwidgets"
+                }
+            };
+        </script>
+        <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/dojo/1.4/dijit/themes/tundra/tundra.css">
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/dojo/1.4/dojo/dojo.xd.js" djConfig="parseOnLoad: true">
+        </script>
+        <script type="text/javascript">
+            dojo.require("pbwidgets.book_shelf.BookShelf");
+        </script>
+    </head>
+    <body class="tundra">
+        <button id="previous" onClick="dijit.byId('stackContainer').back()" dojoType="dijit.form.Button">
+            &lt;
+        </button>
+        <span dojoType="dijit.layout.StackController" containerId="stackContainer"></span>
+        <button id="next" onClick="dijit.byId('stackContainer').forward()" dojoType="dijit.form.Button">
+            &gt;
+        </button>
+        <div dojoType="pbwidgets.book_shelf.BookShelf" id="stackContainer">
+            <div dojoType="dijit.layout.ContentPane" title="1">
+                Here is the first Row of Books.
+            </div>
+            <div dojoType="dijit.layout.ContentPane" title="2">
+                Her eis the second Row of Books.
+            </div>
+        </div>
+    </body>
+</html>
