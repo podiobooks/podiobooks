@@ -1,30 +1,31 @@
 .box {
-	width: 400px;
+	width: 736px;
+	height: 238px;
 }
 
 .box div.topleft {
 	display: block;
-	background: url("../images/box-bg.png") top left no-repeat white;
-	padding: 25px 0 0 7px;
+	background: url("../images/pb-shelfbox-light.png") top left no-repeat white;
+	padding: 15px 0 0 1px;
 }
 
 .box div.topright {
 	display: block;
-	background: url("../images/box-bg.png") top right no-repeat white;
-	padding: 25px 17px 0 0px;
-	margin: -25px 0 0 20px;
+	background: url("../images/pb-shelfbox-light.png") top right no-repeat white;
+	padding: 15px 17px 0 0px;
+	margin: -15px 0 0 20px;
 }
 
 .box div.bottomleft {
 	display: block;
 	height: 39px;
 	margin-top: -20px;
-	background: url("../images/box-bg.png") bottom left no-repeat white;
+	background: url("../images/pb-shelfbox-light.png") bottom left no-repeat white;
 }
 
 .box div.bottomright {
 	display: block;
-	background: url("../images/box-bg.png") bottom right no-repeat white;
+	background: url("../images/pb-shelfbox-light.png") bottom right no-repeat white;
 	height: 39px;
 	margin-left: 20px;
 }
