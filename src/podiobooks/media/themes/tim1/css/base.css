@@ -1,31 +1,90 @@
-.box {
-	width: 736px;
-	height: 238px;
+.pb-shelf {
+	position: relative;
+	height: 226px;
+	width: 760px;
+	margin-bottom: 10px;
+	font-family: Verdana, Arial, sans-serif;
+	font-size: 11px;
+	color: #000;
 }
 
-.box div.topleft {
-	display: block;
-	background: url("../images/pb-shelfbox-light.png") top left no-repeat white;
-	padding: 15px 0 0 1px;
+.pb-shelf-left-arrow {
+	float: left;
+	height: 226px;
+	width: 20px;
+	background: url(../images/pb-shelfbox-light-ends.png) bottom left no-repeat;
+	cursor: pointer;
 }
 
-.box div.topright {
-	display: block;
-	background: url("../images/pb-shelfbox-light.png") top right no-repeat white;
-	padding: 15px 17px 0 0px;
-	margin: -15px 0 0 20px;
+.pb-shelf-middle {
+	float: left;
+	height: 226px;
+	width: 720px;
+	padding-top: 6px;
+	background: url(../images/pb-shelfbox-light-middle.png) repeat-x;
 }
 
-.box div.bottomleft {
-	display: block;
-	height: 39px;
-	margin-top: -20px;
-	background: url("../images/pb-shelfbox-light.png") bottom left no-repeat white;
+.pb-shelf-right-arrow {
+	float: left;
+	height: 226px;
+	width: 20px;
+	background: url(../images/pb-shelfbox-light-ends.png) bottom right no-repeat;
+	cursor: pointer;
 }
 
-.box div.bottomright {
-	display: block;
-	background: url("../images/pb-shelfbox-light.png") bottom right no-repeat white;
-	height: 39px;
-	margin-left: 20px;
+.pb-shelf-titlebar {
+	margin: 0 0 12px 15px;
+	font-size: 24px;
+	color: #fff;
+	vertical-align: top;
+	font-stretch: condensed;
+}
+
+.pb-shelf-item {
+	position: relative;
+	width: 220px;
+	height: 160px;
+	float: left;
+	margin: 4px 0 0 15px;
+	background: url(../images/pb-shelf-item-frame.png) no-repeat;
+}
+
+.pb-shelf-item-cover-image {
+	position:absolute;
+	top: 13px;
+	left: 13px;
+}
+
+.pb-shelf-item-preview-icon {
+	position: absolute;
+	top: 125px;
+	left: 13px;
+}
+
+.pb-shelf-item-text {
+	position: absolute;
+	top: 13px;
+	left: 93px; 
+	margin-right: 10px;
+}
+
+.pb-shelf-item-title {
+	font-size: 12px;
+	color: #0054a6;
+	font-weight: bold;
+	font-stretch: condensed;
+	line-height: 90%;
+}
+
+.pb-shelf-item-contributors {
+	margin-top: 4px;
+}
+
+.pb-shelf-item-categories {
+	margin-top: 2px;
+}
+
+.pb-shelf-item-tags {
+	margin-top: 6px;
+	font-size: 10px;
 }
