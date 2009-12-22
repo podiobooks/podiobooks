@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>{% block headtitle %}{{ site_name }}{% endblock %}</title>
+{% block metatags %}
+<meta name="Keywords" content="audio books, audiobooks, books, novels, podcast, podcasting, podiobooks" /> 
+<meta name="Description" content="Free audio books delivered as podcasts. Subscribe for free to any book and start from chapter one. Podiobooks.com" />
+{% endblock %}
+<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/clear.css" >
+<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}themes/tim1/css/base.css" >
+<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/dojo/1.4/dijit/themes/tundra/tundra.css">
+{% if debug %}
+	<script type="text/javascript">
+		var isDebug = true;
+	</script>
+{% else %}
+	<script type="text/javascript">
+		var isDebug = false;
+	</script>
+{% endif %}
+<script type="text/javascript">
+	//This block is used to be able to bootstrap in the CDN and local stuff side by side
+	//It has to load before the call to the dojo js
+    djConfig={
+      parseOnLoad: true,
+      isDebug: isDebug,
+      baseUrl: "/",
+      modulePaths: { pbwidgets: "{{ MEDIA_URL }}/js/pbwidgets" }
+    };
+</script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/dojo/1.4/dojo/dojo.xd.js">
+</script>
+{% block head %}{% endblock %}
+</head>
+<body {% block bodyid %}{% endblock %}{% block bodyclass %}{% endblock %}">
+{% block sitedivopen %}<div id="site">{% endblock %}
+{% block header %}{% include "header.html" %}{% endblock %}
+{% block pagetitledivopen %}<div class="heading"><p>{% block title %}No Title Defined{% endblock %}</p>{% endblock %}
+{% block contentdivopen %}<div id="content">{% endblock %}
+{% block content %}No Content Defined{% endblock %}
+{% block contentdivclose %}</div>{% endblock %}
+{% block footer %}{% include "footer.html" %}{% endblock %}
+{% block sitedivclose %}</div>{% endblock %}
+</body>
+</html>
