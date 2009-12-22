@@ -1,6 +1,7 @@
+{% load title_templatetags %}
 <html>
     <head>
-        <title>Hello, Ajax world!</title>
+        <title>Podiobooks JS/AJAX Testing Page</title>
         <script type="text/javascript">
             //This block is used to be able to bootstrap in the CDN and local stuff side by side
             //It has to load before the call to the dojo js
@@ -30,10 +31,10 @@
         </button>
         <div dojoType="pbwidgets.book_shelf.BookShelf" id="stackContainer">
             <div dojoType="dijit.layout.ContentPane" title="1">
-                Here is the first Row of Books.
+                Here is the first row of Books.
             </div>
             <div dojoType="dijit.layout.ContentPane" title="2">
-                Her eis the second Row of Books.
+                Here is the second Row of Books.
             </div>
         </div>
     </body>
