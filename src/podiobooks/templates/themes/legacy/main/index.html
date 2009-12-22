@@ -91,7 +91,7 @@
 </div>
 <div id="books">
     <ul>
-        {% for title in titles %}
+        {% for title in title_list %}
         <li>
             <table>
                 <tr>
@@ -110,7 +110,7 @@
 						{% endif %}
                         <br/>
                         {% if title.categories.all %}<i>{% for category in title.categories.all %}
-                        {{ category.name }}{% if not forloop.last %},{% endif %}</li>
+                        	{{ category.name }}{% if not forloop.last %},{% endif %}</li>
                         {% endfor %}
                     </i>
                     {% endif %}</span>
