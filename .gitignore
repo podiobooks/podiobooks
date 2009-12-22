@@ -19,3 +19,5 @@ local_settings.py
 settings_local.py
 .pydevproject
 .pydevproject.bak
+.DS_Store
+.tmp_*
