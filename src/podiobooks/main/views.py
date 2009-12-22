@@ -29,10 +29,10 @@ def index(request):
     
     template : main/templates/index.html
     """
-    titles = cache.get('homepage_title_objects')
-    if (titles == None):
-        titles = Title.objects.filter(display_on_homepage = True)[:5]
-        cache.set('homepage_title_objects', titles, 240)
+    title_list = cache.get('homepage_title_objects')
+    if (title_list == None):
+        title_list = Title.objects.filter(display_on_homepage = True)[:5]
+        cache.set('homepage_title_objects', title_list, 240)
     
     blog_feed_entries = cache.get('homepage_blog_feed_entries')
     if (blog_feed_entries == None):
@@ -40,7 +40,7 @@ def index(request):
         blog_feed_entries = blog_feed.entries[:20]
         cache.set('homepage_blog_feed_entries', blog_feed_entries, 240)
         
-    response_data = {'titles':titles, 'blog_feed_entries':blog_feed_entries, 'categoryChoiceForm':CategoryChoiceForm()}
+    response_data = {'title_list':title_list, 'blog_feed_entries':blog_feed_entries, 'categoryChoiceForm':CategoryChoiceForm()}
     
     return render_to_response('main/index.html', response_data, context_instance=RequestContext(request))
 
