@@ -9,7 +9,6 @@ MANAGERS = ADMINS
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.load_template_source',
-    'django.template.loaders.app_directories.load_template_source',
 )
 
 #List of callables that add their data to each template
