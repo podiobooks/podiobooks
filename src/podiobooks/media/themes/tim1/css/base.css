@@ -1,7 +1,5 @@
 .pb-shelf {
 	position: relative;
-	height: 226px;
-	width: 760px;
 	margin-bottom: 10px;
 	font-family: Verdana, Arial, sans-serif;
 	font-size: 11px;
@@ -30,6 +28,40 @@
 	width: 20px;
 	background: url(../images/pb-shelfbox-light-ends.png) bottom right no-repeat;
 	cursor: pointer;
+}
+
+.pb-shelf-controller {
+	height: 10px;
+	float: right;
+}
+
+.pb-shelf-controller .dijitToggleButton {
+	border: none;
+	background-color: transparent;
+	font-size: 4px;
+	line-height: 10px;
+	clear: all;
+}
+
+.pb-shelf-controller .dijitButtonNode {
+	border: none;
+}
+
+.pb-shelf-controller .dijitButtonContents {
+	background-color: transparent;
+	border: none;
+}
+
+.pb-shelf-controller .pb-shelf-controller-icon {
+	background-image: url(../images/pb-shelf-controller-icons.png); 
+	background-repeat: no-repeat;
+	width: 10px;
+	height: 10px;
+	background-position: right;
+}
+
+.pb-shelf-controller .dijitToggleButtonChecked .pb-shelf-controller-icon {
+	background-position: left;
 }
 
 .pb-shelf-titlebar {
@@ -87,4 +119,38 @@
 .pb-shelf-item-tags {
 	margin-top: 6px;
 	font-size: 10px;
+}
+
+.pb-feature-shelf {
+	position: relative;
+	height: 230px;
+	width: 970px;
+	margin-bottom: 10px;
+	font-family: Verdana, Arial, sans-serif;
+	font-size: 11px;
+	color: #000;
+}
+
+.pb-feature-shelf-left-arrow {
+	float: left;
+	height: 230px;
+	width: 20px;
+	background: url(../images/pb-shelfbox-dark-ends.png) bottom left no-repeat;
+	cursor: pointer;
+}
+
+.pb-feature-shelf-middle {
+	float: left;
+	height: 230px;
+	width:  955px;
+	padding-top: 6px;
+	background: url(../images/pb-shelfbox-dark-middle.png) repeat-x;
+}
+
+.pb-feature-shelf-right-arrow {
+	float: left;
+	height: 230px;
+	width: 20px;
+	background: url(../images/pb-shelfbox-dark-ends.png) bottom right no-repeat;
+	cursor: pointer;
 }
