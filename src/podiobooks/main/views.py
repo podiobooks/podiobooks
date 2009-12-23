@@ -2,7 +2,7 @@ from django import forms
 from django.core.cache import cache
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from podiobooks.main.models import Title, Category
+from podiobooks.main.models import Title, Category, Contributor
 from podiobooks import settings
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
@@ -31,8 +31,13 @@ def index(request):
     """
     title_list = cache.get('homepage_title_objects')
     if (title_list == None):
-        title_list = Title.objects.filter(display_on_homepage = True)[:5]
+        title_list = Title.objects.filter(display_on_homepage = True)[:8]
         cache.set('homepage_title_objects', title_list, 240)
+        
+    contributor_list = cache.get('homepage_author_title_objects')
+    if (contributor_list == None):
+        contributor_list = Contributor.objects.select_related().get(display_name='Mur Lafferty')
+        cache.set('homepage_author_title_objects', contributor_list, 240)
     
     blog_feed_entries = cache.get('homepage_blog_feed_entries')
     if (blog_feed_entries == None):
@@ -40,7 +45,7 @@ def index(request):
         blog_feed_entries = blog_feed.entries[:20]
         cache.set('homepage_blog_feed_entries', blog_feed_entries, 240)
         
-    response_data = {'title_list':title_list, 'blog_feed_entries':blog_feed_entries, 'categoryChoiceForm':CategoryChoiceForm()}
+    response_data = {'contributor_list':contributor_list, 'title_list':title_list, 'blog_feed_entries':blog_feed_entries, 'categoryChoiceForm':CategoryChoiceForm()}
     
     return render_to_response('main/index.html', response_data, context_instance=RequestContext(request))
 
