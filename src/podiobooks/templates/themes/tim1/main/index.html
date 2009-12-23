@@ -56,7 +56,6 @@
     </div>
 </div>
 <br style="clear:both;">
-Test:<span class="pb-shelf-controller" dojoType="dijit.layout.StackController" containerId="authorShelf"></span>
 <div class="pb-shelf">
     <div class="pb-shelf-left-arrow" onclick="dijit.byId('authorShelf').forward();">
     </div>
@@ -69,7 +68,7 @@ Test:<span class="pb-shelf-controller" dojoType="dijit.layout.StackController" c
         {% for title in contributor_list.title_set.all|slice:":6" %}
         {% if forloop.first %}
         <div dojoType="pbwidgets.book_shelf.BookShelf" id="authorShelf">
-            <div dojoType="dijit.layout.ContentPane" title="1">
+            <div dojoType="dijit.layout.ContentPane" showLabel="false" iconClass="pb-shelf-controller-icon" label="Author Bookshelf, Page 1">
                 {% endif %}
                 <div class="pb-shelf-item">
                     <img class="pb-shelf-item-cover-image" src="{{ MEDIA_URL }}images/covers/{{ title.cover }}" width="67" height="99"/><img class="pb-shelf-item-preview-icon" src="{{ MEDIA_URL }}themes/tim1/images/pb-preview-icon.png" width="63" height="19" onlick="Preview Placeholder"/>
@@ -90,7 +89,7 @@ Test:<span class="pb-shelf-controller" dojoType="dijit.layout.StackController" c
                 </div>
                 {% ifequal forloop.counter 3 %}
             </div>
-            <div dojoType="dijit.layout.ContentPane" title="2" style="opacity:0">
+            <div dojoType="dijit.layout.ContentPane" style="opacity:0" showLabel="false" iconClass="pb-shelf-controller-icon" label="Author Bookshelf, Page 1">
                 {% endifequal %}
                 {% if forloop.last  %}
             </div>
