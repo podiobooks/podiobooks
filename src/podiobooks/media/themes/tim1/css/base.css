@@ -1,3 +1,14 @@
+#pb-header-background {
+	background: url(../images/pb-header.jpg) no-repeat;
+	height: 219px;
+	width: 995px;
+}
+
+.pb-body {
+	background: url(../images/pb-background.jpg) repeat-x #fff;
+	margin: 0 30px 0 30px;
+}
+
 .pb-shelf {
 	position: relative;
 	margin-bottom: 10px;
