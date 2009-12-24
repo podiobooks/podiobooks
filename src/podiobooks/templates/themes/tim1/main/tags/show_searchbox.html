@@ -1,0 +1,21 @@
+<div id="menuBarSearchform" style="display:inline;float:right;">
+    <form action="{% url title_search_redirect %}" method="POST" style="display:inline;">
+        <label for="id_keywords" style="font-weight:bold;">
+            Search for
+        </label>
+        {{ titleQuickSearchForm.keywords }}
+    </form>
+    <form action="{% url category_redirect %}" method="POST" style="display:inline;" id="pb-category-choice-form">
+        <label for="id_category" style="font-weight:bold;">
+            or Browse
+        </label>
+        {{ categoryChoiceForm.category }}
+    </form>
+    <script type="text/javascript">
+        dojo.addOnLoad(function(){
+            dojo.connect(dojo.byId("id_category"), "onchange", function(event) {
+				dojo.byId("pb-category-choice-form").submit();
+			});
+        });
+    </script>
+</div>
