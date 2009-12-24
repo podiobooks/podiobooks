@@ -20,6 +20,9 @@ class TitleSearchForm(forms.Form):
     keywords = forms.CharField()
     include_adult = forms.BooleanField(required=False, initial=False)
     completed_only = forms.BooleanField(required=False, initial=False)
+    
+class TitleQuickSearchForm(forms.Form):
+    keywords = forms.CharField()
 
 def index(request):
     """
