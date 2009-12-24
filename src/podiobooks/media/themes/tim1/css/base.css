@@ -4,28 +4,40 @@
 	width: 995px;
 }
 
-#pb-footer-background {
-	background: url(../images/pb-footer-background.jpg) repeat-x #fff;
-	height: 100px;
-	width: 995px;
+#pb-header-menubar {
+	font-size: 14px;
+	padding: 178px 20px; 0 20px;
+	text-align: left;
 }
 
 #pb-footer-text {
 	font-family: Verdana, Arial, sans-serif;
 	font-size: 11px;
-	color: #3a79b7;
 	width: 995px;
 	text-align: center;
-	line-height: 18px;
+	line-height: 20px;
 	margin-top: 20px;
+}
+
+.pb-footer-text-important {
+	font-size: 12px;
+	font-weight: bold;
 }
 
 .pb-body {
 	background: url(../images/pb-background.jpg) repeat-x #fff;
 	margin: 0px auto;
 	font-family: Verdana, Arial, sans-serif;
-	color: #3a79b7;
 	width: 995px;
+	color: #464646;
+}
+
+.pb-body a {
+	color: #0054a6;
+}
+
+.pb-body a:hover {
+	color: #000;
 }
 
 .pb-shelf {
@@ -33,7 +45,6 @@
 	margin-bottom: 10px;
 	font-family: Verdana, Arial, sans-serif;
 	font-size: 11px;
-	color: #000;
 	text-align: left;
 }
 
@@ -59,6 +70,14 @@
 	width: 20px;
 	background: url(../images/pb-shelfbox-light-ends.png) bottom right no-repeat;
 	cursor: pointer;
+}
+
+.pb-shelf-titlebar {
+	margin: 0 0 11px 15px;
+	font-size: 22px;
+	color: #fff;
+	vertical-align: top;
+	font-stretch: condensed;
 }
 
 .pb-shelf-controller {
@@ -93,14 +112,6 @@
 
 .pb-shelf-controller .dijitToggleButtonChecked .pb-shelf-controller-icon {
 	background-position: left;
-}
-
-.pb-shelf-titlebar {
-	margin: 0 0 12px 15px;
-	font-size: 24px;
-	color: #fff;
-	vertical-align: top;
-	font-stretch: condensed;
 }
 
 .pb-shelf-item {

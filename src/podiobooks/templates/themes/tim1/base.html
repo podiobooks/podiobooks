@@ -34,12 +34,10 @@
 {% block head %}{% endblock %}
 </head>
 <body {% block bodyid %}{% endblock %}{% block bodyclass %}class="pb-body"{% endblock %}">
-{% block sitedivopen %}<div id="site">{% endblock %}
 {% block header %}{% include "header.html" %}{% endblock %}
 {% block contentdivopen %}<div id="content">{% endblock %}
 {% block content %}No Content Defined{% endblock %}
 {% block contentdivclose %}</div>{% endblock %}
 {% block footer %}{% include "footer.html" %}{% endblock %}
-{% block sitedivclose %}</div>{% endblock %}
 </body>
 </html>
