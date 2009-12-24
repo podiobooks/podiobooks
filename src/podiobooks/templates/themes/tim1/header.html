@@ -1,5 +1,14 @@
-<!-- Header - Logo and Navigation Bar --> 
-<div id="header"> 
-	<div id="pb-header-background" style="text-align:center;"></div>
+{% load main_templatetags %}
+<!-- Header - Logo and Navigation Bar -->
+<div id="header">
+    <div id="pb-header-background">
+        <div id="pb-header-menubar">
+            <a href="#">FAQ</a>
+            | <a href="#">Authors</a>
+            | <a href="#">Blog</a>
+            | <a href="#">Community</a>
+			{% show_searchbox %}
+        </div>
+    </div>
 </div>
-<!-- End Header - Logo and Navigation Bar --> 
+<!-- End Header - Logo and Navigation Bar -->
