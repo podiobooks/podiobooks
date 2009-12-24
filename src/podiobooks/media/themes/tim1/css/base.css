@@ -15,7 +15,7 @@
 	font-size: 11px;
 	width: 995px;
 	text-align: center;
-	line-height: 20px;
+	line-height: 2.0;
 	margin-top: 20px;
 }
 
@@ -81,25 +81,36 @@
 }
 
 .pb-shelf-controller {
-	height: 10px;
 	float: right;
+	margin: -4px 3px 3px 0;
+	vertical-align: top;
 }
 
 .pb-shelf-controller .dijitToggleButton {
 	border: none;
 	background-color: transparent;
-	font-size: 4px;
-	line-height: 10px;
 	clear: all;
+	margin: 0 0 0 4px;
+	vertical-align: top;
 }
 
 .pb-shelf-controller .dijitButtonNode {
 	border: none;
+	margin: 0 0 0 0;
+	width: 10px;
+	height: 10px;
+	vertical-align: top;
 }
 
 .pb-shelf-controller .dijitButtonContents {
-	background-color: transparent;
 	border: none;
+	background: transparent;
+	vertical-align: top;
+}
+
+.pb-shelf-controller .dijitButtonContents button::-moz-focus-inner {
+	padding: 0;
+	border: none; 
 }
 
 .pb-shelf-controller .pb-shelf-controller-icon {
@@ -149,7 +160,7 @@
 	color: #0054a6;
 	font-weight: bold;
 	font-stretch: condensed;
-	line-height: 90%;
+	line-height: 0.9;
 }
 
 .pb-shelf-item-contributors {
