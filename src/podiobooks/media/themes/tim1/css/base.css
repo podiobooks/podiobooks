@@ -4,9 +4,28 @@
 	width: 995px;
 }
 
+#pb-footer-background {
+	background: url(../images/pb-footer-background.jpg) repeat-x #fff;
+	height: 100px;
+	width: 995px;
+}
+
+#pb-footer-text {
+	font-family: Verdana, Arial, sans-serif;
+	font-size: 11px;
+	color: #3a79b7;
+	width: 995px;
+	text-align: center;
+	line-height: 18px;
+	margin-top: 20px;
+}
+
 .pb-body {
 	background: url(../images/pb-background.jpg) repeat-x #fff;
-	margin: 0 30px 0 30px;
+	margin: 0px auto;
+	font-family: Verdana, Arial, sans-serif;
+	color: #3a79b7;
+	width: 995px;
 }
 
 .pb-shelf {
@@ -15,6 +34,7 @@
 	font-family: Verdana, Arial, sans-serif;
 	font-size: 11px;
 	color: #000;
+	text-align: left;
 }
 
 .pb-shelf-left-arrow {
@@ -109,6 +129,8 @@
 	top: 13px;
 	left: 93px; 
 	margin-right: 10px;
+	white-space: normal;
+	text-align: left;
 }
 
 .pb-shelf-item-title {
