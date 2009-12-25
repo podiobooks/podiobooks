@@ -21,7 +21,7 @@ def show_shelf(shelf_id, shelf_title, title_list, dropdown_values, dropdown_url,
             'dropdown_url': dropdown_url,
             'base_css_class': base_css_class,
             'shelf_title_width': shelf_title_width,
-            'MAIN_TEMPLATE_THEME': THEME_MEDIA_URL,
+            'THEME_MEDIA_URL': THEME_MEDIA_URL,
             'MEDIA_URL': MEDIA_URL
             }
 
