@@ -17,7 +17,7 @@ class CategoryChoiceForm(forms.Form):
     category = forms.ChoiceField(choices=categories)
     
 class TitleSearchForm(forms.Form):
-    keywords = forms.CharField()
+    keywords = forms.CharField(label="Search for")
     include_adult = forms.BooleanField(required=False, initial=False)
     completed_only = forms.BooleanField(required=False, initial=False)
     
