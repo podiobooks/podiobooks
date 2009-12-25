@@ -1,0 +1,51 @@
+<!-- Begin {{ shelf_title }} Shelf -->{% load title_templatetags %}
+<script type="text/javascript">
+    dojo.require("pbwidgets.book_shelf.BookShelf");
+</script>
+<div class="{{ base_css_class }}">
+    <div class="pb-shelf-left-arrow" onclick="dijit.byId('featureShelf').forward();">
+    </div>
+    <div class="pb-shelf-middle">
+        <div class="pb-shelf-titlebar">
+            {{ shelf_title }}<span class="pb-shelf-controller" dojoType="dijit.layout.StackController" containerId="{{ shelf_id }}"></span>
+        </div>
+        {% if title_list %}
+        {% for title in title_list %}
+        {% if forloop.first %}
+        <div dojoType="pbwidgets.book_shelf.BookShelf" id="{{ shelf_id }}" doLayout="false">
+            <div dojoType="dijit.layout.ContentPane" showLabel="false" iconClass="pb-shelf-controller-icon" label="{{ shelf_title }} Shelf, Page 1">
+                {% endif %}
+                <div class="pb-shelf-item">
+                    <img class="pb-shelf-item-cover-image" src="{{ MEDIA_URL }}images/covers/{{ title.cover }}" width="67" height="99"/><img class="pb-shelf-item-preview-icon" src="{{ THEME_MEDIA_URL }}images/pb-preview-icon.png" width="63" height="19" onlick="Preview Placeholder"/>
+                    <div class="pb-shelf-item-text">
+                        <p class="pb-shelf-item-title">
+                            {{ title.name|truncatewords_html:8 }}
+                        </p>
+                        <p class="pb-shelf-item-contributors">
+                            {% show_contributors title %}
+                        </p>
+                        <p class="pb-shelf-item-categories">
+                            in <span style="color: #0054a6">{% show_categories title %}</span>
+                        </p>
+                        <p class="pb-shelf-item-tags">
+                            {% autoescape off %}{{ title.description|striptags|truncatewords_html:15 }}{% endautoescape %}
+                        </p>
+                    </div>
+                </div>
+                {% ifequal forloop.counter shelf_title_width %}
+            </div>
+            <div dojoType="dijit.layout.ContentPane" style="opacity:0" showLabel="false" iconClass="pb-shelf-controller-icon" label="{{ shelf_title }} Shelf, Page 2">
+                {% endifequal %}
+                {% if forloop.last  %}
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+    </div>
+    <div class="pb-shelf-right-arrow" onclick="dijit.byId('{{ shelf_id }}').forward();">
+    </div>
+</div>
+<div class="pb-float-clear">
+</div>
+<!-- End {{ shelf_title }} Shelf -->

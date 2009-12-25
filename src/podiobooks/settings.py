@@ -47,10 +47,12 @@ ROOT_URLCONF = 'podiobooks.urls'
 # Don't forget to use absolute paths, not relative paths.
 TEMPLATE_ROOT = PROJECT_PATH + '/templates'
 TEMPLATE_DIRS = (TEMPLATE_ROOT, TEMPLATE_ROOT + '/base')
+MAIN_TEMPLATE_THEME = 'base'
 if TEMPLATE_THEMES:
     for theme in reversed(TEMPLATE_THEMES):
         TEMPLATE_DIRS = (TEMPLATE_ROOT + '/themes/' + theme,) + TEMPLATE_DIRS
-
+    MAIN_TEMPLATE_THEME = TEMPLATE_THEMES[0]
+THEME_MEDIA_URL = MEDIA_URL +'themes/' + MAIN_TEMPLATE_THEME
 
 AUTH_PROFILE_MODULE = 'main.UserProfile'
 
