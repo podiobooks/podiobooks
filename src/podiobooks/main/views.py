@@ -37,10 +37,11 @@ def index(request):
         title_list = Title.objects.filter(display_on_homepage = True)[:8]
         cache.set('homepage_title_objects', title_list, 240)
         
-    contributor_list = cache.get('homepage_author_title_objects')
-    if (contributor_list == None):
-        contributor_list = Contributor.objects.select_related().get(display_name='Mur Lafferty')
-        cache.set('homepage_author_title_objects', contributor_list, 240)
+    contributor_title_list = cache.get('homepage_author_title_objects')
+    if (contributor_title_list == None):
+        contributor = Contributor.objects.select_related().get(display_name='Mur Lafferty')
+        contributor_title_list = contributor.title_set.order_by('-date_updated', 'name').all()[:6]
+        cache.set('homepage_author_title_objects', contributor_title_list, 240)
     
     blog_feed_entries = cache.get('homepage_blog_feed_entries')
     if (blog_feed_entries == None):
@@ -48,7 +49,7 @@ def index(request):
         blog_feed_entries = blog_feed.entries[:20]
         cache.set('homepage_blog_feed_entries', blog_feed_entries, 240)
         
-    response_data = {'contributor_list':contributor_list, 'title_list':title_list, 'blog_feed_entries':blog_feed_entries, 'categoryChoiceForm':CategoryChoiceForm()}
+    response_data = {'contributor_title_list':contributor_title_list, 'title_list':title_list, 'blog_feed_entries':blog_feed_entries, 'categoryChoiceForm':CategoryChoiceForm()}
     
     return render_to_response('main/index.html', response_data, context_instance=RequestContext(request))
 
