@@ -82,7 +82,7 @@
 
 .pb-shelf-controller {
 	float: right;
-	margin: -4px 3px 3px 0;
+	margin: 0 0 0 0;
 	vertical-align: top;
 }
 
@@ -90,7 +90,7 @@
 	border: none;
 	background-color: transparent;
 	clear: all;
-	margin: 0 0 0 4px;
+	margin: 5px 0 0 4px;
 	vertical-align: top;
 }
 
@@ -106,9 +106,19 @@
 	border: none;
 	background: transparent;
 	vertical-align: top;
+	width: 10px;
+	height: 10px;
 }
 
-.pb-shelf-controller .dijitButtonContents button::-moz-focus-inner {
+.pb-shelf-controller .dijitButtonContents button {
+	border: none;
+	background: transparent;
+	vertical-align: top;
+	width: 10px;
+	height: 10px;
+}
+
+.pb-shelf-controller .dijitButtonNode button::-moz-focus-inner {
 	padding: 0;
 	border: none; 
 }
@@ -119,6 +129,7 @@
 	width: 10px;
 	height: 10px;
 	background-position: right;
+	vertical-align: top;
 }
 
 .pb-shelf-controller .dijitToggleButtonChecked .pb-shelf-controller-icon {
