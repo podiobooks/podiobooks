@@ -34,7 +34,8 @@
 .pb-body {
 	background: url(../images/pb-background.jpg) repeat-x #fff;
 	margin: 0px auto;
-	font-family: "lemonde-sans-1","lemonde-sans-2","Verdana","Arial",sans-serif;
+	font-family: "ff-dax-condensed-web-pro-1","ff-dax-condensed-web-pro-2","Verdana","Arial",sans-serif;
+	#font-family: "lemonde-sans-1","lemonde-sans-2","Verdana","Arial",sans-serif;
 	width: 995px;
 	color: #464646;
 }
