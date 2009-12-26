@@ -34,7 +34,7 @@
                 </div>
                 {% ifequal forloop.counter shelf_title_width %}
             </div>
-            <div dojoType="dijit.layout.ContentPane" style="opacity:0" showLabel="false" iconClass="pb-shelf-controller-icon" label="{{ shelf_title }} Shelf, Page 2">
+            <div dojoType="dijit.layout.ContentPane" class="dijitHidden" style="opacity:0" showLabel="false" iconClass="pb-shelf-controller-icon" label="{{ shelf_title }} Shelf, Page 2">
                 {% endifequal %}
                 {% if forloop.last  %}
             </div>
