@@ -52,6 +52,7 @@
 	margin-bottom: 10px;
 	font-size: 11px;
 	text-align: left;
+	overflow: hidden;
 }
 
 .pb-shelf-left-arrow {
@@ -66,7 +67,6 @@
 	float: left;
 	height: 226px;
 	width: 720px;
-	padding-top: 6px;
 	background: url(../images/pb-shelfbox-light-middle.png) repeat-x;
 }
 
@@ -79,7 +79,7 @@
 }
 
 .pb-shelf-titlebar {
-	margin: 0 0 11px 15px;
+	margin: 7px 0 15px 15px;
 	font-size: 22px;
 	color: #fff;
 	vertical-align: top;
@@ -128,6 +128,11 @@
 	border: none; 
 }
 
+.pb-shelf-container {
+	position: relative;
+	height: 164px;
+}
+
 .pb-shelf-controller .pb-shelf-controller-icon {
 	background-image: url(../images/pb-shelf-controller-icons.png); 
 	background-repeat: no-repeat;
@@ -139,6 +144,12 @@
 
 .pb-shelf-controller .dijitToggleButtonChecked .pb-shelf-controller-icon {
 	background-position: left;
+}
+
+.pb-shelf-pane {
+	position: absolute;
+	height: 164px;
+	overflow: hidden !important;
 }
 
 .pb-shelf-item {
@@ -157,9 +168,12 @@
 }
 
 .pb-shelf-item-preview-icon {
+	background: url(../images/pb-preview-icon.png) no-repeat;
 	position: absolute;
 	top: 125px;
 	left: 13px;
+	height: 19px;
+	width: 63px;
 }
 
 .pb-shelf-item-text {
@@ -176,7 +190,7 @@
 	color: #0054a6;
 	font-weight: bold;
 	font-stretch: condensed;
-	line-height: 0.9;
+	line-height: 0.95;
 }
 
 .pb-shelf-item-contributors {
@@ -210,7 +224,6 @@
 .pb-feature-shelf .pb-shelf-middle {
 	height: 230px;
 	width:  955px;
-	padding-top: 6px;
 	background: url(../images/pb-shelfbox-dark-middle.png) repeat-x;
 }
 
