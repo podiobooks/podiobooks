@@ -34,13 +34,13 @@ def index(request):
     """
     title_list = cache.get('homepage_title_objects')
     if (title_list == None):
-        title_list = Title.objects.filter(display_on_homepage = True)[:8]
+        title_list = Title.objects.filter(display_on_homepage = True)[:16]
         cache.set('homepage_title_objects', title_list, 240)
         
     contributor_title_list = cache.get('homepage_author_title_objects')
     if (contributor_title_list == None):
         contributor = Contributor.objects.select_related().get(display_name='Mur Lafferty')
-        contributor_title_list = contributor.title_set.order_by('-date_updated', 'name').all()[:6]
+        contributor_title_list = contributor.title_set.order_by('-date_updated', 'name').all()[:9]
         cache.set('homepage_author_title_objects', contributor_title_list, 240)
     
     blog_feed_entries = cache.get('homepage_blog_feed_entries')
