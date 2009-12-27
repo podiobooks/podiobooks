@@ -9,72 +9,25 @@ dojo.require("dojo.fx.easing");
 dojo.declare("pbwidgets.book_shelf.BookShelf",
 	[dijit.layout.StackContainer,dijit._Templated],
 	{
-	// summary: A Container that turns its Layout Children into a single Pane and transitions between states
-	//	onHover of the button
-	//
-
 	// duration: Integer
 	//	used for Fade and Slide RadioGroup's, the duration to run the transition animation. does not affect anything
 	//	in default RadioGroup
 	duration: 750,
-
-	// hasButtons: Boolean
-	//	toggles internal button making on or off
-	hasButtons: false,
-
-	// buttonClass: String
-	//		The full declared className of the Button widget to use for hasButtons
-	buttonClass: "pbwidgets.book_shelf._BookShelfButton",
 	
 	// templateString: String
 	//	the template for our container
-	templateString: '<div class="dojoxRadioGroup">'
-			+' 	<div dojoAttachPoint="buttonHolder" style="display:none;">'
-			+'		<table class="dojoxRadioButtons"><tbody><tr class="dojoxRadioButtonRow" dojoAttachPoint="buttonNode"></tr></tbody></table>'
-			+'	</div>'
-			+'	<div class="dojoxRadioView" dojoAttachPoint="containerNode"></div>'
-			+'</div>',
+	templateString: '<div dojoAttachPoint="containerNode"></div>',
 
-	startup: function(){
-		// summary: scan the container for children, and make "tab buttons" for them
+	startup: function() {
 		this.inherited(arguments);
-		this._children = this.getChildren();
-		this._buttons = this._children.length;
 		this._size = dojo.coords(this.containerNode);
-		if(this.hasButtons){
-			dojo.style(this.buttonHolder,"display","block");
-		}
 	},
 
 	_setupChild: function(/* dijit._Widget */child){
-		// summary: Creates a hover button for a child node of the RadioGroup
-		if(this.hasButtons){
-			var tmp = this.buttonNode.appendChild(dojo.create('td'));
-			var n = dojo.create("div", null, tmp),
-				_Button = dojo.getObject(this.buttonClass),
-				tmpw = new _Button({
-					label: child.title,
-					page: child
-				}, n)
-			;
-			
-			dojo.mixin(child, { _radioButton: tmpw });
-			tmpw.startup();
-		}
-		//dojo.style(child.domNode,"position","absolute");
+		dojo.style(child.domNode,"position","absolute");
 		child.domNode.style.display = "none";
 	},
-	
-	removeChild: function(child){
-		if(this.hasButtons && child._radioButton){
-			child._radioButton.destroy();
-			delete child._radioButton;
-		}
-		this.inherited(arguments);
-	},
-	
-	// FIXME: shouldn't have to rewriting these, need to take styling out of _showChild and _hideChild
-	//		and use classes on the domNode in _transition or something similar (in StackContainer)
+
 	_transition: function(/*dijit._Widget*/ newWidget, /*dijit._Widget*/ oldWidget){
 		// summary: called when StackContainer receives a selectChild call, used to transition the panes.
 		this._showChild(newWidget);
@@ -233,48 +186,6 @@ dojo.declare("pbwidgets.book_shelf.BookShelfSlide",
 			page.onHide();
 		}
 
-	}
-	
-});
-
-dojo.declare("pbwidgets.book_shelf._BookShelfButton",
-	[dijit._Widget,dijit._Templated,dijit._Contained],
-	{
-	// summary: The Buttons for a RadioGroup
-	//
-	// description: A private widget used to manipulate the StackContainer (RadioGroup*). Don't create directly. 
-	//	
-	
-	// label: String
-	//	the Text Label of the button
-	label: "",
-
-	// domNode to tell parent to select
-	page: null,
-
-	templateString: '<div dojoAttachPoint="focusNode" class="dojoxRadioButton"><span dojoAttachPoint="titleNode" class="dojoxRadioButtonLabel">${label}</span></div>',
-	
-	startup: function(){
-		// summary: start listening to mouseOver
-		this.connect(this.domNode, "onmouseenter", "_onMouse");
-	},
-	
-	_onMouse: function(/* Event */e){
-		// summary: set the selected child on hover, and set our hover state class
-		this.getParent().selectChild(this.page);
-		this._clearSelected();
-		dojo.addClass(this.domNode,"dojoxRadioButtonSelected");
-
-	},
-
-	_clearSelected: function(){
-		// summary: remove hover state class from sibling Buttons. This is easier (and more reliable)
-		//	than setting up an additional connection to onMouseOut
-		
-		// FIXME: this relies on the template being [div][span]node[/span][/div]
-		dojo.query(".dojoxRadioButtonSelected", this.domNode.parentNode.parentNode)
-			.removeClass("dojoxRadioButtonSelected")
-		;
 	}
 	
 });
