@@ -1,9 +1,10 @@
 <!-- Begin {{ shelf_title }} Shelf -->{% load title_templatetags %}
 <script type="text/javascript">
     dojo.require("pbwidgets.book_shelf.BookShelf");
+	dojo.require("dijit.layout.ContentPane");
 </script>
 <div class="{{ base_css_class }}">
-    <div class="pb-shelf-left-arrow" onclick="dijit.byId('featureShelf').forward();">
+    <div class="pb-shelf-left-arrow" onclick="dijit.byId('{{ shelf_id }}').forward();">
     </div>
     <div class="pb-shelf-middle">
         <div class="pb-shelf-titlebar">
@@ -12,11 +13,12 @@
         {% if title_list %}
         {% for title in title_list %}
         {% if forloop.first %}
-        <div dojoType="pbwidgets.book_shelf.BookShelf" id="{{ shelf_id }}" doLayout="false">
-            <div dojoType="dijit.layout.ContentPane" showLabel="false" iconClass="pb-shelf-controller-icon" label="{{ shelf_title }} Shelf, Page 1">
+        <div dojoType="pbwidgets.book_shelf.BookShelfSlide" id="{{ shelf_id }}" doLayout="false" class="pb-shelf-container">
+            <div dojoType="dijit.layout.ContentPane" showLabel="false" iconClass="pb-shelf-controller-icon" label="{{ shelf_title }} Shelf, Page 1" class="pb-shelf-pane" slideFrom="left">
                 {% endif %}
                 <div class="pb-shelf-item">
-                    <img class="pb-shelf-item-cover-image" src="{{ MEDIA_URL }}images/covers/{{ title.cover }}" width="67" height="99"/><img class="pb-shelf-item-preview-icon" src="{{ THEME_MEDIA_URL }}images/pb-preview-icon.png" width="63" height="19" onlick="Preview Placeholder"/>
+                    <img class="pb-shelf-item-cover-image" src="{{ MEDIA_URL }}images/covers/{{ title.cover }}" width="67" height="99"/>
+					<div class="pb-shelf-item-preview-icon" onclick="alert('Preview Placeholder');"/></div>
                     <div class="pb-shelf-item-text">
                         <p class="pb-shelf-item-title">
                             {{ title.name|truncatewords_html:8 }}
@@ -34,7 +36,7 @@
                 </div>
                 {% ifequal forloop.counter shelf_title_width %}
             </div>
-            <div dojoType="dijit.layout.ContentPane" class="dijitHidden" style="opacity:0" showLabel="false" iconClass="pb-shelf-controller-icon" label="{{ shelf_title }} Shelf, Page 2">
+            <div dojoType="dijit.layout.ContentPane" showLabel="false" style="display: none;" iconClass="pb-shelf-controller-icon" label="{{ shelf_title }} Shelf, Page 2" class="pb-shelf-pane" slideFrom="left">
                 {% endifequal %}
                 {% if forloop.last  %}
             </div>
