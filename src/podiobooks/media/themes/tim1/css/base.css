@@ -49,7 +49,7 @@
 
 .pb-shelf {
 	position: relative;
-	margin-bottom: 10px;
+	margin-bottom: 14px;
 	font-size: 11px;
 	text-align: left;
 	overflow: hidden;
@@ -246,13 +246,15 @@
 }
 
 .pb-infobox {
-	float: left;
-	display: inline-block;
+	float: right;
+	position: relative;
+	top: -481px;
+	margin-right: 5px;
 }
 
 .pb-infobox-left {
 	float: left;
-	height: 100px;
+	height: 463px;
 	width: 13px;
 	background: url(../images/pb-infobox-light-left.png) bottom left no-repeat;
 	cursor: pointer;
@@ -260,14 +262,14 @@
 
 .pb-infobox-middle {
 	float: left;
-	height: 100px;
-	width: 100px;
+	height: 463px;
+	width: 190px;
 	background: url(../images/pb-infobox-light-middle.png) repeat-x;
 }
 
 .pb-infobox-right {
 	float: left;
-	height: 100px;
+	height: 463px;
 	width: 13px;
 	background: url(../images/pb-infobox-light-right.png) bottom right no-repeat;
 	cursor: pointer;
