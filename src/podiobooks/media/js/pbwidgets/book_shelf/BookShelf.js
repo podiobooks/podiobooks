@@ -9,9 +9,8 @@ dojo.require("dojo.fx.easing");
 
 dojo.declare("pbwidgets.book_shelf.BookShelf", [dijit.layout.StackContainer, dijit._Templated], {
     // duration: Integer
-    //	used for Fade and Slide RadioGroup's, the duration to run the transition animation. does not affect anything
-    //	in default RadioGroup
-    duration: 750,
+    //	used for Fade and Slide BookShelves, the duration to run the transition animation.
+    duration: 1250,
     
     // templateString: String
     //	the template for our container
@@ -23,7 +22,7 @@ dojo.declare("pbwidgets.book_shelf.BookShelf", [dijit.layout.StackContainer, dij
     },
     
     _setupChild: function(/* dijit._Widget */child){
-        dojo.style(child.domNode, "position", "absolute");
+		dojo.style(child.domNode, "position", "absolute");
         child.domNode.style.display = "none";
     },
     
@@ -94,16 +93,14 @@ dojo.declare("pbwidgets.book_shelf.BookShelfFade", pbwidgets.book_shelf.BookShel
 });
 
 dojo.declare("pbwidgets.book_shelf.BookShelfSlide", pbwidgets.book_shelf.BookShelf, {
-    // summary: A Sliding Radio Group
+    // summary: A Sliding Book Shelf
     // description: 
-    //		An extension on a stock RadioGroup widget, sliding the pane
-    //		into view from being hidden. The entry direction is randomized 
-    //		on each view
-    //		
+    //		An extension on a stock BookShelf widget, sliding the pane
+    //		into view from being hidden.
     
     // easing: Function
     //	A hook to override the default easing of the pane slides.
-    easing: "dojo.fx.easing.backOut",
+    easing: "dojo.fx.easing.expoOut",
     
     // zTop: Integer
     //		A z-index to apply to the incoming pane
