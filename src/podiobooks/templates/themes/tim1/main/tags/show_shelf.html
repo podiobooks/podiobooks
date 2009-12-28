@@ -1,6 +1,16 @@
 {% load title_templatetags %}<!-- Begin {{ shelf_title }} Shelf -->
+<script type="text/javascript">
+dojo.addOnLoad(function() {
+	if (dojo.isChrome && (navigator.appVersion.indexOf("Win")!=-1)) {
+		dojo.query(".pb-shelf-controller-icon").style({
+			"margin-top": "-1px",
+			"margin-left": "-3px",
+        });
+	}
+});
+</script>
 <div class="{{ base_css_class }}">
-    <div class="pb-shelf-left-arrow" onclick="dijit.byId('{{ shelf_id }}').forward();">
+    <div class="pb-shelf-left-arrow" onclick="dijit.byId('{{ shelf_id }}').forward();" alt="Click to Switch to the Previous Page of Podiobooks.">
     </div>
     <div class="pb-shelf-middle">
         <div class="pb-shelf-titlebar">
@@ -13,8 +23,8 @@
             <div dojoType="dijit.layout.ContentPane" showLabel="false" iconClass="pb-shelf-controller-icon" class="pb-shelf-pane" slideFrom="left" label="{{ shelf_title }}  Shelf,  Page 0">
                 {% endif %}
                 <div class="pb-shelf-item">
-                    <img class="pb-shelf-item-cover-image" src="{{ MEDIA_URL }}images/covers/{{ title.cover }}" width="67" height="99"/>
-                    <div class="pb-shelf-item-preview-icon" onclick="alert('Preview Placeholder');">
+                    <img class="pb-shelf-item-cover-image" src="{{ MEDIA_URL }}images/covers/{{ title.cover }}" width="67" height="99" alt="Podiobook Cover for {{ title.name }}"/>
+                    <div class="pb-shelf-item-preview-icon" onclick="alert('Preview Placeholder');" alt="Click to Hear a Preview of {{ title.name }}.">
                     </div>
                     <div class="pb-shelf-item-text">
                         <p class="pb-shelf-item-title">
@@ -42,7 +52,7 @@
         </div>
         {% endif %}
     </div>
-    <div class="pb-shelf-right-arrow" onclick="dijit.byId('{{ shelf_id }}').forward();">
+    <div class="pb-shelf-right-arrow" onclick="dijit.byId('{{ shelf_id }}').forward();" alt="Click to Switch to the Next Page of Podiobooks.">
     </div>
 </div>
 <div class="pb-float-clear">
