@@ -87,7 +87,7 @@
 
 .pb-shelf-controller {
 	float: right;
-	margin: 0 3px 0 0;
+	margin: 8px 3px 0 0;
 	vertical-align: top;
 }
 
@@ -95,7 +95,7 @@
 	border: none;
 	background-color: transparent;
 	clear: all;
-	margin: 5px 0 0 4px;
+	margin: 0 0 0 4px !important;
 	vertical-align: top;
 }
 
@@ -118,7 +118,6 @@
 .pb-shelf-controller .dijitButtonContents button {
 	border: none;
 	background: transparent;
-	vertical-align: top;
 	width: 10px;
 	height: 10px;
 }
@@ -127,6 +126,11 @@
 	padding: 0;
 	border: none; 
 }
+
+.pb-shelf-controller .dijitInline {
+	vertical-align: top;
+}
+
 
 .pb-shelf-controller .pb-shelf-controller-icon {
 	background-image: url(../images/pb-shelf-controller-icons.png); 
