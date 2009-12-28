@@ -275,6 +275,15 @@
 	cursor: pointer;
 }
 
+.pb-headphones {
+	background: url(../images/pb-headphones.png) no-repeat;
+	height: 63px;
+	width: 165px;
+	text-align: center;
+	font-weight: bold;
+	margin-left: 10px;
+	padding-top: 25px;
+}
 
 /* clear the styles */
 html, body, div, span, applet, object, iframe,
