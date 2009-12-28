@@ -131,7 +131,7 @@
 /* Chrome Button Padding Fix */
 @media screen and (-webkit-min-device-pixel-ratio:0) {
         /* Safari and Google Chrome only - fix margins */
-        .pb-shelf-controller .dijitButtonNode {
+        .pb-shelf-controller .dijitButtonNode button {
                 margin-top: -1px;
 				margin-left: -2px;
         }
@@ -254,26 +254,30 @@
 	text-align: center;
 }
 
+.pb-infobox {
+	float: left;
+}
+
 .pb-infobox-left {
 	float: left;
 	height: 463px;
 	width: 13px;
-	background: url(../images/pb-infobox.png) bottom left no-repeat;
+	background: url(../images/pb-infobox-light-left.png) bottom left no-repeat;
 	cursor: pointer;
 }
 
 .pb-infobox-middle {
 	float: left;
 	height: 463px;
-	width: 60px;
-	background: url(../images/pb-shelfbox-light-middle.png) repeat-x;
+	width: 100px;
+	background: url(../images/pb-infobox-light-middle.png) repeat-x;
 }
 
 .pb-infobox-right {
 	float: left;
 	height: 463px;
 	width: 13px;
-	background: url(../images/pb-shelfbox-light-ends.png) bottom right no-repeat;
+	background: url(../images/pb-infobox-light-right.png) bottom right no-repeat;
 	cursor: pointer;
 }
 
