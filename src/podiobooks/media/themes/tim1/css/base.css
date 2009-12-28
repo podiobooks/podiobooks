@@ -131,7 +131,7 @@
 /* Chrome Button Padding Fix */
 @media screen and (-webkit-min-device-pixel-ratio:0) {
         /* Safari and Google Chrome only - fix margins */
-        .pb-shelf-controller .dijitButtonNode button {
+        .pb-shelf-controller .pb-shelf-controller-icon {
                 margin-top: -1px;
 				margin-left: -2px;
         }
