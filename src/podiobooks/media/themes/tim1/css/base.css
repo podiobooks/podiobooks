@@ -81,6 +81,7 @@
 .pb-shelf-titlebar {
 	margin: 7px 0 15px 15px;
 	font-size: 22px;
+	font-weight: bold;
 	color: #fff;
 	vertical-align: top;
 }
@@ -131,7 +132,6 @@
 .pb-shelf-controller .dijitInline {
 	vertical-align: top;
 }
-
 
 .pb-shelf-controller .pb-shelf-controller-icon {
 	background-image: url(../images/pb-shelf-controller-icons.png); 
