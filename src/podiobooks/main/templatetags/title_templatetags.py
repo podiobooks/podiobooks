@@ -13,8 +13,10 @@ def show_contributors(title):
     contributors = title.contributors.all()
     return { 'contributors' : contributors }
 
-# takes_context makes MEDIA_URL available inside the tag
 @register.inclusion_tag('main/title/tags/show_titlecover.html')
 def show_titlecover(title):
-    title = title
     return { 'title' : title, 'MEDIA_URL': MEDIA_URL}
+
+@register.inclusion_tag('main/title/tags/show_titlelist.html')
+def show_titlelist(title_list):
+    return { 'title_list' : title_list, 'MEDIA_URL': MEDIA_URL}
