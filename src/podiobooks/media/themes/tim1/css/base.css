@@ -122,9 +122,19 @@
 	height: 10px;
 }
 
+/* FireFox Button Padding Fix */
 .pb-shelf-controller .dijitButtonNode button::-moz-focus-inner {
 	padding: 0;
 	border: none; 
+}
+
+/* Chrome Button Padding Fix */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+        /* Safari and Google Chrome only - fix margins */
+        .pb-shelf-controller .dijitButtonNode {
+                margin-top: -1px;
+				margin-left: -2px;
+        }
 }
 
 .pb-shelf-controller .dijitInline {
@@ -178,6 +188,7 @@
 	left: 13px;
 	height: 19px;
 	width: 63px;
+	cursor: pointer;
 }
 
 .pb-shelf-item-text {
@@ -242,6 +253,30 @@
 	margin: 0 0 15px 10px;
 	text-align: center;
 }
+
+.pb-infobox-left {
+	float: left;
+	height: 463px;
+	width: 13px;
+	background: url(../images/pb-infobox.png) bottom left no-repeat;
+	cursor: pointer;
+}
+
+.pb-infobox-middle {
+	float: left;
+	height: 463px;
+	width: 60px;
+	background: url(../images/pb-shelfbox-light-middle.png) repeat-x;
+}
+
+.pb-infobox-right {
+	float: left;
+	height: 463px;
+	width: 13px;
+	background: url(../images/pb-shelfbox-light-ends.png) bottom right no-repeat;
+	cursor: pointer;
+}
+
 
 /* clear the styles */
 html, body, div, span, applet, object, iframe,
