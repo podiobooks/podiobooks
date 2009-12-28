@@ -133,7 +133,7 @@
         /* Safari and Google Chrome only - fix margins */
         .pb-shelf-controller .pb-shelf-controller-icon {
                 margin-top: -1px;
-				margin-left: -2px;
+				margin-left: -3px;
         }
 }
 
@@ -256,11 +256,12 @@
 
 .pb-infobox {
 	float: left;
+	display: inline-block;
 }
 
 .pb-infobox-left {
 	float: left;
-	height: 463px;
+	height: 100px;
 	width: 13px;
 	background: url(../images/pb-infobox-light-left.png) bottom left no-repeat;
 	cursor: pointer;
@@ -268,14 +269,14 @@
 
 .pb-infobox-middle {
 	float: left;
-	height: 463px;
+	height: 100px;
 	width: 100px;
 	background: url(../images/pb-infobox-light-middle.png) repeat-x;
 }
 
 .pb-infobox-right {
 	float: left;
-	height: 463px;
+	height: 100px;
 	width: 13px;
 	background: url(../images/pb-infobox-light-right.png) bottom right no-repeat;
 	cursor: pointer;
