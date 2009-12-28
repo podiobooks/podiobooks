@@ -3,9 +3,19 @@
 {% block headtitle %}{{ category.name }} Category - {{ site_name }}{% endblock %}
 {% block content %}
 {% if category.title_set.all.count %}
-<div style="font-size: 24px; margin: 20px;">All Titles in {{ category.name }}</div>
+<div style="font-size: 24px; margin: 20px;">
+    All Titles in {{ category.name }}
+</div>
 {% show_titlelist category.title_set.all %}
+<!-- Script to change the category choice form to match the current category -->
+<script type="text/javascript">
+	dojo.addOnLoad (function() {
+		dojo.byId("id_category").value="{{ category.slug }}";
+	});
+</script>
 {% else %}
-<div style="font-size: 18px; margin: 20px;">There are currently no titles available in {{ category.name }}</div>
+<div style="font-size: 18px; margin: 20px;">
+    There are currently no titles available in {{ category.name }}
+</div>
 {% endif %}
 {% endblock %}
