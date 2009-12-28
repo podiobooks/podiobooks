@@ -2,6 +2,8 @@
 {% load main_templatetags %}
 {% load title_templatetags %}
 
+{% block headtitle %}{{ site_name }} - Free Downloadable Audiobooks{% endblock %}
+
 {% block head %}
 <script type="text/javascript">
     dojo.require("pbwidgets.book_shelf.BookShelf");
