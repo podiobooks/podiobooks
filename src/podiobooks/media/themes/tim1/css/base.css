@@ -87,7 +87,7 @@
 
 .pb-shelf-controller {
 	float: right;
-	margin: 0 0 0 0;
+	margin: 0 3px 0 0;
 	vertical-align: top;
 }
 
@@ -128,11 +128,6 @@
 	border: none; 
 }
 
-.pb-shelf-container {
-	position: relative;
-	height: 164px;
-}
-
 .pb-shelf-controller .pb-shelf-controller-icon {
 	background-image: url(../images/pb-shelf-controller-icons.png); 
 	background-repeat: no-repeat;
@@ -144,6 +139,11 @@
 
 .pb-shelf-controller .dijitToggleButtonChecked .pb-shelf-controller-icon {
 	background-position: left;
+}
+
+.pb-shelf-container {
+	position: relative;
+	height: 164px;
 }
 
 .pb-shelf-pane {
