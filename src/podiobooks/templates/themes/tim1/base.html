@@ -12,6 +12,8 @@
 {% endblock %}
 <link rel="stylesheet" type="text/css" href="{{ THEME_MEDIA_URL }}css/base.css" >
 <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/dojo/1.4/dijit/themes/dijit.css">
+<script type="text/javascript" src="http://use.typekit.com/coc0qsu.js"></script>
+<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 {% if debug %}
 	<script type="text/javascript">
 		var isDebug = true;
@@ -33,8 +35,6 @@
 </script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/dojo/1.4/dojo/dojo.xd.js">
 </script>
-<script type="text/javascript" src="http://use.typekit.com/coc0qsu.js"></script>
-<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 {% block head %}{% endblock %}
 </head>
 <body {% block bodyid %}{% endblock %}{% block bodyclass %}class="pb-body"{% endblock %}">

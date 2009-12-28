@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 {% load title_templatetags %}
 {% block headtitle %}Title Search Results - {{ site_name }}{% endblock %}
-{% block title %}Title Search Results{% endblock %}
 {% block content %}
 <div id="searchPageTopBlock" style="width:100%; margin: 15px 15px 15px 30px">
     <div id="searchForm" style="float:left; width:50%;">
@@ -20,29 +19,7 @@
     <br style="clear:both;">
 </div>
 {% if result_count %}<h3 style="font-size:16px; font-weight:bold; margin: 20px 20px 20px 40px;">{{ result_count }} titles found whose name or description contained "{{ keywords }}"</h3>
-<ul>
-    {% for title in title_list %}
-    <li class="{% cycle 'row1' 'row2' %}" style="margin: 10px 0 30px 5px;">
-        <img src="http://podiobooks.com/images/covers/{{ title.cover }}" height="150" width="100" alt="Title Cover for {{ title.name }}" style="float: left;">
-        <div id="titleSearchResultSummary" style="float: left; height:80px; margin: 5px 0 0 15px; width: 850px; font-size: 12px">
-            <div style="font-size: 14px">
-                <a href="{{ title.get_absolute_url }}">{{ title.name }}</a>
-            </div>
-            <div style="font-size: 13px; margin: 10px 0 7px 0;">
-                {% show_contributors title %}
-			</div>
-			<div style="font-size: 13px; margin: 0 0 7px 0;">
-				{% show_categories title %}
-            </div>
-            <div style="clear: both;">
-                {% autoescape off %}{{ title.description|striptags|truncatewords_html:100 }}{% endautoescape %} <a href="{{ title.get_absolute_url }}">[more]</a>
-            </div>
-        </div>
-        <div class="pb-float-clear">
-        </div>
-    </li>
-    {% endfor %}
-</ul>
+{% show_titlelist title_list %}
 {% else %}<h3 style="font-size:16px; font-weight:bold; margin: 20px 20px 400px 40px;">No titles found whose name or description contained "{{ keywords }}"</h3>
 {% endif %}
 {% endblock %}
