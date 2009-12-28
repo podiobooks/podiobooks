@@ -1,0 +1,29 @@
+<!-- Begin {{ infobox_id }} Infobox -->
+<div class="pb-infobox" id="{{ infobox_id }}">
+    <div class="pb-infobox-left" alt="">
+    </div>
+    <div class="pb-infobox-middle">
+        <div style="text-align:center;">
+            <img src="{{ THEME_MEDIA_URL }}images/pb-headphones.png">
+            <div style="position: relative; top: -40px; font-weight: bold">
+                Podiobooks
+                <br>
+                News
+            </div>
+        </div>
+        <div id="rssfeed" name="rssfeed" style="line-height: 1.1; margin-left: 12px; margin-top: -20px;">
+            <ul style="list-style-type: circle;">
+                {% for entry in update_list|slice:":10" %}
+                <li style="margin-top: 8px">
+                    <a href="{{ entry.link }}">{{ entry.title }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="pb-infobox-right" alt="">
+    </div>
+</div>
+<div class="pb-float-clear">
+</div>
+<!-- End {{ shelf_title }} Shelf -->
