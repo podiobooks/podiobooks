@@ -25,3 +25,10 @@ def show_shelf(shelf_id, shelf_title, title_list, dropdown_values, dropdown_url,
             'MEDIA_URL': MEDIA_URL
             }
 
+@register.inclusion_tag('main/tags/show_infobox.html')
+def show_infobox(shelf_id, shelf_title, update_list):
+    return {'infobox_id': shelf_id,
+            'update_list': update_list,
+            'THEME_MEDIA_URL': THEME_MEDIA_URL,
+            'MEDIA_URL': MEDIA_URL
+            }
