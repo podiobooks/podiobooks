@@ -1,4 +1,8 @@
-from podiobooks.settings import *
+from podiobooks.settings import THEME_MEDIA_URL
+
+"""
+Note: for Title Covers, use the {% cover_media_url %} tag in main_templatetags.
+"""
 
 def theme_media(request):
     """
@@ -6,10 +10,3 @@ def theme_media(request):
 
     """
     return {'THEME_MEDIA_URL': THEME_MEDIA_URL}
-
-def cover_media(request):
-    """
-    Adds title cover-media-related context variables to the context.
-
-    """
-    return {'COVER_MEDIA_URL': COVER_MEDIA_URL}
