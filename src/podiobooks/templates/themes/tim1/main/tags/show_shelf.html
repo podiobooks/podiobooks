@@ -1,14 +1,16 @@
-{% load title_templatetags %}<!-- Begin {{ shelf_title }} Shelf -->
+{% load main_templatetags %}
+{% load title_templatetags %}
+<!-- Begin {{ shelf_title }} Shelf -->
 <!-- Windows Chrome Button Padding Fix -->
 <script type="text/javascript">
-dojo.addOnLoad(function() {
-	if (dojo.isChrome && (navigator.appVersion.indexOf("Win")!=-1)) {
-		dojo.query(".pb-shelf-controller-icon").style({
-			"margin-top": "-1px",
-			"margin-left": "-3px",
-        });
-	}
-});
+    dojo.addOnLoad(function(){
+        if (dojo.isChrome && (navigator.appVersion.indexOf("Win") != -1)) {
+            dojo.query(".pb-shelf-controller-icon").style({
+                "margin-top": "-1px",
+                "margin-left": "-3px",
+            });
+        }
+    });
 </script>
 <div class="{{ base_css_class }}">
     <div class="pb-shelf-left-arrow" onclick="dijit.byId('{{ shelf_id }}').forward();" alt="Click to Switch to the Previous Page of Podiobooks.">
@@ -24,7 +26,7 @@ dojo.addOnLoad(function() {
             <div dojoType="dijit.layout.ContentPane" showLabel="false" iconClass="pb-shelf-controller-icon" class="pb-shelf-pane" slideFrom="left" label="{{ shelf_title }}  Shelf,  Page 0">
                 {% endif %}
                 <div class="pb-shelf-item">
-                    <img class="pb-shelf-item-cover-image" src="{{ COVER_MEDIA_URL }}images/covers/67x99/{{ title.cover }}" width="67" height="99" alt="Podiobook Cover for {{ title.name }}"/>
+                    <img class="pb-shelf-item-cover-image" src="{% cover_media_url %}images/covers/67x99/{{ title.cover }}" width="67" height="99" alt="Podiobook Cover for {{ title.name }}"/>
                     <div class="pb-shelf-item-preview-icon" onclick="alert('Preview Placeholder');" alt="Click to Hear a Preview of {{ title.name }}.">
                     </div>
                     <div class="pb-shelf-item-text">
