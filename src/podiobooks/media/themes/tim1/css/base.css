@@ -256,7 +256,7 @@
 	float: left;
 	height: 463px;
 	width: 13px;
-	background: url(../images/pb-infobox-light-left.png) bottom left no-repeat;
+	background: url(../images/pb-infobox-light-ends.png) bottom left no-repeat;
 	cursor: pointer;
 }
 
@@ -271,7 +271,7 @@
 	float: left;
 	height: 463px;
 	width: 13px;
-	background: url(../images/pb-infobox-light-right.png) bottom right no-repeat;
+	background: url(../images/pb-infobox-light-ends.png) bottom right no-repeat;
 	cursor: pointer;
 }
 

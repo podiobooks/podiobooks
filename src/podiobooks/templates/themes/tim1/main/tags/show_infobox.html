@@ -10,7 +10,7 @@
         </div>
         <div id="rssfeed" name="rssfeed" style="line-height: 1.1; margin-left: 12px; margin-top: -20px;">
             <ul style="list-style-type: circle;">
-                {% for entry in update_list|slice:":10" %}
+                {% for entry in update_list|slice:":8" %}
                 <li style="margin-top: 8px">
                     <a href="{{ entry.link }}">{{ entry.title }}</a>
                 </li>
