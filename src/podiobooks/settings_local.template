@@ -39,7 +39,7 @@ MEDIA_AWARDS = MEDIA_ROOT + "/awards/"
 MEDIA_URL = '/media/'
 
 # URL that is used to fetch the covers for the titles
-COVER_MEDIA_URL = MEDIA_URL
+COVER_MEDIA_URLS = (MEDIA_URL,)
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
