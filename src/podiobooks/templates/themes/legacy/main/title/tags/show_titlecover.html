@@ -1,4 +1,5 @@
+{% load main_templatetags %}
 {% if title %}
-<a href="{{ title.get_absolute_url }}"><img src="{{ COVER_MEDIA_URL }}images/covers/{{ title.cover }}" alt="Cover Image for '{{ title.name }}'" width="144" height="212"/></a>
+<a href="{{ title.get_absolute_url }}"><img src="{% cover_media_url %}images/covers/{{ title.cover }}" alt="Cover Image for '{{ title.name }}'" width="144" height="212"/></a>
 <span class="title-complete-notice">This podiobook is <span class="title-complete-notice-indicator">{% if title.is_complete %}complete{% else %}not complete{% endif %}</span></span>
 {% endif %}

@@ -17,7 +17,6 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.auth',
     'django.core.context_processors.media',
     'podiobooks.main.context_processors.theme_media',
-    'podiobooks.main.context_processors.cover_media',
     'django.core.context_processors.request',
     'django_authopenid.context_processors.authopenid',
     'contrib.site_info_context_processor.site',
