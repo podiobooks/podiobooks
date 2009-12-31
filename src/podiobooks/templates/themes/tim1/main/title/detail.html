@@ -53,10 +53,9 @@
     </div>
     {% for episode in title.episode_set.all %}
     <div style="margin-top: 15px;">
-        <div style="float:left; width:90px; text-align: center;">
+        <div style="float:left; width:150px;">
             <a href="{{ episode.url }}">{{ episode.name }}</a>
-            <br/>
-            <span style="font-size: 8pt;">({{ episode.filesize|filesizeformat }}	MB)</span>
+            <div style="margin: 5px 0 0 10px; text-align: center; font-size: 10px">({{ episode.filesize|filesizeformat }}	MB)</div>
         </div>
         <div style="float:left; width:600px; margin-left: 10px;">
             {{ episode.description }}
