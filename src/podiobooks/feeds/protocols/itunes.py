@@ -24,15 +24,23 @@ class iTunesFeed(Rss201rev2Feed):
         handler.addQuickElement(u'category',u'audio books')
         
         #iTunes Elements
-        handler.addQuickElement(u'itunes:explicit', u'clean')
-        handler.addQuickElement(u'itunes:author', u'')
-        handler.addQuickElement(u'itunes:image', None, {u'href':u'http://podiobooks.com'})
-        handler.addQuickElement(u'itunes:summary', u'')
-        handler.addQuickElement(u'itunes:subtitle', u'')
+        if self.feed['explicit'] is not None:
+            handler.addQuickElement(u'itunes:explicit', self.feed['explicit'])
+        if self.feed['author_name'] is not None:
+            handler.addQuickElement(u'itunes:author', self.feed['author_name'])
+        if self.feed['subtitle'] is not None:
+            handler.addQuickElement(u'itunes:subtitle', self.feed['subtitle'])
+        if self.feed['image'] is not None:
+            handler.addQuickElement(u'itunes:image', None, {u'href':self.feed['image']})
+        handler.addQuickElement(u'itunes:summary', self.feed['description'])
+        
         
         #iTunes Category
         handler.startElement(u'itunes:category', {u'text':u'Arts'})
         handler.addQuickElement(u'itunes:category', None, {u'text':u'Literature'})
+        if self.feed['categories'] is not None:
+            for category in self.feed['categories']:
+                handler.addQuickElement(u'itunes:category', None, {u'text':category})
         handler.endElement(u'itunes:category')
         
         #iTunes Owner
@@ -40,3 +48,20 @@ class iTunesFeed(Rss201rev2Feed):
         handler.addQuickElement(u'itunes:name', u'Evo Terra')
         handler.addQuickElement(u'itunes:email', u'evo@podiobooks.com')
         handler.endElement(u'itunes:owner')
+    
+    def add_item_elements(self, handler, item):
+        super(iTunesFeed, self).add_item_elements(handler, item)
+        #iTunes Elements
+        if self.feed['explicit'] is not None:
+            handler.addQuickElement(u'itunes:explicit', self.feed['explicit'])
+        if self.feed['author_name'] is not None:
+            handler.addQuickElement(u'itunes:author', self.feed['author_name'])
+        if self.feed['subtitle'] is not None:
+            handler.addQuickElement(u'itunes:subtitle', self.feed['subtitle'])
+        if self.feed['description'] is not None:
+            handler.addQuickElement(u'itunes:summary', item['description'])
+        if item['duration'] is not None:
+            handler.addQuickElement(u'itunes:duration', item['duration'])
+        if item['keywords'] is not None:
+            handler.addQuickElement(u'itunes:keywords', item['keywords'])
+            
