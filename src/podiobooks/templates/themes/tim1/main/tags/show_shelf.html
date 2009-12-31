@@ -20,31 +20,13 @@
             {{ shelf_title }}<span class="pb-shelf-controller" dojoType="dijit.layout.StackController" containerId="{{ shelf_id }}" buttonWidget="pbwidgets.book_shelf._StackButton"></span>
         </div>
         {% if title_list %}
-        <div dojoType="pbwidgets.book_shelf.BookShelfSlide" id="{{ shelf_id }}" doLayout="false" class="pb-shelf-container">
+        <div dojoType="pbwidgets.book_shelf.BookShelfSlide" id="{{ shelf_id }}" doLayout="true" class="pb-shelf-container">
             {% for title in title_list %}
             {% if forloop.first %}
-            <div dojoType="dijit.layout.ContentPane" showLabel="false" iconClass="pb-shelf-controller-icon" class="pb-shelf-pane" slideFrom="left" label="{{ shelf_title }}  Shelf,  Page 0">
+            <div dojoType="dijit.layout.ContentPane" showLabel="false" iconClass="pb-shelf-controller-icon" class="pb-shelf-pane" slideFrom="left" label="{{ shelf_title }}  Shelf,  Page 0" id="{{ shelf_id }}_shelf_page_0">
                 {% endif %}
-                <div class="pb-shelf-item">
-                    <img class="pb-shelf-item-cover-image" src="{% cover_media_url %}images/covers/67x99/{{ title.cover }}" width="67" height="99" alt="Podiobook Cover for {{ title.name }}"/>
-                    <div class="pb-shelf-item-preview-icon" onclick="alert('Preview Placeholder');" alt="Click to Hear a Preview of {{ title.name }}.">
-                    </div>
-                    <div class="pb-shelf-item-text">
-                        <p class="pb-shelf-item-title">
-                            {{ title.name|truncatewords_html:8 }}
-                        </p>
-                        <p class="pb-shelf-item-contributors">
-                            {% show_contributors title %}
-                        </p>
-                        <p class="pb-shelf-item-categories">
-                            in <span style="color: #0054a6">{% show_categories title %}</span>
-                        </p>
-                        <p class="pb-shelf-item-tags">
-                            {% autoescape off %}{{ title.description|striptags|truncatewords_html:15 }}{% endautoescape %}
-                        </p>
-                    </div>
-                </div>
-                {% if forloop.counter|divisibleby:shelf_title_width and not forloop.last %}
+                <div dojoType="dijit.layout.ContentPane" href="{% url title_detail_snippet title.id %}" class="pb-shelf-item" id="{{ shelf_id }}_title_{{ title.id }}"></div>
+				{% if forloop.counter|divisibleby:shelf_title_width and not forloop.last %}
             </div>
             <div dojoType="dijit.layout.ContentPane" showLabel="false" iconClass="pb-shelf-controller-icon" class="pb-shelf-pane" slideFrom="left" label="{{  shelf_title }}  Shelf,  Page {% widthratio forloop.counter shelf_title_width 1 %}" style="display: none;">
                 {% endif %}
