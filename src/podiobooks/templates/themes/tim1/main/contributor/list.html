@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block headtitle %}All Contributors - {{ site_name }}{% endblock %}
+
+{% block content %}
+<div class="contributors">
+<ul>
+  {% for contributor in contributor_list %} 
+  <li class="contributor_{{contributor.slug}}"><a href="{{contributor.get_absolute_url}}">{{ contributor.display_name }}</a> - {{ contributor.title_set.all.count }} titles</li>
+  {% endfor %}
+</ul>
+{% endblock %}
+
