@@ -2,7 +2,7 @@
 <!-- Begin show_contributors templatetag -->
 	by<span class="contributor-list">
 	{% for contributor in contributors %}
-		{{ contributor.display_name }}{% if not forloop.last %},{% endif %}
+		<a href="{% url contributor_detail contributor.slug %}">{{ contributor.display_name }}</a>{% if not forloop.last %},{% endif %}
 	{% endfor %}
 	</span>
 <!-- End show_contributors templatetag -->

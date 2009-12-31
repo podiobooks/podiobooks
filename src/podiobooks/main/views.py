@@ -34,7 +34,7 @@ def index(request):
     """
     title_list = cache.get('homepage_title_objects')
     if (title_list == None):
-        title_list = Title.objects.filter(display_on_homepage = True)[:16]
+        title_list = Title.objects.order_by('-date_updated').filter(display_on_homepage = True)[:16]
         cache.set('homepage_title_objects', title_list, 240)
         
     contributor_title_list = cache.get('homepage_author_title_objects')
