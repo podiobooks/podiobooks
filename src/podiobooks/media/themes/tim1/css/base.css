@@ -212,6 +212,15 @@
 	font-size: 10px;
 }
 
+.pb-shelf-item .dijitContentPaneLoading {
+	background: url(../images/loading.gif) no-repeat;
+	height: 35px;
+	width: 35px;
+	margin: 62px 0 0 90px;
+	color: transparent;
+	display: block;
+}
+
 .pb-feature-shelf {
 	position: relative;
 	height: 230px;
