@@ -1,0 +1,19 @@
+{% load main_templatetags %}
+{% load title_templatetags %}
+<img class="pb-shelf-item-cover-image" src="{% cover_media_url %}images/covers/67x99/{{ title.cover }}" width="67" height="99" alt="Podiobook Cover for {{ title.name }}"/>
+<div class="pb-shelf-item-preview-icon" onclick="alert('Preview Placeholder');" alt="Click to Hear a Preview of {{ title.name }}.">
+</div>
+<div class="pb-shelf-item-text">
+    <p class="pb-shelf-item-title">
+        {{ title.name|truncatewords_html:8 }}
+    </p>
+    <p class="pb-shelf-item-contributors">
+        {% show_contributors title %}
+    </p>
+    <p class="pb-shelf-item-categories">
+        in <span style="color: #0054a6">{% show_categories title %}</span>
+    </p>
+    <p class="pb-shelf-item-tags">
+        {% autoescape off %}{{ title.description|striptags|truncatewords_html:15 }}{% endautoescape %}
+    </p>
+</div>
