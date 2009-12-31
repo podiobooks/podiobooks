@@ -127,7 +127,7 @@ class Episode(models.Model):
 	
 	@models.permalink
 	def get_absolute_url(self):
-		return ('episode_detail', [self.slug])
+		return ('episode_detail', [self.id])
 
 class EpisodeContributors(models.Model):
 	"""Join table to associate contributors to titles."""
