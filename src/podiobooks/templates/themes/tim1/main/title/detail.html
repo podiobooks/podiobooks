@@ -4,7 +4,7 @@
 {% block headtitle %}{{ title.name }} - {{ site_name }}{% endblock %}
 {% block title %}Book Information{% endblock %}
 {% block content %}
-<div class="title-detail" style="margin-top: 30px;">
+<div class="title-detail" style="margin: 0 0 30px 0;">
     <div style="float:left;font-size: 10px; text-align: center">
         {% show_titlecover title %}
     </div>
@@ -24,7 +24,7 @@
         <div style="float: left; margin: 20px 0px 0px 0px; vertical-align: middle;">
             <a rel="license" href="{{title.license.url}}"><img alt="{{ title.license.text }} Logo" style="border-width:0" src="{{title.license.image_url}}" /></a>
         </div>
-        <div style="float: left; margin: 19px 0px 0px 10px; width: 650px;  vertical-align: middle;">
+        <div style="float: left; margin: 19px 0px 50px 10px; width: 650px;  vertical-align: middle;">
             This work is licensed under a <a href="{{title.license.url}}">{{ title.license.text }}</a>
             license.
         </div>
