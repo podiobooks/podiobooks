@@ -1,5 +1,5 @@
 from django.conf.urls.defaults import * #@UnusedWildImport
-from models import Category, Contributor, Title
+from models import Category, Contributor, Episode, Title
 from contrib.django_restapi.model_resource import Collection
 from contrib.django_restapi.responder import JSONResponder
 
@@ -33,4 +33,7 @@ urlpatterns = patterns('',
     # contributor
     url(r'^contributor/$','django.views.generic.list_detail.object_list', { 'queryset': Contributor.objects.all().order_by('last_name'), 'template_object_name': 'contributor', 'template_name': 'main/contributor/list.html'}, name='contributor_list'),
     url(r'^contributor/(?P<slug>[^/]+)/$','django.views.generic.list_detail.object_detail', {'queryset': Contributor.objects.all(), 'template_object_name': 'contributor', 'template_name': 'main/contributor/detail.html'}, name='contributor_detail'),
+    
+    # episode
+    url(r'^episode/(?P<id>[^/]+)/$','django.views.generic.list_detail.object_detail', {'queryset': Episode.objects.all(), 'template_object_name': 'episode', 'template_name': 'main/episode/detail.html'}, name='episode_detail'),
 )
