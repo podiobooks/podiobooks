@@ -20,3 +20,7 @@ def show_titlecover(title):
 @register.inclusion_tag('main/title/tags/show_titlelist.html')
 def show_titlelist(title_list):
     return { 'title_list' : title_list, 'MEDIA_URL': MEDIA_URL}
+
+@register.inclusion_tag('main/title/tags/show_episodelist.html')
+def show_episodelist(title):
+    return { 'episode_list' : title.episode_set.order_by('sequence').all(), 'MEDIA_URL': MEDIA_URL}
