@@ -26,9 +26,6 @@ class EpisodeFeed(Feed):
     def author_name(self, obj):
         return obj.contributors.all()[0].display_name
     
-    def title(self, obj):
-        return obj.name
-    
     def categories(self, obj):
         return obj.categories.all()
     
@@ -40,6 +37,9 @@ class EpisodeFeed(Feed):
             return 'yes'
         else:
             return 'no'
+    
+    def feed_copyright(self, obj):
+        return obj.license.slug
     
     def feed_extra_kwargs(self, obj):
         """
@@ -113,3 +113,6 @@ class EpisodeFeed(Feed):
     
     def subtitle(self, obj):
         return u'A free audiobook by %s' % self.author_name(obj)
+    
+    def title(self, obj):
+        return obj.name
