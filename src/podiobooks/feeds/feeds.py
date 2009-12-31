@@ -8,6 +8,8 @@ from podiobooks.main.models import Title, Episode
 
 from podiobooks.feeds.protocols.itunes import iTunesFeed
 
+from podiobooks.feeds import feed_tools
+
 class TitleFeed(Feed):
     feed_type = iTunesFeed
     
@@ -59,13 +61,13 @@ class EpisodeFeed(Feed):
         return 'http://www.podiobooks.com/images/covers/%s' % obj.cover
     
     def item_comments(self, obj):
-        return self.link(obj)
+        return feed_tools.add_current_domain(obj.title.get_absolute_url())
     
     def item_enclosure_url(self, obj):
         return obj.url
     
     def item_enclosure_length(self, obj):
-        return str(obj.length)
+        return int(obj.filesize)
     
     def item_enclosure_type(self, obj):
         return 'audio/mpeg'
@@ -81,7 +83,10 @@ class EpisodeFeed(Feed):
         return extra_args
     
     def item_duration(self, obj):
-        return str(obj.length);
+        if (obj.length == 0):
+            return '00:45:00'
+        else:
+            return str(obj.length)
     
     def item_keywords(self, obj):
         keywords = u'%s, %s, %s' % (
@@ -95,16 +100,12 @@ class EpisodeFeed(Feed):
         return keywords
 
     def item_link(self, obj):
-        if not obj:
-            raise FeedDoesNotExist
         return obj.get_absolute_url()
     
     def item_title(self, obj):
         return obj.name
     
     def link(self, obj):
-        if not obj:
-            raise FeedDoesNotExist
         return obj.get_absolute_url()
 
     def items(self, obj):
