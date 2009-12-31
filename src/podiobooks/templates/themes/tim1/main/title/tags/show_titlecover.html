@@ -2,7 +2,7 @@
 {% if title %}
 <div class="pb-title-cover">
 	<div class="pb-title-cover-image">
-		<a href="{{ title.get_absolute_url }}"><img class="pb-title-cover-image" src="{% cover_media_url %}images/covers/{{ title.cover }}" alt="Cover Image for '{{ title.name }}'" width="144" height="212"/></a>
+		<a href="{{ title.get_absolute_url }}"><img class="pb-title-cover-image" src="http://podiobooks.com/images/covers/{{ title.cover }}" alt="Cover Image for '{{ title.name }}'" width="144" height="212"/></a>
 	</div>
 	<div class="pb-title-complete-notice">
 		This podiobook is <span class="pb-title-complete-notice-indicator">{% if title.is_complete %}complete{% else %}not complete{% endif %}</span>
