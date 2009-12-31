@@ -24,7 +24,7 @@
         <div style="float: left; margin: 20px 0px 0px 0px; vertical-align: middle;">
             <a rel="license" href="{{title.license.url}}"><img alt="{{ title.license.text }} Logo" style="border-width:0" src="{{title.license.image_url}}" /></a>
         </div>
-        <div style="float: left; margin: 19px 0px 50px 10px; width: 650px;  vertical-align: middle;">
+        <div style="float: left; margin: 19px 0px 10px 10px; width: 650px;  vertical-align: middle;">
             This work is licensed under a <a href="{{title.license.url}}">{{ title.license.text }}</a>
             license.
         </div>
@@ -32,43 +32,16 @@
     </div>
 </div>
 {% if title.episode_set.all %}
-<div style="font-size: 18px; clear: both; margin: 20px 0 0 20px; font-weight: bold;">
+<div style="font-size: 18px; clear: both; font-weight: bold; margin: 0 0 30px 0;">
     Chapters
 </div>
-<div style="clear: both; margin: 30px;">
-</div>
-<div>
-    <div style="font-weight: bold;">
-        <div style="float:left; width:90px">
-            Title
-        </div>
-        <div style="float:left; width:600px; margin-left: 10px;">
-            Description
-        </div>
-        <div style="float:left; width:150px; margin-left: 10px;">
-            Date Created
-        </div>
-    </div>
-    <div style="clear:both;">
-    </div>
-    {% for episode in title.episode_set.all %}
-    <div style="margin-top: 15px;">
-        <div style="float:left; width:150px;">
-            <a href="{{ episode.url }}">{{ episode.name }}</a>
-            <div style="margin: 5px 0 0 10px; text-align: center; font-size: 10px">({{ episode.filesize|filesizeformat }}	MB)</div>
-        </div>
-        <div style="float:left; width:600px; margin-left: 10px;">
-            {{ episode.description }}
-        </div>
-        <div style="float:left; width:150px; margin-left: 10px;">
-            {{ episode.date_updated|date:"d-M-Y" }}
-        </div>
-    </div>
-    <div style="clear:both;">
-    </div>
-    {% endfor %}
+{% show_episodelist title %}
+{% else %}
+<div style="font-size: 18px; clear: both; font-weight: bold;">
+    No Episodes Are Available Yet
 </div>
 {% endif %}
+<div style="clear: both; margin: 30px;">
 </div>
 <div style="clear:both;">
 </div>
