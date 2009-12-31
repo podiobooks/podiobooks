@@ -3,10 +3,18 @@
 {% block headtitle %}All Contributors - {{ site_name }}{% endblock %}
 
 {% block content %}
+<style type="text/css">
+	.contributor_list_item {
+		margin: 10px 20px 10px 20px;
+	}
+</style>
+<div style="font-size: 24px; margin: 20px 20px 30px 20px;">
+    All Contributors, Alphabetically by Last Name
+</div>
 <div class="contributors">
 <ul>
   {% for contributor in contributor_list %} 
-  <li class="contributor_{{contributor.slug}}"><a href="{{contributor.get_absolute_url}}">{{ contributor.display_name }}</a> - {{ contributor.title_set.all.count }} titles</li>
+  <li class="contributor_list_item"><a href="{{contributor.get_absolute_url}}">{{ contributor.display_name }}</a> - {{ contributor.title_set.all.count }} titles</li>
   {% endfor %}
 </ul>
 {% endblock %}
