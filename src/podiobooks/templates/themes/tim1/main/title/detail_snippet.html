@@ -5,13 +5,13 @@
 </div>
 <div class="pb-shelf-item-text">
     <p class="pb-shelf-item-title">
-        {{ title.name|truncatewords_html:8 }}
+        <a href="{% url title_detail title.slug %}" style="text-decoration:none;">{{ title.name|truncatewords_html:8 }}</a>
     </p>
     <p class="pb-shelf-item-contributors">
         {% show_contributors title %}
     </p>
     <p class="pb-shelf-item-categories">
-        in <span style="color: #0054a6">{% show_categories title %}</span>
+        in {% show_categories title %}
     </p>
     <p class="pb-shelf-item-tags">
         {% autoescape off %}{{ title.description|striptags|truncatewords_html:15 }}{% endautoescape %}
