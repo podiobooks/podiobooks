@@ -3,9 +3,9 @@
 {% block headtitle %}{{ category.name }} {{ contributor.display_name }} Profile - {{ site_name }}{% endblock %}
 {% block content %}
 {% if contributor.title_set.all.count %}
-<div style="font-size: 24px; margin: 20px 20px 30px 20px;">
+<h1>
     {{ contributor.display_name }}
-</div>
+</h1>
 {% show_titlelist contributor.title_set.all %}
 <div style="margin: 400px 20px 300px 20px;"></div>
 {% else %}
