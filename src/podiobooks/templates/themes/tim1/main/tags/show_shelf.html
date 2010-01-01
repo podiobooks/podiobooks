@@ -17,7 +17,7 @@
     </div>
     <div class="pb-shelf-middle">
         <div class="pb-shelf-titlebar">
-            {{ shelf_title }}<span class="pb-shelf-controller" dojoType="dijit.layout.StackController" containerId="{{ shelf_id }}" buttonWidget="pbwidgets.book_shelf._StackButton"></span>
+            <h2 style="float: left;">{{ shelf_title }}</h2><span class="pb-shelf-controller" dojoType="dijit.layout.StackController" containerId="{{ shelf_id }}" buttonWidget="pbwidgets.book_shelf._StackButton"></span>
         </div>
         {% if title_list %}
         <div dojoType="pbwidgets.book_shelf.BookShelfSlide" id="{{ shelf_id }}" doLayout="true" class="pb-shelf-container">
