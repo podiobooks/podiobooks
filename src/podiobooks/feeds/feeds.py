@@ -63,6 +63,8 @@ class EpisodeFeed(Feed):
     def item_comments(self, obj):
         return feed_tools.add_current_domain(obj.title.get_absolute_url())
     
+    # item_description comes from templates/base/feeds/episodes_description.html
+    
     def item_enclosure_url(self, obj):
         return obj.url
     
@@ -102,8 +104,7 @@ class EpisodeFeed(Feed):
     def item_link(self, obj):
         return obj.get_absolute_url()
     
-    def item_title(self, obj):
-        return obj.name
+    # item_title comes from templates/base/feeds/episodes_title.html
     
     def link(self, obj):
         return obj.get_absolute_url()
