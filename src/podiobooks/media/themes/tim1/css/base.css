@@ -1,3 +1,43 @@
+a {
+	color: #0054a6;
+}
+
+a:hover {
+	color: #000;
+}
+
+body {
+	background: url(../images/pb-background.jpg) repeat-x #fff;
+	margin: 0px auto;
+	border: 0px none;
+	width: 970px;
+	font-family: "ff-dax-wide-web-pro-1", "ff-dax-wide-web-pro-2", "Verdana", "Arial", sans-serif;
+	color: #464646;
+}
+
+h1 {
+	font-size: 24px;
+	font-weight: bold;
+	margin: 20px;
+}
+
+h2 {
+	font-size: 22px;
+	font-weight: bold;
+	color: #fff;
+	margin: 0;
+}
+
+p {
+	margin: 0;
+}
+
+ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
 .pb-float-clear {
 	clear: both;
 	margin: 0;
@@ -9,7 +49,14 @@
 #pb-header-background {
 	background: url(../images/pb-header.jpg) no-repeat;
 	height: 219px;
-	width: 995px;
+	width: 970px;
+}
+
+#pb-header-click-region {
+	cursor: pointer;
+	width: 600px;
+	height: 120px;
+	margin: 0 0 0 210px;
 }
 
 #pb-header-menubar {
@@ -20,7 +67,7 @@
 
 #pb-footer-text {
 	font-size: 11px;
-	width: 995px;
+	width: 970px;
 	text-align: center;
 	line-height: 2.0;
 	margin-top: 20px;
@@ -29,22 +76,6 @@
 .pb-footer-text-important {
 	font-size: 12px;
 	font-weight: bold;
-}
-
-.pb-body {
-	background: url(../images/pb-background.jpg) repeat-x #fff;
-	margin: 0px auto;
-	font-family: "ff-dax-wide-web-pro-1","ff-dax-wide-web-pro-2","Verdana","Arial",sans-serif;
-	width: 995px;
-	color: #464646;
-}
-
-.pb-body a {
-	color: #0054a6;
-}
-
-.pb-body a:hover {
-	color: #000;
 }
 
 .pb-shelf {
@@ -66,7 +97,8 @@
 .pb-shelf-middle {
 	float: left;
 	height: 226px;
-	width: 720px;
+	width: 695px;
+	padding: 0 0 0 5px;
 	background: url(../images/pb-shelfbox-light-middle.png) repeat-x;
 }
 
@@ -79,10 +111,8 @@
 }
 
 .pb-shelf-titlebar {
-	margin: 7px 0 15px 15px;
-	font-size: 22px;
-	font-weight: bold;
-	color: #fff;
+	margin: 4px 0 8px 15px;
+	height: 35px;
 	vertical-align: top;
 }
 
@@ -93,34 +123,17 @@
 }
 
 .pb-shelf-controller .dijitToggleButton {
-	border: none;
-	background-color: transparent;
-	clear: all;
-	margin: 0 0 0 4px !important;
+	margin: 0 0 0 4px;
 	vertical-align: top;
 }
 
 .pb-shelf-controller .dijitButtonNode {
 	border: none;
-	margin: 0 0 0 0;
-	width: 10px;
-	height: 10px;
-	vertical-align: top;
 }
 
 .pb-shelf-controller .dijitButtonContents {
-	border: none;
 	background: transparent;
 	vertical-align: top;
-	width: 10px;
-	height: 10px;
-}
-
-.pb-shelf-controller .dijitButtonContents button {
-	border: none;
-	background: transparent;
-	width: 10px;
-	height: 10px;
 }
 
 /* FireFox Button Padding Fix */
@@ -149,6 +162,7 @@
 .pb-shelf-container {
 	position: relative;
 	height: 164px;
+	clear: both;
 }
 
 .pb-shelf-pane {
@@ -162,12 +176,12 @@
 	width: 220px;
 	height: 160px;
 	float: left;
-	margin: 4px 0 0 15px;
+	margin: 0 5px 0 5px;
 	background: url(../images/pb-shelf-item-frame.png) no-repeat;
 }
 
 .pb-shelf-item-cover-image {
-	position:absolute;
+	position: absolute;
 	top: 13px;
 	left: 13px;
 }
@@ -186,7 +200,7 @@
 	position: absolute;
 	top: 13px;
 	left: 93px; 
-	margin-right: 10px;
+	margin: 0 10px 0 0;
 	white-space: normal;
 	text-align: left;
 }
@@ -223,8 +237,6 @@
 
 .pb-feature-shelf {
 	position: relative;
-	height: 230px;
-	width: 995px;
 	margin-bottom: 10px;
 	font-size: 11px;
 	color: #000;
@@ -238,7 +250,8 @@
 
 .pb-feature-shelf .pb-shelf-middle {
 	height: 230px;
-	width:  955px;
+	width:  925px;
+	padding: 1px 0 0 5px;
 	background: url(../images/pb-shelfbox-dark-middle.png) repeat-x;
 }
 
@@ -258,7 +271,7 @@
 	float: right;
 	position: relative;
 	top: -481px;
-	margin-right: 5px;
+	margin: 0 5px 0 0;
 }
 
 .pb-infobox-left {
@@ -290,54 +303,6 @@
 	width: 165px;
 	text-align: center;
 	font-weight: bold;
-	margin-left: 10px;
-	padding-top: 25px;
-}
-
-/* clear the styles */
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, font, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	outline: 0;
-	font-weight: inherit;
-	font-style: inherit;
-	font-size: 100%;
-	font-family: inherit;
-	vertical-align: baseline;
-}
-/* remember to define focus styles! */
-:focus {
-	outline: 0;
-}
-body {
-	line-height: 1;
-	color: black;
-	background: white;
-}
-ol, ul {
-	list-style: none;
-}
-/* tables still need 'cellspacing="0"' in the markup */
-table {
-	border-collapse: separate;
-	border-spacing: 0;
-}
-caption, th, td {
-	text-align: left;
-	font-weight: normal;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: "";
-}
-blockquote, q {
-	quotes: "" "";
+	margin: 0 0 0 10px;
+	padding: 25px 0 0 0;
 }

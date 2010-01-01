@@ -8,10 +8,10 @@
             <br>
             News
         </div>
-        <div id="rssfeed" name="rssfeed" style="line-height: 1.1; margin-left: 12px; margin-top: -20px;">
-            <ul style="list-style-type: circle;">
+        <div id="rssfeed" name="rssfeed" style="line-height: 1.1; margin: -20px 0 0 0;">
+            <ul style="list-style-type: circle; margin: 0 0 0 12px; padding: 0">
                 {% for entry in update_list|slice:":8" %}
-                <li style="margin-top: 8px">
+                <li style="margin: 8px 0 0 0">
                     <a href="{{ entry.link }}">{{ entry.title }}</a>
                 </li>
                 {% endfor %}
