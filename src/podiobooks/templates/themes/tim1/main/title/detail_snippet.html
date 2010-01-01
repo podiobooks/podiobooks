@@ -5,7 +5,7 @@
 </div>
 <div class="pb-shelf-item-text">
     <p class="pb-shelf-item-title">
-        <a href="{% url title_detail title.slug %}" style="text-decoration:none;">{{ title.name|truncatewords_html:8 }}</a>
+        <a href="{% url title_detail title.slug %}" style="text-decoration:none;">{{ title.name|truncatewords_html:7 }}</a>
     </p>
     <p class="pb-shelf-item-contributors">
         {% show_contributors title %}
