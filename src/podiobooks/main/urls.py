@@ -33,6 +33,7 @@ urlpatterns = patterns('',
     # contributor
     url(r'^contributor/$','django.views.generic.list_detail.object_list', { 'queryset': Contributor.objects.all().order_by('last_name'), 'template_object_name': 'contributor', 'template_name': 'main/contributor/list.html'}, name='contributor_list'),
     url(r'^contributor/(?P<slug>[^/]+)/$','django.views.generic.list_detail.object_detail', {'queryset': Contributor.objects.all(), 'template_object_name': 'contributor', 'template_name': 'main/contributor/detail.html'}, name='contributor_detail'),
+    url(r'^contributor/shelf/(?P<slug>[^/]+)/$','django.views.generic.list_detail.object_detail', {'queryset': Contributor.objects.all(), 'template_object_name': 'contributor', 'template_name': 'main/contributor/shelf.html'}, name='contributor_shelf'),
     
     # episode
     url(r'^episode/(?P<id>[^/]+)/$','django.views.generic.list_detail.object_detail', {'queryset': Episode.objects.all(), 'template_object_name': 'episode', 'template_name': 'main/episode/detail.html'}, name='episode_detail'),
