@@ -35,6 +35,13 @@ def show_shelf(shelf_id, shelf_title, title_list, dropdown_values, dropdown_url,
             'THEME_MEDIA_URL': THEME_MEDIA_URL,
             'MEDIA_URL': MEDIA_URL
             }
+    
+@register.inclusion_tag('main/tags/show_shelf_items.html')
+def show_shelf_items(shelf_id, title_list, shelf_title_width):
+    return {'shelf_id': shelf_id,
+            'title_list': title_list,
+            'shelf_title_width': shelf_title_width
+            }
 
 @register.inclusion_tag('main/tags/show_infobox.html')
 def show_infobox(shelf_id, shelf_title, update_list):
