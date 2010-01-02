@@ -1,8 +1,7 @@
 {% load main_templatetags %}
-{% load title_templatetags %}
-<!-- Begin {{ shelf_title }} Shelf -->
-<!-- Windows Chrome Button Padding Fix -->
+{% load title_templatetags %}<!-- Begin {{ shelf_title }} Shelf -->
 <script type="text/javascript">
+	// Windows Chrome Button Padding Fix
     dojo.addOnLoad(function(){
         if (dojo.isChrome && (navigator.appVersion.indexOf("Win") != -1)) {
             dojo.query(".pb-shelf-controller-icon").style({
@@ -11,31 +10,28 @@
             });
         }
     });
+	
+	// Updates a shelf by changing the container ContentPane's href, triggering an XHR
+    function contributorChange(shelf_id, shelf_url, dropdown_value){
+		dijit.byId(shelf_id+'Container').attr('href', shelf_url.replace('contributor_slug',dropdown_value));
+    }
 </script>
-<div class="{{ base_css_class }}">
+<div class="{{ base_css_class }}" id="{{ shelf_id }}OuterContainer">
     <div class="pb-shelf-left-arrow" onclick="dijit.byId('{{ shelf_id }}').forward();" alt="Click to Switch to the Previous Page of Podiobooks.">
     </div>
     <div class="pb-shelf-middle">
         <div class="pb-shelf-titlebar">
-            <h2 style="float: left;">{{ shelf_title }}</h2><span class="pb-shelf-controller" dojoType="dijit.layout.StackController" containerId="{{ shelf_id }}" buttonWidget="pbwidgets.book_shelf._StackButton"></span>
+            <h2 style="float: left;">{{ shelf_title }}</h2>
+			{% if dropdown_values %}
+            <form class="pb-shelf-dropdown" action="{{ dropdown_url }}" name="{{ shelf_id }}">
+				{{ dropdown_values.contributor }}
+            </form>
+			{% endif %}
+            <span class="pb-shelf-controller" dojoType="dijit.layout.StackController" containerId="{{ shelf_id }}" buttonWidget="pbwidgets.book_shelf._StackButton"></span>
         </div>
-        {% if title_list %}
-        <div dojoType="pbwidgets.book_shelf.BookShelfSlide" id="{{ shelf_id }}" doLayout="true" class="pb-shelf-container">
-            {% for title in title_list %}
-            {% if forloop.first %}
-            <div dojoType="dijit.layout.ContentPane" showLabel="false" iconClass="pb-shelf-controller-icon" class="pb-shelf-pane" slideFrom="left" label="{{ shelf_title }}  Shelf,  Page 0" id="{{ shelf_id }}_shelf_page_0">
-                {% endif %}
-                <div dojoType="dijit.layout.ContentPane" href="{% url title_detail_snippet title.id %}" class="pb-shelf-item" id="{{ shelf_id }}_title_{{ title.id }}"></div>
-				{% if forloop.counter|divisibleby:shelf_title_width and not forloop.last %}
-            </div>
-            <div dojoType="dijit.layout.ContentPane" showLabel="false" iconClass="pb-shelf-controller-icon" class="pb-shelf-pane" slideFrom="left" label="{{  shelf_title }}  Shelf,  Page {% widthratio forloop.counter shelf_title_width 1 %}" style="display: none;">
-                {% endif %}
-                {% if forloop.last %}
-            </div>
-            {% endif %}
-            {% endfor %}
+        <div dojoType="dijit.layout.ContentPane" id="{{ shelf_id }}Container">
+            {% show_shelf_items shelf_id title_list shelf_title_width %}
         </div>
-        {% endif %}
     </div>
     <div class="pb-shelf-right-arrow" onclick="dijit.byId('{{ shelf_id }}').forward();" alt="Click to Switch to the Next Page of Podiobooks.">
     </div>

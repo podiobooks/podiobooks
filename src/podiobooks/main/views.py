@@ -6,15 +6,22 @@ from podiobooks.main.models import Title, Category, Contributor
 from podiobooks import settings
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
-from django.db.models import Q
+from django.db.models import Q, Count
 import feedparser
 
 class CategoryChoiceForm(forms.Form):
     categories = cache.get('category_dropdown_values')
     if (categories == None):
-        categories = Category.objects.order_by('name').all().values_list('slug', 'name')
+        categories = Category.objects.order_by('name').values_list('slug', 'name')
         cache.set('category_dropdown_values', categories, 240)
-    category = forms.ChoiceField(choices=categories)
+    category = forms.ChoiceField(choices=categories, widget=forms.Select(attrs={'class':'pb-category-choice', 'onchange':'this.form.submit();'}))
+    
+class ContributorChoiceForm(forms.Form):
+    contributors = cache.get('contributor_dropdown_values')
+    if (contributors == None):
+        contributors = Contributor.objects.values_list('slug', 'display_name').annotate(num_titles=Count('titlecontributors')).order_by('-num_titles')[:5]
+        cache.set('contributor_dropdown_values', contributors, 240)
+    contributor = forms.ChoiceField(choices=contributors, widget=forms.Select(attrs={'class':'pb-contributor-choice', 'onchange':'contributorChange(this.form.name, this.form.action, this.value);'}))
     
 class TitleSearchForm(forms.Form):
     keywords = forms.CharField(label="Search for")
@@ -37,16 +44,16 @@ def index(request):
         title_list = Title.objects.filter(display_on_homepage = True)[:16]
         cache.set('homepage_title_objects', title_list, 240)
         
-    contributor_title_list = cache.get('homepage_author_title_objects')
+    contributor_title_list = cache.get('homepage_contributor_title_list')
     if (contributor_title_list == None):
         contributor = Contributor.objects.select_related().get(display_name='Mur Lafferty')
         contributor_title_list = contributor.title_set.order_by('-date_updated', 'name').all()[:9]
-        cache.set('homepage_author_title_objects', contributor_title_list, 240)
+        cache.set('homepage_contributor_title_list', contributor_title_list, 240)
         
-    toprated_title_list = cache.get('homepage_toprated_title_objects')
+    toprated_title_list = cache.get('homepage_toprated_title_list')
     if (toprated_title_list == None):
         toprated_title_list = Title.objects.order_by('-avg_overall').all()[:15]
-        cache.set('homepage_toprated_title_objects', toprated_title_list, 240)
+        cache.set('homepage_toprated_title_list', toprated_title_list, 240)
     
     blog_feed_entries = cache.get('homepage_blog_feed_entries')
     if (blog_feed_entries == None):
@@ -54,7 +61,12 @@ def index(request):
         blog_feed_entries = blog_feed.entries[:20]
         cache.set('homepage_blog_feed_entries', blog_feed_entries, 240)
         
-    response_data = {'toprated_title_list':toprated_title_list,'contributor_title_list':contributor_title_list, 'title_list':title_list, 'blog_feed_entries':blog_feed_entries, 'categoryChoiceForm':CategoryChoiceForm()}
+    response_data = {'toprated_title_list': toprated_title_list,
+                     'contributor_title_list': contributor_title_list,
+                     'title_list':title_list, 
+                     'blog_feed_entries':blog_feed_entries,
+                     'contributor_choice_form': ContributorChoiceForm(),
+                     }
     
     return render_to_response('main/index.html', response_data, context_instance=RequestContext(request))
 
