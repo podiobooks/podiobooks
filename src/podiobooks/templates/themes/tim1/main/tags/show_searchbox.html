@@ -11,11 +11,4 @@
         </label>
         {{ categoryChoiceForm.category }}
     </form>
-    <script type="text/javascript">
-        dojo.addOnLoad(function(){
-            dojo.connect(dojo.byId("id_category"), "onchange", function(event) {
-				dojo.byId("pb-category-choice-form").submit();
-			});
-        });
-    </script>
 </div>
