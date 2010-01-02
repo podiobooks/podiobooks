@@ -61,8 +61,13 @@ ul {
 
 #pb-header-menubar {
 	font-size: 14px;
-	padding: 57px 20px; 0 20px;
+	margin: 53px 20px 0 20px;
 	text-align: left;
+}
+
+#pb-header-menubar-items {
+	margin: 4px 0 0 0;
+	float: left;
 }
 
 #pb-footer-text {
@@ -199,8 +204,8 @@ ul {
 .pb-shelf-item-text {
 	position: absolute;
 	top: 13px;
-	left: 93px; 
-	margin: 0 10px 0 0;
+	left: 93px;
+	width: 120px;
 	white-space: normal;
 	text-align: left;
 }
@@ -233,6 +238,11 @@ ul {
 	margin: 62px 0 0 90px;
 	color: transparent;
 	display: block;
+}
+
+.pb-shelf-dropdown {
+	float: left;
+	margin: 1px 0 0 10px;
 }
 
 .pb-feature-shelf {
@@ -305,4 +315,16 @@ ul {
 	font-weight: bold;
 	margin: 0 0 0 10px;
 	padding: 25px 0 0 0;
+}
+
+.pb-category-choice {
+	font-size: 14px;
+	background: #fff;
+	border: 1px solid #0054a6;
+}
+
+.pb-contributor-choice {
+	font-size: 14px;
+	background: #fff;
+	border: 1px solid #0054a6;
 }

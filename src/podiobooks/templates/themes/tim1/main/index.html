@@ -7,6 +7,7 @@
 {% block head %}
 <script type="text/javascript">
     dojo.require("pbwidgets.book_shelf.BookShelf");
+	dojo.require("dijit.layout.StackController");
     dojo.require("dijit.layout.ContentPane");
 </script>
 {% endblock %}
@@ -17,7 +18,8 @@
 
 <div class="pb-adstrip">Google Ads Placeholder&nbsp;&nbsp;&nbsp;&nbsp;Google Ads Placeholder&nbsp;&nbsp;&nbsp;&nbsp;Google Ads Placeholder&nbsp;&nbsp;&nbsp;&nbsp;</div>
 
-{% show_shelf 'authorSpotlightShelf' 'Author Spotlight - Mur Lafferty' contributor_title_list '' '' 'pb-shelf' 3 %}
+{% url contributor_shelf 'contributor_slug' as contributor_dropdown_url %}
+{% show_shelf 'authorSpotlightShelf' 'Author Spotlight - ' contributor_title_list contributor_choice_form contributor_dropdown_url 'pb-shelf' 3 %}
 
 {% show_shelf 'topRatedShelf' 'Top Rated Podiobooks' toprated_title_list '' '' 'pb-shelf' 3 %}
 
