@@ -14,7 +14,7 @@ from django.template.defaultfilters import slugify
 def getTitle(legacyBookID):
     """Returns a Title object based on a Legacy Book ID"""
     try:
-        foundTitle = Title.objects.get(old_id=legacyBookID)
+        foundTitle = Title.objects.get(id=legacyBookID)
     except:
         foundTitle = None
     return foundTitle
@@ -78,7 +78,6 @@ if __name__ == "__main__":
 #filesize = models.FloatField(default=0)
 #status = models.SmallIntegerField(default=1)
 #deleted = models.BooleanField(default=False)
-#old_id = models.IntegerField(blank=True, null=True)
 #date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 #date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
 

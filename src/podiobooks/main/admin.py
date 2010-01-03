@@ -16,15 +16,15 @@ from models import Partner
 
 class TitleInline(admin.TabularInline):
     model = Title
-    exclude = ("deleted", "old_id", "date_created", "date_updated")
+    exclude = ("deleted", "date_created", "date_updated")
     
 class TitleContributorsInline(admin.TabularInline):
     model = TitleContributors
-    exclude = ("deleted", "old_id", "date_created", "date_updated")
+    exclude = ("deleted", "date_created", "date_updated")
 
 class EpisodeInline(admin.TabularInline):
     model = Episode
-    exclude = ("deleted", "old_id", "date_created", "date_updated")
+    exclude = ("deleted", "date_created", "date_updated")
 
 class AwardAdmin(admin.ModelAdmin):
     list_display = ('name',)
