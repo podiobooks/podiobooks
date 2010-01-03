@@ -171,10 +171,10 @@ ul {
 }
 
 .pb-shelf-container .dijitContentPaneLoading {
-	background: url(../images/loading.gif) no-repeat;
-	height: 35px;
-	width: 35px;
-	margin: 62px 0 0 90px;
+	background: url(../images/loading-large.gif) no-repeat;
+	height: 49px;
+	width: 307px;
+	margin: 62px 0 0 120px auto;
 	color: transparent;
 	display: block;
 }
