@@ -29,7 +29,6 @@ def importPartners():
         # Create an object in the database based on the current row
         partner = Partner.objects.create (
             id = row['ID'],
-            old_id = row['ID'],
             name = row['Name'].replace('\\',''),
             url = row['URL'],
             logo = row['Logo'],
