@@ -174,7 +174,11 @@ ul {
 	background: url(../images/loading-large.gif) no-repeat;
 	height: 49px;
 	width: 307px;
+<<<<<<< HEAD
 	margin: 200px 0 0 120px;
+=======
+	margin: 62px 0 0 120px auto;
+>>>>>>> c0fb9c826fe0cbffc4cea47094a95589183bdee9
 	color: transparent;
 	display: block;
 }
