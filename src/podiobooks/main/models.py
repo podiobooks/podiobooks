@@ -73,6 +73,7 @@ class Contributor(models.Model):
 	last_name = models.CharField(max_length=255)
 	display_name = models.CharField(max_length=255)
 	deleted = models.BooleanField(default=False)
+	# Note: Titles are available a title_set.all()
 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
 
@@ -111,7 +112,6 @@ class Episode(models.Model):
 	contributors = models.ManyToManyField('Contributor', through='EpisodeContributors')
 	status = models.SmallIntegerField(default=1)
 	deleted = models.BooleanField(default=False)
-	old_id = models.IntegerField(blank=True, null=True)
 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	
@@ -120,10 +120,10 @@ class Episode(models.Model):
 	filesize_mb = property(_get_filesize_mb)
 	
 	class Meta:
-		ordering = ['name']
+		ordering = ['title__name', 'sequence']
 	
 	def __unicode__(self):
-		return "Episode"
+		return self.title.name + ': Episode #' +str(self.sequence) + ': ' + self.name
 	
 	@models.permalink
 	def get_absolute_url(self):
@@ -181,7 +181,6 @@ class Partner(models.Model):
 	url = models.URLField(blank=False, verify_exists=True)
 	logo = models.ImageField(upload_to="/dir/path")
 	deleted = models.BooleanField(default=False)
-	old_id = models.IntegerField(blank=True, null=True)
 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	
@@ -247,7 +246,6 @@ class Subscription(models.Model):
 	last_downloaded_date = models.DateTimeField(blank=True, default=datetime.datetime.now())
 	finished = models.PositiveSmallIntegerField(null=False, default=0)
 	deleted = models.PositiveSmallIntegerField(null=False, default=0)
-	old_id = models.IntegerField(blank=True, null=True)
 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	
@@ -279,7 +277,6 @@ class Title(models.Model):
 	avg_writing = models.FloatField(default=0)
 	avg_overall = models.FloatField(default=0)
 	deleted = models.BooleanField(default=False)
-	old_id = models.IntegerField(blank=True, null=True)
 	contributors = models.ManyToManyField('Contributor', through='TitleContributors')
 	categories = models.ManyToManyField('Category', db_table="main_title_categories")
 	partner = models.ForeignKey('partner', null=True, blank=True)
