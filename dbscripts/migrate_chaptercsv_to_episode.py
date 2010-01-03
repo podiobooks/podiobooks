@@ -42,7 +42,6 @@ def importChapters():
             # Create an episode object in the database based on the current chapter row
             episode = Episode.objects.create (
                 id = row['ID'],
-                old_id = row['ID'],
                 name = row['Title'].replace('\\',''),
                 title = foundTitle,
                 sequence = row['Sequence'],
