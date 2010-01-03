@@ -19,7 +19,7 @@ class CategoryChoiceForm(forms.Form):
 class ContributorChoiceForm(forms.Form):
     contributors = cache.get('contributor_dropdown_values')
     if (contributors == None):
-        contributors = Contributor.objects.values_list('slug', 'display_name').annotate(num_titles=Count('titlecontributors')).order_by('-num_titles')[:5]
+        contributors = Contributor.objects.values_list('slug', 'display_name').annotate(num_titles=Count('titlecontributors')).order_by('-num_titles')[:10]
         cache.set('contributor_dropdown_values', contributors, 240)
     contributor = forms.ChoiceField(choices=contributors, widget=forms.Select(attrs={'class':'pb-contributor-choice', 'onchange':'contributorChange(this.form.name, this.form.action, this.value);'}))
     
