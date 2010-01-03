@@ -170,6 +170,15 @@ ul {
 	clear: both;
 }
 
+.pb-shelf-container .dijitContentPaneLoading {
+	background: url(../images/loading.gif) no-repeat;
+	height: 35px;
+	width: 35px;
+	margin: 62px 0 0 90px;
+	color: transparent;
+	display: block;
+}
+
 .pb-shelf-pane {
 	position: absolute;
 	height: 164px;
