@@ -163,7 +163,6 @@ if __name__ == "__main__":
 #avg_writing = models.FloatField(default=0)
 #avg_overall = models.FloatField(default=0)
 #deleted = models.BooleanField(default=False)
-#old_id = models.IntegerField(blank=True, null=True)
 #contributors = models.ManyToManyField('Contributor', through='TitleContributors')
 #categories = models.ManyToManyField('Category', db_table="main_title_categories")
 #awards = models.ManyToManyField('Award', blank=True)
