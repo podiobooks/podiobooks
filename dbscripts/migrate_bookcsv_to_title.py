@@ -97,7 +97,6 @@ def importBooks():
         # Create a title object in the database based on the current book row
         title = Title.objects.create (
             id = row['ID'],
-            old_id = row['ID'],
             name = row['Title'].replace('\\',''),
             slug = slugify(row['Title']),
             license = determineLicense(row['license']),
