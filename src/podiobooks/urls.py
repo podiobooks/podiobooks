@@ -41,3 +41,16 @@ if DEBUG:
     urlpatterns += patterns('',
         (r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': MEDIA_ROOT, 'show_indexes': True}),
     )
+    
+# Databrowse setup
+from django.contrib import databrowse
+from podiobooks.main.models import Category, Contributor, Episode, Title
+
+databrowse.site.register(Category)
+databrowse.site.register(Contributor)
+databrowse.site.register(Episode)
+databrowse.site.register(Title)
+
+urlpatterns += patterns('',
+        (r'^db/(.*)', databrowse.site.root),
+    )

@@ -76,6 +76,7 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.admin',
     'django.contrib.admindocs',
+    'django.contrib.databrowse',
     'django.contrib.flatpages',
     'registration',
     'django_authopenid',
