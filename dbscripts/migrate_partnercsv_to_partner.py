@@ -50,7 +50,6 @@ if __name__ == "__main__":
 #url = models.URLField(blank=False, verify_exists=True)
 #logo = models.ImageField(upload_to="/dir/path")
 #deleted = models.BooleanField(default=False)
-#old_id = models.IntegerField(blank=True, null=True)
 #date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 #date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
 
