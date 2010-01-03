@@ -46,7 +46,7 @@ def index(request):
         
     contributor_title_list = cache.get('homepage_contributor_title_list')
     if (contributor_title_list == None):
-        contributor = Contributor.objects.select_related().get(display_name='Mur Lafferty')
+        contributor = Contributor.objects.select_related().get(display_name='Scott Sigler')
         contributor_title_list = contributor.title_set.order_by('-date_updated', 'name').all()[:9]
         cache.set('homepage_contributor_title_list', contributor_title_list, 240)
         
