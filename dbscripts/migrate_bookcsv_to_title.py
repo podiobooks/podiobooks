@@ -94,42 +94,43 @@ def importBooks():
     for row in bookCSVReader:
         #print row
         
-        # Create a title object in the database based on the current book row
-        title = Title.objects.create (
-            id = row['ID'],
-            name = row['Title'].replace('\\',''),
-            slug = slugify(row['Title']),
-            license = determineLicense(row['license']),
-            description = row['Description'].replace('\\',''),
-            cover = row['Coverimage'],
-            status = 1,
-            display_on_homepage = booleanClean(row['DisplayOnHomepage']),
-            is_hosted_at_pb = True,
-            is_adult = booleanClean(row['Explicit']),
-            is_complete = booleanClean(row['Complete']),
-            avg_audio_quality = row['AvgAudioQuality'],
-            avg_narration = row['AvgNarration'],
-            avg_writing = row['AvgWriting'],
-            avg_overall = row['AvgOverall'],
-            deleted = False,
-            date_created = row['DateCreated']
-        )
-        mainContributor = getOrCreateContributor(row['Authors'][:48])
-        contributorType = getOrCreateContributorType('Author')
-        TitleContributors.objects.create(title=title,contributor=mainContributor,contributor_type=contributorType)
-        print "Title: %s\tContributors: %s" % (title.name, title.contributors.values('display_name'))
-        
-        category = getCategory(row['CategoryID'])
-        if (category):
-            title.categories.add(category)
-            print "Title: %s\tCategories: %s" % (title.name, title.categories.values('name'))
-        
-        partner = getPartner(row['PartnerID'])
-        if (partner):
-            title.partner = partner
-            print "Title: %s\tPartner: %s" % (title.name, title.partner.name)
+        if (int(row['Enabled']) == 1 and int(row['Standby']) == 0):
+            # Create a title object in the database based on the current book row
+            title = Title.objects.create (
+                id = row['ID'],
+                name = row['Title'].replace('\\',''),
+                slug = slugify(row['Title']),
+                license = determineLicense(row['license']),
+                description = row['Description'].replace('\\',''),
+                cover = row['Coverimage'],
+                status = 1,
+                display_on_homepage = booleanClean(row['DisplayOnHomepage']),
+                is_hosted_at_pb = True,
+                is_adult = booleanClean(row['Explicit']),
+                is_complete = booleanClean(row['Complete']),
+                avg_audio_quality = row['AvgAudioQuality'],
+                avg_narration = row['AvgNarration'],
+                avg_writing = row['AvgWriting'],
+                avg_overall = row['AvgOverall'],
+                deleted = False,
+                date_created = row['DateCreated']
+            )
+            mainContributor = getOrCreateContributor(row['Authors'][:48])
+            contributorType = getOrCreateContributorType('Author')
+            TitleContributors.objects.create(title=title,contributor=mainContributor,contributor_type=contributorType)
+            print "Title: %s\tContributors: %s" % (title.name, title.contributors.values('display_name'))
             
-        title.save()
+            category = getCategory(row['CategoryID'])
+            if (category):
+                title.categories.add(category)
+                print "Title: %s\tCategories: %s" % (title.name, title.categories.values('name'))
+            
+            partner = getPartner(row['PartnerID'])
+            if (partner):
+                title.partner = partner
+                print "Title: %s\tPartner: %s" % (title.name, title.partner.name)
+                
+            title.save()
         
         # Create URL Objects for the URL Fields from the Book Row
         # @TODO Need to double check what we want to do with iTunes, etc.
