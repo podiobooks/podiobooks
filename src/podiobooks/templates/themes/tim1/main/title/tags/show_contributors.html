@@ -1,9 +1,25 @@
-{% if contributors %}
-<!-- Begin show_contributors templatetag -->
-	by<span class="contributor-list">
-	{% for contributor in contributors %}
-		<a href="{% url contributor_detail contributor.slug %}">{{ contributor.display_name }}</a>{% if not forloop.last %},{% endif %}
-	{% endfor %}
+{% if titlecontributors %}<!-- Begin show_contributors templatetag -->
+{% for titlecontributor in titlecontributors %}
+<span class="contributor-attribution">
+	{% ifequal titlecontributor.contributor_type.slug 'author' %}
+    {% if forloop.first %}by{% else %} and {% endif %}
+    {% endifequal %}
+    {% ifequal titlecontributor.contributor_type.slug 'editor' %}
+    {% if forloop.first %}edited by{% else %} and {% endif %}
+    {% endifequal %}
+    {% ifequal titlecontributor.contributor_type.slug 'narrator' %}
+    {% if forloop.first %}narrated by{% else %} and {% endif %}
+    {% endifequal %}
+    {% ifequal titlecontributor.contributor_type.slug 'penname' %}
+    writing as
+    {% endifequal %}
+    {% ifequal titlecontributor.contributor_type.slug 'ghostwriter' %}
+    as told to
+    {% endifequal %}
+	{% ifequal titlecontributor.contributor_type.slug 'contributor' %}
+	with
+    {% endifequal %}
 	</span>
-<!-- End show_contributors templatetag -->
+<span class="contributor"><a href="{% url contributor_detail titlecontributor.contributor.slug %}">{{ titlecontributor.contributor.display_name }}</a></span>
+{% endfor %}<!-- End show_contributors templatetag -->
 {% endif %}
