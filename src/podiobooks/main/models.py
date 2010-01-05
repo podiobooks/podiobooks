@@ -67,9 +67,9 @@ class Contributor(models.Model):
 	"""A contributor is one who had done work on a title. For a book, it's an
     author or authors."""
 	slug = models.SlugField()
-	user = models.ForeignKey(User, null=True) #User is an OOTB Django Auth Model
+	user = models.ForeignKey(User, null=True, blank=True) #User is an OOTB Django Auth Model
 	first_name = models.CharField(max_length=255)
-	middle_name = models.CharField(max_length=255)
+	middle_name = models.CharField(max_length=255, blank=True)
 	last_name = models.CharField(max_length=255)
 	display_name = models.CharField(max_length=255)
 	deleted = models.BooleanField(default=False)
