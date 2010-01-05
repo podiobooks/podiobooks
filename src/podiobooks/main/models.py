@@ -309,6 +309,7 @@ class TitleContributors(models.Model):
 	
 	class Meta:
 		verbose_name_plural = "Title Contributors"
+		ordering = ['contributor_type__slug', 'date_created']
 
 class TitleUrl(models.Model):
 	"""Allows us to have several links for a book, for display. For utility."""
