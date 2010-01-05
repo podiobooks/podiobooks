@@ -9,6 +9,7 @@ This script reads in an "CSV for Excel" export from phpMyAdmin into a the new Po
 import csv # first we need import necessary lib:csv
 from podiobooks.main.models import *
 from django.template.defaultfilters import slugify
+import contributor_translation
 
 #Book/Title Helper Functions
 
@@ -54,9 +55,9 @@ def getOrCreateContributor(contributorName):
 
 def getOrCreateContributorType(contributorType):
     """Retrieves or creates a Contributor type based on the name of the type"""
-    contributorType, created = ContributorType.objects.get_or_create(slug='author',
-                  defaults={'name': 'Author',})
-    return contributorType
+    contributorTypeObject, created = ContributorType.objects.get_or_create(slug=slugify(contributorType),
+                  defaults={'name': contributorType,})
+    return contributorTypeObject
 
 def getCategory(categoryID):
     """Retrieves a category by id or none if not found"""
@@ -115,9 +116,11 @@ def importBooks():
                 deleted = False,
                 date_created = row['DateCreated']
             )
-            mainContributor = getOrCreateContributor(row['Authors'][:48])
-            contributorType = getOrCreateContributorType('Author')
-            TitleContributors.objects.create(title=title,contributor=mainContributor,contributor_type=contributorType)
+            contributorList = contributor_translation.translate_contributor(row['Authors']) #Manual Lookup Translation
+            for contributor in contributorList:
+                contributorObject = getOrCreateContributor(contributor['name'])
+                contributorType = getOrCreateContributorType(contributor['type'])
+                TitleContributors.objects.create(title=title,contributor=contributorObject,contributor_type=contributorType)
             print "Title: %s\tContributors: %s" % (title.name, title.contributors.values('display_name'))
             
             category = getCategory(row['CategoryID'])
