@@ -21,7 +21,7 @@ contributor_translation = {
                       'Billie Pagliolo': [{'name': 'Billie Pagliolo-Olmon', 'type': 'Author'},],
                       'MIke Bennett': [{'name': 'Mike Bennett', 'type': 'Author'},],
                       'Mark Yoshimoto Nemcoff (writing as Alex Damien)': [{'name': 'Mark Yoshimoto Nemcoff', 'type': 'Author'}, {'name': 'Alex Damien', 'type': 'Penname'},],
-                      'Tee Morris (with Lisa Lee)': [{'name': 'Tee Morris', 'type': 'Author'}, {'name': 'Lisa Lee', 'type': 'Author'},],
+                      'Tee Morris (with Lisa Lee)': [{'name': 'Tee Morris', 'type': 'Author'}, {'name': 'Lisa Lee', 'type': 'Contributor'},],
                       'Patrick McLean': [{'name': 'Patrick E. McLean', 'type': 'Author'},],
                       'Compiled by Nobilis': [{'name': 'Nobilis', 'type': 'Editor'},],
                       'John Stockmyer': [{'name': 'John G. Stockmyer', 'type': 'Author'},],

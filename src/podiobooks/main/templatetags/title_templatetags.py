@@ -10,8 +10,8 @@ def show_categories(title):
 
 @register.inclusion_tag('main/title/tags/show_contributors.html')
 def show_contributors(title):
-    contributors = title.contributors.all()
-    return { 'contributors' : contributors }
+    titlecontributors = title.titlecontributors_set.all().order_by('contributor_type__slug', 'date_created')
+    return { 'titlecontributors' : titlecontributors }
 
 @register.inclusion_tag('main/title/tags/show_titlecover.html')
 def show_titlecover(title):
