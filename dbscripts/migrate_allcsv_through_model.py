@@ -15,4 +15,8 @@ importBooks()
 # IMPORT CHAPTERS
 from migrate_chaptercsv_to_episode import *
 importChapters()
+
+# IMPORT RATINGS
+from migrate_bookratingscsv_to_episode import *
+importRatings()
  
