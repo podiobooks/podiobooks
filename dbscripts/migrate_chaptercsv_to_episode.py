@@ -33,8 +33,6 @@ def importChapters():
     
     # Loop through the rest of the rows in the CSV
     for row in chapterCSVReader:
-        #print row
-        
         foundTitle = getTitle(row['BookID'])
         
         if (foundTitle != None):
