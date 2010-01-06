@@ -17,6 +17,6 @@ from migrate_chaptercsv_to_episode import *
 importChapters()
 
 # IMPORT RATINGS
-from migrate_bookratingscsv_to_episode import *
+from migrate_bookratingcsv_to_title import *
 importRatings()
  

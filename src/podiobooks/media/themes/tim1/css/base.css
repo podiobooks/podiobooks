@@ -200,14 +200,12 @@ ul {
 	left: 13px;
 }
 
-.pb-shelf-item-preview-icon {
-	background: url(../images/pb-preview-icon.png) no-repeat;
+.pb-shelf-item-rating {
 	position: absolute;
 	top: 125px;
 	left: 13px;
 	height: 19px;
-	width: 63px;
-	cursor: pointer;
+	width: 90px;
 }
 
 .pb-shelf-item-text {
