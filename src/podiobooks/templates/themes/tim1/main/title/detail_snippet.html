@@ -1,8 +1,8 @@
 {% load main_templatetags %}
 {% load title_templatetags %}
 <a href="{% url title_detail title.slug %}"><img class="pb-shelf-item-cover-image" src="{% cover_media_url %}images/covers/67x99/{{ title.cover }}" width="67" height="99" alt="Podiobook Cover for {{ title.name }}"/></a>
-<div class="pb-shelf-item-rating" style="font-size: 12px; font-weight: bold">
-	<img src="{{ THEME_MEDIA_URL}}images/pb-thumbs-up.png">{{ title.net_promoter_score }}%
+<div class="pb-shelf-item-rating">
+	{{ title.net_promoter_score }}%
 </div>
 <div class="pb-shelf-item-text">
     <p class="pb-shelf-item-title">
