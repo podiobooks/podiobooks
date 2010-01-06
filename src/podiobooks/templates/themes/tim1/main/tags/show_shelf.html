@@ -30,7 +30,7 @@
             <span class="pb-shelf-controller" dojoType="dijit.layout.StackController" containerId="{{ shelf_id }}" buttonWidget="pbwidgets.book_shelf._StackButton"></span>
         </div>
         <div dojoType="dijit.layout.ContentPane" id="{{ shelf_id }}Container" class="pb-shelf-container">
-            {% show_shelf_items shelf_id title_list shelf_title_width %}
+            {% show_shelf_items shelf_id shelf_title title_list shelf_title_width %}
         </div>
     </div>
     <div class="pb-shelf-right-arrow" onclick="dijit.byId('{{ shelf_id }}').forward();" alt="Click to Switch to the Next Page of Podiobooks.">
