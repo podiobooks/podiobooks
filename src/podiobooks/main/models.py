@@ -276,6 +276,8 @@ class Title(models.Model):
 	avg_narration = models.FloatField(default=0)
 	avg_writing = models.FloatField(default=0)
 	avg_overall = models.FloatField(default=0)
+	promoter_count = models.IntegerField(default=0)
+	detractor_count = models.IntegerField(default=0)
 	deleted = models.BooleanField(default=False)
 	contributors = models.ManyToManyField('Contributor', through='TitleContributors')
 	categories = models.ManyToManyField('Category', db_table="main_title_categories")
