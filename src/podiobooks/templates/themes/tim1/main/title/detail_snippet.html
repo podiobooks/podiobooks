@@ -2,7 +2,7 @@
 {% load title_templatetags %}
 <a href="{% url title_detail title.slug %}"><img class="pb-shelf-item-cover-image" src="{% cover_media_url %}images/covers/67x99/{{ title.cover }}" width="67" height="99" alt="Podiobook Cover for {{ title.name }}"/></a>
 <div class="pb-shelf-item-rating">
-	{{ title.net_promoter_score }}%
+	{{ title.net_promoter_score }}%<div style="font-size: 10px; font-weight: normal; margin: -2px 0 0 -4px;">({{ title.promoter_count|add:title.detractor_count }})</div>
 </div>
 <div class="pb-shelf-item-text">
     <p class="pb-shelf-item-title">
