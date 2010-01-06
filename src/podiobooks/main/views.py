@@ -55,16 +55,22 @@ def index(request):
         toprated_title_list = Title.objects.filter(display_on_homepage = True).order_by('-avg_overall').all()[:15]
         cache.set('homepage_toprated_title_list', toprated_title_list, 240)
     
-    blog_feed_entries = cache.get('homepage_blog_feed_entries')
-    if (blog_feed_entries == None):
-        blog_feed = feedparser.parse('http://podiobooks.com/index.xml')
-        blog_feed_entries = blog_feed.entries[:20]
-        cache.set('homepage_blog_feed_entries', blog_feed_entries, 240)
+    nowreleasing_title_list = cache.get('homepage_now_releasing_title_list')
+    if (nowreleasing_title_list == None):
+        nowreleasing_title_list = Title.objects.filter(is_complete = False).order_by('-date_created').all()[:5]
+        cache.set('homepage_now_releasing_title_list', nowreleasing_title_list, 240)
+        
+    recentlycomplete_title_list = cache.get('homepage_recently_complete_title_list')
+    if (recentlycomplete_title_list == None):
+        recentlycomplete_title_list = Title.objects.filter(is_complete = True).order_by('-date_updated').all()[:5]
+        cache.set('homepage_recently_complete_title_list', recentlycomplete_title_list, 240)
+    
         
     response_data = {'toprated_title_list': toprated_title_list,
                      'contributor_title_list': contributor_title_list,
-                     'title_list':title_list, 
-                     'blog_feed_entries':blog_feed_entries,
+                     'title_list': title_list, 
+                     'nowreleasing_title_list': nowreleasing_title_list,
+                     'recentlycomplete_title_list': recentlycomplete_title_list,
                      'contributor_choice_form': ContributorChoiceForm(),
                      }
     

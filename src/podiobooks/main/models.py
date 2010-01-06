@@ -1,3 +1,4 @@
+from __future__ import division
 from django.db import models
 from django.contrib.auth.models import User
 import datetime
@@ -301,6 +302,10 @@ class Title(models.Model):
 	@models.permalink
 	def get_absolute_url(self):
 		return ('title_detail', [self.slug])
+	
+	def net_promoter_score(self):
+		total_count = self.promoter_count + self.detractor_count
+		return int((self.promoter_count / total_count) * 100)
 
 class TitleContributors(models.Model):
 	"""Join table to associate contributors to titles."""
