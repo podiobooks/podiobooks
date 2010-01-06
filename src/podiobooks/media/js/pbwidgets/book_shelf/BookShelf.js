@@ -10,7 +10,7 @@ dojo.require("dojo.fx.easing");
 dojo.declare("pbwidgets.book_shelf.BookShelf", [dijit.layout.StackContainer, dijit._Templated], {
     // duration: Integer
     //	used for Fade and Slide BookShelves, the duration to run the transition animation.
-    duration: 1250,
+    duration: 2000,
     
     // templateString: String
     //	the template for our container
