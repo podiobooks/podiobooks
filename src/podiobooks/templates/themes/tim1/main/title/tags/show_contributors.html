@@ -5,10 +5,10 @@
     {% if forloop.first %}by{% else %} and {% endif %}
     {% endifequal %}
     {% ifequal titlecontributor.contributor_type.slug 'editor' %}
-    {% if forloop.first %}edited by{% else %} and {% endif %}
+    edited by
     {% endifequal %}
     {% ifequal titlecontributor.contributor_type.slug 'narrator' %}
-    {% if forloop.first %}narrated by{% else %} and {% endif %}
+    narrated by
     {% endifequal %}
     {% ifequal titlecontributor.contributor_type.slug 'penname' %}
     writing as
