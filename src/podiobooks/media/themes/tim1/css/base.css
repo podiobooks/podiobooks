@@ -201,16 +201,16 @@ ul {
 }
 
 .pb-shelf-item-rating {
-	background: url('../images/pb-thumbs-up-bar.jpg') no-repeat;
+	background: url('../images/pb-thumbs-up-bar-tall.jpg') no-repeat;
 	position: absolute;
-	top: 125px;
+	top: 112px;
 	left: 13px;
-	height: 24px;
+	height: 48px;
 	width: 67px;
 	font-size: 12px;
 	font-weight: bold;
 	text-align: center;
-	padding: 5px 0 0 10px;
+	padding: 0 0 0 10px;
 	cursor: pointer;
 }
 
