@@ -47,12 +47,12 @@ def index(request):
     contributor_title_list = cache.get('homepage_contributor_title_list')
     if (contributor_title_list == None):
         contributor = Contributor.objects.select_related().get(display_name='Scott Sigler')
-        contributor_title_list = contributor.title_set.order_by('-date_updated', 'name').all()[:9]
+        contributor_title_list = contributor.title_set.order_by('-date_updated', 'name').filter(display_on_homepage = True).all()[:9]
         cache.set('homepage_contributor_title_list', contributor_title_list, 240)
         
     toprated_title_list = cache.get('homepage_toprated_title_list')
     if (toprated_title_list == None):
-        toprated_title_list = Title.objects.order_by('-avg_overall').all()[:15]
+        toprated_title_list = Title.objects.filter(display_on_homepage = True).order_by('-avg_overall').all()[:15]
         cache.set('homepage_toprated_title_list', toprated_title_list, 240)
     
     blog_feed_entries = cache.get('homepage_blog_feed_entries')
