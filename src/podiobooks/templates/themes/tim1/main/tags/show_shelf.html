@@ -21,7 +21,7 @@
     </div>
     <div class="pb-shelf-middle">
         <div class="pb-shelf-titlebar">
-            <h2 style="float: left;">{{ shelf_title }}</h2>
+            <h2 style="float: left;"><label for="id_contributor">{{ shelf_title }}</label></h2>
 			{% if dropdown_values %}
             <form class="pb-shelf-dropdown" action="{{ dropdown_url }}" name="{{ shelf_id }}">
 				{{ dropdown_values.contributor }}
