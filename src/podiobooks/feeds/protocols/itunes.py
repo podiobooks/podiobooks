@@ -4,6 +4,8 @@ This is a *type* of feed, and not an actual feed.  It controls what elements com
 
 from django.utils.feedgenerator import Rss201rev2Feed
 
+from django.utils.html import strip_tags
+
 class iTunesFeed(Rss201rev2Feed):
     def root_attributes(self):
         attrs = super(iTunesFeed, self).root_attributes()
@@ -15,7 +17,7 @@ class iTunesFeed(Rss201rev2Feed):
     def add_root_elements(self, handler):
         super(iTunesFeed, self).add_root_elements(handler)
         # Atom Item to Prevent Feed from Not Validating
-        handler.addQuickElement(u'atom:link', None, {u'href':u'http://www.podiobooks.com', u'rel':u'self', u'type':u'application/rss+xml'})
+        handler.addQuickElement(u'atom:link', None, {u'href':self.feed['link'], u'rel':u'self', u'type':u'application/rss+xml'})
         
         #Basic Attributes
         handler.addQuickElement(u'webMaster', u'webmaster@podiobooks.com (Chris Miller)')
@@ -32,15 +34,13 @@ class iTunesFeed(Rss201rev2Feed):
             handler.addQuickElement(u'itunes:subtitle', self.feed['subtitle'])
         if self.feed['image'] is not None:
             handler.addQuickElement(u'itunes:image', None, {u'href':self.feed['image']})
-        handler.addQuickElement(u'itunes:summary', self.feed['description'])
+        if self.feed['description'] is not None:
+            handler.addQuickElement(u'itunes:summary', strip_tags(self.feed['description']))
         
         
         #iTunes Category
         handler.startElement(u'itunes:category', {u'text':u'Arts'})
         handler.addQuickElement(u'itunes:category', None, {u'text':u'Literature'})
-        if self.feed['categories'] is not None:
-            for category in self.feed['categories']:
-                handler.addQuickElement(u'itunes:category', None, {u'text':category})
         handler.endElement(u'itunes:category')
         
         #iTunes Owner
