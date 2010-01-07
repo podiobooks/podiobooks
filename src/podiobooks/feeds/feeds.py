@@ -1,5 +1,4 @@
 from django.contrib.syndication.feeds import Feed
-from django.contrib.syndication.feeds import FeedDoesNotExist
 from django.contrib.syndication.feeds import ObjectDoesNotExist
 
 from django.utils.html import strip_tags
@@ -9,6 +8,8 @@ from podiobooks.main.models import Title, Episode
 from podiobooks.feeds.protocols.itunes import iTunesFeed
 
 from podiobooks.feeds import feed_tools
+
+from django.core.urlresolvers import reverse
 
 class TitleFeed(Feed):
     feed_type = iTunesFeed
@@ -30,7 +31,7 @@ class EpisodeFeed(Feed):
         return obj.categories.all()
     
     def description(self, obj):
-        return(strip_tags(obj.description))
+        return(strip_tags(obj.description).replace('&amp;','&'))
     
     def explicit(self, obj):
         if obj.is_adult:
@@ -49,6 +50,9 @@ class EpisodeFeed(Feed):
         extra_args['image'] = self.image(obj)
         extra_args['explicit'] = self.explicit(obj)
         return extra_args
+    
+    def feed_url(self, obj):
+        return reverse('feeds', args=['episodes']) + obj.slug
     
     def get_object(self, bits):
         # In case of "/rss/feeds/episodes/one-fall/foo/bar/baz/", or other such clutter,
