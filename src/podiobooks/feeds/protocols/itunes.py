@@ -17,7 +17,7 @@ class iTunesFeed(Rss201rev2Feed):
     def add_root_elements(self, handler):
         super(iTunesFeed, self).add_root_elements(handler)
         # Atom Item to Prevent Feed from Not Validating
-        handler.addQuickElement(u'atom:link', None, {u'href':self.feed['link'], u'rel':u'alternate', u'type':u'application/rss+xml'})
+        handler.addQuickElement(u'atom:link', None, {u'href':self.feed['feed_url'], u'rel':u'self', u'type':u'application/rss+xml'})
         
         #Basic Attributes
         handler.addQuickElement(u'webMaster', u'webmaster@podiobooks.com (Chris Miller)')
