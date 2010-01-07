@@ -43,7 +43,7 @@ def importChapters():
                 name = row['Title'].replace('\\',''),
                 title = foundTitle,
                 sequence = row['Sequence'],
-                description = row['ShowNotes'].replace('\\',''),
+                description = row['ShowNotes'].replace('\\','').replace('&#224;','a'),
                 url = row['Filename'],
                 filesize = row['Length'],
                 length = 0,
