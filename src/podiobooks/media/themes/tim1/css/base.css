@@ -91,12 +91,31 @@ ul {
 	overflow: hidden;
 }
 
-.pb-shelf-left-arrow {
+.pb-shelf .dijitButton, .pb-feature-shelf .dijitButton {
+	margin: 0px;
+}
+
+.pb-shelf .dijitButtonNode, .pb-feature-shelf .dijitButtonNode {
+	border: none;
+}
+
+.pb-shelf-arrow {
 	float: left;
+}
+
+.pb-shelf-arrow button {
 	height: 226px;
 	width: 20px;
+	background: none;
+	border: none;
+}
+
+.pb-shelf-arrow button:focus {
+	outline: none;
+}
+
+.pb-shelf-left-arrow {
 	background: url(../images/pb-shelfbox-light-ends.png) bottom left no-repeat;
-	cursor: pointer;
 }
 
 .pb-shelf-middle {
@@ -108,11 +127,7 @@ ul {
 }
 
 .pb-shelf-right-arrow {
-	float: left;
-	height: 226px;
-	width: 20px;
 	background: url(../images/pb-shelfbox-light-ends.png) bottom right no-repeat;
-	cursor: pointer;
 }
 
 .pb-shelf-titlebar {
@@ -192,6 +207,7 @@ ul {
 	float: left;
 	margin: 0 5px 0 5px;
 	background: url(../images/pb-shelf-item-frame.png) no-repeat;
+	overflow: hidden !important;
 }
 
 .pb-shelf-item-cover-image {
@@ -203,7 +219,7 @@ ul {
 .pb-shelf-item-rating {
 	background: url('../images/pb-thumbs-up-bar-tall.jpg') no-repeat;
 	position: absolute;
-	top: 112px;
+	top: 119px;
 	left: 13px;
 	height: 48px;
 	width: 67px;
@@ -267,7 +283,6 @@ ul {
 
 .pb-feature-shelf .pb-shelf-left-arrow {
 	height: 230px;
-	width: 20px;
 	background: url(../images/pb-shelfbox-dark-ends.png) bottom left no-repeat;
 }
 
@@ -280,7 +295,6 @@ ul {
 
 .pb-feature-shelf .pb-shelf-right-arrow {
 	height: 230px;
-	width: 20px;
 	background: url(../images/pb-shelfbox-dark-ends.png) bottom right no-repeat;
 }
 
