@@ -71,7 +71,7 @@ class EpisodeFeed(Feed):
     def item_enclosure_length(self, obj):
         return int(obj.filesize)
     
-    def item_enclosure_type(self, obj):
+    def item_enclosure_mime_type(self, obj):
         return 'audio/mpeg'
     
     def item_extra_kwargs(self, item):
@@ -102,12 +102,12 @@ class EpisodeFeed(Feed):
         return keywords
 
     def item_link(self, obj):
-        return obj.get_absolute_url()
+        return feed_tools.add_current_domain(obj.get_absolute_url())
     
     # item_title comes from templates/base/feeds/episodes_title.html
     
     def link(self, obj):
-        return obj.get_absolute_url()
+        return feed_tools.add_current_domain(obj.get_absolute_url())
 
     def items(self, obj):
         return Episode.objects.filter(title__id__exact=obj.id).order_by('sequence')
