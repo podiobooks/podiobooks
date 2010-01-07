@@ -309,6 +309,9 @@ class Title(models.Model):
 			return int((self.promoter_count / total_count) * 100)
 		else:
 			return 0
+		
+	def description_br(self):
+		return self.description.replace('\n','\n<br/>')
 
 class TitleContributors(models.Model):
 	"""Join table to associate contributors to titles."""
