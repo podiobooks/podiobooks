@@ -1,21 +1,6 @@
-{% load main_templatetags %}
-{% load title_templatetags %}<!-- Begin {{ shelf_title }} Shelf -->
-<script type="text/javascript">
-	// Windows Chrome Button Padding Fix
-    dojo.addOnLoad(function(){
-        if (dojo.isChrome && (navigator.appVersion.indexOf("Win") != -1)) {
-            dojo.query(".pb-shelf-controller-icon").style({
-                "margin-top": "-1px",
-                "margin-left": "-3px",
-            });
-        }
-    });
-	
-	// Updates a shelf by changing the container ContentPane's href, triggering an XHR
-    function contributorChange(shelf_id, shelf_url, dropdown_value){
-		dijit.byId(shelf_id+'Container').attr('href', shelf_url.replace('contributor_slug',dropdown_value));
-    }
-</script>
+{% load global_templatetags %}
+{% load shelf_templatetags %}
+<!-- Begin {{ shelf_title }} Shelf -->
 <div class="{{ base_css_class }}" id="{{ shelf_id }}OuterContainer">
 	<div class="pb-shelf-arrow pb-shelf-left-arrow">
     	<button dojoType="dijit.form.Button" showLabel="false" label="Click to show the previous set of books on this shelf." type="button" onclick="dijit.byId('{{ shelf_id }}').back();"></button>
