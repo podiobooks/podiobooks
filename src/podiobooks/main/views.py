@@ -1,35 +1,13 @@
-from django import forms
-from django.core.cache import cache
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from podiobooks.main.models import Title, Category, Contributor
+from podiobooks.main.models import Title
+from podiobooks.main.forms import CategoryChoiceForm, ContributorChoiceForm, TitleSearchForm
 from podiobooks import settings
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
-from django.db.models import Q, Count
-import feedparser
+from django.db.models import Q
 
-class CategoryChoiceForm(forms.Form):
-    categories = cache.get('category_dropdown_values')
-    if (categories == None):
-        categories = Category.objects.order_by('name').values_list('slug', 'name')
-        cache.set('category_dropdown_values', categories, 240)
-    category = forms.ChoiceField(choices=categories, widget=forms.Select(attrs={'class':'pb-category-choice', 'onchange':'this.form.submit();'}))
-    
-class ContributorChoiceForm(forms.Form):
-    contributors = cache.get('contributor_dropdown_values')
-    if (contributors == None):
-        contributors = Contributor.objects.values_list('slug', 'display_name').annotate(num_titles=Count('titlecontributors')).order_by('-num_titles')[:10]
-        cache.set('contributor_dropdown_values', contributors, 240)
-    contributor = forms.ChoiceField(choices=contributors, widget=forms.Select(attrs={'class':'pb-contributor-choice', 'onchange':'contributorChange(this.form.name, this.form.action, this.value);'}))
-    
-class TitleSearchForm(forms.Form):
-    keywords = forms.CharField(label="Search for")
-    include_adult = forms.BooleanField(required=False, initial=False)
-    completed_only = forms.BooleanField(required=False, initial=False)
-    
-class TitleQuickSearchForm(forms.Form):
-    keywords = forms.CharField()
+""" Views """
 
 def index(request):
     """
@@ -39,36 +17,23 @@ def index(request):
     
     template : main/templates/index.html
     """
-    title_list = cache.get('homepage_title_objects')
-    if (title_list == None):
-        title_list = Title.objects.filter(display_on_homepage = True)[:16]
-        cache.set('homepage_title_objects', title_list, 240)
-        
-    contributor_title_list = cache.get('homepage_contributor_title_list')
-    if (contributor_title_list == None):
-        contributor = Contributor.objects.select_related().get(display_name='Scott Sigler')
-        contributor_title_list = contributor.title_set.order_by('-date_updated', 'name').filter(display_on_homepage = True).all()[:9]
-        cache.set('homepage_contributor_title_list', contributor_title_list, 240)
-        
-    toprated_title_list = cache.get('homepage_toprated_title_list')
-    if (toprated_title_list == None):
-        toprated_title_list = Title.objects.filter(display_on_homepage = True).order_by('-avg_overall').all()[:15]
-        cache.set('homepage_toprated_title_list', toprated_title_list, 240)
     
-    nowreleasing_title_list = cache.get('homepage_now_releasing_title_list')
-    if (nowreleasing_title_list == None):
-        nowreleasing_title_list = Title.objects.filter(is_complete = False).order_by('-date_created').all()[:5]
-        cache.set('homepage_now_releasing_title_list', nowreleasing_title_list, 240)
-        
-    recentlycomplete_title_list = cache.get('homepage_recently_complete_title_list')
-    if (recentlycomplete_title_list == None):
-        recentlycomplete_title_list = Title.objects.filter(is_complete = True).order_by('-date_updated').all()[:5]
-        cache.set('homepage_recently_complete_title_list', recentlycomplete_title_list, 240)
+    homepage_title_list = Title.objects.filter(display_on_homepage = True).order_by('-date_created')
     
-        
-    response_data = {'toprated_title_list': toprated_title_list,
-                     'contributor_title_list': contributor_title_list,
-                     'title_list': title_list, 
+    featured_title_list = homepage_title_list[:20]
+    
+    minimal_title_list = homepage_title_list[:1]
+    
+    toprated_title_list = homepage_title_list.filter(promoter_count__gte = 20).order_by('-promoter_count').all()[:18]
+    
+    nowreleasing_title_list = homepage_title_list.filter(is_complete = False).all()[:5]
+    
+    recentlycomplete_title_list = homepage_title_list.filter(is_complete = True).all()[:5]
+      
+    response_data = {'homepage_title_list': homepage_title_list,
+                     'featured_title_list': featured_title_list,
+                     'minimal_title_list': minimal_title_list,
+                     'toprated_title_list': toprated_title_list,
                      'nowreleasing_title_list': nowreleasing_title_list,
                      'recentlycomplete_title_list': recentlycomplete_title_list,
                      'contributor_choice_form': ContributorChoiceForm(),
