@@ -1,7 +1,7 @@
 from podiobooks.settings import THEME_MEDIA_URL
 
 """
-Note: for Title Covers, use the {% cover_media_url %} tag in main_templatetags.
+Note: for Title Covers, use the {% cover_media_url %} tag in global_templatetags.
 """
 
 def theme_media(request):
