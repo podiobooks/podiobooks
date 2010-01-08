@@ -2,14 +2,18 @@
 {% load global_templatetags %}
 {% load title_templatetags %}
 {% block headtitle %}{{ title.name }} - {{ site_name }}{% endblock %}
+{% block head %}
+<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/dojo/1.4/dijit/themes/tundra/tundra.css">
+<script type="text/javascript">
+    dojo.require('dijit.layout.TabContainer');
+    dojo.require('dijit.layout.ContentPane');
+</script>
+{% endblock %}
 {% block title %}Book Information{% endblock %}
 {% block content %}
 <div class="title-detail" style="margin: 0 0 30px 0;">
     <div style="float:left;font-size: 10px; text-align: center">
         {% show_titlecover title %}
-		<div style="margin: 10px 0 25px 0">
-			<img src="{{ THEME_MEDIA_URL }}images/pb-rss-icon.gif"><a href="/rss/feeds/episodes/{{ title.slug }}">Subscribe now</a>
-		</div>
     </div>
     <div style="float:left; width: 500px; margin: 0px 0px 20px 20px">
         <div style="font-size: 18px; font-weight: bold;">
@@ -34,18 +38,30 @@
         {% endif %}
     </div>
 </div>
-{% if title.episode_set.all %}
-<div style="font-size: 18px; clear: both; font-weight: bold; margin: 0 0 30px 0;">
-    Chapters
+<div style="margin: 10px 0 25px 0; font-size: 20px; float: left; text-align: center; width: 250px;">
+    <img src="{{ THEME_MEDIA_URL }}images/pb-rss-icon.gif">
+    <br/>
+    <a href="/rss/feeds/episodes/{{ title.slug }}">Subscribe now</a>
 </div>
-{% show_episodelist title %}
-{% else %}
-<div style="font-size: 18px; clear: both; font-weight: bold;">
-    No Episodes Are Available Yet
+<div style="clear:both">
 </div>
-{% endif %}
-<div style="clear: both; margin: 30px;">
-</div>
-<div style="clear:both;">
+<div class="tundra" style="width: 100%; height: 500px;">
+    <div dojoType="dijit.layout.TabContainer" style="width: 100%; height: 100%;">
+        <div dojoType="dijit.layout.ContentPane" title="Chapters" selected="true">
+            {% if title.episode_set.all %}
+				{% show_episodelist title %}
+			{% else %}
+				<div style="font-size: 18px; clear: both; font-weight: bold;">
+				    No Episodes Are Available Yet
+				</div>
+			{% endif %}
+        </div>
+        <div dojoType="dijit.layout.ContentPane" title="Comments">
+            Lorem ipsum and all around - comments...
+        </div>
+		<div dojoType="dijit.layout.ContentPane" title="Extras">
+            Lorem ipsum and all around - extras...
+        </div>
+    </div>
 </div>
 {% endblock %}
