@@ -1,25 +1,24 @@
 {% extends "base.html" %}
-{% load main_templatetags %}
-{% load title_templatetags %}
+{% load global_templatetags %}
+{% load shelf_templatetags %}
+{% load ad_templatetags %}
 
 {% block headtitle %}{{ site_name }} - Free Downloadable Audiobooks{% endblock %}
 
 {% block head %}
-<script type="text/javascript">
-    dojo.require("pbwidgets.book_shelf.BookShelf");
-	dojo.require("dijit.layout.StackController");
-    dojo.require("dijit.layout.ContentPane");
-</script>
+
+{% shelf_includes %}
+
 {% endblock %}
 
 {% block content %}
 
-{% show_shelf 'featuredPodiobooksShelf' 'Featured Podiobooks' title_list '' '' 'pb-feature-shelf' 4 %}
+{% show_shelf 'featuredPodiobooksShelf' 'Featured Podiobooks' featured_title_list '' '' 'pb-feature-shelf' 4 %}
 
-<div class="pb-adstrip">Google Ads Placeholder&nbsp;&nbsp;&nbsp;&nbsp;Google Ads Placeholder&nbsp;&nbsp;&nbsp;&nbsp;Google Ads Placeholder&nbsp;&nbsp;&nbsp;&nbsp;</div>
+{% ad_placeholder %}
 
 {% url contributor_shelf 'contributor_slug' as contributor_dropdown_url %}
-{% show_shelf 'authorSpotlightShelf' 'Author Spotlight - ' contributor_title_list contributor_choice_form contributor_dropdown_url 'pb-shelf' 3 %}
+{% show_shelf 'authorSpotlightShelf' 'Author Spotlight - ' minimal_title_list contributor_choice_form contributor_dropdown_url 'pb-shelf' 3 %}
 
 {% show_shelf 'topRatedShelf' 'Top Rated Podiobooks' toprated_title_list '' '' 'pb-shelf' 3 %}
 
