@@ -7,6 +7,10 @@
 <script type="text/javascript">
     dojo.require('dijit.layout.TabContainer');
     dojo.require('dijit.layout.ContentPane');
+	dojo.addOnLoad(function() {
+		dojo.style("bottomTabs", "opacity", "1");
+		dojo.style("topTabs", "opacity", "1");
+	});
 </script>
 {% endblock %}
 {% block title %}Book Information{% endblock %}
@@ -15,27 +19,30 @@
     <div style="float:left;font-size: 10px; text-align: center">
         {% show_titlecover title %}
     </div>
-    <div style="float:left; width: 500px; margin: 0px 0px 20px 20px">
+    <div style="float:left; width: 500px; margin: 0px 0px 20px 20px" class="tundra">
         <div style="font-size: 18px; font-weight: bold;">
             {{ title.name }}
         </div>
         {% show_contributors title %}
         <br>
         {% show_categories title %}
-        <br>
-        <p style="margin: 20px 0px 0px 0px;">
-            {% autoescape off %}{{ title.description_br }}{% endautoescape %}
-        </p>
-        <br>
-        {% if title.license %}
-        <div style="float: left; margin: 20px 0px 0px 0px; vertical-align: middle;">
-            <a rel="license" href="{{title.license.url}}"><img alt="{{ title.license.text }} Logo" style="border-width:0" src="{{title.license.image_url}}" /></a>
+        <div class="tundra" style="opacity: 0; margin: 5px 0 0 0;" id="topTabs">
+        	<div dojoType="dijit.layout.TabContainer" style="width: 100%; height: 100%;" doLayout="false">
+        		<div dojoType="dijit.layout.ContentPane" title="Description" selected="true">
+            		{% autoescape off %}{{ title.description_br }}{% endautoescape %}
+				</div>
+				<div dojoType="dijit.layout.ContentPane" title="News" selected="true">
+            		Lorem News
+				</div>
+				<div dojoType="dijit.layout.ContentPane" title="Comments" selected="true">
+            		Lorem Comments
+				</div>
+				<div dojoType="dijit.layout.ContentPane" title="Social" selected="true">
+            		Lorem Social
+				</div>
+			</div>
+        
         </div>
-        <div style="float: left; margin: 19px 0px 10px 10px; width: 650px;  vertical-align: middle;">
-            This work is licensed under a <a href="{{title.license.url}}">{{ title.license.text }}</a>
-            license.
-        </div>
-        {% endif %}
     </div>
 </div>
 <div style="margin: 10px 0 25px 0; font-size: 20px; float: left; text-align: center; width: 250px;">
@@ -45,9 +52,9 @@
 </div>
 <div style="clear:both">
 </div>
-<div class="tundra" style="width: 100%; height: 500px;">
+<div class="tundra" style="width: 100%; height: 500px; opacity: 0" id="bottomTabs">
     <div dojoType="dijit.layout.TabContainer" style="width: 100%; height: 100%;">
-        <div dojoType="dijit.layout.ContentPane" title="Chapters" selected="true">
+        <div dojoType="dijit.layout.ContentPane" title="Chapters">
             {% if title.episode_set.all %}
 				{% show_episodelist title %}
 			{% else %}
@@ -56,12 +63,20 @@
 				</div>
 			{% endif %}
         </div>
-        <div dojoType="dijit.layout.ContentPane" title="Comments">
-            Lorem ipsum and all around - comments...
-        </div>
 		<div dojoType="dijit.layout.ContentPane" title="Extras">
             Lorem ipsum and all around - extras...
         </div>
     </div>
 </div>
+
+{% if title.license %}
+	<div style="float: left; margin: 20px 0px 0px 0px;">
+	    <a rel="license" href="{{title.license.url}}"><img alt="{{ title.license.text }} Logo" style="border-width:0" src="{{title.license.image_url}}" /></a>
+	</div>
+	<div style="float: left; margin: 26px 0px 10px 10px;">
+	    This work is licensed under a <a href="{{title.license.url}}">{{ title.license.text }}</a>
+	    license.
+	</div>
+	<div style="clear: both"></div>
+{% endif %}
 {% endblock %}
