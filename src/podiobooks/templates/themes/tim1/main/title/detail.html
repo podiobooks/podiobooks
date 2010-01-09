@@ -26,8 +26,8 @@
         {% show_contributors title %}
         <br>
         {% show_categories title %}
-        <div class="tundra" style="opacity: 0; margin: 5px 0 0 0;" id="topTabs">
-        	<div dojoType="dijit.layout.TabContainer" style="width: 100%; height: 100%;" doLayout="false">
+        <div class="tundra" style="opacity: 0; margin: 5px 0 0 0; height: 250px;" id="topTabs">
+        	<div dojoType="dijit.layout.TabContainer" style="width: 100%; height: 100%;">
         		<div dojoType="dijit.layout.ContentPane" title="Description" selected="true">
             		{% autoescape off %}{{ title.description_br }}{% endautoescape %}
 				</div>
