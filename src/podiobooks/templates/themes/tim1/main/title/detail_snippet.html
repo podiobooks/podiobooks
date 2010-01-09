@@ -2,9 +2,9 @@
 {% load title_templatetags %}
 <a href="{% url title_detail title.slug %}">
 	{% if title.libsyn_show_id %}
-	<img class="pb-shelf-item-cover-image" src="http://images.libsyn.com/show/{{ title.libsyn_show_id }}/height/99/width/67" width="67" height="99" style="border: none;" alt="Podiobook Cover for {{ title.name }}"/></a>
+	<img class="pb-shelf-item-cover-image" src="http://images.libsyn.com/show/{{ title.libsyn_show_id }}/height/99/width/67" width="67" height="99" alt="Podiobook Cover for {{ title.name }}"/></a>
 {% else %}
-	<img class="pb-shelf-item-cover-image" src="{% cover_media_url %}images/covers/67x99/{{ title.cover }}" width="67" height="99" style="border: none;" alt="Podiobook Cover for {{ title.name }}"/></a>
+	<img class="pb-shelf-item-cover-image" src="{% cover_media_url %}images/covers/67x99/{{ title.cover }}" width="67" height="99" alt="Podiobook Cover for {{ title.name }}"/></a>
 	{% endif %}
 <div class="pb-shelf-item-rating">
 	{{ title.net_promoter_score }}%<div style="font-size: 10px; font-weight: normal; margin: -2px 0 0 -4px;">of {{ title.promoter_count|add:title.detractor_count }}</div>
