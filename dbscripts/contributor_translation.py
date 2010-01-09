@@ -11,6 +11,7 @@ contributor_translation = {
                       'Ramona Holliday, narrated by Jeffrey Kafer': [{'name': 'Ramona Holliday', 'type': 'Author'}, {'name': 'Jeffrey Kafer', 'type': 'Narrator'},],
                       'Stacey Cochran, narrated by Owen Daly': [{'name': 'Stacey Cochran', 'type': 'Author'}, {'name': 'Owen Daly', 'type': 'Narrator'},],
                       'Kabir - Interpreted by Jabez L. Van Cleef': [{'name': 'Kabir', 'type': 'Author'}, {'name': 'Jabez L. Van Cleef', 'type': 'Narrator'},],
+                      'Jabez Van Cleef': [{'name': 'Jabez L. Van Cleef', 'type': 'Author'},],
                       'L. Frank Baum (read by Jason Pomerantz)': [{'name': 'L. Frank Baum', 'type': 'Author'}, {'name': 'Jason Pomerantz', 'type': 'Narrator'},],
                       'ThornDaddy and Dollie Llama': [{'name': 'ThornDaddy', 'type': 'Author'}, {'name': 'Dollie Llama', 'type': 'Author'},],
                       'Dollie Llama and ThornDaddy': [{'name': 'Dollie Llama', 'type': 'Author'}, {'name': 'ThornDaddy', 'type': 'Author'},],
@@ -27,6 +28,7 @@ contributor_translation = {
                       'John Stockmyer': [{'name': 'John G. Stockmyer', 'type': 'Author'},],
                       'A Square (Edwin Abbott Abbott)': [{'name': 'Edwin Abbott Abbott', 'type': 'Author'}, {'name': 'A Square', 'type': 'Penname'},],
                       'John C. Adler, Ph.D., as told to Bill DeSmedt': [{'name': 'John C. Adler, Ph.D.', 'type': 'Author'}, {'name': 'Bill DeSmedt', 'type': 'Ghostwriter'},],
+                      'Jeremy Robinson': [{'name': 'Jeremy Robinson', 'type': 'Author'}, {'name': 'Jeffrey Kafer', 'type': 'Narrator'},],
                       }
 
 def translate_contributor(legacy_display_name):
