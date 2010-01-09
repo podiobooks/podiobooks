@@ -18,11 +18,11 @@ def index(request):
     template : main/templates/index.html
     """
     
-    homepage_title_list = Title.objects.filter(display_on_homepage = True).order_by('-date_created')
+    homepage_title_list = Title.objects.filter(display_on_homepage = True).order_by('-date_created').all()
     
     featured_title_list = homepage_title_list[:20]
     
-    minimal_title_list = homepage_title_list[:1]
+    minimal_title_list = featured_title_list[:1]
     
     toprated_title_list = homepage_title_list.filter(promoter_count__gte = 20).order_by('-promoter_count').all()[:18]
     
