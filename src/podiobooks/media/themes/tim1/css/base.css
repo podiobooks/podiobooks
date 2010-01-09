@@ -214,6 +214,7 @@ ul {
 	position: absolute;
 	top: 13px;
 	left: 13px;
+	border: none;
 }
 
 .pb-shelf-item-rating {
