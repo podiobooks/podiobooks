@@ -143,7 +143,7 @@ def importBooks():
     
     bookCSVFile.close()
 
-##### MAIN FUNCITON TO RUN IF THIS SCRIPT IS CALLED ALONE ###
+##### MAIN FUNCTION TO RUN IF THIS SCRIPT IS CALLED ALONE ###
 if __name__ == "__main__":
     importBooks()
     
