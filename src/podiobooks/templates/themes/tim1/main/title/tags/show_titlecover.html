@@ -2,10 +2,16 @@
 {% if title %}
 <div class="pb-title-cover">
 	<div class="pb-title-cover-image">
-		<a href="{{ title.get_absolute_url }}"><img class="pb-title-cover-image" src="http://podiobooks.com/images/covers/{{ title.cover }}" alt="Cover Image for '{{ title.name }}'" width="144" height="212"/></a>
+		<a href="{{ title.get_absolute_url }}">
+			{% if title.libsyn_show_id %}
+				<img class="pb-title-cover-image" src="http://images.libsyn.com/show/{{ title.libsyn_show_id }}/height/212/width/144" width="144" height="212" alt="Podiobook Cover for {{ title.name }}"/></a>
+			{% else %}
+				<img class="pb-title-cover-image" src="http://podiobooks.com/images/covers/{{ title.cover }}" alt="Podiobook Cover for '{{ title.name }}'" width="144" height="212"/>
+			{% endif %}
+		</a>
 	</div>
 	<div class="pb-title-complete-notice">
-		This podiobook is <span class="pb-title-complete-notice-indicator">{% if title.is_complete %}complete{% else %}not complete{% endif %}</span>
+		This podiobook is <span class="pb-title-complete-notice-indicator">{% if title.is_complete %}complete{% else %}still releasing{% endif %}</span>
 	</div>
 </div>
 {% endif %}
