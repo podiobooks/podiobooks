@@ -9,6 +9,8 @@ This script reads in an "CSV for Excel" export from phpMyAdmin into a the new Po
 import csv # first we need import necessary lib:csv
 from podiobooks.main.models import *
 from django.template.defaultfilters import slugify
+from contrib.libsyn import libsyn_utils
+import pprint
 
 #Define functions for use in importing chapters
 def getTitle(legacyBookID):
@@ -56,12 +58,22 @@ def importChapters():
             print episode.name,
             print ": ",
             print episode.title.slug
+            if not episode.title.libsyn_show_id and episode.url:
+                print "URL: " + episode.url
+                urlTokens = episode.url.split("/")
+                host, libsynSlug = urlTokens[2:4]
+                if host == 'media.podiobooks.com' and libsynSlug:
+                    showInfo = libsyn_utils.getShowInfo(libsynSlug)
+                    if showInfo:
+                        episode.title.libsyn_show_id = showInfo['show_id']
+                        episode.title.save()
+                        print "LibsynShowId:" + episode.title.libsyn_show_id
         else:
             "Could not find TitleID#%s" % row['BookID']
     
     chapterCSVFile.close()
     
-##### MAIN FUNCITON TO RUN IF THIS SCRIPT IS CALLED ALONE ###
+##### MAIN FUNCTION TO RUN IF THIS SCRIPT IS CALLED ALONE ###
 if __name__ == "__main__":
     importChapters()
 
