@@ -13,7 +13,7 @@ contributor_translation = {
                       'Kabir - Interpreted by Jabez L. Van Cleef': [{'name': 'Kabir', 'type': 'Author'}, {'name': 'Jabez L. Van Cleef', 'type': 'Narrator'},],
                       'L. Frank Baum (read by Jason Pomerantz)': [{'name': 'L. Frank Baum', 'type': 'Author'}, {'name': 'Jason Pomerantz', 'type': 'Narrator'},],
                       'ThornDaddy and Dollie Llama': [{'name': 'ThornDaddy', 'type': 'Author'}, {'name': 'Dollie Llama', 'type': 'Author'},],
-                      'Dollie Llama and ThornDaddy': [{'name': 'ThornDaddy', 'type': 'Author'}, {'name': 'Dollie Llama', 'type': 'Author'},],
+                      'Dollie Llama and ThornDaddy': [{'name': 'Dollie Llama', 'type': 'Author'}, {'name': 'ThornDaddy', 'type': 'Author'},],
                       'George and Weedon Grossmith': [{'name': 'George Grossmith', 'type': 'Author'}, {'name': 'Weedon Grossmith', 'type': 'Author'},],
                       'Mercedes Lackey and Steve Libbey': [{'name': 'Mercedes Lackey', 'type': 'Author'}, {'name': 'Steve Libbey', 'type': 'Author'},],
                       'Andrew Culver and Josh Charney': [{'name': 'Andrew Culver', 'type': 'Author'}, {'name': 'Josh Charney', 'type': 'Author'},],
