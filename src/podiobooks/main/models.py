@@ -108,7 +108,7 @@ class Episode(models.Model):
 	sequence = models.IntegerField(blank=False, null=False) #Order in the Story
 	description = models.TextField(blank=True)
 	url = models.URLField(blank=False, verify_exists=True)
-	filesize = models.FloatField(default=0) #Size of the media file
+	filesize = models.IntegerField(default=0) #Size of the media file
 	length = models.FloatField(default=0) #Length of the media file (usually minutes (or pages))
 	contributors = models.ManyToManyField('Contributor', through='EpisodeContributors')
 	status = models.SmallIntegerField(default=1)
@@ -284,6 +284,7 @@ class Title(models.Model):
 	categories = models.ManyToManyField('Category', db_table="main_title_categories")
 	partner = models.ForeignKey('partner', null=True, blank=True)
 	awards = models.ManyToManyField('Award', blank=True)
+	libsyn_show_id = models.CharField(max_length=50, db_index=True)
 	# Note: episodes are available as episode_set.all()
 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now(), db_index=True)
 	date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now(), db_index=True)
