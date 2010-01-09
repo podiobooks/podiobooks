@@ -35,10 +35,10 @@ def booleanClean(data):
 
 def getOrCreateContributor(contributorName):
     """Retrieves or creates a Contributor type based on the name of the Contributor"""
-    contributorName = contributorName.strip().replace('  ',' ').replace('\\','').replace('&apos;','\'').replace('Theater','Theatre').replace('J. C.','J.C.').replace('J. A.','J.A.').replace('J. J.','J.J.').replace('J. T.','J.T.')
+    contributorName = contributorName.strip().replace('  ',' ').replace('\\','').replace('&apos;','\'').replace('Theater','Theatre').replace('J. C.','J.C.').replace('J. A.','J.A.').replace('J. J.','J.J.').replace('J. T.','J.T.').replace('J. P.','J.P.')
     try:
         contributorNameToSplit = contributorName.replace(' III','')
-        contributorNameTokens = contributorNameToSplit.split(" ")
+        contributorNameTokens = contributorNameToSplit.split(" ", 2)
         if (len(contributorNameTokens) > 2):
             firstNameGuess, middleNameGuess, lastNameGuess = contributorNameTokens[:3]
         else:
