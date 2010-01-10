@@ -1,0 +1,11 @@
+{% if tweets %}
+<div class="pb-twitter-container">
+<ul>
+	{% for tweet in tweets %}
+	<li style="margin: 5px 0 0 0">
+		{{ tweet.text|safe }}
+	</li>
+	{% endfor %}
+</ul>
+</div>
+{% endif %}

@@ -34,6 +34,9 @@ urlpatterns = patterns('',
     #TinyMCE WYSIWYG HTML Editor:
     (r'^tinymce/', include('tinymce.urls')),
     
+    # Social Media Views
+    (r'^social/', include('podiobooks.social.urls')),
+    
 )
 
 #Only hook up the media to run through Django in a dev environment...in prod, needs to be handled by web server
@@ -53,4 +56,4 @@ databrowse.site.register(Title)
 
 urlpatterns += patterns('',
         (r'^db/(.*)', databrowse.site.root),
-    )
+)

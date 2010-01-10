@@ -356,3 +356,14 @@ ul {
 	background: #fff;
 	border: 1px solid #0054a6;
 }
+
+.pb-title-complete-notice {
+	font-size: 10px;
+}
+
+.pb-title-complete-notice-indicator {
+	color: green;
+	font-weight: bold;
+}
+}
+}
