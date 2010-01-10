@@ -4,7 +4,6 @@ from django import forms
 from django.core.urlresolvers import reverse
 from django.contrib.flatpages.admin import FlatPageAdmin
 from django.contrib.flatpages.models import FlatPage
-from tinymce.widgets import TinyMCE
 
 from models import Advisory, Award
 from models import Category, Contributor, ContributorType
@@ -69,19 +68,6 @@ class TitleAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("name",)}
     save_on_tap = True
     search_fields = ["name"]
-
-class TinyMCEFlatPageAdmin(FlatPageAdmin):
-    def formfield_for_dbfield(self, db_field, **kwargs):
-        if db_field.name == 'content':
-            return forms.CharField(widget=TinyMCE(
-                attrs={'cols': 80, 'rows': 30},
-                mce_attrs={'external_link_list_url': reverse('tinymce.views.flatpages_link_list'),
-                           'theme' : 'advanced'},
-            ))
-        return super(TinyMCEFlatPageAdmin, self).formfield_for_dbfield(db_field, **kwargs)
-
-admin.site.unregister(FlatPage)
-admin.site.register(FlatPage, TinyMCEFlatPageAdmin)
 
 admin.site.register(Award)
 admin.site.register(Advisory)
