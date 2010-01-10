@@ -81,7 +81,6 @@ INSTALLED_APPS = (
     'registration',
     'django_authopenid',
     'contrib.django_restapi',
-    'tinymce',
     'podiobooks.author',
     'podiobooks.feeds',
     'podiobooks.main',
