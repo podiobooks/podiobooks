@@ -85,4 +85,5 @@ INSTALLED_APPS = (
     'podiobooks.author',
     'podiobooks.feeds',
     'podiobooks.main',
+    'podiobooks.social',
 )
