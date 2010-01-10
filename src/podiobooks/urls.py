@@ -31,9 +31,6 @@ urlpatterns = patterns('',
     # Author Interface:
     (r'^author/', include('podiobooks.author.urls')),
     
-    # Social Media Views
-    (r'^social/', include('podiobooks.social.urls')),
-    
 )
 
 #Only hook up the media to run through Django in a dev environment...in prod, needs to be handled by web server
