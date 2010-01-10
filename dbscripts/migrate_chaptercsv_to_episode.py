@@ -9,7 +9,7 @@ This script reads in an "CSV for Excel" export from phpMyAdmin into a the new Po
 import csv # first we need import necessary lib:csv
 from podiobooks.main.models import *
 from django.template.defaultfilters import slugify
-from contrib.libsyn import libsyn_utils
+from podiobooks.libsyn import libsyn_utils
 import pprint
 
 #Define functions for use in importing chapters
