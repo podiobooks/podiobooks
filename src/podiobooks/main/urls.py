@@ -10,7 +10,7 @@ urlpatterns = patterns('',
     url(r'^title/search/redirect$','podiobooks.main.views.title_search', name='title_search_redirect'),
     url(r'^title/summary/(?P<object_id>[^/]+)/$','django.views.generic.list_detail.object_detail', {'queryset': Title.objects.all(), 'template_object_name': 'title', 'template_name': 'main/title/detail_summary.html'}, name='title_detail_summary'),
     url(r'^title/snippet/(?P<object_id>[^/]+)/$','django.views.generic.list_detail.object_detail', {'queryset': Title.objects.all(), 'template_object_name': 'title', 'template_name': 'main/title/detail_snippet.html'}, name='title_detail_snippet'),
-     url(r'^title/ajaxtest/', 'django.views.generic.simple.direct_to_template', {'template': 'main/title/ajax_test.html',}),
+    url(r'^title/ajaxtest/', 'django.views.generic.simple.direct_to_template', {'template': 'main/title/ajax_test.html',}),
     url(r'^title/(?P<slug>[^/]+)/$','django.views.generic.list_detail.object_detail', {'queryset': Title.objects.all(), 'template_object_name': 'title', 'template_name': 'main/title/detail.html'}, name='title_detail'),
     
     # category
