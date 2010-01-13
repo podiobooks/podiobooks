@@ -80,7 +80,10 @@ INSTALLED_APPS = (
     'django.contrib.flatpages',
     'registration',
     'django_authopenid',
+    'contrib.django_restapi',
+    'tinymce',
     'podiobooks.author',
     'podiobooks.feeds',
     'podiobooks.main',
+    'podiobooks.social',
 )
