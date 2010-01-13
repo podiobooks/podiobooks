@@ -31,6 +31,9 @@ urlpatterns = patterns('',
     # Author Interface:
     (r'^author/', include('podiobooks.author.urls')),
     
+    #TinyMCE WYSIWYG HTML Editor:
+    (r'^tinymce/', include('tinymce.urls')),
+    
     # Social Media Views
     (r'^social/', include('podiobooks.social.urls')),
     
