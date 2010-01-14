@@ -2,7 +2,7 @@
 {% if title %}
 <div class="pb-title-cover">
 	<div class="pb-title-cover-image">
-		<a href="{{ title.get_absolute_url }}">
+		<a href="{{ title.get_absolute_url }}" border=0>
 			{% if title.libsyn_show_id %}
 				<img class="pb-title-cover-image" src="http://images.libsyn.com/show/{{ title.libsyn_show_id }}/height/212/width/144" width="144" height="212" alt="Podiobook Cover for {{ title.name }}"/>
 			{% else %}
