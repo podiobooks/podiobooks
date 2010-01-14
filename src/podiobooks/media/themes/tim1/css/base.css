@@ -214,8 +214,6 @@ ul {
 	position: absolute;
 	top: 13px;
 	left: 13px;
-
-.pb-shelf-item-cover-image a {
 	border: none;
 }
 
@@ -367,5 +365,7 @@ ul {
 	color: green;
 	font-weight: bold;
 }
-}
+
+.pb-title-cover-image a {
+	border: none;
 }
