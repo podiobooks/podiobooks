@@ -23,13 +23,13 @@
         {% show_titlecover title %}
         <div style="margin: 20px 0 0 20px;">
             <div style="float: left;">
-                <img src="{{ THEME_MEDIA_URL }}images/pb-thumbs-up.png">
+                <img src="{{ THEME_MEDIA_URL }}images/pb-thumbs-up.png" alt="Number of People Who Would Recommend This Book.">
             </div>
             <div style="float: left; margin: 2px 0 0 5px">
                 {{ title.promoter_count }}
             </div>
             <div style="float: left; margin: 0 0 0 25px;">
-                <img src="{{ THEME_MEDIA_URL }}images/pb-thumbs-down.png">
+                <img src="{{ THEME_MEDIA_URL }}images/pb-thumbs-down.png" alt="Number of People Who Wouldn't Recommend This Book.">
             </div>
             <div style="float: left; margin: 2px 0 0 5px;">
                 {{ title.detractor_count }}
