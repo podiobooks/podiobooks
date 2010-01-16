@@ -1,7 +1,6 @@
 .pb-infobox {
 	float: right;
 	position: relative;
-	top: -481px;
 	margin: 0 5px 0 0;
 }
 
@@ -10,13 +9,13 @@
 	height: 463px;
 	width: 13px;
 	background: url(../images/pb-infobox-light-ends.png) bottom left no-repeat;
-	cursor: pointer;
 }
 
 .pb-infobox-middle {
 	float: left;
 	height: 463px;
 	width: 190px;
+	font-size: 12px;
 	background: url(../images/pb-infobox-light-middle.png) repeat-x;
 }
 
@@ -25,7 +24,6 @@
 	height: 463px;
 	width: 13px;
 	background: url(../images/pb-infobox-light-ends.png) bottom right no-repeat;
-	cursor: pointer;
 }
 
 .pb-infobox-headphones {
@@ -33,7 +31,8 @@
 	height: 63px;
 	width: 165px;
 	text-align: center;
+	font-size: 14px;
 	font-weight: bold;
-	margin: 0 0 0 10px;
-	padding: 25px 0 0 0;
+	margin: 0 0 0 13px;
+	padding: 18px 0 0 0;
 }
