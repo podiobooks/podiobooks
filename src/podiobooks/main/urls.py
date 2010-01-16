@@ -5,7 +5,6 @@ urlpatterns = patterns('',
     
     # title
     url(r'^title/$','django.views.generic.list_detail.object_list', { 'queryset': Title.objects.all().order_by('name'), 'template_object_name': 'title', 'template_name': 'main/title/list.html'}, name='title_list'),
-    url(r'^title/search/$','podiobooks.main.views.title_search', name='title_search_form'),
     url(r'^title/search/$','podiobooks.main.views.title_search', name='title_search'),
     url(r'^title/search/(?P<keywords>[^/]+)/$','podiobooks.main.views.title_search', name='title_search_keywords'),
     url(r'^title/summary/(?P<object_id>[^/]+)/$','django.views.generic.list_detail.object_detail', {'queryset': Title.objects.all(), 'template_object_name': 'title', 'template_name': 'main/title/detail_summary.html'}, name='title_detail_summary'),
