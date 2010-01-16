@@ -28,6 +28,13 @@ h2 {
 	margin: 0;
 }
 
+h4 {
+	font-size: 12px;
+	font-weight: normal;
+	font-style: italic;
+	margin: 0 0 0 40px;
+}
+
 p {
 	margin: 0;
 }
