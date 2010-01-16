@@ -6,7 +6,7 @@
 	<div id="headerbox"> 
 		<div id="title"><a href="{% url home_page %}"><img src="{{ MEDIA_URL }}themes/legacy/images/title.jpg" width="183" height="70" /></a></div> 
 		<div id="quicksearch">
-			<form method="POST" id="qsearch" name=id="qsearch" action="{% url title_search_redirect %}"> 
+			<form method="POST" id="qsearch" name=id="qsearch" action="{% url title_search %}"> 
 			<table border=0 width="660"><tr><td align="left" valign="bottom" style="padding-bottom: 4px"><span class="smalltext" style="color:white;">Free serialized audio books, delivered on your schedule.</span></td> 
 			<td align="right">Search Podiobooks.com:<input type="text" name="keywords" class="formtextbox" size="20" onKeyPress="doClick(document.forms[0],event);" />&nbsp;<input class="formbutton" id="searchSubmit" name="searchSubmit" type="button" value="Go" onClick="doClickSubmit(document.forms[0])" /></form></td></tr></table> 
 		</div>
