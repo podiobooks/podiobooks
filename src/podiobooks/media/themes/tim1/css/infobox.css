@@ -1,0 +1,39 @@
+.pb-infobox {
+	float: right;
+	position: relative;
+	top: -481px;
+	margin: 0 5px 0 0;
+}
+
+.pb-infobox-left {
+	float: left;
+	height: 463px;
+	width: 13px;
+	background: url(../images/pb-infobox-light-ends.png) bottom left no-repeat;
+	cursor: pointer;
+}
+
+.pb-infobox-middle {
+	float: left;
+	height: 463px;
+	width: 190px;
+	background: url(../images/pb-infobox-light-middle.png) repeat-x;
+}
+
+.pb-infobox-right {
+	float: left;
+	height: 463px;
+	width: 13px;
+	background: url(../images/pb-infobox-light-ends.png) bottom right no-repeat;
+	cursor: pointer;
+}
+
+.pb-infobox-headphones {
+	background: url(../images/pb-headphones.png) no-repeat;
+	height: 63px;
+	width: 165px;
+	text-align: center;
+	font-weight: bold;
+	margin: 0 0 0 10px;
+	padding: 25px 0 0 0;
+}
