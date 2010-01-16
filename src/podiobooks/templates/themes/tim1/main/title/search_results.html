@@ -19,6 +19,9 @@
     <br style="clear:both;">
 </div>
 {% if result_count %}<h3 style="font-size:16px; font-weight:bold; margin: 20px 20px 20px 40px;">{{ result_count }} titles found whose name or description contained "{{ keywords }}"</h3>
+<h4>Adult titles {% if titleSearchForm.cleaned_data.include_adult %}<strong>are</strong>{% else %}are <strong>not</strong>{% endif %} included.</h4>
+<h4>{% if not titleSearchForm.cleaned_data.completed_only %}Both <strong>complete and incomplete</strong>{% else %}Only <strong>complete</strong>{% endif %} titles are included.</h4>
+<br />
 {% show_titlelist title_list %}
 {% else %}<h3 style="font-size:16px; font-weight:bold; margin: 20px 20px 400px 40px;">No titles found whose name, description, or contributors contained "{{ keywords }}"</h3>
 {% endif %}
