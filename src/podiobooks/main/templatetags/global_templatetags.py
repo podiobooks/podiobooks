@@ -3,6 +3,7 @@
 from django import template
 from podiobooks.main.forms import CategoryChoiceForm, TitleSearchForm
 from podiobooks.settings import MEDIA_URL, COVER_MEDIA_URLS
+from django.conf.global_settings import PROFANITIES_LIST
 import itertools
 
 register = template.Library()
@@ -25,3 +26,12 @@ def show_heading(text):
 def show_searchbox():
     """ Shows the search/category section of the header """
     return { 'categoryChoiceForm':CategoryChoiceForm(), 'titleSearchForm': TitleSearchForm(), 'MEDIA_URL': MEDIA_URL}
+
+@register.filter("replace_bad_words")
+def replace_bad_words(value):
+    """ Replaces profanities in strings with safe words """
+    words_seen = [w for w in PROFANITIES_LIST if w in value]
+    if words_seen:
+        for word in words_seen:
+            value = value.replace(word, "%s%s%s" % (word[0], '-'*(len(word)-2), word[-1]))
+    return value
