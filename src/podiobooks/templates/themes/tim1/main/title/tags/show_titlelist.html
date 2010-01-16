@@ -3,7 +3,7 @@
     {% for title in title_list %}
     <li class="{% cycle 'row1' 'row2' %}" style="margin: 10px 0 30px 5px;">
         <img src="http://podiobooks.com/images/covers/{{ title.cover }}" height="150" width="100" alt="Title Cover for {{ title.name }}" style="float: left;">
-        <div id="titleSearchResultSummary" style="float: left; height:80px; margin: 5px 0 0 15px; width: 850px; font-size: 12px">
+        <div id="titleList" style="float: left; height:80px; margin: 5px 0 0 15px; width: 850px; font-size: 12px">
             <div style="font-size: 16px">
                 <a href="{{ title.get_absolute_url }}">{{ title.name }}</a>
             </div>
