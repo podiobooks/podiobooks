@@ -68,12 +68,15 @@ def title_search(request, keywords=None):
     """
     if request.method == 'POST': # If the form has been submitted...
         form = TitleSearchForm(request.POST) # A form bound to the POST data
-        if form.is_valid(): # All validation rules pass
-            keywords = form.cleaned_data['keywords']
-            include_adult = form.cleaned_data['include_adult']
-            completed_only = form.cleaned_data['completed_only']
-        else:
-            return HttpResponseRedirect(reverse('title_list'))
+    else:
+        form = TitleSearchForm({'keywords': keywords})
+    
+    if form.is_valid(): # All validation rules pass
+        keywords = form.cleaned_data['keywords']
+        include_adult = form.cleaned_data['include_adult']
+        completed_only = form.cleaned_data['completed_only']
+    else:
+        return HttpResponseRedirect(reverse('title_list'))
     
     if keywords != None:
         if settings.SEARCH_PROVIDER == 'SPHINX':
