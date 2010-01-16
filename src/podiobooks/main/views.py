@@ -77,8 +77,11 @@ def title_search(request, keywords=None):
         completed_only = form.cleaned_data['completed_only']
     else:
         form = TitleSearchForm()
+        keywords = False
+        include_adult = False
+        completed_only = False
     
-    if keywords != None:
+    if keywords:
         if settings.SEARCH_PROVIDER == 'SPHINX':
             exclusions = {}
             if (not include_adult):
