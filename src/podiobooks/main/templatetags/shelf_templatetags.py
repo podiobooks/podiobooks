@@ -29,12 +29,3 @@ def show_shelf_items(shelf_id, shelf_name, title_list, shelf_title_width):
             'title_list': title_list,
             'shelf_title_width': shelf_title_width
             }
-
-@register.inclusion_tag('main/shelf/tags/show_infobox.html')
-def show_infobox(shelf_id, shelf_title, nowreleasing_title_list, recentlycomplete_title_list):
-    return {'infobox_id': shelf_id,
-            'nowreleasing_title_list': nowreleasing_title_list,
-            'recentlycomplete_title_list': recentlycomplete_title_list,
-            'THEME_MEDIA_URL': THEME_MEDIA_URL,
-            'MEDIA_URL': MEDIA_URL
-            }
