@@ -14,9 +14,9 @@
         }
     });
 	
-	// Updates a shelf by changing the container ContentPane's href, triggering an XHR
+	// Updates the author shelf by changing the container ContentPane's href, triggering an XHR
     function contributorChange(shelf_id, shelf_url, dropdown_value){
-		dijit.byId(shelf_id+'Container').attr('href', shelf_url.replace('contributor_slug',dropdown_value));
+		dijit.byId(shelf_id+'Container').attr('href', shelf_url.replace('placeholder_slug',dropdown_value));
     }
 </script>
 <!-- End Shelf Includes -->
