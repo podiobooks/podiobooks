@@ -191,6 +191,12 @@
 	margin: 1px 0 0 10px;
 }
 
+.pb-shelf-dropwdown-label {
+	height: 0px;
+	width: 0px;
+	overflow: hidden;
+}
+
 .pb-feature-shelf {
 	position: relative;
 	margin-bottom: 10px;
