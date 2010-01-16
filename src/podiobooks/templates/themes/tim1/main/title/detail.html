@@ -4,7 +4,8 @@
 {% block headtitle %}{{ title.name }} - {{ site_name }}{% endblock %}
 {% block head %}
 <link rel="stylesheet" type="text/css" href="{{ THEME_MEDIA_URL }}css/title-detail.css" >
-<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/dojo/1.4/dijit/themes/tundra/tundra.css">
+<link rel="stylesheet" type="text/css" href="{{ THEME_MEDIA_URL }}css/infobox.css" >
+<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/dojo/1.4/dijit/themes/soria/soria.css">
 <script type="text/javascript">
     dojo.require('dijit.layout.TabContainer');
     dojo.require('dijit.layout.ContentPane');
@@ -36,14 +37,14 @@
         </div>
     </div>
 </div>
-<div style="float:left; width: 600px; margin: 0px 0px 20px 20px" class="tundra">
+<div style="float:left; width: 558px; margin: 0 0 20px 20px" class="soria">
     <div style="font-size: 18px; font-weight: bold;">
         {{ title.name }}
     </div>
     {% show_contributors title %}
     <br>
     {% show_categories title %}
-    <div class="tundra" style="opacity: 0; margin: 5px 0 0 0; height: 250px;" id="topTabs">
+    <div class="tundra" style="opacity: 0; margin: 15px 0 0 0; height: 380px;" id="topTabs">
         <div dojoType="dijit.layout.TabContainer" style="width: 100%; height: 100%;" id="topTabContainer">
             <div dojoType="dijit.layout.ContentPane" title="Description" selected="true">
                 {% autoescape off %}{{ title.description_br }}{% endautoescape %}
@@ -59,14 +60,10 @@
         </div>
     </div>
 </div>
-<div style="margin: 10px 0 25px 0; font-size: 20px; float: left; text-align: center; width: 200px;">
-    <img src="{{ THEME_MEDIA_URL }}images/pb-rss-icon.gif">
-    <br/>
-    <a href="/rss/feeds/episodes/{{ title.slug }}">Subscribe now</a>
+{% include "main/title/subscriptionbox.html" %}
+<div class="pb-float-clear">
 </div>
-<div style="clear:both">
-</div>
-<div class="tundra" style="width: 100%; height: 500px; opacity: 0" id="bottomTabs">
+<div class="soria" style="width: 100%; height: 500px; opacity: 0" id="bottomTabs">
     <div dojoType="dijit.layout.TabContainer" style="width: 100%; height: 100%;" id="bottomTabContainer">
         <div dojoType="dijit.layout.ContentPane" title="Chapters">
             {% if title.episode_set.all %}
@@ -84,10 +81,10 @@
 </div>
 {% if title.license %}
 <div style="float: left; margin: 20px 0px 0px 0px;">
-    <a rel="license" href="{{title.license.url}}"><img alt="{{ title.license.text }} Logo" style="border-width:0" src="{{title.license.image_url}}" /></a>
+    <a rel="license" href="{{title.license.url}}"><img alt="{{ title.license.text }} Logo" style="border-width:0" src="{{ title.license.image_url }}" /></a>
 </div>
 <div style="float: left; margin: 26px 0px 10px 10px;">
-    This work is licensed under a <a href="{{title.license.url}}">{{ title.license.text }}</a>
+    This work is licensed under a <a href="{{ title.license.url }}">{{ title.license.text }}</a>
     license.
 </div>
 <div style="clear: both">
