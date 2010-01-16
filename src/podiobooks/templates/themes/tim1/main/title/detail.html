@@ -3,6 +3,7 @@
 {% load title_templatetags %}
 {% block headtitle %}{{ title.name }} - {{ site_name }}{% endblock %}
 {% block head %}
+<link rel="stylesheet" type="text/css" href="{{ THEME_MEDIA_URL }}css/title-detail.css" >
 <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/dojo/1.4/dijit/themes/tundra/tundra.css">
 <script type="text/javascript">
     dojo.require('dijit.layout.TabContainer');
