@@ -76,7 +76,7 @@ def title_search(request, keywords=None):
         include_adult = form.cleaned_data['include_adult']
         completed_only = form.cleaned_data['completed_only']
     else:
-        return HttpResponseRedirect(reverse('title_list'))
+        form = TitleSearchForm()
     
     if keywords != None:
         if settings.SEARCH_PROVIDER == 'SPHINX':
@@ -102,7 +102,7 @@ def title_search(request, keywords=None):
         response_data = {'title_list': search_results, 'keywords': keywords, 'result_count': result_count, 'titleSearchForm': form, 'categoryChoiceForm':CategoryChoiceForm(), 'search_metadata': search_metadata}
         return render_to_response('main/title/search_results.html', response_data, context_instance=RequestContext(request))
     else:
-        response_data = {'titleSearchForm': TitleSearchForm()}
-        return render_to_response('main/title/search_form.html', response_data, context_instance=RequestContext(request))
+        response_data = {'titleSearchForm': form}
+        return render_to_response('main/title/search_results.html', response_data, context_instance=RequestContext(request))
             
     
