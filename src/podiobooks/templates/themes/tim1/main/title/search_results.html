@@ -23,6 +23,6 @@
 <h4>{% if not titleSearchForm.cleaned_data.completed_only %}Both <strong>complete and incomplete</strong>{% else %}Only <strong>complete</strong>{% endif %} titles are included.</h4>
 <br />
 {% show_titlelist title_list %}
-{% else %}<h3 style="font-size:16px; font-weight:bold; margin: 20px 20px 400px 40px;">No titles found whose name, description, or contributors contained "{{ keywords }}"</h3>
+{% else %}{% if titleSearchForm.cleaned_data.keywords %}<h3 style="font-size:16px; font-weight:bold; margin: 20px 20px 400px 40px;">No titles found whose name, description, or contributors contained "{{ keywords }}"</h3>{% endif %}
 {% endif %}
 {% endblock %}
