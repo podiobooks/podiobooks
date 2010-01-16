@@ -1,9 +1,10 @@
 {% if tweets %}
+{% load global_templatetags %}
 <div class="pb-twitter-container">
 <ul>
 	{% for tweet in tweets %}
 	<li style="margin: 5px 0 0 0">
-		{{ tweet.text|safe }}
+		{{ tweet.text|safe|replace_bad_words }}
 	</li>
 	{% endfor %}
 </ul>
