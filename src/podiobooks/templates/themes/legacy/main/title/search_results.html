@@ -8,7 +8,7 @@
 <a href="{% url home_page %}">Back to Home Page</a> | <a href="{% url category_list %}">Category List</a> | <a href="{% url title_list %}">Show all books</a>
 <br clear="all" /><br />
 <div id="keywords" style="float:left;width:380px;background:#A0A0A0;" align="center">
-	<form action="{% url title_search_redirect %}" method="POST">
+	<form action="{% url title_search %}" method="POST">
 		<table>
 			<tr><th>&nbsp;</th><td>&nbsp;</td><td rowspan="3"><input type="submit" value="Search" class="formbutton"/></td></tr>
 			{{ titleSearchForm.as_table }}
