@@ -1,14 +1,11 @@
-<div id="menuBarSearchform" style="display:inline;float:right;">
+<div id="menuBarSearchform" style="display:inline;float:right;margin: 2px 0 0 0;">
     <form action="{% url title_search %}" method="POST" style="display:inline;">
         <label for="id_keywords" style="font-weight:bold;">
             Search for
         </label>
-        {{ titleSearchForm.keywords }}
-    </form>
-    <form action="{% url category_redirect %}" method="POST" style="display:inline;" id="pb-category-choice-form">
-        <label for="id_category" style="font-weight:bold;">
-            or Browse
-        </label>
-        {{ categoryChoiceForm.category }}
+        {{ title_search_form.keywords }}
+		<button dojoType="dijit.form.Button" type="submit" style="margin: -2px 0 0 0; border: 1px solid #448ccb; background-color: #06539e; padding: 3px; color: white;">
+            Search
+        </button>
     </form>
 </div>
