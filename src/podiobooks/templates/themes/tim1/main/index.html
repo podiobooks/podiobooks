@@ -15,14 +15,15 @@
 
 {% block content %}
 
-{% show_shelf 'featuredPodiobooksShelf' 'Featured Podiobooks' featured_title_list '' '' 'pb-feature-shelf' 4 %}
+{% url category_shelf 'placeholder_slug' as category_dropdown_url %}
+{% show_shelf 'featuredPodiobooksShelf' 'Featured Podiobooks - ' featured_title_list category_choice_form.category category_dropdown_url 'category' 'pb-feature-shelf' 4 %}
 
 {% ad_placeholder %}
 
 {% url contributor_shelf 'placeholder_slug' as contributor_dropdown_url %}
-{% show_shelf 'authorSpotlightShelf' 'Author Spotlight - ' minimal_title_list contributor_choice_form contributor_dropdown_url 'pb-shelf' 3 %}
+{% show_shelf 'authorSpotlightShelf' 'Author Spotlight - ' minimal_title_list contributor_choice_form.contributor contributor_dropdown_url 'contributor' 'pb-shelf' 3 %}
 
-{% show_shelf 'topRatedShelf' 'Top Rated Podiobooks' toprated_title_list '' '' 'pb-shelf' 3 %}
+{% show_shelf 'topRatedShelf' 'Top Rated Podiobooks' toprated_title_list '' '' '' 'pb-shelf' 3 %}
 
 {% include "main/title/newsbox.html" %}
 

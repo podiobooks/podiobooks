@@ -20,12 +20,12 @@ def cover_media_url():
 @register.inclusion_tag('main/tags/show_heading.html')
 def show_heading(text):
     """ Takes text and formats it in our heading style, as needed for themes that require special handling """
-    return { 'text' : text, 'MEDIA_URL': MEDIA_URL}
+    return { 'text' : text, 'MEDIA_URL': MEDIA_URL }
 
 @register.inclusion_tag('main/tags/show_searchbox.html')
 def show_searchbox():
     """ Shows the search/category section of the header """
-    return { 'categoryChoiceForm':CategoryChoiceForm(), 'titleSearchForm': TitleSearchForm(), 'MEDIA_URL': MEDIA_URL}
+    return { 'title_search_form': TitleSearchForm(), 'MEDIA_URL': MEDIA_URL }
 
 @register.filter("replace_bad_words")
 def replace_bad_words(value):
