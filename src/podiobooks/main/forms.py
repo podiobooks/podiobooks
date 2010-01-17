@@ -8,15 +8,15 @@ from django.db.models import Count
 class CategoryChoiceForm(forms.Form):
     """ Form used to select a category - used in header """
     categories = cache.get('category_dropdown_values')
-    if (categories == None):
-        categories = Category.objects.order_by('name').values_list('slug', 'name')
+    if (not categories):
+        categories = Category.objects.values_list('slug', 'name').annotate(num_titles=Count('title__categories')).filter(num_titles__gt=3)
         cache.set('category_dropdown_values', categories, 240)
-    category = forms.ChoiceField(choices=categories, widget=forms.Select(attrs={'class':'pb-category-choice', 'onchange':'this.form.submit();'}))
+    category = forms.ChoiceField(choices=categories, widget=forms.Select(attrs={'class':'pb-category-choice', 'onchange':'shelfChange(this.form.name, this.form.action, this.value);'}))
 
 class ContributorChoiceForm(forms.Form):
     """ Form used to select contributors on the Author Spotlight shelf """
     contributors = cache.get('contributor_dropdown_values')
-    if (contributors == None):
+    if (not contributors):
         contributors = Contributor.objects.values_list('slug', 'display_name').annotate(num_titles=Count('titlecontributors')).order_by('-num_titles')[:10]
         cache.set('contributor_dropdown_values', contributors, 240)
     contributor = forms.ChoiceField(choices=contributors, widget=forms.Select(attrs={'class':'pb-contributor-choice', 'onchange':'shelfChange(this.form.name, this.form.action, this.value);'}))
