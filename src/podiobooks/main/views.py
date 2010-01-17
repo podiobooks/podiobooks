@@ -36,6 +36,7 @@ def index(request):
                      'toprated_title_list': toprated_title_list,
                      'nowreleasing_title_list': nowreleasing_title_list,
                      'recentlycomplete_title_list': recentlycomplete_title_list,
+                     'category_choice_form': CategoryChoiceForm(),
                      'contributor_choice_form': ContributorChoiceForm(),
                      }
     
