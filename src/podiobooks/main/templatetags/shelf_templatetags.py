@@ -10,12 +10,13 @@ def shelf_includes():
             }
 
 @register.inclusion_tag('main/shelf/tags/show_shelf.html')
-def show_shelf(shelf_id, shelf_title, title_list, dropdown_values, dropdown_url, base_css_class, shelf_title_width):
+def show_shelf(shelf_id, shelf_title, title_list, dropdown_values, dropdown_url, dropdown_field, base_css_class, shelf_title_width):
     return {'shelf_id': shelf_id,
             'shelf_title': shelf_title,
             'title_list': title_list,
             'dropdown_values': dropdown_values,
             'dropdown_url': dropdown_url,
+            'dropdown_field': dropdown_field,
             'base_css_class': base_css_class,
             'shelf_title_width': shelf_title_width,
             'THEME_MEDIA_URL': THEME_MEDIA_URL,

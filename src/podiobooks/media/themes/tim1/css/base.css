@@ -83,6 +83,17 @@ ul {
 	float: left;
 }
 
+#pb-header-menubar .dijitButton,
+#pb-header-menubar .dijitButtonNode,
+#pb-header-menubar .dijitButtonContents,
+#pb-header-menubar .dijitInline,
+#pb-header-menubar button {
+	margin: 0 0 0 0;
+	border: none;
+	vertical-align: top;
+	background: transparent;
+}
+
 #pb-footer-text {
 	font-size: 11px;
 	width: 970px;
