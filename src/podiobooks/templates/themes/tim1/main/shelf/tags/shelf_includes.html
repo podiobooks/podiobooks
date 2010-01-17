@@ -13,11 +13,12 @@
                 "margin-left": "-3px",
             });
         }
+		dojo.byId('id_category').value = 'science-fiction';
     });
 	
 	// Updates a shelf by changing the container ContentPane's href, triggering an XHR
     function shelfChange(shelf_id, shelf_url, dropdown_value){
-		dijit.byId(shelf_id+'Container').attr('href', shelf_url.replace('placeholder_slug',dropdown_value));
+		dijit.byId(shelf_id+'Container').attr('href', shelf_url.replace('placeholder_slug', dropdown_value));
     }
 </script>
 <!-- End Shelf Includes -->
