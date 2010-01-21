@@ -108,6 +108,9 @@ class EpisodeFeed(Feed):
     def item_link(self, obj):
         return feed_tools.add_current_domain(obj.get_absolute_url())
     
+    def item_pubdate(self, obj):
+        return obj.date_created;
+    
     # item_title comes from templates/base/feeds/episodes_title.html
     
     def link(self, obj):
