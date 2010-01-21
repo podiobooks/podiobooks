@@ -114,7 +114,7 @@ class EpisodeFeed(Feed):
         return feed_tools.add_current_domain(obj.get_absolute_url())
 
     def items(self, obj):
-        return Episode.objects.filter(title__id__exact=obj.id).order_by('sequence')
+        return Episode.objects.filter(title__id__exact=obj.id).order_by('-sequence')
     
     def subtitle(self, obj):
         return u'A free audiobook by %s' % self.author_name(obj)
