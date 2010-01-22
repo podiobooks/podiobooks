@@ -4,15 +4,15 @@
 from django.contrib.sites.models import Site, RequestSite
 from django.utils.encoding import iri_to_uri
 
-def get_current_site():
-    if Site._meta.installed:
+def get_current_site(request):
+    if Site._meta.installed: #@UndefinedVariable
         current_site = Site.objects.get_current()
     else:
-        current_site = RequestSite(self.request)
+        current_site = RequestSite(request)
     return current_site
             
-def get_current_domain():
-    current_site = get_current_site()
+def get_current_domain(request):
+    current_site = get_current_site(request)
     return current_site.domain
 
 def add_domain(domain, url):
@@ -22,5 +22,8 @@ def add_domain(domain, url):
         url = iri_to_uri(u'http://%s%s' % (domain, url))
     return url
 
-def add_current_domain(url):
-    return add_domain(get_current_domain(), url)
+def add_current_domain(url, request):
+    return add_domain(get_current_domain(request), url)
+
+def wrap_with_cdata(text):
+    return u'<![CDATA[' + unicode(text) + u']]>'
