@@ -24,6 +24,3 @@ def add_domain(domain, url):
 
 def add_current_domain(url, request):
     return add_domain(get_current_domain(request), url)
-
-def wrap_with_cdata(text):
-    return u'<![CDATA[' + unicode(text) + u']]>'
