@@ -35,3 +35,7 @@ def replace_bad_words(value):
         for word in words_seen:
             value = value.replace(word, "%s%s%s" % (word[0], '-'*(len(word)-2), word[-1]))
     return value
+
+@register.filter("wrap_with_cdata")
+def wrap_with_cdata(text):
+    return u'<![CDATA[' + unicode(text) + u']]>'
