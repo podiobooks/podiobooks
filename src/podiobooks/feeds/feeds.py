@@ -40,7 +40,10 @@ class EpisodeFeed(Feed):
             return 'no'
     
     def feed_copyright(self, obj):
-        return obj.license.slug
+        if obj.license:
+            return obj.license.slug
+        else:
+            return "All rights reserved by Author"
     
     def feed_extra_kwargs(self, obj):
         """
