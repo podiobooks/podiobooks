@@ -6,9 +6,9 @@
 {% else %}
 	<img class="pb-shelf-item-cover-image" src="{% cover_media_url %}images/covers/67x99/{{ title.cover }}" width="67" height="99" alt="Podiobook Cover for {{ title.name }}"/></a>
 	{% endif %}
-<div class="pb-shelf-item-rating">
-	<div style="float: left; width: 34px;">{{ title.promoter_count }}</div><div style="float: right; width: 33px; margin: 12px 0 0 0">{{title.detractor_count }}</div>
-</div>
+	<div class="pb-shelf-item-rating">
+		<div class="item-rating item-rating-promoter">{{ title.promoter_count }}</div><div class="item-rating item-rating-detractor">{{ title.detractor_count }}</div>
+	</div>
 <div class="pb-shelf-item-text">
     <p class="pb-shelf-item-title">
         <a href="{% url title_detail title.slug %}" style="text-decoration:none;">{{ title.name|truncatewords_html:5 }}</a>
