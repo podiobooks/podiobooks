@@ -25,13 +25,13 @@ class EpisodeFeed(Feed):
     feed_type = iTunesFeed
     
     def author_name(self, obj):
-        return feed_tools.wrap_with_cdata(obj.contributors.all()[0].display_name)
+        return obj.contributors.all()[0].display_name
     
     def categories(self, obj):
         return obj.categories.all()
     
     def description(self, obj):
-        return(feed_tools.wrap_with_cdata(strip_tags(obj.description).replace('&amp;','&')))
+        return(strip_tags(obj.description).replace('&amp;','&'))
     
     def explicit(self, obj):
         if obj.is_adult:
@@ -106,7 +106,7 @@ class EpisodeFeed(Feed):
         for category in self.categories(obj.title):
             keywords += ', ' + category.name
             
-        return feed_tools.wrap_with_cdata(keywords)
+        return keywords
 
     def item_link(self, obj):
         return feed_tools.add_current_domain(obj.get_absolute_url(), self.request)
@@ -123,7 +123,7 @@ class EpisodeFeed(Feed):
         return Episode.objects.filter(title__id__exact=obj.id).order_by('-sequence')
     
     def subtitle(self, obj):
-        return feed_tools.wrap_with_cdata(u'A free audiobook by %s' % self.author_name(obj))
+        return u'A free audiobook by %s' % self.author_name(obj)
     
     def title(self, obj):
-        return feed_tools.wrap_with_cdata(obj.name)
+        return obj.name
