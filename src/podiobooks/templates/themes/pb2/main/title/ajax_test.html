@@ -1,0 +1,60 @@
+{% load title_templatetags %}
+<html>
+    <head>
+        <title>Podiobooks JS/AJAX Testing Page</title>
+        <script type="text/javascript">
+            //This block is used to be able to bootstrap in the CDN and local stuff side by side
+            //It has to load before the call to the dojo js
+            djConfig = {
+                parseOnLoad: true,
+                isDebug: true,
+                baseUrl: "/",
+                modulePaths: {
+                    pbwidgets: "media/js/pbwidgets"
+                }
+            };
+        </script>
+        <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/dojo/1.4/dijit/themes/tundra/tundra.css">
+		<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/dojo/1.4/dojox/image/resources/SlideShow.css">
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/dojo/1.4/dojo/dojo.xd.js" djConfig="parseOnLoad: true">
+        </script>
+        <script type="text/javascript">
+            dojo.require("dojo.data.ItemFileReadStore");
+            dojo.require("dijit.form.ComboBox");
+            dojo.require("dojox.image.SlideShow");
+            
+            var storeData = {
+                items: [{
+                    "thumb": "http://tomdiaz.files.wordpress.com/2009/06/foo_fighters.jpg",
+                    "large": "http://tomdiaz.files.wordpress.com/2009/06/foo_fighters.jpg",
+                    "title": "Image 1",
+                    "link": "http://tomdiaz.files.wordpress.com/2009/06/foo_fighters.jpg"
+                },
+				{
+                    "thumb": "http://community.post-gazette.com/cfs-filesystemfile.ashx/__key/CommunityServer.Components.UserFiles/00.00.00.48.45/FooFighters1A.jpg",
+                    "large": "http://community.post-gazette.com/cfs-filesystemfile.ashx/__key/CommunityServer.Components.UserFiles/00.00.00.48.45/FooFighters1A.jpg",
+                    "title": "Image 2",
+                    "link": "http://community.post-gazette.com/cfs-filesystemfile.ashx/__key/CommunityServer.Components.UserFiles/00.00.00.48.45/FooFighters1A.jpg"
+                }
+				]
+            }
+            
+            dojo.addOnLoad(function(){
+                dijit.byId('slideshow').setDataStore(imagesStore, {
+                    query: {},
+                    count: 20
+                }, {
+                    imageThumbAttr: "thumb",
+                    imageLargeAttr: "large"
+                });
+            });
+        </script>
+    </head>
+    <body class="tundra">
+        Generic Stuff.
+        <div dojoType="dojo.data.ItemFileReadStore" data="storeData" jsId="imagesStore">
+        </div>
+        <div id="slideshow" dojoType="dojox.image.SlideShow" noLink="true" fixedHeight="true">
+        </div>
+    </body>
+</html>
