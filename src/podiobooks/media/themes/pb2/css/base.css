@@ -112,3 +112,38 @@ ul {
 	margin: 0 0 15px 10px;
 	text-align: center;
 }
+
+.pb-hidden-label {
+	height: 0px;
+	width: 0px;
+	overflow: hidden;
+}
+
+.pb-item-rating-promoter {
+	width: 34px;
+	height: 48px;
+	background: url('../images/pb-thumbs-both.png') no-repeat top left;
+	font-size: 11px;
+	font-weight: bold;
+	text-align: center;
+	color: #000;
+	float: left;
+}
+
+.pb-item-rating-detractor {
+	width: 33px;
+	height: 48px;
+	background: url('../images/pb-thumbs-both.png') no-repeat top right;
+	font-size: 11px;
+	font-weight: bold;
+	text-align: center;
+	color: #000;
+	float: right;
+	padding: 12px 0 0 0;
+}
+
+.pb-browseby-choice {
+	font-size: 14px;
+	background: #fff;
+	border: 1px solid #0054a6;
+}
