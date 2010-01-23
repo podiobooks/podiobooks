@@ -10,7 +10,7 @@
             <h2 style="float: left;">{{ shelf_title }}</h2>
 			{% if dropdown_values %}
 			<form class="pb-shelf-dropdown" action="{{ dropdown_url }}" name="{{ shelf_id }}" id="{{ shelf_id }}Dropdown">
-				<div style="height: 0px; width: 0px; overflow: hidden;"><label for="id_{{ dropdown_field }}">Select a {{ dropdown_field }} to view titles</label></div>
+				<div class="pb-hidden-label"><label for="id_{{ dropdown_field }}">Select a {{ dropdown_field }} to view titles</label></div>
 				{{ dropdown_values }}
             </form>
 			<script type="text/javascript">

@@ -16,7 +16,7 @@
 {% block content %}
 
 {% url category_shelf 'placeholder_slug' as category_dropdown_url %}
-{% show_shelf 'featuredPodiobooksShelf' 'Featured Podiobooks - ' featured_title_list category_choice_form.category category_dropdown_url 'category' 'pb-feature-shelf' 4 %}
+{% show_shelf 'featuredPodiobooksShelf' 'Featured Podiobooks by Category - ' featured_title_list category_choice_form.category category_dropdown_url 'category' 'pb-feature-shelf' 4 %}
 
 {% ad_placeholder %}
 
@@ -25,7 +25,7 @@
 
 {% show_shelf 'topRatedShelf' 'Top Rated Podiobooks' toprated_title_list '' '' '' 'pb-shelf' 3 %}
 
-{% include "main/title/newsbox.html" %}
+{% include "main/title/title_newsbox.html" %}
 
 {% include "debug.html" %}
 
