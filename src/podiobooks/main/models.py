@@ -27,9 +27,9 @@ class Advisory(models.Model):
 class Award(models.Model):
 	"""Awards are just that: awards for a title, like winning a Parsec, etc."""
 	slug = models.SlugField()
-	name = models.CharField(blank=True, max_length=255)
+	name = models.CharField(blank=True, null=True, max_length=255)
 	url = models.URLField(blank=True, verify_exists=True, null=True)
-	image = models.ImageField(upload_to=podiobooks.settings.MEDIA_AWARDS)
+	image = models.ImageField(upload_to=podiobooks.settings.MEDIA_AWARDS, max_length=255)
 	deleted = models.BooleanField(default=False)
 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
