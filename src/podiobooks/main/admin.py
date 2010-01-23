@@ -12,6 +12,8 @@ from models import Series, Subscription
 from models import Title, TitleContributors
 from models import Partner
 
+from tinymce.widgets import TinyMCE
+
 
 class TitleInline(admin.TabularInline):
     model = Title
