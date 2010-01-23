@@ -36,7 +36,7 @@ def index(request):
                      'toprated_title_list': toprated_title_list,
                      'nowreleasing_title_list': nowreleasing_title_list,
                      'recentlycomplete_title_list': recentlycomplete_title_list,
-                     'category_choice_form': CategoryChoiceForm(),
+                     'category_choice_form': CategoryChoiceForm(initial={'category': 'science-fiction'}),
                      'contributor_choice_form': ContributorChoiceForm(),
                      }
     
