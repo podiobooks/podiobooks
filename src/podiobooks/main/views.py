@@ -104,9 +104,9 @@ def title_search(request, keywords=None):
             search_metadata = None
         result_count = len(search_results)
         response_data = {'title_list': search_results, 'keywords': keywords, 'result_count': result_count, 'titleSearchForm': form, 'categoryChoiceForm':CategoryChoiceForm(), 'search_metadata': search_metadata}
-        return render_to_response('main/title/search_results.html', response_data, context_instance=RequestContext(request))
+        return render_to_response('main/title/title_search_results.html', response_data, context_instance=RequestContext(request))
     else:
         response_data = {'titleSearchForm': form}
-        return render_to_response('main/title/search_results.html', response_data, context_instance=RequestContext(request))
+        return render_to_response('main/title/title_search_results.html', response_data, context_instance=RequestContext(request))
             
     

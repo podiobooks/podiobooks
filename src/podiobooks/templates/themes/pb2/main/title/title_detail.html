@@ -23,10 +23,10 @@
     <div style="float:left; text-align: center;">
         {% show_titlecover title %}
         <div style="margin: 10px 0 0 30px; width: 90px;">
-            <div class="item-rating item-rating-promoter">
+            <div class="pb-item-rating-promoter">
                 {{ title.promoter_count }}
             </div>
-            <div class="item-rating item-rating-detractor">
+            <div class="pb-item-rating-detractor">
                 {{ title.detractor_count }}
             </div>
 			<div class="pb-float-clear">
@@ -62,7 +62,7 @@
         </div>
     </div>
 </div>
-{% include "main/title/subscriptionbox.html" %}
+{% include "main/title/title_subscriptionbox.html" %}
 <div class="pb-float-clear">
 </div>
 <div class="tundra" style="width: 100%; height: 500px; opacity: 0" id="bottomTabs">
