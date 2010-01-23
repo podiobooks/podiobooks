@@ -1,9 +1,0 @@
-{% if contributors %}
-<!-- Begin show_contributors templatetag -->
-	by<span class="contributor-list">
-	{% for contributor in contributors %}
-		{{ contributor.display_name }}{% if not forloop.last %},{% endif %}
-	{% endfor %}
-	</span>
-<!-- End show_contributors templatetag -->
-{% endif %}
