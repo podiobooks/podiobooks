@@ -18,10 +18,12 @@ def determineLicense(licenseSlug):
     try:
         license = License.objects.get(slug=licenseSlug)
     except:
-        if (licenseSlug[:2] == 'by'):
+        if licenseSlug[:2] == 'by':
+            license = License.objects.create(slug=licenseSlug)
+        elif licenseSlug == 'all':
             license = License.objects.create(slug=licenseSlug)
         else:
-            license = None
+            license = license = License.objects.get(slug='by-nc-nd')
     
     return license
 
