@@ -1,0 +1,19 @@
+<div id="menuBarBrowseByForm" style="display:inline;margin: 2px 0 0 0;">
+    <form action="{% url category_redirect %}" method="POST" style="display:inline;float:right;">
+        <label for="id_browsebychoices" style="font-weight:bold;">
+            Browse by
+        </label>
+        {{ browse_by_form.browseby }}
+		or
+    </form>
+	<script type="text/javascript">
+		function browseByChange(formName, formAction, formValue) {
+			if (formValue == 'author') {
+				document.location = "{% url contributor_list %}"
+			}
+			if (formValue == 'category') {
+				document.location = "{% url category_list %}"
+			}
+		}
+	</script>
+</div>
