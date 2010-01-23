@@ -13,14 +13,14 @@
 {% block pagetitledivopen %}{% endblock %}
 {% block content %}<!-- Recent Updates List -->
 <div id="recentupdates">
-    {% show_heading "Browse Our Titles" %}
+    <h3>Browse Our Titles</h3>
     <div id="categories">
         <form action="{% url category_redirect %}" method="POST">
             {{ categoryChoiceForm }}<input type="submit" value="Go!" class="formbutton"/>
         </form>
 		<br />
     </div>
-    {% show_heading "Recent Updates" %}
+    <h3>Recent Updates</h3>
     <ul class="list">
         <li>
             <span class="smalltext">11/24/09</span>: Added  X&nbsp;episode&nbsp;to <i><a href="/title/X">XXX</a></i>
@@ -51,7 +51,7 @@
 </div>
 <!-- End Recent Updates List --><!-- Latest News From Blog List -->
 <div id="latestnews"> 
-{% show_heading "Latest News from the <a href="http://podiobooks.com/blog">Blog</a>" %}
+<h3>Latest News from the <a href="http://podiobooks.com/blog">Blog</a></h3>
 <div align="right">
     <a href="http://podiobooks.com/index.xml" style="text-decoration:none"><img src="{{ MEDIA_URL }}themes/legacy/images/feed-icon.png" width="28" height="28" border="0" alt="rss-text (1K)" align="right" hspace="5" vspace="5" /></a>
 </div>
@@ -66,7 +66,7 @@
 </div>
 <br/>
 </br>
-{% show_heading "Stats, Widgets and Promos" %}
+<h3>Stats, Widgets and Promos</h3>
 <ul class="list">
     <li>XXXX episodes available for download in XXX titles</li>
     <li>Transmitting books to XXXX members</li>

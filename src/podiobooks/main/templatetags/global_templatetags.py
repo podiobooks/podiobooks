@@ -1,7 +1,7 @@
 """ Global Tags """
 
 from django import template
-from podiobooks.main.forms import TitleSearchForm
+from podiobooks.main.forms import TitleSearchForm, BrowseByForm
 from podiobooks.settings import MEDIA_URL, COVER_MEDIA_URLS
 from django.conf.global_settings import PROFANITIES_LIST
 import itertools
@@ -17,14 +17,14 @@ def cover_media_url():
         cover_media_url.state = itertools.cycle(COVER_MEDIA_URLS)
     return cover_media_url.state.next()
 
-@register.inclusion_tag('main/tags/show_heading.html')
-def show_heading(text):
-    """ Takes text and formats it in our heading style, as needed for themes that require special handling """
-    return { 'text' : text, 'MEDIA_URL': MEDIA_URL }
+@register.inclusion_tag('main/tags/show_browsebox.html')
+def show_browsebox():
+    """ Shows the browse by section of the header """
+    return { 'browse_by_form': BrowseByForm(), 'MEDIA_URL': MEDIA_URL }
 
 @register.inclusion_tag('main/tags/show_searchbox.html')
 def show_searchbox():
-    """ Shows the search/category section of the header """
+    """ Shows the search section of the header """
     return { 'title_search_form': TitleSearchForm(), 'MEDIA_URL': MEDIA_URL }
 
 @register.filter("replace_bad_words")

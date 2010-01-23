@@ -5,11 +5,16 @@ from django.core.cache import cache
 from django import forms
 from django.db.models import Count
 
+class BrowseByForm(forms.Form):
+    """ Form used to choose a way to browse - used in header """
+    browse_by_list = [('none', 'Author, Genre...'), ('author', 'Author'), ('category', 'Genre/Category'),]
+    browseby = forms.ChoiceField(choices=browse_by_list, widget=forms.Select(attrs={'class':'pb-browseby-choice', 'onchange':'browseByChange(this.form.name, this.form.action, this.value);'}))
+
 class CategoryChoiceForm(forms.Form):
     """ Form used to select a category - used in header """
     categories = cache.get('category_dropdown_values')
     if (not categories):
-        categories = Category.objects.values_list('slug', 'name').annotate(num_titles=Count('title__categories')).filter(num_titles__gt=3)
+        categories = Category.objects.values_list('slug', 'name').annotate(num_titles=Count('title__categories')).filter(num_titles__gt=4)
         cache.set('category_dropdown_values', categories, 240)
     category = forms.ChoiceField(choices=categories, widget=forms.Select(attrs={'class':'pb-category-choice', 'onchange':'shelfChange(this.form.name, this.form.action, this.value);'}))
 
