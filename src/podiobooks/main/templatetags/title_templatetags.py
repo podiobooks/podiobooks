@@ -1,9 +1,14 @@
 """ Tags used for working with Titles """
 
 from django import template
-from podiobooks.settings import MEDIA_URL
+from podiobooks.settings import MEDIA_URL, MEDIA_AWARDS
 
 register = template.Library()
+
+@register.inclusion_tag('main/title/tags/show_awardshow.html')
+def show_awardshow(title):
+    """ Show a slideshow of all the awards for a title, used on title detail page """
+    return { 'award_list' : title.awards.order_by('-date_updated').all(), 'MEDIA_URL': MEDIA_URL, 'MEDIA_AWARDS': MEDIA_AWARDS}
 
 @register.inclusion_tag('main/title/tags/show_categories.html')
 def show_categories(title):
