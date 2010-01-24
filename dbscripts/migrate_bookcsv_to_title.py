@@ -10,6 +10,7 @@ import csv # first we need import necessary lib:csv
 from podiobooks.main.models import *
 from django.template.defaultfilters import slugify
 import contributor_translation
+import award_translation
 
 #Book/Title Helper Functions
 
@@ -34,9 +35,16 @@ def booleanClean(data):
         return 0
     else:
         return int(data)
+    
+def getOrCreateAward(awardSlug):
+    """Retrieves or creates an Award type based on the slug of the award"""
+
+    award, created = Award.objects.get_or_create(slug__iexact=awardSlug,
+              defaults={ 'name':awardSlug, 'image': 'unknown', 'url': 'unknown' })
+    return award
 
 def getOrCreateContributor(contributorName):
-    """Retrieves or creates a Contributor type based on the name of the Contributor"""
+    """Retrieves or creates a Contributor based on the name of the Contributor"""
     contributorName = contributorName.strip().replace('  ',' ').replace('\\','').replace('&apos;','\'').replace('Theater','Theatre').replace('J. C.','J.C.').replace('J. A.','J.A.').replace('J. J.','J.J.').replace('J. T.','J.T.').replace('J. P.','J.P.')
     try:
         contributorNameToSplit = contributorName.replace(' III','')
@@ -52,7 +60,7 @@ def getOrCreateContributor(contributorName):
         lastNameGuess = contributorName
         
     contributor, created = Contributor.objects.get_or_create(display_name__iexact=contributorName,
-                  defaults={'display_name':contributorName, 'slug': slugify(contributorName), 'first_name': firstNameGuess, 'middle_name': middleNameGuess.replace(',',''), 'last_name': lastNameGuess.replace(',','')})
+                  defaults={ 'display_name':contributorName, 'slug': slugify(contributorName), 'first_name': firstNameGuess, 'middle_name': middleNameGuess.replace(',',''), 'last_name': lastNameGuess.replace(',','') })
     return contributor
 
 def getOrCreateContributorType(contributorType):
@@ -118,12 +126,19 @@ def importBooks():
                 deleted = False,
                 date_created = row['DateCreated']
             )
-            contributorList = contributor_translation.translate_contributor(row['Authors']) #Manual Lookup Translation
+            contributorList = contributor_translation.translate_contributor(row['Authors']) #Manual Contributor Lookup Translation
             for contributor in contributorList:
                 contributorObject = getOrCreateContributor(contributor['name'])
                 contributorType = getOrCreateContributorType(contributor['type'])
                 TitleContributors.objects.create(title=title,contributor=contributorObject,contributor_type=contributorType)
             print "Title: %s\tContributors: %s" % (title.name, title.contributors.values('display_name'))
+            
+            awardList = award_translation.translate_award(row['ID']) #Manual Award Lookup Translation
+            if awardList:
+                for awardSlug in awardList:
+                    awardObject = getOrCreateAward(awardSlug)
+                    title.awards.add(awardObject)
+                print "Title: %s\tAwards: %s" % (title.name, title.awards.values('name'))
             
             category = getCategory(row['CategoryID'])
             if (category):
