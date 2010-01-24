@@ -1,0 +1,47 @@
+{% if award_list|length_is:"1" %}
+{% for award in award_list %}
+<a href="{{ award.url }}"><img src="{{ award.image.url }}" alt="{{ award.name }}" style="margin: 0 0 0 10px; border: none"/></a>
+{% endfor %}
+{% else %}
+<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/dojo/1.4/dojox/image/resources/SlideShow.css">
+<style type=text/css>
+    .slideShowWrapper {
+        position: relative;
+        background: #fff;
+        padding: 8px;
+        border: none;
+        padding-bottom: 20px;
+        overflow: hidden;
+        -moz-border-radius: 3pt;
+        -webkit-border-radius: 4pt;
+        -webkit-drop-shadow: #ccc 4pt;
+    }
+</style>
+<script type="text/javascript">
+    dojo.require("dojo.data.ItemFileReadStore");
+    dojo.require("dojox.image.SlideShow");
+    
+    var awardShowStoreData = {
+        items: [
+		{% for award in award_list %}{
+			"imageUrl": "{{ award.image.url }}",
+			"title": "{{ award.name }}",
+			"link": "{{ award.url }}"
+        },{% endfor %}
+		]
+    }
+    
+    dojo.addOnLoad(function(){
+        dijit.byId('awardshow').setDataStore(awardShowStore, {
+            query: {},
+            count: 20
+        });
+    });
+</script>
+<div class="tundra">
+    <div dojoType="dojo.data.ItemFileReadStore" data="awardShowStoreData" jsId="awardShowStore">
+    </div>
+    <div id="awardshow" dojoType="dojox.image.SlideShow" noLink="true" fixedHeight="true" imageHeight="100" imageWidth="100" hasNav="false" autoStart="true">
+    </div>
+</div>
+{% endif %}
