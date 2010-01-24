@@ -128,5 +128,18 @@
                "date_created": "2010-01-23 15:47:41", 
                "slug": "podcast-awards-2006-nominee"
           }
+     }, 
+     {
+          "pk": 7, 
+          "model": "main.award", 
+          "fields": {
+               "name": "Sir Julius Vogel Awards 2009 Winner", 
+               "url": "http://sffanz.sf.org.nz/sjv/sjvResults-2009.shtml", 
+               "image": "images/awards/sir-julius-vogel-awards-2009-winner.gif", 
+               "deleted": false, 
+               "date_updated": "2010-01-23 17:06:04", 
+               "date_created": "2010-01-23 17:06:04", 
+               "slug": "sir-julius-vogel-awards-2009-winner"
+          }
      }
 ]
