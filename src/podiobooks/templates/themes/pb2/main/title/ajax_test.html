@@ -20,22 +20,17 @@
         </script>
         <script type="text/javascript">
             dojo.require("dojo.data.ItemFileReadStore");
-            dojo.require("dijit.form.ComboBox");
             dojo.require("dojox.image.SlideShow");
             
             var storeData = {
                 items: [{
-                    "thumb": "http://tomdiaz.files.wordpress.com/2009/06/foo_fighters.jpg",
-                    "large": "http://tomdiaz.files.wordpress.com/2009/06/foo_fighters.jpg",
-                    "title": "Image 1",
+                    "imageUrl": "http://tomdiaz.files.wordpress.com/2009/06/foo_fighters.jpg",
                     "link": "http://tomdiaz.files.wordpress.com/2009/06/foo_fighters.jpg"
                 },
 				{
-                    "thumb": "http://community.post-gazette.com/cfs-filesystemfile.ashx/__key/CommunityServer.Components.UserFiles/00.00.00.48.45/FooFighters1A.jpg",
-                    "large": "http://community.post-gazette.com/cfs-filesystemfile.ashx/__key/CommunityServer.Components.UserFiles/00.00.00.48.45/FooFighters1A.jpg",
-                    "title": "Image 2",
+                    "imageUrl": "http://community.post-gazette.com/cfs-filesystemfile.ashx/__key/CommunityServer.Components.UserFiles/00.00.00.48.45/FooFighters1A.jpg",
                     "link": "http://community.post-gazette.com/cfs-filesystemfile.ashx/__key/CommunityServer.Components.UserFiles/00.00.00.48.45/FooFighters1A.jpg"
-                }
+                },
 				]
             }
             
@@ -43,9 +38,6 @@
                 dijit.byId('slideshow').setDataStore(imagesStore, {
                     query: {},
                     count: 20
-                }, {
-                    imageThumbAttr: "thumb",
-                    imageLargeAttr: "large"
                 });
             });
         </script>
@@ -54,7 +46,7 @@
         Generic Stuff.
         <div dojoType="dojo.data.ItemFileReadStore" data="storeData" jsId="imagesStore">
         </div>
-        <div id="slideshow" dojoType="dojox.image.SlideShow" noLink="true" fixedHeight="true">
+        <div id="slideshow" dojoType="dojox.image.SlideShow" noLink="true" fixedHeight="true" imageHeight="100" imageWidth="100" hasNav="false" autoStart="true">
         </div>
     </body>
 </html>
