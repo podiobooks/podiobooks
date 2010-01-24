@@ -1,0 +1,132 @@
+[
+     {
+          "pk": 1, 
+          "model": "main.license", 
+          "fields": {
+               "code": "", 
+               "url": "http://creativecommons.org/licenses/by-nc-nd/3.0/", 
+               "text": "Creative Commons Attribution-Noncommercial-No Derivative Works 3.0", 
+               "date_updated": "2009-12-09 21:52:27", 
+               "image_url": "http://i.creativecommons.org/l/by-nc-nd/3.0/us/88x31.png", 
+               "date_created": "2009-12-09 21:52:27", 
+               "slug": "by-nc-nd"
+          }
+     }, 
+     {
+          "pk": 3, 
+          "model": "main.license", 
+          "fields": {
+               "code": "", 
+               "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/", 
+               "text": "Creative Commons Attribution-Noncommercial-Share Alike", 
+               "date_updated": "2009-12-09 21:53:00", 
+               "image_url": "http://i.creativecommons.org/l/by-nc-sa/3.0/us/88x31.png", 
+               "date_created": "2009-12-09 21:53:00", 
+               "slug": "by-nc-sa"
+          }
+     }, 
+     {
+          "pk": 4, 
+          "model": "main.license", 
+          "fields": {
+               "code": "", 
+               "url": "http://creativecommons.org/licenses/by-nd/3.0/", 
+               "text": "Creative Commons Attribution-No Derivative Works", 
+               "date_updated": "2009-12-09 21:53:00", 
+               "image_url": "http://i.creativecommons.org/l/by-nd/3.0/us/88x31.png", 
+               "date_created": "2009-12-09 21:53:00", 
+               "slug": "by-nd"
+          }
+     }, 
+     {
+          "pk": 2, 
+          "model": "main.license", 
+          "fields": {
+               "code": "", 
+               "url": "http://creativecommons.org/licenses/by-sa/3.0/", 
+               "text": "Creative Commons Attribution-Share Alike 3.0", 
+               "date_updated": "2009-12-09 21:52:27", 
+               "image_url": "http://i.creativecommons.org/l/by-sa/3.0/us/88x31.png", 
+               "date_created": "2009-12-09 21:52:27", 
+               "slug": "by-sa"
+          }
+     }, 
+     {
+          "pk": 6, 
+          "model": "main.award", 
+          "fields": {
+               "name": "Mark Time 2007 Gold Award Winner", 
+               "url": "http://www.greatnorthernaudio.com/MarkTime/MarkTime-winners.html", 
+               "image": "images/awards/mark-time-2007-gold-winner.png", 
+               "deleted": false, 
+               "date_updated": "2010-01-23 15:49:39", 
+               "date_created": "2010-01-23 15:49:39", 
+               "slug": "mark-time-2007-gold-award-winner"
+          }
+     }, 
+     {
+          "pk": 3, 
+          "model": "main.award", 
+          "fields": {
+               "name": "Parsec Awards 2006 Nominee", 
+               "url": "http://parsecawards.com/2006-parsec-awards", 
+               "image": "images/awards/parsec-awards-2006-nominee.gif", 
+               "deleted": false, 
+               "date_updated": "2010-01-23 15:47:43", 
+               "date_created": "2010-01-23 15:47:43", 
+               "slug": "parsec-awards-2006-nominee"
+          }
+     }, 
+     {
+          "pk": 4, 
+          "model": "main.award", 
+          "fields": {
+               "name": "Parsec Awards 2006 Winner", 
+               "url": "http://parsecawards.com/2006-parsec-awards", 
+               "image": "images/awards/parsec-awards-2006-winner.gif", 
+               "deleted": false, 
+               "date_updated": "2010-01-23 15:48:05", 
+               "date_created": "2010-01-23 15:48:05", 
+               "slug": "parsec-awards-2006-winner"
+          }
+     }, 
+     {
+          "pk": 1, 
+          "model": "main.award", 
+          "fields": {
+               "name": "Parsec Awards 2007 Nominee", 
+               "url": "http://parsecawards.com/2007Archive", 
+               "image": "images/awards/parsec-awards-2007-nominee.gif", 
+               "deleted": false, 
+               "date_updated": "2010-01-23 15:14:59", 
+               "date_created": "2010-01-23 15:14:59", 
+               "slug": "parsec-awards-2007-nominee"
+          }
+     }, 
+     {
+          "pk": 2, 
+          "model": "main.award", 
+          "fields": {
+               "name": "Parsec Awards 2007 Winner", 
+               "url": "http://parsecawards.com/2007Archive", 
+               "image": "images/awards/parsec-awards-2007-winner.gif", 
+               "deleted": false, 
+               "date_updated": "2010-01-23 15:47:41", 
+               "date_created": "2010-01-23 15:47:41", 
+               "slug": "parsec-awards-2007-winner"
+          }
+     }, 
+     {
+          "pk": 5, 
+          "model": "main.award", 
+          "fields": {
+               "name": "Podcast Awards 2006 Nominee", 
+               "url": "http://www.podcastconnect.com/archive/2006/08/2006_peoples_choice_podcast_aw_1.html", 
+               "image": "images/awards/podcast-awards-2006-nominee.jpg", 
+               "deleted": false, 
+               "date_updated": "2010-01-23 15:47:41", 
+               "date_created": "2010-01-23 15:47:41", 
+               "slug": "podcast-awards-2006-nominee"
+          }
+     }
+]
