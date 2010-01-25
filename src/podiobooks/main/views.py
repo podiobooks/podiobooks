@@ -89,7 +89,7 @@ def title_search(request, keywords=None):
                 exclusions['is_adult']=True
             if (completed_only):
                 exclusions['is_complete']=False
-            search_results = Title.search.query(keywords).exclude(**exclusions).groupby('display_name') #@UndefinedVariable
+            search_results = Title.search.query(keywords).exclude(**exclusions).group_by('display_name') #@UndefinedVariable
             search_metadata = search_results._sphinx
         else:
             if (not include_adult):
