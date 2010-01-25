@@ -6,6 +6,7 @@ from podiobooks import settings
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.db.models import Q
+import djangosphinx.apis.current as sphinxapi
 
 """ Views """
 
@@ -89,7 +90,7 @@ def title_search(request, keywords=None):
                 exclusions['is_adult']=True
             if (completed_only):
                 exclusions['is_complete']=False
-            search_results = Title.search.query(keywords).exclude(**exclusions).group_by('display_name', 'SPH_GROUPBY_ATTR', ) #@UndefinedVariable
+            search_results = Title.search.query(keywords).exclude(**exclusions).group_by('display_name', sphinxapi.SPH_MATCH_ALL, ) #@UndefinedVariable
             search_metadata = search_results._sphinx
         else:
             if (not include_adult):
