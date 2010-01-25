@@ -292,7 +292,7 @@ class Title(models.Model):
 	# Optionally configure Sphinx as search engine for titles
 	if (podiobooks.settings.SEARCH_PROVIDER == 'SPHINX'):
 		import djangosphinx.models
-		search  = djangosphinx.models.SphinxSearch(index="pb2_titles")
+		search  = djangosphinx.models.SphinxSearch(index="pb2_titles", groupby="main_contributor.display_name")
 	
 	class Meta:
 		ordering = ['name']
