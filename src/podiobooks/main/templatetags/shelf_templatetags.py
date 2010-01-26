@@ -27,6 +27,6 @@ def show_shelf(shelf_id, shelf_title, title_list, dropdown_values, dropdown_url,
 def show_shelf_items(shelf_id, shelf_name, title_list, shelf_title_width):
     return {'shelf_id': shelf_id,
             'shelf_name': shelf_name,
-            'title_list': title_list,
+            'title_list': title_list[:18],
             'shelf_title_width': shelf_title_width
             }
