@@ -292,13 +292,13 @@ class Title(models.Model):
 	# Optionally configure Sphinx as search engine for titles
 	if (podiobooks.settings.SEARCH_PROVIDER == 'SPHINX'):
 		import djangosphinx.models
-		search  = djangosphinx.models.SphinxSearch(index="pb2_titles")
+		search = djangosphinx.models.SphinxSearch(index="pb2_titles", weights={'display_name': 100000, 'name': 75000, 'description': 1})
 	
 	class Meta:
 		ordering = ['name']
 		
 	def __unicode__(self):
-		return self.name
+		return self.slug
 
 	@models.permalink
 	def get_absolute_url(self):
