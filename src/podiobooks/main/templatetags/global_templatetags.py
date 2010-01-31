@@ -35,3 +35,13 @@ def replace_bad_words(value):
         for word in words_seen:
             value = value.replace(word, "%s%s%s" % (word[0], '-'*(len(word)-2), word[-1]))
     return value
+
+@register.inclusion_tag('main/tags/show_variable.html')
+def show_variable(variable):
+    """ Shows a variable dump of the header """
+    vardir = dir(variable)
+    result = dict()
+    for var in vardir:
+        result[var] = getattr(variable, var)
+        
+    return { 'result': result, 'MEDIA_URL': MEDIA_URL }
