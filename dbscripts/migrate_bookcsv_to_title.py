@@ -11,6 +11,7 @@ from podiobooks.main.models import *
 from django.template.defaultfilters import slugify
 import contributor_translation
 import award_translation
+import series_translation
 
 #Book/Title Helper Functions
 
@@ -87,6 +88,13 @@ def getPartner(partnerID):
     
     return partner
 
+def getOrCreateSeries(seriesSlug):
+    """Retrieves or creates an Series based on the slug of the series"""
+
+    series, created = Series.objects.get_or_create(slug__iexact=seriesSlug,
+              defaults={ 'name':seriesSlug, })
+    return series
+
 def importBooks():
     """Reads in the CSV and using the Django model objects to populate the DB"""
     
@@ -139,6 +147,12 @@ def importBooks():
                     awardObject = getOrCreateAward(awardSlug)
                     title.awards.add(awardObject)
                 print "Title: %s\tAwards: %s" % (title.name, title.awards.values('name'))
+                
+            seriesSlug = series_translation.translate_series(row['ID']) #Manual Series Lookup Translation
+            if seriesSlug:
+                seriesObject = getOrCreateSeries(seriesSlug)
+                title.series = seriesObject
+                print "Title: %s\tSeries: %s" % (title.name, title.series.name)
             
             category = getCategory(row['CategoryID'])
             if (category):
