@@ -35,6 +35,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.cache.FetchFromCacheMiddleware',
+    'django.contrib.csrf.middleware.CsrfMiddleware',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
     'django.middleware.http.ConditionalGetMiddleware',
 )
@@ -70,14 +71,17 @@ OPENID_SREG = {
 ACCOUNT_ACTIVATION_DAYS = 14
 
 INSTALLED_APPS = (
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.sites',
     'django.contrib.admin',
     'django.contrib.admindocs',
+    'django.contrib.auth',
+    'django.contrib.comments',
+    'django.contrib.contenttypes',
     'django.contrib.databrowse',
     'django.contrib.flatpages',
+    'django.contrib.sessions',
+    'django.contrib.sites',
+    'tagging',
+    'djangolinks',
     'registration',
     'django_authopenid',
     'contrib.django_restapi',
