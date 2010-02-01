@@ -37,6 +37,9 @@ urlpatterns = patterns('',
     # Social Media Views
     (r'^social/', include('podiobooks.social.urls')),
     
+    # Django Comments
+    (r'^comments/', include('django.contrib.comments.urls')),
+    
 )
 
 #Only hook up the media to run through Django in a dev environment...in prod, needs to be handled by web server
