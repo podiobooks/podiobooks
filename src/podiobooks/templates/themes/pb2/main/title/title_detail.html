@@ -54,7 +54,7 @@
             <div dojoType="dijit.layout.ContentPane" title="News" selected="true">
                 Lorem News
             </div>
-            <div dojoType="dijit.layout.ContentPane" title="Comments" selected="true">
+            <div dojoType="dijit.layout.ContentPane" title="Featured Comments" selected="true">
                 Lorem Comments
             </div>
             <div dojoType="dijit.layout.ContentPane" title="Social" selected="true" href="/social/twitter/search/{{ title.contributors.all|first }}">
@@ -76,8 +76,8 @@
             </div>
             {% endif %}
         </div>
-        <div dojoType="dijit.layout.ContentPane" title="Extras">
-            Lorem ipsum and all around - extras...
+        <div dojoType="dijit.layout.ContentPane" title="All Comments">
+            {% include "main/title/title_all_comments.html" %}
         </div>
     </div>
 </div>
