@@ -1,6 +1,7 @@
 from __future__ import division
 from django.db import models
 from django.contrib.auth.models import User
+from django.contrib.comments.moderation import CommentModerator, moderator
 import datetime
 import podiobooks
 
@@ -285,6 +286,7 @@ class Title(models.Model):
 	partner = models.ForeignKey('partner', null=True, blank=True)
 	awards = models.ManyToManyField('Award', blank=True)
 	libsyn_show_id = models.CharField(max_length=50, db_index=True)
+	enable_comments = models.BooleanField(default=True)
 	# Note: episodes are available as episode_set.all()
 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now(), db_index=True)
 	date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now(), db_index=True)
@@ -313,6 +315,13 @@ class Title(models.Model):
 		
 	def description_br(self):
 		return self.description.replace('\n','\n<br/>')
+
+class TitleModerator(CommentModerator):
+	""" Sets up comments moderation for Titles """
+	email_notification = True
+	enable_field = 'enable_comments'
+
+moderator.register(Title, TitleModerator)
 
 class TitleContributors(models.Model):
 	"""Join table to associate contributors to titles."""
