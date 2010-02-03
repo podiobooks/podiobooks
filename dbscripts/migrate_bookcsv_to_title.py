@@ -9,6 +9,7 @@ This script reads in an "CSV for Excel" export from phpMyAdmin into a the new Po
 import csv # first we need import necessary lib:csv
 from podiobooks.main.models import *
 from django.template.defaultfilters import slugify
+from djangolinks.models import Link
 import contributor_translation
 import award_translation
 import series_translation
@@ -132,8 +133,11 @@ def importBooks():
                 avg_writing = row['AvgWriting'],
                 avg_overall = row['AvgOverall'],
                 deleted = False,
+                podiobooker_blog_url = row['DiscussURL'],
                 date_created = row['DateCreated']
             )
+            
+            """ Contributors """
             contributorList = contributor_translation.translate_contributor(row['Authors']) #Manual Contributor Lookup Translation
             for contributor in contributorList:
                 contributorObject = getOrCreateContributor(contributor['name'])
@@ -141,36 +145,38 @@ def importBooks():
                 TitleContributors.objects.create(title=title,contributor=contributorObject,contributor_type=contributorType)
             print "Title: %s\tContributors: %s" % (title.name, title.contributors.values('display_name'))
             
+            """ Awards """
             awardList = award_translation.translate_award(row['ID']) #Manual Award Lookup Translation
             if awardList:
                 for awardSlug in awardList:
                     awardObject = getOrCreateAward(awardSlug)
                     title.awards.add(awardObject)
                 print "Title: %s\tAwards: %s" % (title.name, title.awards.values('name'))
-                
+            
+            """ Series """
             seriesSlug = series_translation.translate_series(row['ID']) #Manual Series Lookup Translation
             if seriesSlug:
                 seriesObject = getOrCreateSeries(seriesSlug)
                 title.series = seriesObject
                 print "Title: %s\tSeries: %s" % (title.name, title.series.name)
             
+            """ Category """
             category = getCategory(row['CategoryID'])
-            if (category):
+            if category:
                 title.categories.add(category)
                 print "Title: %s\tCategories: %s" % (title.name, title.categories.values('name'))
             
+            """ Partner """
             partner = getPartner(row['PartnerID'])
-            if (partner):
+            if partner:
                 title.partner = partner
                 print "Title: %s\tPartner: %s" % (title.name, title.partner.name)
                 
             title.save()
+            
+        # @TODO Need to double check what we want to do with URLs to iTunes, etc.
         
-        # Create URL Objects for the URL Fields from the Book Row
-        # @TODO Need to double check what we want to do with iTunes, etc.
-        
-        # Create Media Objects for the URL Fields from the Book Row
-        # @TODO Need to double check what we want to do with iTunes, etc.
+        # @TODO Create Media Objects for the URL Fields from the Book Row
     
     bookCSVFile.close()
 
