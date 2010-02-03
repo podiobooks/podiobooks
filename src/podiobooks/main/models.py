@@ -286,6 +286,7 @@ class Title(models.Model):
 	partner = models.ForeignKey('partner', null=True, blank=True)
 	awards = models.ManyToManyField('Award', blank=True)
 	libsyn_show_id = models.CharField(max_length=50, db_index=True)
+	podiobooker_blog_url = models.URLField(max_length=255, blank=True, null=True)
 	enable_comments = models.BooleanField(default=True)
 	# Note: episodes are available as episode_set.all()
 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now(), db_index=True)
