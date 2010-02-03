@@ -22,24 +22,26 @@ urlpatterns = patterns('',
     # Admin Site:
     (r'^admin/', include(admin.site.urls)),
     
-    # authopenid
-    (r'^account/', include('django_authopenid.urls')),                     
+    # Authopenid
+    (r'^account/', include('django_authopenid.urls')),
+    
+     # Author Interface:
+    (r'^author/', include('podiobooks.author.urls')),
+    
+    # Django Comments
+    (r'^comments/', include('django.contrib.comments.urls')),                     
+    
+    # FAQ
+    (r'^faq/', include('faq.urls')),
     
     # Feeds:
     (r'^rss/', include('podiobooks.feeds.urls')),
     
-    # Author Interface:
-    (r'^author/', include('podiobooks.author.urls')),
-    
-    #TinyMCE WYSIWYG HTML Editor:
-    (r'^tinymce/', include('tinymce.urls')),
-    
     # Social Media Views
     (r'^social/', include('podiobooks.social.urls')),
     
-    # Django Comments
-    (r'^comments/', include('django.contrib.comments.urls')),
-    
+    # TinyMCE WYSIWYG HTML Editor:
+    (r'^tinymce/', include('tinymce.urls')),
 )
 
 #Only hook up the media to run through Django in a dev environment...in prod, needs to be handled by web server
