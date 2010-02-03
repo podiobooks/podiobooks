@@ -82,7 +82,6 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'faq',
     'tagging',
-    'djangolinks',
     'registration',
     'django_authopenid',
     'contrib.django_restapi',
