@@ -14,7 +14,7 @@ urlpatterns = patterns('',
     url(r'^$', 'podiobooks.main.views.index', name="home_page"),
                        
     # URLs from main package
-    (r'^content/', include('podiobooks.main.urls')),
+    (r'^', include('podiobooks.main.urls')),
 
     # Admin documentation:
     (r'^admin/doc/', include('django.contrib.admindocs.urls')),
