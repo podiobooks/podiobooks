@@ -35,7 +35,10 @@ def booleanClean(data):
     if (data == None) or (data == ''):
         return 0
     else:
-        return int(data)
+        if int(data) == 1:
+            return 1
+        else:
+            return 0
     
 def getOrCreateAward(awardSlug):
     """Retrieves or creates an Award type based on the slug of the award"""
