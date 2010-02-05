@@ -30,6 +30,7 @@ contributor_translation = {
                       'John C. Adler, Ph.D., as told to Bill DeSmedt': [{'name': 'John C. Adler, Ph.D.', 'type': 'Author'}, {'name': 'Bill DeSmedt', 'type': 'Ghostwriter'},],
                       'Jeremy Robinson': [{'name': 'Jeremy Robinson', 'type': 'Author'}, {'name': 'Jeffrey Kafer', 'type': 'Narrator'},],
                       'Mike Yachnik': [{'name': 'Mike Yachnik', 'type': 'Author'}, {'name': 'Jeffrey Kafer', 'type': 'Narrator'},],
+                      'J.J. Hebert': [{'name': 'J.J. Hebert', 'type': 'Author'}, {'name': 'Jeffrey Kafer', 'type': 'Narrator'},],
                       }
 
 def translate_contributor(legacy_display_name):
