@@ -29,6 +29,7 @@ contributor_translation = {
                       'A Square (Edwin Abbott Abbott)': [{'name': 'Edwin Abbott Abbott', 'type': 'Author'}, {'name': 'A Square', 'type': 'Penname'},],
                       'John C. Adler, Ph.D., as told to Bill DeSmedt': [{'name': 'John C. Adler, Ph.D.', 'type': 'Author'}, {'name': 'Bill DeSmedt', 'type': 'Ghostwriter'},],
                       'Jeremy Robinson': [{'name': 'Jeremy Robinson', 'type': 'Author'}, {'name': 'Jeffrey Kafer', 'type': 'Narrator'},],
+                      'Mike Yachnik': [{'name': 'Mike Yachnik', 'type': 'Author'}, {'name': 'Jeffrey Kafer', 'type': 'Narrator'},],
                       }
 
 def translate_contributor(legacy_display_name):
