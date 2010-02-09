@@ -15,38 +15,32 @@
             };
         </script>
         <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/dojo/1.4/dijit/themes/tundra/tundra.css">
-		<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/dojo/1.4/dojox/image/resources/SlideShow.css">
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/dojo/1.4/dojo/dojo.xd.js" djConfig="parseOnLoad: true">
+        <style type="text/css">
+            @import "/media/js/pbwidgets/book_desc/BookDesc.css";
+        </style>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/dojo/1.4/dojo/dojo.xd.js">
         </script>
         <script type="text/javascript">
-            dojo.require("dojo.data.ItemFileReadStore");
-            dojo.require("dojox.image.SlideShow");
-            
-            var storeData = {
-                items: [{
-                    "imageUrl": "http://tomdiaz.files.wordpress.com/2009/06/foo_fighters.jpg",
-                    "link": "http://tomdiaz.files.wordpress.com/2009/06/foo_fighters.jpg"
-                },
-				{
-                    "imageUrl": "http://community.post-gazette.com/cfs-filesystemfile.ashx/__key/CommunityServer.Components.UserFiles/00.00.00.48.45/FooFighters1A.jpg",
-                    "link": "http://community.post-gazette.com/cfs-filesystemfile.ashx/__key/CommunityServer.Components.UserFiles/00.00.00.48.45/FooFighters1A.jpg"
-                },
-				]
-            }
-            
-            dojo.addOnLoad(function(){
-                dijit.byId('slideshow').setDataStore(imagesStore, {
-                    query: {},
-                    count: 20
-                });
-            });
+            dojo.require("dijit.Tooltip");
+            dojo.require("pbwidgets.book_desc.BookDesc");
+            dojo.require("dojo.parser");
         </script>
     </head>
     <body class="tundra">
-        Generic Stuff.
-        <div dojoType="dojo.data.ItemFileReadStore" data="storeData" jsId="imagesStore">
+        <div id="cargo" style="font-size: big">
         </div>
-        <div id="slideshow" dojoType="dojox.image.SlideShow" noLink="true" fixedHeight="true" imageHeight="100" imageWidth="100" hasNav="false" autoStart="true">
+        <div id="booklist">
+            <ul>
+                <li id="title1">
+                    <a href="">This is the title of the book</a>
+                </li>
+                <div dojoType="dijit.Tooltip" connectId="title1" position="below" id="topTip">
+                    a<i>disposition</i>
+                    to bear injuries patiently :<b>forbearance</b>
+                </div>
+            </ul>
         </div>
+        Hello! This is the <span dojoType="pbwidgets.book_desc.BookDesc" descUrl="{% url title_detail_summary '99' %}">title</span>
+        of the book
     </body>
 </html>
