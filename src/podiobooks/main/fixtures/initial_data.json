@@ -219,5 +219,57 @@
                "date_created": "2010-01-23 16:57:04", 
                "slug": "stephen-leacock-memorial-medal-for-humor-2008"
           }
+     }, 
+     {
+          "pk": 4, 
+          "model": "main.series", 
+          "fields": {
+               "description": "7th Son", 
+               "url": "", 
+               "deleted": false, 
+               "date_updated": "2010-01-31 20:23:01", 
+               "date_created": "2010-01-31 20:23:01", 
+               "slug": "7th-son", 
+               "name": "7th Son"
+          }
+     }, 
+     {
+          "pk": 13, 
+          "model": "main.series", 
+          "fields": {
+               "description": "A Shaman's Tale from the Golden Age of the Solar Clipper", 
+               "url": "", 
+               "deleted": false, 
+               "date_updated": "2010-01-31 20:23:15", 
+               "date_created": "2010-01-31 20:23:15", 
+               "slug": "a-shamans-tale-from-the-golden-age-of-the-solar-clipper", 
+               "name": "A Shaman's Tale from the Golden Age of the Solar Clipper"
+          }
+     }, 
+     {
+          "pk": 33, 
+          "model": "main.series", 
+          "fields": {
+               "description": "A Trader's Tale from the Golden Age of the Solar Clipper", 
+               "url": "", 
+               "deleted": false, 
+               "date_updated": "2010-02-05 11:46:41", 
+               "date_created": "2010-02-05 11:46:41", 
+               "slug": "a-traders-tale-from-the-golden-age-of-the-solar-clipper", 
+               "name": "A Trader's Tale from the Golden Age of the Solar Clipper"
+          }
+     }, 
+     {
+          "pk": 37, 
+          "model": "main.series", 
+          "fields": {
+               "description": "Heaven", 
+               "url": "", 
+               "deleted": false, 
+               "date_updated": "2010-02-05 11:46:41", 
+               "date_created": "2010-02-05 11:46:41", 
+               "slug": "heaven", 
+               "name": "Heaven"
+          }
      }
 ]
