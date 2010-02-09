@@ -4,8 +4,8 @@
 
 <style type="text/css">
 	.title-summary {
-		height: 250px;
-		width: 250px;
+		height: 350px;
+		width: 350px;
 		font-size: 15px;
 		font-family: "Arial Narrow";
 		background-color: #FFFFFF;
@@ -16,15 +16,16 @@
 		border-bottom: 2px solid #A9D0F5;
 	}
 	.title-summary-name {
-		font-size: 17px;
+		font-size: 11px;
 		font-weight: bold;
 		font-family: "Arial Black";
 	}
 	.title-summary-contributors {
-		font-size: 16px;
+		font-size: 17px;
 	}
 	.title-summary-description {
 		background-color: #FFFFFF;
+		font-size: 15px;
 	}
 	.title-summary-more {
 		font-weight: bold;
@@ -54,20 +55,7 @@
 </style>
 
 <div class="title-summary">
-	<div class="title-summary-header">
-		<div class="title-summary-name">{{ title.name }}</div>
-		<div class="title-summary-contributors">{% show_contributors title %}</div>
-	</div>
 	<div class="title-summary-description">
-		{% autoescape off %}{{ title.description|striptags|truncatewords_html:35 }}{% endautoescape %}
-		<span class="title-summary-more">[Click Book Cover For More]</span>
-	</div>
-	<div class="title-summary-footer">
-		<span class="title-summary-episodes">{{ title.episode_set.all|length }} episodes</span>
-		{% if title.is_complete %}
-			<div class="title-summary-episodes-complete">&nbsp;</div>
-		{% endif %}
-		<span class="title-summary-categories">{% show_categories title %}</span>
-		<div>&nbsp;</div>
+		{% autoescape off %}{{ title.description|striptags|truncatewords_html:165 }}{% endautoescape %}
 	</div>
 </div>
