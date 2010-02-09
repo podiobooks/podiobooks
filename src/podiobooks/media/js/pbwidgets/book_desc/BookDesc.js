@@ -12,7 +12,7 @@ dojo.declare(
     templatePath: dojo.moduleUrl("pbwidgets", "book_desc/BookDesc.html"),
 	   
     //titleID Property is used to figure out which book we need to pull up (default to a known working title)
-    titleId: 353,
+    descUrl: '/title/summary/99/',
 	
     postCreate: function(){
        // Don't do anything because all the magic happens in _getDescription
@@ -25,7 +25,7 @@ dojo.declare(
 	   
 	   dojo.xhrGet({
 	        // The following URL must match that used to test the server.
-	        url: "/content/title/summary/" + this.titleId,
+	        url: this.descUrl,
 	        handleAs: "text",
 	  
 	        timeout: 5000, // Time in milliseconds
