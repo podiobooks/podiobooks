@@ -13,7 +13,7 @@
 </listAttribute>
 <stringAttribute key="org.eclipse.ui.externaltools.ATTR_LOCATION" value="${workspace_loc:podiobooks/src/podiobooks/manage.py}"/>
 <stringAttribute key="org.eclipse.ui.externaltools.ATTR_OTHER_WORKING_DIRECTORY" value=""/>
-<stringAttribute key="org.eclipse.ui.externaltools.ATTR_TOOL_ARGUMENTS" value="dumpdata&#10;main.license&#10;main.award&#13;&#10;--indent=5"/>
+<stringAttribute key="org.eclipse.ui.externaltools.ATTR_TOOL_ARGUMENTS" value="dumpdata&#10;main.license&#10;main.award&#10;main.series&#13;&#10;--indent=5"/>
 <stringAttribute key="org.python.pydev.debug.ATTR_INTERPRETER" value="__default"/>
 <stringAttribute key="org.python.pydev.debug.ATTR_PROJECT" value="podiobooks"/>
 </launchConfiguration>
