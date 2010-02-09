@@ -44,7 +44,7 @@ def getOrCreateAward(awardSlug):
     """Retrieves or creates an Award type based on the slug of the award"""
 
     award, created = Award.objects.get_or_create(slug__iexact=awardSlug,
-              defaults={ 'name':awardSlug, 'image': 'unknown', 'url': 'unknown' })
+              defaults={ 'slug': awardSlug, 'name':awardSlug, 'image': 'unknown', 'url': 'unknown' })
     return award
 
 def getOrCreateContributor(contributorName):
@@ -95,7 +95,7 @@ def getOrCreateSeries(seriesSlug):
     """Retrieves or creates an Series based on the slug of the series"""
 
     series, created = Series.objects.get_or_create(slug__iexact=seriesSlug,
-              defaults={ 'name':seriesSlug, })
+              defaults={ 'slug': seriesSlug, 'name': seriesSlug, })
     return series
 
 def importBooks():
