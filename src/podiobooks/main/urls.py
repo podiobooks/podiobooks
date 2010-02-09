@@ -27,5 +27,5 @@ urlpatterns = patterns('',
     url(r'^episode/(?P<id>[^/]+)/$','django.views.generic.list_detail.object_detail', {'queryset': Episode.objects.all(), 'template_object_name': 'episode', 'template_name': 'main/episode/episode_detail.html'}, name='episode_detail'),
     
     # JSON API
-    (r'^json/', include('podiobooks.main.urls-json')),
+    (r'^json/', include('podiobooks.main.urls_json')),
 )
