@@ -214,7 +214,7 @@ class Series(models.Model):
 	Additionally, we might want to allow a setting to let users autosubscribe to
 	the next book in a series automatically, or even just to subscribe to the
 	series in one fell swoop."""
-	slug = models.SlugField()
+	slug = models.SlugField(max_length=255)
 	name = models.CharField(max_length=255)
 	description = models.TextField()
 	url = models.URLField(blank=True, verify_exists=True, null=True)
