@@ -1,0 +1,5 @@
+{{ object.name }}
+{% for contributor in contributors %}
+{{ contributor.display_name }}
+{% endfor %}
+{{ object.description }}
