@@ -15,7 +15,7 @@ dojo.declare(
     descUrl: '/title/summary/99/',
 	
     postCreate: function(){
-       // Don't do anything because all the magic happens in _getDescription
+       // Don't do anything because all the magic happens in _showDescription
     },
 	
    _showDescription: function() {
