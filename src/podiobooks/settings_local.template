@@ -121,6 +121,11 @@ SEARCH_PROVIDER = 'DEFAULT'
 # SPHINX_PORT = 3312
 # SPHINX_API_VERSION = 0x116
 
+# Haystack
+HAYSTACK_SITECONF = 'podiobooks.main.search_sites'
+HAYSTACK_SEARCH_ENGINE = 'whoosh'
+HAYSTACK_WHOOSH_PATH = PROJECT_PATH + '/whoosh/podiobooks_index'
+
 # LIBSYN
 LIBSYN_USER = ''
 LIBSYN_KEY = ''
