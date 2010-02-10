@@ -70,6 +70,7 @@ OPENID_SREG = {
 ACCOUNT_ACTIVATION_DAYS = 14
 
 INSTALLED_APPS = (
+    'contrib.django_restapi',
     'django.contrib.admin',
     'django.contrib.admindocs',
     'django.contrib.auth',
@@ -79,15 +80,15 @@ INSTALLED_APPS = (
     'django.contrib.flatpages',
     'django.contrib.sessions',
     'django.contrib.sites',
-    'faq',
-    'tagging',
-    'registration',
     'django_authopenid',
-    'contrib.django_restapi',
+    'faq',
+    'haystack',
+    'tagging',
     'memcache_status',
-    'tinymce',
     'podiobooks.author',
     'podiobooks.feeds',
     'podiobooks.main',
     'podiobooks.social',
+    'registration',
+    'tinymce',
 )
