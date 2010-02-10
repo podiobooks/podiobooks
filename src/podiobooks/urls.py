@@ -16,16 +16,16 @@ urlpatterns = patterns('',
     # URLs from main package
     (r'^', include('podiobooks.main.urls')),
 
-    # Admin documentation:
+    # Admin documentation
     (r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
-    # Admin Site:
+    # Admin Site
     (r'^admin/', include(admin.site.urls)),
     
     # Authopenid
     (r'^account/', include('django_authopenid.urls')),
     
-     # Author Interface:
+     # Author Interface
     (r'^author/', include('podiobooks.author.urls')),
     
     # Django Comments
@@ -34,13 +34,16 @@ urlpatterns = patterns('',
     # FAQ
     (r'^faq/', include('faq.urls')),
     
-    # Feeds:
+    # Feeds
     (r'^rss/', include('podiobooks.feeds.urls')),
     
+    # Haystack Search
+    (r'^search/', include('haystack.urls')),
+
     # Social Media Views
     (r'^social/', include('podiobooks.social.urls')),
     
-    # TinyMCE WYSIWYG HTML Editor:
+    # TinyMCE WYSIWYG HTML Editor
     (r'^tinymce/', include('tinymce.urls')),
 )
 
