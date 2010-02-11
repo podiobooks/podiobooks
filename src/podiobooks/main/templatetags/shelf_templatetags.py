@@ -1,12 +1,12 @@
 from django import template
-from podiobooks.settings import MEDIA_URL, THEME_MEDIA_URL
+from django.conf import settings
 
 register = template.Library()
 
 @register.inclusion_tag('main/shelf/tags/shelf_includes.html')
 def shelf_includes():
-    return {'THEME_MEDIA_URL': THEME_MEDIA_URL,
-            'MEDIA_URL': MEDIA_URL
+    return {'THEME_MEDIA_URL': settings.THEME_MEDIA_URL,
+            'MEDIA_URL': settings.MEDIA_URL
             }
 
 @register.inclusion_tag('main/shelf/tags/show_shelf.html')
@@ -19,8 +19,8 @@ def show_shelf(shelf_id, shelf_title, title_list, dropdown_values, dropdown_url,
             'dropdown_field': dropdown_field,
             'base_css_class': base_css_class,
             'shelf_title_width': shelf_title_width,
-            'THEME_MEDIA_URL': THEME_MEDIA_URL,
-            'MEDIA_URL': MEDIA_URL
+            'THEME_MEDIA_URL': settings.THEME_MEDIA_URL,
+            'MEDIA_URL': settings.MEDIA_URL
             }
     
 @register.inclusion_tag('main/shelf/tags/show_shelf_items.html')
