@@ -6,6 +6,8 @@ from settings_local import * #@UnusedWildImport
 
 MANAGERS = ADMINS
 
+USE_I18N = False
+
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.load_template_source',
