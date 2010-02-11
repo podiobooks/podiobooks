@@ -45,7 +45,7 @@ class UrlTestCase(TestCase):
         
     def testCategoryRedirect(self):
         response = self.c.get('/category/redirect/')
-        self.assertEquals(200, response.status_code)
+        self.assertEquals(302, response.status_code)
         
     def testCategoryDetail(self):
         response = self.c.get('/category/science-fiction/')
@@ -68,5 +68,5 @@ class UrlTestCase(TestCase):
         self.assertEquals(200, response.status_code)
         
     def testEpisodeDetail(self):
-        response = self.c.get('/episode/detail/99/')
+        response = self.c.get('/episode/99/')
         self.assertEquals(200, response.status_code)
