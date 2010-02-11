@@ -5,12 +5,12 @@ import socket
 import optparse
 import datetime
 import feedparser
-import podiobooks.settings
+from django.conf import settings
 from django.contrib import comments
 from django.contrib.contenttypes.models import ContentType
 from podiobooks.main.models import Title
 
-LOCKFILE = podiobooks.settings.PROJECT_PATH + "update_feeds.lock"
+LOCKFILE = settings.PROJECT_PATH + "update_feeds.lock"
 
 feed_list = Title.objects.all().filter(podiobooker_blog_url__isnull = False).values('id', 'podiobooker_blog_url')
 

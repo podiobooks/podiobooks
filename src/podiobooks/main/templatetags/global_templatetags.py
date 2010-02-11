@@ -2,7 +2,7 @@
 
 from django import template
 from podiobooks.main.forms import TitleSearchForm, BrowseByForm
-from podiobooks.settings import MEDIA_URL, COVER_MEDIA_URLS
+from django.conf import settings
 from django.conf.global_settings import PROFANITIES_LIST
 import itertools
 
@@ -14,18 +14,18 @@ def cover_media_url():
     Cycles through the values of COVER_MEDIA_URLS to enable increased parallel download speed.
     """
     if not hasattr(cover_media_url, 'state'):
-        cover_media_url.state = itertools.cycle(COVER_MEDIA_URLS)
+        cover_media_url.state = itertools.cycle(settings.COVER_MEDIA_URLS)
     return cover_media_url.state.next()
 
 @register.inclusion_tag('main/tags/show_browsebox.html')
 def show_browsebox():
     """ Shows the browse by section of the header """
-    return { 'browse_by_form': BrowseByForm(), 'MEDIA_URL': MEDIA_URL }
+    return { 'browse_by_form': BrowseByForm(), 'MEDIA_URL': settings.MEDIA_URL }
 
 @register.inclusion_tag('main/tags/show_searchbox.html')
 def show_searchbox():
     """ Shows the search section of the header """
-    return { 'title_search_form': TitleSearchForm(), 'MEDIA_URL': MEDIA_URL }
+    return { 'title_search_form': TitleSearchForm(), 'MEDIA_URL': settings.MEDIA_URL }
 
 @register.filter("replace_bad_words")
 def replace_bad_words(value):
@@ -44,4 +44,4 @@ def show_variable(variable):
     for var in vardir:
         result[var] = getattr(variable, var)
         
-    return { 'result': result, 'MEDIA_URL': MEDIA_URL }
+    return { 'result': result, 'MEDIA_URL': settings.MEDIA_URL }

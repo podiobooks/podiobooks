@@ -1,14 +1,14 @@
 """ Tags used for working with Titles """
 
 from django import template
-from podiobooks.settings import MEDIA_URL, MEDIA_AWARDS
+from django.conf import settings
 
 register = template.Library()
 
 @register.inclusion_tag('main/title/tags/show_awardshow.html')
 def show_awardshow(title):
     """ Show a slideshow of all the awards for a title, used on title detail page """
-    return { 'award_list' : title.awards.order_by('-date_updated').all(), 'MEDIA_URL': MEDIA_URL, 'MEDIA_AWARDS': MEDIA_AWARDS}
+    return { 'award_list' : title.awards.order_by('-date_updated').all(), 'MEDIA_URL': settings.MEDIA_URL, 'MEDIA_AWARDS': settings.MEDIA_AWARDS}
 
 @register.inclusion_tag('main/title/tags/show_categories.html')
 def show_categories(title):
@@ -25,14 +25,14 @@ def show_contributors(title):
 @register.inclusion_tag('main/title/tags/show_titlecover.html')
 def show_titlecover(title):
     """ Pulls and formats the cover for a Title """
-    return { 'title' : title, 'MEDIA_URL': MEDIA_URL}
+    return { 'title' : title, 'MEDIA_URL': settings.MEDIA_URL}
 
 @register.inclusion_tag('main/title/tags/show_titlelist.html')
 def show_titlelist(title_list):
     """ Formats a list of titles, used on search, category, author list pages """
-    return { 'title_list' : title_list, 'MEDIA_URL': MEDIA_URL}
+    return { 'title_list' : title_list, 'MEDIA_URL': settings.MEDIA_URL}
 
 @register.inclusion_tag('main/title/tags/show_episodelist.html')
 def show_episodelist(title):
     """ Show a list of all the episodes for a title, used on title detail page """
-    return { 'episode_list' : title.episode_set.order_by('sequence').all(), 'MEDIA_URL': MEDIA_URL}
+    return { 'episode_list' : title.episode_set.order_by('sequence').all(), 'MEDIA_URL': settings.MEDIA_URL}
