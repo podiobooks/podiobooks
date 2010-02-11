@@ -2,7 +2,7 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from podiobooks.main.models import Title
 from podiobooks.main.forms import CategoryChoiceForm, ContributorChoiceForm, TitleSearchForm
-from podiobooks import settings
+from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.db.models import Q
