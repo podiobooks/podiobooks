@@ -6,7 +6,6 @@ from podiobooks import settings
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.db.models import Q
-import djangosphinx.apis.current as sphinxapi
 
 """ Views """
 
