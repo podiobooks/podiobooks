@@ -46,13 +46,17 @@ COVER_MEDIA_URLS = (MEDIA_URL,)
 # Examples: "http://foo.com/media/", "/media/".
 ADMIN_MEDIA_PREFIX = '/adminmedia/'
 
+# Test DB settings. (SQLLite)
+DATABASE_ENGINE = 'sqlite3'
+DATABASE_NAME = '/tmp/rpgid.db'
+
 # Local DB settings. (Postgres)
-DATABASE_ENGINE = 'postgresql_psycopg2'          # 'postgresql_psycopg2', 'postgresql'
-DATABASE_NAME = 'pb2'
-DATABASE_USER = 'root'
-DATABASE_PASSWORD = 'password'
-DATABASE_HOST = '127.0.0.1'
-DATABASE_PORT = ''					# Set to empty string for default.
+#DATABASE_ENGINE = 'postgresql_psycopg2'          # 'postgresql_psycopg2', 'postgresql'
+#DATABASE_NAME = 'pb2'
+#DATABASE_USER = 'root'
+#DATABASE_PASSWORD = 'password'
+#DATABASE_HOST = '127.0.0.1'
+#DATABASE_PORT = ''					# Set to empty string for default.
 
 # Local DB settings. (MySQL)
 # DATABASE_ENGINE = 'mysql'
