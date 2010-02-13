@@ -101,8 +101,7 @@ dojo.addOnLoad(function(){
 					dojo.removeClass(lists, 'pb-browseby-expanded');
 					dojo.fx.wipeOut({
 						onBegin: function(){dojo.style(node,'background','url(' + pbBrowseDict.images + 'arrow-right.png) center right no-repeat')},
-						node: lists,
-						
+						node: lists
 					}).play();
 				}
 				else 
@@ -131,8 +130,7 @@ dojo.addOnLoad(function(){
 									});
 							},
 							node: exp,
-							onEnd: function(){dojo.removeClass(exp,'pb-browseby-expanded');},
-							
+							onEnd: function(){dojo.removeClass(exp,'pb-browseby-expanded');}
 						});
 						
 						dojo.fx.chain([hide,show]).play();
