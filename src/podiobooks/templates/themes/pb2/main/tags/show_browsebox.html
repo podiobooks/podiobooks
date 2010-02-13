@@ -1,4 +1,12 @@
-<div id="menuBarBrowseByForm" style="display:inline;margin: 2px 0 0 0;">
+<div class='browseby-links'>
+	<strong>Browse:</strong>
+	<ul>
+		<li><a class='browseby pb-browsey-author' title='Browse by Author' href='{% url contributor_list %}'>Author</a></li>
+		<li><a class='browseby pb-browsey-category' title='Browse by Category' href='{% url category_list %}'>Category</a></li>
+	</ul>
+</div>
+<!--
+<div id="menuBarBrowseByForm" style="display:inline;margin: 15px 0 0 0;">
     <form action="{% url category_redirect %}" method="POST" style="display:inline;float:right;">
         <label for="id_browsebychoices" style="font-weight:bold;">
             Browse by
@@ -16,4 +24,4 @@
 			}
 		}
 	</script>
-</div>
+</div>-->

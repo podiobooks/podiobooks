@@ -1,8 +1,10 @@
 {% load global_templatetags %}<!-- Header - Logo and Navigation Bar -->
 <div id="header">
-    <div id="pb-header-background">
-        <div id="pb-header-click-region" onclick="document.location.href = ('/')">
-        </div>
+    <div id="pb-header-background"> 
+		<a href='/'><img alt='Podiobooks Logo' src='{{MEDIA_URL}}/themes/pb2/images/pb-logo.jpg' /></a>
+	</div>
+       <!-- <div id="pb-header-click-region" onclick="document.location.href = ('/')"></div>-->
+		<div class='pb-header-menubar-top'></div>
         <div id="pb-header-menubar">
             <div id="pb-header-menubar-items">
             	<a href="/">Home</a>
@@ -13,6 +15,6 @@
             {% show_searchbox %}
 			{% show_browsebox %}
         </div>
-    </div>
+		<div class='pb-header-menubar-bottom'></div>
 </div>
 <!-- End Header - Logo and Navigation Bar -->
