@@ -109,9 +109,12 @@ dojo.addOnLoad(function(){
 				{
 					var show = dojo.fx.wipeIn({
 						node: lists,
-						onBegin: function(){dojo.style(node,'background','url(' + pbBrowseDict.images + 'arrow-down.png) center right no-repeat')},
-						onEnd: function(){
+						onBegin: function(){
+							dojo.style(node,'background','url(' + pbBrowseDict.images + 'arrow-down.png) center right no-repeat');
 							dojo.addClass(lists, 'pb-browseby-expanded');
+						},
+						onEnd: function(){
+							
 						},
 						easing: dojo.fx.easing.bounceOut,
 						duration:800
