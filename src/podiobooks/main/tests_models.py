@@ -1,5 +1,5 @@
 from django.test import TestCase
-from podiobooks.main.models import *
+from podiobooks.main.models import *  #@UnusedWildImport
 from django.template.defaultfilters import slugify
 from django.test.client import Client
 
