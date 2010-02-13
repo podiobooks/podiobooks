@@ -1,6 +1,8 @@
-dojo.addOnLoad(function(){
+
+	dojo.require("dojo.fx");
+	dojo.require("dojo.fx.easing");
 	
-	dojo.require("dojo.fx");	
+dojo.addOnLoad(function(){	
 	
 	var pbBrowseDict = {
 		images:'/media/themes/pb2/images/',
@@ -95,6 +97,9 @@ dojo.addOnLoad(function(){
 			});
 			
 			dojo.query(node).onclick(function(e){
+				
+				dojo.stopEvent(e);
+				
 				var lists = dojo.byId('pb-browseby-' + ttl + '-lists');
 				if (dojo.hasClass(lists, 'pb-browseby-expanded')) 
 				{
@@ -124,21 +129,21 @@ dojo.addOnLoad(function(){
 						exp = exp[0];
 						var hide = dojo.fx.wipeOut({
 							onBegin: function(){
-								dojo.query('.browseby').forEach(
-									function(lnk){
-										dojo.style(lnk,'background','url(' + pbBrowseDict.images + 'arrow-right.png) center right no-repeat');
-									});
+								dojo.query('.browseby').forEach(function(lnk){
+									dojo.style(lnk, 'background', 'url(' + pbBrowseDict.images + 'arrow-right.png) center right no-repeat');
+								});
 							},
 							node: exp,
-							onEnd: function(){dojo.removeClass(exp,'pb-browseby-expanded');}
+							onEnd: function(){
+								dojo.removeClass(exp, 'pb-browseby-expanded');
+							}
 						});
 						
-						dojo.fx.chain([hide,show]).play();
-					}	
+						dojo.fx.chain([hide, show]).play();
+					}
 					else
 						show.play();
 				}
-				dojo.stopEvent(e);
 			});
 		}
 	);	
