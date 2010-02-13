@@ -1,4 +1,4 @@
-from settings import * #@UnusedWildImport
+from settings_main import * #@UnusedWildImport
 from settings_local_template import * #@UnusedWildImport
 import tempfile
 
