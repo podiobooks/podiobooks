@@ -3,7 +3,7 @@ Haystack Search API Config File for podiobooks.main
 See http://haystacksearch.org/docs
 """
 
-from haystack.indexes import *
+from haystack.indexes import *  #@UnusedWildImport
 from haystack import site
 from podiobooks.main.models import Title
 
