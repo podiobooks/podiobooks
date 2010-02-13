@@ -1,10 +1,9 @@
 #!/usr/bin/python
 
 import xmlrpclib
-import types
 import hashlib
 import pprint
-from podiobooks.settings import LIBSYN_USER, LIBSYN_KEY, LIBSYN_NETWORK_SLUG
+from django.conf import settings
 
 def getShowInfo(libsyn_slug):
 	""" Returns info about a certain show """
@@ -12,11 +11,11 @@ def getShowInfo(libsyn_slug):
 	# network slug (network_id can be substituted) is to ensure the authenticated user
 	# has proper permission features on the network. show slug (show_id can be substituted)
 	# is the show we're looking for
-	params = {	'network_slug'	: LIBSYN_NETWORK_SLUG,		
+	params = {	'network_slug'	: settings.LIBSYN_NETWORK_SLUG, 		
 				'show_slug'		: libsyn_slug	}
 	
 	# api string is usually a secret - similar to a password
-	user = User(LIBSYN_USER, LIBSYN_KEY)
+	user = User(settings.LIBSYN_USER, settings.LIBSYN_KEY)
 	
 	try:
 		result = Api().makeApiCall(user, 'producer.publishing.getShowInfo', params)
@@ -31,9 +30,10 @@ class Api:
 		"""Make an XMLRPC call to the main API - Returns mixed
 		Expects a User object as the user argument"""
 
-		server = xmlrpclib.ServerProxy( url, allow_none=1 )
+		# server = xmlrpclib.ServerProxy(url, allow_none=1)
 
-		api_params = self._buildParams( user, params )
+
+		api_params = self._buildParams(user, params)
 
 		# better way to call a string as a method?
 		method = "server.%s" % (method)
@@ -46,7 +46,7 @@ class Api:
 	def _buildParams(self, user, params={}):
 		return {'user'      : user.email ,
 				'params'    : params ,
-				'hash'      : self._signParams(user,params) }
+				'hash'      : self._signParams(user, params) }
 
 	def _signParams(self, user, params):
 		"""Signs the params with user's api key"""
@@ -73,8 +73,8 @@ class User:
 
 ##### MAIN FUNCTION TO RUN IF THIS SCRIPT IS CALLED ALONE ###
 if __name__ == "__main__":
-    result = getShowInfo('theflownsky')
-    
-    # pretty print the result
-    pp = pprint.PrettyPrinter(indent=4)
-    pp.pprint(result)
+	result = getShowInfo('theflownsky')
+	
+	# pretty print the result
+	pp = pprint.PrettyPrinter(indent=4)
+	pp.pprint(result)

@@ -2,8 +2,8 @@ from __future__ import division
 from django.db import models
 from django.contrib.auth.models import User
 from django.contrib.comments.moderation import CommentModerator, moderator
+from django.conf import settings
 import datetime
-import podiobooks
 
 class Advisory(models.Model):
 	"""Advisories are notifications about titles for the users. These could be
@@ -30,7 +30,7 @@ class Award(models.Model):
 	slug = models.SlugField()
 	name = models.CharField(blank=True, null=True, max_length=255)
 	url = models.URLField(blank=True, verify_exists=True, null=True)
-	image = models.ImageField(upload_to=podiobooks.settings.MEDIA_AWARDS, max_length=255)
+	image = models.ImageField(upload_to=settings.MEDIA_AWARDS, max_length=255)
 	deleted = models.BooleanField(default=False)
 	date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 	date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
@@ -266,7 +266,7 @@ class Title(models.Model):
 	series = models.ForeignKey('Series', null=True, blank=True)
 	description = models.TextField()
 	slug = models.SlugField(max_length=255)
-	cover = models.ImageField(upload_to=podiobooks.settings.MEDIA_COVERS)
+	cover = models.ImageField(upload_to=settings.MEDIA_COVERS)
 	status = models.IntegerField(default=1)
 	license = models.ForeignKey('License', null=True, blank=True)
 	display_on_homepage = models.BooleanField(default=False, db_index=True)
@@ -293,7 +293,7 @@ class Title(models.Model):
 	date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now(), db_index=True)
 	
 	# Optionally configure Sphinx as search engine for titles
-	if (podiobooks.settings.SEARCH_PROVIDER == 'SPHINX'):
+	if (settings.SEARCH_PROVIDER == 'SPHINX'):
 		import djangosphinx.models
 		search = djangosphinx.models.SphinxSearch(index="pb2_titles", weights={'display_name': 100000, 'name': 75000, 'description': 1})
 	
