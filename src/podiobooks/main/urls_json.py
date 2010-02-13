@@ -1,5 +1,5 @@
 from django.conf.urls.defaults import * #@UnusedWildImport
-from models import Title
+from models import Title, Category, Contributor
 from contrib.django_restapi.model_resource import Collection
 from contrib.django_restapi.responder import JSONResponder
 
@@ -12,10 +12,24 @@ title_resource = Collection(
     responder = JSONResponder()
 )
 
+category_resource = Collection(
+    queryset = Category.objects.all(),
+    permitted_methods = ('GET',),
+    responder = JSONResponder()
+)
+
+contributor_resouce = Collection(
+    queryset = Contributor.objects.all(),
+    permitted_methods = ('GET',),
+    responder = JSONResponder()
+)
+
 urlpatterns = patterns('',
     
     # title
     url(r'^title/(.*?)/?$', title_resource, name='json_title_detail'),
     url(r'^title/$', title_resource, name='json_title_list'),
+    url(r'^categories/$', category_resource, name='json_category_list'),
+    url(r'^contributors/$', contributor_resouce, name='json_contributor_list'),
     
 )
