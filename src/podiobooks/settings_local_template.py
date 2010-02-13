@@ -14,11 +14,14 @@ PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
+TEMPLATE_THEMES = ('pb2',)
+
 # Cache Settings
 # CACHE_BACKEND = 'memcached://127.0.0.1:11211/'
 CACHE_BACKEND = 'dummy:///'
 CACHE_MIDDLEWARE_SECONDS = 30
 CACHE_MIDDLEWARE_ANONYMOUS_ONLY = True
+CACHE_MIDDLEWARE_KEY_PREFIX = 'pb2'
 
 ADMINS = (
     # ('Your Name', 'your_email@domain.com'),
@@ -27,29 +30,51 @@ ADMINS = (
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
 MEDIA_ROOT = PROJECT_PATH + '/media/'
-MEDIA_COVERS = MEDIA_ROOT + "/covers/"
-MEDIA_AWARDS = MEDIA_ROOT + "/awards/"
+MEDIA_COVERS = 'images/covers/'
+MEDIA_AWARDS = 'images/awards/'
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
 MEDIA_URL = '/media/'
 
+# URL that is used to fetch the covers for the titles
+COVER_MEDIA_URLS = (MEDIA_URL,)
+
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
 # Examples: "http://foo.com/media/", "/media/".
 ADMIN_MEDIA_PREFIX = '/adminmedia/'
 
-# Test DB settings. (SQLLite)
-DATABASE_ENGINE = 'sqlite3'
-DATABASE_NAME = '/tmp/rpgid.db'
+# Local DB settings. (Postgres)
+DATABASE_ENGINE = 'postgresql_psycopg2'          # 'postgresql_psycopg2', 'postgresql'
+DATABASE_NAME = 'pb2'
+DATABASE_USER = 'root'
+DATABASE_PASSWORD = 'password'
+DATABASE_HOST = '127.0.0.1'
+DATABASE_PORT = ''					# Set to empty string for default.
+
+# Local DB settings. (MySQL)
+# DATABASE_ENGINE = 'mysql'
+# DATABASE_NAME = 'pb2'
+# DATABASE_USER = 'root'
+# DATABASE_PASSWORD = 'password'
+# DATABASE_HOST = '127.0.0.1'
+# DATABASE_PORT = ''             		# Set to empty string for default.
+# DATABASE_OPTIONS = {
+#    "init_command": "SET storage_engine=INNODB",
+# }
+
+# Local DB settings. (SQLLite)
+# DATABASE_ENGINE = 'sqlite3'
+# DATABASE_NAME = PROJECT_PATH + '/pb2.db'
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 # although not all choices may be available on all operating systems.
 # If running in a Windows environment this must be set to the same as your
 # system time zone.
-TIME_ZONE = 'America/Chicago'
+TIME_ZONE = 'America/Denver'
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
@@ -62,7 +87,7 @@ SITE_ID = 1
 USE_I18N = False
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = 'zv$+w7juz@(g!^53o0ai1u082)=jkdfmy_r=3)fglrj5t8l$2#'
+SECRET_KEY = 'zv$+w7juz@(g!^53o0ai1u082)=jkz9my_r=3)fglrj5t8l$2#'
 
 # IP Addresses that should be treated as internal/debug users
 INTERNAL_IPS = ('127.0.0.1',)
@@ -83,6 +108,13 @@ LOCAL_TEMPLATE_CONTEXT_PROCESSORS = None
 
 ##### PB2 Custom Variables Below Here #######
 
+# LOGGING
+import logging
+logging.basicConfig(level=logging.DEBUG,
+    format='%(asctime)s %(levelname)s %(message)s',
+    filename=os.path.join(PROJECT_PATH, 'django.log'),
+    filemode='a+')
+
 ### Search
 
 SEARCH_PROVIDER = 'DEFAULT'
@@ -92,3 +124,13 @@ SEARCH_PROVIDER = 'DEFAULT'
 # SPHINX_SERVER = 'localhost'
 # SPHINX_PORT = 3312
 # SPHINX_API_VERSION = 0x116
+
+# Haystack
+HAYSTACK_SITECONF = 'podiobooks.main.search_sites'
+HAYSTACK_SEARCH_ENGINE = 'whoosh'
+HAYSTACK_WHOOSH_PATH = PROJECT_PATH + '/whoosh/podiobooks_index'
+
+# LIBSYN
+LIBSYN_USER = ''
+LIBSYN_KEY = ''
+LIBSYN_NETWORK_SLUG = ''
