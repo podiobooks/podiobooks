@@ -7,7 +7,7 @@ def read(fname):
 setup(
     name = "podiobooks",
     version = "1.0",
-    url = 'http://github.com/ctmiller/podiobooks',
+    url = 'http://github.com/podiobooks/podiobooks',
     license = 'GPL',
     description = "Free Audiobook Management Site",
     long_description = read('README.txt'),

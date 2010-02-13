@@ -16,6 +16,7 @@ Typically, you don't need to install all the python bits except on windows, but 
 		-- You want the platform-specific installer for your OS and Python 2.6.
 		-- This library is required for Django image support.
 		-- It has a platform-specific component, which is why you have to install it from a binary.
+		-- This should be working from the buildout now, be curious to hear back how it's working?
 
 3) Download Python-setuptools for Python 2.6 from http://pypi.python.org/pypi/setuptools
 		-- You want the platform-specific installer for your OS and Python 2.6.
@@ -32,6 +33,7 @@ Typically, you don't need to install all the python bits except on windows, but 
 		-- You want the Git-xxx-xxx-previewxxxxx.exe download
 		-- This is the most stable interface to the GIT source code control system for Windows
 		-- Make sure you select 'git-bash' and 'unix line endings' during the installer.
+		-- Tim has been using SmartGit from http://www.syntevo.com/smartgit , you can try that too
 
 6) Download PostgreSQL from http://www.postgresql.org/download/
 		-- This is the preferred DBMS for Django, and the Fixtures don't work with MySQL.
@@ -53,7 +55,7 @@ For all of those items, you should be able to basically follow the Installer pro
 1) Make sure you have an account at GitHub
 2) Open Git-GUI, and choose "Clone Existing Repository"
 3) If you are committing to the core codebase, then paste in this URL at the top field:
-	git@github.com:ctmiller/podiobooks.git
+	git@github.com:podiobooks/podiobooks.git
 4) In the bottom field, browse to your Aptana workspace, which is by default in your Documents directory, and then append 'podiobooks' to the end of the path.
 	e.g. C:\Users\Tim\Documents\Aptana Studio Workspace\podiobooks
 5) Click 'clone now'.  It will download the code into your workspace directory.
@@ -107,7 +109,7 @@ For all of those items, you should be able to basically follow the Installer pro
 1) Open Aptana Studio
 2) Open the podiobooks project if it isn't open
 3) Open the src->podiobooks folder
-4) Right-Click on settings_local.template and choose "Copy"
+4) Right-Click on settings_local_template.py and choose "Copy"
 5) Right-Click on the src->podiobooks folder and choose "Paste"
 6) It will prompt you to rename, enter "settings_local.py"
 7) Double-Click on settings_local.py to edit it
