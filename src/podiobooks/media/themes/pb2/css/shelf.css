@@ -4,7 +4,7 @@
 	font-size: 11px;
 	text-align: left;
 	overflow: hidden;
-}
+	}
 
 .pb-shelf .dijitButton, .pb-feature-shelf .dijitButton {
 	margin: 0px;
@@ -186,10 +186,12 @@
 }
 
 .pb-feature-shelf {
-	position: relative;
+	position:relative;
 	margin-bottom: 10px;
 	font-size: 11px;
 	color: #000;
+
+	float:left;
 }
 
 .pb-feature-shelf .pb-shelf-left-arrow {

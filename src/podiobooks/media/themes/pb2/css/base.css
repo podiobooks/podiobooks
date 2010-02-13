@@ -60,26 +60,50 @@ ul {
 }
 
 #pb-header-background {
-	background: url(../images/pb-header.jpg) no-repeat;
-	height: 219px;
+	height: 160px;
 	width: 970px;
+	float:left;
+	text-align:center;
 }
-
+#pb-header-background a img
+{
+	border:none;
+}
 #pb-header-click-region {
 	cursor: pointer;
 	width: 600px;
 	height: 120px;
 	margin: 0 0 0 210px;
+	
 }
 
+.pb-header-menubar-top
+{
+	background:url(../images/pb-header-menubar-top.png) top left no-repeat;
+	margin:0px 0px 0px 0px;
+	width:970px;
+	height:10px;
+	float:left;
+}
 #pb-header-menubar {
 	font-size: 14px;
-	margin: 53px 20px 0 20px;
+	margin: 0px 0px 0 0px;
 	text-align: left;
+	float:left;
+	width:930px;
+	padding:0px 20px 0px 20px;
+	background:url(../images/pb-header-menubar.png) top left repeat-y;
 }
-
+.pb-header-menubar-bottom
+{
+	background:url(../images/pb-header-menubar-bottom.png) top left no-repeat;
+	margin:0px 0px 20px 0px;
+	width:970px;
+	height:17px;
+	float:left;
+}
 #pb-header-menubar-items {
-	margin: 4px 0 0 0;
+	margin: 2px 0 0 0;
 	float: left;
 }
 
@@ -146,4 +170,43 @@ ul {
 	font-size: 14px;
 	background: #fff;
 	border: 1px solid #0054a6;
+}
+
+
+#menuBarSearchform
+{
+	display:inline;
+	margin:0px;
+	float:right;
+}
+
+
+.browseby-links
+{
+	float:right;
+	margin:2px 0px 0px 0px;
+}
+.browseby-links ul
+{
+	float:right;
+	margin:0px 10px 0px 20px;
+}
+.browseby-links ul li
+{
+	margin:0px 10px 0px 0px;
+	display:inline;
+}
+.browseby-links ul li a
+{
+	padding:0px 10px 0px 0px;
+	background:url(../images/arrow-right.png) center right no-repeat;
+}
+
+.browseby-links ul li a,
+.browseby-links ul li a:link,
+.browseby-links ul li a:active,
+.browseby-links ul li a:hover,
+.browseby-links ul li a:visited
+{
+	text-decoration:none;
 }
