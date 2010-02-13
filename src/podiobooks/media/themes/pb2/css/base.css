@@ -180,11 +180,14 @@ ul {
 	float:right;
 }
 
-
+.browseby-links p{
+	float:left;
+}
 .browseby-links
 {
 	float:right;
 	margin:2px 0px 0px 0px;
+
 }
 .browseby-links ul
 {
@@ -195,11 +198,13 @@ ul {
 {
 	margin:0px 10px 0px 0px;
 	display:inline;
+	float:left;
 }
 .browseby-links ul li a
 {
 	padding:0px 10px 0px 0px;
 	background:url(../images/arrow-right.png) center right no-repeat;
+	float:left;
 }
 
 .browseby-links ul li a,
