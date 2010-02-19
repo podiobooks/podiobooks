@@ -215,3 +215,17 @@ ul {
 {
 	text-decoration:none;
 }
+
+.pb-browseby-lists-pagers
+{
+	font-size:14px;
+	color:#fff;
+	float:right;
+}
+.pb-browseby-lists-pager:hover{
+	color#000;
+}
+.pb-browseby-lists-pager
+{
+	cursor:pointer;
+}
