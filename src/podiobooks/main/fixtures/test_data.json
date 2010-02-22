@@ -1,0 +1,5205 @@
+[
+     {
+          "pk": 1062, 
+          "model": "comments.comment", 
+          "fields": {
+               "comment": "Nathan,\nAny time line for Captains Share?  Can't get enough of Ish and his adventure.  \nMerritt", 
+               "user_url": "", 
+               "submit_date": "2009-03-11 21:46:01", 
+               "ip_address": null, 
+               "object_pk": "293", 
+               "site": 1, 
+               "is_removed": false, 
+               "user": null, 
+               "content_type": 27, 
+               "is_public": true, 
+               "user_name": "Merritt", 
+               "user_email": ""
+          }
+     }, 
+     {
+          "pk": 1061, 
+          "model": "comments.comment", 
+          "fields": {
+               "comment": "I wish I did. \n\nCape Grace is next. Then Captain's Share. \n\nFingers crossed.", 
+               "user_url": "", 
+               "submit_date": "2009-03-11 22:42:13", 
+               "ip_address": null, 
+               "object_pk": "293", 
+               "site": 1, 
+               "is_removed": false, 
+               "user": null, 
+               "content_type": 27, 
+               "is_public": true, 
+               "user_name": "Nathan", 
+               "user_email": ""
+          }
+     }, 
+     {
+          "pk": 1060, 
+          "model": "comments.comment", 
+          "fields": {
+               "comment": "Nate, you\u2019ve released another great installment in your Golden Age of the Solar Clipper universe.\n\nIt was wonderful to see the return of Ish and his further growth as a sailor and individual, especially since you fast-forwarded through the academy years and jumped right back into the action of the trader's life by having him stationed on his first post-graduation vessel. While it would have been interesting to see what you would have done with officer school stories (maybe a future trilogy?), I believe you had a much stronger story by presenting a brief overview of his personal and professional successes and failures as a cadet.\n\nLike others have mentioned, I would love to hear what was said in the stateroom after Ish left the Captain and Burnside\u2026 but not mentioning or detailing it was effective in that not every plan has expected or even useful results. However, it might be a good prologue chapter for the series (an add-on) by having Ish review what was said out of curiosity, even though the Captain\u2019s and Burnside\u2019s fates are sealed. Or as one of the other\u2019s mentioned, it could be a good lead-in to the next book\u2026 maybe a legal battle in which the audio \u201cevidence\u201d is brought to the legal conflict. I\u2019m looking forward to Captain\u2019s Share and Owner\u2019s Share\u2026 and very interested in how you get there... as I'm sure you are as well.    ;-)\n\nAs an FYI, I should have the review of Double Share posted on my blog in the next week or so, so be sure to stop by and check it out at http://artisticconceptions.wordpress.com/", 
+               "user_url": "", 
+               "submit_date": "2009-03-15 13:12:32", 
+               "ip_address": null, 
+               "object_pk": "293", 
+               "site": 1, 
+               "is_removed": false, 
+               "user": null, 
+               "content_type": 27, 
+               "is_public": true, 
+               "user_name": "Scott E. Pond", 
+               "user_email": ""
+          }
+     }, 
+     {
+          "pk": 1059, 
+          "model": "comments.comment", 
+          "fields": {
+               "comment": "Double share is quite outstanding!\n\nI've been following the series from Quarter share up until Double share very diligently and it's cool to see how Ishmael's world and his spheres of influence became increasingly bigger and bigger. Nice story of succeeding in life and making one's way up the ladder!\n\nGreetings from Germany,\nS\u00f6ren", 
+               "user_url": "", 
+               "submit_date": "2009-04-04 09:49:06", 
+               "ip_address": null, 
+               "object_pk": "293", 
+               "site": 1, 
+               "is_removed": false, 
+               "user": null, 
+               "content_type": 27, 
+               "is_public": true, 
+               "user_name": "S\u00f6ren", 
+               "user_email": ""
+          }
+     }, 
+     {
+          "pk": 1058, 
+          "model": "comments.comment", 
+          "fields": {
+               "comment": "Thank you for continually making my long commute enjoyable (I even look forward to it now). I have listened to all of the share books and am nearly halfway through Southcoast - I love them all.  Your stories are thoughtful and well told.  Finishing Double Share was bittersweet and I can't wait until you have more of Ish's story to share.", 
+               "user_url": "", 
+               "submit_date": "2009-04-09 00:12:38", 
+               "ip_address": null, 
+               "object_pk": "293", 
+               "site": 1, 
+               "is_removed": false, 
+               "user": null, 
+               "content_type": 27, 
+               "is_public": true, 
+               "user_name": "Ashley", 
+               "user_email": ""
+          }
+     }, 
+     {
+          "pk": 1057, 
+          "model": "comments.comment", 
+          "fields": {
+               "comment": "Thanks, S\u00f6ren and Ashley! \n\nI do what I can to keep the story going :) \n\nAnd thank you, Scott, for the great review and interview :)", 
+               "user_url": "", 
+               "submit_date": "2009-04-09 12:21:40", 
+               "ip_address": null, 
+               "object_pk": "293", 
+               "site": 1, 
+               "is_removed": false, 
+               "user": null, 
+               "content_type": 27, 
+               "is_public": true, 
+               "user_name": "Nathan", 
+               "user_email": ""
+          }
+     }, 
+     {
+          "pk": 1056, 
+          "model": "comments.comment", 
+          "fields": {
+               "comment": "I've listened to them all and they suck me in every time! The writing is just plain excellent and your recordings are perfect. Keep them coming, but I hope the \"day job\" works itself out too! Good luck and thank you for sharing your talent!", 
+               "user_url": "", 
+               "submit_date": "2009-05-01 14:22:27", 
+               "ip_address": null, 
+               "object_pk": "293", 
+               "site": 1, 
+               "is_removed": false, 
+               "user": null, 
+               "content_type": 27, 
+               "is_public": true, 
+               "user_name": "Peter", 
+               "user_email": ""
+          }
+     }, 
+     {
+          "pk": 1055, 
+          "model": "comments.comment", 
+          "fields": {
+               "comment": "Thanks, Peter.\n\nI'm REALLY looking forward to getting back in harness this summer.", 
+               "user_url": "", 
+               "submit_date": "2009-05-01 22:52:13", 
+               "ip_address": null, 
+               "object_pk": "293", 
+               "site": 1, 
+               "is_removed": false, 
+               "user": null, 
+               "content_type": 27, 
+               "is_public": true, 
+               "user_name": "Nathan", 
+               "user_email": ""
+          }
+     }, 
+     {
+          "pk": 1054, 
+          "model": "comments.comment", 
+          "fields": {
+               "comment": "Hey Nathan.\n\nI listened to the first three Trader's Tale books one after the other, and I remember how enthralling it was.  I mean there were no epic space battles, no real disasters (save the nearly suffocating part), and overall nothing that could classify any of them as a real page-turner.  Yet, in spite of this I had to physically force myself at the end of the day to turn the iPod off and step away from those three books lest I suffer from extreme sleep deprivation.\n\nThe same can be said for 'Double Share.'  Granted, it was a much darker tale, but it had that same flair of its three predecessors and that unnerving ability to completely immerse me in Ishmael's world.\n\nSir, you are one hell of an author, and the producer of what one of my fans has called 'audio crack.'  I'm also working on a podcast novel project, and your work has been a huge inspiration to me as I've navigated my own personal 'deep dark.'\n\nOk, this comment's a little long-winded, but I just had to find some place to pay my respects to this and your other fine works.  Thank you so much for writing this and sharing it with all of us.", 
+               "user_url": "", 
+               "submit_date": "2009-05-16 00:32:40", 
+               "ip_address": null, 
+               "object_pk": "293", 
+               "site": 1, 
+               "is_removed": false, 
+               "user": null, 
+               "content_type": 27, 
+               "is_public": true, 
+               "user_name": "Chris", 
+               "user_email": ""
+          }
+     }, 
+     {
+          "pk": 1053, 
+          "model": "comments.comment", 
+          "fields": {
+               "comment": "Thanks, Chris. \n\nThe books have really managed to gain an acceptance way beyond what I ever expected. And all through word of mouth. \n\nIt's immensely gratifying.", 
+               "user_url": "", 
+               "submit_date": "2009-05-16 06:44:21", 
+               "ip_address": null, 
+               "object_pk": "293", 
+               "site": 1, 
+               "is_removed": false, 
+               "user": null, 
+               "content_type": 27, 
+               "is_public": true, 
+               "user_name": "Nathan", 
+               "user_email": ""
+          }
+     }, 
+     {
+          "pk": 1052, 
+          "model": "comments.comment", 
+          "fields": {
+               "comment": "I have been out of the loop as it where, working in the back bush for a few months. I have listened to the entire series again and again, while out of civilization. Please Nate, I need a new Ish fix, before I do something rash, and end up in court telling the judge I did it because I haven't has my Ish fix!!!", 
+               "user_url": "", 
+               "submit_date": "2009-06-16 04:57:15", 
+               "ip_address": null, 
+               "object_pk": "293", 
+               "site": 1, 
+               "is_removed": false, 
+               "user": null, 
+               "content_type": 27, 
+               "is_public": true, 
+               "user_name": "PavementPilot", 
+               "user_email": ""
+          }
+     }, 
+     {
+          "pk": 1051, 
+          "model": "comments.comment", 
+          "fields": {
+               "comment": "This summer, PP.  Captain's Share is coming.", 
+               "user_url": "", 
+               "submit_date": "2009-06-16 11:41:15", 
+               "ip_address": null, 
+               "object_pk": "293", 
+               "site": 1, 
+               "is_removed": false, 
+               "user": null, 
+               "content_type": 27, 
+               "is_public": true, 
+               "user_name": "Nathan", 
+               "user_email": ""
+          }
+     }, 
+     {
+          "pk": 1050, 
+          "model": "comments.comment", 
+          "fields": {
+               "comment": "I just finished another re-listen to this book and found a few details I missed or forgot. (Insert screeching owl attack here.)  \n\nI'm keeping my fingers crossed for smooth sailing for Captain's Share as it gets closer to release.", 
+               "user_url": "", 
+               "submit_date": "2009-07-31 04:00:04", 
+               "ip_address": null, 
+               "object_pk": "293", 
+               "site": 1, 
+               "is_removed": false, 
+               "user": null, 
+               "content_type": 27, 
+               "is_public": true, 
+               "user_name": "Gail", 
+               "user_email": ""
+          }
+     }, 
+     {
+          "pk": 1049, 
+          "model": "comments.comment", 
+          "fields": {
+               "comment": "This entire series has been delightful.  Mr. Lowell, your characters are engaging,your storylines engrossing and your masterful use of the english language gratifying. The production and reading were also fantastic. I am on pins and needles waiting for the next book, \"Captain's Share\". (Can I say, though that I miss the Lois McEndrick (sp?) like an old friend?) Thank you Mr. Lowell for sharing this excellent work.", 
+               "user_url": "", 
+               "submit_date": "2009-08-10 12:17:10", 
+               "ip_address": null, 
+               "object_pk": "293", 
+               "site": 1, 
+               "is_removed": false, 
+               "user": null, 
+               "content_type": 27, 
+               "is_public": true, 
+               "user_name": "Jenna", 
+               "user_email": ""
+          }
+     }, 
+     {
+          "pk": 1048, 
+          "model": "comments.comment", 
+          "fields": {
+               "comment": "Captain's Share should be out in a couple of weeks, barring the un-foreseen. The book is shaping up nicely at about 84,000 words and a clear course to the place where I think the ending is. I think it might be the best one yet.  First readers are being enthusiastic and that's a good sign.\n\nThanks for the kind words!\n\nIt's Lois McKendrick, and you can find out a lot more about her and the rest of the Golden Age at the <a href=\"http://solarclipper.com\" rel=\"nofollow\">Trader's Diary</a>.", 
+               "user_url": "", 
+               "submit_date": "2009-08-10 12:25:28", 
+               "ip_address": null, 
+               "object_pk": "293", 
+               "site": 1, 
+               "is_removed": false, 
+               "user": null, 
+               "content_type": 27, 
+               "is_public": true, 
+               "user_name": "Nathan", 
+               "user_email": ""
+          }
+     }, 
+     {
+          "pk": 1047, 
+          "model": "comments.comment", 
+          "fields": {
+               "comment": "I'm late to the game when it comes to listening to the Solar Clipper Series, but I made it here. I am blown away. I still find it hard to explain to anyone why the stories are so addicting, but they truly grab your attention and refuse to let go and I have recommended this series to several friends. \n\nIt took me three weeks, but I made it all they way through the novels only to find that the next is only a couple weeks away. I may be late to the show, but I made it at the right time!\n\nFine work Mr. Lowell. My compliments.", 
+               "user_url": "", 
+               "submit_date": "2009-09-01 20:44:41", 
+               "ip_address": null, 
+               "object_pk": "293", 
+               "site": 1, 
+               "is_removed": false, 
+               "user": null, 
+               "content_type": 27, 
+               "is_public": true, 
+               "user_name": "J.R. Murdock", 
+               "user_email": ""
+          }
+     }, 
+     {
+          "pk": 1046, 
+          "model": "comments.comment", 
+          "fields": {
+               "comment": "Thanks, J.R.\n\nCaptain's Share is coming along and I'm pretty psyched :)", 
+               "user_url": "", 
+               "submit_date": "2009-09-06 18:13:02", 
+               "ip_address": null, 
+               "object_pk": "293", 
+               "site": 1, 
+               "is_removed": false, 
+               "user": null, 
+               "content_type": 27, 
+               "is_public": true, 
+               "user_name": "Nathan", 
+               "user_email": ""
+          }
+     }, 
+     {
+          "pk": 1045, 
+          "model": "comments.comment", 
+          "fields": {
+               "comment": "I've only been on Podiobooks for about six months, but I've listened to about fifty books so far.  This is the first time I've felt an actual Need to post a comment.  The only thing that bothered me throughout the whole series was the knowledge that it had to come to an end.  Your ability to connect the listener, or reader, with the characters is uncanny.  I was a little down when I finished today, but now I find out that there's another on the way! Thank you so much for sharing this with us Mr. Lowell. I even find myself doing better at work.  WWIWD.  Ha. I could go on for pages, but I don't want to annoy anyone. Thanks again.", 
+               "user_url": "", 
+               "submit_date": "2009-09-18 01:19:06", 
+               "ip_address": null, 
+               "object_pk": "293", 
+               "site": 1, 
+               "is_removed": false, 
+               "user": null, 
+               "content_type": 27, 
+               "is_public": true, 
+               "user_name": "P. Clearman", 
+               "user_email": ""
+          }
+     }, 
+     {
+          "pk": 1044, 
+          "model": "comments.comment", 
+          "fields": {
+               "comment": "Thanks for your kind words! \n\nCaptain's Share will be out VERY soon now. \n\nAnd Owner's Share is on the plate to follow it, so don't get too down yet :)", 
+               "user_url": "", 
+               "submit_date": "2009-09-18 02:29:22", 
+               "ip_address": null, 
+               "object_pk": "293", 
+               "site": 1, 
+               "is_removed": false, 
+               "user": null, 
+               "content_type": 27, 
+               "is_public": true, 
+               "user_name": "Nathan", 
+               "user_email": ""
+          }
+     }, 
+     {
+          "pk": 1043, 
+          "model": "comments.comment", 
+          "fields": {
+               "comment": "Can't wait for Captain's Share!!", 
+               "user_url": "", 
+               "submit_date": "2009-09-29 01:58:33", 
+               "ip_address": null, 
+               "object_pk": "293", 
+               "site": 1, 
+               "is_removed": false, 
+               "user": null, 
+               "content_type": 27, 
+               "is_public": true, 
+               "user_name": "Brian", 
+               "user_email": ""
+          }
+     }, 
+     {
+          "pk": 1, 
+          "model": "flatpages.flatpage", 
+          "fields": {
+               "registration_required": false, 
+               "title": "Podiobooks Authors", 
+               "url": "/authors", 
+               "template_name": "", 
+               "sites": [
+                    1
+               ], 
+               "content": "<p>Hello!</p>\r\n<p><strong>asdfsd</strong></p>\r\n<p>&nbsp;</p>\r\n<p>&nbsp;</p>", 
+               "enable_comments": false
+          }
+     }, 
+     {
+          "pk": 1, 
+          "model": "sites.site", 
+          "fields": {
+               "domain": "example.com", 
+               "name": "example.com"
+          }
+     }, 
+     {
+          "pk": 13, 
+          "model": "main.award", 
+          "fields": {
+               "name": "Dead Letter Award 2008 Winner", 
+               "url": "http://jamesmelzer.net/2009/02/tzc-wins-dead-letter-award/", 
+               "image": "images/awards/dead-letter-award-2008-winner.jpg", 
+               "deleted": false, 
+               "date_updated": "2010-01-23 17:02:37", 
+               "date_created": "2010-01-23 17:02:37", 
+               "slug": "dead-letter-award-2008-winner"
+          }
+     }, 
+     {
+          "pk": 9, 
+          "model": "main.award", 
+          "fields": {
+               "name": "Eppie Awards 2004 Finalist", 
+               "url": "http://www.epicauthors.com/eppiewinners2004.html", 
+               "image": "images/awards/eppie-awards-2004-finalist.gif", 
+               "deleted": false, 
+               "date_updated": "2010-01-23 16:57:04", 
+               "date_created": "2010-01-23 16:57:04", 
+               "slug": "eppie-awards-2004-finalist"
+          }
+     }, 
+     {
+          "pk": 6, 
+          "model": "main.award", 
+          "fields": {
+               "name": "Mark Time Awards 2007 Gold Winner", 
+               "url": "http://www.greatnorthernaudio.com/MarkTime/MarkTime-winners.html", 
+               "image": "images/awards/mark-time-awards-2007-gold-winner.png", 
+               "deleted": false, 
+               "date_updated": "2010-01-23 15:49:39", 
+               "date_created": "2010-01-23 15:49:39", 
+               "slug": "mark-time-awards-2007-gold-winner"
+          }
+     }, 
+     {
+          "pk": 3, 
+          "model": "main.award", 
+          "fields": {
+               "name": "Parsec Awards 2006 Nominee", 
+               "url": "http://parsecawards.com/2006-parsec-awards", 
+               "image": "images/awards/parsec-awards-2006-nominee.gif", 
+               "deleted": false, 
+               "date_updated": "2010-01-23 15:47:43", 
+               "date_created": "2010-01-23 15:47:43", 
+               "slug": "parsec-awards-2006-nominee"
+          }
+     }, 
+     {
+          "pk": 4, 
+          "model": "main.award", 
+          "fields": {
+               "name": "Parsec Awards 2006 Winner", 
+               "url": "http://parsecawards.com/2006-parsec-awards", 
+               "image": "images/awards/parsec-awards-2006-winner.gif", 
+               "deleted": false, 
+               "date_updated": "2010-01-23 15:48:05", 
+               "date_created": "2010-01-23 15:48:05", 
+               "slug": "parsec-awards-2006-winner"
+          }
+     }, 
+     {
+          "pk": 1, 
+          "model": "main.award", 
+          "fields": {
+               "name": "Parsec Awards 2007 Nominee", 
+               "url": "http://parsecawards.com/2007Archive", 
+               "image": "images/awards/parsec-awards-2007-nominee.gif", 
+               "deleted": false, 
+               "date_updated": "2010-01-23 15:14:59", 
+               "date_created": "2010-01-23 15:14:59", 
+               "slug": "parsec-awards-2007-nominee"
+          }
+     }, 
+     {
+          "pk": 2, 
+          "model": "main.award", 
+          "fields": {
+               "name": "Parsec Awards 2007 Winner", 
+               "url": "http://parsecawards.com/2007Archive", 
+               "image": "images/awards/parsec-awards-2007-winner.gif", 
+               "deleted": false, 
+               "date_updated": "2010-01-23 15:47:41", 
+               "date_created": "2010-01-23 15:47:41", 
+               "slug": "parsec-awards-2007-winner"
+          }
+     }, 
+     {
+          "pk": 8, 
+          "model": "main.award", 
+          "fields": {
+               "name": "Parsec Awards 2009 Finalist", 
+               "url": "http://parsecawards.com/node/861", 
+               "image": "images/awards/parsec-awards-2009-finalist.jpg", 
+               "deleted": false, 
+               "date_updated": "2010-01-23 16:56:24", 
+               "date_created": "2010-01-23 16:56:24", 
+               "slug": "parsec-awards-2009-finalist"
+          }
+     }, 
+     {
+          "pk": 5, 
+          "model": "main.award", 
+          "fields": {
+               "name": "Podcast Awards 2006 Nominee", 
+               "url": "http://www.podcastconnect.com/archive/2006/08/2006_peoples_choice_podcast_aw_1.html", 
+               "image": "images/awards/podcast-awards-2006-nominee.jpg", 
+               "deleted": false, 
+               "date_updated": "2010-01-23 15:47:41", 
+               "date_created": "2010-01-23 15:47:41", 
+               "slug": "podcast-awards-2006-nominee"
+          }
+     }, 
+     {
+          "pk": 10, 
+          "model": "main.award", 
+          "fields": {
+               "name": "Podcast Peer Awards 2009 Finalist", 
+               "url": "http://www.podcastpeers.org/winnersPPA5.html", 
+               "image": "images/awards/podcast-peer-awards-2008-finalist.jpg", 
+               "deleted": false, 
+               "date_updated": "2010-01-23 17:07:24", 
+               "date_created": "2010-01-23 17:07:24", 
+               "slug": "podcast-peer-awards-2008-finalist"
+          }
+     }, 
+     {
+          "pk": 11, 
+          "model": "main.award", 
+          "fields": {
+               "name": "Preditors and Editors Awards 2005 Top Ten Finisher", 
+               "url": "http://www.anotherealm.com/prededitors/vote0510c.htm", 
+               "image": "images/awards/preditors-and-editors-awards-2005-top-ten.gif", 
+               "deleted": false, 
+               "date_updated": "2010-01-23 16:57:04", 
+               "date_created": "2010-01-23 16:57:04", 
+               "slug": "preditors-and-editors-awards-2005-top-ten"
+          }
+     }, 
+     {
+          "pk": 7, 
+          "model": "main.award", 
+          "fields": {
+               "name": "Sir Julius Vogel Awards 2009 Winner", 
+               "url": "http://sffanz.sf.org.nz/sjv/sjvResults-2009.shtml", 
+               "image": "images/awards/sir-julius-vogel-awards-2009-winner.gif", 
+               "deleted": false, 
+               "date_updated": "2010-01-23 17:06:04", 
+               "date_created": "2010-01-23 17:06:04", 
+               "slug": "sir-julius-vogel-awards-2009-winner"
+          }
+     }, 
+     {
+          "pk": 12, 
+          "model": "main.award", 
+          "fields": {
+               "name": "Stephen Leacock Memorial Medal for Humor 2008", 
+               "url": "http://www.leacock.ca/", 
+               "image": "images/awards/stephen-leacock-memorial-medal-for-humor.jpg", 
+               "deleted": false, 
+               "date_updated": "2010-01-23 16:57:04", 
+               "date_created": "2010-01-23 16:57:04", 
+               "slug": "stephen-leacock-memorial-medal-for-humor-2008"
+          }
+     }, 
+     {
+          "pk": 33, 
+          "model": "main.award", 
+          "fields": {
+               "name": "eppie-awards-2004-winner", 
+               "url": "unknown", 
+               "image": "unknown", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "date_created": "2010-02-22 15:03:36", 
+               "slug": "eppie-awards-2004-winner"
+          }
+     }, 
+     {
+          "pk": 32, 
+          "model": "main.award", 
+          "fields": {
+               "name": "eppie-awards-2007-winner", 
+               "url": "unknown", 
+               "image": "unknown", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "date_created": "2010-02-22 15:03:36", 
+               "slug": "eppie-awards-2007-winner"
+          }
+     }, 
+     {
+          "pk": 34, 
+          "model": "main.award", 
+          "fields": {
+               "name": "parsec-awards-2008-nominee", 
+               "url": "unknown", 
+               "image": "unknown", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "date_created": "2010-02-22 15:03:36", 
+               "slug": "parsec-awards-2008-nominee"
+          }
+     }, 
+     {
+          "pk": 12, 
+          "model": "main.category", 
+          "fields": {
+               "deleted": false, 
+               "date_created": "2010-02-22 15:03:36", 
+               "slug": "alternative-history", 
+               "date_updated": "2010-02-22 15:03:36", 
+               "name": "Alternative History"
+          }
+     }, 
+     {
+          "pk": 20, 
+          "model": "main.category", 
+          "fields": {
+               "deleted": false, 
+               "date_created": "2010-02-22 15:03:36", 
+               "slug": "audiodrama", 
+               "date_updated": "2010-02-22 15:03:36", 
+               "name": "Audiodrama"
+          }
+     }, 
+     {
+          "pk": 3, 
+          "model": "main.category", 
+          "fields": {
+               "deleted": false, 
+               "date_created": "2010-02-22 15:03:36", 
+               "slug": "business", 
+               "date_updated": "2010-02-22 15:03:36", 
+               "name": "Business"
+          }
+     }, 
+     {
+          "pk": 28, 
+          "model": "main.category", 
+          "fields": {
+               "deleted": false, 
+               "date_created": "2010-02-22 15:03:36", 
+               "slug": "chick-lit", 
+               "date_updated": "2010-02-22 15:03:36", 
+               "name": "Chick Lit"
+          }
+     }, 
+     {
+          "pk": 9, 
+          "model": "main.category", 
+          "fields": {
+               "deleted": false, 
+               "date_created": "2010-02-22 15:03:36", 
+               "slug": "children", 
+               "date_updated": "2010-02-22 15:03:36", 
+               "name": "Children"
+          }
+     }, 
+     {
+          "pk": 16, 
+          "model": "main.category", 
+          "fields": {
+               "deleted": false, 
+               "date_created": "2010-02-22 15:03:36", 
+               "slug": "cyberpunk", 
+               "date_updated": "2010-02-22 15:03:36", 
+               "name": "Cyberpunk"
+          }
+     }, 
+     {
+          "pk": 26, 
+          "model": "main.category", 
+          "fields": {
+               "deleted": false, 
+               "date_created": "2010-02-22 15:03:36", 
+               "slug": "erotica", 
+               "date_updated": "2010-02-22 15:03:36", 
+               "name": "Erotica"
+          }
+     }, 
+     {
+          "pk": 8, 
+          "model": "main.category", 
+          "fields": {
+               "deleted": false, 
+               "date_created": "2010-02-22 15:03:36", 
+               "slug": "essays", 
+               "date_updated": "2010-02-22 15:03:36", 
+               "name": "Essays"
+          }
+     }, 
+     {
+          "pk": 34, 
+          "model": "main.category", 
+          "fields": {
+               "deleted": false, 
+               "date_created": "2010-02-22 15:03:36", 
+               "slug": "fabulist-satire", 
+               "date_updated": "2010-02-22 15:03:36", 
+               "name": "Fabulist Satire"
+          }
+     }, 
+     {
+          "pk": 2, 
+          "model": "main.category", 
+          "fields": {
+               "deleted": false, 
+               "date_created": "2010-02-22 15:03:36", 
+               "slug": "fantasy", 
+               "date_updated": "2010-02-22 15:03:36", 
+               "name": "Fantasy"
+          }
+     }, 
+     {
+          "pk": 7, 
+          "model": "main.category", 
+          "fields": {
+               "deleted": false, 
+               "date_created": "2010-02-22 15:03:36", 
+               "slug": "fiction", 
+               "date_updated": "2010-02-22 15:03:36", 
+               "name": "Fiction"
+          }
+     }, 
+     {
+          "pk": 32, 
+          "model": "main.category", 
+          "fields": {
+               "deleted": false, 
+               "date_created": "2010-02-22 15:03:36", 
+               "slug": "historical-fantasy", 
+               "date_updated": "2010-02-22 15:03:36", 
+               "name": "Historical Fantasy"
+          }
+     }, 
+     {
+          "pk": 21, 
+          "model": "main.category", 
+          "fields": {
+               "deleted": false, 
+               "date_created": "2010-02-22 15:03:36", 
+               "slug": "historical-fiction", 
+               "date_updated": "2010-02-22 15:03:36", 
+               "name": "Historical Fiction"
+          }
+     }, 
+     {
+          "pk": 19, 
+          "model": "main.category", 
+          "fields": {
+               "deleted": false, 
+               "date_created": "2010-02-22 15:03:36", 
+               "slug": "history", 
+               "date_updated": "2010-02-22 15:03:36", 
+               "name": "History"
+          }
+     }, 
+     {
+          "pk": 11, 
+          "model": "main.category", 
+          "fields": {
+               "deleted": false, 
+               "date_created": "2010-02-22 15:03:36", 
+               "slug": "horrordark-fantasy", 
+               "date_updated": "2010-02-22 15:03:36", 
+               "name": "Horror/Dark Fantasy"
+          }
+     }, 
+     {
+          "pk": 6, 
+          "model": "main.category", 
+          "fields": {
+               "deleted": false, 
+               "date_created": "2010-02-22 15:03:36", 
+               "slug": "humor", 
+               "date_updated": "2010-02-22 15:03:36", 
+               "name": "Humor"
+          }
+     }, 
+     {
+          "pk": 30, 
+          "model": "main.category", 
+          "fields": {
+               "deleted": false, 
+               "date_created": "2010-02-22 15:03:36", 
+               "slug": "inspirational-fiction", 
+               "date_updated": "2010-02-22 15:03:36", 
+               "name": "Inspirational Fiction"
+          }
+     }, 
+     {
+          "pk": 15, 
+          "model": "main.category", 
+          "fields": {
+               "deleted": false, 
+               "date_created": "2010-02-22 15:03:36", 
+               "slug": "life-lessons", 
+               "date_updated": "2010-02-22 15:03:36", 
+               "name": "Life Lessons"
+          }
+     }, 
+     {
+          "pk": 29, 
+          "model": "main.category", 
+          "fields": {
+               "deleted": false, 
+               "date_created": "2010-02-22 15:03:36", 
+               "slug": "literature", 
+               "date_updated": "2010-02-22 15:03:36", 
+               "name": "Literature"
+          }
+     }, 
+     {
+          "pk": 4, 
+          "model": "main.category", 
+          "fields": {
+               "deleted": false, 
+               "date_created": "2010-02-22 15:03:36", 
+               "slug": "magazine", 
+               "date_updated": "2010-02-22 15:03:36", 
+               "name": "Magazine"
+          }
+     }, 
+     {
+          "pk": 13, 
+          "model": "main.category", 
+          "fields": {
+               "deleted": false, 
+               "date_created": "2010-02-22 15:03:36", 
+               "slug": "magical-realism", 
+               "date_updated": "2010-02-22 15:03:36", 
+               "name": "Magical Realism"
+          }
+     }, 
+     {
+          "pk": 23, 
+          "model": "main.category", 
+          "fields": {
+               "deleted": false, 
+               "date_created": "2010-02-22 15:03:36", 
+               "slug": "memoir", 
+               "date_updated": "2010-02-22 15:03:36", 
+               "name": "Memoir"
+          }
+     }, 
+     {
+          "pk": 5, 
+          "model": "main.category", 
+          "fields": {
+               "deleted": false, 
+               "date_created": "2010-02-22 15:03:36", 
+               "slug": "mystery", 
+               "date_updated": "2010-02-22 15:03:36", 
+               "name": "Mystery"
+          }
+     }, 
+     {
+          "pk": 18, 
+          "model": "main.category", 
+          "fields": {
+               "deleted": false, 
+               "date_created": "2010-02-22 15:03:36", 
+               "slug": "non-fiction", 
+               "date_updated": "2010-02-22 15:03:36", 
+               "name": "Non-Fiction"
+          }
+     }, 
+     {
+          "pk": 25, 
+          "model": "main.category", 
+          "fields": {
+               "deleted": false, 
+               "date_created": "2010-02-22 15:03:36", 
+               "slug": "poetry", 
+               "date_updated": "2010-02-22 15:03:36", 
+               "name": "Poetry"
+          }
+     }, 
+     {
+          "pk": 17, 
+          "model": "main.category", 
+          "fields": {
+               "deleted": false, 
+               "date_created": "2010-02-22 15:03:36", 
+               "slug": "public-domain", 
+               "date_updated": "2010-02-22 15:03:36", 
+               "name": "Public Domain"
+          }
+     }, 
+     {
+          "pk": 14, 
+          "model": "main.category", 
+          "fields": {
+               "deleted": false, 
+               "date_created": "2010-02-22 15:03:36", 
+               "slug": "religious-fiction", 
+               "date_updated": "2010-02-22 15:03:36", 
+               "name": "Religious Fiction"
+          }
+     }, 
+     {
+          "pk": 31, 
+          "model": "main.category", 
+          "fields": {
+               "deleted": false, 
+               "date_created": "2010-02-22 15:03:36", 
+               "slug": "romance", 
+               "date_updated": "2010-02-22 15:03:36", 
+               "name": "Romance"
+          }
+     }, 
+     {
+          "pk": 1, 
+          "model": "main.category", 
+          "fields": {
+               "deleted": false, 
+               "date_created": "2010-02-22 15:03:36", 
+               "slug": "science-fiction", 
+               "date_updated": "2010-02-22 15:03:36", 
+               "name": "Science Fiction"
+          }
+     }, 
+     {
+          "pk": 33, 
+          "model": "main.category", 
+          "fields": {
+               "deleted": false, 
+               "date_created": "2010-02-22 15:03:36", 
+               "slug": "self-help", 
+               "date_updated": "2010-02-22 15:03:36", 
+               "name": "Self-Help"
+          }
+     }, 
+     {
+          "pk": 22, 
+          "model": "main.category", 
+          "fields": {
+               "deleted": false, 
+               "date_created": "2010-02-22 15:03:36", 
+               "slug": "spirituality", 
+               "date_updated": "2010-02-22 15:03:36", 
+               "name": "Spirituality"
+          }
+     }, 
+     {
+          "pk": 35, 
+          "model": "main.category", 
+          "fields": {
+               "deleted": false, 
+               "date_created": "2010-02-22 15:03:36", 
+               "slug": "steampunk", 
+               "date_updated": "2010-02-22 15:03:36", 
+               "name": "Steampunk"
+          }
+     }, 
+     {
+          "pk": 27, 
+          "model": "main.category", 
+          "fields": {
+               "deleted": false, 
+               "date_created": "2010-02-22 15:03:36", 
+               "slug": "thriller", 
+               "date_updated": "2010-02-22 15:03:36", 
+               "name": "Thriller"
+          }
+     }, 
+     {
+          "pk": 24, 
+          "model": "main.category", 
+          "fields": {
+               "deleted": false, 
+               "date_created": "2010-02-22 15:03:36", 
+               "slug": "travelogue", 
+               "date_updated": "2010-02-22 15:03:36", 
+               "name": "Travelogue"
+          }
+     }, 
+     {
+          "pk": 10, 
+          "model": "main.category", 
+          "fields": {
+               "deleted": false, 
+               "date_created": "2010-02-22 15:03:36", 
+               "slug": "young-adult", 
+               "date_updated": "2010-02-22 15:03:36", 
+               "name": "Young Adult"
+          }
+     }, 
+     {
+          "pk": 10128, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Edwin", 
+               "last_name": "Abbott", 
+               "display_name": "Edwin Abbott Abbott", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "Abbott", 
+               "slug": "edwin-abbott-abbott"
+          }
+     }, 
+     {
+          "pk": 10032, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Peter", 
+               "last_name": "Abresch", 
+               "display_name": "Peter E. Abresch", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "E.", 
+               "slug": "peter-e-abresch"
+          }
+     }, 
+     {
+          "pk": 10081, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "John", 
+               "last_name": "Adler Ph.D.", 
+               "display_name": "John C. Adler, Ph.D.", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "C.", 
+               "slug": "john-c-adler-phd"
+          }
+     }, 
+     {
+          "pk": 10060, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Edwin", 
+               "last_name": "Alexander", 
+               "display_name": "Edwin Alexander", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "edwin-alexander"
+          }
+     }, 
+     {
+          "pk": 10113, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "John", 
+               "last_name": "Allen", 
+               "display_name": "John Allen", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "john-allen"
+          }
+     }, 
+     {
+          "pk": 10050, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "J.A.", 
+               "last_name": "Areces", 
+               "display_name": "J.A. Areces", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "ja-areces"
+          }
+     }, 
+     {
+          "pk": 10029, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Jon", 
+               "last_name": "Armstrong", 
+               "display_name": "Jon Armstrong", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "jon-armstrong"
+          }
+     }, 
+     {
+          "pk": 9943, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Philippa", 
+               "last_name": "Ballantine", 
+               "display_name": "Philippa Ballantine", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "philippa-ballantine"
+          }
+     }, 
+     {
+          "pk": 9941, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Myke", 
+               "last_name": "Bartlett", 
+               "display_name": "Myke Bartlett", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "myke-bartlett"
+          }
+     }, 
+     {
+          "pk": 9932, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "L.", 
+               "last_name": "Baum", 
+               "display_name": "L. Frank Baum", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "Frank", 
+               "slug": "l-frank-baum"
+          }
+     }, 
+     {
+          "pk": 10157, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Spencer", 
+               "last_name": "Baum", 
+               "display_name": "Spencer Baum", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "spencer-baum"
+          }
+     }, 
+     {
+          "pk": 10005, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Andrew", 
+               "last_name": "Beatty", 
+               "display_name": "Andrew Beatty", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "andrew-beatty"
+          }
+     }, 
+     {
+          "pk": 10110, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Drew", 
+               "last_name": "Beatty", 
+               "display_name": "Drew Beatty", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "drew-beatty"
+          }
+     }, 
+     {
+          "pk": 9989, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Mike", 
+               "last_name": "Bennett", 
+               "display_name": "Mike Bennett", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "mike-bennett"
+          }
+     }, 
+     {
+          "pk": 9962, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Erik", 
+               "last_name": "Bertel", 
+               "display_name": "Erik John Bertel", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "John", 
+               "slug": "erik-john-bertel"
+          }
+     }, 
+     {
+          "pk": 10058, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Robert", 
+               "last_name": "Best", 
+               "display_name": "Robert R. Best", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "R.", 
+               "slug": "robert-r-best"
+          }
+     }, 
+     {
+          "pk": 10142, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Isabel", 
+               "last_name": "Black", 
+               "display_name": "Isabel Joely Black", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "Joely", 
+               "slug": "isabel-joely-black"
+          }
+     }, 
+     {
+          "pk": 10017, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Ronnie", 
+               "last_name": "Blackwell", 
+               "display_name": "Ronnie Blackwell", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "ronnie-blackwell"
+          }
+     }, 
+     {
+          "pk": 9958, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "M.H.", 
+               "last_name": "Bonham", 
+               "display_name": "M.H. Bonham", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "mh-bonham"
+          }
+     }, 
+     {
+          "pk": 10141, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Mick", 
+               "last_name": "Bordet", 
+               "display_name": "Mick Bordet", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "mick-bordet"
+          }
+     }, 
+     {
+          "pk": 10104, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "William", 
+               "last_name": "Bostock", 
+               "display_name": "William Bostock", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "william-bostock"
+          }
+     }, 
+     {
+          "pk": 10111, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Russell", 
+               "last_name": "Bradbury-Carlin", 
+               "display_name": "Russell Bradbury-Carlin", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "russell-bradbury-carlin"
+          }
+     }, 
+     {
+          "pk": 10083, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Cate", 
+               "last_name": "Brody", 
+               "display_name": "Cate Brody", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "cate-brody"
+          }
+     }, 
+     {
+          "pk": 10051, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Michael", 
+               "last_name": "Brownstein", 
+               "display_name": "Michael Brownstein", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "michael-brownstein"
+          }
+     }, 
+     {
+          "pk": 9939, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Russell", 
+               "last_name": "Burt", 
+               "display_name": "Russell L. Burt", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "L.", 
+               "slug": "russell-l-burt"
+          }
+     }, 
+     {
+          "pk": 10086, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Jeff", 
+               "last_name": "Burton", 
+               "display_name": "Jeff Burton", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "jeff-burton"
+          }
+     }, 
+     {
+          "pk": 9981, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Mark", 
+               "last_name": "Butler", 
+               "display_name": "Mark Butler", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "mark-butler"
+          }
+     }, 
+     {
+          "pk": 9970, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Nathan", 
+               "last_name": "Butler", 
+               "display_name": "Nathan P Butler", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "P", 
+               "slug": "nathan-p-butler"
+          }
+     }, 
+     {
+          "pk": 9975, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Tim", 
+               "last_name": "Callahan", 
+               "display_name": "Tim Callahan", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "tim-callahan"
+          }
+     }, 
+     {
+          "pk": 10003, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Timothy", 
+               "last_name": "Callahan", 
+               "display_name": "Timothy Callahan", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "timothy-callahan"
+          }
+     }, 
+     {
+          "pk": 10059, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "John", 
+               "last_name": "Campbell", 
+               "display_name": "John W. Campbell", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "W.", 
+               "slug": "john-w-campbell"
+          }
+     }, 
+     {
+          "pk": 10098, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Rhonda", 
+               "last_name": "Carpenter", 
+               "display_name": "Rhonda R. Carpenter", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "R.", 
+               "slug": "rhonda-r-carpenter"
+          }
+     }, 
+     {
+          "pk": 10135, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Bryna", 
+               "last_name": "Chalmer", 
+               "display_name": "Bryna Chalmer", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "bryna-chalmer"
+          }
+     }, 
+     {
+          "pk": 10158, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "R.E.", 
+               "last_name": "Chambliss", 
+               "display_name": "R.E. Chambliss", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "re-chambliss"
+          }
+     }, 
+     {
+          "pk": 10094, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Josh", 
+               "last_name": "Charney", 
+               "display_name": "Josh Charney", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "josh-charney"
+          }
+     }, 
+     {
+          "pk": 10147, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "G.K.", 
+               "last_name": "Chesterton", 
+               "display_name": "G.K. Chesterton", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "gk-chesterton"
+          }
+     }, 
+     {
+          "pk": 9950, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Alessandro", 
+               "last_name": "Cima", 
+               "display_name": "Alessandro Cima", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "alessandro-cima"
+          }
+     }, 
+     {
+          "pk": 9940, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Stacey", 
+               "last_name": "Cochran", 
+               "display_name": "Stacey Cochran", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "stacey-cochran"
+          }
+     }, 
+     {
+          "pk": 9968, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Lon", 
+               "last_name": "Cohen", 
+               "display_name": "Lon S. Cohen", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "S.", 
+               "slug": "lon-s-cohen"
+          }
+     }, 
+     {
+          "pk": 10155, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Paul", 
+               "last_name": "Cooley", 
+               "display_name": "Paul Elard Cooley", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "Elard", 
+               "slug": "paul-elard-cooley"
+          }
+     }, 
+     {
+          "pk": 10037, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Joe", 
+               "last_name": "Cottonwood", 
+               "display_name": "Joe Cottonwood", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "joe-cottonwood"
+          }
+     }, 
+     {
+          "pk": 10077, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Jeanette", 
+               "last_name": "Cottrell", 
+               "display_name": "Jeanette Cottrell", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "jeanette-cottrell"
+          }
+     }, 
+     {
+          "pk": 10072, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Greg", 
+               "last_name": "Crites", 
+               "display_name": "Greg Crites", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "greg-crites"
+          }
+     }, 
+     {
+          "pk": 10093, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Andrew", 
+               "last_name": "Culver", 
+               "display_name": "Andrew Culver", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "andrew-culver"
+          }
+     }, 
+     {
+          "pk": 10106, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Rob", 
+               "last_name": "Cummins", 
+               "display_name": "Rob Cummins", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "rob-cummins"
+          }
+     }, 
+     {
+          "pk": 9947, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Gene", 
+               "last_name": "Curtis", 
+               "display_name": "Gene Curtis", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "gene-curtis"
+          }
+     }, 
+     {
+          "pk": 10075, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Owen", 
+               "last_name": "Daly", 
+               "display_name": "Owen Daly", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "owen-daly"
+          }
+     }, 
+     {
+          "pk": 10018, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Alex", 
+               "last_name": "Damien", 
+               "display_name": "Alex Damien", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "alex-damien"
+          }
+     }, 
+     {
+          "pk": 10117, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Kris", 
+               "last_name": "Davis", 
+               "display_name": "Kris Davis", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "kris-davis"
+          }
+     }, 
+     {
+          "pk": 9951, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Bill", 
+               "last_name": "DeSmedt", 
+               "display_name": "Bill DeSmedt", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "bill-desmedt"
+          }
+     }, 
+     {
+          "pk": 10118, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Steve", 
+               "last_name": "DeWinter", 
+               "display_name": "Steve DeWinter", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "steve-dewinter"
+          }
+     }, 
+     {
+          "pk": 10134, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Michael", 
+               "last_name": "Dean", 
+               "display_name": "Michael W. Dean", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "W.", 
+               "slug": "michael-w-dean"
+          }
+     }, 
+     {
+          "pk": 9983, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Daniel", 
+               "last_name": "Defoe", 
+               "display_name": "Daniel Defoe", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "daniel-defoe"
+          }
+     }, 
+     {
+          "pk": 10026, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "JJ", 
+               "last_name": "Dewey", 
+               "display_name": "JJ Dewey", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "jj-dewey"
+          }
+     }, 
+     {
+          "pk": 9997, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Cory", 
+               "last_name": "Doctorow", 
+               "display_name": "Cory Doctorow", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "cory-doctorow"
+          }
+     }, 
+     {
+          "pk": 10159, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "John", 
+               "last_name": "Dodds", 
+               "display_name": "John Dodds", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "john-dodds"
+          }
+     }, 
+     {
+          "pk": 10137, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Tim", 
+               "last_name": "Dodge", 
+               "display_name": "Tim Dodge", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "tim-dodge"
+          }
+     }, 
+     {
+          "pk": 10006, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Dave", 
+               "last_name": "Donelson", 
+               "display_name": "Dave Donelson", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "dave-donelson"
+          }
+     }, 
+     {
+          "pk": 10043, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Brian", 
+               "last_name": "Downes", 
+               "display_name": "Brian Downes", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "brian-downes"
+          }
+     }, 
+     {
+          "pk": 9965, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Micah", 
+               "last_name": "Dubinko", 
+               "display_name": "Micah Dubinko", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "micah-dubinko"
+          }
+     }, 
+     {
+          "pk": 10046, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Brian", 
+               "last_name": "Dunning", 
+               "display_name": "Brian Dunning", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "brian-dunning"
+          }
+     }, 
+     {
+          "pk": 10090, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Collin", 
+               "last_name": "Earl", 
+               "display_name": "Collin Earl", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "collin-earl"
+          }
+     }, 
+     {
+          "pk": 10132, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Mark", 
+               "last_name": "Eller", 
+               "display_name": "Mark Eller", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "mark-eller"
+          }
+     }, 
+     {
+          "pk": 9949, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Christiana", 
+               "last_name": "Ellis", 
+               "display_name": "Christiana Ellis", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "christiana-ellis"
+          }
+     }, 
+     {
+          "pk": 10044, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Lorne", 
+               "last_name": "Epstein", 
+               "display_name": "Lorne Epstein", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "lorne-epstein"
+          }
+     }, 
+     {
+          "pk": 10085, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Theodore", 
+               "last_name": "Erski", 
+               "display_name": "Theodore Isaac Erski", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "Isaac", 
+               "slug": "theodore-isaac-erski"
+          }
+     }, 
+     {
+          "pk": 9925, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Tom", 
+               "last_name": "Evslin", 
+               "display_name": "Tom Evslin", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "tom-evslin"
+          }
+     }, 
+     {
+          "pk": 9991, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Lonnie", 
+               "last_name": "Ezell", 
+               "display_name": "Lonnie Ezell", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "lonnie-ezell"
+          }
+     }, 
+     {
+          "pk": 9996, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Terry", 
+               "last_name": "Fallis", 
+               "display_name": "Terry Fallis", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "terry-fallis"
+          }
+     }, 
+     {
+          "pk": 9954, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "John", 
+               "last_name": "Farrell", 
+               "display_name": "John Farrell", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "john-farrell"
+          }
+     }, 
+     {
+          "pk": 10082, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Tiara", 
+               "last_name": "Fay", 
+               "display_name": "Tiara Fay", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "tiara-fay"
+          }
+     }, 
+     {
+          "pk": 9979, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Jonathan", 
+               "last_name": "Fesmire", 
+               "display_name": "Jonathan Fesmire", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "jonathan-fesmire"
+          }
+     }, 
+     {
+          "pk": 9964, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Nora", 
+               "last_name": "Fleischer", 
+               "display_name": "Nora Fleischer", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "nora-fleischer"
+          }
+     }, 
+     {
+          "pk": 10069, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Charles", 
+               "last_name": "Fontenay", 
+               "display_name": "Charles L. Fontenay", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "L.", 
+               "slug": "charles-l-fontenay"
+          }
+     }, 
+     {
+          "pk": 9960, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Mark", 
+               "last_name": "Forman", 
+               "display_name": "Mark Forman", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "mark-forman"
+          }
+     }, 
+     {
+          "pk": 9986, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "David", 
+               "last_name": "Free", 
+               "display_name": "David Free", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "david-free"
+          }
+     }, 
+     {
+          "pk": 9980, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Lane", 
+               "last_name": "Friesen", 
+               "display_name": "Lane Friesen", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "lane-friesen"
+          }
+     }, 
+     {
+          "pk": 10087, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Peter", 
+               "last_name": "Froning", 
+               "display_name": "Peter James Froning", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "James", 
+               "slug": "peter-james-froning"
+          }
+     }, 
+     {
+          "pk": 10025, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "A.P.", 
+               "last_name": "Fuchs", 
+               "display_name": "A.P. Fuchs", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "ap-fuchs"
+          }
+     }, 
+     {
+          "pk": 10145, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Brand", 
+               "last_name": "Gamblin", 
+               "display_name": "Brand Gamblin", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "brand-gamblin"
+          }
+     }, 
+     {
+          "pk": 9934, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "J.", 
+               "last_name": "Garibay", 
+               "display_name": "J. Scott Garibay", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "Scott", 
+               "slug": "j-scott-garibay"
+          }
+     }, 
+     {
+          "pk": 10053, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Remy", 
+               "last_name": "Gibson", 
+               "display_name": "Remy Gibson", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "remy-gibson"
+          }
+     }, 
+     {
+          "pk": 10143, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Thomas", 
+               "last_name": "Gideon", 
+               "display_name": "Thomas Gideon", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "thomas-gideon"
+          }
+     }, 
+     {
+          "pk": 10101, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Derek", 
+               "last_name": "Gilbert", 
+               "display_name": "Derek Gilbert", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "derek-gilbert"
+          }
+     }, 
+     {
+          "pk": 10007, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Joe", 
+               "last_name": "Gold", 
+               "display_name": "Joe Gold", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "joe-gold"
+          }
+     }, 
+     {
+          "pk": 9972, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Max", 
+               "last_name": "Grant", 
+               "display_name": "Max Grant", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "max-grant"
+          }
+     }, 
+     {
+          "pk": 10056, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "", 
+               "last_name": "Graydancer", 
+               "display_name": "Graydancer", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "graydancer"
+          }
+     }, 
+     {
+          "pk": 9987, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "George", 
+               "last_name": "Grossmith", 
+               "display_name": "George Grossmith", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "george-grossmith"
+          }
+     }, 
+     {
+          "pk": 9988, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Weedon", 
+               "last_name": "Grossmith", 
+               "display_name": "Weedon Grossmith", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "weedon-grossmith"
+          }
+     }, 
+     {
+          "pk": 9977, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Debbie", 
+               "last_name": "Hagan", 
+               "display_name": "Debbie Hagan", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "debbie-hagan"
+          }
+     }, 
+     {
+          "pk": 9985, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "H.", 
+               "last_name": "Haggard", 
+               "display_name": "H. Rider Haggard", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "Rider", 
+               "slug": "h-rider-haggard"
+          }
+     }, 
+     {
+          "pk": 10009, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Tim", 
+               "last_name": "Hall", 
+               "display_name": "Tim Hall", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "tim-hall"
+          }
+     }, 
+     {
+          "pk": 10148, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "John", 
+               "last_name": "Hardy", 
+               "display_name": "John Berling Hardy", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "Berling", 
+               "slug": "john-berling-hardy"
+          }
+     }, 
+     {
+          "pk": 9948, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "A.F.", 
+               "last_name": "Harrold", 
+               "display_name": "A.F. Harrold", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "af-harrold"
+          }
+     }, 
+     {
+          "pk": 9924, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Seth", 
+               "last_name": "Harwood", 
+               "display_name": "Seth Harwood", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "seth-harwood"
+          }
+     }, 
+     {
+          "pk": 10156, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "David", 
+               "last_name": "Hayden", 
+               "display_name": "David Alastair Hayden", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "Alastair", 
+               "slug": "david-alastair-hayden"
+          }
+     }, 
+     {
+          "pk": 10138, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "J.J.", 
+               "last_name": "Hebert", 
+               "display_name": "J.J. Hebert", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "jj-hebert"
+          }
+     }, 
+     {
+          "pk": 10108, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Travis", 
+               "last_name": "Heermann", 
+               "display_name": "Travis Heermann", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "travis-heermann"
+          }
+     }, 
+     {
+          "pk": 9963, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Tracy", 
+               "last_name": "Hickman", 
+               "display_name": "Tracy Hickman", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "tracy-hickman"
+          }
+     }, 
+     {
+          "pk": 10089, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Abigail", 
+               "last_name": "Hilton", 
+               "display_name": "Abigail Hilton", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "abigail-hilton"
+          }
+     }, 
+     {
+          "pk": 10120, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Dave", 
+               "last_name": "Hitt", 
+               "display_name": "Dave Hitt", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "dave-hitt"
+          }
+     }, 
+     {
+          "pk": 9952, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Ramona", 
+               "last_name": "Holliday", 
+               "display_name": "Ramona Holliday", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "ramona-holliday"
+          }
+     }, 
+     {
+          "pk": 10062, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Brian", 
+               "last_name": "Holtz", 
+               "display_name": "Brian Holtz", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "brian-holtz"
+          }
+     }, 
+     {
+          "pk": 10045, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "P.G.", 
+               "last_name": "Holyfield", 
+               "display_name": "P.G. Holyfield", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "pg-holyfield"
+          }
+     }, 
+     {
+          "pk": 10140, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Keith", 
+               "last_name": "Hughes", 
+               "display_name": "Keith Hughes", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "keith-hughes"
+          }
+     }, 
+     {
+          "pk": 10016, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Ian", 
+               "last_name": "Hulme", 
+               "display_name": "Ian G Hulme", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "G", 
+               "slug": "ian-g-hulme"
+          }
+     }, 
+     {
+          "pk": 9946, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "J.C.", 
+               "last_name": "Hutchins", 
+               "display_name": "J.C. Hutchins", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "jc-hutchins"
+          }
+     }, 
+     {
+          "pk": 9927, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Mark", 
+               "last_name": "Jeffrey", 
+               "display_name": "Mark Jeffrey", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "mark-jeffrey"
+          }
+     }, 
+     {
+          "pk": 9978, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Paul", 
+               "last_name": "Jenkins", 
+               "display_name": "Paul S. Jenkins", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "S.", 
+               "slug": "paul-s-jenkins"
+          }
+     }, 
+     {
+          "pk": 10119, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Paul", 
+               "last_name": "Joseph", 
+               "display_name": "Paul J. Joseph", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "J.", 
+               "slug": "paul-j-joseph"
+          }
+     }, 
+     {
+          "pk": 9982, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Horatio", 
+               "last_name": "Jr.", 
+               "display_name": "Horatio Alger, Jr.", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "Alger", 
+               "slug": "horatio-alger-jr"
+          }
+     }, 
+     {
+          "pk": 10054, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Alan", 
+               "last_name": "Justice", 
+               "display_name": "Alan David Justice", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "David", 
+               "slug": "alan-david-justice"
+          }
+     }, 
+     {
+          "pk": 10068, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "", 
+               "last_name": "Kabir", 
+               "display_name": "Kabir", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "kabir"
+          }
+     }, 
+     {
+          "pk": 9953, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Jeffrey", 
+               "last_name": "Kafer", 
+               "display_name": "Jeffrey Kafer", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "jeffrey-kafer"
+          }
+     }, 
+     {
+          "pk": 10131, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Jason", 
+               "last_name": "Kays", 
+               "display_name": "Jason M. Kays", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "M.", 
+               "slug": "jason-m-kays"
+          }
+     }, 
+     {
+          "pk": 9993, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Lisa", 
+               "last_name": "Kovetz", 
+               "display_name": "Lisa Beth Kovetz", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "Beth", 
+               "slug": "lisa-beth-kovetz"
+          }
+     }, 
+     {
+          "pk": 10041, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Mercedes", 
+               "last_name": "Lackey", 
+               "display_name": "Mercedes Lackey", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "mercedes-lackey"
+          }
+     }, 
+     {
+          "pk": 9937, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Mur", 
+               "last_name": "Lafferty", 
+               "display_name": "Mur Lafferty", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "mur-lafferty"
+          }
+     }, 
+     {
+          "pk": 10109, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Keith", 
+               "last_name": "Latch", 
+               "display_name": "Keith Latch", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "keith-latch"
+          }
+     }, 
+     {
+          "pk": 10049, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Lisa", 
+               "last_name": "Lee", 
+               "display_name": "Lisa Lee", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "lisa-lee"
+          }
+     }, 
+     {
+          "pk": 10065, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Andrew", 
+               "last_name": "Leiter", 
+               "display_name": "Andrew S. Leiter", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "S.", 
+               "slug": "andrew-s-leiter"
+          }
+     }, 
+     {
+          "pk": 9973, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "John", 
+               "last_name": "Lenahan", 
+               "display_name": "John Lenahan", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "john-lenahan"
+          }
+     }, 
+     {
+          "pk": 9999, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Paul", 
+               "last_name": "Levinson", 
+               "display_name": "Paul Levinson", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "paul-levinson"
+          }
+     }, 
+     {
+          "pk": 10042, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Steve", 
+               "last_name": "Libbey", 
+               "display_name": "Steve Libbey", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "steve-libbey"
+          }
+     }, 
+     {
+          "pk": 10057, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Tom", 
+               "last_name": "Lichtenberg", 
+               "display_name": "Tom Lichtenberg", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "tom-lichtenberg"
+          }
+     }, 
+     {
+          "pk": 10115, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Nicholas", 
+               "last_name": "Lindsay", 
+               "display_name": "Nicholas Vachel Lindsay", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "Vachel", 
+               "slug": "nicholas-vachel-lindsay"
+          }
+     }, 
+     {
+          "pk": 10039, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Dollie", 
+               "last_name": "Llama", 
+               "display_name": "Dollie Llama", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "dollie-llama"
+          }
+     }, 
+     {
+          "pk": 10021, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Brad", 
+               "last_name": "Lockwood", 
+               "display_name": "Brad Lockwood", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "brad-lockwood"
+          }
+     }, 
+     {
+          "pk": 9942, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Gavin", 
+               "last_name": "Lowe", 
+               "display_name": "Gavin L. Lowe", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "L.", 
+               "slug": "gavin-l-lowe"
+          }
+     }, 
+     {
+          "pk": 10000, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Nathan", 
+               "last_name": "Lowell", 
+               "display_name": "Nathan Lowell", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "nathan-lowell"
+          }
+     }, 
+     {
+          "pk": 9944, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Michael", 
+               "last_name": "Lund", 
+               "display_name": "Michael Lund", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "michael-lund"
+          }
+     }, 
+     {
+          "pk": 10015, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Mike", 
+               "last_name": "Luoma", 
+               "display_name": "Mike Luoma", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "mike-luoma"
+          }
+     }, 
+     {
+          "pk": 10099, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Emmy", 
+               "last_name": "Madrigal", 
+               "display_name": "Emmy Z. Madrigal", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "Z.", 
+               "slug": "emmy-z-madrigal"
+          }
+     }, 
+     {
+          "pk": 9935, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Jack", 
+               "last_name": "Mangan", 
+               "display_name": "Jack Mangan", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "jack-mangan"
+          }
+     }, 
+     {
+          "pk": 10063, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Anthony", 
+               "last_name": "Matthews", 
+               "display_name": "Anthony Matthews", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "anthony-matthews"
+          }
+     }, 
+     {
+          "pk": 10038, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Barry", 
+               "last_name": "McArdle", 
+               "display_name": "Barry McArdle", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "barry-mcardle"
+          }
+     }, 
+     {
+          "pk": 10061, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Teel", 
+               "last_name": "McClanahan", 
+               "display_name": "Teel McClanahan III", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "teel-mcclanahan-iii"
+          }
+     }, 
+     {
+          "pk": 10022, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Steven", 
+               "last_name": "McDermott", 
+               "display_name": "Steven J. McDermott", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "J.", 
+               "slug": "steven-j-mcdermott"
+          }
+     }, 
+     {
+          "pk": 10112, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Michael", 
+               "last_name": "McGee", 
+               "display_name": "Michael McGee", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "michael-mcgee"
+          }
+     }, 
+     {
+          "pk": 9966, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Patrick", 
+               "last_name": "McLean", 
+               "display_name": "Patrick E. McLean", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "E.", 
+               "slug": "patrick-e-mclean"
+          }
+     }, 
+     {
+          "pk": 10055, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Karl", 
+               "last_name": "Meade", 
+               "display_name": "Karl Meade", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "karl-meade"
+          }
+     }, 
+     {
+          "pk": 10091, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "James", 
+               "last_name": "Melzer", 
+               "display_name": "James Melzer", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "james-melzer"
+          }
+     }, 
+     {
+          "pk": 9976, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Michael", 
+               "last_name": "Mennenga", 
+               "display_name": "Michael R. Mennenga", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "R.", 
+               "slug": "michael-r-mennenga"
+          }
+     }, 
+     {
+          "pk": 10121, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "John", 
+               "last_name": "Mierau", 
+               "display_name": "John Mierau", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "john-mierau"
+          }
+     }, 
+     {
+          "pk": 10088, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Karen", 
+               "last_name": "Moning", 
+               "display_name": "Karen Marie Moning", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "Marie", 
+               "slug": "karen-marie-moning"
+          }
+     }, 
+     {
+          "pk": 9957, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Lucy", 
+               "last_name": "Montgomery", 
+               "display_name": "Lucy Maud Montgomery", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "Maud", 
+               "slug": "lucy-maud-montgomery"
+          }
+     }, 
+     {
+          "pk": 10122, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "J.P.", 
+               "last_name": "Moore", 
+               "display_name": "J.P. Moore", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "jp-moore"
+          }
+     }, 
+     {
+          "pk": 10092, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Leslie", 
+               "last_name": "Moore", 
+               "display_name": "Leslie Ann Moore", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "Ann", 
+               "slug": "leslie-ann-moore"
+          }
+     }, 
+     {
+          "pk": 10001, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Tee", 
+               "last_name": "Morris", 
+               "display_name": "Tee Morris", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "tee-morris"
+          }
+     }, 
+     {
+          "pk": 10152, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "J.R.", 
+               "last_name": "Murdock", 
+               "display_name": "J.R. Murdock", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "jr-murdock"
+          }
+     }, 
+     {
+          "pk": 10012, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Mark", 
+               "last_name": "Nemcoff", 
+               "display_name": "Mark Yoshimoto Nemcoff", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "Yoshimoto", 
+               "slug": "mark-yoshimoto-nemcoff"
+          }
+     }, 
+     {
+          "pk": 10126, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Todd", 
+               "last_name": "Newton", 
+               "display_name": "Todd Newton", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "todd-newton"
+          }
+     }, 
+     {
+          "pk": 10071, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Justin", 
+               "last_name": "Nicholes", 
+               "display_name": "Justin Nicholes", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "justin-nicholes"
+          }
+     }, 
+     {
+          "pk": 10105, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "", 
+               "last_name": "Nobilis", 
+               "display_name": "Nobilis", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "nobilis"
+          }
+     }, 
+     {
+          "pk": 10031, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Alan", 
+               "last_name": "Nourse", 
+               "display_name": "Alan E. Nourse", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "E.", 
+               "slug": "alan-e-nourse"
+          }
+     }, 
+     {
+          "pk": 10033, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Randy", 
+               "last_name": "O'Brien", 
+               "display_name": "Randy O'Brien", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "randy-obrien"
+          }
+     }, 
+     {
+          "pk": 10103, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Donald", 
+               "last_name": "O'Donovan", 
+               "display_name": "Donald O'Donovan", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "donald-odonovan"
+          }
+     }, 
+     {
+          "pk": 9971, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Gloria", 
+               "last_name": "Oliver", 
+               "display_name": "Gloria Oliver", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "gloria-oliver"
+          }
+     }, 
+     {
+          "pk": 10004, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Matthew", 
+               "last_name": "Olshan", 
+               "display_name": "Matthew Olshan", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "matthew-olshan"
+          }
+     }, 
+     {
+          "pk": 9961, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Billie", 
+               "last_name": "Pagliolo-Olmon", 
+               "display_name": "Billie Pagliolo-Olmon", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "billie-pagliolo-olmon"
+          }
+     }, 
+     {
+          "pk": 10064, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Val", 
+               "last_name": "Pattee", 
+               "display_name": "Val Pattee", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "val-pattee"
+          }
+     }, 
+     {
+          "pk": 10078, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "William", 
+               "last_name": "Pawley", 
+               "display_name": "William Pawley", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "william-pawley"
+          }
+     }, 
+     {
+          "pk": 10052, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Blake", 
+               "last_name": "Petit", 
+               "display_name": "Blake M. Petit", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "M.", 
+               "slug": "blake-m-petit"
+          }
+     }, 
+     {
+          "pk": 10067, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "H.", 
+               "last_name": "Piper", 
+               "display_name": "H. Beam Piper", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "Beam", 
+               "slug": "h-beam-piper"
+          }
+     }, 
+     {
+          "pk": 10130, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Mark", 
+               "last_name": "Plimsoll", 
+               "display_name": "Mark Plimsoll", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "mark-plimsoll"
+          }
+     }, 
+     {
+          "pk": 9933, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Jason", 
+               "last_name": "Pomerantz", 
+               "display_name": "Jason Pomerantz", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "jason-pomerantz"
+          }
+     }, 
+     {
+          "pk": 10127, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "James", 
+               "last_name": "Priest", 
+               "display_name": "James D. Priest", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "D.", 
+               "slug": "james-d-priest"
+          }
+     }, 
+     {
+          "pk": 10079, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Arlene", 
+               "last_name": "Radasky", 
+               "display_name": "Arlene Radasky", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "arlene-radasky"
+          }
+     }, 
+     {
+          "pk": 9931, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Wil", 
+               "last_name": "Radcliffe", 
+               "display_name": "Wil Radcliffe", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "wil-radcliffe"
+          }
+     }, 
+     {
+          "pk": 10133, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Brian", 
+               "last_name": "Rathbone", 
+               "display_name": "Brian Rathbone", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "brian-rathbone"
+          }
+     }, 
+     {
+          "pk": 9998, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Blackbird", 
+               "last_name": "Raven", 
+               "display_name": "Blackbird Crow Raven", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "Crow", 
+               "slug": "blackbird-crow-raven"
+          }
+     }, 
+     {
+          "pk": 10149, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Mark", 
+               "last_name": "Rayner", 
+               "display_name": "Mark A. Rayner", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "A.", 
+               "slug": "mark-a-rayner"
+          }
+     }, 
+     {
+          "pk": 9967, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Gerard", 
+               "last_name": "Readett", 
+               "display_name": "Gerard Readett", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "gerard-readett"
+          }
+     }, 
+     {
+          "pk": 10066, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Mike", 
+               "last_name": "Reeves-McMillan", 
+               "display_name": "Mike Reeves-McMillan", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "mike-reeves-mcmillan"
+          }
+     }, 
+     {
+          "pk": 10136, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Jack", 
+               "last_name": "Regan", 
+               "display_name": "Jack W. Regan", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "W.", 
+               "slug": "jack-w-regan"
+          }
+     }, 
+     {
+          "pk": 9969, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Ann", 
+               "last_name": "Regentin", 
+               "display_name": "Ann Regentin", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "ann-regentin"
+          }
+     }, 
+     {
+          "pk": 10097, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Bob", 
+               "last_name": "Rench", 
+               "display_name": "Bob Rench", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "bob-rench"
+          }
+     }, 
+     {
+          "pk": 9994, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Jason", 
+               "last_name": "Rennie", 
+               "display_name": "Jason Rennie", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "jason-rennie"
+          }
+     }, 
+     {
+          "pk": 9990, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Lester", 
+               "last_name": "Rey", 
+               "display_name": "Lester Del Rey", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "Del", 
+               "slug": "lester-del-rey"
+          }
+     }, 
+     {
+          "pk": 10074, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Emerian", 
+               "last_name": "Rich", 
+               "display_name": "Emerian Rich", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "emerian-rich"
+          }
+     }, 
+     {
+          "pk": 10144, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Craig", 
+               "last_name": "Robertson", 
+               "display_name": "Craig Robertson", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "craig-robertson"
+          }
+     }, 
+     {
+          "pk": 10123, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Jeremy", 
+               "last_name": "Robinson", 
+               "display_name": "Jeremy Robinson", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "jeremy-robinson"
+          }
+     }, 
+     {
+          "pk": 10084, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Tobias", 
+               "last_name": "Robison", 
+               "display_name": "Tobias D. Robison", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "D.", 
+               "slug": "tobias-d-robison"
+          }
+     }, 
+     {
+          "pk": 10023, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Phil", 
+               "last_name": "Rossi", 
+               "display_name": "Phil Rossi", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "phil-rossi"
+          }
+     }, 
+     {
+          "pk": 10096, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "H.E.", 
+               "last_name": "Roulo", 
+               "display_name": "H.E. Roulo", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "he-roulo"
+          }
+     }, 
+     {
+          "pk": 9929, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Tony", 
+               "last_name": "Ruggiero", 
+               "display_name": "Tony Ruggiero", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "tony-ruggiero"
+          }
+     }, 
+     {
+          "pk": 10036, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "", 
+               "last_name": "Rumi", 
+               "display_name": "Rumi", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "rumi"
+          }
+     }, 
+     {
+          "pk": 10034, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Brady", 
+               "last_name": "Russell", 
+               "display_name": "Brady Russell", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "brady-russell"
+          }
+     }, 
+     {
+          "pk": 9930, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Robert", 
+               "last_name": "Safuto", 
+               "display_name": "Robert J. Safuto", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "J.", 
+               "slug": "robert-j-safuto"
+          }
+     }, 
+     {
+          "pk": 10019, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Mina", 
+               "last_name": "Samuels", 
+               "display_name": "Mina Samuels", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "mina-samuels"
+          }
+     }, 
+     {
+          "pk": 10024, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Basil", 
+               "last_name": "Sands", 
+               "display_name": "Basil Sands", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "basil-sands"
+          }
+     }, 
+     {
+          "pk": 10153, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "J.", 
+               "last_name": "Sawyer", 
+               "display_name": "J. Daniel Sawyer", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "Daniel", 
+               "slug": "j-daniel-sawyer"
+          }
+     }, 
+     {
+          "pk": 10047, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Steve", 
+               "last_name": "Saylor", 
+               "display_name": "Steve Saylor", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "steve-saylor"
+          }
+     }, 
+     {
+          "pk": 10102, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Roberto", 
+               "last_name": "Scarlato", 
+               "display_name": "Roberto Scarlato", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "roberto-scarlato"
+          }
+     }, 
+     {
+          "pk": 9936, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Aram", 
+               "last_name": "Schefrin", 
+               "display_name": "Aram Schefrin", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "aram-schefrin"
+          }
+     }, 
+     {
+          "pk": 10151, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Wyken", 
+               "last_name": "Seagrave", 
+               "display_name": "Wyken Seagrave", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "wyken-seagrave"
+          }
+     }, 
+     {
+          "pk": 9938, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Matthew", 
+               "last_name": "Selznick", 
+               "display_name": "Matthew Wayne Selznick", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "Wayne", 
+               "slug": "matthew-wayne-selznick"
+          }
+     }, 
+     {
+          "pk": 10114, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Ernest", 
+               "last_name": "Seton", 
+               "display_name": "Ernest Thompson Seton", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "Thompson", 
+               "slug": "ernest-thompson-seton"
+          }
+     }, 
+     {
+          "pk": 10014, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Charles", 
+               "last_name": "Sheehan-Miles", 
+               "display_name": "Charles Sheehan-Miles", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "charles-sheehan-miles"
+          }
+     }, 
+     {
+          "pk": 10013, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "David", 
+               "last_name": "Shepherd", 
+               "display_name": "David Shepherd", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "david-shepherd"
+          }
+     }, 
+     {
+          "pk": 9926, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Scott", 
+               "last_name": "Sigler", 
+               "display_name": "Scott Sigler", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "scott-sigler"
+          }
+     }, 
+     {
+          "pk": 10070, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Steve", 
+               "last_name": "Simons", 
+               "display_name": "Steve Simons", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "steve-simons"
+          }
+     }, 
+     {
+          "pk": 10129, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "A", 
+               "last_name": "Square", 
+               "display_name": "A Square", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "a-square"
+          }
+     }, 
+     {
+          "pk": 9995, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Kimberly", 
+               "last_name": "Steele", 
+               "display_name": "Kimberly Steele", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "kimberly-steele"
+          }
+     }, 
+     {
+          "pk": 10150, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "A.P.", 
+               "last_name": "Stephens", 
+               "display_name": "A.P. Stephens", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "ap-stephens"
+          }
+     }, 
+     {
+          "pk": 9959, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "John", 
+               "last_name": "Stockmyer", 
+               "display_name": "John G. Stockmyer", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "G.", 
+               "slug": "john-g-stockmyer"
+          }
+     }, 
+     {
+          "pk": 9928, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Paul", 
+               "last_name": "Story", 
+               "display_name": "Paul Story", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "paul-story"
+          }
+     }, 
+     {
+          "pk": 9974, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "David", 
+               "last_name": "Summers", 
+               "display_name": "David Lee Summers", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "Lee", 
+               "slug": "david-lee-summers"
+          }
+     }, 
+     {
+          "pk": 10107, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "John", 
+               "last_name": "Swift", 
+               "display_name": "John R. Swift", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "R.", 
+               "slug": "john-r-swift"
+          }
+     }, 
+     {
+          "pk": 9945, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "", 
+               "last_name": "TD-0013", 
+               "display_name": "TD-0013", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "td-0013"
+          }
+     }, 
+     {
+          "pk": 10080, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Edward", 
+               "last_name": "Talbot", 
+               "display_name": "Edward G. Talbot", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "G.", 
+               "slug": "edward-g-talbot"
+          }
+     }, 
+     {
+          "pk": 10124, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Linda", 
+               "last_name": "Tannehill", 
+               "display_name": "Linda Tannehill", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "linda-tannehill"
+          }
+     }, 
+     {
+          "pk": 10125, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Morris", 
+               "last_name": "Tannehill", 
+               "display_name": "Morris Tannehill", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "morris-tannehill"
+          }
+     }, 
+     {
+          "pk": 10095, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Margaret", 
+               "last_name": "Taylor", 
+               "display_name": "Margaret R. Taylor", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "R.", 
+               "slug": "margaret-r-taylor"
+          }
+     }, 
+     {
+          "pk": 10073, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Nicholas", 
+               "last_name": "Taylor", 
+               "display_name": "Nicholas Taylor", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "nicholas-taylor"
+          }
+     }, 
+     {
+          "pk": 10146, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "William", 
+               "last_name": "Tennant", 
+               "display_name": "William Tennant", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "william-tennant"
+          }
+     }, 
+     {
+          "pk": 9955, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Decoder", 
+               "last_name": "Theatre", 
+               "display_name": "Decoder Ring Theatre", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "Ring", 
+               "slug": "decoder-ring-theatre"
+          }
+     }, 
+     {
+          "pk": 10040, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "", 
+               "last_name": "ThornDaddy", 
+               "display_name": "ThornDaddy", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "thorndaddy"
+          }
+     }, 
+     {
+          "pk": 10008, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Damon", 
+               "last_name": "Timm", 
+               "display_name": "Damon Timm", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "damon-timm"
+          }
+     }, 
+     {
+          "pk": 10139, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Mary", 
+               "last_name": "TomasiDubois", 
+               "display_name": "Mary TomasiDubois", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "mary-tomasidubois"
+          }
+     }, 
+     {
+          "pk": 10011, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Richard", 
+               "last_name": "Tuttle", 
+               "display_name": "Richard S. Tuttle", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "S.", 
+               "slug": "richard-s-tuttle"
+          }
+     }, 
+     {
+          "pk": 10002, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Jabez", 
+               "last_name": "Van Cleef", 
+               "display_name": "Jabez L. Van Cleef", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "L.", 
+               "slug": "jabez-l-van-cleef"
+          }
+     }, 
+     {
+          "pk": 10076, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Squid", 
+               "last_name": "Varilekova", 
+               "display_name": "Squid Varilekova", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "squid-varilekova"
+          }
+     }, 
+     {
+          "pk": 10048, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Ron", 
+               "last_name": "Vitale", 
+               "display_name": "Ron Vitale", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "ron-vitale"
+          }
+     }, 
+     {
+          "pk": 9984, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Matt", 
+               "last_name": "Wallace", 
+               "display_name": "Matt Wallace", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "matt-wallace"
+          }
+     }, 
+     {
+          "pk": 10100, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Kirk", 
+               "last_name": "Warrington", 
+               "display_name": "Kirk Warrington", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "kirk-warrington"
+          }
+     }, 
+     {
+          "pk": 10030, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "M.", 
+               "last_name": "Wehm", 
+               "display_name": "M. Darusha Wehm", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "Darusha", 
+               "slug": "m-darusha-wehm"
+          }
+     }, 
+     {
+          "pk": 10160, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Michelle", 
+               "last_name": "Welch", 
+               "display_name": "Michelle M. Welch", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "M.", 
+               "slug": "michelle-m-welch"
+          }
+     }, 
+     {
+          "pk": 10154, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Alex", 
+               "last_name": "White", 
+               "display_name": "Alex White", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "alex-white"
+          }
+     }, 
+     {
+          "pk": 10010, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Jeff", 
+               "last_name": "White", 
+               "display_name": "Jeff White", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "jeff-white"
+          }
+     }, 
+     {
+          "pk": 9956, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Steven", 
+               "last_name": "Wilson", 
+               "display_name": "Steven H. Wilson", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "H.", 
+               "slug": "steven-h-wilson"
+          }
+     }, 
+     {
+          "pk": 10035, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Scott", 
+               "last_name": "Wittenburg", 
+               "display_name": "Scott Wittenburg", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "scott-wittenburg"
+          }
+     }, 
+     {
+          "pk": 10020, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Ken", 
+               "last_name": "Wohlrob", 
+               "display_name": "Ken Wohlrob", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "ken-wohlrob"
+          }
+     }, 
+     {
+          "pk": 10116, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "D.C.", 
+               "last_name": "Wood", 
+               "display_name": "D.C. Wood", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "dc-wood"
+          }
+     }, 
+     {
+          "pk": 10028, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Lisa", 
+               "last_name": "Wright", 
+               "display_name": "Lisa Wright", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "lisa-wright"
+          }
+     }, 
+     {
+          "pk": 10027, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "Mike", 
+               "last_name": "Yachnik", 
+               "display_name": "Mike Yachnik", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "mike-yachnik"
+          }
+     }, 
+     {
+          "pk": 9992, 
+          "model": "main.contributor", 
+          "fields": {
+               "first_name": "", 
+               "last_name": "Zan", 
+               "display_name": "Zan", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "user": null, 
+               "date_created": "2010-02-22 15:03:36", 
+               "middle_name": "", 
+               "slug": "zan"
+          }
+     }, 
+     {
+          "pk": 1, 
+          "model": "main.contributortype", 
+          "fields": {
+               "slug": "author", 
+               "name": "Author"
+          }
+     }, 
+     {
+          "pk": 3, 
+          "model": "main.contributortype", 
+          "fields": {
+               "slug": "editor", 
+               "name": "Editor"
+          }
+     }, 
+     {
+          "pk": 4, 
+          "model": "main.contributortype", 
+          "fields": {
+               "slug": "narrator", 
+               "name": "Narrator"
+          }
+     }, 
+     {
+          "pk": 5, 
+          "model": "main.contributortype", 
+          "fields": {
+               "slug": "penname", 
+               "name": "Penname"
+          }
+     }, 
+     {
+          "pk": 6, 
+          "model": "main.contributortype", 
+          "fields": {
+               "slug": "ghostwriter", 
+               "name": "Ghostwriter"
+          }
+     }, 
+     {
+          "pk": 7, 
+          "model": "main.contributortype", 
+          "fields": {
+               "slug": "contributor", 
+               "name": "Contributor"
+          }
+     }, 
+     {
+          "pk": 68250, 
+          "model": "main.episode", 
+          "fields": {
+               "status": 1, 
+               "description": "Ishmael Wang graduates from the Academy and heads out for the Diurnia Quadrant. (Chapters 1-2)", 
+               "sequence": 1, 
+               "url": "http://media.podiobooks.com/doubleshare/PB-DoubleShare-01.mp3", 
+               "title": 293, 
+               "deleted": false, 
+               "length": 0.0, 
+               "filesize": 22163570, 
+               "date_updated": "2009-11-05 12:14:15", 
+               "date_created": "2008-07-04 12:05:13", 
+               "name": "Episode 1"
+          }
+     }, 
+     {
+          "pk": 68251, 
+          "model": "main.episode", 
+          "fields": {
+               "status": 1, 
+               "description": "Ishmael catches up on his reading and learns some self defense tricks on the way to Diurnia.(Chapters 3-4)", 
+               "sequence": 2, 
+               "url": "http://media.podiobooks.com/doubleshare/PB-DoubleShare-02.mp3", 
+               "title": 293, 
+               "deleted": false, 
+               "length": 0.0, 
+               "filesize": 21069353, 
+               "date_updated": "2009-11-05 16:03:13", 
+               "date_created": "2008-07-04 12:05:29", 
+               "name": "Episode 2"
+          }
+     }, 
+     {
+          "pk": 68252, 
+          "model": "main.episode", 
+          "fields": {
+               "status": 1, 
+               "description": "Ishmael gets to Diurnia, signs his contract and learns that his ship is waiting. (Chapters 5-6)", 
+               "sequence": 3, 
+               "url": "http://media.podiobooks.com/doubleshare/PB-DoubleShare-03.mp3", 
+               "title": 293, 
+               "deleted": false, 
+               "length": 0.0, 
+               "filesize": 24494111, 
+               "date_updated": "2009-11-05 12:20:21", 
+               "date_created": "2008-07-04 12:05:46", 
+               "name": "Episode 3"
+          }
+     }, 
+     {
+          "pk": 68253, 
+          "model": "main.episode", 
+          "fields": {
+               "status": 1, 
+               "description": "Ishmael reports for duty on the SC William Tinker and begins meeting the crew. (Chapters 7-8)", 
+               "sequence": 4, 
+               "url": "http://media.podiobooks.com/doubleshare/PB-DoubleShare-04.mp3", 
+               "title": 293, 
+               "deleted": false, 
+               "length": 0.0, 
+               "filesize": 22219577, 
+               "date_updated": "2009-11-05 12:20:36", 
+               "date_created": "2008-07-04 12:06:06", 
+               "name": "Episode 4"
+          }
+     }, 
+     {
+          "pk": 68254, 
+          "model": "main.episode", 
+          "fields": {
+               "status": 1, 
+               "description": "As Ishmael settles into the shipboard routine, troubling issues start emerging. (Chapters 9-10)", 
+               "sequence": 5, 
+               "url": "http://media.podiobooks.com/doubleshare/PB-DoubleShare-05.mp3", 
+               "title": 293, 
+               "deleted": false, 
+               "length": 0.0, 
+               "filesize": 24501634, 
+               "date_updated": "2009-11-05 12:21:13", 
+               "date_created": "2008-07-04 12:06:23", 
+               "name": "Episode 5"
+          }
+     }, 
+     {
+          "pk": 68287, 
+          "model": "main.episode", 
+          "fields": {
+               "status": 1, 
+               "description": "Ishmael stands his first watch and takes a tour of the ship. (Chapters 11-12)", 
+               "sequence": 6, 
+               "url": "http://media.podiobooks.com/doubleshare/PB-DoubleShare-06.mp3", 
+               "title": 293, 
+               "deleted": false, 
+               "length": 0.0, 
+               "filesize": 21989281, 
+               "date_updated": "2009-11-05 12:21:25", 
+               "date_created": "2008-07-08 12:34:56", 
+               "name": "Episode 6"
+          }
+     }, 
+     {
+          "pk": 68288, 
+          "model": "main.episode", 
+          "fields": {
+               "status": 1, 
+               "description": "The SC William Tinker gets underway and Ishmael meets the Captain. (Chapters 13-14)", 
+               "sequence": 7, 
+               "url": "http://media.podiobooks.com/doubleshare/PB-DoubleShare-07.mp3", 
+               "title": 293, 
+               "deleted": false, 
+               "length": 0.0, 
+               "filesize": 23519430, 
+               "date_updated": "2009-11-05 12:21:32", 
+               "date_created": "2008-07-08 12:35:30", 
+               "name": "Episode 7"
+          }
+     }, 
+     {
+          "pk": 68289, 
+          "model": "main.episode", 
+          "fields": {
+               "status": 1, 
+               "description": "Ishmael learns more about what happened to his predecessor and begins to make changes aboard. (Chapters 15-16) ", 
+               "sequence": 8, 
+               "url": "http://media.podiobooks.com/doubleshare/PB-DoubleShare-08.mp3", 
+               "title": 293, 
+               "deleted": false, 
+               "length": 0.0, 
+               "filesize": 23148240, 
+               "date_updated": "2009-11-05 12:22:14", 
+               "date_created": "2008-07-08 12:35:53", 
+               "name": "Episode 8"
+          }
+     }, 
+     {
+          "pk": 68290, 
+          "model": "main.episode", 
+          "fields": {
+               "status": 1, 
+               "description": "Ishmael gets a reputation and learns something about the crew. (Chapters 17-18)", 
+               "sequence": 9, 
+               "url": "http://media.podiobooks.com/doubleshare/PB-DoubleShare-09.mp3", 
+               "title": 293, 
+               "deleted": false, 
+               "length": 0.0, 
+               "filesize": 24560984, 
+               "date_updated": "2009-11-05 12:22:15", 
+               "date_created": "2008-07-08 12:36:28", 
+               "name": "Episode 9"
+          }
+     }, 
+     {
+          "pk": 68291, 
+          "model": "main.episode", 
+          "fields": {
+               "status": 1, 
+               "description": "Ishmael learns that no good deed goes unpunished and starts to clean up the ship. (Chapters 19-20)", 
+               "sequence": 10, 
+               "url": "http://media.podiobooks.com/doubleshare/PB-DoubleShare-10.mp3", 
+               "title": 293, 
+               "deleted": false, 
+               "length": 0.0, 
+               "filesize": 23986291, 
+               "date_updated": "2009-11-05 22:16:14", 
+               "date_created": "2008-07-08 12:36:50", 
+               "name": "Episode 10"
+          }
+     }, 
+     {
+          "pk": 68317, 
+          "model": "main.episode", 
+          "fields": {
+               "status": 1, 
+               "description": "Ishmael has a run in with a couple of crew members and learns something important about the general outlook aboard. (Chapters 21-22)", 
+               "sequence": 11, 
+               "url": "http://media.podiobooks.com/doubleshare/PB-DoubleShare-11.mp3", 
+               "title": 293, 
+               "deleted": false, 
+               "length": 0.0, 
+               "filesize": 28534899, 
+               "date_updated": "2009-11-05 22:12:38", 
+               "date_created": "2008-07-12 16:11:32", 
+               "name": "Episode 11"
+          }
+     }, 
+     {
+          "pk": 68318, 
+          "model": "main.episode", 
+          "fields": {
+               "status": 1, 
+               "description": "Ishmael learns that Mr. Burnside takes a very proprietary view of his watch. (Chapters 23-24)", 
+               "sequence": 12, 
+               "url": "http://media.podiobooks.com/doubleshare/PB-DoubleShare-12.mp3", 
+               "title": 293, 
+               "deleted": false, 
+               "length": 0.0, 
+               "filesize": 21173844, 
+               "date_updated": "2009-11-05 22:12:33", 
+               "date_created": "2008-07-12 16:11:53", 
+               "name": "Episode 12"
+          }
+     }, 
+     {
+          "pk": 68319, 
+          "model": "main.episode", 
+          "fields": {
+               "status": 1, 
+               "description": "The crew has a field day and Ishmael discovers that he's volunteered to be a teacher. (Chapters 25-26)", 
+               "sequence": 13, 
+               "url": "http://media.podiobooks.com/doubleshare/PB-DoubleShare-13.mp3", 
+               "title": 293, 
+               "deleted": false, 
+               "length": 0.0, 
+               "filesize": 24582719, 
+               "date_updated": "2009-11-05 23:40:48", 
+               "date_created": "2008-07-12 16:12:20", 
+               "name": "Episode 13"
+          }
+     }, 
+     {
+          "pk": 68320, 
+          "model": "main.episode", 
+          "fields": {
+               "status": 1, 
+               "description": "The crew learns how to study together and Ishmael gets called names. (Chapters 27-28)", 
+               "sequence": 14, 
+               "url": "http://media.podiobooks.com/doubleshare/PB-DoubleShare-14.mp3", 
+               "title": 293, 
+               "deleted": false, 
+               "length": 0.0, 
+               "filesize": 21921991, 
+               "date_updated": "2009-11-05 23:40:49", 
+               "date_created": "2008-07-12 16:12:44", 
+               "name": "Episode 14"
+          }
+     }, 
+     {
+          "pk": 68321, 
+          "model": "main.episode", 
+          "fields": {
+               "status": 1, 
+               "description": "After consulting with Arletta and Mel, Ishmael begins taking steps to protect himself. He also learns just how detailed RumorNet can be. (Chapters 29-30)", 
+               "sequence": 15, 
+               "url": "http://media.podiobooks.com/doubleshare/PB-DoubleShare-15.mp3", 
+               "title": 293, 
+               "deleted": false, 
+               "length": 0.0, 
+               "filesize": 21890226, 
+               "date_updated": "2009-11-05 22:16:41", 
+               "date_created": "2008-07-12 16:13:07", 
+               "name": "Episode 15"
+          }
+     }, 
+     {
+          "pk": 68331, 
+          "model": "main.episode", 
+          "fields": {
+               "status": 1, 
+               "description": "Ishmael pokes about and discovers some interesting facts about the Tinker's systems. (Chapters 31-32)", 
+               "sequence": 16, 
+               "url": "http://media.podiobooks.com/doubleshare/PB-DoubleShare-16.mp3", 
+               "title": 293, 
+               "deleted": false, 
+               "length": 0.0, 
+               "filesize": 21335594, 
+               "date_updated": "2009-11-05 23:40:52", 
+               "date_created": "2008-07-13 20:30:49", 
+               "name": "Episode 16"
+          }
+     }, 
+     {
+          "pk": 68332, 
+          "model": "main.episode", 
+          "fields": {
+               "status": 1, 
+               "description": "Ishmael visits the Captain and gets a warning from Fredi. (Chapters 33-34) ", 
+               "sequence": 17, 
+               "url": "http://media.podiobooks.com/doubleshare/PB-DoubleShare-17.mp3", 
+               "title": 293, 
+               "deleted": false, 
+               "length": 0.0, 
+               "filesize": 23647326, 
+               "date_updated": "2009-11-05 23:44:35", 
+               "date_created": "2008-07-13 20:31:29", 
+               "name": "Episode 17"
+          }
+     }, 
+     {
+          "pk": 68333, 
+          "model": "main.episode", 
+          "fields": {
+               "status": 1, 
+               "description": "Another crewman wants to join Ishmael's harem. Fredi offers a word of caution. (Chapters 35-36)", 
+               "sequence": 18, 
+               "url": "http://media.podiobooks.com/doubleshare/PB-DoubleShare-18.mp3", 
+               "title": 293, 
+               "deleted": false, 
+               "length": 0.0, 
+               "filesize": 23668642, 
+               "date_updated": "2009-11-05 12:24:56", 
+               "date_created": "2008-07-13 20:32:00", 
+               "name": "Episode 18"
+          }
+     }, 
+     {
+          "pk": 68334, 
+          "model": "main.episode", 
+          "fields": {
+               "status": 1, 
+               "description": "Ishmael does a little more clean up and takes Mr. Vorhees shopping. (Chapters 37-38)", 
+               "sequence": 19, 
+               "url": "http://media.podiobooks.com/doubleshare/PB-DoubleShare-19.mp3", 
+               "title": 293, 
+               "deleted": false, 
+               "length": 0.0, 
+               "filesize": 20831117, 
+               "date_updated": "2009-11-05 12:25:10", 
+               "date_created": "2008-07-13 20:32:34", 
+               "name": "Episode 19"
+          }
+     }, 
+     {
+          "pk": 68335, 
+          "model": "main.episode", 
+          "fields": {
+               "status": 1, 
+               "description": "Fredi reveals a secret and Ishmael stretches his legs on the Orbital. (Chapters 39-40)", 
+               "sequence": 20, 
+               "url": "http://media.podiobooks.com/doubleshare/PB-DoubleShare-20.mp3", 
+               "title": 293, 
+               "deleted": false, 
+               "length": 0.0, 
+               "filesize": 25169116, 
+               "date_updated": "2009-11-05 12:25:43", 
+               "date_created": "2008-07-13 20:33:06", 
+               "name": "Episode 20"
+          }
+     }, 
+     {
+          "pk": 68357, 
+          "model": "main.episode", 
+          "fields": {
+               "status": 1, 
+               "description": "While Mel, Fredi, and Ishmael celebrate, tragedy is brewing. (Chapters 41-42)", 
+               "sequence": 21, 
+               "url": "http://media.podiobooks.com/doubleshare/PB-DoubleShare-21.mp3", 
+               "title": 293, 
+               "deleted": false, 
+               "length": 0.0, 
+               "filesize": 19402533, 
+               "date_updated": "2009-11-05 12:25:48", 
+               "date_created": "2008-07-17 02:24:01", 
+               "name": "Episode 21 "
+          }
+     }, 
+     {
+          "pk": 68358, 
+          "model": "main.episode", 
+          "fields": {
+               "status": 1, 
+               "description": "Burnside shows Ishmael how the ship does drills and half the crew takes ratings exams. (Chapters 43-44)", 
+               "sequence": 22, 
+               "url": "http://media.podiobooks.com/doubleshare/PB-DoubleShare-22.mp3", 
+               "title": 293, 
+               "deleted": false, 
+               "length": 0.0, 
+               "filesize": 17685556, 
+               "date_updated": "2009-11-05 12:25:58", 
+               "date_created": "2008-07-17 02:24:33", 
+               "name": "Episode 22"
+          }
+     }, 
+     {
+          "pk": 68359, 
+          "model": "main.episode", 
+          "fields": {
+               "status": 1, 
+               "description": "Ishmael gets some late night callers and gets locks installed on the doors. (Chapters 45-46)", 
+               "sequence": 23, 
+               "url": "http://media.podiobooks.com/doubleshare/PB-DoubleShare-23.mp3", 
+               "title": 293, 
+               "deleted": false, 
+               "length": 0.0, 
+               "filesize": 21360672, 
+               "date_updated": "2009-11-05 19:46:47", 
+               "date_created": "2008-07-17 02:25:55", 
+               "name": "Episode 23"
+          }
+     }, 
+     {
+          "pk": 68360, 
+          "model": "main.episode", 
+          "fields": {
+               "status": 1, 
+               "description": "The watch rotations change as the injured crew are deal with. Apones finally wears a clean shipsuit. (Chapters 47-48) ", 
+               "sequence": 24, 
+               "url": "http://media.podiobooks.com/doubleshare/PB-DoubleShare-24.mp3", 
+               "title": 293, 
+               "deleted": false, 
+               "length": 0.0, 
+               "filesize": 19104528, 
+               "date_updated": "2009-11-05 12:26:37", 
+               "date_created": "2008-07-17 02:26:18", 
+               "name": "Episode 24"
+          }
+     }, 
+     {
+          "pk": 68361, 
+          "model": "main.episode", 
+          "fields": {
+               "status": 1, 
+               "description": "The nightmare ends and Ishmael gives out another whelkie. (Chapters 49-50)", 
+               "sequence": 25, 
+               "url": "http://media.podiobooks.com/doubleshare/PB-DoubleShare-25.mp3", 
+               "title": 293, 
+               "deleted": false, 
+               "length": 0.0, 
+               "filesize": 24652100, 
+               "date_updated": "2009-11-05 14:15:07", 
+               "date_created": "2008-07-17 02:26:43", 
+               "name": "Episode 25"
+          }
+     }, 
+     {
+          "pk": 1, 
+          "model": "main.license", 
+          "fields": {
+               "code": "", 
+               "url": "http://creativecommons.org/licenses/by-nc-nd/3.0/", 
+               "text": "Creative Commons Attribution-Noncommercial-No Derivative Works 3.0", 
+               "date_updated": "2009-12-09 21:52:27", 
+               "image_url": "http://i.creativecommons.org/l/by-nc-nd/3.0/us/88x31.png", 
+               "date_created": "2009-12-09 21:52:27", 
+               "slug": "by-nc-nd"
+          }
+     }, 
+     {
+          "pk": 3, 
+          "model": "main.license", 
+          "fields": {
+               "code": "", 
+               "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/", 
+               "text": "Creative Commons Attribution-Noncommercial-Share Alike", 
+               "date_updated": "2009-12-09 21:53:00", 
+               "image_url": "http://i.creativecommons.org/l/by-nc-sa/3.0/us/88x31.png", 
+               "date_created": "2009-12-09 21:53:00", 
+               "slug": "by-nc-sa"
+          }
+     }, 
+     {
+          "pk": 4, 
+          "model": "main.license", 
+          "fields": {
+               "code": "", 
+               "url": "http://creativecommons.org/licenses/by-nd/3.0/", 
+               "text": "Creative Commons Attribution-No Derivative Works", 
+               "date_updated": "2009-12-09 21:53:00", 
+               "image_url": "http://i.creativecommons.org/l/by-nd/3.0/us/88x31.png", 
+               "date_created": "2009-12-09 21:53:00", 
+               "slug": "by-nd"
+          }
+     }, 
+     {
+          "pk": 2, 
+          "model": "main.license", 
+          "fields": {
+               "code": "", 
+               "url": "http://creativecommons.org/licenses/by-sa/3.0/", 
+               "text": "Creative Commons Attribution-Share Alike 3.0", 
+               "date_updated": "2009-12-09 21:52:27", 
+               "image_url": "http://i.creativecommons.org/l/by-sa/3.0/us/88x31.png", 
+               "date_created": "2009-12-09 21:52:27", 
+               "slug": "by-sa"
+          }
+     }, 
+     {
+          "pk": 1, 
+          "model": "main.partner", 
+          "fields": {
+               "name": "Librivox", 
+               "url": "http://www.librivox.org", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "date_created": "2006-01-27 00:00:00", 
+               "logo": "librivox.JPG"
+          }
+     }, 
+     {
+          "pk": 4, 
+          "model": "main.partner", 
+          "fields": {
+               "name": "New Fiction", 
+               "url": "http://www.newfiction.com", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "date_created": "2008-10-27 00:00:00", 
+               "logo": "newfiction.jpg"
+          }
+     }, 
+     {
+          "pk": 2, 
+          "model": "main.partner", 
+          "fields": {
+               "name": "Podshow", 
+               "url": "http://www.podshow.com", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "date_created": "2006-06-15 00:00:00", 
+               "logo": "podshow.jpg"
+          }
+     }, 
+     {
+          "pk": 3, 
+          "model": "main.partner", 
+          "fields": {
+               "name": "Prometheus Radio Theatre", 
+               "url": "http://prometheus.libsyn.com", 
+               "deleted": false, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "date_created": "2007-09-19 00:00:00", 
+               "logo": "prometheus.jpg"
+          }
+     }, 
+     {
+          "pk": 4, 
+          "model": "main.series", 
+          "fields": {
+               "description": "7th Son", 
+               "url": "", 
+               "deleted": false, 
+               "date_updated": "2010-01-31 20:23:01", 
+               "date_created": "2010-01-31 20:23:01", 
+               "slug": "7th-son", 
+               "name": "7th Son"
+          }
+     }, 
+     {
+          "pk": 13, 
+          "model": "main.series", 
+          "fields": {
+               "description": "A Shaman's Tale from the Golden Age of the Solar Clipper", 
+               "url": "", 
+               "deleted": false, 
+               "date_updated": "2010-01-31 20:23:15", 
+               "date_created": "2010-01-31 20:23:15", 
+               "slug": "a-shamans-tale-from-the-golden-age-of-the-solar-clipper", 
+               "name": "A Shaman's Tale from the Golden Age of the Solar Clipper"
+          }
+     }, 
+     {
+          "pk": 33, 
+          "model": "main.series", 
+          "fields": {
+               "description": "A Trader's Tale from the Golden Age of the Solar Clipper", 
+               "url": "", 
+               "deleted": false, 
+               "date_updated": "2010-02-05 11:46:41", 
+               "date_created": "2010-02-05 11:46:41", 
+               "slug": "a-traders-tale-from-the-golden-age-of-the-solar-clipper", 
+               "name": "A Trader's Tale from the Golden Age of the Solar Clipper"
+          }
+     }, 
+     {
+          "pk": 37, 
+          "model": "main.series", 
+          "fields": {
+               "description": "Heaven", 
+               "url": "", 
+               "deleted": false, 
+               "date_updated": "2010-02-05 11:46:41", 
+               "date_created": "2010-02-05 11:46:41", 
+               "slug": "heaven", 
+               "name": "Heaven"
+          }
+     }, 
+     {
+          "pk": 293, 
+          "model": "main.title", 
+          "fields": {
+               "advisory": null, 
+               "date_updated": "2010-02-22 15:03:36", 
+               "series": null, 
+               "display_on_homepage": true, 
+               "podiobooker_blog_url": "http://www.podiobooks.com/blog/2008/07/04/double-share/", 
+               "is_adult": false, 
+               "partner": null, 
+               "is_hosted_at_pb": true, 
+               "avg_writing": 4.9065399999999997, 
+               "avg_narration": 4.9501600000000003, 
+               "libsyn_show_id": "", 
+               "promoter_count": 319, 
+               "detractor_count": 2, 
+               "enable_comments": true, 
+               "status": 1, 
+               "awards": [
+                    8
+               ], 
+               "description": "<a href=\"http://parsecawards.com/node/861\"><img src=\"http://farm4.static.flickr.com/3574/3773548318_0f024bb111_o.jpg\" align=\"right\" hspace=\"5\" border=\"0\" /></a>A Trader's Tale from the Golden Age of the Solar Clipper : Book 4\n\nWhen he graduates from the Academy at Port Newmar, Ishmael Horatio Wang reports for duty in his first assignment as an officer. When he gets to his new ship, he finds things are not exactly the way he'd learned in school. The coffee tastes like used engine oil, the ship has no heart, and the nearest decent tailor is two quadrants away. What's a new Third Mate to do? Will he be able to trust Billy?", 
+               "deleted": false, 
+               "avg_audio_quality": 4.9158900000000001, 
+               "avg_overall": 4.9345800000000004, 
+               "slug": "double-share", 
+               "categories": [
+                    1
+               ], 
+               "name": "Double Share", 
+               "license": 1, 
+               "cover": "DoubleShare.jpg", 
+               "date_created": "2008-07-04 11:31:17", 
+               "is_complete": true
+          }
+     }, 
+     {
+          "pk": 15504, 
+          "model": "main.titlecontributors", 
+          "fields": {
+               "contributor": 10000, 
+               "date_created": "2010-02-22 15:03:36", 
+               "contributor_type": 1, 
+               "title": 293
+          }
+     }
+]
