@@ -2,7 +2,7 @@ from django.test import TestCase
 from django.test.client import Client
 
 class UrlTestCase(TestCase):
-    fixtures = ['main_data.json',]
+    fixtures = ['test_data.json',]
     
     def setUp(self):
         self.c = Client()
@@ -24,11 +24,11 @@ class UrlTestCase(TestCase):
         self.assertEquals(200, response.status_code)
         
     def testTitleSummary(self):
-        response = self.c.get('/title/summary/293/')
+        response = self.c.get('/title/summary/293/') # Double Share
         self.assertEquals(200, response.status_code)
         
     def testTitleSnippet(self):
-        response = self.c.get('/title/snippet/293/')
+        response = self.c.get('/title/snippet/293/') # Double Share
         self.assertEquals(200, response.status_code)
         
     def testTitleAjaxTest(self):
@@ -68,5 +68,5 @@ class UrlTestCase(TestCase):
         self.assertEquals(200, response.status_code)
         
     def testEpisodeDetail(self):
-        response = self.c.get('/episode/99/')
+        response = self.c.get('/episode/68250/') # Double Share, Episode 1
         self.assertEquals(200, response.status_code)
