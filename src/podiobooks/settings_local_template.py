@@ -5,6 +5,7 @@
 # MADE LOCALLY BY ALL INSTALLATIONS
 
 # local_settings.py, once created, should never be checked into source control
+# It is ignored by default by .gitignore, so if you don't mess with that, you should be fine.
 
 import os
 
@@ -14,8 +15,6 @@ PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
-TEMPLATE_THEMES = ('pb2',)
-
 # Cache Settings
 # CACHE_BACKEND = 'memcached://127.0.0.1:11211/'
 CACHE_BACKEND = 'dummy:///'
@@ -23,20 +22,21 @@ CACHE_MIDDLEWARE_SECONDS = 30
 CACHE_MIDDLEWARE_ANONYMOUS_ONLY = True
 CACHE_MIDDLEWARE_KEY_PREFIX = 'pb2'
 
-ADMINS = (
-    # ('Your Name', 'your_email@domain.com'),
+# List of Admin users to be emailed by error system
+MANAGERS = (
+    # ('Tim White', 'tim@cyface.com'),
 )
+
+# URL that handles the media served from MEDIA_ROOT. Make sure to use a
+# trailing slash if there is a path component (optional in other cases).
+# Examples: "http://media.lawrence.com", "http://example.com/media/"
+MEDIA_URL = '/media/'
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
 MEDIA_ROOT = PROJECT_PATH + '/media/'
 MEDIA_COVERS = 'images/covers/'
 MEDIA_AWARDS = 'images/awards/'
-
-# URL that handles the media served from MEDIA_ROOT. Make sure to use a
-# trailing slash if there is a path component (optional in other cases).
-# Examples: "http://media.lawrence.com", "http://example.com/media/"
-MEDIA_URL = '/media/'
 
 # URL that is used to fetch the covers for the titles
 COVER_MEDIA_URLS = (MEDIA_URL,)
@@ -45,6 +45,18 @@ COVER_MEDIA_URLS = (MEDIA_URL,)
 # trailing slash.
 # Examples: "http://foo.com/media/", "/media/".
 ADMIN_MEDIA_PREFIX = '/adminmedia/'
+
+# Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
+# Always use forward slashes, even on Windows.
+# Don't forget to use absolute paths, not relative paths.
+TEMPLATE_ROOT = PROJECT_PATH + '/templates'
+TEMPLATE_DIRS = (TEMPLATE_ROOT, TEMPLATE_ROOT + '/base')
+MAIN_TEMPLATE_THEME = 'base'
+TEMPLATE_THEMES = ('pb2',)
+for theme in reversed(TEMPLATE_THEMES):
+    TEMPLATE_DIRS = (TEMPLATE_ROOT + '/themes/' + theme,) + TEMPLATE_DIRS
+MAIN_TEMPLATE_THEME = TEMPLATE_THEMES[0]
+THEME_MEDIA_URL = MEDIA_URL +'themes/' + MAIN_TEMPLATE_THEME + '/'  
 
 # Local DB settings. (Postgres)
 DATABASE_ENGINE = 'postgresql_psycopg2'          # 'postgresql_psycopg2', 'postgresql'
@@ -102,9 +114,10 @@ SERVER_EMAIL = 'a real email address'
 # django-registration Settings
 ACCOUNT_ACTIVATION_DAYS = 14
 
-# Local add-ons to main variables
-LOCAL_MIDDLEWARE_CLASSES = None
-LOCAL_TEMPLATE_CONTEXT_PROCESSORS = None
+# Local add-ons to main inclusion variables
+# MIDDLEWARE_CLASSES += ()
+# TEMPLATE_CONTEXT_PROCESSORS +=
+# INSTALLED_APPS +=
 
 ##### PB2 Custom Variables Below Here #######
 
