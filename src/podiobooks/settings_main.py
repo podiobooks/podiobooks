@@ -1,12 +1,4 @@
-# Django settings for podiobooks project.
-
-# NOTE
-# see local_settings_template.py for instructions on making your local settings file
-from settings_local import * #@UnusedWildImport
-
-MANAGERS = ADMINS
-
-USE_I18N = False
+# Django settings for podiobooks project
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -25,9 +17,6 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'contrib.site_info_context_processor.site',
 )
 
-if LOCAL_TEMPLATE_CONTEXT_PROCESSORS:
-    TEMPLATE_CONTEXT_PROCESSORS += LOCAL_TEMPLATE_CONTEXT_PROCESSORS
-
 MIDDLEWARE_CLASSES = (
     'django.middleware.gzip.GZipMiddleware',
     'django.middleware.doc.XViewMiddleware',
@@ -41,22 +30,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.http.ConditionalGetMiddleware',
 )
 
-if LOCAL_MIDDLEWARE_CLASSES:
-    MIDDLEWARE_CLASSES += LOCAL_MIDDLEWARE_CLASSES
-
 ROOT_URLCONF = 'podiobooks.urls'
-
-# Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-# Always use forward slashes, even on Windows.
-# Don't forget to use absolute paths, not relative paths.
-TEMPLATE_ROOT = PROJECT_PATH + '/templates'
-TEMPLATE_DIRS = (TEMPLATE_ROOT, TEMPLATE_ROOT + '/base')
-MAIN_TEMPLATE_THEME = 'base'
-if TEMPLATE_THEMES:
-    for theme in reversed(TEMPLATE_THEMES):
-        TEMPLATE_DIRS = (TEMPLATE_ROOT + '/themes/' + theme,) + TEMPLATE_DIRS
-    MAIN_TEMPLATE_THEME = TEMPLATE_THEMES[0]
-THEME_MEDIA_URL = MEDIA_URL +'themes/' + MAIN_TEMPLATE_THEME + '/'
 
 AUTH_PROFILE_MODULE = 'main.UserProfile'
 
@@ -67,9 +41,6 @@ LOGIN_REDIRECT_URL = '/'
 OPENID_SREG = {
     "required": ['fullname', 'country']
 }
-
-#django_registration
-ACCOUNT_ACTIVATION_DAYS = 14
 
 INSTALLED_APPS = (
     'contrib.django_restapi',
