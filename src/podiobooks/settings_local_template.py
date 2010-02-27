@@ -1,11 +1,16 @@
-# INSTRUCTIONS
-# SAVE A COPY OF THIS FILE IN THIS DIRECTORY WITH THE NAME local_settings.py
-# MAKE YOUR LOCAL SETTINGS CHANGES IN THAT FILE AND DO NOT CHECK IT IN
-# CHANGES TO THIS FILE SHOULD BE TO ADD/REMOVE SETTINGS THAT NEED TO BE
-# MADE LOCALLY BY ALL INSTALLATIONS
+"""
+Local Django Settings File
 
-# local_settings.py, once created, should never be checked into source control
-# It is ignored by default by .gitignore, so if you don't mess with that, you should be fine.
+INSTRUCTIONS
+SAVE A COPY OF THIS FILE IN THIS DIRECTORY WITH THE NAME local_settings.py
+MAKE YOUR LOCAL SETTINGS CHANGES IN THAT FILE AND DO NOT CHECK IT IN
+CHANGES TO THIS FILE SHOULD BE TO ADD/REMOVE SETTINGS THAT NEED TO BE
+MADE LOCALLY BY ALL INSTALLATIONS
+
+local_settings.py, once created, should never be checked into source control
+It is ignored by default by .gitignore, so if you don't mess with that, you should be fine.
+"""
+# pylint: disable-msg=R0801
 
 import os
 

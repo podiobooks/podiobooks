@@ -1,80 +1,81 @@
-#!/usr/bin/python
+"""General Utilities for working with the LibSyn API"""
 
 import xmlrpclib
 import hashlib
 import pprint
 from django.conf import settings
 
-def getShowInfo(libsyn_slug):
-	""" Returns info about a certain show """
-	
-	# network slug (network_id can be substituted) is to ensure the authenticated user
-	# has proper permission features on the network. show slug (show_id can be substituted)
-	# is the show we're looking for
-	params = {	'network_slug'	: settings.LIBSYN_NETWORK_SLUG, 		
-				'show_slug'		: libsyn_slug	}
-	
-	# api string is usually a secret - similar to a password
-	user = User(settings.LIBSYN_USER, settings.LIBSYN_KEY)
-	
-	try:
-		result = Api().makeApiCall(user, 'producer.publishing.getShowInfo', params)
-	except:
-		result = ""
-	
-	return result
-	
+def get_show_info(libsyn_slug):
+    """ Returns info from LibSyn about a certain show """
+    
+    # network slug (network_id can be substituted) is to ensure the authenticated user
+    # has proper permission features on the network. show slug (show_id can be substituted)
+    # is the show we're looking for
+    params = {    'network_slug'    : settings.LIBSYN_NETWORK_SLUG,         
+                'show_slug'        : libsyn_slug    }
+    
+    # api string is usually a secret - similar to a password
+    user = User(settings.LIBSYN_USER, settings.LIBSYN_KEY)
+    
+    try:
+        show_info = make_api_call(user, 'producer.publishing.getShowInfo', params)
+    except xmlrpclib.Error:
+        show_info = ""
+    
+    return show_info
+    
 
-class Api:
-	def makeApiCall(self, user, method, params={}, url='http://api.libsyn.com/xmlrpc'):
-		"""Make an XMLRPC call to the main API - Returns mixed
-		Expects a User object as the user argument"""
+def make_api_call(user, method, params):
+    """Make an XMLRPC call to the main API - Returns mixed
+    Expects a User object as the user argument"""
 
-		# server = xmlrpclib.ServerProxy(url, allow_none=1)
+    api_params = _build_params(user, params)
 
+    # better way to call a string as a method?
+    method = "server.%s" % (method)
 
-		api_params = self._buildParams(user, params)
+    try:
+        return eval(method)(api_params)
+    except xmlrpclib.Fault, f:
+        raise f
 
-		# better way to call a string as a method?
-		method = "server.%s" % (method)
+def _build_params(user, params):
+    """Builds up the parameter dict for the API call"""
+    return {'user'      : user.email ,
+            'params'    : params ,
+            'hash'      : _sign_params(user, params) }
 
-		try:
-			return eval(method)(api_params)
-		except xmlrpclib.Fault, f:
-			raise Exception('xmlrpcerror', f.faultString)
+def _sign_params(user, params):
+    """Signs the params with user's api key"""
+    hash_str = user.api_key  # start string with api key (kinda a salt)
 
-	def _buildParams(self, user, params={}):
-		return {'user'      : user.email ,
-				'params'    : params ,
-				'hash'      : self._signParams(user, params) }
+    keys = params.keys()
+    keys.sort()
+    for key in keys:
+        if(_is_scalar(params[key])):
+            temp_str = "%s%s" % (key, params[key])
+            hash_str += temp_str
 
-	def _signParams(self, user, params):
-		"""Signs the params with user's api key"""
-		str = user.api_key  # start string with api key (kinda a salt)
+    sha1 = hashlib.sha1(hash_str).hexdigest()
+    return sha1
 
-		keys = params.keys()
-		keys.sort()
-		for key in keys:
-			if(self._isScalar(params[key])):
-				temp_str = "%s%s" % (key, params[key])
-				str += temp_str
-
-		sha1 = hashlib.sha1(str).hexdigest()
-		return sha1
-
-	def _isScalar(self, x):
-		return isinstance(x, basestring) or isinstance(x, int)
+def _is_scalar(x):
+    """Determines if a particular var is a scalar value"""
+    return isinstance(x, basestring) or isinstance(x, int)
 
 class User:
-	"""Just a simple user class to hold basic information """
-	def __init__(self, email, api_key):
-		self.email = email
-		self.api_key = api_key
+    """Just a simple user class to hold basic information """
+    def __init__(self, email, api_key):
+        self.email = email
+        self.api_key = api_key
 
-##### MAIN FUNCTION TO RUN IF THIS SCRIPT IS CALLED ALONE ###
+def main():
+    """MAIN FUNCTION TO RUN IF THIS SCRIPT IS CALLED ALONE"""
+    show_info = get_show_info('theflownsky')
+    
+    # pretty print the result
+    pprinter = pprint.PrettyPrinter(indent=4)
+    pprinter.pprint(show_info)
+
 if __name__ == "__main__":
-	result = getShowInfo('theflownsky')
-	
-	# pretty print the result
-	pp = pprint.PrettyPrinter(indent=4)
-	pp.pprint(result)
+    main()

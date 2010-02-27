@@ -1,6 +1,6 @@
 # lint Python modules using external checkers.
 # 
-# This is the main checker controling the other ones and the reports
+# This is the main checker controlling the other ones and the reports
 # generation. It is itself both a raw checker and an astng checker in order
 # to:
 # * handle message activation / deactivation at the module level
@@ -11,15 +11,16 @@
 # Specify a configuration file.
 #rcfile=
 
-# Generated Members
-generated-members=objects
+# Python code to execute, usually for sys.path manipulation such as
+# pygtk.require().
+#init-hook=
 
 # Profiled execution.
 profile=no
 
 # Add <file or directory> to the black list. It should be a base name, not a
 # path. You may set this option multiple times.
-ignore=.svn
+ignore=conf
 
 # Pickle collected data for later comparisons.
 persistent=yes
@@ -34,32 +35,32 @@ load-plugins=
 
 [MESSAGES CONTROL]
 
-# Enable only checker(s) with the given id(s). This option conflict with the
+# Enable only checker(s) with the given id(s). This option conflicts with the
 # disable-checker option
 #enable-checker=
 
-# Enable all checker(s) except those with the given id(s). This option conflict
-# with the disable-checker option
+# Enable all checker(s) except those with the given id(s). This option
+# conflicts with the enable-checker option
 #disable-checker=
 
-# Enable all messages in the listed categories.
+# Enable all messages in the listed categories (IRCWEF).
 #enable-msg-cat=
 
-# Disable all messages in the listed categories.
-#disable-msg-cat=
+# Disable all messages in the listed categories (IRCWEF).
+disable-msg-cat=I
 
 # Enable the message(s) with the given id(s).
 #enable-msg=
 
 # Disable the message(s) with the given id(s).
-disable-msg=C0323,W0142,C0301,C0103,C0111,E0213,C0302,C0203,W0703,R0201
+disable-msg=W0704,W0201,W0142,W0232,R0903,C0301
 
 
 [REPORTS]
 
-# set the output format. Available formats are text, parseable, colorized and
-# html
-output-format=colorized
+# Set the output format. Available formats are text, parseable, colorized, msvs
+# (visual studio) and html
+output-format=text
 
 # Include message's id in output
 include-ids=yes
@@ -73,7 +74,7 @@ files-output=no
 reports=yes
 
 # Python expression which should return a note less than 10 (10 is the highest
-# note).You have access to the variables errors warning, statement which
+# note). You have access to the variables errors warning, statement which
 # respectivly contain the number of errors / warnings messages and the total
 # number of statements analyzed. This is used by the global evaluation report
 # (R0004).
@@ -88,6 +89,84 @@ comment=no
 
 # Disable the report(s) with the given id(s).
 #disable-report=
+
+
+# checks for :
+# * doc strings
+# * modules / classes / functions / methods / arguments / variables name
+# * number of arguments, local variables, branchs, returns and statements in
+# functions, methods
+# * required module attributes
+# * dangerous default values as arguments
+# * redefinition of function / method / class
+# * uses of the global statement
+# 
+[BASIC]
+
+# Required attributes for module, separated by a comma
+required-attributes=
+
+# Regular expression which should only match functions or classes name which do
+# not require a docstring
+no-docstring-rgx=__.*__|get_absolute_url
+
+# Regular expression which should only match correct module names
+module-rgx=(([a-z_][a-z0-9_]*)|([A-Z][a-zA-Z0-9]+))$
+
+# Regular expression which should only match correct module level names
+const-rgx=(([A-Z_][A-Z0-9_]*)|(__.*__))$
+
+# Regular expression which should only match correct class names
+class-rgx=[A-Z_][a-zA-Z0-9]+$
+
+# Regular expression which should only match correct function names
+function-rgx=[a-z_][a-z0-9_]{2,30}$
+
+# Regular expression which should only match correct method names
+method-rgx=[a-z_][a-z0-9_]{2,30}$
+
+# Regular expression which should only match correct instance attribute names
+attr-rgx=[a-z_][a-z0-9_]{2,30}$
+
+# Regular expression which should only match correct argument names
+argument-rgx=[a-z_][a-z0-9_]{2,30}$
+
+# Regular expression which should only match correct variable names
+variable-rgx=([A-Za-z_][A-Za-z0-9_]{2,30}$)
+
+# Regular expression which should only match correct list comprehension /
+# generator expression variable names
+inlinevar-rgx=[A-Za-z_][A-Za-z0-9_]*$
+
+# Good variable names which should always be accepted, separated by a comma
+good-names=i,j,k,v,qs,urlpatterns,register,p,a,t,r,u,x,f,e,setUp,tearDown
+
+# Bad variable names which should always be refused, separated by a comma
+bad-names=foo,bar,baz,toto,tutu,tata
+
+# List of builtins function names that should not be used, separated by a comma
+bad-functions=map,filter,apply,input
+
+
+# try to find bugs in the code using type inference
+# 
+[TYPECHECK]
+
+# Tells wether missing members accessed in mixin class should be ignored. A
+# mixin class is detected if its name ends with "mixin" (case insensitive).
+ignore-mixin-members=yes
+
+# List of classes names for which member attributes should not be checked
+# (useful for classes with attributes dynamicaly set).
+ignored-classes=SQLObject
+
+# When zope mode is activated, add a predefined set of Zope acquired attributes
+# to generated-members.
+zope=no
+
+# List of members which are set dynamically and missed by pylint inference
+# system, and so shouldn't trigger E0201 when accessed.
+generated-members=objects,DoesNotExist,id,pk,_default_manager,_meta,add_closedcaption,add_inheritance,add_rendition,add_sequence,add_sibling,add_thumbnail,add_transcript,change_password,connect,create_asset,create_closedcaption,create_file,create_folder,create_rendition,create_thumbnail,create_transcript,delete_asset,delete_closedcaption,delete_file,delete_folder,delete_rendition,delete_thumbnail,delete_transcript,forgot_password,get_asset,get_assets,get_closedcaption,get_file,get_files,get_folder,get_folders,get_profile,get_rendition,get_thumbnail,get_transcript,get_users,login,move_file,move_folder,register,remove_closedcaption,remove_rendition,remove_thumbnail,remove_transcript,reset_password,search,submit_asset,submit_folder,unregister,update_asset,update_closedcaption,update_file,update_folder,update_profile,update_rendition,update_thumbnail,update_transcript,_service_list,_signals,base_fields,context
 
 
 # checks for
@@ -109,78 +188,22 @@ dummy-variables-rgx=_|dummy
 additional-builtins=
 
 
-# try to find bugs in the code using type inference
-# 
-[TYPECHECK]
-
-# Tells wether missing members accessed in mixin class should be ignored. A
-# mixin class is detected if its name ends with "mixin" (case insensitive).
-ignore-mixin-members=yes
-
-# When zope mode is activated, consider the acquired-members option to ignore
-# access to some undefined attributes.
-zope=no
-
-# List of members which are usually get through zope's acquisition mecanism and
-# so shouldn't trigger E0201 when accessed (need zope=yes to be considered).
-acquired-members=REQUEST,acl_users,aq_parent
-
-
 # checks for :
-# * doc strings
-# * modules / classes / functions / methods / arguments / variables name
-# * number of arguments, local variables, branchs, returns and statements in
-# functions, methods
-# * required module attributes
-# * dangerous default values as arguments
-# * redefinition of function / method / class
-# * uses of the global statement
+# * methods without self as first argument
+# * overridden methods signature
+# * access only to existant members via self
+# * attributes not defined in the __init__ method
+# * supported interfaces implementation
+# * unreachable code
 # 
-[BASIC]
+[CLASSES]
 
-# Required attributes for module, separated by a comma
-required-attributes=
+# List of interface methods to ignore, separated by a comma. This is used for
+# instance to not check methods defines in Zope's Interface base class.
+ignore-iface-methods=isImplementedBy,deferred,extends,names,namesAndDescriptions,queryDescriptionFor,getBases,getDescriptionFor,getDoc,getName,getTaggedValue,getTaggedValueTags,isEqualOrExtendedBy,setTaggedValue,isImplementedByInstancesOf,adaptWith,is_implemented_by
 
-# Regular expression which should only match functions or classes name which do
-# not require a docstring
-no-docstring-rgx=__.*__
-
-# Regular expression which should only match correct module names
-module-rgx=(([a-z_][a-z0-9_]*)|([A-Z][a-zA-Z0-9]+))$
-
-# Regular expression which should only match correct module level names
-const-rgx=(([A-Z_][A-Z1-9_]*)|(__.*__))$
-
-# Regular expression which should only match correct class names
-class-rgx=[A-Z_][a-zA-Z0-9]+$
-
-# Regular expression which should only match correct function names
-function-rgx=[a-z_][a-z0-9_]{2,30}$
-
-# Regular expression which should only match correct method names
-method-rgx=[a-z_][a-z0-9_]{2,30}$
-
-# Regular expression which should only match correct instance attribute names
-attr-rgx=[a-z_][a-z0-9_]{2,30}$
-
-# Regular expression which should only match correct argument names
-argument-rgx=[a-z_][a-z0-9_]{2,30}$
-
-# Regular expression which should only match correct variable names
-variable-rgx=[a-z_][a-z0-9_]{2,30}$
-
-# Regular expression which should only match correct list comprehension /
-# generator expression variable names
-inlinevar-rgx=[A-Za-z_][A-Za-z0-9_]*$
-
-# Good variable names which should always be accepted, separated by a comma
-good-names=i,j,k,ex,Run,_
-
-# Bad variable names which should always be refused, separated by a comma
-bad-names=foo,bar,baz,toto,tutu,tata
-
-# List of builtins function names that should not be used, separated by a comma
-bad-functions=apply,input
+# List of method names used to declare (i.e. assign) instance attributes.
+defining-attr-methods=__init__,__new__,setUp
 
 
 # checks for sign of poor/misdesign:
@@ -190,28 +213,28 @@ bad-functions=apply,input
 [DESIGN]
 
 # Maximum number of arguments for function / method
-max-args=12
+max-args=5
 
 # Maximum number of locals for function / method body
-max-locals=30
+max-locals=15
 
 # Maximum number of return / yield for function / method body
-max-returns=12
+max-returns=6
 
 # Maximum number of branch for function / method body
-max-branchs=30
+max-branchs=12
 
 # Maximum number of statements in function / method body
-max-statements=60
+max-statements=50
 
 # Maximum number of parents for a class (see R0901).
 max-parents=7
 
 # Maximum number of attributes for a class (see R0902).
-max-attributes=20
+max-attributes=7
 
 # Minimum number of public methods for a class (see R0903).
-min-public-methods=0
+min-public-methods=2
 
 # Maximum number of public methods for a class (see R0904).
 max-public-methods=20
@@ -242,37 +265,22 @@ int-import-graph=
 
 
 # checks for :
-# * methods without self as first argument
-# * overridden methods signature
-# * access only to existant members via self
-# * attributes not defined in the __init__ method
-# * supported interfaces implementation
-# * unreachable code
+# * unauthorized constructions
+# * strict indentation
+# * line length
+# * use of <> instead of !=
 # 
-[CLASSES]
+[FORMAT]
 
-# List of interface methods to ignore, separated by a comma. This is used for
-# instance to not check methods defines in Zope's Interface base class.
-ignore-iface-methods=isImplementedBy,deferred,extends,names,namesAndDescriptions,queryDescriptionFor,getBases,getDescriptionFor,getDoc,getName,getTaggedValue,getTaggedValueTags,isEqualOrExtendedBy,setTaggedValue,isImplementedByInstancesOf,adaptWith,is_implemented_by
+# Maximum number of characters on a single line.
+max-line-length=88
 
-# List of method names used to declare (i.e. assign) instance attributes.
-defining-attr-methods=__init__,__new__,setUp
+# Maximum number of lines in a module
+max-module-lines=1000
 
-
-# checks for similarities and duplicated code. This computation may be
-# memory / CPU intensive, so you should disable it if you experiments some
-# problems.
-# 
-[SIMILARITIES]
-
-# Minimum lines number of a similarity.
-min-similarity-lines=10
-
-# Ignore comments when computing similarities.
-ignore-comments=yes
-
-# Ignore docstrings when computing similarities.
-ignore-docstrings=yes
+# String used as indentation unit. This is usually " " (4 spaces) or "\t" (1
+# tab).
+indent-string='    '
 
 
 # checks for:
@@ -285,20 +293,17 @@ ignore-docstrings=yes
 notes=FIXME,XXX,TODO
 
 
-# checks for :
-# * unauthorized constructions
-# * strict indentation
-# * line length
-# * use of <> instead of !=
+# checks for similarities and duplicated code. This computation may be
+# memory / CPU intensive, so you should disable it if you experiments some
+# problems.
 # 
-[FORMAT]
+[SIMILARITIES]
 
-# Maximum number of characters on a single line.
-max-line-length=500
+# Minimum lines number of a similarity.
+min-similarity-lines=4
 
-# Maximum number of lines in a module
-max-module-lines=1000
+# Ignore comments when computing similarities.
+ignore-comments=yes
 
-# String used as indentation unit. This is usually " " (4 spaces) or "\t" (1
-# tab).
-indent-string='    '
+# Ignore docstrings when computing similarities.
+ignore-docstrings=yes

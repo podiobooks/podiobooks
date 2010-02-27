@@ -6,16 +6,19 @@ from django.utils.feedgenerator import Rss201rev2Feed
 
 from django.utils.html import strip_tags
 
-class iTunesFeed(Rss201rev2Feed):
+class ITunesFeed(Rss201rev2Feed):
+    """This feed adds the extra attributes needed by iTunes"""
     def root_attributes(self):
-        attrs = super(iTunesFeed, self).root_attributes()
+        """Adds attributes at the root of the feed"""
+        attrs = super(ITunesFeed, self).root_attributes()
         attrs[u'xmlns:itunes'] = u'http://www.itunes.com/dtds/podcast-1.0.dtd'
         attrs[u'xmlns:atom'] = u'http://www.w3.org/2005/Atom'
         attrs[u'xmlns:content'] = u'http://purl.org/rss/1.0/modules/content/'
         return attrs
 
     def add_root_elements(self, handler):
-        super(iTunesFeed, self).add_root_elements(handler)
+        """Adds elements at the root of the feed"""
+        super(ITunesFeed, self).add_root_elements(handler)
         # Atom Item to Prevent Feed from Not Validating
         handler.addQuickElement(u'atom:link', None, {u'href':self.feed['feed_url'], u'rel':u'self', u'type':u'application/rss+xml'})
         
@@ -50,7 +53,8 @@ class iTunesFeed(Rss201rev2Feed):
         handler.endElement(u'itunes:owner')
     
     def add_item_elements(self, handler, item):
-        super(iTunesFeed, self).add_item_elements(handler, item)
+        """Adds new elements to each item in the feed"""
+        super(ITunesFeed, self).add_item_elements(handler, item)
         #iTunes Elements
         if self.feed['explicit'] is not None:
             handler.addQuickElement(u'itunes:explicit', self.feed['explicit'])
