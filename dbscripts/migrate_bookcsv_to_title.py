@@ -102,7 +102,7 @@ def importBooks():
     """Reads in the CSV and using the Django model objects to populate the DB"""
     
     #Open Book File for Import
-    bookCSVFile=open("podiobooks_legacy_book_table.csv")
+    bookCSVFile=open(settings.DATALOAD_DIR + "podiobooks_legacy_book_table.csv")
     
     #Parse the Book File CSV into a dictionary based on the first row values
     bookCSVReader=csv.DictReader(bookCSVFile,dialect='excel')

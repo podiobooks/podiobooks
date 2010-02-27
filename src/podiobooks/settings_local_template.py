@@ -26,6 +26,7 @@ CACHE_MIDDLEWARE_KEY_PREFIX = 'pb2'
 MANAGERS = (
     # ('Tim White', 'tim@cyface.com'),
 )
+ADMINS = MANAGERS
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
@@ -147,3 +148,6 @@ HAYSTACK_WHOOSH_PATH = PROJECT_PATH + '/whoosh/podiobooks_index'
 LIBSYN_USER = ''
 LIBSYN_KEY = ''
 LIBSYN_NETWORK_SLUG = ''
+
+# DATALOAD
+DATALOAD_DIR = PROJECT_PATH + "/../podiobooks-dataload/datafiles"
