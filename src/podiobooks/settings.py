@@ -1,6 +1,6 @@
 """Django settings for podiobooks project."""
 
-# pylint: disable-msg=WO614
+# pylint: disable-msg=W0614
 # pylint: disable-msg=W0401
 # pylint: disable-msg=F0401
 
