@@ -17,8 +17,8 @@ class Advisory(models.Model):
     name = models.CharField(max_length=100)
     displaytext = models.CharField(max_length=255)
     hexcolor = models.CharField(max_length=6)
-    date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
-    date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
+    date_created = models.DateTimeField(default=datetime.datetime.now())
+    date_updated = models.DateTimeField(default=datetime.datetime.now())
     objects = models.Manager()
     # rather than storing a hex-color, would it make more sense to
     # add a css class 'Advisory_{slug}' for flexibility??
@@ -33,12 +33,12 @@ class Advisory(models.Model):
 class Award(models.Model):
     """Awards are just that: awards for a title, like winning a Parsec, etc."""
     slug = models.SlugField()
-    name = models.CharField(blank=True, null=True, max_length=255)
+    name = models.CharField(blank=True, max_length=255)
     url = models.URLField(blank=True, verify_exists=True, null=True)
     image = models.ImageField(upload_to=settings.MEDIA_AWARDS, max_length=255)
     deleted = models.BooleanField(default=False)
-    date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
-    date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
+    date_created = models.DateTimeField(default=datetime.datetime.now())
+    date_updated = models.DateTimeField(default=datetime.datetime.now())
     objects = models.Manager()
     
     class Meta:
@@ -57,8 +57,8 @@ class Category(models.Model):
     name = models.CharField(max_length=255)
     # Note - titles are available as title_set.all()
     deleted = models.BooleanField(default=False)
-    date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
-    date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
+    date_created = models.DateTimeField(default=datetime.datetime.now())
+    date_updated = models.DateTimeField(default=datetime.datetime.now())
     objects = models.Manager()
         
     class Meta:
@@ -76,15 +76,15 @@ class Contributor(models.Model):
     """A contributor is one who had done work on a title. For a book, it's an
     author or authors."""
     slug = models.SlugField()
-    user = models.ForeignKey(User, null=True, blank=True) #User is an OOTB Django Auth Model
+    user = models.ForeignKey(User, null=True, blank=True, related_name='contributor_info') #User is an OOTB Django Auth Model
     first_name = models.CharField(max_length=255)
     middle_name = models.CharField(max_length=255, blank=True)
     last_name = models.CharField(max_length=255)
     display_name = models.CharField(max_length=255)
     deleted = models.BooleanField(default=False)
     # Note: Titles are available a title_set.all()
-    date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
-    date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
+    date_created = models.DateTimeField(default=datetime.datetime.now())
+    date_updated = models.DateTimeField(default=datetime.datetime.now())
 
     class Meta:
         ordering = ['last_name', 'first_name']
@@ -113,16 +113,16 @@ class Episode(models.Model):
     issue of the comic."""
     title = models.ForeignKey('Title')
     name = models.CharField(max_length=255)
-    sequence = models.IntegerField(blank=False, null=False) #Order in the Story
+    sequence = models.IntegerField(null=False) #Order in the Story
     description = models.TextField(blank=True)
-    url = models.URLField(blank=False, verify_exists=True)
+    url = models.URLField(verify_exists=True)
     filesize = models.IntegerField(default=0) #Size of the media file
     length = models.FloatField(default=0) #Length of the media file (usually minutes (or pages))
     contributors = models.ManyToManyField('Contributor', through='EpisodeContributors')
-    status = models.SmallIntegerField(default=1)
+    status = models.IntegerField(default=1)
     deleted = models.BooleanField(default=False)
-    date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
-    date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
+    date_created = models.DateTimeField(default=datetime.datetime.now())
+    date_updated = models.DateTimeField(default=datetime.datetime.now())
     
     def _get_filesize_mb(self):
         return round(self.filesize / 1024.0 / 1024.0, 2)
@@ -141,9 +141,9 @@ class Episode(models.Model):
 class EpisodeContributors(models.Model):
     """Join table to associate contributors to titles."""
     episode = models.ForeignKey('Episode')
-    contributor = models.ForeignKey('Contributor')
-    contributor_type = models.ForeignKey('ContributorType')
-    date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
+    contributor = models.ForeignKey('Contributor', related_name='episodecontributor_set')
+    contributor_type = models.ForeignKey('ContributorType', related_name='episodecontributor_set')
+    date_created = models.DateTimeField(default=datetime.datetime.now())
     
     class Meta:
         verbose_name_plural = "Episode Contributors"
@@ -152,12 +152,12 @@ class License(models.Model):
     """A collection of defined licenses for works. Creative Commons, All Rights
     Reserved, etc."""
     slug = models.SlugField()
-    text = models.CharField(blank=False, max_length=255)
-    url = models.URLField(blank=False, verify_exists=True)
-    image_url = models.URLField(blank=False, verify_exists=True)
+    text = models.CharField(max_length=255)
+    url = models.URLField(verify_exists=True)
+    image_url = models.URLField(verify_exists=True)
     code = models.TextField(blank=True)
-    date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
-    date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
+    date_created = models.DateTimeField(default=datetime.datetime.now())
+    date_updated = models.DateTimeField(default=datetime.datetime.now())
     
     class Meta:
         ordering = ['slug']
@@ -172,8 +172,8 @@ class Media(models.Model):
     name = models.CharField(max_length=255)
     baseurl = models.CharField(max_length=255)
     deleted = models.BooleanField(default=False)
-    date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
-    date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
+    date_created = models.DateTimeField(default=datetime.datetime.now())
+    date_updated = models.DateTimeField(default=datetime.datetime.now())
         
     class Meta:
         verbose_name_plural = "media"
@@ -186,12 +186,12 @@ class Partner(models.Model):
     """Partners are sites or organizations which contribute works to the system
     who wish to be recognized in some fashion (usually a graphic and link back
     to their site)."""
-    name = models.CharField(blank=False, max_length=255)
-    url = models.URLField(blank=False, verify_exists=True)
+    name = models.CharField(max_length=255)
+    url = models.URLField(verify_exists=True)
     logo = models.ImageField(upload_to="/dir/path")
     deleted = models.BooleanField(default=False)
-    date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
-    date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
+    date_created = models.DateTimeField(default=datetime.datetime.now())
+    date_updated = models.DateTimeField(default=datetime.datetime.now())
     
     class Meta:
         ordering = ['name']
@@ -205,10 +205,10 @@ class Promo(models.Model):
     marketing mojo to their arsenal."""
     title = models.ForeignKey('Title')
     display_text = models.CharField(max_length=255)
-    url = models.URLField(blank=False, verify_exists=True)
-    display_order = models.SmallIntegerField(blank=False, null=False, default=1)
-    date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
-    date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
+    url = models.URLField(verify_exists=True)
+    display_order = models.IntegerField(null=False, default=1)
+    date_created = models.DateTimeField(default=datetime.datetime.now())
+    date_updated = models.DateTimeField(default=datetime.datetime.now())
     
     class Meta:
         ordering = ['display_text']
@@ -226,8 +226,8 @@ class Series(models.Model):
     description = models.TextField()
     url = models.URLField(blank=True, verify_exists=True, null=True)
     deleted = models.BooleanField(default=False)
-    date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
-    date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
+    date_created = models.DateTimeField(default=datetime.datetime.now())
+    date_updated = models.DateTimeField(default=datetime.datetime.now())
         
     class Meta:
         verbose_name_plural = "series"
@@ -253,10 +253,10 @@ class Subscription(models.Model):
     partner = models.ForeignKey('Partner')
     last_downloaded_episode = models.ForeignKey('Episode')
     last_downloaded_date = models.DateTimeField(blank=True, default=datetime.datetime.now())
-    finished = models.PositiveSmallIntegerField(null=False, default=0)
-    deleted = models.PositiveSmallIntegerField(null=False, default=0)
-    date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
-    date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
+    finished = models.IntegerField(null=False, default=0)
+    deleted = models.IntegerField(null=False, default=0)
+    date_created = models.DateTimeField(default=datetime.datetime.now())
+    date_updated = models.DateTimeField(default=datetime.datetime.now())
     
     class Meta:
         ordering = ['user']
@@ -296,8 +296,8 @@ class Title(models.Model):
     podiobooker_blog_url = models.URLField(max_length=255, blank=True, null=True)
     enable_comments = models.BooleanField(default=True)
     # Note: episodes are available as episode_set.all()
-    date_created = models.DateTimeField(blank=False, default=datetime.datetime.now(), db_index=True)
-    date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now(), db_index=True)
+    date_created = models.DateTimeField(default=datetime.datetime.now(), db_index=True)
+    date_updated = models.DateTimeField(default=datetime.datetime.now(), db_index=True)
     
     # Optionally configure Sphinx as search engine for titles
     if (settings.SEARCH_PROVIDER == 'SPHINX'):
@@ -334,9 +334,9 @@ moderator.register(Title, TitleModerator)
 class TitleContributors(models.Model):
     """Join table to associate contributors to titles."""
     title = models.ForeignKey('Title')
-    contributor = models.ForeignKey('Contributor')
-    contributor_type = models.ForeignKey('ContributorType')
-    date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
+    contributor = models.ForeignKey('Contributor', related_name='titlecontributors_set')
+    contributor_type = models.ForeignKey('ContributorType', related_name='titlecontributors_set')
+    date_created = models.DateTimeField(default=datetime.datetime.now())
     
     class Meta:
         verbose_name_plural = "Title Contributors"
@@ -345,11 +345,11 @@ class TitleContributors(models.Model):
 class TitleUrl(models.Model):
     """Allows us to have several links for a book, for display. For utility."""
     title = models.ManyToManyField('Title')
-    url = models.URLField(blank=False, verify_exists=True)
-    linktext = models.CharField(blank=False, max_length=255)
-    displayorder = models.SmallIntegerField(blank=False, null=False, default=1)
-    date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
-    date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
+    url = models.URLField(verify_exists=True)
+    linktext = models.CharField(max_length=255)
+    displayorder = models.IntegerField(null=False, default=1)
+    date_created = models.DateTimeField(default=datetime.datetime.now())
+    date_updated = models.DateTimeField(default=datetime.datetime.now())
         
     def __unicode__(self):
         return "TitleUrls"
@@ -359,8 +359,8 @@ class UserProfile(models.Model):
     etc."""
     user = models.ForeignKey(User) #User is an OOTB Django Auth Model
     slug = models.SlugField()
-    date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
-    date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
+    date_created = models.DateTimeField(default=datetime.datetime.now())
+    date_updated = models.DateTimeField(default=datetime.datetime.now())
         
     def __unicode__(self):
         return "UserProfile"
