@@ -13,7 +13,7 @@ import tempfile
 
 LOCKFILE = tempfile.gettempdir() + "/update_feeds.lock"
 
-feed_list = Title.objects.all().filter(podiobooker_blog_url__isnull = False).values('id', 'podiobooker_blog_url')
+feed_list = Title.objects.all().filter(podiobooker_blog_url__isnull=False).values('id', 'podiobooker_blog_url')
 
 def update_feeds(verbose=False):
     for feed in feed_list:

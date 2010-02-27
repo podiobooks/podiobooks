@@ -57,7 +57,7 @@ TEMPLATE_THEMES = ('pb2',)
 for theme in reversed(TEMPLATE_THEMES):
     TEMPLATE_DIRS = (TEMPLATE_ROOT + '/themes/' + theme,) + TEMPLATE_DIRS
 MAIN_TEMPLATE_THEME = TEMPLATE_THEMES[0]
-THEME_MEDIA_URL = MEDIA_URL +'themes/' + MAIN_TEMPLATE_THEME + '/'  
+THEME_MEDIA_URL = MEDIA_URL + 'themes/' + MAIN_TEMPLATE_THEME + '/'  
 
 # Local DB settings. (Postgres)
 DATABASE_ENGINE = 'postgresql_psycopg2'          # 'postgresql_psycopg2', 'postgresql'

@@ -25,10 +25,10 @@ def importChapters():
     """Loops through the chapter rows in the CSV and build Episode objects for them"""
     
     #Open Chapter File for Import
-    chapterCSVFile=open(settings.DATALOAD_DIR + "podiobooks_legacy_chapter_table.csv")
+    chapterCSVFile = open(settings.DATALOAD_DIR + "podiobooks_legacy_chapter_table.csv")
     
     #Parse the Chapter File CSV into a dictionary based on the first row values
-    chapterCSVReader=csv.DictReader(chapterCSVFile,dialect='excel')
+    chapterCSVReader = csv.DictReader(chapterCSVFile, dialect='excel')
     
     #PRE CLEANOUT
     Episode.objects.all().delete()
@@ -41,18 +41,18 @@ def importChapters():
             print "Found Title %s" % foundTitle.slug
             # Create an episode object in the database based on the current chapter row
             episode = Episode.objects.create (
-                id = row['ID'],
-                name = row['Title'].replace('\\',''),
-                title = foundTitle,
-                sequence = row['Sequence'],
-                description = row['ShowNotes'].replace('\\','').replace('&#224;','a'),
-                url = row['Filename'],
-                filesize = row['Length'],
-                length = 0,
-                status = 1,
-                deleted = False,
-                date_created = row['DateCreated'],
-                date_updated = row['DateUpdated']
+                id=row['ID'],
+                name=row['Title'].replace('\\', ''),
+                title=foundTitle,
+                sequence=row['Sequence'],
+                description=row['ShowNotes'].replace('\\', '').replace('&#224;', 'a'),
+                url=row['Filename'],
+                filesize=row['Length'],
+                length=0,
+                status=1,
+                deleted=False,
+                date_created=row['DateCreated'],
+                date_updated=row['DateUpdated']
             )
             print "episode:",
             print episode.name,

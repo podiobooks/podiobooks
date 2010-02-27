@@ -31,7 +31,7 @@ class EpisodeFeed(Feed):
         return obj.categories.all()
     
     def description(self, obj):
-        return(strip_tags(obj.description).replace('&amp;','&'))
+        return(strip_tags(obj.description).replace('&amp;', '&'))
     
     def explicit(self, obj):
         if obj.is_adult:

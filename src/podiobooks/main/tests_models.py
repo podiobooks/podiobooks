@@ -28,182 +28,182 @@ class TitleTestCase(TestCase):
         
         # Create some UserProfiles for those test users
         self.user1profile = UserProfile.objects.create (
-            user = self.user1,
-            slug = slugify(self.user1.get_full_name())
+            user=self.user1,
+            slug=slugify(self.user1.get_full_name())
             )
         
         self.user2profile = UserProfile.objects.create (
-            user = self.user2,
-            slug = slugify(self.user2.get_full_name())
+            user=self.user2,
+            slug=slugify(self.user2.get_full_name())
             )
         
         self.user3profile = UserProfile.objects.create (
-            user = self.user3,
-            slug = slugify(self.user3.get_full_name())
+            user=self.user3,
+            slug=slugify(self.user3.get_full_name())
             )
         
         # Create Some Series
         self.series1 = Series.objects.create (
-            name = "Podiobooks Series #1",
-            description = "A wonderful sample series that contains many fine books",
-            url = "http://www.Podiobooks.com",
-            deleted = False
+            name="Podiobooks Series #1",
+            description="A wonderful sample series that contains many fine books",
+            url="http://www.Podiobooks.com",
+            deleted=False
             )
         self.series1.slug = slugify(self.series1.name)
         
         self.series2 = Series.objects.create (
-            name = "Podiobooks Series #2",
-            description = "Another wonderful sample series that contains many fine books",
-            url = "http://www.Podiobooks.com",
-            deleted = False
+            name="Podiobooks Series #2",
+            description="Another wonderful sample series that contains many fine books",
+            url="http://www.Podiobooks.com",
+            deleted=False
             )
         self.series2.slug = slugify(self.series2.name)
         
         # Create Some Titles
         self.title1 = Title.objects.create (
-                name = "Podiobooks Title #1",
-                slug = slugify("Podiobooks Title #1"),
-                series = self.series1,
-                description = "A fantastic sample book of surpassing quality and scope, that truly redefines what it means to be a PodioBook.",
-                cover = "PodioBook Cover",
-                status = 1,
-                display_on_homepage = True,
-                is_hosted_at_pb = True,
-                is_adult = False,
-                is_complete = False,
-                avg_audio_quality = 4.5,
-                avg_narration = 3.5,
-                avg_writing = 2.5,
-                avg_overall = 3.75,
-                deleted = False
+                name="Podiobooks Title #1",
+                slug=slugify("Podiobooks Title #1"),
+                series=self.series1,
+                description="A fantastic sample book of surpassing quality and scope, that truly redefines what it means to be a PodioBook.",
+                cover="PodioBook Cover",
+                status=1,
+                display_on_homepage=True,
+                is_hosted_at_pb=True,
+                is_adult=False,
+                is_complete=False,
+                avg_audio_quality=4.5,
+                avg_narration=3.5,
+                avg_writing=2.5,
+                avg_overall=3.75,
+                deleted=False
                 )
         
         self.title2 = Title.objects.create (
-                name = "Podiobooks Title #2",
-                slug = slugify("Podiobooks Title #2"),
-                series = self.series1,
-                description = "A second fantastic sample book of surpassing quality and scope, that truly redefines what it means to be a PodioBook.",
-                cover = "PodioBook Cover 2",
-                status = 1,
-                display_on_homepage = True,
-                is_hosted_at_pb = True,
-                is_adult = False,
-                is_complete = False,
-                avg_audio_quality = 3.5,
-                avg_narration = 4.5,
-                avg_writing = 5.5,
-                avg_overall = 6.75,
-                deleted = False
+                name="Podiobooks Title #2",
+                slug=slugify("Podiobooks Title #2"),
+                series=self.series1,
+                description="A second fantastic sample book of surpassing quality and scope, that truly redefines what it means to be a PodioBook.",
+                cover="PodioBook Cover 2",
+                status=1,
+                display_on_homepage=True,
+                is_hosted_at_pb=True,
+                is_adult=False,
+                is_complete=False,
+                avg_audio_quality=3.5,
+                avg_narration=4.5,
+                avg_writing=5.5,
+                avg_overall=6.75,
+                deleted=False
                 )
         
         self.title3 = Title.objects.create (
-                name = "Podiobooks Title #3",
-                slug = slugify("Podiobooks Title #3"),
-                series = self.series2,
-                description = "A third fantastic sample book of surpassing quality and scope, that truly redefines what it means to be a PodioBook.",
-                cover = "PodioBook Cover 3",
-                status = 1,
-                display_on_homepage = True,
-                is_hosted_at_pb = True,
-                is_adult = False,
-                is_complete = False,
-                avg_audio_quality = 1.5,
-                avg_narration = 2.5,
-                avg_writing = 3.5,
-                avg_overall = 4.75,
-                deleted = False
+                name="Podiobooks Title #3",
+                slug=slugify("Podiobooks Title #3"),
+                series=self.series2,
+                description="A third fantastic sample book of surpassing quality and scope, that truly redefines what it means to be a PodioBook.",
+                cover="PodioBook Cover 3",
+                status=1,
+                display_on_homepage=True,
+                is_hosted_at_pb=True,
+                is_adult=False,
+                is_complete=False,
+                avg_audio_quality=1.5,
+                avg_narration=2.5,
+                avg_writing=3.5,
+                avg_overall=4.75,
+                deleted=False
                 )
         
         #Create a Partner Object
         self.partner1 = Partner.objects.create (
-            name = "Podiobooks Partner #1",
-            url = "http://Podiobooks.com",
-            logo = "http://Podiobooks.com",
-            deleted = False
+            name="Podiobooks Partner #1",
+            url="http://Podiobooks.com",
+            logo="http://Podiobooks.com",
+            deleted=False
             )
         
         #Create some Episodes
         self.episode1 = Episode.objects.create (
-            title = self.title1,
-            name = "Podiobooks Title #1 Episode #1",
-            sequence = 1,
-            description = "This is the first wonderful episode of the test title1!",
-            url = "http://www.Podiobooks.com",
-            filesize = 328886,
-            status = 1,
-            deleted = False,
+            title=self.title1,
+            name="Podiobooks Title #1 Episode #1",
+            sequence=1,
+            description="This is the first wonderful episode of the test title1!",
+            url="http://www.Podiobooks.com",
+            filesize=328886,
+            status=1,
+            deleted=False,
             )
         
         self.episode2 = Episode.objects.create (
-            title = self.title2,
-            name = "Podiobooks Title #2 Episode #1",
-            sequence = 1,
-            description = "This is the first wonderful episode of the test title2!",
-            url = "http://www.Podiobooks.com",
-            filesize = 32886,
-            status = 1,
-            deleted = False,
+            title=self.title2,
+            name="Podiobooks Title #2 Episode #1",
+            sequence=1,
+            description="This is the first wonderful episode of the test title2!",
+            url="http://www.Podiobooks.com",
+            filesize=32886,
+            status=1,
+            deleted=False,
             )
         
         self.episode3 = Episode.objects.create (
-            title = self.title2,
-            name = "Podiobooks Title #2 Episode #2",
-            sequence = 1,
-            description = "This is the second wonderful episode of the test title2!",
-            url = "http://www.Podiobooks.com",
-            filesize = 32886,
-            status = 1,
-            deleted = False,
+            title=self.title2,
+            name="Podiobooks Title #2 Episode #2",
+            sequence=1,
+            description="This is the second wonderful episode of the test title2!",
+            url="http://www.Podiobooks.com",
+            filesize=32886,
+            status=1,
+            deleted=False,
             )
         
         self.episode4 = Episode.objects.create (
-            title = self.title3,
-            name = "Podiobooks Title #3 Episode #1",
-            sequence = 1,
-            description = "This is the first wonderful episode of the test title3!",
-            url = "http://www.Podiobooks.com",
-            filesize = 32886,
-            status = 1,
-            deleted = False,
+            title=self.title3,
+            name="Podiobooks Title #3 Episode #1",
+            sequence=1,
+            description="This is the first wonderful episode of the test title3!",
+            url="http://www.Podiobooks.com",
+            filesize=32886,
+            status=1,
+            deleted=False,
             )
         
         # Create Some Subscriptions
         
         # Subscribed to a title and a series case
         self.subscription1 = Subscription.objects.create (
-                user = self.user1,
-                day_interval = 5,
-                partner = self.partner1,
-                last_downloaded_episode = self.episode1,
-                last_downloaded_date = datetime.datetime.now(),
-                finished = False,
-                deleted = False
+                user=self.user1,
+                day_interval=5,
+                partner=self.partner1,
+                last_downloaded_episode=self.episode1,
+                last_downloaded_date=datetime.datetime.now(),
+                finished=False,
+                deleted=False
                 )
         self.subscription1.titles.add(self.title1)
         self.subscription1.series.add(self.series2)
         
         # Subscribed to two titles case
         self.subscription2 = Subscription.objects.create (
-                user = self.user2,
-                day_interval = 10,
-                partner = self.partner1,
-                last_downloaded_episode = self.episode2,
-                last_downloaded_date = datetime.datetime.now(),
-                finished = False,
-                deleted = False
+                user=self.user2,
+                day_interval=10,
+                partner=self.partner1,
+                last_downloaded_episode=self.episode2,
+                last_downloaded_date=datetime.datetime.now(),
+                finished=False,
+                deleted=False
                 )
         self.subscription2.titles.add(self.title1)
         self.subscription2.titles.add(self.title2)
         
         # Subscribed to two series case
         self.subscription3 = Subscription.objects.create (
-                user = self.user3,
-                day_interval = 6,
-                partner = self.partner1,
-                last_downloaded_episode = self.episode3,
-                last_downloaded_date = datetime.datetime.now(),
-                finished = False,
-                deleted = False
+                user=self.user3,
+                day_interval=6,
+                partner=self.partner1,
+                last_downloaded_episode=self.episode3,
+                last_downloaded_date=datetime.datetime.now(),
+                finished=False,
+                deleted=False
                 )
         self.subscription3.series.add(self.series1)
         self.subscription3.series.add(self.series2)     

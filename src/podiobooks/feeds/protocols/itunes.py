@@ -21,9 +21,9 @@ class iTunesFeed(Rss201rev2Feed):
         
         #Basic Attributes
         handler.addQuickElement(u'webMaster', u'webmaster@podiobooks.com (Chris Miller)')
-        handler.addQuickElement(u'managingEditor',u'editor@podiobooks.com (Evo Terra)')
-        handler.addQuickElement(u'category',u'podiobooks')
-        handler.addQuickElement(u'category',u'audio books')
+        handler.addQuickElement(u'managingEditor', u'editor@podiobooks.com (Evo Terra)')
+        handler.addQuickElement(u'category', u'podiobooks')
+        handler.addQuickElement(u'category', u'audio books')
         
         #iTunes Elements
         if self.feed['explicit'] is not None:

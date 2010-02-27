@@ -29,7 +29,7 @@ urlpatterns = patterns('',
     (r'^author/', include('podiobooks.author.urls')),
     
     # Django Comments
-    (r'^comments/', include('django.contrib.comments.urls')),                     
+    (r'^comments/', include('django.contrib.comments.urls')),
     
     # FAQ
     (r'^faq/', include('faq.urls')),

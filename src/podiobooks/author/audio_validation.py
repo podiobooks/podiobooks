@@ -3,17 +3,17 @@ import eyeD3
 def validate_mp3(file_path):
     file = eyeD3.Mp3AudioFile(file_path)
     result_list = []
-    result_list.append( verify_attribute('Bitrate', file.getBitRate()[1], 128) )
-    result_list.append( verify_attribute('Bitrate Mode', mp3_bitrate_mode_label(file.getBitRate()[0]), mp3_bitrate_mode_label(0) ) )
-    result_list.append( verify_attribute('Sample Rate', file.getSampleFreq(), 44100) )
-    result_list.append( verify_attribute('Channel Mode', file.header.mode.title(),  'Joint Stereo') )
+    result_list.append(verify_attribute('Bitrate', file.getBitRate()[1], 128))
+    result_list.append(verify_attribute('Bitrate Mode', mp3_bitrate_mode_label(file.getBitRate()[0]), mp3_bitrate_mode_label(0)))
+    result_list.append(verify_attribute('Sample Rate', file.getSampleFreq(), 44100))
+    result_list.append(verify_attribute('Channel Mode', file.header.mode.title(), 'Joint Stereo'))
     
     return result_list
 
-def verify_attribute(label, data, expected_value, data_label = None, expected_value_label=None):
+def verify_attribute(label, data, expected_value, data_label=None, expected_value_label=None):
     status = "<span class='pass'>PASS</span>"
     if data != expected_value:
-        status="<span class='fail'>FAIL</span>"
+        status = "<span class='fail'>FAIL</span>"
 
     if data_label == None:
         data_label = data
@@ -28,7 +28,7 @@ _mp3_bitrate_mode_labels = dict({
     })
 
 def mp3_bitrate_mode_label(value):
-    return _mp3_bitrate_mode_labels.setdefault(value,'Unknown')
+    return _mp3_bitrate_mode_labels.setdefault(value, 'Unknown')
 
 """
 if(sys.argv.count < 2):
