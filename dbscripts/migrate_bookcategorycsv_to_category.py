@@ -7,6 +7,7 @@ This script reads in an "CSV for Excel" export from phpMyAdmin into a the new Po
 """
 
 import csv # first we need import necessary lib:csv
+from django.conf import settings
 from podiobooks.main.models import *
 from django.template.defaultfilters import slugify
 
@@ -14,7 +15,7 @@ def importBookCategories():
     # Now, begin reading in the CSV and using the Django model objects to populate the DB
     
     #Open Category File for Import
-    categoryCSVFile=open("podiobooks_legacy_bookcategory_table.csv") #prepare a csv file for our example
+    categoryCSVFile=open(settings.DATALOAD_DIR + "podiobooks_legacy_bookcategory_table.csv") #prepare a csv file for our example
     
     #Parse the Category File CSV into a dictionary based on the first row values
     categoryCSVReader=csv.DictReader(categoryCSVFile,dialect='excel')
