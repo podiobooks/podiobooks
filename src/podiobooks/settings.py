@@ -1,9 +1,12 @@
-# Django settings for podiobooks project.
+"""Django settings for podiobooks project."""
+
+# pylint: disable-msg=WO614
+# pylint: disable-msg=F0401
 
 # NOTE
 # see local_settings_template.py for instructions on making your local settings file
 
-from settings_main import * #@UnusedWildImport
+from podiobooks.settings_main import * #@UnusedWildImport
 
 try:
     from settings_local import * #@UnusedWildImport
