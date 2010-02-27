@@ -1,3 +1,5 @@
+"""Admin site customizations for Podiobooks main"""
+
 from django.contrib import admin
 
 from django import forms
