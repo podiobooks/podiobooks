@@ -1,9 +1,14 @@
+"""Automated unitests for the Podiobooks model classes"""
+
+# pylint: disable-msg=C0103,C0111,R0902,R0904,W0401,W0614
+
 from django.test import TestCase
 from podiobooks.main.models import *  #@UnusedWildImport
 from django.template.defaultfilters import slugify
 from django.test.client import Client
 
 class TitleTestCase(TestCase):
+    """Test the Podiobooks Models from a Title-Centric POV"""
     fixtures = []
     
     def setUp(self):
@@ -16,15 +21,12 @@ class TitleTestCase(TestCase):
         
         self.user1.first_name = "test1"
         self.user1.last_name = "user1"
-        self.user1.save
         
         self.user2.first_name = "test2"
         self.user2.last_name = "user2"
-        self.user2.save
         
         self.user3.first_name = "test3"
         self.user3.last_name = "user3"
-        self.user3.save
         
         # Create some UserProfiles for those test users
         self.user1profile = UserProfile.objects.create (

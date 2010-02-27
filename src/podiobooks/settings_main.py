@@ -1,4 +1,4 @@
-# Django settings for podiobooks project
+""" Django settings for podiobooks project """
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -35,7 +35,7 @@ ROOT_URLCONF = 'podiobooks.urls'
 AUTH_PROFILE_MODULE = 'main.UserProfile'
 
 #authopenid
-ugettext = lambda s: s
+ugettext = lambda s: s # pylint: disable-msg=C0103
 LOGIN_URL = '/%s%s' % (ugettext('account/'), ugettext('signin/'))
 LOGIN_REDIRECT_URL = '/'
 OPENID_SREG = {
@@ -63,5 +63,4 @@ INSTALLED_APPS = (
     'podiobooks.main',
     'podiobooks.social',
     'registration',
-    'tinymce',
 )

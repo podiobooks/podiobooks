@@ -1,8 +1,10 @@
+"""Django Views for the Social (Twitter, etc.) Module"""
+
+# pylint: disable-msg=R0801
+
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from twitter_utils import search
-
-""" Views """
+from podiobooks.social.twitter_utils import search
 
 def twitter_search(request, keywords=None):
     """
