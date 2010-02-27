@@ -49,9 +49,9 @@ def getOrCreateAward(awardSlug):
 
 def getOrCreateContributor(contributorName):
     """Retrieves or creates a Contributor based on the name of the Contributor"""
-    contributorName = contributorName.strip().replace('  ',' ').replace('\\','').replace('&apos;','\'').replace('Theater','Theatre').replace('J. C.','J.C.').replace('J. A.','J.A.').replace('J. J.','J.J.').replace('J. T.','J.T.').replace('J. P.','J.P.')
+    contributorName = contributorName.strip().replace('  ', ' ').replace('\\', '').replace('&apos;', '\'').replace('Theater', 'Theatre').replace('J. C.', 'J.C.').replace('J. A.', 'J.A.').replace('J. J.', 'J.J.').replace('J. T.', 'J.T.').replace('J. P.', 'J.P.')
     try:
-        contributorNameToSplit = contributorName.replace(' III','')
+        contributorNameToSplit = contributorName.replace(' III', '')
         contributorNameTokens = contributorNameToSplit.split(" ", 2)
         if (len(contributorNameTokens) > 2):
             firstNameGuess, middleNameGuess, lastNameGuess = contributorNameTokens[:3]
@@ -64,13 +64,13 @@ def getOrCreateContributor(contributorName):
         lastNameGuess = contributorName
         
     contributor, created = Contributor.objects.get_or_create(display_name__iexact=contributorName,
-                  defaults={ 'display_name':contributorName, 'slug': slugify(contributorName), 'first_name': firstNameGuess, 'middle_name': middleNameGuess.replace(',',''), 'last_name': lastNameGuess.replace(',','') })
+                  defaults={ 'display_name':contributorName, 'slug': slugify(contributorName), 'first_name': firstNameGuess, 'middle_name': middleNameGuess.replace(',', ''), 'last_name': lastNameGuess.replace(',', '') })
     return contributor
 
 def getOrCreateContributorType(contributorType):
     """Retrieves or creates a Contributor type based on the name of the type"""
     contributorTypeObject, created = ContributorType.objects.get_or_create(slug=slugify(contributorType),
-                  defaults={'name': contributorType,})
+                  defaults={'name': contributorType, })
     return contributorTypeObject
 
 def getCategory(categoryID):
@@ -102,10 +102,10 @@ def importBooks():
     """Reads in the CSV and using the Django model objects to populate the DB"""
     
     #Open Book File for Import
-    bookCSVFile=open(settings.DATALOAD_DIR + "podiobooks_legacy_book_table.csv")
+    bookCSVFile = open(settings.DATALOAD_DIR + "podiobooks_legacy_book_table.csv")
     
     #Parse the Book File CSV into a dictionary based on the first row values
-    bookCSVReader=csv.DictReader(bookCSVFile,dialect='excel')
+    bookCSVReader = csv.DictReader(bookCSVFile, dialect='excel')
     
     #PRE CLEANOUT
     Title.objects.all().delete()
@@ -119,24 +119,24 @@ def importBooks():
         if (int(row['Enabled']) == 1 and int(row['Standby']) == 0):
             # Create a title object in the database based on the current book row
             title = Title.objects.create (
-                id = row['ID'],
-                name = row['Title'].replace('\\',''),
-                slug = slugify(row['Title']),
-                license = determineLicense(row['license']),
-                description = row['Description'].replace('\\',''),
-                cover = row['Coverimage'],
-                status = 1,
-                display_on_homepage = booleanClean(row['DisplayOnHomepage']),
-                is_hosted_at_pb = True,
-                is_adult = booleanClean(row['Explicit']),
-                is_complete = booleanClean(row['Complete']),
-                avg_audio_quality = row['AvgAudioQuality'],
-                avg_narration = row['AvgNarration'],
-                avg_writing = row['AvgWriting'],
-                avg_overall = row['AvgOverall'],
-                deleted = False,
-                podiobooker_blog_url = row['DiscussURL'],
-                date_created = row['DateCreated']
+                id=row['ID'],
+                name=row['Title'].replace('\\', ''),
+                slug=slugify(row['Title']),
+                license=determineLicense(row['license']),
+                description=row['Description'].replace('\\', ''),
+                cover=row['Coverimage'],
+                status=1,
+                display_on_homepage=booleanClean(row['DisplayOnHomepage']),
+                is_hosted_at_pb=True,
+                is_adult=booleanClean(row['Explicit']),
+                is_complete=booleanClean(row['Complete']),
+                avg_audio_quality=row['AvgAudioQuality'],
+                avg_narration=row['AvgNarration'],
+                avg_writing=row['AvgWriting'],
+                avg_overall=row['AvgOverall'],
+                deleted=False,
+                podiobooker_blog_url=row['DiscussURL'],
+                date_created=row['DateCreated']
             )
             
             """ Contributors """
@@ -144,7 +144,7 @@ def importBooks():
             for contributor in contributorList:
                 contributorObject = getOrCreateContributor(contributor['name'])
                 contributorType = getOrCreateContributorType(contributor['type'])
-                TitleContributors.objects.create(title=title,contributor=contributorObject,contributor_type=contributorType)
+                TitleContributors.objects.create(title=title, contributor=contributorObject, contributor_type=contributorType)
             print "Title: %s\tContributors: %s" % (title.name, title.contributors.values('display_name'))
             
             """ Awards """

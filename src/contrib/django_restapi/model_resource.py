@@ -96,7 +96,7 @@ class Collection(ResourceBase):
         if not self.authentication.is_authenticated(request):
             response = self.responder.error(request, 401)
             challenge_headers = self.authentication.challenge_headers()
-            for k,v in challenge_headers.items():
+            for k, v in challenge_headers.items():
                 response[k] = v
             return response
         

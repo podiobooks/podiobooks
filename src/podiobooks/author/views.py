@@ -9,7 +9,7 @@ from audio_validation import validate_mp3
 import os
 
 class UploadFileForm(forms.Form):
-    file  = forms.FileField()
+    file = forms.FileField()
 
 def handle_uploaded_file(f, destinationFileName):
     destination = open(destinationFileName, 'wb+')

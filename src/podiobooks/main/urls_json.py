@@ -7,21 +7,21 @@ from contrib.django_restapi.responder import JSONResponder
 # Info At: http://code.google.com/p/django-rest-interface/wiki/RestifyDjango
 # @TODO: Consider Piston Framework instead for API layer
 title_resource = Collection(
-    queryset = Title.objects.all(),
-    permitted_methods = ('GET',),
-    responder = JSONResponder()
+    queryset=Title.objects.all(),
+    permitted_methods=('GET',),
+    responder=JSONResponder()
 )
 
 category_resource = Collection(
-    queryset = Category.objects.all(),
-    permitted_methods = ('GET',),
-    responder = JSONResponder()
+    queryset=Category.objects.all(),
+    permitted_methods=('GET',),
+    responder=JSONResponder()
 )
 
 contributor_resouce = Collection(
-    queryset = Contributor.objects.all(),
-    permitted_methods = ('GET',),
-    responder = JSONResponder()
+    queryset=Contributor.objects.all(),
+    permitted_methods=('GET',),
+    responder=JSONResponder()
 )
 
 urlpatterns = patterns('',

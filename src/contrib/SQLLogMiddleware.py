@@ -30,29 +30,29 @@ from django.template import Template, Context
 
 class SQLLogMiddleware:
 
-    start=None
+    start = None
 
     def process_request(self, request):
-        self.start=time.time()
+        self.start = time.time()
 
     def process_response (self, request, response):
         # self.start is empty if an append slash redirect happened.
-        debug_sql=getattr(settings, "DEBUG_SQL", False)
+        debug_sql = getattr(settings, "DEBUG_SQL", False)
         if (not self.start) or not (settings.DEBUG and debug_sql):
             return response
 
-        timesql=0.0
+        timesql = 0.0
         for q in connection.queries:
-            timesql+=float(q['time'])
-        seen={}
-        duplicate=0
+            timesql += float(q['time'])
+        seen = {}
+        duplicate = 0
         for q in connection.queries:
-            sql=q["sql"]
-            c=seen.get(sql, 0)
+            sql = q["sql"]
+            c = seen.get(sql, 0)
             if c:
-                duplicate+=1
-            q["seen"]=c
-            seen[sql]=c+1
+                duplicate += 1
+            q["seen"] = c
+            seen[sql] = c + 1
         #     
         # t = Template('''
         #     <p>
@@ -81,17 +81,17 @@ class SQLLogMiddleware:
         t = Template('''{% load strip_filter %}{% for sql in queries %}
 {{ sql.sql|strip }}{% endfor %}''')
 
-        timerequest=round(time.time()-self.start, 3)
-        queries=connection.queries
-        html=t.render(Context(locals()))
+        timerequest = round(time.time() - self.start, 3)
+        queries = connection.queries
+        html = t.render(Context(locals()))
         # if debug_sql==True:
         #     if response.get("content-type", "").startswith("text/html"):
         #         response.write(html)
         #     return response
             
         assert os.path.isdir(debug_sql), debug_sql
-        outfile=os.path.join(debug_sql, "answers.sql")
-        fd=open(outfile, "a")
+        outfile = os.path.join(debug_sql, "answers.sql")
+        fd = open(outfile, "a")
         fd.write('''%s''' % (html))
         fd.close()
         return response

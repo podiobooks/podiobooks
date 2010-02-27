@@ -7,7 +7,7 @@ from django.db.models import Count
 
 class BrowseByForm(forms.Form):
     """ Form used to choose a way to browse - used in header """
-    browse_by_list = [('none', 'Author, Genre...'), ('author', 'Author'), ('category', 'Genre/Category'),]
+    browse_by_list = [('none', 'Author, Genre...'), ('author', 'Author'), ('category', 'Genre/Category'), ]
     browseby = forms.ChoiceField(choices=browse_by_list, widget=forms.Select(attrs={'class':'pb-browseby-choice', 'onchange':'browseByChange(this.form.name, this.form.action, this.value);'}))
 
 class CategoryChoiceForm(forms.Form):
