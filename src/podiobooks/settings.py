@@ -11,6 +11,6 @@ from podiobooks.settings_main import * #@UnusedWildImport
 
 try:
     from settings_local import * #@UnusedWildImport
-except NameError:
+except ImportError:
     from settings_local_template import * #@UnusedWildImport
     print("WARNING!  Using default Settings")
