@@ -2,7 +2,7 @@ from django.test import TestCase
 from django.test.client import Client
 
 class UrlTestCase(TestCase):
-    fixtures = ['test_data.json',]
+    fixtures = ['test_data.json', ]
     
     def setUp(self):
         self.c = Client()

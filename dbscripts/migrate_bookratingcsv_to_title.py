@@ -23,10 +23,10 @@ def importRatings():
     """Loops through the chapter rows in the CSV and increment promoter/detractor counts from them"""
     
     #Open Chapter File for Import
-    ratingCSVFile=open(settings.DATALOAD_DIR + "podiobooks_legacy_bookrating_table.csv")
+    ratingCSVFile = open(settings.DATALOAD_DIR + "podiobooks_legacy_bookrating_table.csv")
     
     #Parse the Ratings CSV into a dictionary based on the first row values
-    ratingCSVReader=csv.DictReader(ratingCSVFile,dialect='excel')
+    ratingCSVReader = csv.DictReader(ratingCSVFile, dialect='excel')
     
     #PRE CLEANOUT
     Title.objects.all().update(promoter_count=0, detractor_count=0)
@@ -37,10 +37,10 @@ def importRatings():
         
         if (foundTitle != None):
             # Update the title object in the database based on the current rating row
-            if int(row['Overall']) >=3:
-                foundTitle.promoter_count=foundTitle.promoter_count + 1
+            if int(row['Overall']) >= 3:
+                foundTitle.promoter_count = foundTitle.promoter_count + 1
             else:
-                foundTitle.detractor_count=foundTitle.detractor_count + 1
+                foundTitle.detractor_count = foundTitle.detractor_count + 1
             foundTitle.save()
             
         else:

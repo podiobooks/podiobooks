@@ -18,17 +18,17 @@ def index(request):
     template : main/templates/index.html
     """
     
-    homepage_title_list = Title.objects.filter(display_on_homepage = True).order_by('-date_created').all()
+    homepage_title_list = Title.objects.filter(display_on_homepage=True).order_by('-date_created').all()
     
     featured_title_list = homepage_title_list[:20]
     
     minimal_title_list = featured_title_list[:1]
     
-    toprated_title_list = homepage_title_list.filter(promoter_count__gte = 20).order_by('-promoter_count').all()[:18]
+    toprated_title_list = homepage_title_list.filter(promoter_count__gte=20).order_by('-promoter_count').all()[:18]
     
-    nowreleasing_title_list = homepage_title_list.filter(is_complete = False).all()[:5]
+    nowreleasing_title_list = homepage_title_list.filter(is_complete=False).all()[:5]
     
-    recentlycomplete_title_list = homepage_title_list.filter(is_complete = True).all()[:5]
+    recentlycomplete_title_list = homepage_title_list.filter(is_complete=True).all()[:5]
       
     response_data = {'homepage_title_list': homepage_title_list,
                      'featured_title_list': featured_title_list,
@@ -86,9 +86,9 @@ def title_search(request, keywords=None):
         if settings.SEARCH_PROVIDER == 'SPHINX':
             exclusions = {}
             if (not include_adult):
-                exclusions['is_adult']=True
+                exclusions['is_adult'] = True
             if (completed_only):
-                exclusions['is_complete']=False
+                exclusions['is_complete'] = False
             search_results = Title.search.query(keywords).exclude(**exclusions).order_by('-@weight') #@UndefinedVariable
             search_metadata = search_results._sphinx
         else:
@@ -100,7 +100,7 @@ def title_search(request, keywords=None):
                 completed_filter = Q(is_complete=True)
             else:
                 completed_filter = Q()
-            search_results = Title.objects.filter( (Q(name__icontains=keywords) | Q(description__icontains=keywords)) & adult_filter & completed_filter )
+            search_results = Title.objects.filter((Q(name__icontains=keywords) | Q(description__icontains=keywords)) & adult_filter & completed_filter)
             search_metadata = None
         result_count = len(search_results)
         response_data = {'title_list': search_results, 'keywords': keywords, 'result_count': result_count, 'titleSearchForm': form, 'categoryChoiceForm':CategoryChoiceForm(), 'search_metadata': search_metadata}
