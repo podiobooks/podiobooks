@@ -1,5 +1,9 @@
+"""URL Definitions for the Main Podiobooks Module"""
+
+# pylint: disable-msg=W0401,W0614
+
 from django.conf.urls.defaults import * #@UnusedWildImport
-from models import Category, Contributor, Episode, Title
+from podiobooks.main.models import Category, Contributor, Episode, Title
 
 urlpatterns = patterns('',
     

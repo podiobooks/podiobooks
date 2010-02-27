@@ -1,21 +1,10 @@
 """Admin site customizations for Podiobooks main"""
 
+# pylint: disable-msg=C0111,E0602,F0401,R0904
+
 from django.contrib import admin
 
-from django import forms
-from django.core.urlresolvers import reverse
-from django.contrib.flatpages.admin import FlatPageAdmin
-from django.contrib.flatpages.models import FlatPage
-
-from models import Advisory, Award
-from models import Category, Contributor, ContributorType
-from models import Episode, License, Media
-from models import Series, Subscription
-from models import Title, TitleContributors
-from models import Partner
-
-from tinymce.widgets import TinyMCE
-
+from podiobooks.main.models import *  #@UnusedWildImport # pylint: disable-msg=W0401,W0614
 
 class TitleInline(admin.TabularInline):
     model = Title
@@ -72,19 +61,6 @@ class TitleAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("name",)}
     save_on_tap = True
     search_fields = ["name"]
-
-class TinyMCEFlatPageAdmin(FlatPageAdmin):
-    def formfield_for_dbfield(self, db_field, **kwargs):
-        if db_field.name == 'content':
-            return forms.CharField(widget=TinyMCE(
-                attrs={'cols': 80, 'rows': 30},
-                mce_attrs={'external_link_list_url': reverse('tinymce.views.flatpages_link_list'),
-                           'theme' : 'advanced'},
-            ))
-        return super(TinyMCEFlatPageAdmin, self).formfield_for_dbfield(db_field, **kwargs)
-
-admin.site.unregister(FlatPage)
-admin.site.register(FlatPage, TinyMCEFlatPageAdmin)
 
 admin.site.register(Award)
 admin.site.register(Advisory)

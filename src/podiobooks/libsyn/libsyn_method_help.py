@@ -1,10 +1,10 @@
-#!/usr/bin/python
+"""Dumps out the list of Methods from the LibSyn API"""
 
 import xmlrpclib
 
-server_url = 'http://api.libsyn.com/xmlrpc'
-server = xmlrpclib.Server(server_url);
+SERVER_URL = 'http://api.libsyn.com/xmlrpc'
+SERVER = xmlrpclib.Server(SERVER_URL)
 
-result = server.system.methodHelp('producer.publishing.getItemInfo')
+RESULT = SERVER.system.methodHelp('producer.publishing.getItemInfo')
 
-print result
+print RESULT
