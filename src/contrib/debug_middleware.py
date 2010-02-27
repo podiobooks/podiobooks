@@ -129,7 +129,7 @@ if FRAME_INSPECT:
                     object['module'] = "unknown"
                 try:
                     source_lines = inspect.getsourcelines(frame)
-                    object['source'] = highlight_python(source_lines[0][object['lineno']-source_lines[1]])
+                    object['source'] = highlight_python(source_lines[0][object['lineno'] - source_lines[1]])
                 except:
                     object['source'] = "N/A"
                 list.append(self, object)

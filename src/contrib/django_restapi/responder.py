@@ -74,7 +74,7 @@ class SerializeResponder(object):
         """
         if not error_dict:
             error_dict = ErrorDict()
-        response = HttpResponse(mimetype = self.mimetype)
+        response = HttpResponse(mimetype=self.mimetype)
         response.write('%d %s' % (status_code, STATUS_CODE_TEXT[status_code]))
         if error_dict:
             response.write('\n\nErrors:\n')
@@ -118,7 +118,7 @@ class JSONResponder(SerializeResponder):
         """
         if not error_dict:
             error_dict = ErrorDict()
-        response = HttpResponse(mimetype = self.mimetype)
+        response = HttpResponse(mimetype=self.mimetype)
         response.status_code = status_code
         response_dict = {
             "error-message" : '%d %s' % (status_code, STATUS_CODE_TEXT[status_code]),
@@ -145,7 +145,7 @@ class XMLResponder(SerializeResponder):
         from django.conf import settings
         if not error_dict:
             error_dict = ErrorDict()
-        response = HttpResponse(mimetype = self.mimetype)
+        response = HttpResponse(mimetype=self.mimetype)
         response.status_code = status_code
         xml = SimplerXMLGenerator(response, settings.DEFAULT_CHARSET)
         xml.startDocument()
@@ -263,10 +263,10 @@ class TemplateResponder(object):
         """
         if not error_dict:
             error_dict = ErrorDict()
-        response = direct_to_template(request, 
-            template = '%s/%s.html' % (self.template_dir, str(status_code)),
-            extra_context = { 'errors' : error_dict },
-            mimetype = self.mimetype)
+        response = direct_to_template(request,
+            template='%s/%s.html' % (self.template_dir, str(status_code)),
+            extra_context={ 'errors' : error_dict },
+            mimetype=self.mimetype)
         response.status_code = status_code
         return response
     
@@ -295,5 +295,5 @@ class TemplateResponder(object):
         else:
             form = ResourceForm()
         template_name = '%s/%s_form.html' % (self.template_dir, elem._meta.module_name)
-        return render_to_response(template_name, 
+        return render_to_response(template_name,
                 {'form':form, 'update':True, self.template_object_name:elem})

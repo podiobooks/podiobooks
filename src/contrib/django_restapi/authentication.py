@@ -88,7 +88,7 @@ class HttpDigestAuthentication(object):
         """
         self.realm = realm
         self.authfunc = authfunc
-        self.nonce    = {} # prevention of replay attacks
+        self.nonce = {} # prevention of replay attacks
 
     def get_auth_dict(self, auth_string):
         """
@@ -148,7 +148,7 @@ class HttpDigestAuthentication(object):
         Returns the http headers that ask for appropriate
         authorization.
         """
-        nonce  = hashlib.md5(
+        nonce = hashlib.md5(
             "%s:%s" % (time.time(), random.random())).hexdigest()
         opaque = hashlib.md5(
             "%s:%s" % (time.time(), random.random())).hexdigest()
@@ -178,14 +178,14 @@ class HttpDigestAuthentication(object):
         try:
             username = amap['username']
             authpath = amap['uri']
-            nonce    = amap['nonce']
-            realm    = amap['realm']
+            nonce = amap['nonce']
+            realm = amap['realm']
             response = amap['response']
             assert authpath.split("?", 1)[0] in fullpath
             assert realm == self.realm
-            qop      = amap.get('qop', '')
-            cnonce   = amap.get('cnonce', '')
-            nc       = amap.get('nc', '00000000')
+            qop = amap.get('qop', '')
+            cnonce = amap.get('cnonce', '')
+            nc = amap.get('nc', '00000000')
             if qop:
                 assert 'auth' == qop
                 assert nonce and nc
@@ -201,7 +201,7 @@ class HttpDigestAuthentication(object):
             if nonce in self.nonce:
                 del self.nonce[nonce]
             return False
-        pnc = self.nonce.get(nonce,'00000000')
+        pnc = self.nonce.get(nonce, '00000000')
         if nc <= pnc:
             if nonce in self.nonce:
                 del self.nonce[nonce]
