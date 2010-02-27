@@ -11,6 +11,9 @@
 # Specify a configuration file.
 #rcfile=
 
+# Generated Members
+generated-members=objects
+
 # Profiled execution.
 profile=no
 
