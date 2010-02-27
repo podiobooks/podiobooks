@@ -33,7 +33,7 @@ def replace_bad_words(value):
     words_seen = [w for w in PROFANITIES_LIST if w in value]
     if words_seen:
         for word in words_seen:
-            value = value.replace(word, "%s%s%s" % (word[0], '-'*(len(word)-2), word[-1]))
+            value = value.replace(word, "%s%s%s" % (word[0], '-'*(len(word) - 2), word[-1]))
     return value
 
 @register.inclusion_tag('main/tags/show_variable.html')

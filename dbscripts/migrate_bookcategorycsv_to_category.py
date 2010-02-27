@@ -15,10 +15,10 @@ def importBookCategories():
     # Now, begin reading in the CSV and using the Django model objects to populate the DB
     
     #Open Category File for Import
-    categoryCSVFile=open(settings.DATALOAD_DIR + "podiobooks_legacy_bookcategory_table.csv") #prepare a csv file for our example
+    categoryCSVFile = open(settings.DATALOAD_DIR + "podiobooks_legacy_bookcategory_table.csv") #prepare a csv file for our example
     
     #Parse the Category File CSV into a dictionary based on the first row values
-    categoryCSVReader=csv.DictReader(categoryCSVFile,dialect='excel')
+    categoryCSVReader = csv.DictReader(categoryCSVFile, dialect='excel')
     
     #Pull off the first row of the book file as the labels
     #categoryLabelRow = categoryCSVReader.next()
@@ -33,10 +33,10 @@ def importBookCategories():
         
         # Create an object in the database based on the current row
         category = Category.objects.create (
-            id = row['ID'],
-            name = row['Name'].replace('\\',''),
-            slug = slugify(row['Name']),
-            deleted = False,
+            id=row['ID'],
+            name=row['Name'].replace('\\', ''),
+            slug=slugify(row['Name']),
+            deleted=False,
         )
         print "Category: %s" % (category.name)
     

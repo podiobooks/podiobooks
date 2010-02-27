@@ -14,10 +14,10 @@ def importPartners():
     # Now, begin reading in the CSV and using the Django model objects to populate the DB
     
     #Open Partner File for Import
-    partnerCSVFile=open(settings.DATALOAD_DIR + "podiobooks_legacy_partner_table.csv")
+    partnerCSVFile = open(settings.DATALOAD_DIR + "podiobooks_legacy_partner_table.csv")
     
     #Parse the Partner File CSV into a dictionary based on the first row values
-    partnerCSVReader=csv.DictReader(partnerCSVFile,dialect='excel')
+    partnerCSVReader = csv.DictReader(partnerCSVFile, dialect='excel')
     
     #PRE CLEANOUT
     Partner.objects.all().delete()
@@ -28,12 +28,12 @@ def importPartners():
         
         # Create an object in the database based on the current row
         partner = Partner.objects.create (
-            id = row['ID'],
-            name = row['Name'].replace('\\',''),
-            url = row['URL'],
-            logo = row['Logo'],
-            deleted = False,
-            date_created = row['datecreated'],
+            id=row['ID'],
+            name=row['Name'].replace('\\', ''),
+            url=row['URL'],
+            logo=row['Logo'],
+            deleted=False,
+            date_created=row['datecreated'],
         )
         print "Partner: %s" % (partner.name)
     
