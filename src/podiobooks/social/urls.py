@@ -1,3 +1,7 @@
+"""Django URLs for the Social Media (Twitter, etc.) Module"""
+
+# pylint: disable-msg=W0401,W0614
+
 from django.conf.urls.defaults import * #@UnusedWildImport
 
 urlpatterns = patterns('',

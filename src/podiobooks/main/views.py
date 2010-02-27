@@ -1,3 +1,5 @@
+""" Django Views for the Podiobooks Main Module"""
+
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from podiobooks.main.models import Title
@@ -6,8 +8,6 @@ from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.db.models import Q
-
-""" Views """
 
 def index(request):
     """
@@ -90,7 +90,7 @@ def title_search(request, keywords=None):
             if (completed_only):
                 exclusions['is_complete'] = False
             search_results = Title.search.query(keywords).exclude(**exclusions).order_by('-@weight') #@UndefinedVariable
-            search_metadata = search_results._sphinx
+            search_metadata = search_results._sphinx # pylint: disable-msg=W0212
         else:
             if (not include_adult):
                 adult_filter = Q(is_adult=False)
