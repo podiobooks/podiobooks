@@ -26,6 +26,8 @@ class Advisory(models.Model):
 
     def __unicode__(self):
         return self.name
+    
+    objects = models.Manager()
 
 class Award(models.Model):
     """Awards are just that: awards for a title, like winning a Parsec, etc."""
