@@ -14,7 +14,7 @@ def importPartners():
     # Now, begin reading in the CSV and using the Django model objects to populate the DB
     
     #Open Partner File for Import
-    partnerCSVFile=open("podiobooks_legacy_partner_table.csv")
+    partnerCSVFile=open(settings.DATALOAD_DIR + "podiobooks_legacy_partner_table.csv")
     
     #Parse the Partner File CSV into a dictionary based on the first row values
     partnerCSVReader=csv.DictReader(partnerCSVFile,dialect='excel')

@@ -23,7 +23,7 @@ def importRatings():
     """Loops through the chapter rows in the CSV and increment promoter/detractor counts from them"""
     
     #Open Chapter File for Import
-    ratingCSVFile=open("podiobooks_legacy_bookrating_table.csv")
+    ratingCSVFile=open(settings.DATALOAD_DIR + "podiobooks_legacy_bookrating_table.csv")
     
     #Parse the Ratings CSV into a dictionary based on the first row values
     ratingCSVReader=csv.DictReader(ratingCSVFile,dialect='excel')
