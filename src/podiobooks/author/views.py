@@ -5,14 +5,16 @@ from django.conf import settings
 from django import forms
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from audio_validation import validate_mp3
+from podiobooks.author.audio_validation import validate_mp3
 import os
 
 class UploadFileForm(forms.Form):
+    """Simple form to handle uploading the mp3 file for authors"""
     file = forms.FileField()
 
-def handle_uploaded_file(f, destinationFileName):
-    destination = open(destinationFileName, 'wb+')
+def handle_uploaded_file(f, destination_file_name):
+    """Handles the uploaded file data chunks"""
+    destination = open(destination_file_name, 'wb+')
     for chunk in f.chunks():
         destination.write(chunk)
     destination.close()

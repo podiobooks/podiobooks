@@ -1,4 +1,4 @@
-""" Global Tags """
+""" Django Custom Template Tags Used Throughout Podiobooks """
 
 from django import template
 from podiobooks.main.forms import TitleSearchForm, BrowseByForm
@@ -13,6 +13,7 @@ def cover_media_url():
     """
     Cycles through the values of COVER_MEDIA_URLS to enable increased parallel download speed.
     """
+    # pylint: disable-msg=E1101,W0612
     if not hasattr(cover_media_url, 'state'):
         cover_media_url.state = itertools.cycle(settings.COVER_MEDIA_URLS)
     return cover_media_url.state.next()

@@ -1,3 +1,7 @@
+"""RSS Feed Definitions for Podiobooks, uses the Django Syndication Framework"""
+
+# pylint: disable-msg=R0201, C0111, R0904
+
 from django.contrib.syndication.feeds import Feed
 from django.contrib.syndication.feeds import ObjectDoesNotExist
 
@@ -5,24 +9,25 @@ from django.utils.html import strip_tags
 
 from podiobooks.main.models import Title, Episode
 
-from podiobooks.feeds.protocols.itunes import iTunesFeed
+from podiobooks.feeds.protocols.itunes import ITunesFeed
 
 from podiobooks.feeds import feed_tools
 
-from django.core.urlresolvers import reverse
-
 class TitleFeed(Feed):
-    feed_type = iTunesFeed
+    """A simple feed that lists all the Titles"""
+    feed_type = ITunesFeed
     
     title = "PodioBooks Title Feed"
     link = "/title/"
     description = "List of Titles from Podiobooks.org"
 
     def items(self):
+        """Returns the list of items for the feed"""
         return Title.objects.order_by('-date_created')[:30]
     
 class EpisodeFeed(Feed):
-    feed_type = iTunesFeed
+    """Main feed used to generate the list of episodes for an individual Title"""
+    feed_type = ITunesFeed
     
     def author_name(self, obj):
         return obj.contributors.all()[0].display_name
@@ -54,9 +59,6 @@ class EpisodeFeed(Feed):
         extra_args['explicit'] = self.explicit(obj)
         return extra_args
     
-    def feed_url(self, obj):
-        return reverse('feeds', args=['episodes']) + obj.slug
-    
     def get_object(self, bits):
         # In case of "/rss/feeds/episodes/one-fall/foo/bar/baz/", or other such clutter,
         # check that bits has only one member.
@@ -78,7 +80,7 @@ class EpisodeFeed(Feed):
     def item_enclosure_length(self, obj):
         return int(obj.filesize)
     
-    def item_enclosure_mime_type(self, obj):
+    def item_enclosure_mime_type(self):
         return 'audio/mpeg'
     
     def item_extra_kwargs(self, item):
@@ -112,7 +114,7 @@ class EpisodeFeed(Feed):
         return feed_tools.add_current_domain(obj.get_absolute_url(), self.request)
     
     def item_pubdate(self, obj):
-        return obj.date_created;
+        return obj.date_created
     
     # item_title comes from templates/base/feeds/episodes_title.html
     

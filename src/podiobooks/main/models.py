@@ -7,6 +7,8 @@ from django.contrib.comments.moderation import CommentModerator, moderator
 from django.conf import settings
 import datetime
 
+# pylint: disable-msg=C0111,R0201,W0232
+
 class Advisory(models.Model):
     """Advisories are notifications about titles for the users. These could be
     viewed as not unlike movie ratings, but they are more descriptive. PB1
@@ -17,6 +19,7 @@ class Advisory(models.Model):
     hexcolor = models.CharField(max_length=6)
     date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
     date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
+    objects = models.Manager()
     # rather than storing a hex-color, would it make more sense to
     # add a css class 'Advisory_{slug}' for flexibility??
         
@@ -26,8 +29,6 @@ class Advisory(models.Model):
 
     def __unicode__(self):
         return self.name
-    
-    objects = models.Manager()
 
 class Award(models.Model):
     """Awards are just that: awards for a title, like winning a Parsec, etc."""
@@ -38,6 +39,7 @@ class Award(models.Model):
     deleted = models.BooleanField(default=False)
     date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
     date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
+    objects = models.Manager()
     
     class Meta:
         ordering = ['name']
@@ -57,6 +59,7 @@ class Category(models.Model):
     deleted = models.BooleanField(default=False)
     date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
     date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
+    objects = models.Manager()
         
     class Meta:
         verbose_name_plural = "categories"
@@ -133,7 +136,7 @@ class Episode(models.Model):
     
     @models.permalink
     def get_absolute_url(self):
-        return ('episode_detail', [self.id])
+        return ('episode_detail', [self.id]) # pylint: disable-msg=E1101
 
 class EpisodeContributors(models.Model):
     """Join table to associate contributors to titles."""
@@ -319,7 +322,7 @@ class Title(models.Model):
             return 0
         
     def description_br(self):
-        return self.description.replace('\n', '\n<br/>')
+        return self.description.replace('\n', '\n<br/>') # pylint: disable-msg=E1101
 
 class TitleModerator(CommentModerator):
     """ Sets up comments moderation for Titles """
