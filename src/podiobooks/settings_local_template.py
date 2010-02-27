@@ -150,4 +150,4 @@ LIBSYN_KEY = ''
 LIBSYN_NETWORK_SLUG = ''
 
 # DATALOAD
-DATALOAD_DIR = PROJECT_PATH + "/../podiobooks-dataload/datafiles"
+DATALOAD_DIR = PROJECT_PATH + "/../../../podiobooks-dataload/datafiles/"
