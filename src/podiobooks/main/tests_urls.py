@@ -27,6 +27,13 @@ class UrlTestCase(TestCase):
         response = self.c.get('/title/search/science%20fiction/')
         self.assertEquals(200, response.status_code)
         
+    def testTitleSearchKeywordsPost(self):
+        response = self.c.post('/title/search/', {"keywords": "science%20fiction"})
+        self.assertEquals(200, response.status_code)
+        
+        response = self.c.post('/title/search/', {"keywords": "dollie", "include_adult": 1, "completed_only": 1})
+        self.assertEquals(200, response.status_code)
+        
     def testTitleSummary(self):
         response = self.c.get('/title/summary/293/') # Double Share
         self.assertEquals(200, response.status_code)
@@ -46,10 +53,6 @@ class UrlTestCase(TestCase):
     def testCategoryList(self):
         response = self.c.get('/category/')
         self.assertEquals(200, response.status_code)
-        
-    def testCategoryRedirect(self):
-        response = self.c.get('/category/redirect/')
-        self.assertEquals(302, response.status_code)
         
     def testCategoryDetail(self):
         response = self.c.get('/category/science-fiction/')
