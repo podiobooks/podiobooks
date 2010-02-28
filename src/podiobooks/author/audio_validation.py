@@ -1,5 +1,7 @@
 """Utilities to validate that uploaded mp3 files meet the podiobooks standards"""
 
+# pylint: disable-msg=F0401
+
 import eyeD3
 
 def validate_mp3(file_path):
