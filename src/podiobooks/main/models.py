@@ -249,12 +249,12 @@ class Subscription(models.Model):
     titles = models.ManyToManyField('Title', related_name='subscriptions')  # You can access the relationship from Title as title.subscriptions
     series = models.ManyToManyField('Series', related_name='subscriptions') # You can access the relationship from Series as series.subscriptions
     user = models.ForeignKey(User, related_name='subscriptions') #User is an OOTB Django Auth Model
-    day_interval = models.SmallIntegerField(default=7)
+    day_interval = models.IntegerField(default=7)
     partner = models.ForeignKey('Partner', related_name='subscriptions')
     last_downloaded_episode = models.ForeignKey('Episode', related_name='subscriptions')
     last_downloaded_date = models.DateTimeField(blank=True, default=datetime.datetime.now())
-    finished = models.IntegerField(null=False, default=0)
-    deleted = models.IntegerField(null=False, default=0)
+    finished = models.IntegerField(default=0)
+    deleted = models.IntegerField(default=0)
     date_created = models.DateTimeField(default=datetime.datetime.now())
     date_updated = models.DateTimeField(default=datetime.datetime.now())
     
@@ -293,7 +293,7 @@ class Title(models.Model):
     partner = models.ForeignKey('partner', null=True, blank=True, related_name='partners')
     awards = models.ManyToManyField('Award', blank=True)
     libsyn_show_id = models.CharField(max_length=50, db_index=True)
-    podiobooker_blog_url = models.URLField(max_length=255, blank=True, null=True)
+    podiobooker_blog_url = models.URLField(max_length=255, blank=True, verify_exists=True)
     enable_comments = models.BooleanField(default=True)
     # Note: episodes are available as episodes.all()
     date_created = models.DateTimeField(default=datetime.datetime.now(), db_index=True)
