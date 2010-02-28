@@ -10,3 +10,9 @@ DATABASE_NAME = ''
 
 # Test Cache Settings
 CACHE_BACKEND = "file://" + tempfile.gettempdir()
+
+INSTALLED_APPS += (
+    'django_nose',
+)
+
+TEST_RUNNER = 'django_nose.run_tests'
