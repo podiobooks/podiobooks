@@ -141,8 +141,8 @@ class Episode(models.Model):
 class EpisodeContributors(models.Model):
     """Join table to associate contributors to titles."""
     episode = models.ForeignKey('Episode')
-    contributor = models.ForeignKey('Contributor', related_name='episodecontributor_set')
-    contributor_type = models.ForeignKey('ContributorType', related_name='episodecontributor_set')
+    contributor = models.ForeignKey('Contributor', related_name='episodecontributors')
+    contributor_type = models.ForeignKey('ContributorType', related_name='episodecontributors')
     date_created = models.DateTimeField(default=datetime.datetime.now())
     
     class Meta:
@@ -334,8 +334,8 @@ moderator.register(Title, TitleModerator)
 class TitleContributors(models.Model):
     """Join table to associate contributors to titles."""
     title = models.ForeignKey('Title')
-    contributor = models.ForeignKey('Contributor', related_name='titlecontributors_set')
-    contributor_type = models.ForeignKey('ContributorType', related_name='titlecontributors_set')
+    contributor = models.ForeignKey('Contributor', related_name='titlecontributors')
+    contributor_type = models.ForeignKey('ContributorType', related_name='titlecontributors')
     date_created = models.DateTimeField(default=datetime.datetime.now())
     
     class Meta:
