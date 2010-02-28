@@ -5,7 +5,6 @@
 from django.test import TestCase
 from podiobooks.main.models import *  #@UnusedWildImport
 from django.template.defaultfilters import slugify
-from django.test.client import Client
 
 class TitleTestCase(TestCase):
     """Test the Podiobooks Models from a Title-Centric POV"""
@@ -300,10 +299,3 @@ class TitleTestCase(TestCase):
             else :
                 self.fail('Non-matching Subscription!' + currentSubscription.user.username)
 
-class UrlTestCase(TestCase):
-    fixtures = []
-    
-    def testAll(self):
-        c = Client() # create a new test client
-        response = c.get('/')
-        self.assertEquals(200, response.status_code)
