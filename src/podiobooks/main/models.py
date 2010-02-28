@@ -301,7 +301,7 @@ class Title(models.Model):
     
     # Optionally configure Sphinx as search engine for titles
     if (settings.SEARCH_PROVIDER == 'SPHINX'):
-        import djangosphinx.models
+        import djangosphinx.models # pylint: disable-msg=F0401
         search = djangosphinx.models.SphinxSearch(index="pb2_titles", weights={'display_name': 100000, 'name': 75000, 'description': 1})
     
     class Meta:
