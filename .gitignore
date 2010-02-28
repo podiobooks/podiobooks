@@ -7,6 +7,7 @@
 *.pyc
 *.log
 *.pyo
+.coverage
 .installed.cfg
 bin
 develop-eggs
@@ -21,3 +22,4 @@ settings_local.py
 .DS_Store
 .tmp_*
 .settings
+nosetests.xml
