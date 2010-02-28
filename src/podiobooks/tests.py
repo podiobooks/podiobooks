@@ -1,6 +1,6 @@
 """Master Class for All Podiobooks Automated Unit Tests"""
 
-# pylint: disable-msg=W0611,W0614,W0401
+# pylint: disable-msg=C0103,C0111,W0611,W0614,W0401
 
 from django.test import TestCase #@UnusedImport
 from podiobooks.main.models import *  #@UnusedWildImport
@@ -12,6 +12,7 @@ from podiobooks.main.tests_urls import * #@UnusedImport #@UnusedWildImport
 from podiobooks.social.tests import * #@UnusedImport #@UnusedWildImport
 
 class HaystackSearchUrlTestCase(TestCase):
+    """Test the Haystack Search URLs"""
     fixtures = ['test_data.json', ]
     
     def setUp(self):
