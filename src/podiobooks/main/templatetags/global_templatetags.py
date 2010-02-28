@@ -38,7 +38,7 @@ def replace_bad_words(value):
     return value
 
 @register.inclusion_tag('main/tags/show_variable.html')
-def show_variable(variable):
+def show_variable(variable): # pragma: nocover
     """ Shows a variable dump of the header """
     vardir = dir(variable)
     result = dict()
