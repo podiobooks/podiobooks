@@ -54,7 +54,6 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'django_authopenid',
-    'django_nose',
     'faq',
     'haystack',
     'tagging',
@@ -65,5 +64,3 @@ INSTALLED_APPS = (
     'podiobooks.social',
     'registration',
 )
-
-TEST_RUNNER = 'django_nose.run_tests'
