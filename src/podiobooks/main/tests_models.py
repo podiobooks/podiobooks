@@ -228,20 +228,20 @@ class TitleTestCase(TestCase):
             print '\n\tName: %s' % currentSeries.name
             print '\tSlug: %s' % currentSeries.slug
             print '\tTitles:'
-            for currentTitle in currentSeries.title_set.all() :
+            for currentTitle in currentSeries.titles.all() :
                 print '\t\tName: %s' % currentTitle.name
                 print '\t\tSlug: %s' % currentTitle.slug
             print '\tSubscriptions:'
-            for currentSubscription in currentSeries.subscription_set.all() :
+            for currentSubscription in currentSeries.subscriptions.all() :
                 print '\t\tUserName: %s' % currentSubscription.user.username
             
             # Series Assertions
             if currentSeries.name == "Podiobooks Series #1" :
-                self.assertEquals(len(currentSeries.subscription_set.all()), 1)
-                self.assertEquals(len(currentSeries.title_set.all()), 2)
+                self.assertEquals(len(currentSeries.subscriptions.all()), 1)
+                self.assertEquals(len(currentSeries.titles.all()), 2)
             elif currentSeries.name == "Podiobooks Series #2" :
-                self.assertEquals(len(currentSeries.subscription_set.all()), 2)
-                self.assertEquals(len(currentSeries.title_set.all()), 1)
+                self.assertEquals(len(currentSeries.subscriptions.all()), 2)
+                self.assertEquals(len(currentSeries.titles.all()), 1)
             else :
                 self.fail('Non-matching Series!' + currentSeries.name)
                 
@@ -252,22 +252,22 @@ class TitleTestCase(TestCase):
             print '\tSlug: %s' % currentTitle.slug
             print '\tSeries: %s' % currentTitle.series.name
             print '\tEpisodes:'
-            for currentEpisode in currentTitle.episode_set.all() :
+            for currentEpisode in currentTitle.episodes.all() :
                 print '\t\tName: %s' % currentEpisode.name
             print '\tSubscriptions:'
-            for currentSubscription in currentTitle.subscription_set.all() :
+            for currentSubscription in currentTitle.subscriptions.all() :
                 print '\t\tUserName: %s' % currentSubscription.user.username
             
             # Title Assertions
             if currentTitle.name == "Podiobooks Title #1" :
-                self.assertEquals(len(currentTitle.episode_set.all()), 1)
-                self.assertEquals(len(currentTitle.subscription_set.all()), 2)
+                self.assertEquals(len(currentTitle.episodes.all()), 1)
+                self.assertEquals(len(currentTitle.subscriptions.all()), 2)
             elif currentTitle.name == "Podiobooks Title #2" :
-                self.assertEquals(len(currentTitle.episode_set.all()), 2)
-                self.assertEquals(len(currentTitle.subscription_set.all()), 1)
+                self.assertEquals(len(currentTitle.episodes.all()), 2)
+                self.assertEquals(len(currentTitle.subscriptions.all()), 1)
             elif currentTitle.name == "Podiobooks Title #3" :
-                self.assertEquals(len(currentTitle.episode_set.all()), 1)
-                self.assertEquals(len(currentTitle.subscription_set.all()), 0)
+                self.assertEquals(len(currentTitle.episodes.all()), 1)
+                self.assertEquals(len(currentTitle.subscriptions.all()), 0)
             else :
                 self.fail('Non-matching Title!' + currentTitle.name)
                 
