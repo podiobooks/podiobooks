@@ -12,9 +12,9 @@ def search(keywords):
     if response:
         return response['results']
     else:
-        return None
+        return None  # pragma: no cover
 
-def main():
+def main(): # pragma: no cover
     """MAIN FUNCTION TO RUN IF THIS SCRIPT IS CALLED ALONE"""
     
     result = search("Shadowmagic")
@@ -23,5 +23,7 @@ def main():
     pprinter = pprint.PrettyPrinter(indent=4)
     pprinter.pprint(result)
     
+    return result
+    
 if __name__ == "__main__":
-    main()
+    main()  # pragma: no cover
