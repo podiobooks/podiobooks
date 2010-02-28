@@ -51,7 +51,7 @@ if __name__ == "__main__":
 # TITLE MODEL FIELDS
 #slug = models.SlugField()
 #name = models.CharField(max_length=255)
-## Note - titles are available as title_set.all()
+## Note - titles are available as titles.all()
 #deleted = models.BooleanField(default=False)
 #date_created = models.DateTimeField(blank=False, default=datetime.datetime.now())
 #date_updated = models.DateTimeField(blank=False, default=datetime.datetime.now())
