@@ -18,7 +18,6 @@ urlpatterns = patterns('',
     
     # category
     url(r'^category/$', 'django.views.generic.list_detail.object_list', { 'queryset': Category.objects.all().order_by('name'), 'template_object_name': 'category', 'template_name': 'main/category/category_list.html'}, name='category_list'),
-    url(r'^category/redirect/$', 'podiobooks.main.views.category_redirect', name='category_redirect'),
     url(r'^category/(?P<slug>[^/]+)/$', 'django.views.generic.list_detail.object_detail', {'queryset': Category.objects.all(), 'template_object_name': 'category', 'template_name': 'main/category/category_detail.html'}, name='category_detail'),
     url(r'^category/shelf/(?P<slug>[^/]+)/$', 'django.views.generic.list_detail.object_detail', {'queryset': Category.objects.all(), 'template_object_name': 'category', 'template_name': 'main/category/category_shelf.html'}, name='category_shelf'),
       
