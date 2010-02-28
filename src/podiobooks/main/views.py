@@ -5,8 +5,6 @@ from django.template import RequestContext
 from podiobooks.main.models import Title
 from podiobooks.main.forms import CategoryChoiceForm, ContributorChoiceForm, TitleSearchForm
 from django.conf import settings
-from django.core.urlresolvers import reverse
-from django.http import HttpResponseRedirect
 from django.db.models import Q
 
 def index(request):
@@ -41,23 +39,6 @@ def index(request):
                      }
     
     return render_to_response('main/index.html', response_data, context_instance=RequestContext(request))
-
-def category_redirect(request):
-    """
-    Redirects to the category list page for the chosen category
-
-    url: /content/category/browse/<category-slug>
-    
-    template : N/A
-    """
-    if request.method == 'POST': # If the form has been submitted...
-        form = CategoryChoiceForm(request.POST) # A form bound to the POST data
-        if form.is_valid(): # All validation rules pass
-            return HttpResponseRedirect(reverse('category_detail', args=[form.cleaned_data['category']]))
-        else:
-            return HttpResponseRedirect(reverse('home_page'))
-    else:
-        return HttpResponseRedirect(reverse('category_list'))
         
 def title_search(request, keywords=None):
     """
@@ -83,7 +64,7 @@ def title_search(request, keywords=None):
         completed_only = False
     
     if keywords:
-        if settings.SEARCH_PROVIDER == 'SPHINX':
+        if settings.SEARCH_PROVIDER == 'SPHINX': #pragma: nocover
             exclusions = {}
             if (not include_adult):
                 exclusions['is_adult'] = True
