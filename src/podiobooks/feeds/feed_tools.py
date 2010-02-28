@@ -9,7 +9,7 @@ def get_current_site(request):
     if Site._meta.installed: #@UndefinedVariable # pylint: disable-msg=E1101,W0212
         current_site = Site.objects.get_current()
     else:
-        current_site = RequestSite(request)
+        current_site = RequestSite(request) # pragma: nocover
     return current_site
             
 def get_current_domain(request):

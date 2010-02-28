@@ -9,6 +9,7 @@ from django.test.client import Client #@UnusedImport
 
 from podiobooks.main.tests_models import * #@UnusedImport #@UnusedWildImport
 from podiobooks.main.tests_urls import * #@UnusedImport #@UnusedWildImport
+from podiobooks.feeds.tests import * #@UnusedImport #@UnusedWildImport
 from podiobooks.social.tests import * #@UnusedImport #@UnusedWildImport
 
 class HaystackSearchUrlTestCase(TestCase):

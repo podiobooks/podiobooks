@@ -10,16 +10,20 @@ from django.utils.html import strip_tags
 from podiobooks.main.models import Title, Episode
 
 from podiobooks.feeds.protocols.itunes import ITunesFeed
+from django.utils.feedgenerator import Rss201rev2Feed
 
 from podiobooks.feeds import feed_tools
 
 class TitleFeed(Feed):
-    """A simple feed that lists all the Titles"""
-    feed_type = ITunesFeed
+    """A simple feed that lists recent Titles"""
+    feed_type = Rss201rev2Feed
     
     title = "PodioBooks Title Feed"
     link = "/title/"
     description = "List of Titles from Podiobooks.org"
+    
+    def item_link(self, obj):
+        return feed_tools.add_current_domain(obj.get_absolute_url(), self.request)
 
     def items(self):
         """Returns the list of items for the feed"""
@@ -48,7 +52,7 @@ class EpisodeFeed(Feed):
         if obj.license:
             return obj.license.slug
         else:
-            return "All Rights Reserved by Author"
+            return "All Rights Reserved by Author" #pragma: nocover
     
     def feed_extra_kwargs(self, obj):
         """
