@@ -19,7 +19,7 @@ def show_categories(title):
 @register.inclusion_tag('main/title/tags/show_contributors.html')
 def show_contributors(title):
     """ Pulls and formats a list of all the contributors for a Title """
-    titlecontributors = title.titlecontributors_set.all().order_by('contributor_type__slug', 'date_created')
+    titlecontributors = title.titlecontributors.all().order_by('contributor_type__slug', 'date_created')
     return { 'titlecontributors' : titlecontributors }
 
 @register.inclusion_tag('main/title/tags/show_titlecover.html')
@@ -35,4 +35,4 @@ def show_titlelist(title_list):
 @register.inclusion_tag('main/title/tags/show_episodelist.html')
 def show_episodelist(title):
     """ Show a list of all the episodes for a title, used on title detail page """
-    return { 'episode_list' : title.episode_set.order_by('sequence').all(), 'MEDIA_URL': settings.MEDIA_URL}
+    return { 'episode_list' : title.episodes.order_by('sequence').all(), 'MEDIA_URL': settings.MEDIA_URL}

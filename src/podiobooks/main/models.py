@@ -55,7 +55,7 @@ class Category(models.Model):
     """Categories describe titles for easy of browsing and for recommendations."""
     slug = models.SlugField()
     name = models.CharField(max_length=255)
-    # Note - titles are available as title_set.all()
+    # Note - titles are available as titles.all()
     deleted = models.BooleanField(default=False)
     date_created = models.DateTimeField(default=datetime.datetime.now())
     date_updated = models.DateTimeField(default=datetime.datetime.now())
@@ -82,7 +82,7 @@ class Contributor(models.Model):
     last_name = models.CharField(max_length=255)
     display_name = models.CharField(max_length=255)
     deleted = models.BooleanField(default=False)
-    # Note: Titles are available a title_set.all()
+    # Note: Titles are available a titles.all()
     date_created = models.DateTimeField(default=datetime.datetime.now())
     date_updated = models.DateTimeField(default=datetime.datetime.now())
 
@@ -111,9 +111,9 @@ class Episode(models.Model):
     """Titles are composed of Episodes. For a book, these are chapters or
     divisions of the book into smaller parts. For a comic book, it would be each
     issue of the comic."""
-    title = models.ForeignKey('Title')
+    title = models.ForeignKey('Title', related_name='episodes')
     name = models.CharField(max_length=255)
-    sequence = models.IntegerField(null=False) #Order in the Story
+    sequence = models.IntegerField() #Order in the Story
     description = models.TextField(blank=True)
     url = models.URLField(verify_exists=True)
     filesize = models.IntegerField(default=0) #Size of the media file
@@ -124,10 +124,6 @@ class Episode(models.Model):
     date_created = models.DateTimeField(default=datetime.datetime.now())
     date_updated = models.DateTimeField(default=datetime.datetime.now())
     
-    def _get_filesize_mb(self):
-        return round(self.filesize / 1024.0 / 1024.0, 2)
-    filesize_mb = property(_get_filesize_mb)
-    
     class Meta:
         ordering = ['title__name', 'sequence']
     
@@ -137,10 +133,14 @@ class Episode(models.Model):
     @models.permalink
     def get_absolute_url(self):
         return ('episode_detail', [self.id]) # pylint: disable-msg=E1101
+    
+    def _get_filesize_mb(self):
+        return round(self.filesize / 1024.0 / 1024.0, 2)
+    filesize_mb = property(_get_filesize_mb)
 
 class EpisodeContributors(models.Model):
     """Join table to associate contributors to titles."""
-    episode = models.ForeignKey('Episode')
+    episode = models.ForeignKey('Episode', related_name='episodecontributors')
     contributor = models.ForeignKey('Contributor', related_name='episodecontributors')
     contributor_type = models.ForeignKey('ContributorType', related_name='episodecontributors')
     date_created = models.DateTimeField(default=datetime.datetime.now())
@@ -168,7 +168,7 @@ class License(models.Model):
 class Media(models.Model):
     """Media are links to other forms of the title. In the case of books, these
     would be dead tree editions, epub, etc."""
-    title = models.ForeignKey('Title')
+    title = models.ForeignKey('Title', related_name='media')
     name = models.CharField(max_length=255)
     baseurl = models.CharField(max_length=255)
     deleted = models.BooleanField(default=False)
@@ -203,7 +203,7 @@ class Promo(models.Model):
     """Promotional materials for a title. Built to allow many types of
     material per a single title for folks what want to add some serious
     marketing mojo to their arsenal."""
-    title = models.ForeignKey('Title')
+    title = models.ForeignKey('Title', related_name='promos')
     display_text = models.CharField(max_length=255)
     url = models.URLField(verify_exists=True)
     display_order = models.IntegerField(null=False, default=1)
@@ -246,12 +246,12 @@ class Subscription(models.Model):
     """A Subscription is when a user decides to add a particular title or series
     to their personal feed. Subscriptions are released on a timed basis,
     allowing for dynamic construction and caching of customized feeds."""
-    titles = models.ManyToManyField('Title')  # You can access the relationship from Title as title.subscription_set
-    series = models.ManyToManyField('Series') # You can access the relationship from Series as series.subscription_set
-    user = models.ForeignKey(User) #User is an OOTB Django Auth Model
+    titles = models.ManyToManyField('Title', related_name='subscriptions')  # You can access the relationship from Title as title.subscriptions
+    series = models.ManyToManyField('Series', related_name='subscriptions') # You can access the relationship from Series as series.subscriptions
+    user = models.ForeignKey(User, related_name='subscriptions') #User is an OOTB Django Auth Model
     day_interval = models.SmallIntegerField(default=7)
-    partner = models.ForeignKey('Partner')
-    last_downloaded_episode = models.ForeignKey('Episode')
+    partner = models.ForeignKey('Partner', related_name='subscriptions')
+    last_downloaded_episode = models.ForeignKey('Episode', related_name='subscriptions')
     last_downloaded_date = models.DateTimeField(blank=True, default=datetime.datetime.now())
     finished = models.IntegerField(null=False, default=0)
     deleted = models.IntegerField(null=False, default=0)
@@ -270,15 +270,15 @@ class Title(models.Model):
     college lectures."""
 
     name = models.CharField(max_length=255)
-    series = models.ForeignKey('Series', null=True, blank=True)
+    series = models.ForeignKey('Series', null=True, blank=True, related_name='titles')
     description = models.TextField()
     slug = models.SlugField(max_length=255)
     cover = models.ImageField(upload_to=settings.MEDIA_COVERS)
     status = models.IntegerField(default=1)
-    license = models.ForeignKey('License', null=True, blank=True)
+    license = models.ForeignKey('License', null=True, blank=True, related_name='titles')
     display_on_homepage = models.BooleanField(default=False, db_index=True)
     is_hosted_at_pb = models.BooleanField(default=True)
-    advisory = models.ForeignKey('Advisory', null=True, blank=True)
+    advisory = models.ForeignKey('Advisory', null=True, blank=True, related_name='titles')
     is_adult = models.BooleanField(default=False, db_index=True)
     is_complete = models.BooleanField(default=False, db_index=True)
     avg_audio_quality = models.FloatField(default=0)
@@ -290,12 +290,12 @@ class Title(models.Model):
     deleted = models.BooleanField(default=False)
     contributors = models.ManyToManyField('Contributor', through='TitleContributors')
     categories = models.ManyToManyField('Category', db_table="main_title_categories")
-    partner = models.ForeignKey('partner', null=True, blank=True)
+    partner = models.ForeignKey('partner', null=True, blank=True, related_name='partners')
     awards = models.ManyToManyField('Award', blank=True)
     libsyn_show_id = models.CharField(max_length=50, db_index=True)
     podiobooker_blog_url = models.URLField(max_length=255, blank=True, null=True)
     enable_comments = models.BooleanField(default=True)
-    # Note: episodes are available as episode_set.all()
+    # Note: episodes are available as episodes.all()
     date_created = models.DateTimeField(default=datetime.datetime.now(), db_index=True)
     date_updated = models.DateTimeField(default=datetime.datetime.now(), db_index=True)
     
@@ -333,7 +333,7 @@ moderator.register(Title, TitleModerator)
 
 class TitleContributors(models.Model):
     """Join table to associate contributors to titles."""
-    title = models.ForeignKey('Title')
+    title = models.ForeignKey('Title', related_name='titlecontributors')
     contributor = models.ForeignKey('Contributor', related_name='titlecontributors')
     contributor_type = models.ForeignKey('ContributorType', related_name='titlecontributors')
     date_created = models.DateTimeField(default=datetime.datetime.now())
@@ -357,7 +357,7 @@ class TitleUrl(models.Model):
 class UserProfile(models.Model):
     """Information about the user which we need for preferences, social needs,
     etc."""
-    user = models.ForeignKey(User) #User is an OOTB Django Auth Model
+    user = models.ForeignKey(User, related_name='userprofiles') #User is an OOTB Django Auth Model
     slug = models.SlugField()
     date_created = models.DateTimeField(default=datetime.datetime.now())
     date_updated = models.DateTimeField(default=datetime.datetime.now())
