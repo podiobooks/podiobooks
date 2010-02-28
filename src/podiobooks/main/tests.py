@@ -7,5 +7,5 @@ from podiobooks.main.models import *  #@UnusedWildImport
 from django.template.defaultfilters import slugify #@UnusedImport
 from django.test.client import Client #@UnusedImport
 
-from podiobooks.main.tests_models import TitleTestCase #@UnusedImport
-from podiobooks.main.tests_urls import UrlTestCase #@UnusedImport
+from podiobooks.main.tests_models import * #@UnusedImport  #@UnusedWildImport
+from podiobooks.main.tests_urls import * #@UnusedImport  #@UnusedWildImport
