@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% load global_templatetags %}
+{% load title_templatetags %}
+{% block headtitle %}{{ title.name }} - {{ site_name }}{% endblock %}
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{{ THEME_MEDIA_URL }}css/title_detail.css">
+<link rel="stylesheet" type="text/css" href="{{ THEME_MEDIA_URL }}css/infobox.css">
+<link rel="stylesheet" type="text/css" href="{{ THEME_MEDIA_URL }}css/ratings.css">
+<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/dojo/1.4/dijit/themes/tundra/tundra.css">
+<script type="text/javascript">
+    dojo.require('dijit.layout.TabContainer');
+    dojo.require('dijit.layout.ContentPane');
+    dojo.addOnLoad(function(){
+        dojo.style("bottomTabs", "opacity", "1");
+        dojo.style("topTabs", "opacity", "1");
+        //dijit.byId('topTabContainer').selectChild('Description');  //Seems to be broken
+    });
+</script>
+{% endblock %}
+{% block title %}Book Information{% endblock %}
+{% block content %}
+<div class="title-detail" style="margin: 0 0 30px 0;">
+    <div style="float:left; text-align: center;">
+        {% show_titlecover title %}
+        <div style="margin: 10px 0 0 30px; width: 90px;">
+            <div class="pb-item-rating-promoter">
+                {{ title.promoter_count }}
+            </div>
+            <div class="pb-item-rating-detractor">
+                {{ title.detractor_count }}
+            </div>
+			<div class="pb-float-clear">
+        </div>
+    </div>
+    <div class="pb-float-clear">
+    </div>
+    <div style="margin: 5px 0 0 15px; height: 100px; width: 100px;">
+        {% show_awardshow title %}
+    </div>
+</div>
+</div>
+<div style="float:left; width: 558px; margin: 0 0 20px 20px" class="tundra">
+    <div style="font-size: 18px; font-weight: bold;">
+        {{ title.name }}
+    </div>
+    {% show_contributors title %}
+    <br>
+    {% show_categories title %}
+    <div class="tundra" style="opacity: 0; margin: 15px 0 0 0; height: 380px;" id="topTabs">
+        <div dojoType="dijit.layout.TabContainer" style="width: 100%; height: 100%;" id="topTabContainer">
+            <div dojoType="dijit.layout.ContentPane" title="Description" selected="true">
+                {% autoescape off %}{{ title.description_br }}{% endautoescape %}
+            </div>
+            <div dojoType="dijit.layout.ContentPane" title="News" selected="true">
+                Lorem News
+            </div>
+            <div dojoType="dijit.layout.ContentPane" title="Featured Comments" selected="true">
+                Lorem Comments
+            </div>
+            <div dojoType="dijit.layout.ContentPane" title="Social" selected="true" href="/social/twitter/search/{{ title.contributors.all|first }}">
+            </div>
+        </div>
+    </div>
+</div>
+{% include "main/title/title_subscriptionbox.html" %}
+<div class="pb-float-clear">
+</div>
+<div class="tundra" style="width: 100%; height: 500px; opacity: 0" id="bottomTabs">
+    <div dojoType="dijit.layout.TabContainer" style="width: 100%; height: 100%;" id="bottomTabContainer">
+        <div dojoType="dijit.layout.ContentPane" title="Chapters">
+            {% if title.episode_set.all %}
+            {% show_episodelist title %}
+            {% else %}
+            <div style="font-size: 18px; clear: both; font-weight: bold;">
+                No Episodes Are Available Yet
+            </div>
+            {% endif %}
+        </div>
+        <div dojoType="dijit.layout.ContentPane" title="All Comments">
+            {% include "main/title/title_all_comments.html" %}
+        </div>
+    </div>
+</div>
+{% if title.license %}
+<div style="float: left; margin: 20px 0px 0px 0px;">
+    <a rel="license" href="{{title.license.url}}"><img alt="{{ title.license.text }} Logo" style="border-width:0" src="{{ title.license.image_url }}" /></a>
+</div>
+<div style="float: left; margin: 26px 0px 10px 10px;">
+    This work is licensed under a <a href="{{ title.license.url }}">{{ title.license.text }}</a>
+    license.
+</div>
+<div style="clear: both">
+</div>
+{% endif %}
+{% endblock %}
