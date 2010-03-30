@@ -1,0 +1,39 @@
+<!-- Begin Newsbox -->
+<div class="pb-infobox" id="podiobooksNewsBox" style="top: -481px;">
+    <div class="pb-infobox-left">
+    </div>
+    <div class="pb-infobox-middle">
+        <div class="pb-infobox-headphones">
+            Podiobooks
+            <br>
+            News
+        </div>
+        <div id="news" name="news" style="line-height: 1.1; margin: -20px 0 0 0;">
+            <div style="margin: 5px 0 5px 0">
+                Now Releasing:
+            </div>
+            <ul style="list-style-type: circle; margin: 0 0 0 12px; padding: 0">
+                {% for title in nowreleasing_title_list|slice:":5" %}
+                <li style="margin: 8px 0 0 0">
+                    <a href="{% url title_detail title.slug %}">{{ title.name }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+            <div style="margin: 10px 0 5px 0">
+                Recently Complete:
+            </div>
+            <ul style="list-style-type: circle; margin: 0 0 0 12px; padding: 0">
+                {% for title in recentlycomplete_title_list|slice:":4" %}
+                <li style="margin: 8px 0 0 0">
+                    <a href="{% url title_detail title.slug %}">{{ title.name }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="pb-infobox-right">
+    </div>
+</div>
+<div class="pb-float-clear">
+</div>
+<!-- End Newsbox -->

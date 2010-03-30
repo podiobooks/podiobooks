@@ -11,6 +11,7 @@ class TitleTestCase(TestCase):
     fixtures = []
     
     def setUp(self):
+        
         # This method sets up a whole series of model objects, and then tries to connect them together.
         
         #Create Some Test Users
@@ -209,7 +210,7 @@ class TitleTestCase(TestCase):
         self.subscription3.series.add(self.series1)
         self.subscription3.series.add(self.series2)     
 
-    def testAll(self):
+    def testTitle(self):
         # USERS
         print 'Users:'
         testUsers = User.objects.all().filter(username__startswith='test')

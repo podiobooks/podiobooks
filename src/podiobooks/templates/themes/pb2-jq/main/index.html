@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load global_templatetags %}
+{% load shelf_templatetags %}
+{% load ad_templatetags %}
+{% block headtitle %}{{ site_name }} - Free Downloadable Audiobooks{% endblock %}
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{{ THEME_MEDIA_URL }}css/infobox.css">
+{% shelf_includes %}
+{% endblock %}
+{% block content %}
+{% url category_shelf 'placeholder_slug' as category_dropdown_url %} 
+{% show_shelf 'featuredPodiobooksShelf' 'Featured Podiobooks by Category' featured_title_list category_choice_form.category category_dropdown_url 'category' 'pb-shelf-featured' 4 %} 
+<script type="text/javascript">
+    /* Attach a jCarousel Widget to the Featured Shelf, setting the divs on either end as buttons */
+    $(function(){
+    	attachCarousel('featuredPodiobooksShelf', 4);
+    });
+</script>
+{% endblock %}
