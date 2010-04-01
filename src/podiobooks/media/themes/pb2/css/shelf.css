@@ -185,6 +185,15 @@
 	margin: 1px 0 0 10px;
 }
 
+.pb-shelf-dropdown label {
+	position:absolute;
+	left:-10000px;
+	top:auto;
+	width:1px;
+	height:1px;
+	overflow:hidden;
+}w
+
 .pb-feature-shelf {
 	position:relative;
 	margin-bottom: 10px;
