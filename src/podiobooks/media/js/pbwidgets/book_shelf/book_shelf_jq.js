@@ -5,16 +5,21 @@
  */
 function attachCarousel(shelfId, shelfTitleWidth){
 	var shelfSelector = "#" + shelfId; //jQuery wants the ids prefaced with #
+	var shelfPageCount = $(shelfSelector + ' ul li').size();
 	
 	/* Build array of page jump-to buttons, and produce HTML from it */
 	var shelfControllerButtons = []; // Used below to tell jCarouselList what our controls are
 	var shelfControllerHTML = ""; // Used to build the HTML for the page buttons
-	for (var i = shelfTitleWidth; i > -1; i--) {
-		var buttonId = shelfId + "_page_" + i + "_button";
-		shelfControllerButtons[i] = "#" + buttonId;
-		shelfControllerHTML += '<div id="' + buttonId + '" class="pb-shelf-controller-button"><div class="pb-shelf-controller-icon"></div></div>';
+	if (shelfPageCount > 1) { //Don't build controls for only one page of items
+		for (var i = shelfPageCount-1; i >= 0; i--) { //Have to count all the way down to page 0
+			var buttonId = shelfId + "_page_" + i + "_button";
+			shelfControllerButtons[i] = "#" + buttonId;
+			shelfControllerHTML += '<div id="' + buttonId + '" class="pb-shelf-controller-button"><div class="pb-shelf-controller-icon"></div></div>';
+		}
+	} else {
+		shelfControllerHTML = "";
 	}
-	$(shelfSelector + 'Controller').append(shelfControllerHTML);
+	$(shelfSelector + 'Controller').html(shelfControllerHTML); //Update controller HTML with new buttons
 	
 	/* Attach the jCarouselLite Object to the shelf */
     $(shelfSelector).jCarouselLite({
@@ -23,7 +28,7 @@ function attachCarousel(shelfId, shelfTitleWidth){
         scroll: 1,
         visible: 1,
         circular: false,
-        speed: 1000,
+        speed: 800,
         easing: "easeInQuad",
         btnGo: shelfControllerButtons,
         afterEnd: function(a){
@@ -31,9 +36,14 @@ function attachCarousel(shelfId, shelfTitleWidth){
         }
     });
     /* Switch the right shelf end image to the the arrow version */
-    $(shelfSelector + "Container .pb-shelf-end-right").removeClass("disabled");
-	/* Light up the first Page Controller Button */
-    setCarouselButtons(shelfId, shelfId + '_page_0');
+	if (shelfPageCount > 1) {
+		$(shelfSelector + "Container .pb-shelf-end-right").removeClass("disabled");
+		/* Light up the first Page Controller Button */
+		setCarouselButtons(shelfId, shelfId + '_page_0');
+	} else {
+		$(shelfSelector + "Container .pb-shelf-end-left").addClass("disabled");
+		$(shelfSelector + "Container .pb-shelf-end-right").addClass("disabled");
+	}
 }
 
 /* Sets the buttons to the correct selected state based on the current page -
