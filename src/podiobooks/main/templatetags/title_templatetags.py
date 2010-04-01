@@ -27,11 +27,6 @@ def show_titlecover(title):
     """ Pulls and formats the cover for a Title """
     return { 'title' : title, 'MEDIA_URL': settings.MEDIA_URL}
 
-@register.inclusion_tag('main/title/tags/show_detail_snippet.html')
-def show_detail_snippet(title):
-    """ Displays a detail snippet for a single title """
-    return { 'title' : title, 'MEDIA_URL': settings.MEDIA_URL}
-
 @register.inclusion_tag('main/title/tags/show_titlelist.html')
 def show_titlelist(title_list):
     """ Formats a list of titles, used on search, category, author list pages """
