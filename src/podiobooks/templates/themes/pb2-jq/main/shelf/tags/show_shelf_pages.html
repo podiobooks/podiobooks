@@ -1,4 +1,4 @@
-{% load title_templatetags %}
+{% load shelf_templatetags %}
 {% if title_list %}
 <div id="{{ shelf_id }}">
 	<ul>
@@ -7,7 +7,7 @@
 		    <li id="{{ shelf_id }}_page_0" >
 		{% endif %}
 		
-        {% show_detail_snippet title %}
+        {% show_shelf_item shelf_id title %}
 		
         {% if forloop.counter|divisibleby:shelf_title_width and not forloop.last %}
     		</li>
@@ -20,12 +20,3 @@
 	</ul>
 </div>
 {% endif %}
-
-<!--
-$(document).ready(function() {
-  $('#articles div').appear(function() {
-    var a = $(this).find('a');
-    $(this).load(a.attr('href'));
-  });
-});
--->

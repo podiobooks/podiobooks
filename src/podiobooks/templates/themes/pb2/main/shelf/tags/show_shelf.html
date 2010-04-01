@@ -8,22 +8,21 @@
 	<div class="pb-shelf-middle">
         <div class="pb-shelf-titlebar">
             <h2 style="float: left;">{{ shelf_title }}</h2>
-			{% if dropdown_values %}
-			<form class="pb-shelf-dropdown" action="{{ dropdown_url }}" name="{{ shelf_id }}" id="{{ shelf_id }}Dropdown">
-				<div class="pb-hidden-label"><label for="id_{{ dropdown_field }}">Select a {{ dropdown_field }} to view titles</label></div>
-				{{ dropdown_values }}
+			{% if dropdown_form %}
+			<form class="pb-shelf-dropdown" action="{{ dropdown_form.submit_url }}" name="{{ shelf_id }}" id="{{ shelf_id }}Dropdown">
+				{{ dropdown_form }}
             </form>
 			<script type="text/javascript">
 				dojo.addOnLoad ( function() {
-					var dropdownValue = dojo.byId('id_{{ dropdown_field }}').value;
-					shelfChange('{{ shelf_id }}', '{{ dropdown_url }}', dropdownValue);
+					var dropdownValue = dojo.byId('id_{{ dropdown_form.field_name }}').value;
+					shelfChange('{{ shelf_id }}', '{{ dropdown_form.submit_url }}', dropdownValue);
 				});
 			</script>
 			{% endif %}
             <span class="pb-shelf-controller" dojoType="dijit.layout.StackController" containerId="{{ shelf_id }}" buttonWidget="pbwidgets.book_shelf._StackButton"></span>
         </div>
         <div dojoType="dijit.layout.ContentPane" id="{{ shelf_id }}Container" class="pb-shelf-container">
-            {% show_shelf_items shelf_id shelf_title title_list shelf_title_width %}
+            {% show_shelf_pages shelf_id shelf_title title_list shelf_title_width %}
         </div>
     </div>
 	<div class="pb-shelf-arrow pb-shelf-right-arrow">
