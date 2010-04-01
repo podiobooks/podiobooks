@@ -17,7 +17,7 @@ function attachCarousel(shelfId, shelfTitleWidth){
 			shelfControllerHTML += '<div id="' + buttonId + '" class="pb-shelf-controller-button"><div class="pb-shelf-controller-icon"></div></div>';
 		}
 	} else {
-		shelfControllerHTML = "";
+		shelfControllerHTML = ""; //Wipe out the button HTML if there is only one page.
 	}
 	$(shelfSelector + 'Controller').html(shelfControllerHTML); //Update controller HTML with new buttons
 	
