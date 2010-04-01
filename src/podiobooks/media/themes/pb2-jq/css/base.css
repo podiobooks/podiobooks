@@ -65,10 +65,11 @@ ul {
 	float:left;
 	text-align:center;
 }
-#pb-header-background a img
-{
+
+#pb-header-background a img {
 	border:none;
 }
+
 #pb-header-click-region {
 	cursor: pointer;
 	width: 600px;
@@ -77,14 +78,14 @@ ul {
 	
 }
 
-.pb-header-menubar-top
-{
+.pb-header-menubar-top {
 	background:url(../images/pb-header-menubar-top.png) top left no-repeat;
 	margin:0px 0px 0px 0px;
 	width:970px;
 	height:10px;
 	float:left;
 }
+
 #pb-header-menubar {
 	font-size: 14px;
 	margin: 0px 0px 0 0px;
@@ -94,28 +95,18 @@ ul {
 	padding:0px 20px 0px 20px;
 	background:url(../images/pb-header-menubar.png) top left repeat-y;
 }
-.pb-header-menubar-bottom
-{
+
+.pb-header-menubar-bottom {
 	background:url(../images/pb-header-menubar-bottom.png) top left no-repeat;
 	margin:0px 0px 20px 0px;
 	width:970px;
 	height:17px;
 	float:left;
 }
+
 #pb-header-menubar-items {
 	margin: 2px 0 0 0;
 	float: left;
-}
-
-#pb-header-menubar .dijitButton,
-#pb-header-menubar .dijitButtonNode,
-#pb-header-menubar .dijitButtonContents,
-#pb-header-menubar .dijitInline,
-#pb-header-menubar button {
-	margin: 0 0 0 0;
-	border: none;
-	vertical-align: top;
-	background: transparent;
 }
 
 #pb-footer-text {
@@ -137,9 +128,12 @@ ul {
 	text-align: center;
 }
 
-.pb-hidden-label {
-	height: 0px;
-	width: 0px;
+.pb-hidden {
+	position: absolute;
+	left: -10000px;
+	top: auto;
+	width: 1px;
+	height: 1px;
 	overflow: hidden;
 }
 
@@ -180,28 +174,28 @@ ul {
 	float:right;
 }
 
-.browseby-links p{
+.browseby-links p {
 	float:left;
 }
-.browseby-links
-{
+
+.browseby-links {
 	float:right;
 	margin:2px 0px 0px 0px;
 
 }
-.browseby-links ul
-{
+
+.browseby-links ul {
 	float:right;
 	margin:0px 10px 0px 20px;
 }
-.browseby-links ul li
-{
+
+.browseby-links ul li {
 	margin:0px 10px 0px 0px;
 	display:inline;
 	float:left;
 }
-.browseby-links ul li a
-{
+
+.browseby-links ul li a {
 	padding:0px 10px 0px 0px;
 	background:url(../images/arrow-right.png) center right no-repeat;
 	float:left;
@@ -211,21 +205,20 @@ ul {
 .browseby-links ul li a:link,
 .browseby-links ul li a:active,
 .browseby-links ul li a:hover,
-.browseby-links ul li a:visited
-{
+.browseby-links ul li a:visited {
 	text-decoration:none;
 }
 
-.pb-browseby-lists-pagers
-{
+.pb-browseby-lists-pagers {
 	font-size:14px;
 	color:#fff;
 	float:right;
 }
-.pb-browseby-lists-pager:hover{
+
+.pb-browseby-lists-pager:hover {
 	color#000;
 }
-.pb-browseby-lists-pager
-{
+
+.pb-browseby-lists-pager {
 	cursor:pointer;
 }
