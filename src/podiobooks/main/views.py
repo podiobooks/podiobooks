@@ -6,6 +6,10 @@ from podiobooks.main.models import Title
 from podiobooks.main.forms import CategoryChoiceForm, ContributorChoiceForm, TitleSearchForm
 from django.conf import settings
 from django.db.models import Q
+from django.core.urlresolvers import reverse
+
+INTIIAL_CATEGORY = 'science-fiction'
+INTIIAL_CONTRIBUTOR = 'mur-lafferty'
 
 def index(request):
     """
@@ -18,7 +22,7 @@ def index(request):
     
     homepage_title_list = Title.objects.filter(display_on_homepage=True).order_by('-date_created').all()
     
-    featured_title_list = homepage_title_list[:20]
+    featured_title_list = homepage_title_list.filter(categories__slug=INTIIAL_CATEGORY).order_by('-date_created', 'name')[:4]
     
     minimal_title_list = featured_title_list[:1]
     
@@ -27,6 +31,12 @@ def index(request):
     nowreleasing_title_list = homepage_title_list.filter(is_complete=False).all()[:5]
     
     recentlycomplete_title_list = homepage_title_list.filter(is_complete=True).all()[:5]
+    
+    category_choice_form = CategoryChoiceForm(initial={'category': INTIIAL_CATEGORY})
+    category_choice_form.submit_url = reverse('title_category_shelf', kwargs={'category_slug': 'placeholder_slug'})  
+    
+    contributor_choice_form = ContributorChoiceForm(initial={'contributor': INTIIAL_CONTRIBUTOR})
+    contributor_choice_form.submit_url = reverse('title_contributor_shelf', kwargs={'contributor_slug': 'placeholder_slug'})                         
       
     response_data = {'homepage_title_list': homepage_title_list,
                      'featured_title_list': featured_title_list,
@@ -34,12 +44,38 @@ def index(request):
                      'toprated_title_list': toprated_title_list,
                      'nowreleasing_title_list': nowreleasing_title_list,
                      'recentlycomplete_title_list': recentlycomplete_title_list,
-                     'category_choice_form': CategoryChoiceForm(initial={'category': 'science-fiction'}),
-                     'contributor_choice_form': ContributorChoiceForm(),
+                     'category_choice_form': category_choice_form,
+                     'contributor_choice_form': contributor_choice_form,
                      }
     
     return render_to_response('main/index.html', response_data, context_instance=RequestContext(request))
-        
+
+
+def title_list_by_category(request, category_slug='science-fiction', template_name='main/title/title_list.html'):
+    """
+        Returns the most recent titles for a particular category filtered by show-on-homepage=true.
+    """
+    category_title_list = Title.objects.filter(display_on_homepage=True, categories__slug=category_slug).order_by('-date_created', 'name').all()[:20]
+    
+    response_data = {'title_list': category_title_list,
+                     'category_slug': category_slug,
+                     }
+    
+    return render_to_response(template_name, response_data, context_instance=RequestContext(request))
+
+def title_list_by_contributor(request, contributor_slug='mur-lafferty', template_name='main/title/title_list.html'):
+    """
+        Returns the most recent titles for a particular contributor filtered by show-on-homepage=true.
+    """
+    contributor_title_list = Title.objects.filter(display_on_homepage=True, contributors__slug=contributor_slug).order_by('-date_created', 'name').all()[:20]
+    
+    response_data = {'title_list': contributor_title_list,
+                     'contributor_slug': contributor_slug,
+                     }
+    
+    return render_to_response(template_name, response_data, context_instance=RequestContext(request))
+    
+    
 def title_search(request, keywords=None):
     """
     takes in a list of keywords to full-text search titles on
