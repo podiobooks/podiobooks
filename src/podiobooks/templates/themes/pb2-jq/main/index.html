@@ -10,14 +10,14 @@
 {% block content %} 
 
 {% url category_shelf 'placeholder_slug' as category_dropdown_url %} 
-{% show_shelf 'featuredPodiobooksShelf' 'Featured Podiobooks by Category' featured_title_list category_choice_form 'pb-shelf-featured' 4 %} 
+{% show_shelf 'featuredPodiobooksShelf' 'Featured Podiobooks by Category' featured_title_list category_choice_form 'pb-shelf-featured' 4 %}
 
 <!-- Begin JavaScript Includes for Shelf Interactivity -->
 <script src="{{ MEDIA_URL }}js/jquery/js/jcarousellite_1.0.1.pack.js">
 </script>
 <script src="{{ MEDIA_URL }}js/pbwidgets/book_shelf/book_shelf_jq.js">
 </script>
-<script src="{{ MEDIA_URL }}js/jquery/js/jquery.appear-1.1.1-min.js">
+<script src="{{ MEDIA_URL }}js/jquery/js/jquery.appear-1.1.1.min.js">
 </script>
 <!-- End JavaScript Includes for Shelf Interactivity -->
 
