@@ -13,10 +13,9 @@ urlpatterns = patterns('',  # pylint: disable-msg=C0103
     url(r'^title/search/(?P<keywords>[^/]+)/$', 'podiobooks.main.views.title_search', name='title_search_keywords'),
     url(r'^title/summary/(?P<object_id>[^/]+)/$', 'django.views.generic.list_detail.object_detail', {'queryset': Title.objects.all(), 'template_object_name': 'title', 'template_name': 'main/title/title_detail_summary.html'}, name='title_detail_summary'),
     url(r'^title/snippet/(?P<object_id>[^/]+)/$', 'django.views.generic.list_detail.object_detail', {'queryset': Title.objects.all(), 'template_object_name': 'title', 'template_name': 'main/title/title_detail_snippet.html'}, name='title_detail_snippet'),
-    url(r'^title/ajaxtest/', 'django.views.generic.simple.direct_to_template', {'template': 'main/title/ajax_test.html', }),
     url(r'^title/(?P<slug>[^/]+)/$', 'django.views.generic.list_detail.object_detail', {'queryset': Title.objects.all(), 'template_object_name': 'title', 'template_name': 'main/title/title_detail.html'}, name='title_detail'),
     url(r'^title/category/shelf/(?P<category_slug>[^/]+)/$', 'podiobooks.main.views.title_list_by_category', {'template_name': 'main/shelf/category_shelf.html'}, name='title_category_shelf'),
-    url(r'^title/contributor/shelf/(?P<contributor_slug>[^/]+)/$', 'podiobooks.main.views.title_list_by_contributor', {'template_name': 'main/shelf/contributor_shelf.html'}, name='title_contributor_shelf'),
+    url(r'^title/contributor/shelf/(?P<contributor_slug>[^/]+)/$', 'podiobooks.main.views.title_list_by_contributor', {'template_name': 'main/shelf/contributor_shelf.html'}, name='title_contributor_shelf'),   
     
     # category
     url(r'^category/$', 'django.views.generic.list_detail.object_list', { 'queryset': Category.objects.all().order_by('name'), 'template_object_name': 'category', 'template_name': 'main/category/category_list.html'}, name='category_list'),
