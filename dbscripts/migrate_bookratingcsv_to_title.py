@@ -37,7 +37,7 @@ def importRatings():
         
         if (foundTitle != None):
             # Update the title object in the database based on the current rating row
-            if int(row['Overall']) >= 3:
+            if float(row['Overall']) >= 3.0:
                 foundTitle.promoter_count = foundTitle.promoter_count + 1
             else:
                 foundTitle.detractor_count = foundTitle.detractor_count + 1
