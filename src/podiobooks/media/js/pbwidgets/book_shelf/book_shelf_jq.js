@@ -1,9 +1,9 @@
 /* Attaches a jQuery jCarouselLite object to a given shelf
  * 
- * shelfId: String with the CSS ID of the shelf to attach to ('featuredPodiobooksShelf')
- * shelfTitleWidth: Integer representing the number of pages the shelf should have (4)
+ * shelfId: String with the CSS ID of the shelf to attach to (e.g. 'featuredPodiobooksShelf')
+ * shelfItemWidth: Integer representing the number of pages the shelf should have (4)
  */
-function attachCarousel(shelfId, shelfTitleWidth){
+function attachCarousel(shelfId, shelfItemWidth){
 	var shelfSelector = "#" + shelfId; //jQuery wants the ids prefaced with #
 	var shelfPageCount = $(shelfSelector + ' ul li').size();
 	

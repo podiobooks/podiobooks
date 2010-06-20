@@ -22,7 +22,7 @@ def index(request):
     
     homepage_title_list = Title.objects.filter(display_on_homepage=True).order_by('-date_created').all()
     
-    featured_title_list = homepage_title_list.filter(categories__slug=INTIIAL_CATEGORY).order_by('-date_created', 'name')[:4]
+    featured_title_list = homepage_title_list.filter(categories__slug=INTIIAL_CATEGORY).order_by('-date_created', 'name')[:20]
     
     minimal_title_list = featured_title_list[:1]
     
@@ -33,7 +33,7 @@ def index(request):
     recentlycomplete_title_list = homepage_title_list.filter(is_complete=True).all()[:5]
     
     category_choice_form = CategoryChoiceForm(initial={'category': INTIIAL_CATEGORY})
-    category_choice_form.submit_url = reverse('title_category_shelf', kwargs={'category_slug': 'placeholder_slug'})  
+    category_choice_form.submit_url = reverse('title_category_shelf', kwargs={'category_slug': 'placeholder_slug'}) # This placeholder slug is because the url command expects there to to be an argument, which won't be known till later
     
     contributor_choice_form = ContributorChoiceForm(initial={'contributor': INTIIAL_CONTRIBUTOR})
     contributor_choice_form.submit_url = reverse('title_contributor_shelf', kwargs={'contributor_slug': 'placeholder_slug'})                         
@@ -74,7 +74,6 @@ def title_list_by_contributor(request, contributor_slug='mur-lafferty', template
                      }
     
     return render_to_response(template_name, response_data, context_instance=RequestContext(request))
-    
     
 def title_search(request, keywords=None):
     """
@@ -125,5 +124,3 @@ def title_search(request, keywords=None):
     else:
         response_data = {'titleSearchForm': form}
         return render_to_response('main/title/title_search_results.html', response_data, context_instance=RequestContext(request))
-            
-    
