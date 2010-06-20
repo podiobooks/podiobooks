@@ -64,7 +64,7 @@ def importChapters():
                 host, libsynSlug = urlTokens[2:4]
                 if host == 'media.podiobooks.com' and libsynSlug:
                     show_info = libsyn_utils.get_show_info(libsynSlug)
-                    if showInfo:
+                    if show_info:
                         episode.title.libsyn_show_id = show_info['show_id']
                         episode.title.save()
                         print "LibsynShowId:" + episode.title.libsyn_show_id
