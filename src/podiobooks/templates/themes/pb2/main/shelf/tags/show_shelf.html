@@ -10,7 +10,7 @@
             <h2 style="float: left;">{{ shelf_title }}</h2>
 			{% if dropdown_form %}
 			<form class="pb-shelf-dropdown" action="{{ dropdown_form.submit_url }}" name="{{ shelf_id }}" id="{{ shelf_id }}Dropdown">
-				{{ dropdown_form }}
+				{{ dropdown_form.field_name }}
             </form>
 			<script type="text/javascript">
 				dojo.addOnLoad ( function() {

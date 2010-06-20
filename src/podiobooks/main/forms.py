@@ -16,7 +16,10 @@ class CategoryChoiceForm(forms.Form):
     submit_url = None
     form_name = 'category'
     if (not categories):
-        categories = Category.objects.values_list('slug', 'name').annotate(num_titles=Count('title__categories')).filter(num_titles__gt=4, title__display_on_homepage=True)
+        top_categories = Category.objects.values_list('slug', 'name').annotate(num_titles=Count('title__categories')).filter(num_titles__gt=4, title__display_on_homepage=True)
+        categories = []
+        for category_row in top_categories:
+            categories.append( category_row[:2] ) #strip off the count 
         cache.set('category_dropdown_values', categories, 240)
     category = forms.ChoiceField(choices=categories, widget=forms.Select(attrs={'class':'pb-category-choice', 'onchange':'shelfChange(this.form.name, this.form.action, this.value);'}))
 
@@ -26,7 +29,10 @@ class ContributorChoiceForm(forms.Form):
     submit_url = None
     form_name = 'contributor'
     if (not contributors):
-        contributors = Contributor.objects.values_list('slug', 'display_name').annotate(num_titles=Count('titlecontributors')).filter(title__display_on_homepage=True).order_by('-num_titles')[:10]
+        top_contributors = Contributor.objects.values_list('slug', 'display_name').annotate(num_titles=Count('titlecontributors')).filter(title__display_on_homepage=True).order_by('-num_titles')[:10]
+        contributors = []
+        for contributor_row in top_contributors:
+            contributors.append(contributor_row[:2]) #strip off the count
         cache.set('contributor_dropdown_values', contributors, 240)
     contributor = forms.ChoiceField(choices=contributors, widget=forms.Select(attrs={'class':'pb-contributor-choice', 'onchange':'shelfChange(this.form.name, this.form.action, this.value);'}))
 
