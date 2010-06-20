@@ -5,8 +5,13 @@ from podiobooks.settings_local_template import * #@UnusedWildImport # pylint: di
 import tempfile
 
 # Test DB settings. (SQLLite)
-DATABASE_ENGINE = 'sqlite3'
-DATABASE_NAME = ''
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': '',
+        'SUPPORTS_TRANSACTIONS': 'false',
+    }
+}
 
 # Test Cache Settings
 CACHE_BACKEND = "file://" + tempfile.gettempdir()
