@@ -2,7 +2,6 @@
 
 import xmlrpclib
 import hashlib
-import pprint
 from django.conf import settings
 
 def get_show_info(libsyn_slug):
@@ -11,8 +10,8 @@ def get_show_info(libsyn_slug):
     # network slug (network_id can be substituted) is to ensure the authenticated user
     # has proper permission features on the network. show slug (show_id can be substituted)
     # is the show we're looking for
-    params = {    'network_slug'    : settings.LIBSYN_NETWORK_SLUG,         
-                'show_slug'        : libsyn_slug    }
+    params = {  'network_slug'    : settings.LIBSYN_NETWORK_SLUG,         
+                'show_slug'       : libsyn_slug    }
     
     # api string is usually a secret - similar to a password
     user = User(settings.LIBSYN_USER, settings.LIBSYN_KEY)
@@ -21,6 +20,7 @@ def get_show_info(libsyn_slug):
         show_info = make_api_call(user, 'producer.publishing.getShowInfo', params)
     except xmlrpclib.Error:
         show_info = ""
+        print "LIBSYN API CALL ERROR!"
     
     return show_info
     
@@ -30,9 +30,12 @@ def make_api_call(user, method, params):
     Expects a User object as the user argument"""
 
     api_params = _build_params(user, params)
+    
+    server = xmlrpclib.Server(settings.LIBSYN_API_SERVER_URL) #@UnusedVariable # pylint: disable-msg=W0612
 
     # better way to call a string as a method?
     method = "server.%s" % (method)
+    print method
 
     try:
         return eval(method)(api_params)
@@ -68,14 +71,3 @@ class User:
     def __init__(self, email, api_key):
         self.email = email
         self.api_key = api_key
-
-def main():
-    """MAIN FUNCTION TO RUN IF THIS SCRIPT IS CALLED ALONE"""
-    show_info = get_show_info('theflownsky')
-    
-    # pretty print the result
-    pprinter = pprint.PrettyPrinter(indent=4)
-    pprinter.pprint(show_info)
-
-if __name__ == "__main__":
-    main()

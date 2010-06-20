@@ -7,4 +7,5 @@ SERVER = xmlrpclib.Server(SERVER_URL)
 
 RESULT = SERVER.system.methodHelp('producer.publishing.getItemInfo')
 
+print "Help for producer.publishing.getItemInfo"
 print RESULT
