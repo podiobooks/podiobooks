@@ -65,27 +65,40 @@ MAIN_TEMPLATE_THEME = TEMPLATE_THEMES[0]
 THEME_MEDIA_URL = MEDIA_URL + 'themes/' + MAIN_TEMPLATE_THEME + '/'  
 
 # Local DB settings. (Postgres)
-DATABASE_ENGINE = 'postgresql_psycopg2'          # 'postgresql_psycopg2', 'postgresql'
-DATABASE_NAME = 'pb2'
-DATABASE_USER = 'root'
-DATABASE_PASSWORD = 'password'
-DATABASE_HOST = '127.0.0.1'
-DATABASE_PORT = ''					# Set to empty string for default.
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'pb2',
+        'USER': 'pb2',
+        'PASSWORD': '',
+        'HOST': '127.0.0.1',
+        'PORT': '', # Set to empty string for default.
+        'SUPPORTS_TRANSACTIONS': 'true',
+    }
+}
 
 # Local DB settings. (MySQL)
-# DATABASE_ENGINE = 'mysql'
-# DATABASE_NAME = 'pb2'
-# DATABASE_USER = 'root'
-# DATABASE_PASSWORD = 'password'
-# DATABASE_HOST = '127.0.0.1'
-# DATABASE_PORT = ''             		# Set to empty string for default.
-# DATABASE_OPTIONS = {
-#    "init_command": "SET storage_engine=INNODB",
-# }
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.mysql',
+#        'NAME': 'pb2',
+#        'USER': 'pb2',
+#        'PASSWORD': '',
+#        'HOST': '127.0.0.1',
+#        'PORT': '', # Set to empty string for default.
+#        'SUPPORTS_TRANSACTIONS': 'false',
+#        'OPTIONS': {'init_command': 'SET storage_engine=INNODB'},
+#    }
+#}
 
 # Local DB settings. (SQLLite)
-# DATABASE_ENGINE = 'sqlite3'
-# DATABASE_NAME = PROJECT_PATH + '/pb2.db'
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': PROJECT_PATH + '/pb2.db',
+#        'SUPPORTS_TRANSACTIONS': 'false',
+#    }
+#}
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -153,6 +166,7 @@ HAYSTACK_WHOOSH_PATH = PROJECT_PATH + '/whoosh/podiobooks_index'
 LIBSYN_USER = ''
 LIBSYN_KEY = ''
 LIBSYN_NETWORK_SLUG = ''
+LIBSYN_API_SERVER_URL = ''
 
 # DATALOAD
 DATALOAD_DIR = PROJECT_PATH + "/../../../podiobooks-dataload/datafiles/"
