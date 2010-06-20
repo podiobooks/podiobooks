@@ -145,7 +145,7 @@ def importBooks():
                 contributorObject = getOrCreateContributor(contributor['name'])
                 contributorType = getOrCreateContributorType(contributor['type'])
                 TitleContributors.objects.create(title=title, contributor=contributorObject, contributor_type=contributorType)
-            print "Title: %s\tContributors: %s" % (title.name, title.contributors.values('display_name'))
+            print "Title: %s\n\t\tContributors: %s" % (title.name, title.contributors.values('display_name'))
             
             """ Awards """
             awardList = award_translation.translate_award(row['ID']) #Manual Award Lookup Translation
@@ -153,26 +153,26 @@ def importBooks():
                 for awardSlug in awardList:
                     awardObject = getOrCreateAward(awardSlug)
                     title.awards.add(awardObject)
-                print "Title: %s\tAwards: %s" % (title.name, title.awards.values('name'))
+                print "\t\tAwards: %s" % (title.awards.values('name'))
             
             """ Series """
             seriesSlug = series_translation.translate_series(row['ID']) #Manual Series Lookup Translation
             if seriesSlug:
                 seriesObject = getOrCreateSeries(seriesSlug)
                 title.series = seriesObject
-                print "Title: %s\tSeries: %s" % (title.name, title.series.name)
+                print "\t\tSeries: %s" % (title.series.name)
             
             """ Category """
             category = getCategory(row['CategoryID'])
             if category:
                 title.categories.add(category)
-                print "Title: %s\tCategories: %s" % (title.name, title.categories.values('name'))
+                print "\t\tCategories: %s" % (title.categories.values('name'))
             
             """ Partner """
             partner = getPartner(row['PartnerID'])
             if partner:
                 title.partner = partner
-                print "Title: %s\tPartner: %s" % (title.name, title.partner.name)
+                print "\t\tPartner: %s" % (title.partner.name)
                 
             title.save()
             
