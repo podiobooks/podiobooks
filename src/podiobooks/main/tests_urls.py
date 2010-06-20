@@ -42,10 +42,6 @@ class UrlTestCase(TestCase):
         response = self.c.get('/title/snippet/293/') # Double Share
         self.assertEquals(200, response.status_code)
         
-    def testTitleAjaxTest(self):
-        response = self.c.get('/title/ajaxtest/')
-        self.assertEquals(200, response.status_code)
-        
     def testTitleDetail(self):
         response = self.c.get('/title/double-share/')
         self.assertEquals(200, response.status_code)
