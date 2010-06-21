@@ -33,7 +33,7 @@ def importChaptersFromCSV():
     #PRE CLEANOUT
     Episode.objects.all().delete()
     
-    createChaptersFromRows(chapterCSVReader)
+    createEpisodesFromRows(chapterCSVReader)
 
 def createEpisodesFromRows(chapterList):
   
