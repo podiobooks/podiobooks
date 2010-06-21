@@ -215,6 +215,13 @@ class Promo(models.Model):
     
     def __unicode__(self):
         return self.display_text
+    
+class Rating(models.Model):
+    """The last rating that was loaded from the pb1 site"""
+    date_created = models.DateTimeField(default=datetime.datetime.now())
+    
+    def __unicode__(self):
+        return self.id
 
 class Series(models.Model):
     """Titles can belong to a series, wich allows for higher level grouping.

@@ -72,7 +72,7 @@ def get_bookcategory_data(cursor):
     
 def get_bookrating_data(cursor):
     
-    cursor.execute("SELECT * FROM bookrating, book WHERE bookrating.bookid = book.id AND book.enabled = 1 AND book.standby = 0")
+    cursor.execute("SELECT bookrating.* FROM bookrating, book WHERE bookrating.bookid = book.id AND book.enabled = 1 AND book.standby = 0")
     
     bookrating_output_file = open (PROJECT_PATH + '/../../../podiobooks-dataload/datafiles/podiobooks_legacy_bookrating_table.csv', 'w')
     
@@ -90,7 +90,7 @@ def get_bookrating_data(cursor):
     
 def get_chapter_data(cursor):
     
-    cursor.execute("SELECT * FROM chapter, book WHERE chapter.bookid = book.id AND book.enabled = 1 AND book.standby = 0 AND chapter.enabled = 1")
+    cursor.execute("SELECT chapter.* FROM chapter, book WHERE chapter.bookid = book.id AND book.enabled = 1 AND book.standby = 0 AND chapter.enabled = 1")
     
     chapter_output_file = open (PROJECT_PATH + '/../../../podiobooks-dataload/datafiles/podiobooks_legacy_chapter_table.csv', 'w')
     
