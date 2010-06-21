@@ -30,6 +30,8 @@ def importRatingsFromCSV():
     
     #PRE CLEANOUT
     Title.objects.all().update(promoter_count=0, detractor_count=0)
+    
+    createRatingsFromRows(ratingCSVReader)
 
 def createRatingsFromRows(ratingsList):
    
