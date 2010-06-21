@@ -23,3 +23,4 @@ settings_local.py
 .tmp_*
 .settings
 nosetests.xml
+/coverage.xml
