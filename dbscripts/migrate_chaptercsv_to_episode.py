@@ -21,7 +21,7 @@ def getTitle(legacyBookID):
         foundTitle = None
     return foundTitle
 
-def importChapters():
+def importChaptersFromCSV():
     """Loops through the chapter rows in the CSV and build Episode objects for them"""
     
     #Open Chapter File for Import
@@ -33,8 +33,12 @@ def importChapters():
     #PRE CLEANOUT
     Episode.objects.all().delete()
     
-    # Loop through the rest of the rows in the CSV
-    for row in chapterCSVReader:
+    createChaptersFromRows(chapterCSVReader)
+
+def createEpisodesFromRows(chapterList):
+  
+    # Loop through the rows
+    for row in chapterList:
         foundTitle = getTitle(row['BookID'])
         
         if (foundTitle != None):
@@ -71,11 +75,9 @@ def importChapters():
         else:
             "Could not find TitleID#%s" % row['BookID']
     
-    chapterCSVFile.close()
-    
 ##### MAIN FUNCTION TO RUN IF THIS SCRIPT IS CALLED ALONE ###
 if __name__ == "__main__":
-    importChapters()
+    importChaptersFromCSV()
 
 
 # Handy Mapping Reference:

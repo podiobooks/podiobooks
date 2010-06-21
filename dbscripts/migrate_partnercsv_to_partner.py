@@ -10,7 +10,7 @@ import csv # first we need import necessary lib:csv
 from podiobooks.main.models import *
 from django.template.defaultfilters import slugify
 
-def importPartners():
+def importPartnersFromCSV():
     # Now, begin reading in the CSV and using the Django model objects to populate the DB
     
     #Open Partner File for Import
@@ -22,8 +22,11 @@ def importPartners():
     #PRE CLEANOUT
     Partner.objects.all().delete()
     
+    createPartnersFromRows(partnerCSVReader)
+
+def createPartnersFromRows(partnerList):  
     # Loop through the rest of the rows in the CSV
-    for row in partnerCSVReader:
+    for row in partnerList:
         print row
         
         # Create an object in the database based on the current row
@@ -36,12 +39,10 @@ def importPartners():
             date_created=row['datecreated'],
         )
         print "Partner: %s" % (partner.name)
-    
-    partnerCSVFile.close()
 
 ##### MAIN FUNCTION TO RUN IF THIS SCRIPT IS CALLED ALONE ###
 if __name__ == "__main__":
-    importPartners()
+    importPartnersFromCSV()
     
     
 # HANDY MAPPING REFERENCE
