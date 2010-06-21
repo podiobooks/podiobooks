@@ -19,3 +19,11 @@ class LibsynTestCase(TestCase):
         # pretty print the result
         pprinter = pprint.PrettyPrinter(indent=4)
         pprinter.pprint(show_info)
+        
+        show_info = get_show_info('notesfromthevault')
+        
+        self.assertEquals('k-27813e6f24530266', show_info['show_id'])
+        
+        # pretty print the result
+        pprinter = pprint.PrettyPrinter(indent=4)
+        pprinter.pprint(show_info)
