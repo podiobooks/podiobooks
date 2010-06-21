@@ -26,9 +26,11 @@ def importBookCategoriesFromCSV():
     
     #PRE CLEANOUT
     Category.objects.all().delete()
+    
+    createCategoriesFromRows(categoryCSVReader)
 
 
-def createTitlesFromRows(titleList):    
+def createCategoriesFromRows(titleList):    
     # Loop through the rest of the rows in the CSV
     for row in titleList:
         print row
