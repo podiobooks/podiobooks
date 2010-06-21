@@ -20,4 +20,5 @@ INSTALLED_APPS += (
     'django_nose',
 )
 
-TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
+# TEST_RUNNER = 'django_nose.NoseTestSuiteRunner' # Should work with Django 1.2.1, but coverage is broken
+TEST_RUNNER = 'django_nose.run_tests'
