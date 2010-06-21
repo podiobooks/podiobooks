@@ -19,7 +19,7 @@ def getTitle(legacyBookID):
         foundTitle = None
     return foundTitle
 
-def importRatings():
+def importRatingsFromCSV():
     """Loops through the chapter rows in the CSV and increment promoter/detractor counts from them"""
     
     #Open Chapter File for Import
@@ -30,9 +30,11 @@ def importRatings():
     
     #PRE CLEANOUT
     Title.objects.all().update(promoter_count=0, detractor_count=0)
-    
+
+def createRatingsFromRows(ratingsList):
+   
     # Loop through the rest of the rows in the CSV
-    for row in ratingCSVReader:
+    for row in ratingsList:
         foundTitle = getTitle(row['BookID'])
         
         if (foundTitle != None):
@@ -45,12 +47,19 @@ def importRatings():
             
         else:
             "Could not find TitleID#%s" % row['BookID']
-    
-    ratingCSVFile.close()
+            
+        try:
+            lastRating = Rating.objects.latest('date_created')
+        except:
+            lastRating = Rating()
+            
+        lastRating.id = row['RatingID']
+        lastRating.date_created = row['DateCreated']
+        lastRating.save()
     
 ##### MAIN FUNCTION TO RUN IF THIS SCRIPT IS CALLED ALONE ###
 if __name__ == "__main__":
-    importRatings()
+    importRatingsFromCSV()
 
 
 # Handy Mapping Reference:
