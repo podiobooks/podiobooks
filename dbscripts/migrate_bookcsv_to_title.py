@@ -98,7 +98,7 @@ def getOrCreateSeries(seriesSlug):
               defaults={ 'slug': seriesSlug, 'name': seriesSlug, })
     return series
 
-def importBooks():
+def importBooksFromCSV():
     """Reads in the CSV and using the Django model objects to populate the DB"""
     
     #Open Book File for Import
@@ -112,8 +112,13 @@ def importBooks():
     TitleContributors.objects.all().delete()
     Contributor.objects.all().delete()
     
+    createTitlesFromRows(bookCSVReader)
+ 
+def createTitlesFromRows(titleList):
+    """Takes a list of title rows from a database query or a CSV file read and creates Title objects"""
+       
     # Loop through the rest of the rows in the CSV
-    for row in bookCSVReader:
+    for row in titleList:
         #print row
         
         if (int(row['Enabled']) == 1 and int(row['Standby']) == 0):
@@ -179,12 +184,10 @@ def importBooks():
         # @TODO Need to double check what we want to do with URLs to iTunes, etc.
         
         # @TODO Create Media Objects for the URL Fields from the Book Row
-    
-    bookCSVFile.close()
 
 ##### MAIN FUNCTION TO RUN IF THIS SCRIPT IS CALLED ALONE ###
 if __name__ == "__main__":
-    importBooks()
+    importBooksFromCSV()
     
     
 # HANDY MAPPING REFERENCE
