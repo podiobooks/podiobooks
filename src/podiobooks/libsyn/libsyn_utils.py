@@ -31,7 +31,7 @@ def make_api_call(user, method, params):
 
     api_params = _build_params(user, params)
     
-    server = xmlrpclib.Server(settings.LIBSYN_API_SERVER_URL, verbose=True) #@UnusedVariable # pylint: disable-msg=W0612
+    server = xmlrpclib.Server(settings.LIBSYN_API_SERVER_URL, verbose=True) #@UnusedVariable # pylint: disable=W0612
 
     # better way to call a string as a method?
     method = "server.%s" % (method)

@@ -1,6 +1,6 @@
 """RSS Feed Definitions for Podiobooks, uses the Django Syndication Framework"""
 
-# pylint: disable-msg=R0201, C0111, R0904
+# pylint: disable=R0201, C0111, R0904
 
 from django.contrib.syndication.feeds import Feed
 from django.contrib.syndication.feeds import ObjectDoesNotExist

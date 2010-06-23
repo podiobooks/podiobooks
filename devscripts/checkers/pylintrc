@@ -47,13 +47,13 @@ load-plugins=
 #enable-msg-cat=
 
 # Disable all messages in the listed categories (IRCWEF).
-disable-msg-cat=I
+disable-cat=I
 
 # Enable the message(s) with the given id(s).
 #enable-msg=
 
 # Disable the message(s) with the given id(s).
-disable-msg=W0704,W0201,W0142,W0232,R0903,C0301
+disable=W0704,W0201,W0142,W0232,R0903,C0301
 
 
 [REPORTS]

@@ -35,7 +35,7 @@ ROOT_URLCONF = 'podiobooks.urls'
 AUTH_PROFILE_MODULE = 'main.UserProfile'
 
 #authopenid
-ugettext = lambda s: s # pylint: disable-msg=C0103
+ugettext = lambda s: s # pylint: disable=C0103
 LOGIN_URL = '/%s%s' % (ugettext('account/'), ugettext('signin/'))
 LOGIN_REDIRECT_URL = '/'
 OPENID_SREG = {
