@@ -1,11 +1,11 @@
 """URL Definitions for the Main Podiobooks Module"""
 
-# pylint: disable=W0401,W0614
+# pylint: disable=W0401,W0614,C0103
 
 from django.conf.urls.defaults import * #@UnusedWildImport
 from podiobooks.main.models import Category, Contributor, Episode, Title
 
-urlpatterns = patterns('',  # pylint: disable=C0103
+urlpatterns = patterns('',
     
     # title
     url(r'^title/$', 'django.views.generic.list_detail.object_list', { 'queryset': Title.objects.all().order_by('name'), 'template_object_name': 'title', 'template_name': 'main/title/title_list.html'}, name='title_list'),
