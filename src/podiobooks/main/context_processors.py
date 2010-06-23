@@ -6,7 +6,7 @@ Note: for Title Covers, use the {% cover_media_url %} tag in global_templatetags
 
 from django.conf import settings
 
-def theme_media(request): # pylint: disable-msg=W0613
+def theme_media(request): # pylint: disable=W0613
     """
     Adds theme-media-related context variables to the context.
 

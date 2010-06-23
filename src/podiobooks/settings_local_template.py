@@ -10,7 +10,7 @@ MADE LOCALLY BY ALL INSTALLATIONS
 local_settings.py, once created, should never be checked into source control
 It is ignored by default by .gitignore, so if you don't mess with that, you should be fine.
 """
-# pylint: disable-msg=R0801
+# pylint: disable=R0801
 
 import os
 

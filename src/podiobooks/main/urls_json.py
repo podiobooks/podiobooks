@@ -1,6 +1,6 @@
 """Define a set of URLS that return JSON from REST-style Calls"""
 
-# pylint: disable-msg=W0401,W0614
+# pylint: disable=W0401,W0614
 
 from django.conf.urls.defaults import * #@UnusedWildImport
 from podiobooks.main.models import Title, Category, Contributor
