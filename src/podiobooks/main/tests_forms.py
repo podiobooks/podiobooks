@@ -10,15 +10,10 @@ from django.core.urlresolvers import reverse
 class FormsTestCase(TestCase):
     """Test the Podiobooks Models from a Title-Centric POV"""
     fixtures = ['test_data.json',]
-    
-    def setUp(self):
-        # Do nothing
-        return()
         
     def testCategoryForm(self):
         category_choice_form = CategoryChoiceForm(initial={'category': 'science-fiction'})
         category_choice_form.submit_url = reverse('title_category_shelf', kwargs={'category_slug': 'placeholder_slug'})
-
 
 #    @TODO: Change test data to have contributors in it  
 #    def testContributorChoiceForm(self):
