@@ -1,10 +1,10 @@
 """Admin site customizations for Podiobooks main"""
 
-# pylint: disable-msg=C0111,E0602,F0401,R0904
+# pylint: disable=C0111,E0602,F0401,R0904
 
 from django.contrib import admin
 
-from podiobooks.main.models import *  #@UnusedWildImport # pylint: disable-msg=W0401,W0614
+from podiobooks.main.models import *  #@UnusedWildImport # pylint: disable=W0401,W0614
 
 class TitleInline(admin.TabularInline):
     model = Title

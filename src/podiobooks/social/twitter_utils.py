@@ -1,6 +1,6 @@
 """Utility Functions For Calling the Twitter API"""
 
-from twitter import Twitter  # pylint: disable-msg=E0611,F0401
+from twitter import Twitter  # pylint: disable=E0611,F0401
 import pprint
 
 def search(keywords):

@@ -1,6 +1,6 @@
 """Master Class for All Podiobooks Automated Unit Tests"""
 
-# pylint: disable-msg=C0103,C0111,W0611,W0614,W0401
+# pylint: disable=C0103,C0111,W0611,W0614,W0401
 
 from django.test import TestCase #@UnusedImport
 from podiobooks.main.models import *  #@UnusedWildImport

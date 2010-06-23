@@ -3,7 +3,7 @@ Haystack Search API Config File for podiobooks.main
 See http://haystacksearch.org/docs
 """
 
-# pylint: disable-msg=F0401,W0401,W0614,E0602,R0201
+# pylint: disable=F0401,W0401,W0614,E0602,R0201
 
 from haystack.indexes import *  #@UnusedWildImport
 from haystack import site

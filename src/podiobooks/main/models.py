@@ -7,7 +7,7 @@ from django.contrib.comments.moderation import CommentModerator, moderator
 from django.conf import settings
 import datetime
 
-# pylint: disable-msg=C0111,R0201,W0232
+# pylint: disable=C0111,R0201,W0232
 
 class Advisory(models.Model):
     """Advisories are notifications about titles for the users. These could be
@@ -132,7 +132,7 @@ class Episode(models.Model):
     
     @models.permalink
     def get_absolute_url(self):
-        return ('episode_detail', [self.id]) # pylint: disable-msg=E1101
+        return ('episode_detail', [self.id]) # pylint: disable=E1101
     
     def _get_filesize_mb(self):
         return round(self.filesize / 1024.0 / 1024.0, 2)
@@ -308,7 +308,7 @@ class Title(models.Model):
     
     # Optionally configure Sphinx as search engine for titles
     if (settings.SEARCH_PROVIDER == 'SPHINX'):
-        import djangosphinx.models # pylint: disable-msg=F0401
+        import djangosphinx.models # pylint: disable=F0401
         search = djangosphinx.models.SphinxSearch(index="pb2_titles", weights={'display_name': 100000, 'name': 75000, 'description': 1})
     
     class Meta:
@@ -329,7 +329,7 @@ class Title(models.Model):
             return 0
         
     def description_br(self):
-        return self.description.replace('\n', '\n<br/>') # pylint: disable-msg=E1101
+        return self.description.replace('\n', '\n<br/>') # pylint: disable=E1101
 
 class TitleModerator(CommentModerator):
     """ Sets up comments moderation for Titles """

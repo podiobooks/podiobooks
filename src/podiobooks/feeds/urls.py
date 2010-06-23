@@ -3,7 +3,7 @@
 from django.conf.urls.defaults import patterns, url
 from podiobooks.feeds.feeds import TitleFeed, EpisodeFeed
 
-# pylint: disable-msg=E0602,F0401
+# pylint: disable=E0602,F0401
 
 FEEDS = {
     'titles': TitleFeed,
