@@ -6,7 +6,7 @@ from django.utils.encoding import iri_to_uri
 
 def get_current_site(request):
     """Get the Site object for the currently active Site"""
-    if Site._meta.installed: #@UndefinedVariable # pylint: disable-msg=E1101,W0212
+    if Site._meta.installed: #@UndefinedVariable # pylint: disable=E1101,W0212
         current_site = Site.objects.get_current()
     else:
         current_site = RequestSite(request) # pragma: nocover

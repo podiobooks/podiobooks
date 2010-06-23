@@ -3,9 +3,9 @@
     pass-offs to sub-modules, who will have their own urls.py defining actions within.
 """
 
-# pylint: disable-msg=E0602,F0401
+# pylint: disable=E0602,F0401
 
-from django.conf.urls.defaults import * #@UnusedWildImport # pylint: disable-msg=W0401,W0614
+from django.conf.urls.defaults import * #@UnusedWildImport # pylint: disable=W0401,W0614
 from django.contrib import admin
 
 admin.autodiscover()

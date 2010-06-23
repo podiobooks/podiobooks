@@ -1,6 +1,6 @@
 """Automated Tests of the Podiobooks LibSyn Interface"""
 
-# pylint: disable-msg=C0103,C0111,R0904
+# pylint: disable=C0103,C0111,R0904
 
 from django.test import TestCase
 from podiobooks.libsyn.libsyn_utils import get_show_info

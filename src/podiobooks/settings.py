@@ -1,6 +1,6 @@
 """Django settings for podiobooks project."""
 
-# pylint: disable-msg=E0611,F0401,W0401,W0614
+# pylint: disable=E0611,F0401,W0401,W0614
 
 # NOTE
 # see local_settings_template.py for instructions on making your local settings file

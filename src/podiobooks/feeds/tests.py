@@ -1,6 +1,6 @@
 """Automated Tests of the Podiobooks Feed URLs"""
 
-# pylint: disable-msg=C0103,C0111,R0904
+# pylint: disable=C0103,C0111,R0904
 
 from django.test import TestCase
 from django.test.client import Client

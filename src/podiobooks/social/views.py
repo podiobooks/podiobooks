@@ -1,6 +1,6 @@
 """Django Views for the Social (Twitter, etc.) Module"""
 
-# pylint: disable-msg=R0801
+# pylint: disable=R0801
 
 from django.shortcuts import render_to_response
 from django.template import RequestContext
