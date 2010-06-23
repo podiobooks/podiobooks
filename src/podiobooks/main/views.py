@@ -106,7 +106,7 @@ def title_search(request, keywords=None):
             if (completed_only):
                 exclusions['is_complete'] = False
             search_results = Title.search.query(keywords).exclude(**exclusions).order_by('-@weight') #@UndefinedVariable
-            search_metadata = search_results._sphinx # pylint: disable-msg=W0212
+            search_metadata = search_results._sphinx # pylint: disable=W0212
         else:
             if (not include_adult):
                 adult_filter = Q(is_adult=False)
