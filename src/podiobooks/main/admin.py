@@ -10,8 +10,8 @@ class TitleInline(admin.TabularInline):
     model = Title
     exclude = ("deleted", "date_created", "date_updated")
     
-#class TitleContributorsInline(admin.TabularInline):
-#    model = TitleContributors
+#class TitleContributorInline(admin.TabularInline):
+#    model = TitleContributor
 #    exclude = ("deleted", "date_created", "date_updated")
 
 class EpisodeInline(admin.TabularInline):
@@ -28,7 +28,7 @@ class CategoryAdmin(admin.ModelAdmin):
     
 #class ContributorAdmin(admin.ModelAdmin):
 #    inlines = [
-#            TitleContributorsInline
+#            TitleContributorInline
 #        ]
 #    exclude = ("deleted", "date_created", "date_updated")
     
@@ -55,7 +55,7 @@ class TitleAdmin(admin.ModelAdmin):
     exclude = ("date_updated", "avg_overall", "avg_audio_quality", 'avg_narration', 'avg_writing')
     inlines = [
             EpisodeInline,
-#            TitleContributorsInline
+#            TitleContributorInline
         ]
     ordering = ['name']
     prepopulated_fields = {"slug": ("name",)}
@@ -74,4 +74,4 @@ admin.site.register(Partner, PartnerAdmin)
 admin.site.register(Series, SeriesAdmin)
 admin.site.register(Subscription)
 admin.site.register(Title, TitleAdmin)
-admin.site.register(TitleContributors)
+admin.site.register(TitleContributor)
