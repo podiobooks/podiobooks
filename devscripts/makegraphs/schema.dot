@@ -134,7 +134,7 @@ digraph name {
         >Title</FONT></TD></TR>
         </TABLE>
         >]
-    TitleContributors -> Title
+    TitleContributor -> Title
     [label="title"] ;
     
     Contributor [label=<
@@ -144,7 +144,7 @@ digraph name {
         >Contributor</FONT></TD></TR>
         </TABLE>
         >]
-    TitleContributors -> Contributor
+    TitleContributor -> Contributor
     [label="contributor"] ;
     
     ContributorType [label=<
@@ -154,7 +154,7 @@ digraph name {
         >ContributorType</FONT></TD></TR>
         </TABLE>
         >]
-    TitleContributors -> ContributorType
+    TitleContributor -> ContributorType
     [label="contributor_type"] ;
     
   
@@ -989,11 +989,11 @@ digraph name {
     </TABLE>
     >]
   
-    TitleContributors [label=<
+    TitleContributor [label=<
     <TABLE BGCOLOR="palegoldenrod" BORDER="0" CELLBORDER="0" CELLSPACING="0">
      <TR><TD COLSPAN="2" CELLPADDING="4" ALIGN="CENTER" BGCOLOR="olivedrab4"
      ><FONT FACE="Helvetica Bold" COLOR="white"
-     >TitleContributors</FONT></TD></TR>
+     >TitleContributor</FONT></TD></TR>
 
     
         
