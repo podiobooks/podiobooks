@@ -19,7 +19,6 @@ class Advisory(models.Model):
     hexcolor = models.CharField(max_length=6)
     date_created = models.DateTimeField(default=datetime.datetime.now())
     date_updated = models.DateTimeField(default=datetime.datetime.now())
-    objects = models.Manager()
     # rather than storing a hex-color, would it make more sense to
     # add a css class 'Advisory_{slug}' for flexibility??
         
@@ -39,7 +38,6 @@ class Award(models.Model):
     deleted = models.BooleanField(default=False)
     date_created = models.DateTimeField(default=datetime.datetime.now())
     date_updated = models.DateTimeField(default=datetime.datetime.now())
-    objects = models.Manager()
     
     class Meta:
         ordering = ['name']
@@ -55,11 +53,11 @@ class Category(models.Model):
     """Categories describe titles for easy of browsing and for recommendations."""
     slug = models.SlugField()
     name = models.CharField(max_length=255)
-    # Note - titles are available as titles.all()
+    # Note - titles are available as title_set.all()
+    # Note - for SQL purposes, titles are 'title'
     deleted = models.BooleanField(default=False)
     date_created = models.DateTimeField(default=datetime.datetime.now())
     date_updated = models.DateTimeField(default=datetime.datetime.now())
-    objects = models.Manager()
         
     class Meta:
         verbose_name_plural = "categories"
@@ -82,7 +80,7 @@ class Contributor(models.Model):
     last_name = models.CharField(max_length=255)
     display_name = models.CharField(max_length=255)
     deleted = models.BooleanField(default=False)
-    # Note: Titles are available a titles.all()
+    # Note: Titles are available a title_set.all()
     date_created = models.DateTimeField(default=datetime.datetime.now())
     date_updated = models.DateTimeField(default=datetime.datetime.now())
 
@@ -118,7 +116,7 @@ class Episode(models.Model):
     url = models.URLField(verify_exists=True)
     filesize = models.IntegerField(default=0) #Size of the media file
     length = models.FloatField(default=0) #Length of the media file (usually minutes (or pages))
-    contributors = models.ManyToManyField('Contributor', through='EpisodeContributors')
+    contributors = models.ManyToManyField('Contributor', through='EpisodeContributor')
     status = models.IntegerField(default=1)
     deleted = models.BooleanField(default=False)
     date_created = models.DateTimeField(default=datetime.datetime.now())
@@ -138,7 +136,7 @@ class Episode(models.Model):
         return round(self.filesize / 1024.0 / 1024.0, 2)
     filesize_mb = property(_get_filesize_mb)
 
-class EpisodeContributors(models.Model):
+class EpisodeContributor(models.Model):
     """Join table to associate contributors to titles."""
     episode = models.ForeignKey('Episode', related_name='episodecontributors')
     contributor = models.ForeignKey('Contributor', related_name='episodecontributors')
@@ -295,7 +293,7 @@ class Title(models.Model):
     promoter_count = models.IntegerField(default=0, db_index=True)
     detractor_count = models.IntegerField(default=0, db_index=True)
     deleted = models.BooleanField(default=False)
-    contributors = models.ManyToManyField('Contributor', through='TitleContributors')
+    contributors = models.ManyToManyField('Contributor', through='TitleContributor')
     categories = models.ManyToManyField('Category', db_table="main_title_categories")
     partner = models.ForeignKey('partner', null=True, blank=True, related_name='partners')
     awards = models.ManyToManyField('Award', blank=True)
@@ -338,7 +336,7 @@ class TitleModerator(CommentModerator):
 
 moderator.register(Title, TitleModerator)
 
-class TitleContributors(models.Model):
+class TitleContributor(models.Model):
     """Join table to associate contributors to titles."""
     title = models.ForeignKey('Title', related_name='titlecontributors')
     contributor = models.ForeignKey('Contributor', related_name='titlecontributors')
