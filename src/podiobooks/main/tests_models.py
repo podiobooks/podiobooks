@@ -5,6 +5,7 @@
 from django.test import TestCase
 from podiobooks.main.models import *  #@UnusedWildImport
 from django.template.defaultfilters import slugify
+from django.db.models import Count
 
 class TitleTestCase(TestCase):
     """Test the Podiobooks Models from a Title-Centric POV"""
@@ -208,11 +209,70 @@ class TitleTestCase(TestCase):
                 deleted=False
                 )
         self.subscription3.series.add(self.series1)
-        self.subscription3.series.add(self.series2)     
+        self.subscription3.series.add(self.series2)    
+        
+        # Categories
+        self.category1 = Category.objects.create(
+                slug='science-fiction',
+                name='Science Fiction',
+                deleted=False
+                )
+        self.category1.title_set.add(self.title1)
+        self.title2.categories.add(self.category1)
+        
+        self.category2 = Category.objects.create(
+                slug='fantasy',
+                name='Fantasy',
+                deleted=False
+                )
+        self.category2.title_set.add(self.title3)
+        self.title3.categories.add(self.category1) #Title 3 should belong to two categories now
+        
+        # Awards
+        self.award1 = Award.objects.create(
+                slug='parsec2010',
+                name='Parsec Award 2010',
+                deleted=False
+                )
+        self.award1.title_set.add(self.title1)
+        self.title2.awards.add(self.award1)
+        
+        self.award2 = Award.objects.create(
+                slug='parsec2010',
+                name='Parsec Award 2011',
+                deleted=False
+                )
+        self.award2.title_set.add(self.title3)
+        self.title3.awards.add(self.award1) #Title 3 should belong to two awards now
+        
+        # Contributors
+        self.contributortype1 = ContributorType.objects.create(
+                slug='author',
+                name='Author',
+                )
+        self.contributor1 = Contributor.objects.create(
+                slug='mur-lafferty',
+                first_name='Mur',
+                last_name='Lafferty',
+                display_name='Mur Lafferty',
+                deleted=False
+                )
+        TitleContributor.objects.create(title=self.title1, contributor_type=self.contributortype1, contributor=self.contributor1)
+        TitleContributor.objects.create(title=self.title2, contributor_type=self.contributortype1, contributor=self.contributor1)
+        
+        self.contributor2 = Contributor.objects.create(
+                slug='nathan-lowell',
+                first_name='Nathan',
+                last_name='Lowell',
+                display_name='Nathan Lowell',
+                deleted=False
+                )
+        TitleContributor.objects.create(title=self.title3, contributor_type=self.contributortype1, contributor=self.contributor1)
+        TitleContributor.objects.create(title=self.title3, contributor_type=self.contributortype1, contributor=self.contributor2) #Title 3 should belong to two contributors now
 
     def testTitle(self):
         # USERS
-        print 'Users:'
+        print '---Users---'
         testUsers = User.objects.all().filter(username__startswith='test')
         
         for currentUser in testUsers:
@@ -223,7 +283,7 @@ class TitleTestCase(TestCase):
         
 
         # SERIES
-        print '\nSeries: '
+        print '\n---Series---'
         for currentSeries in Series.objects.all().filter(name__startswith='Podiobooks Series') :
             print '\n\tName: %s' % currentSeries.name
             print '\tSlug: %s' % currentSeries.slug
@@ -246,7 +306,7 @@ class TitleTestCase(TestCase):
                 self.fail('Non-matching Series!' + currentSeries.name)
                 
         # TITLES 
-        print '\nTitles: '
+        print '\n---Titles---'
         for currentTitle in Title.objects.all().filter(name__startswith='Podiobooks Title') :
             print '\n\tName: %s' % currentTitle.name
             print '\tSlug: %s' % currentTitle.slug
@@ -257,6 +317,15 @@ class TitleTestCase(TestCase):
             print '\tSubscriptions:'
             for currentSubscription in currentTitle.subscriptions.all() :
                 print '\t\tUserName: %s' % currentSubscription.user.username
+            print '\tCategories:'
+            for currentCategory in currentTitle.categories.all() :
+                print '\t\t%s - url: %s' % (currentCategory.name, currentCategory.get_absolute_url())
+            print '\tAwards:'
+            for currentAward in currentTitle.awards.all() :
+                print '\t\t%s - %s %s' % (currentAward.name, currentAward.slug, currentAward.url)
+            print '\tContributors:'
+            for currentContributor in currentTitle.contributors.all() :
+                print '\t\t%s' % currentContributor.display_name
             
             # Title Assertions
             if currentTitle.name == "Podiobooks Title #1" :
@@ -272,7 +341,7 @@ class TitleTestCase(TestCase):
                 self.fail('Non-matching Title!' + currentTitle.name)
                 
         # SUBSCRIPTIONS  
-        print '\nSubscriptions'
+        print '\n---Subscriptions---'
         for currentSubscription in Subscription.objects.all() :
             print '\n\tUser: %s:%s' % (currentSubscription.user.username, currentSubscription.user.get_profile().slug)
             print '\tPartner: %s' % currentSubscription.partner.name
@@ -299,4 +368,93 @@ class TitleTestCase(TestCase):
                 self.assertEquals("test3-user3", currentSubscription.user.get_profile().slug)
             else :
                 self.fail('Non-matching Subscription!' + currentSubscription.user.username)
+                
+        # CATEGORIES  
+        print '\n---Categories---'
+        for currentCategory in Category.objects.all() :
+            print '\n\tSlug/Name: %s/%s' % (currentCategory.slug, currentCategory.name)
+            for currentTitle in currentCategory.title_set.all() :
+                print '\t\tName: %s' % currentTitle.name
+                
+            # Category Assertions
+            if currentCategory.slug == "science-fiction" :
+                self.assertEquals(len(currentCategory.title_set.all()), 3)
+            elif currentCategory.slug == "fantasy" :
+                self.assertEquals(len(currentCategory.title_set.all()), 1)
+            else :
+                self.fail('Non-matching Category!' + currentSubscription.user.username)
+                
+        # Count Titles By Category
+        categoryTitleCount = Category.objects.aggregate(title_count=Count('title')) # Counts the main_title_category table
+        print '\n\tTitle/Category Count: ' + str(categoryTitleCount['title_count'])
+        self.assertEquals(len(categoryTitleCount), 1)
+        
+        categoryTitleGroupCounts = Category.objects.annotate(title_count=Count('title'))
+        print  '\n\tTitle Counts by Category:\n',
+        for categoryTitleGroup in categoryTitleGroupCounts:
+            print  '\t\t%s: %d' % (categoryTitleGroup.name, categoryTitleGroup.title_count)
+        self.assertEquals(len(categoryTitleGroupCounts), 2)
+            
+        categoryTitleGroupCountsFiltered = categoryTitleGroupCounts.filter(title_count__gt=1)
+        print  '\n\tFiltered Title Counts by Category:\n',
+        for categoryTitleGroup in categoryTitleGroupCountsFiltered:
+            print  '\t\t%s: %d' % (categoryTitleGroup.name, categoryTitleGroup.title_count)
+        self.assertEquals(len(categoryTitleGroupCountsFiltered), 1)
+        
+        categoryTitleGroupCountsFilteredSubset = categoryTitleGroupCounts.filter(title_count__gt=1).values_list('slug','name')
+        print  '\n\tField Subset of Filtered Categories:\n',
+        for categorySubset in categoryTitleGroupCountsFilteredSubset:
+            print  '\t\t%s/%s' % (categorySubset[0], categorySubset[1])
+        self.assertEquals(len(categoryTitleGroupCountsFilteredSubset), 1)
+        
+            
+        title3 = Title.objects.get(name='Podiobooks Title #3')
+        print ('\n\t' + title3.name + ":")
+        for currentCategory in title3.categories.all() :
+            print '\t\tCategory Name: %s' % currentCategory.name
+        self.assertEquals(len(title3.categories.all()), 2)
+        
+        # CONTRIBUTORS  
+        print '\n---Contributors---'
+        for currentContributor in Contributor.objects.all() :
+            print '\n\tSlug/Name: %s/%s' % (currentContributor.slug, currentContributor.display_name)
+            for currentTitle in currentContributor.title_set.all() :
+                print '\t\tName: %s' % currentTitle.name
+                
+            # Contributor Assertions
+            if currentContributor.slug == "mur-lafferty" :
+                self.assertEquals(len(currentContributor.title_set.all()), 3)
+            elif currentContributor.slug == "nathan-lowell" :
+                self.assertEquals(len(currentContributor.title_set.all()), 1)
+            else :
+                self.fail('Non-matching Contributor!' + currentSubscription.user.username)
+                
+        # Count Titles By Contributor
+        contributorTitleCount = Contributor.objects.aggregate(title_count=Count('title')) # Counts the main_title_contributor table
+        print '\n\tTitle/Contributor Count: ' + str(contributorTitleCount['title_count'])
+        self.assertEquals(len(contributorTitleCount), 1)
+        
+        contributorTitleGroupCounts = Contributor.objects.annotate(title_count=Count('title'))
+        print  '\n\tTitle Counts by Contributor:\n',
+        for contributorTitleGroup in contributorTitleGroupCounts:
+            print  '\t\t%s: %d' % (contributorTitleGroup.display_name, contributorTitleGroup.title_count)
+        self.assertEquals(len(contributorTitleGroupCounts), 2)
+            
+        contributorTitleGroupCountsFiltered = contributorTitleGroupCounts.filter(title_count__gt=1)
+        print  '\n\tFiltered Title Counts by Contributor:\n',
+        for contributorTitleGroup in contributorTitleGroupCountsFiltered:
+            print  '\t\t%s: %d' % (contributorTitleGroup.display_name, contributorTitleGroup.title_count)
+        self.assertEquals(len(contributorTitleGroupCountsFiltered), 1)
+        
+        contributorTitleGroupCountsFilteredSubset = contributorTitleGroupCounts.filter(title_count__gt=1).values_list('slug','display_name')
+        print  '\n\tField Subset of Filtered Contributors:\n',
+        for contributorSubset in contributorTitleGroupCountsFilteredSubset:
+            print  '\t\t%s/%s' % (contributorSubset[0], contributorSubset[1])
+        self.assertEquals(len(contributorTitleGroupCountsFilteredSubset), 1)
+        
+        title3 = Title.objects.get(name='Podiobooks Title #3')
+        print ('\n\t' + title3.name + ":")
+        for currentContributor in title3.contributors.all() :
+            print '\t\tContributor Name: %s' % currentContributor.display_name
+        self.assertEquals(len(title3.contributors.all()), 2)
 
