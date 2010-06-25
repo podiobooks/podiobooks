@@ -109,7 +109,7 @@ def importBooksFromCSV():
     
     #PRE CLEANOUT
     Title.objects.all().delete()
-    TitleContributors.objects.all().delete()
+    TitleContributor.objects.all().delete()
     Contributor.objects.all().delete()
     
     createTitlesFromRows(bookCSVReader)
@@ -149,7 +149,7 @@ def createTitlesFromRows(titleList):
             for contributor in contributorList:
                 contributorObject = getOrCreateContributor(contributor['name'])
                 contributorType = getOrCreateContributorType(contributor['type'])
-                TitleContributors.objects.create(title=title, contributor=contributorObject, contributor_type=contributorType)
+                TitleContributor.objects.create(title=title, contributor=contributorObject, contributor_type=contributorType)
             print "Title: %s\n\t\tContributors: %s" % (title.name, title.contributors.values('display_name'))
             
             """ Awards """
@@ -209,7 +209,7 @@ if __name__ == "__main__":
 #avg_writing = models.FloatField(default=0)
 #avg_overall = models.FloatField(default=0)
 #deleted = models.BooleanField(default=False)
-#contributors = models.ManyToManyField('Contributor', through='TitleContributors')
+#contributors = models.ManyToManyField('Contributor', through='TitleContributor')
 #categories = models.ManyToManyField('Category', db_table="main_title_categories")
 #awards = models.ManyToManyField('Award', blank=True)
 ## Note: episodes are available as episodes.all()
