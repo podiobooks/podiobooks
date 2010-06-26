@@ -9,6 +9,7 @@ This script reads in an "CSV for Excel" export from phpMyAdmin into a the new Po
 import csv # first we need import necessary lib:csv
 from podiobooks.main.models import *
 from django.template.defaultfilters import slugify
+from django.core.exceptions import ObjectDoesNotExist
 
 #Define functions for use in importing ratings
 def getTitle(legacyBookID):
@@ -36,6 +37,7 @@ def importRatingsFromCSV():
 def createRatingsFromRows(ratingsList):
    
     # Loop through the rest of the rows in the CSV
+    print "Starting Ratings Load:"
     for row in ratingsList:
         foundTitle = getTitle(row['BookID'])
         
@@ -51,13 +53,17 @@ def createRatingsFromRows(ratingsList):
             "Could not find TitleID#%s" % row['BookID']
             
         try:
-            lastRating = Rating.objects.latest('date_created')
-        except:
+            lastRating = Rating.objects.latest()
+        except ObjectDoesNotExist:
             lastRating = Rating()
+        
+        if (lastRating.last_rating_id < int(row['RatingID'])):
+            lastRating.last_rating_id = int(row['RatingID'])
+            lastRating.date_created = row['DateCreated']
+            lastRating.save()
             
-        lastRating.id = row['RatingID']
-        lastRating.date_created = row['DateCreated']
-        lastRating.save()
+    print "All ratings loaded."
+        
     
 ##### MAIN FUNCTION TO RUN IF THIS SCRIPT IS CALLED ALONE ###
 if __name__ == "__main__":
