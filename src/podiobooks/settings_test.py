@@ -8,7 +8,7 @@ import tempfile
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': '',
+        'NAME': tempfile.gettempdir() + '/podiobooks_test.sqlite',
         'SUPPORTS_TRANSACTIONS': 'false',
     }
 }
