@@ -9,7 +9,7 @@
             <h2 style="float: left;">{{ shelf_title }}</h2>
 			{% if dropdown_form %}
 			<form class="pb-shelf-dropdown" action="{{ dropdown_form.submit_url }}" name="{{ shelf_id }}" id="{{ shelf_id }}Dropdown">
-				{{ dropdown_form }}
+				{{ dropdown_form.as_p }}
             </form>
 			{% endif %}
 			<div id="{{ shelf_id }}Controller" class="pb-shelf-controller"></div>
