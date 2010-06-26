@@ -6,7 +6,6 @@ from django.test import TestCase
 from podiobooks.main.models import *  #@UnusedWildImport
 from django.template.defaultfilters import slugify
 from django.db.models import Count
-from django.template.loader import render_to_string
 
 class TitleTestCase(TestCase):
     """Test the Podiobooks Models from a Title-Centric POV"""
@@ -270,6 +269,7 @@ class TitleTestCase(TestCase):
                 )
         TitleContributor.objects.create(title=self.title3, contributor_type=self.contributortype1, contributor=self.contributor1)
         TitleContributor.objects.create(title=self.title3, contributor_type=self.contributortype1, contributor=self.contributor2) #Title 3 should belong to two contributors now
+
 
     def testTitle(self):
         # USERS
