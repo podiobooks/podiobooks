@@ -37,9 +37,6 @@ urlpatterns = patterns('',
     
     # Feeds
     (r'^rss/', include('podiobooks.feeds.urls')),
-    
-    # Haystack Search
-    (r'^search/', include('haystack.urls')),
 
     # Social Media Views
     (r'^social/', include('podiobooks.social.urls')),
