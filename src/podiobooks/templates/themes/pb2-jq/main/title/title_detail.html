@@ -43,9 +43,9 @@
     <div style="font-size: 18px; font-weight: bold;">
         {{ title.name }}
     </div>
-    {% show_contributors title %}
+    {{ title.byline|safe }}
     <br>
-    {% show_categories title %}
+    {{ title.category_list|safe }}
     <div class="tundra" style="opacity: 0; margin: 15px 0 0 0; height: 380px;" id="topTabs">
         <div dojoType="dijit.layout.TabContainer" style="width: 100%; height: 100%;" id="topTabContainer">
             <div dojoType="dijit.layout.ContentPane" title="Description" selected="true">

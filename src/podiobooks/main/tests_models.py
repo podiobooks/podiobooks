@@ -6,6 +6,7 @@ from django.test import TestCase
 from podiobooks.main.models import *  #@UnusedWildImport
 from django.template.defaultfilters import slugify
 from django.db.models import Count
+from django.template.loader import render_to_string
 
 class TitleTestCase(TestCase):
     """Test the Podiobooks Models from a Title-Centric POV"""
@@ -217,16 +218,16 @@ class TitleTestCase(TestCase):
                 name='Science Fiction',
                 deleted=False
                 )
-        self.category1.title_set.add(self.title1)
-        self.title2.categories.add(self.category1)
+        TitleCategory.objects.create(title=self.title1, category=self.category1)
+        TitleCategory.objects.create(title=self.title2, category=self.category1)
         
         self.category2 = Category.objects.create(
                 slug='fantasy',
                 name='Fantasy',
                 deleted=False
                 )
-        self.category2.title_set.add(self.title3)
-        self.title3.categories.add(self.category1) #Title 3 should belong to two categories now
+        TitleCategory.objects.create(title=self.title3, category=self.category1)
+        TitleCategory.objects.create(title=self.title3, category=self.category2)
         
         # Awards
         self.award1 = Award.objects.create(
@@ -454,7 +455,16 @@ class TitleTestCase(TestCase):
         
         title3 = Title.objects.get(name='Podiobooks Title #3')
         print ('\n\t' + title3.name + ":")
-        for currentContributor in title3.contributors.all() :
+        title3contributors = title3.contributors.all() 
+        for currentContributor in title3contributors:
             print '\t\tContributor Name: %s' % currentContributor.display_name
         self.assertEquals(len(title3.contributors.all()), 2)
+        
+        # Test building bylines
+        title3titlecontributors = title3.titlecontributors.all().order_by('contributor_type__slug', 'date_created')
+        bylineFromTemplate = render_to_string('main/title/tags/show_contributors.html', {'titlecontributors': title3titlecontributors,})
+        
+        print "\t\Template Byline: %s" % bylineFromTemplate
+        print "\t\tAuto Byline: %s" % title3.byline
+        self.assertEquals(bylineFromTemplate, title3.byline)
 
