@@ -11,18 +11,3 @@ from podiobooks.main.tests_models import * #@UnusedImport #@UnusedWildImport
 from podiobooks.main.tests_urls import * #@UnusedImport #@UnusedWildImport
 from podiobooks.feeds.tests import * #@UnusedImport #@UnusedWildImport
 from podiobooks.social.tests import * #@UnusedImport #@UnusedWildImport
-
-class HaystackSearchUrlTestCase(TestCase):
-    """Test the Haystack Search URLs"""
-    fixtures = ['main_data.json', ]
-    
-    def setUp(self):
-        self.c = Client()
-    
-    def testHaystackSearch(self):
-        response = self.c.get('/search/')
-        self.assertEquals(200, response.status_code)
-        
-    def testHaystackSearchResults(self):
-        response = self.c.get('/search/?q=nathan+lowell&models=main.title')
-        self.assertEquals(200, response.status_code)
