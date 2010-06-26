@@ -219,10 +219,14 @@ class Promo(models.Model):
     
 class Rating(models.Model):
     """The last rating that was loaded from the pb1 site"""
+    last_rating_id = models.IntegerField(default=0, db_index=True)
     date_created = models.DateTimeField(default=datetime.datetime.now())
     
+    class Meta:
+        get_latest_by = 'date_created'
+    
     def __unicode__(self):
-        return self.id
+        return str(self.last_rating_id)
 
 class Series(models.Model):
     """Titles can belong to a series, wich allows for higher level grouping.
