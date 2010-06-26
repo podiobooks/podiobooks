@@ -6,7 +6,7 @@ from django.test import TestCase
 from django.test.client import Client
 
 class FeedUrlTestCase(TestCase):
-    fixtures = ['test_data.json', ]
+    fixtures = ['main_data.json', ]
     
     def setUp(self):
         self.c = Client()
