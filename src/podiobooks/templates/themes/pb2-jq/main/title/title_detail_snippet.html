@@ -16,10 +16,10 @@
 	        <a href="{% url title_detail title.slug %}" style="text-decoration:none;">{{ title.name|striptags|truncatewords_afterchar:"25" }}</a>
 	    </p>
 	    <p class="pb-shelf-item-contributors">
-	        {% show_contributors title %}
+	        {{ title.byline|safe }}
 	    </p>
 	    <p class="pb-shelf-item-categories">
-	        in {% show_categories title %}
+	        in {{ title.category_list|safe }}
 	    </p>
 	    <p class="pb-shelf-item-tags">
 	        {% autoescape off %}{{ title.description|striptags|truncatewords_afterchar:"130" }}{% endautoescape %}

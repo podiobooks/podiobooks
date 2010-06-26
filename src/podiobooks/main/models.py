@@ -6,6 +6,8 @@ from django.contrib.auth.models import User
 from django.contrib.comments.moderation import CommentModerator, moderator
 from django.conf import settings
 import datetime
+from django.db.models.signals import post_save
+from django.template.loader import render_to_string
 
 # pylint: disable=C0111,R0201,W0232
 
@@ -98,6 +100,7 @@ class ContributorType(models.Model):
     """Types of contributors: author, key grid, best boy, director, etc."""
     slug = models.SlugField()
     name = models.CharField(max_length=255)
+    byline_text = models.CharField(max_length=255)
     
     class Meta:
         verbose_name_plural = "Contributor Types"
@@ -294,7 +297,9 @@ class Title(models.Model):
     detractor_count = models.IntegerField(default=0, db_index=True)
     deleted = models.BooleanField(default=False)
     contributors = models.ManyToManyField('Contributor', through='TitleContributor')
-    categories = models.ManyToManyField('Category', db_table="main_title_categories")
+    byline = models.CharField(max_length=1024) # This is a formatted cache of the title contributors
+    categories = models.ManyToManyField('Category', through='TitleCategory')
+    category_list = models.CharField(max_length=1024) # This is a formatted cache of the title contributors
     partner = models.ForeignKey('partner', null=True, blank=True, related_name='partners')
     awards = models.ManyToManyField('Award', blank=True)
     libsyn_show_id = models.CharField(max_length=50, db_index=True)
@@ -336,6 +341,27 @@ class TitleModerator(CommentModerator):
 
 moderator.register(Title, TitleModerator)
 
+class TitleCategory(models.Model):
+    """
+        Join table to associate categories to titles.
+        This is built as a non-automatic model in order to get the signal hooks to work
+    """
+    title = models.ForeignKey('Title', related_name='titlecategories')
+    category = models.ForeignKey('Category', related_name='titlecategories')
+    
+    class Meta:
+        verbose_name_plural = "Title Categories"
+
+def update_category_list(sender, instance, **kwargs):
+    """ Update category list cache on titles when a new title category is added...hooked to pre_save trigger for titlecategory below """
+    categories = instance.title.categories.all()
+    category_list = render_to_string('main/title/tags/show_categories.html', {'categories': categories,})
+    print category_list
+    instance.title.category_list = category_list
+    instance.title.save()
+    
+post_save.connect(update_category_list, sender=TitleCategory)
+
 class TitleContributor(models.Model):
     """Join table to associate contributors to titles."""
     title = models.ForeignKey('Title', related_name='titlecontributors')
@@ -346,6 +372,16 @@ class TitleContributor(models.Model):
     class Meta:
         verbose_name_plural = "Title Contributors"
         ordering = ['contributor_type__slug', 'date_created']
+        
+def update_byline(sender, instance, **kwargs):
+    """ Update byline cache on titles when a new title contributor is added...hooked to pre_save trigger for titlecontributor below """
+    titlecontributors = instance.title.titlecontributors.all().order_by('contributor_type__slug', 'date_created')
+    byline = render_to_string('main/title/tags/show_contributors.html', {'titlecontributors': titlecontributors,})
+    print byline
+    instance.title.byline = byline
+    instance.title.save()
+    
+post_save.connect(update_byline, sender=TitleContributor)
 
 class TitleUrl(models.Model):
     """Allows us to have several links for a book, for display. For utility."""
