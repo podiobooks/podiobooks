@@ -69,8 +69,20 @@ def getOrCreateContributor(contributorName):
 
 def getOrCreateContributorType(contributorType):
     """Retrieves or creates a Contributor type based on the name of the type"""
-    contributorTypeObject, created = ContributorType.objects.get_or_create(slug=slugify(contributorType),
-                  defaults={'name': contributorType, })
+    contributorTypeSlug = slugify(contributorType)
+    contributorTypeToBylineMapping = {
+      'author': " and ",
+      'editor':" edited by ",
+      'narrator': " narrated by ",
+      'penname': " writing as ",
+      'ghostwriter': " as told to ",
+      'contributor': " with ",
+    }
+    byline_text = contributorTypeToBylineMapping[contributorTypeSlug]
+    if not byline_text:
+        byline_text = ""
+    contributorTypeObject, created = ContributorType.objects.get_or_create(slug=contributorTypeSlug,
+                  defaults={'name': contributorType, 'byline_text': byline_text })
     return contributorTypeObject
 
 def getCategory(categoryID):
@@ -170,7 +182,7 @@ def createTitlesFromRows(titleList):
             """ Category """
             category = getCategory(row['CategoryID'])
             if category:
-                title.categories.add(category)
+                TitleCategory.objects.create(title=title,category=category)
                 print "\t\tCategories: %s" % (title.categories.values('name'))
             
             """ Partner """

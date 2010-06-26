@@ -8,10 +8,10 @@
                 <a href="{{ title.get_absolute_url }}">{{ title.name }}</a>
             </div>
             <div style="font-size: 13px; margin: 10px 0 7px 0;">
-                {% show_contributors title %}
+               	{{ title.byline|safe }}
             </div>
             <div style="font-size: 13px; margin: 0 0 7px 0;">
-                {% show_categories title %}
+                {{ title.category_list|safe }}
             </div>
             <div style="clear: both;">
                 {% autoescape off %}{{ title.description|striptags|truncatewords_html:80 }}{% endautoescape %} <a href="{{ title.get_absolute_url }}">[more]</a>
