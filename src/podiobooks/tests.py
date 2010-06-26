@@ -14,7 +14,7 @@ from podiobooks.social.tests import * #@UnusedImport #@UnusedWildImport
 
 class HaystackSearchUrlTestCase(TestCase):
     """Test the Haystack Search URLs"""
-    fixtures = ['test_data.json', ]
+    fixtures = ['main_data.json', ]
     
     def setUp(self):
         self.c = Client()
