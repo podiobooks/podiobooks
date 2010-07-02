@@ -1,21 +1,13 @@
 {% extends "base.html" %}
 {% load global_templatetags %}
 {% load title_templatetags %}
+{% load disqus_tags %}
 {% block headtitle %}{{ title.name }} - {{ site_name }}{% endblock %}
 {% block head %}
 <link rel="stylesheet" type="text/css" href="{{ THEME_MEDIA_URL }}css/title_detail.css">
 <link rel="stylesheet" type="text/css" href="{{ THEME_MEDIA_URL }}css/infobox.css">
 <link rel="stylesheet" type="text/css" href="{{ THEME_MEDIA_URL }}css/ratings.css">
-<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/dojo/1.4/dijit/themes/tundra/tundra.css">
-<script type="text/javascript">
-    dojo.require('dijit.layout.TabContainer');
-    dojo.require('dijit.layout.ContentPane');
-    dojo.addOnLoad(function(){
-        dojo.style("bottomTabs", "opacity", "1");
-        dojo.style("topTabs", "opacity", "1");
-        //dijit.byId('topTabContainer').selectChild('Description');  //Seems to be broken
-    });
-</script>
+{% disqus_dev %}
 {% endblock %}
 {% block title %}Book Information{% endblock %}
 {% block content %}
@@ -43,44 +35,24 @@
     <div style="font-size: 18px; font-weight: bold;">
         {{ title.name }}
     </div>
-    {{ title.byline|safe }}
+		{{ title.byline|safe }}
     <br>
-    {{ title.category_list|safe }}
-    <div class="tundra" style="opacity: 0; margin: 15px 0 0 0; height: 380px;" id="topTabs">
-        <div dojoType="dijit.layout.TabContainer" style="width: 100%; height: 100%;" id="topTabContainer">
-            <div dojoType="dijit.layout.ContentPane" title="Description" selected="true">
-                {% autoescape off %}{{ title.description_br }}{% endautoescape %}
-            </div>
-            <div dojoType="dijit.layout.ContentPane" title="News" selected="true">
-                Lorem News
-            </div>
-            <div dojoType="dijit.layout.ContentPane" title="Featured Comments" selected="true">
-                Lorem Comments
-            </div>
-            <div dojoType="dijit.layout.ContentPane" title="Social" selected="true" href="/social/twitter/search/{{ title.contributors.all|first }}">
-            </div>
-        </div>
-    </div>
+		{{ title.category_list|safe }}
 </div>
-{% include "main/title/title_subscriptionbox.html" %}
 <div class="pb-float-clear">
 </div>
-<div class="tundra" style="width: 100%; height: 500px; opacity: 0" id="bottomTabs">
-    <div dojoType="dijit.layout.TabContainer" style="width: 100%; height: 100%;" id="bottomTabContainer">
-        <div dojoType="dijit.layout.ContentPane" title="Chapters">
-            {% if title.episode_set.all %}
-            {% show_episodelist title %}
-            {% else %}
-            <div style="font-size: 18px; clear: both; font-weight: bold;">
-                No Episodes Are Available Yet
-            </div>
-            {% endif %}
-        </div>
-        <div dojoType="dijit.layout.ContentPane" title="All Comments">
-            {% include "main/title/title_all_comments.html" %}
-        </div>
-    </div>
-</div>
+<h2>Ratings</h2>
+<script language='JavaScript'>
+var OB_langJS = 'http://widgets.outbrain.com/lang_en.js'; var OBITm = '1278028399294';var OB_raterMode = 'singleThumb';var OB_recMode = 'rec'; 
+
+var OutbrainPermaLink='http://podioadventures.com{% url title_detail title %}'; 
+
+ if ( typeof(OB_Script)!='undefined' )OutbrainStart(); else { var OB_Script = true; var str = unescape("%3Cscript src=\'http://widgets.outbrain.com/OutbrainRater.js\' type=\'text/javascript\'%3E%3C/script%3E"); document.write(str); }
+ </script>
+<h2>Comments</h2>
+{% disqus_show_comments %}
+
+
 {% if title.license %}
 <div style="float: left; margin: 20px 0px 0px 0px;">
     <a rel="license" href="{{title.license.url}}"><img alt="{{ title.license.text }} Logo" style="border-width:0" src="{{ title.license.image_url }}" /></a>
@@ -92,4 +64,5 @@
 <div style="clear: both">
 </div>
 {% endif %}
+<input type="hidden" name="OBKey" value="GOy47H2mKl/G4TzryWpffw=="/> <script LANGUAGE="JavaScript">var OBCTm='1278028399300'; </script><script LANGUAGE="JavaScript" src="http://widgets.outbrain.com/claim.js"></script>
 {% endblock %}
