@@ -83,7 +83,7 @@
         {% disqus_show_comments %}
     </div>
     <div title="Chapters" id="chapters-tab" style="height: 595px; overflow-y: scroll;">
-        {% if title.episode_set.all %}
+        {% if title.episodes.all %}
         {% show_episodelist title %}
         {% else %}
         <div style="font-size: 18px; clear: both; font-weight: bold;">
