@@ -1,3 +1,4 @@
+{% load disqus_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,6 +47,6 @@
 <!-- Begin Footer -->
 {% block footer %}{% include "footer.html" %}{% endblock %}
 <!-- End Footer -->
-<input type="hidden" name="OBKey" value="41BkrdZJ1KEMbSONA09kZQ=="/> <script LANGUAGE="JavaScript">var OBCTm='1278089458101'; </script><script LANGUAGE="JavaScript" src="http://widgets.outbrain.com/claim.js"></script>
+{% disqus_num_replies %}
 </body>
 </html>
