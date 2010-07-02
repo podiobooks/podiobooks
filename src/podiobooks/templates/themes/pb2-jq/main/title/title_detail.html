@@ -42,10 +42,11 @@
 <div class="pb-float-clear">
 </div>
 <h2>Ratings</h2>
+URL {{ title.get_absolute_url }}
 <script language='JavaScript'>
 var OB_langJS = 'http://widgets.outbrain.com/lang_en.js'; var OBITm = '1278028399294';var OB_raterMode = 'singleThumb';var OB_recMode = 'rec'; 
 
-var OutbrainPermaLink='http://podioadventures.com{% url title_detail title %}'; 
+var OutbrainPermaLink='{{ protocol }}://{{ domain }}{{ title.get_absolute_url }}'; 
 
  if ( typeof(OB_Script)!='undefined' )OutbrainStart(); else { var OB_Script = true; var str = unescape("%3Cscript src=\'http://widgets.outbrain.com/OutbrainRater.js\' type=\'text/javascript\'%3E%3C/script%3E"); document.write(str); }
  </script>
