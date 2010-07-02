@@ -21,40 +21,77 @@
             <div class="pb-item-rating-detractor">
                 {{ title.detractor_count }}
             </div>
-			<div class="pb-float-clear">
+            <div class="pb-float-clear">
+            </div>
+        </div>
+        <div class="pb-float-clear">
+        </div>
+        <div style="margin: 5px 0 0 15px; height: 100px; width: 100px;">
+            {% show_awardshow title %}
         </div>
     </div>
-    <div class="pb-float-clear">
-    </div>
-    <div style="margin: 5px 0 0 15px; height: 100px; width: 100px;">
-        {% show_awardshow title %}
-    </div>
 </div>
-</div>
-<div style="float:left; width: 558px; margin: 0 0 20px 20px" class="tundra">
+<div style="float:left; width: 558px; margin: 0 0 20px 20px">
     <div style="font-size: 18px; font-weight: bold;">
         {{ title.name }}
     </div>
-		{{ title.byline|safe }}
+    {{ title.byline|safe }}
     <br>
-		{{ title.category_list|safe }}
+    {{ title.category_list|safe }}
+    <div style="margin: 15px 0 0 0; height: 380px; overflow-y: hidden;" id="topTabs">
+        <ul>
+            <li>
+                <a href="#description-tab">Description</a>
+            </li>
+            <li>
+                <a href="#news-tab">News</a>
+            </li>
+            <li>
+                <a href="#featured-comments-tab">Featured Comments</a>
+            </li>
+            <li>
+                <a href="/social/twitter/search/{{ title.contributors.all|first }}" title="social-tab">Social</a>
+            </li>
+        </ul>
+        <div id="description-tab" style="height: 300px; overflow-y: scroll;">
+            {% autoescape off %}{{ title.description_br }}{% endautoescape %}
+        </div>
+        <div id="news-tab" style="height: 300px; overflow-y: scroll;">
+            Lorem News
+        </div>
+        <div id="featured-comments-tab" style="height: 300px; overflow-y: scroll;">
+            Lorem Comments
+        </div>
+		<div id="social-tab" style="height: 300px; overflow-y: scroll;">
+            Searching the internets for references to {{ title.byline|safe }}...
+        </div>
+    </div>
 </div>
+{% include "main/title/title_subscriptionbox.html" %}
 <div class="pb-float-clear">
 </div>
-<br></br>
-<br></br>
-<h2>Ratings</h2>
-<script language='JavaScript'>
-var OB_langJS = 'http://widgets.outbrain.com/lang_en.js'; var OBITm = '1278028399294';var OB_raterMode = 'singleThumb';var OB_recMode = 'rec'; 
-
-var OutbrainPermaLink='{{ protocol }}://{{ domain }}{{ title.get_absolute_url }}'; 
-
- if ( typeof(OB_Script)!='undefined' )OutbrainStart(); else { var OB_Script = true; var str = unescape("%3Cscript src=\'http://widgets.outbrain.com/OutbrainRater.js\' type=\'text/javascript\'%3E%3C/script%3E"); document.write(str); }
- </script>
-<h2>Comments</h2>
-{% disqus_show_comments %}
-
-
+<div style="margin: 0; padding: 0; width: 100%; height: 700px;" id="bottomTabs">
+    <ul>
+        <li>
+            <a href="#comments-tab">Comments</a>
+        </li>
+        <li>
+            <a href="#chapters-tab">Chapters</a>
+        </li>
+    </ul>
+    <div title="All Comments" id="comments-tab" style="height: 595px; overflow-y: scroll;">
+        {% disqus_show_comments %}
+    </div>
+    <div title="Chapters" id="chapters-tab" style="height: 595px; overflow-y: scroll;">
+        {% if title.episode_set.all %}
+        {% show_episodelist title %}
+        {% else %}
+        <div style="font-size: 18px; clear: both; font-weight: bold;">
+            No Episodes Are Available Yet
+        </div>
+        {% endif %}
+    </div>
+</div>
 {% if title.license %}
 <div style="float: left; margin: 20px 0px 0px 0px;">
     <a rel="license" href="{{title.license.url}}"><img alt="{{ title.license.text }} Logo" style="border-width:0" src="{{ title.license.image_url }}" /></a>
@@ -65,5 +102,23 @@ var OutbrainPermaLink='{{ protocol }}://{{ domain }}{{ title.get_absolute_url }}
 </div>
 <div style="clear: both">
 </div>
+<script type="text/javascript">
+    $(function(){
+        $("#topTabs").tabs({
+            ajaxOptions: {
+                error: function(xhr, status, index, anchor){
+                    $(anchor.hash).html("Couldn't load this tab. We'll try to fix this as soon as possible. If this wouldn't be a demo.");
+                }
+            }
+        });
+        $("#bottomTabs").tabs({
+            ajaxOptions: {
+                error: function(xhr, status, index, anchor){
+                    $(anchor.hash).html("Couldn't load this tab. We'll try to fix this as soon as possible. If this wouldn't be a demo.");
+                }
+            }
+        });
+    });
+</script>
 {% endif %}
 {% endblock %}
