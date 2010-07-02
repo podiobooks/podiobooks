@@ -44,6 +44,7 @@ OPENID_SREG = {
 
 INSTALLED_APPS = (
     'contrib.django_restapi',
+    'disqus',
     'django.contrib.admin',
     'django.contrib.admindocs',
     'django.contrib.auth',
