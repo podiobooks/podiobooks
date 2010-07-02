@@ -6,11 +6,29 @@
 {% block head %}
 <link rel="stylesheet" type="text/css" href="{{ THEME_MEDIA_URL }}css/infobox.css">
 <link rel="stylesheet" type="text/css" href="{{ THEME_MEDIA_URL }}css/shelf.css">
+<style type=text/css>
+	.specific-box {
+		border:2px solid #000;
+		border-radius:5px 5px 5px 5px;
+		padding: 5px;
+	}  
+</style>
 {% endblock %}
 {% block content %} 
 
 {% url category_shelf 'placeholder_slug' as category_dropdown_url %} 
 {% show_shelf 'featuredPodiobooksShelf' 'Featured Podiobooks by Category' featured_title_list category_choice_form 'pb-shelf-featured' 4 %}
+
+<div class="specific-box">
+	<p>asdfjljsdf
+	asdfkljasdf
+	asdlfkjasdlfjk
+	asdflkjsdflkj</p>
+	<p>asdfjljsdf
+	asdfkljasdf
+	asdlfkjasdlfjk
+	asdflkjsdflkj</p>
+</div>
 
 <!-- Begin JavaScript Includes for Shelf Interactivity -->
 <script src="{{ MEDIA_URL }}js/jquery/js/jcarousellite_1.0.1.pack.js">
