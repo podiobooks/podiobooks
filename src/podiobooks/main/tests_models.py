@@ -243,7 +243,7 @@ class TitleTestCase(TestCase):
                 deleted=False
                 )
         self.award2.title_set.add(self.title3)
-        self.title3.awards.add(self.award1) #Title 3 should belong to two awards now
+        self.title3.awards.add(self.award1) #Title 3 should have two awards now
         
         # Contributors
         self.contributortype1 = ContributorType.objects.create(
@@ -428,7 +428,7 @@ class TitleTestCase(TestCase):
             elif currentContributor.slug == "nathan-lowell" :
                 self.assertEquals(len(currentContributor.title_set.all()), 1)
             else :
-                self.fail('Non-matching Contributor!' + currentSubscription.user.username)
+                self.fail('Non-matching Contributor!' + currentContributor.user.username)
                 
         # Count Titles By Contributor
         contributorTitleCount = Contributor.objects.aggregate(title_count=Count('title')) # Counts the main_title_contributor table
