@@ -80,7 +80,7 @@ def get_max_episode_id():
     return max_id_results['max_id']
 
 def get_max_rating_id():
-    max_id_results = Rating.objects.aggregate(max_id=Max('id'))
+    max_id_results = Rating.objects.aggregate(max_id=Max('last_rating_id'))
     return max_id_results['max_id']
 
 def get_max_category_id():
