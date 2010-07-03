@@ -1,39 +1,33 @@
 {% extends "base.html" %}
 
-
 {% block title %}{{ site_name }} - Associate Your Account With Podiobooks{% endblock %}
-
 
 {% block content %}
 	<div id="completetxt">
 	<h1>Your External Account is Verified!</h1>
-	<p>Your OpenID can now be associated with a new or existing membership. You can change the association later in your preferences.</p>
-	<br /><br />
+	<p>You now need to associate your External Account new or existing {{ site_name }} nickname. You can change the association later in your preferences.</p>
+	<br />
 	</div>
 	
-	<h3>Choose A Nickname for This Account at {{ site_name}}:</h3>
 	<div class="login" style="line-height:2">
         <form name="fregister" action="{% url user_register %}" method="POST">
             <input type="hidden" name="next" value="{{ next }}" />
 			<fieldset>
-				<legend>Choose a New Nickname:</legend>
+				<legend>Choose A {{ site_name }} Nickname for This Account:</legend>
 				<div class="form-row"><label for="id_username">Username</label><br />{{ form1.username }}</div>
 				<div class="form-row"><label for="id_email">Email</label><br />{{ form1.email }}</div>
 				<div class="submit-row"><input type="submit" name="bnewaccount" value="Create account"></div>
-				<hr class="clear" />
             	</fieldset>
 		</form>
 	</div>
 
 	<h3>OR</h3>
-	
-	<h3>If you have an existing {{ site_name }} account, associate this External Account with it by logging in:</h3>
 
 	<div class="login" style="line-height:2">
         <form name="fverify" action="{% url user_register %}" method="POST">
             <input type="hidden" name="next" value="{{ next }}" />
 			<fieldset>
-				<legend>Associate Your External Account with this {{ site_name }} account:</legend>
+				<legend>If you have an existing {{ site_name }} account, associate this External Account with it by logging in:</legend>
 				<div class="form-row"><label for="id_username">Username</label><br />{{ form2.username }}</div>
 				<div class="form-row"><label for="id_passwordl">Password</label><br />{{ form2.password }}</div>
 				<div class="submit-row"><input type="submit" name="bverify" value="Verify"></div>
