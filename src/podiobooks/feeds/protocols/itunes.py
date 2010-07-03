@@ -23,10 +23,10 @@ class ITunesFeed(Rss201rev2Feed):
         handler.addQuickElement(u'atom:link', None, {u'href':self.feed['feed_url'], u'rel':u'self', u'type':u'application/rss+xml'})
         
         #Basic Attributes
-        handler.addQuickElement(u'webMaster', u'webmaster@podiobooks.com (Chris Miller)')
-        handler.addQuickElement(u'managingEditor', u'editor@podiobooks.com (Evo Terra)')
-        handler.addQuickElement(u'category', u'podiobooks')
-        handler.addQuickElement(u'category', u'audio books')
+        handler.addQuickElement(u'webMaster', self.feed['web_master'])
+        handler.addQuickElement(u'managingEditor', self.feed['managing_editor'])
+        for category in self.feed['global_categories']:
+            handler.addQuickElement(u'category', category)
         
         #iTunes Elements
         if self.feed['explicit'] is not None:

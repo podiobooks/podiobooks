@@ -138,7 +138,12 @@ ACCOUNT_ACTIVATION_DAYS = 14
 # TEMPLATE_CONTEXT_PROCESSORS +=
 # INSTALLED_APPS +=
 
-##### PB2 Custom Variables Below Here #######
+##### Custom Variables Below Here #######
+
+# FEEDS
+FEED_WEBMASTER = 'webmaster@podiobooks.com (Chris Miller)'
+FEED_MANAGING_EDITOR = 'editor@podiobooks.com (Evo Terra)'
+FEED_GLOBAL_CATEGORIES = ('podiobooks', 'audio books',)
 
 # LOGGING
 import logging
