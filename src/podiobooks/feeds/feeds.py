@@ -2,8 +2,8 @@
 
 # pylint: disable=R0201, C0111, R0904
 
-from django.contrib.syndication.feeds import Feed
-from django.contrib.syndication.feeds import ObjectDoesNotExist
+
+from django.contrib.syndication.views import Feed
 
 from django.utils.html import strip_tags
 
@@ -12,22 +12,30 @@ from podiobooks.main.models import Title, Episode
 from podiobooks.feeds.protocols.itunes import ITunesFeed
 from django.utils.feedgenerator import Rss201rev2Feed
 
+from podiobooks import settings
+
 from podiobooks.feeds import feed_tools
 
 class TitleFeed(Feed):
     """A simple feed that lists recent Titles"""
     feed_type = Rss201rev2Feed
     
-    title = "PodioBooks Title Feed"
+    title = "Podiobooks Title Feed"
     link = "/title/"
-    description = "List of Titles from Podiobooks.org"
-    
-    def item_link(self, obj):
-        return feed_tools.add_current_domain(obj.get_absolute_url(), self.request)
+    description = "List of Titles from Podiobooks.com"
 
     def items(self):
         """Returns the list of items for the feed"""
         return Title.objects.order_by('-date_created')[:30]
+    
+    def item_description(self, obj):
+        return(strip_tags(obj.description).replace('&amp;', '&'))
+    
+    def item_link(self, obj):
+        return feed_tools.add_current_domain(obj.get_absolute_url())
+    
+    def item_title(self, obj):
+        return (strip_tags(obj.name).replace('&amp;', '&'))
     
 class EpisodeFeed(Feed):
     """Main feed used to generate the list of episodes for an individual Title"""
@@ -61,22 +69,25 @@ class EpisodeFeed(Feed):
         extra_args = {}
         extra_args['image'] = self.image(obj)
         extra_args['explicit'] = self.explicit(obj)
+        extra_args['web_master'] = settings.FEED_WEBMASTER
+        extra_args['managing_editor'] = settings.FEED_MANAGING_EDITOR
+        extra_args['global_categories'] = settings.FEED_GLOBAL_CATEGORIES
         return extra_args
     
-    def get_object(self, bits):
-        # In case of "/rss/feeds/episodes/one-fall/foo/bar/baz/", or other such clutter,
-        # check that bits has only one member.
-        if len(bits) != 1:
-            raise ObjectDoesNotExist
-        return Title.objects.get(slug__exact=bits[0])
+    def get_object(self, request, title_slug):
+        return Title.objects.get(slug__exact=title_slug)
     
     def image(self, obj):
         return 'http://www.podiobooks.com/images/covers/%s' % obj.cover
     
-    def item_comments(self, obj):
-        return feed_tools.add_current_domain(obj.title.get_absolute_url(), self.request)
+    def items(self, obj):
+        return Episode.objects.filter(title__id__exact=obj.id).order_by('-sequence')
     
-    # item_description comes from templates/base/feeds/episodes_description.html
+    def item_comments(self, obj):
+        return feed_tools.add_current_domain(obj.title.get_absolute_url())
+    
+    def item_description(self, obj):
+        return(strip_tags(obj.description).replace('&amp;', '&'))
     
     def item_enclosure_url(self, obj):
         return obj.url
@@ -115,18 +126,16 @@ class EpisodeFeed(Feed):
         return keywords
 
     def item_link(self, obj):
-        return feed_tools.add_current_domain(obj.get_absolute_url(), self.request)
+        return feed_tools.add_current_domain(obj.get_absolute_url())
     
     def item_pubdate(self, obj):
         return obj.date_created
     
-    # item_title comes from templates/base/feeds/episodes_title.html
+    def item_title(self, obj):
+        return(strip_tags(obj.name).replace('&amp;', '&'))
     
     def link(self, obj):
-        return feed_tools.add_current_domain(obj.get_absolute_url(), self.request)
-
-    def items(self, obj):
-        return Episode.objects.filter(title__id__exact=obj.id).order_by('-sequence')
+        return feed_tools.add_current_domain(obj.get_absolute_url())
     
     def subtitle(self, obj):
         return u'A free audiobook by %s' % self.author_name(obj)

@@ -1,21 +1,16 @@
 """
     Helper functions for working with feeds
 """
-from django.contrib.sites.models import Site, RequestSite
+from django.contrib.sites.models import Site
 from django.utils.encoding import iri_to_uri
 
-def get_current_site(request):
+def get_current_site():
     """Get the Site object for the currently active Site"""
-    if Site._meta.installed: #@UndefinedVariable # pylint: disable=E1101,W0212
-        current_site = Site.objects.get_current()
-    else:
-        current_site = RequestSite(request) # pragma: nocover
-    return current_site
+    return Site.objects.get_current()
             
-def get_current_domain(request):
+def get_current_domain():
     """Get the current DNS domain off of the request"""
-    current_site = get_current_site(request)
-    return current_site.domain
+    return get_current_site().domain
 
 def add_domain(domain, url):
     """Add the protocol and domain to the front of the current site URL"""
@@ -25,6 +20,6 @@ def add_domain(domain, url):
         url = iri_to_uri(u'http://%s%s' % (domain, url))
     return url
 
-def add_current_domain(url, request):
+def add_current_domain(url):
     """Add the current DNS Domain to the front of the current site URL"""
-    return add_domain(get_current_domain(request), url)
+    return add_domain(get_current_domain(), url)
