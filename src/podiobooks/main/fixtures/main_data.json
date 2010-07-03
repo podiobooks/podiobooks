@@ -2527,7 +2527,7 @@
                "series": null, 
                "display_on_homepage": true, 
                "podiobooker_blog_url": "http://www.podiobooks.com/blog/2008/02/14/the-plump-buffet/", 
-               "is_adult": false, 
+               "is_adult": true, 
                "partner": null, 
                "is_hosted_at_pb": true, 
                "avg_writing": 3.5833300000000001, 
