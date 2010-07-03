@@ -197,7 +197,7 @@ ul {
 
 .browseby-links ul li a {
 	padding:0px 10px 0px 0px;
-	background:url(../images/arrow-right.png) center right no-repeat;
+	/* background:url(../images/arrow-right.png) center right no-repeat; */
 	float:left;
 }
 
