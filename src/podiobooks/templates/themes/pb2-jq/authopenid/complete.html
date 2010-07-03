@@ -6,7 +6,7 @@
 
 {% block content %}
 	<div id="completetxt">
-	<h1>{% trans "Your External Account is Verified!" %}</h1>
+	<h1>Your External Account is Verified!</h1>
 	<p>Your OpenID can now be associated with a new or existing membership. You can change the association later in your preferences.</p>
 	<br /><br />
 	</div>
@@ -17,8 +17,8 @@
             <input type="hidden" name="next" value="{{ next }}" />
 			<fieldset>
 				<legend>Choose a New Nickname:</legend>
-				<div class="form-row"><label for="id_username">{% trans "Username" %}</label><br />{{ form1.username }}</div>
-				<div class="form-row"><label for="id_email">{% trans "Email" %}</label><br />{{ form1.email }}</div>
+				<div class="form-row"><label for="id_username">Username</label><br />{{ form1.username }}</div>
+				<div class="form-row"><label for="id_email">Email</label><br />{{ form1.email }}</div>
 				<div class="submit-row"><input type="submit" name="bnewaccount" value="Create account"></div>
 				<hr class="clear" />
             	</fieldset>
@@ -34,8 +34,8 @@
             <input type="hidden" name="next" value="{{ next }}" />
 			<fieldset>
 				<legend>Associate Your External Account with this {{ site_name }} account:</legend>
-				<div class="form-row"><label for="id_username">{% trans "Username" %}</label><br />{{ form2.username }}</div>
-				<div class="form-row"><label for="id_passwordl">{% trans "Password" %}</label><br />{{ form2.password }}</div>
+				<div class="form-row"><label for="id_username">Username</label><br />{{ form2.username }}</div>
+				<div class="form-row"><label for="id_passwordl">Password</label><br />{{ form2.password }}</div>
 				<div class="submit-row"><input type="submit" name="bverify" value="Verify"></div>
 			</fieldset>
 		</form>
