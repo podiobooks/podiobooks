@@ -5,7 +5,8 @@
 {% block content %}
 	<div id="completetxt">
 	<h1>Your External Account is Verified!</h1>
-	<p>You now need to associate your External Account new or existing {{ site_name }} nickname. You can change the association later in your preferences.</p>
+	<p>You now need to associate your External Account new or existing {{ site_name }} nickname.</p>
+	<p>You can change the association later in your preferences.</p>
 	<br />
 	</div>
 	
@@ -13,7 +14,7 @@
         <form name="fregister" action="{% url user_register %}" method="POST">
             <input type="hidden" name="next" value="{{ next }}" />
 			<fieldset>
-				<legend>Choose A {{ site_name }} Nickname for This Account:</legend>
+				<legend style="font-weight:bold">Choose A {{ site_name }} Nickname for This Account:</legend>
 				<div class="form-row"><label for="id_username">Username</label><br />{{ form1.username }}</div>
 				<div class="form-row"><label for="id_email">Email</label><br />{{ form1.email }}</div>
 				<div class="submit-row"><input type="submit" name="bnewaccount" value="Create account"></div>
@@ -27,7 +28,7 @@
         <form name="fverify" action="{% url user_register %}" method="POST">
             <input type="hidden" name="next" value="{{ next }}" />
 			<fieldset>
-				<legend>If you have an existing {{ site_name }} account, associate this External Account with it by logging in:</legend>
+				<legend style="font-weight:bold">If you have an existing {{ site_name }} account, associate this External Account with it by logging in:</legend>
 				<div class="form-row"><label for="id_username">Username</label><br />{{ form2.username }}</div>
 				<div class="form-row"><label for="id_passwordl">Password</label><br />{{ form2.password }}</div>
 				<div class="submit-row"><input type="submit" name="bverify" value="Verify"></div>
