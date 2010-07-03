@@ -6,6 +6,6 @@
 </listAttribute>
 <stringAttribute key="org.eclipse.ui.externaltools.ATTR_LAUNCH_CONFIGURATION_BUILD_SCOPE" value="${none}"/>
 <stringAttribute key="org.eclipse.ui.externaltools.ATTR_LOCATION" value="${workspace_loc:/podiobooks/bin/podiobooks-test}"/>
-<stringAttribute key="org.eclipse.ui.externaltools.ATTR_TOOL_ARGUMENTS" value="test podiobooks.main.tests_forms  --with-coverage --cover-inclusive  --cover-package=podiobooks.main -s"/>
+<stringAttribute key="org.eclipse.ui.externaltools.ATTR_TOOL_ARGUMENTS" value="test podiobooks.main --with-coverage --cover-inclusive  --cover-package=podiobooks"/>
 <stringAttribute key="org.eclipse.ui.externaltools.ATTR_WORKING_DIRECTORY" value="${workspace_loc:/podiobooks}"/>
 </launchConfiguration>
