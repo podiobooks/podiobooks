@@ -15,6 +15,10 @@ class FeedUrlTestCase(TestCase):
         response = self.c.get('/rss/feeds/episodes/double-share/')
         self.assertEquals(200, response.status_code)
         
+    def testEpisodeFeedAdult(self):
+        response = self.c.get('/rss/feeds/episodes/the-plump-buffet/')
+        self.assertEquals(200, response.status_code)
+        
     def testTitlesFeed(self):
         response = self.c.get('/rss/feeds/titles/')
         self.assertEquals(200, response.status_code)
