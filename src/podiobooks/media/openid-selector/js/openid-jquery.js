@@ -25,59 +25,7 @@ var providers_large = {
         url: null
     }
 };
-var providers_small = {
-    myopenid: {
-        name: 'MyOpenID',
-        label: 'Enter your MyOpenID username.',
-        url: 'http://{username}.myopenid.com/'
-    },
-    livejournal: {
-        name: 'LiveJournal',
-        label: 'Enter your Livejournal username.',
-        url: 'http://{username}.livejournal.com/'
-    },
-    flickr: {
-        name: 'Flickr',        
-        label: 'Enter your Flickr username.',
-        url: 'http://flickr.com/{username}/'
-    },
-    technorati: {
-        name: 'Technorati',
-        label: 'Enter your Technorati username.',
-        url: 'http://technorati.com/people/technorati/{username}/'
-    },
-    wordpress: {
-        name: 'Wordpress',
-        label: 'Enter your Wordpress.com username.',
-        url: 'http://{username}.wordpress.com/'
-    },
-    blogger: {
-        name: 'Blogger',
-        label: 'Your Blogger account',
-        url: 'http://{username}.blogspot.com/'
-    },
-    verisign: {
-        name: 'Verisign',
-        label: 'Your Verisign username',
-        url: 'http://{username}.pip.verisignlabs.com/'
-    },
-    vidoop: {
-        name: 'Vidoop',
-        label: 'Your Vidoop username',
-        url: 'http://{username}.myvidoop.com/'
-    },
-    verisign: {
-        name: 'Verisign',
-        label: 'Your Verisign username',
-        url: 'http://{username}.pip.verisignlabs.com/'
-    },
-    claimid: {
-        name: 'ClaimID',
-        label: 'Your ClaimID username',
-        url: 'http://claimid.com/{username}'
-    }
-};
-var providers = $.extend({}, providers_large, providers_small);
+var providers = $.extend({}, providers_large);
 
 var openid = {
 
@@ -91,7 +39,7 @@ var openid = {
 	provider_url: null,
 	
     init: function(input_id, img_path) {
-        this.img_path = img_path;
+		this.img_path = img_path;
         
         var openid_btns = $('#openid_btns');
         
@@ -104,14 +52,6 @@ var openid = {
         for (id in providers_large) {
         
            	openid_btns.append(this.getBoxHTML(providers_large[id], 'large', '.gif'));
-        }
-        if (providers_small) {
-        	openid_btns.append('<br/>');
-        	
-	        for (id in providers_small) {
-	        
-	           	openid_btns.append(this.getBoxHTML(providers_small[id], 'small', '.ico'));
-	        }
         }
         
         $('#openid_form').submit(this.submit);
@@ -160,7 +100,7 @@ var openid = {
     	var url = openid.provider_url; 
     	if (url) {
     		url = url.replace('{username}', $('#openid_username').val());
-    		this.setOpenIdUrl(url);
+    		openid.setOpenIdUrl(url);
     	}
     	return true;
     },
