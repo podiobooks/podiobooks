@@ -1,0 +1,7 @@
+Hi,
+
+Thank you for your registration. To activate your account click on the link below :
+
+http://{{ site.domain }}{% url registration_activate activation_key %}
+
+You have {{ expiration_days }} days to activate your account before it will automatically be deleted.
