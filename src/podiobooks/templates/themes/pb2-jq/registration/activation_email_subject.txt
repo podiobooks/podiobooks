@@ -1,1 +1,1 @@
-{{ site }}. Confirm your registration
+{{ site } - confirm your registration

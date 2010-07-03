@@ -1,1 +1,1 @@
-Thank you to join {{ site }}.
+Thank you your joining {{ site }} with this account!
