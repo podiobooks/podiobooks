@@ -219,3 +219,7 @@ ul {
     color: red;
     font-weight: bold;
 }
+
+.loading {
+    background: url(../images/loading.gif) no-repeat center center;
+}
