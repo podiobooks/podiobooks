@@ -13,6 +13,7 @@ It is ignored by default by .gitignore, so if you don't mess with that, you shou
 # pylint: disable=R0801
 
 import os
+from settings_main import MIDDLEWARE_CLASSES, INSTALLED_APPS
 
 # Set the root path of the project so it's not hard coded
 PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
@@ -130,51 +131,17 @@ EMAIL_HOST_PASSWORD = 'your_mailbox_password'
 DEFAULT_FROM_EMAIL = 'a real email address'
 SERVER_EMAIL = 'a real email address'
 
-# django-registration Settings
+### django-registration Settings
 ACCOUNT_ACTIVATION_DAYS = 14
 
-# Local add-ons to main inclusion variables
-# MIDDLEWARE_CLASSES += ()
+### Local add-ons to main inclusion variables
 # TEMPLATE_CONTEXT_PROCESSORS +=
-# INSTALLED_APPS +=
 
-##### Custom Variables Below Here #######
-
-# FEEDS
-FEED_WEBMASTER = 'webmaster@podiobooks.com (Chris Miller)'
-FEED_MANAGING_EDITOR = 'editor@podiobooks.com (Evo Terra)'
-FEED_GLOBAL_CATEGORIES = ('podiobooks', 'audio books',)
-
-# LOGGING
-import logging
-logging.basicConfig(level=logging.DEBUG,
-    format='%(asctime)s %(levelname)s %(message)s',
-    filename=os.path.join(PROJECT_PATH, 'django.log'),
-    filemode='a+')
-
-### Search
-
-SEARCH_PROVIDER = 'DEFAULT'
-
-# Sphinx
-# SEARCH_PROVIDER = 'SPHINX'
-# SPHINX_SERVER = 'localhost'
-# SPHINX_PORT = 3312
-# SPHINX_API_VERSION = 0x116
-
-# LIBSYN
-LIBSYN_USER = ''
-LIBSYN_KEY = ''
-LIBSYN_NETWORK_SLUG = ''
-LIBSYN_API_SERVER_URL = ''
-
-# DATALOAD
-DATALOAD_DIR = PROJECT_PATH + "/../../../podiobooks-dataload/datafiles/"
-
-from settings_main import MIDDLEWARE_CLASSES, INSTALLED_APPS
 MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
 
 INSTALLED_APPS += ('debug_toolbar',)
+
+### DEBUG TOOLBAR
 
 DEBUG_TOOLBAR_PANELS = (
     'debug_toolbar.panels.timer.TimerDebugPanel',
@@ -186,5 +153,41 @@ DEBUG_TOOLBAR_PANELS = (
     'debug_toolbar.panels.logger.LoggingPanel',
 )
 
+##### Custom Variables Below Here #######
+
+### SECURE SITE
+# SSL_SITE_LOGIN_URL = '' # URL to HTTPS version of site for secure sign-in.
+
+### FEEDS
+FEED_WEBMASTER = 'webmaster@podiobooks.com (Chris Miller)'
+FEED_MANAGING_EDITOR = 'editor@podiobooks.com (Evo Terra)'
+FEED_GLOBAL_CATEGORIES = ('podiobooks', 'audio books',)
+
+### LOGGING
+import logging
+logging.basicConfig(level=logging.DEBUG,
+    format='%(asctime)s %(levelname)s %(message)s',
+    filename=os.path.join(PROJECT_PATH, 'django.log'),
+    filemode='a+')
+
+### SEARCH
+SEARCH_PROVIDER = 'DEFAULT'
+
+## SPHINX SEARCH ENGINE
+# SEARCH_PROVIDER = 'SPHINX'
+# SPHINX_SERVER = 'localhost'
+# SPHINX_PORT = 3312
+# SPHINX_API_VERSION = 0x116
+
+### LIBSYN
+LIBSYN_USER = ''
+LIBSYN_KEY = ''
+LIBSYN_NETWORK_SLUG = ''
+LIBSYN_API_SERVER_URL = ''
+
+### DATALOAD
+DATALOAD_DIR = PROJECT_PATH + "/../../../podiobooks-dataload/datafiles/"
+
+### DISQUS
 DISQUS_API_KEY = 'FOOBARFOOBARFOOBARFOOBARFOOBARF'
 DISQUS_WEBSITE_SHORTNAME = 'podioadventures'

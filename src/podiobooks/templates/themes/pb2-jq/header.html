@@ -14,7 +14,7 @@
 				| {% if user.is_authenticated %}
 					<a href="{% url django_authopenid.views.signout %}">Logout {{ user.username }}</a>
 				  {% else %} 	
-					<a href="{% url django_authopenid.views.signin %}">Login/Register</a>
+					<a href="{% ssl_site_login_url %}">Login/Register</a>
  	              {% endif %}
             </div>
             {% show_searchbox %}
