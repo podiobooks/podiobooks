@@ -40,9 +40,6 @@ urlpatterns = patterns('',
 
     # Social Media Views
     (r'^social/', include('podiobooks.social.urls')),
-    
-    # TinyMCE WYSIWYG HTML Editor
-#    (r'^tinymce/', include('tinymce.urls')),
 )
     
 # Databrowse setup

@@ -4,6 +4,7 @@ from django import template
 from podiobooks.main.forms import TitleSearchForm, BrowseByForm
 from django.conf import settings
 from django.conf.global_settings import PROFANITIES_LIST
+from django.core.urlresolvers import reverse
 import itertools
 
 register = template.Library()
@@ -17,6 +18,19 @@ def cover_media_url():
     if not hasattr(cover_media_url, 'state'):
         cover_media_url.state = itertools.cycle(settings.COVER_MEDIA_URLS)
     return cover_media_url.state.next()
+
+@register.simple_tag
+def ssl_site_login_url():
+    """
+    Pulls the SSL Site Login URL from the settings.
+    """
+    login_url = None
+    try:
+        login_url = settings.SSL_SITE_LOGIN_URL
+    except:
+        login_url = reverse('django_authopenid.views.signin')
+        
+    return login_url
 
 @register.inclusion_tag('main/tags/show_browsebox.html')
 def show_browsebox():
