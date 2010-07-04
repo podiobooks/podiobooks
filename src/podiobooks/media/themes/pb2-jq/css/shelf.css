@@ -1,111 +1,120 @@
 .pb-shelf {
-	position: relative;
-	margin-bottom: 14px;
-	font-size: 11px;
-	text-align: left;
-	overflow: hidden;
-	}
-	
+    position: relative;
+    margin-bottom: 14px;
+    font-size: 11px;
+    text-align: left;
+    overflow: hidden;
+}
+
 .pb-shelf-featured {
-	position:relative;
-	margin-bottom: 10px;
-	font-size: 11px;
-	color: #000;
-	float:left;
+    position: relative;
+    margin-bottom: 10px;
+    font-size: 11px;
+    color: #000;
+    float: left;
 }
 
 .pb-shelf-end {
-	height: 226px;
-	width: 20px;
-	float: left;
-	cursor: pointer;
+    height: 226px;
+    width: 20px;
+    float: left;
+    cursor: pointer;
 }
 
 .pb-shelf .disabled {
-	background-position-y: top;
-	cursor: auto;
+    background-position-y: top;
+    cursor: auto;
 }
 
 .pb-shelf-featured .disabled {
-	background-position-y: top !important;
-	cursor: auto;
+    background-position-y: top !important;
+    cursor: auto;
 }
 
 .pb-shelf-featured .pb-shelf-end {
-	height: 230px;
+    height: 230px;
 }
 
 .pb-shelf-end-left {
-	background: url(../images/pb-shelf-ends.png) bottom left no-repeat;
+    background: url(../images/pb-shelf-ends.png) bottom left no-repeat;
 }
 
 .pb-shelf-featured .pb-shelf-end-left {
-	background: url(../images/pb-shelf-ends-featured.png) bottom left no-repeat;
+    background: url(../images/pb-shelf-ends-featured.png) bottom left no-repeat;
 }
 
 .pb-shelf-middle {
-	float: left;
-	height: 226px;
-	width: 695px;
-	padding: 0 0 0 5px;
-	background: url(../images/pb-shelf-middle.png) repeat-x;
+    float: left;
+    height: 226px;
+    width: 695px;
+    padding: 0 0 0 5px;
+    background: url(../images/pb-shelf-middle.png) repeat-x;
 }
 
 .pb-shelf-featured .pb-shelf-middle {
-	height: 230px;
-	width:  925px;
-	padding: 1px 0 0 5px;
-	background: url(../images/pb-shelf-middle-featured.png) repeat-x;
+    height: 230px;
+    width: 925px;
+    padding: 1px 0 0 5px;
+    background: url(../images/pb-shelf-middle-featured.png) repeat-x;
 }
 
 .pb-shelf-end-right {
-	background: url(../images/pb-shelf-ends.png) bottom right no-repeat;
+    background: url(../images/pb-shelf-ends.png) bottom right no-repeat;
 }
 
 .pb-shelf-featured .pb-shelf-end-right {
-	background: url(../images/pb-shelf-ends-featured.png) bottom right no-repeat;
+    background: url(../images/pb-shelf-ends-featured.png) bottom right no-repeat;
 }
 
 .pb-shelf-titlebar {
-	margin: 4px 0 8px 15px;
-	height: 35px;
-	vertical-align: top;
+    margin: 4px 0 8px 15px;
+    height: 35px;
+    vertical-align: top;
 }
 
 .pb-shelf-controller-button {
-	float: right;
-	margin: 8px 3px 0 0;
-	vertical-align: top;
-	cursor: pointer;
+    float: right;
+    margin: 8px 3px 0 0;
+    vertical-align: top;
+    cursor: pointer;
 }
 
 .pb-shelf-controller-button.selected .pb-shelf-controller-icon {
-	background-position-x: left;
+    background-position-x: left;
 }
 
 .pb-shelf-controller .pb-shelf-controller-icon {
-	background-image: url(../images/pb-shelf-controller-icons.png); 
-	background-repeat: no-repeat;
-	width: 10px;
-	height: 10px;
-	background-position: right;
-	vertical-align: top;
+    background-image: url(../images/pb-shelf-controller-icons.png);
+    background-repeat: no-repeat;
+    width: 10px;
+    height: 10px;
+    background-position: right;
+    vertical-align: top;
 }
 
 .pb-shelf-container {
-	position: relative;
-	height: 164px;
-	clear: both;
+    position: relative;
+    height: 164px;
+    clear: both;
 }
 
 .pb-shelf-item {
-	position: relative;
-	width: 220px;
-	height: 160px;
-	float: left;
-	margin: 0 5px 0 5px;
-	background: url(../images/pb-shelf-item-frame.png) no-repeat;
-	overflow: hidden !important;
+    position: relative;
+    width: 220px;
+    height: 160px;
+    float: left;
+    margin: 0 5px 0 5px;
+    background: url(../images/pb-shelf-item-frame.png) no-repeat;
+    overflow: hidden !important;
+}
+
+.pb-shelf-item-loading {
+    height: 99px;
+    width: 67px;
+    position: absolute;
+    top: 13px;
+    left: 13px;
+    border: none;
 }
 
 .pb-shelf-item-cover-image {
