@@ -173,45 +173,36 @@ class TitleTestCase(TestCase):
         
         # Create Some Subscriptions
         
-        # Subscribed to a title and a series case
-        self.subscription1 = Subscription.objects.create (
+        # Subscribed to a title, all defaults case
+        self.subscription1 = TitleSubscription.objects.create (
                 user=self.user1,
-                day_interval=5,
-                partner=self.partner1,
-                last_downloaded_episode=self.episode1,
-                last_downloaded_date=datetime.datetime.now(),
-                finished=False,
-                deleted=False
+                title=self.title1,
+                last_downloaded_episode=self.title1.episodes.all()[0],
                 )
-        self.subscription1.titles.add(self.title1)
-        self.subscription1.series.add(self.series2)
         
-        # Subscribed to two titles case
-        self.subscription2 = Subscription.objects.create (
+        self.subscription2 = TitleSubscription.objects.create (
                 user=self.user2,
-                day_interval=10,
-                partner=self.partner1,
-                last_downloaded_episode=self.episode2,
-                last_downloaded_date=datetime.datetime.now(),
-                finished=False,
-                deleted=False
+                title=self.title1,
+                day_interval=1,
+                last_downloaded_episode=self.title1.episodes.all()[0],
                 )
-        self.subscription2.titles.add(self.title1)
-        self.subscription2.titles.add(self.title2)
         
-        # Subscribed to two series case
-        self.subscription3 = Subscription.objects.create (
+        self.subscription3 = TitleSubscription.objects.create (
                 user=self.user3,
-                day_interval=6,
-                partner=self.partner1,
-                last_downloaded_episode=self.episode3,
-                last_downloaded_date=datetime.datetime.now(),
-                finished=False,
-                deleted=False
+                title=self.title2,
+                day_interval=1,
+                deleted=True,
+                finished=True,
+                last_downloaded_episode=self.title1.episodes.all()[0],
                 )
-        self.subscription3.series.add(self.series1)
-        self.subscription3.series.add(self.series2)    
         
+        self.subscription4 = TitleSubscription.objects.create (
+                user=self.user1,
+                title=self.title3,
+                day_interval=14,
+                last_downloaded_episode=self.title2.episodes.all()[1],
+                )
+                
         # Categories
         self.category1 = Category.objects.create(
                 slug='science-fiction',
@@ -281,8 +272,7 @@ class TitleTestCase(TestCase):
             print '\tUsername: %s\tSlug: %s' % (currentUser.username, currentUser.get_profile().slug)
             print '\tSubscriptions:'
             for currentSubscription in currentUser.subscriptions.all():
-                for currentTitle in currentSubscription.titles.all():
-                    print '\t\tTitle: %s' % currentTitle.name
+                print '\t\tTitle: %s' % currentSubscription.title.name
         # User Assertions
         self.assertEquals(len(testUsers), 3)
         
@@ -296,16 +286,11 @@ class TitleTestCase(TestCase):
             for currentTitle in currentSeries.titles.all() :
                 print '\t\tName: %s' % currentTitle.name
                 print '\t\tSlug: %s' % currentTitle.slug
-            print '\tSubscriptions:'
-            for currentSubscription in currentSeries.subscriptions.all() :
-                print '\t\tUserName: %s' % currentSubscription.user.username
             
             # Series Assertions
             if currentSeries.name == "Podiobooks Series #1" :
-                self.assertEquals(len(currentSeries.subscriptions.all()), 1)
                 self.assertEquals(len(currentSeries.titles.all()), 2)
             elif currentSeries.name == "Podiobooks Series #2" :
-                self.assertEquals(len(currentSeries.subscriptions.all()), 2)
                 self.assertEquals(len(currentSeries.titles.all()), 1)
             else :
                 self.fail('Non-matching Series!' + currentSeries.name)
@@ -321,7 +306,7 @@ class TitleTestCase(TestCase):
                 print '\t\tName: %s' % currentEpisode.name
             print '\tSubscriptions:'
             for currentSubscription in currentTitle.subscriptions.all() :
-                print '\t\tUserName: %s' % currentSubscription.user.username
+                print '\t\tUserName: %s every %d days' % (currentSubscription.user.username, currentSubscription.day_interval)
             print '\tCategories:'
             for currentCategory in currentTitle.categories.all() :
                 print '\t\t%s - url: %s' % (currentCategory.name, currentCategory.get_absolute_url())
@@ -338,42 +323,32 @@ class TitleTestCase(TestCase):
                 self.assertEquals(len(currentTitle.subscriptions.all()), 2)
             elif currentTitle.name == "Podiobooks Title #2" :
                 self.assertEquals(len(currentTitle.episodes.all()), 2)
-                self.assertEquals(len(currentTitle.subscriptions.all()), 1)
+                # self.assertEquals(len(currentTitle.subscriptions.all()), 1)
             elif currentTitle.name == "Podiobooks Title #3" :
                 self.assertEquals(len(currentTitle.episodes.all()), 1)
-                self.assertEquals(len(currentTitle.subscriptions.all()), 0)
+                # self.assertEquals(len(currentTitle.subscriptions.all()), 0)
             else :
                 self.fail('Non-matching Title!' + currentTitle.name)
                 
         # SUBSCRIPTIONS  
-        print '\n---Subscriptions---'
-        for currentSubscription in Subscription.objects.all() :
+        print '\n---TitleSubscriptions---'
+        for currentSubscription in TitleSubscription.objects.all() :
             print '\n\tUser: %s:%s' % (currentSubscription.user.username, currentSubscription.user.get_profile().slug)
-            print '\tPartner: %s' % currentSubscription.partner.name
+            print '\tTitle: %s' % currentTitle.name
+            print '\tDay Interval: %s' % currentSubscription.day_interval
             print '\tLast Episode Downloaded: %s' % currentSubscription.last_downloaded_episode.name
-            print '\n\tTitles: '
-            for currentTitle in currentSubscription.titles.all() :
-                print '\t\tName: %s' % currentTitle.name
-            print '\n\tSeries: '
-            for currentSeries in currentSubscription.series.all() :
-                print '\t\tName: %s' % currentSeries.name
+            print '\tHousekeeping: %s,  %s,  %s,  %s' % (str(currentSubscription.date_created), str(currentSubscription.date_updated), str(currentSubscription.finished), str(currentSubscription.deleted))
                 
             # Subscription Assertions
             if currentSubscription.user.username == "testuser1" :
-                self.assertEquals(len(currentSubscription.titles.all()), 1)
-                self.assertEquals(len(currentSubscription.series.all()), 1)
                 self.assertEquals("test1-user1", currentSubscription.user.get_profile().slug)
             elif currentSubscription.user.username == "testuser2" :
-                self.assertEquals(len(currentSubscription.titles.all()), 2)
-                self.assertEquals(len(currentSubscription.series.all()), 0)
                 self.assertEquals("test2-user2", currentSubscription.user.get_profile().slug)
             elif currentSubscription.user.username == "testuser3" :
-                self.assertEquals(len(currentSubscription.titles.all()), 0)
-                self.assertEquals(len(currentSubscription.series.all()), 2)
                 self.assertEquals("test3-user3", currentSubscription.user.get_profile().slug)
             else :
                 self.fail('Non-matching Subscription!' + currentSubscription.user.username)
-                
+        
         # CATEGORIES  
         print '\n---Categories---'
         for currentCategory in Category.objects.all() :
