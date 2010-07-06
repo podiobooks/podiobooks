@@ -122,6 +122,7 @@ class Episode(models.Model):
     contributors = models.ManyToManyField('Contributor', through='EpisodeContributor')
     status = models.IntegerField(default=1)
     deleted = models.BooleanField(default=False)
+    # Note: Title Subscriptions are available as titlesubscriptions
     date_created = models.DateTimeField(default=datetime.datetime.now())
     date_updated = models.DateTimeField(default=datetime.datetime.now())
     
@@ -254,30 +255,30 @@ class Series(models.Model):
 
 # Modified to handle alternate subscriptions
 # replace last_downloaded_episode with downloaded_episodes??
-class Subscription(models.Model):
-    """A Subscription is when a user decides to add a particular title or series
-    to their personal feed. Subscriptions are released on a timed basis,
-    allowing for dynamic construction and caching of customized feeds."""
-    titles = models.ManyToManyField('Title', related_name='subscriptions')  # You can access the relationship from Title as title.subscriptions
-    series = models.ManyToManyField('Series', related_name='subscriptions') # You can access the relationship from Series as series.subscriptions
-    user = models.ForeignKey(User, related_name='subscriptions') #User is an OOTB Django Auth Model
+class TitleSubscription(models.Model):
+    """
+    A TitleSubscription is when a user decides to add a particular title
+    to their personal feed. TitleSubscriptions are released on a timed basis,
+    allowing for dynamic construction and caching of customized feeds.
+    """
+    title = models.ForeignKey('Title', related_name='subscriptions')  # You can access the relationship from Title as title.subscriptions
+    user = models.ForeignKey(User, related_name='title_subscriptions') #User is an OOTB Django Auth Model
     day_interval = models.IntegerField(default=7)
-    partner = models.ForeignKey('Partner', related_name='subscriptions')
-    last_downloaded_episode = models.ForeignKey('Episode', related_name='subscriptions')
+    last_downloaded_episode = models.ForeignKey('Episode', related_name='title_subscriptions')
     last_downloaded_date = models.DateTimeField(blank=True, default=datetime.datetime.now())
-    finished = models.IntegerField(default=0)
-    deleted = models.IntegerField(default=0)
+    finished = models.BooleanField(default=False)
+    deleted = models.BooleanField(default=False)
     date_created = models.DateTimeField(default=datetime.datetime.now())
     date_updated = models.DateTimeField(default=datetime.datetime.now())
     
     class Meta:
-        ordering = ['user']
+        ordering = ['-date_created']
     
     def __unicode__(self):
         return "Subscription"
 
 class Title(models.Model):
-    """Title is the central class, and represents the media item as a whole.i
+    """Title is the central class, and represents the media item as a whole.
     Example: A book. A season of a TV Series. A volume of a Comic Book. A set of
     college lectures."""
 
@@ -310,6 +311,7 @@ class Title(models.Model):
     podiobooker_blog_url = models.URLField(max_length=255, blank=True, verify_exists=True)
     enable_comments = models.BooleanField(default=True)
     # Note: episodes are available as episodes.all()
+    # Note: subscriptions are available as subscriptions.all()
     date_created = models.DateTimeField(default=datetime.datetime.now(), db_index=True)
     date_updated = models.DateTimeField(default=datetime.datetime.now(), db_index=True)
     

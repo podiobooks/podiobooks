@@ -37,6 +37,8 @@
     {{ msg }}
 </p>
 {% endif %}
+{% if subscription_added %}<h3>Thanks for subscribing to {{ subscription_added.title.name }}!</h3>
+{% endif %}
 <dl class="table-display">
     <dt>
         Username:
@@ -108,8 +110,12 @@
 <div class="pb-float-clear">
 </div>
 {% if user.subscriptions.all %}<h3>Subscriptions</h3>
-{% for subscription in user.subscriptions.all %}
-{{ subscription.title.name }}
-{% endfor %}
+<ul class="pb-subscription-list">
+    {% for subscription in user.subscriptions.all %}
+    <li>
+        {{ subscription.title.name }} - New Episode Every {{ subscription.day_interval }} days
+    </li>
+    {% endfor %}
+</ul>
 {% endif %}
 {% endblock %}
