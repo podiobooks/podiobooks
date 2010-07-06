@@ -29,11 +29,17 @@ urlpatterns = patterns('',
      # Author Interface
     (r'^author/', include('podiobooks.author.urls')),
     
+    # Avatars
+    (r'^avatar/', include('avatar.urls')),
+    
     # Django Comments
     (r'^comments/', include('django.contrib.comments.urls')),
     
     # FAQ
     (r'^faq/', include('faq.urls')),
+    
+    # Profile
+    (r'^profile/', include('podiobooks.profile.urls')),
     
     # Feeds
     (r'^rss/', include('podiobooks.feeds.urls')),
