@@ -1,6 +1,8 @@
 from django.db import connections, transaction
 import csv, cStringIO, codecs
-from podiobooks.settings import PROJECT_PATH
+from django.conf import settings
+
+DATALOAD_DIR = settings.DATALOAD_DIR
 
 class UnicodeWriter:
     """
@@ -38,7 +40,7 @@ def get_book_data(cursor):
     books = cursor.fetchall()
     
     if len(books) > 0:
-        book_output_file = open (PROJECT_PATH + '/../../../podiobooks-dataload/datafiles/podiobooks_legacy_book_table.csv', 'w')
+        book_output_file = open (DATALOAD_DIR + 'podiobooks_legacy_book_table.csv', 'w')
         
         csvWriter = UnicodeWriter(book_output_file)
         
@@ -56,7 +58,7 @@ def get_bookcategory_data(cursor):
     
     cursor.execute("SELECT * FROM bookcategory")
     
-    bookcategory_output_file = open (PROJECT_PATH + '/../../../podiobooks-dataload/datafiles/podiobooks_legacy_bookcategory_table.csv', 'w')
+    bookcategory_output_file = open (DATALOAD_DIR + 'podiobooks_legacy_bookcategory_table.csv', 'w')
     
     csvWriter = UnicodeWriter(bookcategory_output_file)
     
@@ -74,7 +76,7 @@ def get_bookrating_data(cursor):
     
     cursor.execute("SELECT bookrating.* FROM bookrating, book WHERE bookrating.bookid = book.id AND book.enabled = 1 AND book.standby = 0")
     
-    bookrating_output_file = open (PROJECT_PATH + '/../../../podiobooks-dataload/datafiles/podiobooks_legacy_bookrating_table.csv', 'w')
+    bookrating_output_file = open (DATALOAD_DIR + 'podiobooks_legacy_bookrating_table.csv', 'w')
     
     csvWriter = UnicodeWriter(bookrating_output_file)
     
@@ -92,7 +94,7 @@ def get_chapter_data(cursor):
     
     cursor.execute("SELECT chapter.* FROM chapter, book WHERE chapter.bookid = book.id AND book.enabled = 1 AND book.standby = 0 AND chapter.enabled = 1")
     
-    chapter_output_file = open (PROJECT_PATH + '/../../../podiobooks-dataload/datafiles/podiobooks_legacy_chapter_table.csv', 'w')
+    chapter_output_file = open (DATALOAD_DIR + 'podiobooks_legacy_chapter_table.csv', 'w')
     
     csvWriter = UnicodeWriter(chapter_output_file)
     
@@ -110,7 +112,7 @@ def get_partner_data(cursor):
     
     cursor.execute("SELECT * FROM partner")
     
-    partner_output_file = open (PROJECT_PATH + '/../../../podiobooks-dataload/datafiles/podiobooks_legacy_partner_table.csv', 'w')
+    partner_output_file = open (DATALOAD_DIR + 'podiobooks_legacy_partner_table.csv', 'w')
     
     csvWriter = UnicodeWriter(partner_output_file)
     
@@ -128,7 +130,7 @@ def get_subscription_data(cursor):
     
     cursor.execute("SELECT * FROM subscription WHERE subscription.enabled = 1")
     
-    subscription_output_file = open (PROJECT_PATH + '/../../../podiobooks-dataload/datafiles/podiobooks_legacy_subscription_table.csv', 'w')
+    subscription_output_file = open (DATALOAD_DIR + 'podiobooks_legacy_subscription_table.csv', 'w')
     
     csvWriter = UnicodeWriter(subscription_output_file)
     
