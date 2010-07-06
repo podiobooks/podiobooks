@@ -1,6 +1,5 @@
 from django.db import connections, transaction
 import csv, cStringIO, codecs
-from podiobooks.settings import PROJECT_PATH
 from podiobooks.main.models import Title, Category, Episode, Partner, Rating
 from django.db.models import Max
 from migrate_bookcsv_to_title import createTitlesFromRows
