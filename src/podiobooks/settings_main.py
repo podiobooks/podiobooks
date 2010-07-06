@@ -32,7 +32,7 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'podiobooks.urls'
 
-AUTH_PROFILE_MODULE = 'main.UserProfile'
+AUTH_PROFILE_MODULE = 'profile.UserProfile'
 
 #authopenid
 ugettext = lambda s: s # pylint: disable=C0103
@@ -43,6 +43,7 @@ OPENID_SREG = {
 }
 
 INSTALLED_APPS = (
+    'avatar',
     'contrib.django_restapi',
     'disqus',
     'django.contrib.admin',
@@ -60,6 +61,7 @@ INSTALLED_APPS = (
     'podiobooks.author',
     'podiobooks.feeds',
     'podiobooks.main',
+    'podiobooks.profile',
     'podiobooks.social',
     'registration',
 )

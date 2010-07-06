@@ -4,6 +4,7 @@
 
 from django.test import TestCase
 from podiobooks.main.models import *  #@UnusedWildImport
+from podiobooks.profile.models import UserProfile
 from django.template.defaultfilters import slugify
 from django.db.models import Count
 
@@ -278,7 +279,10 @@ class TitleTestCase(TestCase):
         
         for currentUser in testUsers:
             print '\tUsername: %s\tSlug: %s' % (currentUser.username, currentUser.get_profile().slug)
-            
+            print '\tSubscriptions:'
+            for currentSubscription in currentUser.subscriptions.all():
+                for currentTitle in currentSubscription.titles.all():
+                    print '\t\tTitle: %s' % currentTitle.name
         # User Assertions
         self.assertEquals(len(testUsers), 3)
         
