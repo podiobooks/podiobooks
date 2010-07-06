@@ -1,12 +1,13 @@
 """ Django Views for the Podiobooks Main Module"""
 
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
-from podiobooks.main.models import Title
+from podiobooks.main.models import Title, TitleSubscription
 from podiobooks.main.forms import CategoryChoiceForm, ContributorChoiceForm, TitleSearchForm
 from django.conf import settings
 from django.db.models import Q
 from django.core.urlresolvers import reverse
+from django.contrib.auth.decorators import login_required
 
 INTIIAL_CATEGORY = 'science-fiction'
 INTIIAL_CONTRIBUTOR = 'mur-lafferty'
@@ -124,3 +125,18 @@ def title_search(request, keywords=None):
     else:
         response_data = {'titleSearchForm': form}
         return render_to_response('main/title/title_search_results.html', response_data, context_instance=RequestContext(request))
+    
+@login_required
+def title_subscribe(request, slug=None):
+    if (slug):
+        # @TODO: Add "Already Subscribed" Check
+        title = get_object_or_404(Title, slug=slug)
+        first_episode = title.episodes.all()[0]
+        subscription = TitleSubscription.objects.create (
+                user=request.user,
+                title=title,
+                last_downloaded_episode = first_episode,
+                )
+        response_data = {'subscription_added': subscription}
+        return render_to_response('profile/profile.html', response_data, context_instance=RequestContext(request))
+        
