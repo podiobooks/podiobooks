@@ -12,8 +12,18 @@ def profile(request):
     url: /
     
     template : profile/profile.html
-    """  
+    """
+    
+    all_subscriptions = request.user.title_subscriptions.all()
+    active_subscriptions = all_subscriptions.filter(deleted=False)
+    inactive_subscriptions = all_subscriptions.filter(deleted=True)
+    completed_subscriptions = all_subscriptions.filter(finished=True)
       
-    response_data = {}
+    response_data = {
+        'all_subscriptions' : all_subscriptions,
+        'active_subscriptions' : active_subscriptions,
+        'inactive_subscriptions' : inactive_subscriptions,
+        'completed_subscriptions' : completed_subscriptions
+         }
     
     return render_to_response('profile/profile.html', response_data, context_instance=RequestContext(request))

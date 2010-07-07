@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load avatar_tags %}
+{% load title_templatetags %}
 {% block headtitle %}Podiobooks User Profile{% endblock %}
 {% block head %}
 <style type="text/css" media="screen">
@@ -37,7 +38,16 @@
     {{ msg }}
 </p>
 {% endif %}
-{% if subscription_added %}<h3>Thanks for subscribing to {{ subscription_added.title.name }}!</h3>
+{% if title_subscription_added %}
+{% if title_already_subscribed %}<h3>Hi, looks like you are already subscribed to "{{ title_subscription_added.title.name }}".</h3>
+{% else %}
+<h3>Thanks for {% if title_resubscribed %}Re-{% endif %}Subscribing to "{{ title_subscription_added.title.name }}"!</h3>
+{% endif %}
+{% endif %}
+{% if title_subscription_removed %}
+{% if title_not_subscribed %}<h3>Hi, looks like you weren't actively subscribed to "{{ title_subscription_removed.name }}".</h3>
+{% else %}<h3>You've been unsubscribed from "{{ title_subscription_removed.name }}".</h3>
+{% endif %}
 {% endif %}
 <dl class="table-display">
     <dt>
@@ -109,13 +119,5 @@
 </dl>
 <div class="pb-float-clear">
 </div>
-{% if user.subscriptions.all %}<h3>Subscriptions</h3>
-<ul class="pb-subscription-list">
-    {% for subscription in user.subscriptions.all %}
-    <li>
-        {{ subscription.title.name }} - New Episode Every {{ subscription.day_interval }} days
-    </li>
-    {% endfor %}
-</ul>
-{% endif %}
+{% show_title_subscriptions user %}
 {% endblock %}
