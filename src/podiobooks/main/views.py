@@ -7,7 +7,8 @@ from podiobooks.main.forms import CategoryChoiceForm, ContributorChoiceForm, Tit
 from django.conf import settings
 from django.db.models import Q
 from django.core.urlresolvers import reverse
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.views import redirect_to_login
+from django.core.exceptions import ObjectDoesNotExist
 
 INTIIAL_CATEGORY = 'science-fiction'
 INTIIAL_CONTRIBUTOR = 'mur-lafferty'
@@ -126,17 +127,54 @@ def title_search(request, keywords=None):
         response_data = {'titleSearchForm': form}
         return render_to_response('main/title/title_search_results.html', response_data, context_instance=RequestContext(request))
     
-@login_required
 def title_subscribe(request, slug=None):
-    if (slug):
-        # @TODO: Add "Already Subscribed" Check
+        # First try and look up the title that was specified.  If no slug, or if it doesn't exist, throw a 404
         title = get_object_or_404(Title, slug=slug)
+        
+        # Now, make sure they are authenticated
+        if not request.user.is_authenticated():
+            return redirect_to_login(request.path)
+        
         first_episode = title.episodes.all()[0]
-        subscription = TitleSubscription.objects.create (
+        title_subscription, created = TitleSubscription.objects.get_or_create (
                 user=request.user,
                 title=title,
-                last_downloaded_episode = first_episode,
+                defaults={'last_downloaded_episode' : first_episode},
                 )
-        response_data = {'subscription_added': subscription}
+        
+        # Re-Subscribe them if they had previously unsubscribed
+        if title_subscription.deleted:
+            title_resubscribed = True
+            title_already_subscribed = False
+            title_subscription.deleted = False
+            title_subscription.save()
+        else:
+            title_resubscribed = False
+            title_already_subscribed = not created
+            
+        response_data = {'title_subscription_added': title_subscription, 'title_already_subscribed': title_already_subscribed, 'title_resubscribed': title_resubscribed}
+        return render_to_response('profile/profile.html', response_data, context_instance=RequestContext(request))
+    
+def title_unsubscribe(request, slug=None):
+        # First try and look up the title that was specified.  If no slug, or if it doesn't exist, throw a 404
+        title = get_object_or_404(Title, slug=slug)
+        
+        # Now, make sure they are authenticated
+        if not request.user.is_authenticated():
+            return redirect_to_login(request.path)
+        
+        try:
+            title_subscription = TitleSubscription.objects.get (
+                    user=request.user,
+                    title=title,
+                    deleted=False,
+                    )
+            title_subscription.deleted = True
+            title_subscription.save()
+            not_subscribed = False
+        except ObjectDoesNotExist:
+            not_subscribed = True
+            
+        response_data = {'title_subscription_removed': title, 'title_not_subscribed': not_subscribed, }
         return render_to_response('profile/profile.html', response_data, context_instance=RequestContext(request))
         
