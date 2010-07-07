@@ -17,6 +17,7 @@ urlpatterns = patterns('',
     url(r'^title/category/shelf/(?P<category_slug>[^/]+)/$', 'podiobooks.main.views.title_list_by_category', {'template_name': 'main/shelf/category_shelf.html'}, name='title_category_shelf'),
     url(r'^title/contributor/shelf/(?P<contributor_slug>[^/]+)/$', 'podiobooks.main.views.title_list_by_contributor', {'template_name': 'main/shelf/contributor_shelf.html'}, name='title_contributor_shelf'),   
     url(r'^title/subscribe/(?P<slug>[^/]+)/$', 'podiobooks.main.views.title_subscribe', {}, name='title_subscribe'),
+    url(r'^title/unsubscribe/(?P<slug>[^/]+)/$', 'podiobooks.main.views.title_unsubscribe', {}, name='title_unsubscribe'),
    
     # category
     url(r'^category/$', 'django.views.generic.list_detail.object_list', { 'queryset': Category.objects.all().order_by('name'), 'template_object_name': 'category', 'template_name': 'main/category/category_list.html'}, name='category_list'),

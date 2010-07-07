@@ -271,7 +271,7 @@ class TitleTestCase(TestCase):
         for currentUser in testUsers:
             print '\tUsername: %s\tSlug: %s' % (currentUser.username, currentUser.get_profile().slug)
             print '\tSubscriptions:'
-            for currentSubscription in currentUser.subscriptions.all():
+            for currentSubscription in currentUser.title_subscriptions.all():
                 print '\t\tTitle: %s' % currentSubscription.title.name
         # User Assertions
         self.assertEquals(len(testUsers), 3)
