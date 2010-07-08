@@ -2,7 +2,7 @@
 <ul class="pb-subscription-list">
     {% for subscription in active_subscriptions %}
     <li>
-        <a href="{% url title_detail subscription.title %}">{{ subscription.title.name }}</a> - New Episode Every {{ subscription.day_interval }} days (<a href="{% url title_unsubscribe subscription.title %}">Unsubscribe</a>)
+        <a href="{% url title_detail subscription.title %}">{{ subscription.title.name }}</a> - New Episode Every {{ subscription.day_interval }} days (<a href="{% url title_unsubscribe subscription.title %}">Unsubscribe</a>) | <a href="/rss/feeds/episodes/{{ subscription.title.slug }}/{{ user.username }}">Custom Feed</a>
     </li>
     {% endfor %}
 </ul>
@@ -11,7 +11,7 @@
 <ul class="pb-subscription-list">
     {% for subscription in inactive_subscriptions %}
     <li>
-        <a href="{% url title_detail subscription.title %}">{{ subscription.title.name }}</a> - New Episode Every {{ subscription.day_interval }} days (<a href="{% url title_subscribe subscription.title %}">Re-subscribe</a>)
+        <a href="{% url title_detail subscription.title %}">{{ subscription.title.name }}</a> - New Episode Every {{ subscription.day_interval }} days (<a href="{% url title_subscribe subscription.title %}">Re-subscribe</a>) | <a href="/rss/feeds/episodes/{{ subscription.title.slug }}/{{ user.username }}">Custom Feed</a>
     </li>
     {% endfor %}
 </ul>
