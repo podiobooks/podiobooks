@@ -35,7 +35,7 @@ class Award(models.Model):
     """Awards are just that: awards for a title, like winning a Parsec, etc."""
     slug = models.SlugField()
     name = models.CharField(blank=True, max_length=255)
-    url = models.URLField(blank=True, verify_exists=True, null=True)
+    url = models.URLField(blank=True, verify_exists=True)
     image = models.ImageField(upload_to=settings.MEDIA_AWARDS, max_length=255)
     deleted = models.BooleanField(default=False)
     date_created = models.DateTimeField(default=datetime.datetime.now())
@@ -76,7 +76,7 @@ class Contributor(models.Model):
     """A contributor is one who had done work on a title. For a book, it's an
     author or authors."""
     slug = models.SlugField()
-    user = models.ForeignKey(User, null=True, blank=True, related_name='contributor_info') #User is an OOTB Django Auth Model
+    user = models.ForeignKey(User, null=True, related_name='contributor_info') #User is an OOTB Django Auth Model
     first_name = models.CharField(max_length=255)
     middle_name = models.CharField(max_length=255, blank=True)
     last_name = models.CharField(max_length=255)
@@ -237,7 +237,7 @@ class Series(models.Model):
     slug = models.SlugField(max_length=255)
     name = models.CharField(max_length=255)
     description = models.TextField()
-    url = models.URLField(blank=True, verify_exists=True, null=True)
+    url = models.URLField(blank=True, verify_exists=True)
     deleted = models.BooleanField(default=False)
     date_created = models.DateTimeField(default=datetime.datetime.now())
     date_updated = models.DateTimeField(default=datetime.datetime.now())
@@ -259,15 +259,15 @@ class Title(models.Model):
     college lectures."""
 
     name = models.CharField(max_length=255)
-    series = models.ForeignKey('Series', null=True, blank=True, related_name='titles')
+    series = models.ForeignKey('Series', null=True, related_name='titles')
     description = models.TextField()
     slug = models.SlugField(max_length=255)
     cover = models.ImageField(upload_to=settings.MEDIA_COVERS)
     status = models.IntegerField(default=1)
-    license = models.ForeignKey('License', null=True, blank=True, related_name='titles')
+    license = models.ForeignKey('License', null=True, related_name='titles')
     display_on_homepage = models.BooleanField(default=False, db_index=True)
     is_hosted_at_pb = models.BooleanField(default=True)
-    advisory = models.ForeignKey('Advisory', null=True, blank=True, related_name='titles')
+    advisory = models.ForeignKey('Advisory', null=True, related_name='titles')
     is_adult = models.BooleanField(default=False, db_index=True)
     is_complete = models.BooleanField(default=False, db_index=True)
     avg_audio_quality = models.FloatField(default=0)
@@ -281,8 +281,8 @@ class Title(models.Model):
     byline = models.CharField(max_length=1024) # This is a formatted cache of the title contributors
     categories = models.ManyToManyField('Category', through='TitleCategory')
     category_list = models.CharField(max_length=1024) # This is a formatted cache of the title contributors
-    partner = models.ForeignKey('partner', null=True, blank=True, related_name='partners')
-    awards = models.ManyToManyField('Award', blank=True)
+    partner = models.ForeignKey('partner', null=True, related_name='partners')
+    awards = models.ManyToManyField('Award', null=True)
     libsyn_show_id = models.CharField(max_length=50, db_index=True)
     podiobooker_blog_url = models.URLField(max_length=255, blank=True, verify_exists=True)
     enable_comments = models.BooleanField(default=True)
@@ -334,6 +334,7 @@ class TitleCategory(models.Model):
     class Meta:
         verbose_name_plural = "Title Categories"
 
+# pylint: disable=W0613
 def update_category_list(sender, instance, **kwargs):
     """ Update category list cache on titles when a new title category is added...hooked to pre_save trigger for titlecategory below """
     categories = instance.title.categories.all()
@@ -354,7 +355,8 @@ class TitleContributor(models.Model):
     class Meta:
         verbose_name_plural = "Title Contributors"
         ordering = ['contributor_type__slug', 'date_created']
-        
+
+# pylint: disable=W0613     
 def update_byline(sender, instance, **kwargs):
     """ Update byline cache on titles when a new title contributor is added...hooked to pre_save trigger for titlecontributor below """
     titlecontributors = instance.title.titlecontributors.all().order_by('contributor_type__slug', 'date_created')
@@ -375,7 +377,7 @@ class TitleSubscription(models.Model):
     user = models.ForeignKey(User, related_name='title_subscriptions') #User is an OOTB Django Auth Model
     day_interval = models.IntegerField(default=7)
     last_downloaded_episode = models.ForeignKey('Episode', related_name='title_subscriptions')
-    last_downloaded_date = models.DateTimeField(blank=True, null=True)
+    last_downloaded_date = models.DateTimeField(null=True)
     finished = models.BooleanField(default=False)
     deleted = models.BooleanField(default=False)
     date_created = models.DateTimeField(default=datetime.datetime.now())
