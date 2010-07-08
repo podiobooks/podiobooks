@@ -62,6 +62,7 @@ def show_title_subscriptions(user):
     completed_subscriptions = all_subscriptions.filter(finished=True)
       
     return{
+        'user' : user,
         'all_subscriptions' : all_subscriptions,
         'active_subscriptions' : active_subscriptions,
         'inactive_subscriptions' : inactive_subscriptions,
