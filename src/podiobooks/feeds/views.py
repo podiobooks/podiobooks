@@ -5,6 +5,7 @@ from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
 from podiobooks.main.models import Title, Episode, TitleSubscription
 from django.db.models import Max
+from django.core.exceptions import ObjectDoesNotExist
 
 @login_required
 def release_one_episode(request, title_slug):
@@ -18,7 +19,7 @@ def release_one_episode(request, title_slug):
     title = get_object_or_404(Title, slug=title_slug)
     try:
         subscription = TitleSubscription.objects.get(title=title, user=request.user)
-    except:
+    except ObjectDoesNotExist:
         subscription = None
         error_msg = 'notsubscribed'
     
@@ -28,7 +29,7 @@ def release_one_episode(request, title_slug):
             subscription.last_downloaded_episode = next_episode
             subscription.save()
             error_msg = None
-        except:
+        except ObjectDoesNotExist:
             error_msg = 'nomoreepisodes' # likely because we're at the end of the book
                 
     response_data = {
@@ -51,7 +52,7 @@ def release_all_episodes(request, title_slug):
     title = get_object_or_404(Title, slug=title_slug)
     try:
         subscription = TitleSubscription.objects.get(title=title, user=request.user)
-    except:
+    except ObjectDoesNotExist:
         subscription = None
         error_msg = 'notsubscribed'
     
@@ -66,7 +67,7 @@ def release_all_episodes(request, title_slug):
                 subscription.last_downloaded_episode = last_episode
                 subscription.save()
                 error_msg = None
-        except:
+        except ObjectDoesNotExist:
             error_msg = 'nomoreepisodes' # likely because we're at the end of the book
                 
     response_data = {

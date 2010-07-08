@@ -4,7 +4,6 @@ from __future__ import division
 from django.db import models
 from django.contrib.auth.models import User
 import datetime
-from django.template.defaultfilters import slugify
 
 
 class UserProfile(models.Model):
