@@ -18,7 +18,7 @@ from podiobooks import settings
 
 from podiobooks.feeds import feed_tools
 
-from datetime import timedelta, datetime
+from datetime import datetime
 
 class TitleFeed(Feed):
     """A simple feed that lists recent Titles"""
