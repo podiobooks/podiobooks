@@ -60,9 +60,12 @@ def release_all_episodes(request, title_slug):
             max_sequence_results = Episode.objects.filter(title__id__exact=title.id).aggregate(max_sequence=Max('sequence'))
             max_sequence = max_sequence_results['max_sequence']
             last_episode = Episode.objects.get(title__id__exact=title.id, sequence=max_sequence)
-            subscription.last_downloaded_episode = last_episode
-            subscription.save()
-            error_msg = None
+            if subscription.last_downloaded_episode == last_episode:
+                error_msg = "nomoreepisodes"
+            else:
+                subscription.last_downloaded_episode = last_episode
+                subscription.save()
+                error_msg = None
         except:
             error_msg = 'nomoreepisodes' # likely because we're at the end of the book
                 
