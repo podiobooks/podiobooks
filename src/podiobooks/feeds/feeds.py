@@ -20,6 +20,8 @@ from podiobooks.feeds import feed_tools
 
 from datetime import datetime
 
+from django.core.exceptions import ObjectDoesNotExist
+
 class TitleFeed(Feed):
     """A simple feed that lists recent Titles"""
     feed_type = Rss201rev2Feed
@@ -78,6 +80,7 @@ class EpisodeFeed(Feed):
         extra_args['global_categories'] = settings.FEED_GLOBAL_CATEGORIES
         return extra_args
     
+    # pylint: disable=W0221
     def get_object(self, request, title_slug):
         return Title.objects.get(slug__exact=title_slug)
     
@@ -149,6 +152,7 @@ class EpisodeFeed(Feed):
     
 class CustomTitleSubscriptionFeed(EpisodeFeed):
     
+    # pylint: disable=W0221
     def get_object(self, request, title_slug, username):
         title = Title.objects.get(slug__exact=title_slug)
         user = User.objects.get(username=username)
@@ -170,7 +174,7 @@ class CustomTitleSubscriptionFeed(EpisodeFeed):
             try:
                 next_episode = Episode.objects.get(title__id__exact=obj.id, sequence=self.subscription.last_downloaded_episode.sequence + 1)
                 self.subscription.last_downloaded_episode = next_episode
-            except:
+            except ObjectDoesNotExist:
                 pass # likely because we're at the end of the book
                 
             self.subscription.last_downloaded_date = datetime.now()
