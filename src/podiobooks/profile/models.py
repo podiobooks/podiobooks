@@ -17,9 +17,3 @@ class UserProfile(models.Model):
         
     def __unicode__(self):
         return "UserProfile"
-    
-    def save(self):
-        if not self.id:
-            self.slug = slugify(self.user.username)
-
-        super(UserProfile, self).save()
