@@ -1,13 +1,16 @@
-"""Master Class for All Podiobooks Automated Unit Tests"""
+"""Automated Tests of the Podiobooks Application URLs"""
 
-# pylint: disable=C0103,C0111,W0611,W0614,W0401
+# pylint: disable=C0103,C0111,R0904
 
-from django.test import TestCase #@UnusedImport
-from podiobooks.main.models import *  #@UnusedWildImport
-from django.template.defaultfilters import slugify #@UnusedImport
-from django.test.client import Client #@UnusedImport
+from django.test import TestCase
+from django.test.client import Client
 
-from podiobooks.main.tests_models import * #@UnusedImport #@UnusedWildImport
-from podiobooks.main.tests_urls import * #@UnusedImport #@UnusedWildImport
-from podiobooks.feeds.tests import * #@UnusedImport #@UnusedWildImport
-from podiobooks.social.tests import * #@UnusedImport #@UnusedWildImport
+class UrlTestCase(TestCase):
+    fixtures = ['main_data.json', ]
+    
+    def setUp(self):
+        self.c = Client()
+    
+    def testProfile(self):
+        response = self.c.get('/profile')
+        self.assertEquals(301, response.status_code)
