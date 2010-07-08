@@ -12,7 +12,8 @@
                 | <a href="http://www.podiobooks.com/blog">Blog</a>
                 | <a href="http://community.podiobooks.com/">Community</a>
 				| {% if user.is_authenticated %}
-					<a href="{% url django_authopenid.views.signout %}">Logout {{ user.username }}</a>
+					<a href="{% url profile %}">My Account</a>
+					| <a href="{% url django_authopenid.views.signout %}">Logout {{ user.username }}</a>
 				  {% else %} 	
 					<a href="{% ssl_site_login_url %}">Login/Register</a>
  	              {% endif %}
