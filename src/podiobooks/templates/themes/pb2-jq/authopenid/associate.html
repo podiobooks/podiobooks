@@ -1,5 +1,4 @@
-{% extends "base.html" %}
-{% load i18n %}
+{% extends "base.html
 
 {% block content %}
 {% if msg %}
@@ -16,14 +15,14 @@
     <input type="hidden" name="action" value="verify" />
     <input type="hidden" name="next" value="{{ next }}" />
 	<fieldset>
-		<legend>{% trans "Add a new OpenID URL" %}</legend>
+		<legend>Add a new OpenID URL</legend>
 		<div id="openid_choice">
     		<p>Please click your account provider:</p>
     		<div id="openid_btns"></div>
     	</div>
     	<div id="openid_input_area">
-            <label for="id_openid_url">{% trans "OpenId URL :" %}</label><br />{{ form.openid_url }}
-            <input name="openid_submit" type="submit" value="{% trans "Add OpenID" %}">
+            <label for="id_openid_url">OpenId URL :</label><br />{{ form.openid_url }}
+            <input name="openid_submit" type="submit" value="Add OpenID">
 		</div>
 	</fieldset>
 </form>	
