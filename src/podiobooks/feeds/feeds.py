@@ -149,9 +149,6 @@ class EpisodeFeed(Feed):
     
 class CustomTitleSubscriptionFeed(EpisodeFeed):
     
-    def get_subscription(self):
-        return self.subscription
-    
     def get_object(self, request, title_slug, username):
         title = Title.objects.get(slug__exact=title_slug)
         user = User.objects.get(username=username)
@@ -162,11 +159,7 @@ class CustomTitleSubscriptionFeed(EpisodeFeed):
 
     def items(self, obj):
         date_diff = datetime.now() - self.subscription.date_created
-        episodes_to_show = date_diff.days / self.subscription.day_interval
-        
-        # Always show at least one episode rule
-        if episodes_to_show < 1:
-            episodes_to_show = 1
+        episodes_to_show = (date_diff.days / self.subscription.day_interval) + 1
         
         # Make sure they haven't manually released episodes rule
         if episodes_to_show < self.subscription.last_downloaded_episode.sequence:
