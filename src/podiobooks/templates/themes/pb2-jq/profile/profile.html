@@ -40,7 +40,7 @@
 		You are not subscribed to {{ title_released }} you tried to release episodes of. <a href="{% url title_subscribe title_released %}">Subscribe?</a>
 	{% endif %}
 	{% if msg = 'nomoreepisodes' %}
-		There are no more epsisodes of {{ title_released }} to release.
+		There are no more episodes of {{ title_released }} to release.
 	{% endif %}
 </p>
 {% endif %}
@@ -59,11 +59,11 @@
 {% endif %}
 
 {% if title_subscription_one_released %}
-<h3>You've released one more epsisode of "{{ title_subscription_one_released.title.name }}" into your custom feed.</h3>
+<h3>You've released one more episode of "{{ title_subscription_one_released.title.name }}" into your custom feed.</h3>
 {% endif %}
 
 {% if title_subscription_all_released %}
-<h3>You've released all epsisodes of "{{ title_subscription_all_released.title.name }}" into your custom feed.</h3>
+<h3>You've released all episodes of "{{ title_subscription_all_released.title.name }}" into your custom feed.</h3>
 {% endif %}
 
 <dl class="table-display">
