@@ -47,6 +47,8 @@ def show_title_subscription_action(title, user):
             subscription = TitleSubscription.objects.get(title=title, user=user)
         except:
             subscription = None
+    else:
+        subscription = None
         
     return {'title': title,
             'title_subscription': subscription,
