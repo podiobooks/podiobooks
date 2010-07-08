@@ -375,7 +375,7 @@ class TitleSubscription(models.Model):
     user = models.ForeignKey(User, related_name='title_subscriptions') #User is an OOTB Django Auth Model
     day_interval = models.IntegerField(default=7)
     last_downloaded_episode = models.ForeignKey('Episode', related_name='title_subscriptions')
-    last_downloaded_date = models.DateTimeField(blank=True)
+    last_downloaded_date = models.DateTimeField(blank=True, null=True)
     finished = models.BooleanField(default=False)
     deleted = models.BooleanField(default=False)
     date_created = models.DateTimeField(default=datetime.datetime.now())
