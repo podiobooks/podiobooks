@@ -53,7 +53,7 @@
             </li>
         </ul>
         <div id="description-tab" style="height: 300px; overflow-y: scroll;">
-            {% autoescape off %}{{ title.description_br|striptags }}{% endautoescape %}
+            {% autoescape off %}{{ title.description_br|removetags:"img"|safe }}{% endautoescape %}
         </div>
         <div id="news-tab" style="height: 300px; overflow-y: scroll;">
             Lorem News
@@ -62,7 +62,7 @@
             Lorem Comments
         </div>
 		<div id="social-tab" style="height: 300px; overflow-y: scroll;">
-            Searching the internets for references to {{ title.byline|safe }}...
+            Searching the internets for references to {{ title.contributors.all|first }}...
         </div>
     </div>
 </div>
