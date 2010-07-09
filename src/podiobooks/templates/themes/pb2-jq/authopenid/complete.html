@@ -15,7 +15,9 @@
             <input type="hidden" name="next" value="{{ next }}" />
 			<fieldset>
 				<legend style="font-weight:bold">Choose A {{ site_name }} Nickname for This Account:</legend>
+				{{ form1.errors.username }}
 				<div class="form-row"><label for="id_username">Username</label><br />{{ form1.username }}</div>
+				{{ form1.errors.email }}
 				<div class="form-row"><label for="id_email">Email</label><br />{{ form1.email }}</div>
 				<div class="submit-row"><input type="submit" name="bnewaccount" value="Create account"></div>
             	</fieldset>
@@ -23,13 +25,14 @@
 	</div>
 
 	<h3>OR</h3>
-
 	<div class="login" style="line-height:2">
         <form name="fverify" action="{% url user_register %}" method="POST">
             <input type="hidden" name="next" value="{{ next }}" />
 			<fieldset>
 				<legend style="font-weight:bold">If you have an existing {{ site_name }} account, associate this External Account with it by logging in:</legend>
+				{{ form2.errors.username }}
 				<div class="form-row"><label for="id_username">Username</label><br />{{ form2.username }}</div>
+				{{ form2.errors.email }}
 				<div class="form-row"><label for="id_passwordl">Password</label><br />{{ form2.password }}</div>
 				<div class="submit-row"><input type="submit" name="bverify" value="Verify"></div>
 			</fieldset>
