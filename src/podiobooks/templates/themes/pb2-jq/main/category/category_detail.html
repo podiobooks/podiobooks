@@ -7,12 +7,6 @@
     All Titles in {{ category.name }}
 </h1>
 {% show_titlelist category.title_set.all %}
-<!-- Script to change the category choice form to match the current category -->
-<script type="text/javascript">
-	dojo.addOnLoad (function() {
-		dojo.byId("id_category").value="{{ category.slug }}";
-	});
-</script>
 {% else %}
 <div style="font-size: 18px; margin: 20px;">
     There are currently no titles available in {{ category.name }}

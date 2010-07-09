@@ -6,7 +6,6 @@
 {% block head %}
 <link rel="stylesheet" type="text/css" href="{{ THEME_MEDIA_URL }}css/title_detail.css">
 <link rel="stylesheet" type="text/css" href="{{ THEME_MEDIA_URL }}css/infobox.css">
-<link rel="stylesheet" type="text/css" href="{{ THEME_MEDIA_URL }}css/ratings.css">
 {% disqus_dev %}
 {% endblock %}
 {% block title %}Book Information{% endblock %}
@@ -54,7 +53,7 @@
             </li>
         </ul>
         <div id="description-tab" style="height: 300px; overflow-y: scroll;">
-            {% autoescape off %}{{ title.description_br }}{% endautoescape %}
+            {% autoescape off %}{{ title.description_br|striptags }}{% endautoescape %}
         </div>
         <div id="news-tab" style="height: 300px; overflow-y: scroll;">
             Lorem News
@@ -94,7 +93,7 @@
 </div>
 {% if title.license %}
 <div style="float: left; margin: 20px 0px 0px 0px;">
-    <a rel="license" href="{{title.license.url}}"><img alt="{{ title.license.text }} Logo" style="border-width:0" src="{{ title.license.image_url }}" /></a>
+    <a rel="license" href="{{ title.license.url }}"><img alt="{{ title.license.text }} Logo" style="border-width:0" src="{{ title.license.image_url }}" /></a>
 </div>
 <div style="float: left; margin: 26px 0px 10px 10px;">
     This work is licensed under a <a href="{{ title.license.url }}">{{ title.license.text }}</a>
@@ -103,18 +102,20 @@
 <div style="clear: both">
 </div>
 <script type="text/javascript">
-    $(function(){
+	$(function(){
         $("#topTabs").tabs({
             ajaxOptions: {
                 error: function(xhr, status, index, anchor){
-                    $(anchor.hash).html("Couldn't load this tab. We'll try to fix this as soon as possible. If this wouldn't be a demo.");
+                    $(anchor.hash).html("Couldn't load this tab.");
                 }
             }
         });
+    });
+    $(function(){
         $("#bottomTabs").tabs({
             ajaxOptions: {
                 error: function(xhr, status, index, anchor){
-                    $(anchor.hash).html("Couldn't load this tab. We'll try to fix this as soon as possible. If this wouldn't be a demo.");
+                    $(anchor.hash).html("Couldn't load this tab.");
                 }
             }
         });
