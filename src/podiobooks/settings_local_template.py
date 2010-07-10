@@ -134,6 +134,9 @@ SERVER_EMAIL = 'a real email address'
 ### django-registration Settings
 ACCOUNT_ACTIVATION_DAYS = 14
 
+### TESTS
+TEST_RUNNER = 'django_nose.NoseTestSuiteRunner' # Should work with Django 1.2.1
+
 ### Local add-ons to main inclusion variables
 # TEMPLATE_CONTEXT_PROCESSORS +=
 
@@ -184,6 +187,9 @@ LIBSYN_USER = ''
 LIBSYN_KEY = ''
 LIBSYN_NETWORK_SLUG = ''
 LIBSYN_API_SERVER_URL = ''
+
+### DONATIONS
+DONATION_BUSINESS_NAME = 'evo@podiobooks.com'
 
 ### DATALOAD
 DATALOAD_DIR = PROJECT_PATH + "/../../../podiobooks-dataload/datafiles/"
