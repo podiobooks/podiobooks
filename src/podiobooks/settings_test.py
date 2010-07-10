@@ -1,7 +1,13 @@
 """Automated Unit Test Settings File for Podiobooks"""
 
-from podiobooks.settings_main import * #@UnusedWildImport # pylint: disable=W0401, W0614
-from podiobooks.settings_local_template import * #@UnusedWildImport # pylint: disable=W0401, W0614
+# pylint: disable=W0401, W0614
+
+from podiobooks.settings_main import * #@UnusedWildImport 
+from podiobooks.settings_local_template import * #@UnusedWildImport
+try:
+    from podiobooks.settings_test_local import * #@UnusedWildImport
+except:
+    pass
 import tempfile
 
 # Test DB settings. (SQLLite)
@@ -16,8 +22,6 @@ DATABASES = {
 # Test Cache Settings
 CACHE_BACKEND = "file://" + tempfile.gettempdir()
 
-INSTALLED_APPS += (
-    'django_nose',
-)
+INSTALLED_APPS += ('django_nose',)
 
 TEST_RUNNER = 'django_nose.NoseTestSuiteRunner' # Should work with Django 1.2.1
