@@ -9,21 +9,18 @@ import pprint
 class LibsynTestCase(TestCase):
     # fixtures = []
     
-    # def setUp(self):
+    def setUp(self):
+        self.pprinter = pprint.PrettyPrinter(indent=4)
     
     def testShowInfo(self):
         show_info = get_show_info('theflownsky')
-        
+        self.pprinter.pprint(show_info) # pretty print the result
         self.assertEquals('k-9b89823b4508200f', show_info['show_id'])
         
-        # pretty print the result
-        pprinter = pprint.PrettyPrinter(indent=4)
-        pprinter.pprint(show_info)
-        
         show_info = get_show_info('notesfromthevault')
-        
+        self.pprinter.pprint(show_info)
         self.assertEquals('k-27813e6f24530266', show_info['show_id'])
         
-        # pretty print the result
-        pprinter = pprint.PrettyPrinter(indent=4)
-        pprinter.pprint(show_info)
+        show_info = get_show_info('irondragons')
+        self.pprinter.pprint(show_info)
+        self.assertEquals('k-e76e81ee69d5d413', show_info['show_id'])
