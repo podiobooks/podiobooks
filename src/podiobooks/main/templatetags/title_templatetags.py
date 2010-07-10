@@ -38,6 +38,11 @@ def show_episodelist(title):
     """ Show a list of all the episodes for a title, used on title detail page """
     return { 'episode_list' : title.episodes.order_by('sequence').all(), 'MEDIA_URL': settings.MEDIA_URL, 'THEME_MEDIA_URL': settings.THEME_MEDIA_URL, }
 
+@register.inclusion_tag('main/title/tags/show_donation_button.html')
+def show_donation_button(title):
+    """ Show button to enable people to donate to this title """
+    return { 'title' : title, 'DONATION_BUSINESS_NAME': settings.DONATION_BUSINESS_NAME, 'MEDIA_URL': settings.MEDIA_URL, 'THEME_MEDIA_URL': settings.THEME_MEDIA_URL, }
+
 @register.inclusion_tag('main/title/tags/show_title_subscription_action.html')
 def show_title_subscription_action(title, user):
     """ Determine if a user is subscribed to a title, and show a subscription/unsubscription action """
