@@ -6,3 +6,5 @@
 # *~
 settings_local.py
 local_settings.py
+settings_local_test.py
+settings_test_local.py
