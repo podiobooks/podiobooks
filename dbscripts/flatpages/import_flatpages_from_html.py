@@ -36,6 +36,15 @@ def importFlatPages():
     )
     authors_page.sites.add(Site.objects.get_current())
     
+    staff_file = open(FLATPAGE_DIR + 'staff.html')
+    staff_content = staff_file.read()
+    staff_page = FlatPage.objects.create(
+        url='/staff/',
+        title='Staff',
+        content=staff_content
+    )
+    staff_page.sites.add(Site.objects.get_current())
+    
     
     ## HOW DID WE DO?
     for page in FlatPage.objects.all():
