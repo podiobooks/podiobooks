@@ -2,7 +2,8 @@
 
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
-from podiobooks.main.models import Title, TitleSubscription
+from podiobooks.main.models import Title
+from podiobooks.subscription.models import TitleSubscription
 from podiobooks.main.forms import CategoryChoiceForm, ContributorChoiceForm, TitleSearchForm
 from django.conf import settings
 from django.db.models import Q
@@ -127,7 +128,7 @@ def title_search(request, keywords=None):
         response_data = {'titleSearchForm': form}
         return render_to_response('main/title/title_search_results.html', response_data, context_instance=RequestContext(request))
     
-def title_subscribe(request, slug=None):
+def title_subscribe(request, slug):
     """
         Subscribe to a given title
     """
@@ -158,7 +159,7 @@ def title_subscribe(request, slug=None):
     response_data = {'title_subscription_added': title_subscription, 'title_already_subscribed': title_already_subscribed, 'title_resubscribed': title_resubscribed}
     return render_to_response('profile/profile.html', response_data, context_instance=RequestContext(request))
     
-def title_unsubscribe(request, slug=None):
+def title_unsubscribe(request, slug):
     """
         Unsubscribe from a given title
     """
@@ -182,5 +183,31 @@ def title_unsubscribe(request, slug=None):
         not_subscribed = True
         
     response_data = {'title_subscription_removed': title, 'title_not_subscribed': not_subscribed, }
+    return render_to_response('profile/profile.html', response_data, context_instance=RequestContext(request))
+
+def title_update_subscription_interval(request, slug, new_interval):
+    """
+        Upate the day interval for a given title subscription
+    """
+    # First try and look up the title that was specified.  If no slug, or if it doesn't exist, throw a 404
+    title = get_object_or_404(Title, slug=slug)
+    
+    # Now, make sure they are authenticated
+    if not request.user.is_authenticated():
+        return redirect_to_login(request.path)
+    
+    try:
+        title_subscription = TitleSubscription.objects.get (
+                user=request.user,
+                title=title,
+                deleted=False,
+                )
+        title_subscription.day_interval = new_interval
+        title_subscription.save()
+        not_subscribed = False
+    except ObjectDoesNotExist:
+        not_subscribed = True
+        
+    response_data = {'title_subscription_updated': title, 'title_not_subscribed': not_subscribed, }
     return render_to_response('profile/profile.html', response_data, context_instance=RequestContext(request))
         

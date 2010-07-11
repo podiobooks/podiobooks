@@ -2,25 +2,19 @@
 
 # pylint: disable=R0201, C0111, R0904
 
-
 from django.contrib.syndication.views import Feed
-
-from django.utils.html import strip_tags
-
-from podiobooks.main.models import Title, Episode, TitleSubscription
-
 from django.contrib.auth.models import User
-
-from podiobooks.feeds.protocols.itunes import ITunesFeed
+from django.utils.html import strip_tags
 from django.utils.feedgenerator import Rss201rev2Feed
+from django.conf import settings
+from django.core.exceptions import ObjectDoesNotExist
 
-from podiobooks import settings
-
+from podiobooks.main.models import Title, Episode
+from podiobooks.subscription.models import TitleSubscription
 from podiobooks.feeds import feed_tools
+from podiobooks.feeds.protocols.itunes import ITunesFeed
 
 from datetime import datetime
-
-from django.core.exceptions import ObjectDoesNotExist
 
 class TitleFeed(Feed):
     """A simple feed that lists recent Titles"""

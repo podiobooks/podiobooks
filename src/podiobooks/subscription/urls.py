@@ -1,0 +1,14 @@
+"""URLs for the Podiobooks Subscription module"""
+
+from django.conf.urls.defaults import * #@UnusedWildImport
+
+# pylint: disable=E0602,F0401
+
+urlpatterns = patterns('podiobooks.subscription.views',
+    url(r'^$', 'index', {}, name='subscription'),
+    url(r'^subscribe/title/(?P<slug>[^/]+)/$', 'title_subscribe', {}, name='title_subscribe'),
+    url(r'^unsubscribe/title/(?P<slug>[^/]+)/$', 'title_unsubscribe', {}, name='title_unsubscribe'),
+    url(r'^update/release/interval/title/(?P<slug>[^/]+)/(?P<new_interval>\d+[^/]+)$', 'title_update_subscription_interval', {}, name='title_update_interval'),
+    url(r'^release/one/episode/title/(?P<title_slug>[^/]+)/$', 'title_release_one_episode', {}, name='title_subscription_release_one'),
+    url(r'^release/all/episodes/title/(?P<title_slug>[^/]+)/$', 'title_release_all_episodes', {}, name='title_subscription_release_all'),
+)
