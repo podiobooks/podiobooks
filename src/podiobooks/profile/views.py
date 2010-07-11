@@ -7,9 +7,9 @@ from django.contrib.auth.decorators import login_required
 @login_required
 def profile(request):
     """
-    Main site page page.
+    Profile View/Manage Page
 
-    url: /
+    url: /profile/
     
     template : profile/profile.html
     """

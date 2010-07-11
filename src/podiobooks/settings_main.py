@@ -63,5 +63,6 @@ INSTALLED_APPS = (
     'podiobooks.main',
     'podiobooks.profile',
     'podiobooks.social',
+    'podiobooks.subscription',
     'registration',
 )
