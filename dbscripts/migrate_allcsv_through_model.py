@@ -4,7 +4,7 @@ from pb1_csv_migration import *
 from data_cleanup import *
 
 # IMPORT CATEGORIES
-from migrate_bookcategorycsv_to_category import *
+from pb1_csv_migration.migrate_bookcategorycsv_to_category import *
 importBookCategoriesFromCSV()
 
 # IMPORT PARTNERS
