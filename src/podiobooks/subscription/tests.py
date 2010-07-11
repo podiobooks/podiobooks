@@ -9,7 +9,7 @@ from podiobooks.main.models import Title, Episode
 from podiobooks.subscription.models import TitleSubscription
 from datetime import datetime, timedelta
 
-class FeedUrlTestCase(TestCase):
+class SubscriptionTestCase(TestCase):
     fixtures = ['main_data.json', ]
     
     def setUp(self):
@@ -51,27 +51,6 @@ class FeedUrlTestCase(TestCase):
                 day_interval = 30,
                 date_created = datetime.now() - timedelta(500)
                 )
-    
-    def testEpisodeFeed(self):
-        response = self.c.get('/rss/feeds/episodes/double-share/')
-        self.assertContains(response, 'PB-DoubleShare-01.mp3')
-        self.assertContains(response, 'PB-DoubleShare-25.mp3')
-        
-    def testEpisodeFeedAdult(self):
-        response = self.c.get('/rss/feeds/episodes/the-plump-buffet/')
-        self.assertContains(response, 'PB-PlumpBuffet-001.mp3')
-        self.assertContains(response, 'PB-PlumpBuffet-09.mp3')
-        
-    def testTitlesFeed(self):
-        response = self.c.get('/rss/feeds/titles/')
-        self.assertContains(response, 'Plump Buffet')
-        self.assertContains(response, 'Double Share')
-
-    def testCustomEpisodesFeed(self):
-        response = self.c.get('/rss/feeds/episodes/double-share/testuser1/')
-        self.assertContains(response, 'PB-DoubleShare-01.mp3')
-        self.assertNotContains(response, 'PB-DoubleShare-02.mp3')
-        self.assertNotContains(response, 'PB-DoubleShare-25.mp3')
         
     def testReleaseOneEpisodeRedirect(self):
         response = self.c.get('/subscription/release/one/episode/title/double-share/')
@@ -80,38 +59,33 @@ class FeedUrlTestCase(TestCase):
     def testReleaseOneEpisode(self):    
         self.c.login(username='testuser1', password='testuser1password')
         response = self.c.get('/subscription/release/one/episode/title/double-share/')
-        self.assertEquals(200, response.status_code)
-        response = self.c.get('/rss/feeds/episodes/double-share/testuser1/')
-        self.assertContains(response, 'PB-DoubleShare-01.mp3')
-        self.assertContains(response, 'PB-DoubleShare-02.mp3')
-        self.assertNotContains(response, 'PB-DoubleShare-25.mp3')
+        self.assertContains(response, 'released one')
+        self.assertContains(response, 'Double Share')
         
     def testReleaseAllEpisodes(self):    
         self.c.login(username='testuser1', password='testuser1password')
         response = self.c.get('/subscription/release/all/episodes/title/double-share/')
-        self.assertEquals(200, response.status_code)
-        response = self.c.get('/rss/feeds/episodes/double-share/testuser1/')
-        self.assertContains(response, 'PB-DoubleShare-01.mp3')
-        self.assertContains(response, 'PB-DoubleShare-02.mp3')
-        self.assertContains(response, 'PB-DoubleShare-25.mp3')
+        self.assertContains(response, 'released all')
+        self.assertContains(response, 'Double Share')
         
-    def testCustomFeedDayIntervalExact(self):
-        response = self.c.get('/rss/feeds/episodes/the-plump-buffet/testuser1/')
-        self.assertContains(response, 'PB-PlumpBuffet-001.mp3')
-        self.assertContains(response, 'PB-PlumpBuffet-02.mp3')
-        self.assertNotContains(response, 'PB-PlumpBuffet-03.mp3')
-        self.assertNotContains(response, 'PB-PlumpBuffet-09.mp3')
+    def testReleaseOneNotSubscribed(self):
+        self.c.login(username='testuser2', password='testuser2password')
+        response = self.c.get('/subscription/release/one/episode/title/double-share/', follow=True)
+        self.assertContains(response, 'not subscribed')
         
-    def testCustomFeedDayIntervalSlightlyOver(self):
-        response = self.c.get('/rss/feeds/episodes/the-plump-buffet/testuser2/')
-        self.assertContains(response, 'PB-PlumpBuffet-001.mp3')
-        self.assertContains(response, 'PB-PlumpBuffet-02.mp3')
-        self.assertContains(response, 'PB-PlumpBuffet-03.mp3')
-        self.assertContains(response, 'PB-PlumpBuffet-04.mp3')
-        self.assertNotContains(response, 'PB-PlumpBuffet-05.mp3')
-        self.assertNotContains(response, 'PB-PlumpBuffet-09.mp3')
+    def testReleaseAllNotSubscribed(self):
+        self.c.login(username='testuser2', password='testuser2password')
+        response = self.c.get('/subscription/release/all/episodes/title/double-share/', follow=True)
+        self.assertContains(response, 'not subscribed')
         
-    def testCustomFeedNotSubscribed(self):
-        response = self.c.get('/rss/feeds/episodes/double-share/testuser2/')
-        self.assertEquals(404, response.status_code)
-    
+    def testReleaseOneNoMoreEpisodes(self):
+        self.c.login(username='testuser3', password='testuser3password')
+        response = self.c.get('/subscription/release/one/episode/title/double-share/', follow=True)
+        self.assertContains(response, 'no more episodes')
+        
+    def testReleaseAllNoMoreEpisodes(self):
+        self.c.login(username='testuser3', password='testuser3password')
+        response = self.c.get('/subscription/release/all/episodes/title/double-share/', follow=True)
+        print response
+        self.assertContains(response, 'no more episodes')
+        

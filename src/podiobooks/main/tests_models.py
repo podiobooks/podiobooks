@@ -4,6 +4,7 @@
 
 from django.test import TestCase
 from podiobooks.main.models import *  #@UnusedWildImport
+from podiobooks.subscription.models import TitleSubscription
 from podiobooks.profile.models import UserProfile
 from django.template.defaultfilters import slugify
 from django.db.models import Count
