@@ -2,9 +2,9 @@ from django.db import connections, transaction
 import csv, cStringIO, codecs
 from podiobooks.main.models import Title, Category, Episode, Partner, Rating
 from django.db.models import Max
-from migrate_bookcsv_to_title import createTitlesFromRows
-from migrate_chaptercsv_to_episode import createEpisodesFromRows
-from migrate_bookratingcsv_to_title import createRatingsFromRows
+from pb1_csv_migration.migrate_bookcsv_to_title import createTitlesFromRows
+from pb1_csv_migration.migrate_chaptercsv_to_episode import createEpisodesFromRows
+from pb1_csv_migration.migrate_bookratingcsv_to_title import createRatingsFromRows
 from itertools import izip
 
 def get_book_data(cursor, last_book_id):
