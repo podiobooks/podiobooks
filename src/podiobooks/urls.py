@@ -46,6 +46,9 @@ urlpatterns = patterns('',
 
     # Social Media Views
     (r'^social/', include('podiobooks.social.urls')),
+    
+    # Subscriptions
+    (r'^subscription/', include('podiobooks.subscription.urls')),
 )
     
 # Databrowse setup

@@ -5,6 +5,7 @@
 from django.contrib import admin
 
 from podiobooks.main.models import *  #@UnusedWildImport # pylint: disable=W0401,W0614
+from podiobooks.subscription.models import TitleSubscription
 
 class TitleInline(admin.TabularInline):
     model = Title
