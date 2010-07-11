@@ -27,6 +27,15 @@ def importFlatPages():
     )
     donate_page.sites.add(Site.objects.get_current())
     
+    authors_file = open(FLATPAGE_DIR + 'submit_your_book.html')
+    authors_content = authors_file.read()
+    authors_page = FlatPage.objects.create(
+        url='/authors/',
+        title='Authors',
+        content=authors_content
+    )
+    authors_page.sites.add(Site.objects.get_current())
+    
     
     ## HOW DID WE DO?
     for page in FlatPage.objects.all():
