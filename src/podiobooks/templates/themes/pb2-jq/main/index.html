@@ -33,9 +33,6 @@
     /* On page ready, attach a jCarousel Widget to the Featured Shelf, setting the divs on either end as buttons */
     $(function(){
         attachCarousel('featuredPodiobooksShelf', 4);
-        //Trigger a reload of the shelf for the particular downdown value
-        //var dropdownValue = $('#id_category').val();
-        //shelfChange('{{ shelf_id }}', '{{ dropdown_url }}', dropdownValue);
     });
     // Updates a shelf by changing doing an AJAX call to load new pages into the shelf - called from shelf dropdowns
     function shelfChange(shelf_id, shelf_url, dropdown_value){
