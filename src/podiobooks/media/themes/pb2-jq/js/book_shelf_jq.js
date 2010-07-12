@@ -35,6 +35,10 @@ function attachCarousel(shelfId, shelfItemWidth){
             setCarouselButtons(shelfId, $(a).attr('id'));
         }
     });
+	
+	// This line should be a fadeIn(), but the timing is off with the jCarouselLite delay
+	$(shelfSelector).css('opacity', 1);  //Reveal styled div now to avoid FOUC
+	
     /* Switch the right shelf end image to the the arrow version */
 	if (shelfPageCount > 1) {
 		$(shelfSelector + "Container .pb-shelf-end-right").removeClass("disabled");
