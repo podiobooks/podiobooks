@@ -1,6 +1,5 @@
 {% load title_templatetags %}
-{% load subscription_templatetags %}
-<!-- Begin SubscriptionBox -->
+{% load subscription_templatetags %}<!-- Begin SubscriptionBox -->
 <div class="pb-infobox" id="subscriptionBox">
     <div class="pb-infobox-left">
     </div>
@@ -10,24 +9,35 @@
             <br>
             Book Now!
         </div>
-		
-        <div style="float: left;">
-            <img src="{{ THEME_MEDIA_URL }}images/pb-rss-icon.gif">
+        <div class="pb-float-clear">
         </div>
-        <div style="float: left; margin: 2px 0 10px 5px;">
-            <a href="/rss/feeds/episodes/{{ title.slug }}">Subscribe Free via RSS Feed</a>
+        <div id="accordion">
+            <h2><a href="#rss">Subscribe for Free!</a></h2>
+            <div id="rss">
+                <a href="/rss/feeds/episodes/{{ title.slug }}">Copy This URL into Your Podcatcher</a>
+                <br>
+                (Help text coming soon)
+            </div>
+            <h2><a href="#customrss">Custom Subscription</a></h2>
+            <div id="customrss">
+                <div style="float: left; margin: 2px 0 10px 5px;">
+                    {% show_title_subscription_action title user %}
+                </div>
+            </div>
+            <h2><a href="#buydownload">Buy The Whole Book At Once</a></h2>
+            <div id="buydownload">
+                Coming Soon...
+            </div>
         </div>
-		<div class="pb-float-clear"></div>
-		
-        <div style="float: left; margin: 2px 0 10px 5px;">
-            {% show_title_subscription_action title user %}
-        </div>
-		<div class="pb-float-clear"></div>
-		
-		{% show_donation_button title %}
-		
+        <br>
+        {% show_donation_button title %}
     </div>
     <div class="pb-infobox-right">
     </div>
 </div>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#accordion').accordion();
+    });
+</script>
 <!-- End SubscriptionBox -->
