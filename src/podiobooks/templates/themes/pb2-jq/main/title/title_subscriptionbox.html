@@ -11,16 +11,17 @@
         </div>
         <div class="pb-float-clear">
         </div>
-        <div id="accordion">
+        <div id="accordion" style="opacity: 0;">
             <h2><a href="#rss">Subscribe for Free!</a></h2>
             <div id="rss">
-                <a href="/rss/feeds/episodes/{{ title.slug }}">Copy This URL into Your Podcatcher</a>
+                <a href="/rss/feeds/episodes/{{ title.slug }}">Copy This URL</a>
+                into Your Podcatcher
                 <br>
                 (Help text coming soon)
             </div>
             <h2><a href="#customrss">Custom Subscription</a></h2>
             <div id="customrss">
-                <div style="float: left; margin: 2px 0 10px 5px;">
+                <div>
                     {% show_title_subscription_action title user %}
                 </div>
             </div>
@@ -38,6 +39,7 @@
 <script type="text/javascript">
     $(document).ready(function(){
         $('#accordion').accordion();
+        $('#accordion').css('opacity', 1);
     });
 </script>
 <!-- End SubscriptionBox -->
