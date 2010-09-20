@@ -1,25 +1,33 @@
 {% load global_templatetags %}<!-- Header - Logo and Navigation Bar -->
-<div id="header">
-    <div id="pb-header-background"> 
-		<a href='/'><img alt='Podiobooks Logo' src='{{THEME_MEDIA_URL}}images/pb-logo.jpg' /></a>
+
+	<h1 class='hidden'><a href='/'>Podiobooks</a></h1>
+	<p class='hidden'>Free Downloadable Audiobooks</p>
+	<p class='logo'><a href='/'><img alt='Podiobooks Logo' src='{{THEME_MEDIA_URL}}images/pb-logo.jpg' /></a></p>
+	
+	<div class='pg-head clearfix'>
+		<ul class='nav'>
+			<li><a {% if request.path == '/' %} class='cur' {% endif %}href='/'>Home</a></li>
+			<li><a href='#'>Blog</a></li>
+			<li><a href='#'>Community</a></li>
+			<li>
+			{% if user.is_authenticated %}
+				<a href="{% url profile %}">My Account</a></li>
+				<li><a href="{% url django_authopenid.views.signout %}">Logout {{ user.username }}</a>
+			{% else %} 	
+				<a href="{% ssl_site_login_url %}">Login/Register</a>
+			{% endif %}
+			</li>
+		</ul>
+		<h2>Browse</h2>
+		<ul class='browse-by'>
+			<li><a href='#'>Author</a></li>
+			<li><a href='#'>Category</a></li>
+		</ul>
+		
+		<form class='search'>
+			<h2>Search</h2>
+			<input type='text' class='search-text'/>
+			<input type='submit' class='search-submit' value='Search'/>
+		</form>
 	</div>
-       <!-- <div id="pb-header-click-region" onclick="document.location.href = ('/')"></div>-->
-		<div class='pb-header-menubar-top'></div>
-        <div id="pb-header-menubar">
-            <div id="pb-header-menubar-items">
-            	<a href="/">Home</a>
-                | <a href="http://www.podiobooks.com/blog">Blog</a>
-                | <a href="http://community.podiobooks.com/">Community</a>
-				| {% if user.is_authenticated %}
-					<a href="{% url profile %}">My Account</a>
-					| <a href="{% url django_authopenid.views.signout %}">Logout {{ user.username }}</a>
-				  {% else %} 	
-					<a href="{% ssl_site_login_url %}">Login/Register</a>
- 	              {% endif %}
-            </div>
-            {% show_searchbox %}
-			{% show_browsebox %}
-        </div>
-		<div class='pb-header-menubar-bottom'></div>
-</div>
 <!-- End Header - Logo and Navigation Bar -->
