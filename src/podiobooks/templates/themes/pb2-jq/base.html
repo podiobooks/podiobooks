@@ -1,55 +1,68 @@
-{% load disqus_tags %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-<meta name="language" content="english"> 
-<!--[if IE 8]>
-<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" >
-<![endif]-->
-<title>{% block headtitle %}{{ site_name }}{% endblock %}</title>
-{% block metatags %}
-<meta name="Keywords" content="audio books, audiobooks, books, novels, podcast, podcasting, podiobooks" /> 
-<meta name="Description" content="Free audio books delivered as podcasts. Subscribe for free to any book and start from chapter one. Podiobooks.com" />
-{% endblock %}
-<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}css/clear.css" >
-<link rel="stylesheet" type="text/css" href="{{ THEME_MEDIA_URL }}css/base.css" >
-<link rel="stylesheet" type=text/css href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/themes/base/jquery-ui.css" >
-<script type="text/javascript" src="http://use.typekit.com/coc0qsu.js"></script>
-<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
-{% if debug %}
-	<script type="text/javascript">
-		var isDebug = true;
-	</script>
-{% else %}
-	<script type="text/javascript">
-		var isDebug = false;
-	</script>
-{% endif %}
-<script src="http://www.google.com/jsapi?key=ABQIAAAApKHrTPdMsrKnaI74fSfnhBQ1oE6XAUbmObyC_RwYQIb0R2PjHBRZWTF3zf-YwVXFv_qiaAb_sT04aA" type="text/javascript"></script>
-<script language="Javascript" type="text/javascript">
-    //<![CDATA[
-    google.load("jquery", "1.4.2");
-	google.load("jqueryui", "1.8");
-	//]]>
-</script>
-<script language="JavaScript" type="text/javascript">
-	var preLoadLoadingImage = $('<img />').attr('src', '{{ THEME_MEDIA_URL }}images/loading.gif');
-</script>
-{% block head %}{% endblock %}
-</head>
-<body>
-<!-- Begin Header -->
-{% block header %}{% include "header.html" %}{% endblock %}
-<!-- End Header -->
-<!-- Begin Main Content -->
-{% block contentdivopen %}<div id="content">{% endblock %}
-{% block content %}No Content Defined{% endblock %}
-{% block contentdivclose %}</div>{% endblock %}
-<!-- End Main Content -->
-<!-- Begin Footer -->
-{% block footer %}{% include "footer.html" %}{% endblock %}
-<!-- End Footer -->
-{% disqus_num_replies %}
-</body>
+{% load disqus_tags %}
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<meta name="language" content="english"> 
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	 	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;"> 
+	
+		<title>{% block headtitle %}{{ site_name }}{% endblock %}</title>
+	
+	
+		{% block metatags %}
+		<meta name="Keywords" content="audio books, audiobooks, books, novels, podcast, podcasting, podiobooks" /> 
+		<meta name="Description" content="Free audio books delivered as podcasts. Subscribe for free to any book and start from chapter one. Podiobooks.com" />
+		{% endblock %}
+	
+		<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}{{MINI_CSS}}" />
+		<link rel="stylesheet" type=text/css href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/themes/base/jquery-ui.css" >
+		
+		<script type="text/javascript" src="http://use.typekit.com/coc0qsu.js"></script>
+		<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+		{% if debug %}
+			<script type="text/javascript">
+				var isDebug = true;
+			</script>
+		{% else %}
+			<script type="text/javascript">
+				var isDebug = false;
+			</script>
+		{% endif %}
+		
+		<script src="http://www.google.com/jsapi?key=ABQIAAAApKHrTPdMsrKnaI74fSfnhBQ1oE6XAUbmObyC_RwYQIb0R2PjHBRZWTF3zf-YwVXFv_qiaAb_sT04aA" type="text/javascript"></script>
+		<script language="Javascript" type="text/javascript">
+		    //<![CDATA[
+		    google.load("jquery", "1.4.2");
+			google.load("jqueryui", "1.8");
+			//]]>
+		</script>
+		
+		<!--
+		<script language="JavaScript" type="text/javascript">
+			var preLoadLoadingImage = $('<img />').attr('src', '{{ THEME_MEDIA_URL }}images/loading.gif');
+		</script>
+		-->
+		{% block head %}
+		{% endblock %}
+	
+	</head>
+	
+	<body class='{% block body_class %}{% endblock %}'>
+		<div class='pg clearfix'>
+			<!-- Begin Header -->
+			{% block header %}{% include "header.html" %}{% endblock %}
+			<!-- End Header -->
+			
+			<!-- Begin Main Content -->
+			{% block content %}<p>No Content Defined</p>{% endblock %}
+			<!-- End Main Content -->
+			
+			<!-- Begin Footer -->
+			{% block footer %}{% include "footer.html" %}{% endblock %}
+			<!-- End Footer -->
+			
+			{% disqus_num_replies %}
+		</div>
+	</body>
 </html>
