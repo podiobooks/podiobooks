@@ -3,6 +3,7 @@
 {% load global_templatetags %}
 {% load shelf_templatetags %}
 {% load ad_templatetags %}
+{% load title_templatetags %}
 
 {% block headtitle %}{{block.super}} - Free Downloadable Audiobooks{% endblock %}
 
@@ -22,6 +23,27 @@
 -->
 {% endblock %}
 {% block content %} 
+<h2 class='shelf-heading'>Featured</h2>
+<div class='shelf clearfix'>
+	
+	{% for t in featured_title_list %}
+	<div class='clearfix shelf-item'>
+		<h3><a href='{{t.get_absolute_url}}'>{{t.name}}</a></h3>
+		<p class='shelf-cover'>	<a href='{{t.get_absolute_url}}'>
+			{% if title.libsyn_show_id %}
+				<img src="http://images.libsyn.com/show/{{ tlibsyn_show_id }}/height/212/width/144" alt="Podiobook Cover for {{ t.name }}"/>
+			{% else %}
+				<img src="http://podiobooks.com/images/covers/{{ t.cover }}" alt="Podiobook Cover for '{{ t.name }}'" />
+			{% endif %}
+			</a>
+		</p>
+	
+		<p>{{t.description|truncatewords:"15"}}</p>
+	</div>
+	{% endfor %}
+</div>
+
+
 
 <!-- Begin JavaScript Includes for Shelf Interactivity -->
 
