@@ -1,8 +1,8 @@
-from django.contrib.sites.models import Site, RequestSite
+from django.contrib.sites.models import Site, RequestSite #@UnresolvedImport
 
 def site(request):
     site_info = {'protocol': request.is_secure() and 'https' or 'http'}
-    if Site._meta.installed:
+    if Site._meta.installed: #@UndefinedVariable
         site_info['domain'] = Site.objects.get_current().domain
         site_info['site_name'] = Site.objects.get_current().name
     else:
