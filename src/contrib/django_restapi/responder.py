@@ -274,7 +274,7 @@ class TemplateResponder(object):
         """
         Render form for creation of new collection entry.
         """
-        ResourceForm = forms.form_for_model(queryset.model, form=form_class)
+        ResourceForm = forms.form_for_model(queryset.model, form=form_class) #@UndefinedVariable
         if request.POST:
             form = ResourceForm(request.POST)
         else:
@@ -289,7 +289,7 @@ class TemplateResponder(object):
         # Remove queryset cache by cloning the queryset
         queryset = queryset._clone()
         elem = queryset.get(**{queryset.model._meta.pk.name : pk})
-        ResourceForm = forms.form_for_instance(elem, form=form_class)
+        ResourceForm = forms.form_for_instance(elem, form=form_class) # @UndefinedVariable
         if request.PUT:
             form = ResourceForm(request.PUT)
         else:

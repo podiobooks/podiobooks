@@ -21,7 +21,7 @@ MIDDLEWARE_CLASSES = (
 # Python
 import os
 import time
-import datetime
+import datetime # @UnusedImport
 
 # Django
 from django.conf import settings
@@ -42,11 +42,11 @@ class SQLLogMiddleware:
             return response
 
         timesql = 0.0
-        for q in connection.queries:
+        for q in connection.queries: # @UndefinedVariable
             timesql += float(q['time'])
         seen = {}
         duplicate = 0
-        for q in connection.queries:
+        for q in connection.queries: # @UndefinedVariable
             sql = q["sql"]
             c = seen.get(sql, 0)
             if c:
@@ -82,7 +82,7 @@ class SQLLogMiddleware:
 {{ sql.sql|strip }}{% endfor %}''')
 
         timerequest = round(time.time() - self.start, 3)
-        queries = connection.queries
+        queries = connection.queries # @UndefinedVariable
         html = t.render(Context(locals()))
         # if debug_sql==True:
         #     if response.get("content-type", "").startswith("text/html"):
