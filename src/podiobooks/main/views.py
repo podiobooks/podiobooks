@@ -25,7 +25,7 @@ def index(request):
     
     homepage_title_list = Title.objects.filter(display_on_homepage=True).order_by('-date_created').all()
     
-    featured_title_list = homepage_title_list.filter(categories__slug=INTIIAL_CATEGORY).order_by('-date_created', 'name')[:20]
+    featured_title_list = homepage_title_list.filter(categories__slug=INTIIAL_CATEGORY).order_by('-date_created', 'name')[:4]
     
     minimal_title_list = featured_title_list[:1]
     
