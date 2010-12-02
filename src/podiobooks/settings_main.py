@@ -15,6 +15,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.request',
     'django_authopenid.context_processors.authopenid',
     'contrib.site_info_context_processor.site',
+    'podiobooks.context_processors.mini_css',
+    'podiobooks.context_processors.mini_js',
 )
 
 MIDDLEWARE_CLASSES = (
