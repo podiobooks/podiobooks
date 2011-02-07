@@ -38,7 +38,7 @@
 			</a>
 		</p>
 	
-		<p>{{t.description|truncatewords:"15"}}</p>
+		<p>{{t.description|striptags|truncatewords:"15"}}</p>
 	</div>
 	{% endfor %}
 </div>
