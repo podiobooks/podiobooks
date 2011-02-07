@@ -80,9 +80,9 @@ def title_unsubscribe(request, slug):
     response_data = {'title_subscription_removed': title, 'title_not_subscribed': not_subscribed, }
     return render_to_response('subscription/subscription.html', response_data, context_instance=RequestContext(request))
 
-def title_update_subscription_interval(request, slug, new_interval):
+def title_update_subscription_interval(request, slug, new_interval): # pylint: disable=C0103
     """
-        Upate the day interval for a given title subscription
+        Update the day interval for a given title subscription
     """
     # First try and look up the title that was specified.  If no slug, or if it doesn't exist, throw a 404
     title = get_object_or_404(Title, slug=slug)
