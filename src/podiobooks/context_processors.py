@@ -13,7 +13,7 @@ def mini_css(request):
     for css in css_files:
         if os.path.getmtime(p + css) > latest_mod:
             latest_mod = os.path.getmtime(p + css)
-    latest_mod = hashlib.md5(latest_mod.__str__()).hexdigest()
+    latest_mod = hashlib.md5(latest_mod.__str__()).hexdigest() #@UndefinedVariable # pylint: disable=F0401
     cache_name = 'style-' + latest_mod + '_.css'
     
     if not os.path.isfile(p + 'cache/' + cache_name):
@@ -52,7 +52,7 @@ def mini_js(request):
     for js in js_files:
         if os.path.getmtime(p + js) > latest_mod:
             latest_mod = os.path.getmtime(p + js)
-    latest_mod = hashlib.md5(latest_mod.__str__()).hexdigest()
+    latest_mod = hashlib.md5(latest_mod.__str__()).hexdigest()  #@UndefinedVariable # pylint: disable=F0401
     cache_name = 'js-' + latest_mod + '_.js'
     
     if not os.path.isfile(p + 'cache/' + cache_name):
