@@ -60,7 +60,7 @@ def _sign_params(user, params):
             temp_str = "%s%s" % (key, params[key])
             hash_str += temp_str
 
-    sha1 = hashlib.sha1(hash_str).hexdigest()
+    sha1 = hashlib.sha1(hash_str).hexdigest() #@UndefinedVariable # pylint: disable=F0401
     return sha1
 
 def _is_scalar(x):
