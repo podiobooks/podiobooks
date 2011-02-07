@@ -49,7 +49,7 @@ def getOrCreateAward(awardSlug):
 
 def getOrCreateContributor(contributorName):
     """Retrieves or creates a Contributor based on the name of the Contributor"""
-    contributorName = contributorName.strip().replace('  ', ' ').replace('\\', '').replace('&apos;', '\'').replace('Theater', 'Theatre').replace('J. C.', 'J.C.').replace('J. A.', 'J.A.').replace('J. J.', 'J.J.').replace('J. T.', 'J.T.').replace('J. P.', 'J.P.')
+    contributorName = contributorName.strip().replace('  ', ' ').replace('\\', '').replace('&apos;', '\'').replace('Theater', 'Theatre').replace('J. C.', 'J.C.').replace('J. A.', 'J.A.').replace('J. J.', 'J.J.').replace('J. T.', 'J.T.').replace('J. P.', 'J.P.').replace('JP', 'J.P.').replace('I G', 'I.G.')
     try:
         contributorNameToSplit = contributorName.replace(' III', '')
         contributorNameTokens = contributorNameToSplit.split(" ", 2)
@@ -64,7 +64,7 @@ def getOrCreateContributor(contributorName):
         lastNameGuess = contributorName
         
     contributor, created = Contributor.objects.get_or_create(display_name__iexact=contributorName,
-                  defaults={ 'display_name':contributorName, 'slug': slugify(contributorName), 'first_name': firstNameGuess, 'middle_name': middleNameGuess.replace(',', ''), 'last_name': lastNameGuess.replace(',', '') })
+                  defaults={ 'display_name':contributorName, 'slug': slugify(contributorName), 'first_name': firstNameGuess, 'middle_name': middleNameGuess.replace(',', ''), 'last_name': lastNameGuess.replace(',', '').replace(' Ph.D.', '') })
     return contributor
 
 def getOrCreateContributorType(contributorType):
