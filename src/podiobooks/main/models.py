@@ -53,8 +53,8 @@ class Award(models.Model):
 
 class Category(models.Model):
     """Categories describe titles for easy of browsing and for recommendations."""
-    slug = models.SlugField()
-    name = models.CharField(max_length=255)
+    slug = models.SlugField(max_length=50)
+    name = models.CharField(max_length=50)
     # Note - titles are available as title_set.all()
     # Note - for SQL purposes, titles are 'title'
     deleted = models.BooleanField(default=False)
@@ -75,7 +75,7 @@ class Category(models.Model):
 class Contributor(models.Model):
     """A contributor is one who had done work on a title. For a book, it's an
     author or authors."""
-    slug = models.SlugField()
+    slug = models.SlugField(max_length=1000) # For multi-contributor books, can get long
     user = models.ForeignKey(User, null=True, related_name='contributor_info') #User is an OOTB Django Auth Model
     first_name = models.CharField(max_length=255)
     middle_name = models.CharField(max_length=255, blank=True)
