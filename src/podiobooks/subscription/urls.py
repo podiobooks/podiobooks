@@ -1,8 +1,8 @@
 """URLs for the Podiobooks Subscription module"""
 
-from django.conf.urls.defaults import * #@UnusedWildImport
-
 # pylint: disable=E0602,F0401
+
+from django.conf.urls.defaults import * #@UnusedWildImport # pylint: disable=W0401,W0614
 
 urlpatterns = patterns('podiobooks.subscription.views',
     url(r'^$', 'index', {}, name='subscription'),
