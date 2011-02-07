@@ -4,7 +4,7 @@
 <ul>
 	{% for tweet in tweets %}
 	<li style="margin: 5px 0 0 0">
-		{{ tweet.text|safe|replace_bad_words }}
+		<strong>{{tweet.user.screen_name}}:</strong> {{ tweet.text|safe|replace_bad_words }}
 	</li>
 	{% endfor %}
 </ul>
