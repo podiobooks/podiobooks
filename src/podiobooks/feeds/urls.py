@@ -1,6 +1,9 @@
 """URLs for the RSS Feeds module"""
 
-from django.conf.urls.defaults import patterns
+# pylint: disable=W0401,W0614,C0103
+
+from django.conf.urls.defaults import * #@UnusedWildImport
+
 from podiobooks.feeds.feeds import TitleFeed, EpisodeFeed, CustomTitleSubscriptionFeed
 
 # pylint: disable=E0602,F0401
