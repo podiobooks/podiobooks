@@ -1,5 +1,31 @@
 [
      {
+          "pk": 5, 
+          "model": "main.license", 
+          "fields": {
+               "code": "", 
+               "url": "", 
+               "text": "", 
+               "date_updated": "2011-02-05 09:33:24", 
+               "image_url": "", 
+               "date_created": "2011-02-05 09:33:24", 
+               "slug": "all"
+          }
+     }, 
+     {
+          "pk": 7, 
+          "model": "main.license", 
+          "fields": {
+               "code": "", 
+               "url": "", 
+               "text": "", 
+               "date_updated": "2011-02-06 16:28:57", 
+               "image_url": "", 
+               "date_created": "2011-02-06 16:28:57", 
+               "slug": "by-nc-nc"
+          }
+     }, 
+     {
           "pk": 1, 
           "model": "main.license", 
           "fields": {
@@ -36,6 +62,19 @@
                "image_url": "http://i.creativecommons.org/l/by-nd/3.0/us/88x31.png", 
                "date_created": "2009-12-09 21:53:00", 
                "slug": "by-nd"
+          }
+     }, 
+     {
+          "pk": 6, 
+          "model": "main.license", 
+          "fields": {
+               "code": "", 
+               "url": "", 
+               "text": "", 
+               "date_updated": "2011-02-06 16:28:57", 
+               "image_url": "", 
+               "date_created": "2011-02-06 16:28:57", 
+               "slug": "by-nd-nd"
           }
      }, 
      {
@@ -218,6 +257,45 @@
                "date_updated": "2010-01-23 16:57:04", 
                "date_created": "2010-01-23 16:57:04", 
                "slug": "stephen-leacock-memorial-medal-for-humor-2008"
+          }
+     }, 
+     {
+          "pk": 15, 
+          "model": "main.award", 
+          "fields": {
+               "name": "eppie-awards-2004-winner", 
+               "url": "unknown", 
+               "image": "unknown", 
+               "deleted": false, 
+               "date_updated": "2011-02-05 09:33:24", 
+               "date_created": "2011-02-05 09:33:24", 
+               "slug": "eppie-awards-2004-winner"
+          }
+     }, 
+     {
+          "pk": 14, 
+          "model": "main.award", 
+          "fields": {
+               "name": "eppie-awards-2007-winner", 
+               "url": "unknown", 
+               "image": "unknown", 
+               "deleted": false, 
+               "date_updated": "2011-02-05 09:33:24", 
+               "date_created": "2011-02-05 09:33:24", 
+               "slug": "eppie-awards-2007-winner"
+          }
+     }, 
+     {
+          "pk": 16, 
+          "model": "main.award", 
+          "fields": {
+               "name": "parsec-awards-2008-nominee", 
+               "url": "unknown", 
+               "image": "unknown", 
+               "deleted": false, 
+               "date_updated": "2011-02-05 09:33:24", 
+               "date_created": "2011-02-05 09:33:24", 
+               "slug": "parsec-awards-2008-nominee"
           }
      }, 
      {
