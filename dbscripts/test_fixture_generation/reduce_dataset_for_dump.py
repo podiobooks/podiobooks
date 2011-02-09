@@ -14,7 +14,7 @@ from django.contrib.comments.models import Comment
 
 def reduceData():
     """Function to delete data from the database to get down to a reduced subset"""
-    titles_to_delete = Title.objects.exclude(Q(slug='shadowmagic')|Q(slug='earthcore')|Q(slug='double-share')|Q(slug='the-plump-buffet'))
+    titles_to_delete = Title.objects.exclude(Q(slug='shadowmagic')|Q(slug='earthcore')|Q(slug='trader-tales-4-double-share')|Q(slug='the-plump-buffet'))
     print titles_to_delete
     titles_to_delete.delete()
     
