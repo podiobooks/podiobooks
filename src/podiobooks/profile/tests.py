@@ -7,7 +7,7 @@ from django.test.client import Client
 from django.contrib.auth.models import User
 
 class UrlTestCase(TestCase):
-    fixtures = ['main_data.json', ]
+    fixtures = ['test_data.json', ]
     
     def setUp(self):
         self.c = Client()

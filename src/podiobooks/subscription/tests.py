@@ -10,7 +10,7 @@ from podiobooks.subscription.models import TitleSubscription
 from datetime import datetime, timedelta
 
 class SubscriptionTestCase(TestCase):
-    fixtures = ['main_data.json', ]
+    fixtures = ['test_data.json', ]
     
     def setUp(self):
         self.c = Client()

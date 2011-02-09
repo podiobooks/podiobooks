@@ -9,7 +9,7 @@ from django.core.urlresolvers import reverse
 
 class FormsTestCase(TestCase):
     """Test the Podiobooks Models from a Title-Centric POV"""
-    fixtures = ['main_data.json',]
+    fixtures = ['test_data.json',]
         
     def testCategoryForm(self):
         category_choice_form = CategoryChoiceForm(initial={'category': 'science-fiction'})
