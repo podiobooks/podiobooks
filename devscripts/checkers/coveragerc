@@ -23,5 +23,6 @@ exclude_lines =
 omit =
 	*/settings*
 	*/tests*
+	*/manage.py
 
 ignore_errors = True
