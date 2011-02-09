@@ -29,6 +29,12 @@
 {% endif %}
 {% endif %}
 
+{% if title_subscription_updated %}
+{% if title_not_subscribed %}<h3>Hi, looks like you weren't actively subscribed to "{{ title_subscription_updated.name }}".</h3>
+{% else %}<h3>Your subscription to "{{ title_subscription_updated.name }}" has been updated.</h3>
+{% endif %}
+{% endif %}
+
 {% if title_subscription_one_released %}
 <h3>You've released one more episode of "{{ title_subscription_one_released.title.name }}" into your custom feed.</h3>
 {% endif %}
