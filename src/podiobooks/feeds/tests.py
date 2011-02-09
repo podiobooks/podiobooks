@@ -19,7 +19,7 @@ class FeedUrlTestCase(TestCase):
         self.user2 = User.objects.create_user('testuser2', 'testuser2@test.com', 'testuser2password')
         self.user3 = User.objects.create_user('testuser3', 'testuser3@test.com', 'testuser3password')
         
-        self.title1 = Title.objects.get(slug='trader-tales-4-double-share-share')
+        self.title1 = Title.objects.get(slug='trader-tales-4-double-share')
         self.title2 = Title.objects.get(slug='the-plump-buffet')
         
         self.basic_subscription = TitleSubscription.objects.create (
@@ -53,7 +53,7 @@ class FeedUrlTestCase(TestCase):
                 )
     
     def testEpisodeFeed(self):
-        response = self.c.get('/rss/feeds/episodes/trader-tales-4-double-share-share/')
+        response = self.c.get('/rss/feeds/episodes/trader-tales-4-double-share/')
         self.assertContains(response, 'PB-DoubleShare-01.mp3')
         self.assertContains(response, 'PB-DoubleShare-25.mp3')
         
@@ -74,23 +74,23 @@ class FeedUrlTestCase(TestCase):
         self.assertNotContains(response, 'PB-DoubleShare-25.mp3')
         
     def testReleaseOneEpisodeRedirect(self):
-        response = self.c.get('/subscription/release/one/episode/title/trader-tales-4-double-share-share/')
-        self.assertRedirects(response, 'http://testserver/account/signin/?next=/subscription/release/one/episode/title/trader-tales-4-double-share-share/')
+        response = self.c.get('/subscription/release/one/episode/title/trader-tales-4-double-share/')
+        self.assertRedirects(response, 'http://testserver/account/signin/?next=/subscription/release/one/episode/title/trader-tales-4-double-share/')
         
     def testReleaseOneEpisode(self):    
         self.c.login(username='testuser1', password='testuser1password')
-        response = self.c.get('/subscription/release/one/episode/title/trader-tales-4-double-share-share/')
+        response = self.c.get('/subscription/release/one/episode/title/trader-tales-4-double-share/')
         self.assertEquals(200, response.status_code)
-        response = self.c.get('/rss/feeds/episodes/trader-tales-4-double-share-share/testuser1/')
+        response = self.c.get('/rss/feeds/episodes/trader-tales-4-double-share/testuser1/')
         self.assertContains(response, 'PB-DoubleShare-01.mp3')
         self.assertContains(response, 'PB-DoubleShare-02.mp3')
         self.assertNotContains(response, 'PB-DoubleShare-25.mp3')
         
     def testReleaseAllEpisodes(self):    
         self.c.login(username='testuser1', password='testuser1password')
-        response = self.c.get('/subscription/release/all/episodes/title/trader-tales-4-double-share-share/')
+        response = self.c.get('/subscription/release/all/episodes/title/trader-tales-4-double-share/')
         self.assertEquals(200, response.status_code)
-        response = self.c.get('/rss/feeds/episodes/trader-tales-4-double-share-share/testuser1/')
+        response = self.c.get('/rss/feeds/episodes/trader-tales-4-double-share/testuser1/')
         self.assertContains(response, 'PB-DoubleShare-01.mp3')
         self.assertContains(response, 'PB-DoubleShare-02.mp3')
         self.assertContains(response, 'PB-DoubleShare-25.mp3')
@@ -112,6 +112,6 @@ class FeedUrlTestCase(TestCase):
         self.assertNotContains(response, 'PB-PlumpBuffet-09.mp3')
         
     def testCustomFeedNotSubscribed(self):
-        response = self.c.get('/rss/feeds/episodes/trader-tales-4-double-share-share/testuser2/')
+        response = self.c.get('/rss/feeds/episodes/trader-tales-4-double-share/testuser2/')
         self.assertEquals(404, response.status_code)
     
