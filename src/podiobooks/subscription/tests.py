@@ -51,6 +51,16 @@ class SubscriptionTestCase(TestCase):
                 day_interval = 30,
                 date_created = datetime.now() - timedelta(500)
                 )
+    
+    def testSubscriptionStringRep(self):
+        self.assertEqual(str(self.exact_day_interval_subscription), 'testuser1 is subscribed to The Plump Buffet every 5 days')
+    
+    def testSubscriptionHomePage(self):
+        response = self.c.get('/subscription/', follow=True)
+        self.assertContains(response, 'Sign In')
+        self.c.login(username='testuser2', password='testuser2password')
+        response = self.c.get('/subscription/', follow=True)
+        self.assertContains(response, 'Plump')
         
     def testReleaseOneEpisodeRedirect(self):
         response = self.c.get('/subscription/release/one/episode/title/double-share/')
