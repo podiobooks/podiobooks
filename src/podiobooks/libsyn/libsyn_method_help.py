@@ -2,7 +2,7 @@
 
 import xmlrpclib
 
-def main(): # pragma: no cover
+def main():
     """MAIN FUNCTION TO RUN IF THIS SCRIPT IS CALLED ALONE"""
     
     SERVER_URL = 'http://api.libsyn.com/xmlrpc'
