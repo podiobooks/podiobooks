@@ -4,7 +4,6 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from podiobooks.main.models import Episode, Title
 from podiobooks.subscription.models import TitleSubscription
-from django.contrib.auth.views import redirect_to_login
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.decorators import login_required
 from django.db.models import Max
