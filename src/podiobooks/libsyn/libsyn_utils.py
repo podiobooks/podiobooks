@@ -18,7 +18,7 @@ def get_show_info(libsyn_slug):
     
     try:
         show_info = make_api_call(user, 'producer.publishing.getShowInfo', params)
-    except xmlrpclib.Error:
+    except xmlrpclib.Error:  # pragma: no cover
         show_info = ""
         print "LIBSYN API CALL ERROR!"
     
@@ -39,7 +39,7 @@ def make_api_call(user, method, params):
 
     try:
         return eval(method)(api_params)
-    except xmlrpclib.Fault, f:
+    except xmlrpclib.Fault, f:   # pragma: no cover
         print server
         raise f
 
@@ -56,7 +56,7 @@ def _sign_params(user, params):
     keys = params.keys()
     keys.sort()
     for key in keys:
-        if(_is_scalar(params[key])):
+        if(_is_scalar(params[key])):  # pragma: no cover
             temp_str = "%s%s" % (key, params[key])
             hash_str += temp_str
 
