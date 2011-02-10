@@ -24,7 +24,6 @@ class ProfileTestCase(TestCase):
         self.c.login(username='testuser1', password='testuser1password')
         response = self.c.get('/profile/')
         self.assertContains(response, 'testuser1@test.com')
-        self.c.logout()
     
     def testUserProfileObj(self):
         self.assertEqual(self.user1.get_profile().slug, 'testuser1')
