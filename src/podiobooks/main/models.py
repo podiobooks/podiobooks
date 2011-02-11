@@ -283,7 +283,7 @@ class Title(models.Model):
     category_list = models.CharField(max_length=1024) # This is a formatted cache of the title contributors
     partner = models.ForeignKey('partner', null=True, related_name='partners')
     awards = models.ManyToManyField('Award', null=True)
-    libsyn_show_id = models.CharField(max_length=50, db_index=True)
+    libsyn_show_id = models.CharField(max_length=50, db_index=True, blank=True)
     podiobooker_blog_url = models.URLField(max_length=255, blank=True, verify_exists=True)
     enable_comments = models.BooleanField(default=True)
     # Note: episodes are available as episodes.all()
