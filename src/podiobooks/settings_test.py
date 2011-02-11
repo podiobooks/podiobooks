@@ -14,7 +14,7 @@ import tempfile
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': tempfile.gettempdir() + '/podiobooks_test.sqlite',
+#        'NAME': # DO NOT SPECIFY A NAME SO THAT TEST RUNNER WILL USE IN-MEMORY DB
         'SUPPORTS_TRANSACTIONS': 'false',
     }
 }
