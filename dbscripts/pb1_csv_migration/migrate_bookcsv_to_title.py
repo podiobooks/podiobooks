@@ -110,6 +110,20 @@ def getOrCreateSeries(seriesSlug):
               defaults={ 'slug': seriesSlug, 'name': seriesSlug, })
     return series
 
+def getLibsynIDCache():
+    libsynIDCache = {}
+    
+    #Open Cache File for Import
+    cacheCSVFile = open(settings.DATALOAD_DIR + "podiobooks_libsyn_id_cache.csv")
+    
+    #Parse the Cache File CSV into a dictionary based on the first row values
+    cacheCSVReader = csv.DictReader(cacheCSVFile, dialect='excel')
+    
+    for title in cacheCSVReader:
+        libsynIDCache[ title['ID'] ] = title['LibsynShowId']
+        
+    return libsynIDCache
+
 def importBooksFromCSV():
     """Reads in the CSV and using the Django model objects to populate the DB"""
     
@@ -128,7 +142,9 @@ def importBooksFromCSV():
  
 def createTitlesFromRows(titleList):
     """Takes a list of title rows from a database query or a CSV file read and creates Title objects"""
-       
+    
+    libsynIDCache = getLibsynIDCache()  #Load the Libsyn ID Cache from its CSV
+    
     # Loop through the rest of the rows in the CSV
     for row in titleList:
         #print row
@@ -153,6 +169,7 @@ def createTitlesFromRows(titleList):
                 avg_overall=row['AvgOverall'],
                 deleted=False,
                 podiobooker_blog_url=row['DiscussURL'],
+                libsyn_show_id=libsynIDCache.get(row['ID'],""),
                 date_created=row['DateCreated']
             )
             
