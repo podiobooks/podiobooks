@@ -75,6 +75,10 @@ CSS_EXT = "css/"
 JS_DIR = os.path.join(MEDIA_ROOT,"themes",TEMPLATE_THEMES[0],JS_EXT)
 CSS_DIR = os.path.join(MEDIA_ROOT,"themes",TEMPLATE_THEMES[0],CSS_EXT)
 
+# Some CSS ordering settings
+CSS_FIRST = ["clear.css","reset.css","style.css","styles.css"]
+CSS_LAST = ["mobile.css"]
+
 # Local DB settings. (Postgres)
 DATABASES = {
     'default': {
