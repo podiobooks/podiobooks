@@ -65,6 +65,20 @@ for theme in reversed(TEMPLATE_THEMES):
 MAIN_TEMPLATE_THEME = TEMPLATE_THEMES[0]
 THEME_MEDIA_URL = MEDIA_URL + 'themes/' + MAIN_TEMPLATE_THEME + '/'  
 
+# The folder that each of these things goes in
+# will be appended to MEDIA_ROOT and MEDIA_URL, plus theme info
+# used in contrib.minify.dirs
+JS_EXT = "js/"
+CSS_EXT = "css/"
+
+# Final directory variables needed in contrib.minigy.context_processors
+JS_DIR = os.path.join(MEDIA_ROOT,"themes",TEMPLATE_THEMES[0],JS_EXT)
+CSS_DIR = os.path.join(MEDIA_ROOT,"themes",TEMPLATE_THEMES[0],CSS_EXT)
+
+# Some CSS ordering settings
+CSS_FIRST = ["clear.css","reset.css","style.css","styles.css"]
+CSS_LAST = ["mobile.css"]
+
 # Local DB settings. (Postgres)
 DATABASES = {
     'default': {
