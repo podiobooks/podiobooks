@@ -21,4 +21,7 @@ importChaptersFromCSV()
 # IMPORT RATINGS
 from pb1_csv_migration.migrate_bookratingcsv_to_title import *
 importRatingsFromCSV()
- 
+
+# UPDATE LIBSYN SHOW ID CACHE
+from pb1_csv_migration.extract_libsyn_show_id_cache import *
+extractLibsynShowIdCache()
