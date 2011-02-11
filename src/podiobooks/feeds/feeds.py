@@ -112,7 +112,7 @@ class EpisodeFeed(Feed):
     def item_duration(self, obj):
         if (obj.length == 0):
             return '00:45:00'
-        else:
+        else:  # pragma no cover
             return str(obj.length)
     
     def item_keywords(self, obj):
@@ -168,7 +168,7 @@ class CustomTitleSubscriptionFeed(EpisodeFeed):
             try:
                 next_episode = Episode.objects.get(title__id__exact=obj.id, sequence=self.subscription.last_downloaded_episode.sequence + 1)
                 self.subscription.last_downloaded_episode = next_episode
-            except ObjectDoesNotExist:
+            except ObjectDoesNotExist: # pragma no cover
                 pass # likely because we're at the end of the book
                 
             self.subscription.last_downloaded_date = datetime.now()
