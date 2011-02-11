@@ -72,8 +72,8 @@ JS_EXT = "js/"
 CSS_EXT = "css/"
 
 # Final directory variables needed in contrib.minigy.context_processors
-JS_DIR = os.path.join(MEDIA_ROOT,"themes",TEMPLATE_THEMES[0],JS_EXT)
-CSS_DIR = os.path.join(MEDIA_ROOT,"themes",TEMPLATE_THEMES[0],CSS_EXT)
+JS_DIR = os.path.join(MEDIA_ROOT, "themes", TEMPLATE_THEMES[0], JS_EXT)
+CSS_DIR = os.path.join(MEDIA_ROOT, "themes", TEMPLATE_THEMES[0], CSS_EXT)
 
 # Some CSS ordering settings
 CSS_FIRST = ["clear.css","reset.css","style.css","styles.css"]
