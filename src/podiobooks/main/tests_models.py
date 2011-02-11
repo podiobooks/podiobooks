@@ -24,28 +24,21 @@ class TitleTestCase(TestCase):
         
         self.user1.first_name = "test1"
         self.user1.last_name = "user1"
+        user1Profile = self.user1.get_profile()
+        user1Profile.slug = slugify(self.user1.get_full_name())
+        user1Profile.save()
         
         self.user2.first_name = "test2"
         self.user2.last_name = "user2"
+        user2Profile = self.user2.get_profile()
+        user2Profile.slug = slugify(self.user2.get_full_name())
+        user2Profile.save()
         
         self.user3.first_name = "test3"
         self.user3.last_name = "user3"
-        
-        # Create some UserProfiles for those test users
-        self.user1profile = UserProfile.objects.create (
-            user=self.user1,
-            slug=slugify(self.user1.get_full_name())
-            )
-        
-        self.user2profile = UserProfile.objects.create (
-            user=self.user2,
-            slug=slugify(self.user2.get_full_name())
-            )
-        
-        self.user3profile = UserProfile.objects.create (
-            user=self.user3,
-            slug=slugify(self.user3.get_full_name())
-            )
+        user3Profile = self.user3.get_profile()
+        user3Profile.slug = slugify(self.user3.get_full_name())
+        user3Profile.save()
         
         # Create Some Series
         self.series1 = Series.objects.create (

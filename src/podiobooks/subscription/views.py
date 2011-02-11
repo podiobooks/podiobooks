@@ -4,7 +4,6 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from podiobooks.main.models import Episode, Title
 from podiobooks.subscription.models import TitleSubscription
-from django.contrib.auth.views import redirect_to_login
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.decorators import login_required
 from django.db.models import Max
@@ -23,16 +22,13 @@ def index(request):
     
     return render_to_response('subscription/subscription.html', response_data, context_instance=RequestContext(request))
 
+@login_required
 def title_subscribe(request, slug):
     """
         Subscribe to a given title
     """
     # First try and look up the title that was specified.  If no slug, or if it doesn't exist, throw a 404
     title = get_object_or_404(Title, slug=slug)
-    
-    # Now, make sure they are authenticated
-    if not request.user.is_authenticated():
-        return redirect_to_login(request.path)
     
     first_episode = title.episodes.all()[0]
     title_subscription, created = TitleSubscription.objects.get_or_create (
@@ -53,17 +49,14 @@ def title_subscribe(request, slug):
         
     response_data = {'title_subscription_added': title_subscription, 'title_already_subscribed': title_already_subscribed, 'title_resubscribed': title_resubscribed}
     return render_to_response('subscription/subscription.html', response_data, context_instance=RequestContext(request))
-    
+
+@login_required    
 def title_unsubscribe(request, slug):
     """
         Unsubscribe from a given title
     """
     # First try and look up the title that was specified.  If no slug, or if it doesn't exist, throw a 404
     title = get_object_or_404(Title, slug=slug)
-    
-    # Now, make sure they are authenticated
-    if not request.user.is_authenticated():
-        return redirect_to_login(request.path)
     
     try:
         title_subscription = TitleSubscription.objects.get (
@@ -80,16 +73,13 @@ def title_unsubscribe(request, slug):
     response_data = {'title_subscription_removed': title, 'title_not_subscribed': not_subscribed, }
     return render_to_response('subscription/subscription.html', response_data, context_instance=RequestContext(request))
 
+@login_required
 def title_update_subscription_interval(request, slug, new_interval): # pylint: disable=C0103
     """
         Update the day interval for a given title subscription
     """
     # First try and look up the title that was specified.  If no slug, or if it doesn't exist, throw a 404
     title = get_object_or_404(Title, slug=slug)
-    
-    # Now, make sure they are authenticated
-    if not request.user.is_authenticated():
-        return redirect_to_login(request.path)
     
     try:
         title_subscription = TitleSubscription.objects.get (
@@ -156,18 +146,15 @@ def title_release_all_episodes(request, title_slug):
         error_msg = 'notsubscribed'
     
     if subscription:
-        try:
-            max_sequence_results = Episode.objects.filter(title__id__exact=title.id).aggregate(max_sequence=Max('sequence'))
-            max_sequence = max_sequence_results['max_sequence']
-            last_episode = Episode.objects.get(title__id__exact=title.id, sequence=max_sequence)
-            if subscription.last_downloaded_episode == last_episode:
-                error_msg = "nomoreepisodes"
-            else:
-                subscription.last_downloaded_episode = last_episode
-                subscription.save()
-                error_msg = None
-        except ObjectDoesNotExist:
-            error_msg = 'nomoreepisodes' # likely because we're at the end of the book
+        max_sequence_results = Episode.objects.filter(title=title).aggregate(max_sequence=Max('sequence'))
+        max_sequence = max_sequence_results['max_sequence']
+        last_episode = Episode.objects.get(title=title, sequence=max_sequence)
+        if subscription.last_downloaded_episode == last_episode:
+            error_msg = "nomoreepisodes"
+        else:
+            subscription.last_downloaded_episode = last_episode
+            subscription.save()
+            error_msg = None
                 
     response_data = {
         'title_released' : title,

@@ -1,8 +1,8 @@
 """
-This script runs the update_category_list function on all the titles
+This script runs the update_category_list function on all the titles to regenerate the on-model cached string of categories
 
 ##############################################
-#######-----Title Caetgory List Updater-------#######
+####----Title Category List Updater------#####
 ##############################################
 """
 
