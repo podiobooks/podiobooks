@@ -45,7 +45,7 @@ urlpatterns = patterns('',
     (r'^rss/', include('podiobooks.feeds.urls')),
 
     # Social Media Views
-    (r'^social/', include('podiobooks.social.urls')),
+    #(r'^social/', include('podiobooks.social.urls')),
     
     # Subscriptions
     (r'^subscription/', include('podiobooks.subscription.urls')),
