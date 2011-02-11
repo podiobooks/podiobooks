@@ -6,7 +6,7 @@ from django.test import TestCase
 from django.test.client import Client
 
 class UrlTestCase(TestCase):
-    fixtures = ['main_data.json', ]
+    fixtures = ['test_data.json', ]
     
     def setUp(self):
         self.c = Client()
@@ -43,7 +43,7 @@ class UrlTestCase(TestCase):
         self.assertEquals(200, response.status_code)
         
     def testTitleDetail(self):
-        response = self.c.get('/title/double-share/')
+        response = self.c.get('/title/trader-tales-4-double-share/')
         self.assertEquals(200, response.status_code)
         
     def testCategoryList(self):
