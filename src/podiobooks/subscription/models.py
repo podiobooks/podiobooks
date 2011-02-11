@@ -29,4 +29,4 @@ class TitleSubscription(models.Model):
         unique_together = ('title', 'user')
     
     def __unicode__(self):
-        return "%s is subscribed to %s every %d days" % (self.user.name, self.title.name, self.day_interval)
+        return "%s is subscribed to %s every %d days" % (self.user.username, self.title.name, self.day_interval)

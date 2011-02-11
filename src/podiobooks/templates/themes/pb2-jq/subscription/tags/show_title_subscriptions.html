@@ -6,6 +6,8 @@
     </li>
     {% endfor %}
 </ul>
+{% else %}
+<p>You have no active subscriptions.</p>
 {% endif %}
 {% if inactive_subscriptions %}<h3>Inactive Subscriptions</h3>
 <ul class="pb-subscription-list">
@@ -15,4 +17,6 @@
     </li>
     {% endfor %}
 </ul>
+{% else %}
+<p>You have no inactive subscriptions.</p>
 {% endif %}

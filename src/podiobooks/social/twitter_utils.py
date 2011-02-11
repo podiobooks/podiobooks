@@ -1,29 +1,29 @@
 """Utility Functions For Calling the Twitter API"""
 
-from twitter import Twitter  # pylint: disable=E0611,F0401
-import pprint
+import twitter
 
 def search(keywords):
     """Search the twitter timeline for keywords"""
-    twitter_search = Twitter(domain="search.twitter.com")
-    
-    response = twitter_search.search(q=keywords)
+    twitter_api = twitter.Api()
+    response = twitter_api.GetSearch(term=keywords)
     
     if response:
-        return response['results']
+        return response
     else:
         return None  # pragma: no cover
 
 def main(): # pragma: no cover
     """MAIN FUNCTION TO RUN IF THIS SCRIPT IS CALLED ALONE"""
     
-    result = search("Shadowmagic")
+    statuses = search("Shadowmagic")
     
-    # pretty print the result
-    pprinter = pprint.PrettyPrinter(indent=4)
-    pprinter.pprint(result)
+    if statuses:
+        for status in statuses:
+            print status.user.screen_name + ':',
+            print status.text
+            print '---------'
     
-    return result
+    return statuses
     
 if __name__ == "__main__":
     main()  # pragma: no cover
