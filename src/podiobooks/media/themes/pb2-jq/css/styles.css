@@ -3,6 +3,7 @@
  */
 body{
 	background:#fff url(img/bg.jpg) left top repeat-x;
+	font-family: "ff-dax-wide-web-pro-1", "ff-dax-wide-web-pro-2", "Verdana", "Arial", sans-serif;
 }
 a{
 	color:#0054A6;
@@ -40,7 +41,7 @@ a:hover{
 }
 .pg-head h2{
 	display:inline;
-	margin: 0 8px 0 80px;
+	margin: 0 8px 0 60px;
 	color:#464646;
 	font-weight:normal;
 }
