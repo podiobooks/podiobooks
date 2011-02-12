@@ -20,14 +20,10 @@
 		</ul>
 		<h2>Browse</h2>
 		<ul class='browse-by'>
-			<li><a href='#'>Author</a></li>
-			<li><a href='#'>Category</a></li>
+			<li><a href='{% url contributor_list %}'>Author</a></li>
+			<li><a href='{% url category_list %}'>Category</a></li>
 		</ul>
 		
-		<form class='search'>
-			<h2>Search</h2>
-			<input type='text' class='search-text'/>
-			<input type='submit' class='search-submit' value='Search'/>
-		</form>
+		{% show_searchbox %}
 	</div>
 <!-- End Header - Logo and Navigation Bar -->
