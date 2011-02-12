@@ -18,11 +18,8 @@
 			{% endif %}
 			</li>
 		</ul>
-		<h2>Browse</h2>
-		<ul class='browse-by'>
-			<li><a href='{% url contributor_list %}'>Author</a></li>
-			<li><a href='{% url category_list %}'>Category</a></li>
-		</ul>
+		
+		{% show_browsebox %}
 		
 		{% show_searchbox %}
 	</div>
