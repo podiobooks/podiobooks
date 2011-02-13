@@ -55,6 +55,19 @@ a:hover{
 	text-decoration:underline;
 }
 
+.pg-head .search #id_keywords {
+	margin: -3px 0 0 -7px;
+}
+
+.pg-head .search button {
+	margin: -3px 0 0 0;
+	border: 1px solid #448ccb;
+	background-color: #06539e;
+	padding: 3px;
+	color: white;
+	font-size: 13px;
+}
+
 .nav{
 	list-style:none;
 	display:inline;
@@ -73,7 +86,7 @@ a:hover{
 	display:inline;
 }
 .search h2{
-	margin-left:40px;
+	margin-left:30px;
 }
 
 .pg-foot{
