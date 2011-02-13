@@ -12,13 +12,12 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.auth',
     'django.core.context_processors.media',
     'podiobooks.main.context_processors.theme_media',
+    'podiobooks.main.context_processors.js_api_keys',
     'django.core.context_processors.request',
     'django_authopenid.context_processors.authopenid',
     'contrib.site_info_context_processor.site',
     'contrib.media_handlers.context_processors.mini_css',
     'contrib.media_handlers.context_processors.mini_js'
-#    'podiobooks.context_processors.mini_css',
-#    'podiobooks.context_processors.mini_js',
 )
 
 MIDDLEWARE_CLASSES = (
