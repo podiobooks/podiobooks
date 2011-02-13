@@ -1,16 +1,16 @@
 {% load global_templatetags %}
 {% if title %}
-<div class="pb-title-cover">
-    <div class="pb-title-cover-image-wrapper loading" style="height:212px; width:144px">
-        <a href="{{ title.get_absolute_url }}">{% if title.libsyn_show_id %}<img class="pb-title-cover-image" src="http://images.libsyn.com/show/{{ title.libsyn_show_id }}/height/212/width/144" width="144" height="212" alt="Podiobook Cover for {{ title.name }}"/>{% else %}<img class="pb-title-cover-image" src="http://podiobooks.com/images/covers/{{ title.cover }}" alt="Podiobook Cover for '{{ title.name }}'" width="144" height="212"/>{% endif %}</a>
+<div>
+    <div class="loading" style="height:212px; width:144px">
+        <a href="{{ title.get_absolute_url }}">{% if title.libsyn_show_id %}<img id="cover-image" src="http://images.libsyn.com/show/{{ title.libsyn_show_id }}/height/212/width/144" alt="Podiobook Cover for {{ title.name }}" style="height:212px; width:144px; border: none;"/>{% else %}<img class="cover-image" src="http://podiobooks.com/images/covers/{{ title.cover }}" alt="Podiobook Cover for '{{ title.name }}'" style="height:212px; width:144px; border: none;"/>{% endif %}</a>
     </div>
-    <div class="pb-title-complete-notice">
-        This podiobook is <span class="pb-title-complete-notice-indicator">{% if title.is_complete %}complete{% else %}still releasing{% endif %}</span>
+    <div style="font-size:10px;">
+        This podiobook is <span style="color:green; font-weight:bold;">{% if title.is_complete %}complete{% else %}still releasing{% endif %}</span>
     </div>
 </div>
 <script type="text/javascript">
-    $('.pb-title-cover-image').hide();
-    $('.pb-title-cover-image').load(function(){
+    $('#cover-image').hide();
+    $('#cover-image').load(function(){
         $(this).fadeIn();
     });
 </script>
