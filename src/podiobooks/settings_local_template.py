@@ -79,6 +79,12 @@ CSS_DIR = os.path.join(MEDIA_ROOT, "themes", TEMPLATE_THEMES[0], CSS_EXT)
 CSS_FIRST = ["clear.css","reset.css","style.css","styles.css"]
 CSS_LAST = ["mobile.css"]
 
+# Google JavaScript API Key
+GOOGLE_JS_API_KEY = "ABQIAAAApKHrTPdMsrKnaI74fSfnhBQ1oE6XAUbmObyC_RwYQIb0R2PjHBRZWTF3zf-YwVXFv_qiaAb_sT04aA"
+
+# TypeKit Font Kit ID
+TYPEKIT_KIT_ID = "coc0qsu"
+
 # Local DB settings. (Postgres)
 DATABASES = {
     'default': {
