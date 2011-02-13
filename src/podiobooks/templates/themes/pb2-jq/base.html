@@ -17,6 +17,10 @@
 	
 		<link rel="stylesheet" type="text/css" href="{{ MINI_CSS }}" />
 		<link rel="stylesheet" type=text/css href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/themes/base/jquery-ui.css" >
+		
+		<script type="text/javascript" src="http://use.typekit.com/coc0qsu.js"></script>
+		<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+		
 		<script type="text/javascript" src="{{ MINI_JS }}"></script>
 
 		{% if debug %}
@@ -32,15 +36,6 @@
 		<script src="http://www.google.com/jsapi?key={{ GOOGLE_JS_API_KEY }}" type="text/javascript"></script>
 		<script language="Javascript" type="text/javascript">
 		    //<![CDATA[
-			google.setOnLoadCallback(function() {
-				WebFont.load({
-					typekit: {
-    					id: '{{ TYPEKIT_KIT_ID }}'
-				}
-				});
-			});
-			
-			google.load("webfont", "1");
 		    google.load("jquery", "1.5");
 			google.load("jqueryui", "1.8.9");
 			//]]>
