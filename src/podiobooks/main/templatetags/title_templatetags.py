@@ -28,9 +28,9 @@ def show_titlecover(title):
     return { 'title' : title, 'MEDIA_URL': settings.MEDIA_URL, 'THEME_MEDIA_URL': settings.THEME_MEDIA_URL, }
 
 @register.inclusion_tag('main/title/tags/show_titlelist.html')
-def show_titlelist(title_list):
+def show_titlelist(title_list, page_name):
     """ Formats a list of titles, used on search, category, author list pages """
-    return { 'title_list' : title_list, 'MEDIA_URL': settings.MEDIA_URL, 'THEME_MEDIA_URL': settings.THEME_MEDIA_URL, }
+    return { 'title_list' : title_list, 'page_name': page_name, 'MEDIA_URL': settings.MEDIA_URL, 'THEME_MEDIA_URL': settings.THEME_MEDIA_URL, }
 
 @register.inclusion_tag('main/title/tags/show_episodelist.html')
 def show_episodelist(title):
