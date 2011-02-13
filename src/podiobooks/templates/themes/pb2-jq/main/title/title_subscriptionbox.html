@@ -1,15 +1,15 @@
 {% load title_templatetags %}
-{% load subscription_templatetags %}<!-- Begin SubscriptionBox -->
-<div class="pb-infobox" id="subscriptionBox">
-    <div class="pb-infobox-left">
+{% load subscription_templatetags %}
+<div id="subscriptionBox" style="float: right; position: relative; margin: 0 5px 0 0;">
+    <div style="float: left; height: 463px; width: 13px; background: url(../images/pb-infobox-light-ends.png) bottom left no-repeat;">
     </div>
-    <div class="pb-infobox-middle" style="width: 200px;">
-        <div class="pb-infobox-headphones" style="margin: 0 0 0 20px;">
+    <div style="float: left; height: 463px; width: 190px; font-size: 12px; background: url(../images/pb-infobox-light-middle.png) repeat-x;">
+        <div style="background: url(../images/pb-headphones.png) no-repeat; height: 63px; width: 165px; text-align: center; font-size: 14px; font-weight: bold; margin: 0 0 0 13px; padding: 18px 0 0 0;">
             Get This
             <br>
             Book Now!
         </div>
-        <div class="pb-float-clear">
+        <div class="clearfix">
         </div>
         <div id="accordion" style="opacity: 0;">
             <h2><a href="#rss">Subscribe for Free!</a></h2>
@@ -33,7 +33,7 @@
         <br>
         {% show_donation_button title %}
     </div>
-    <div class="pb-infobox-right">
+    <div style="float: left; height: 463px; width: 13px; background: url(../images/pb-infobox-light-ends.png) bottom right no-repeat;">
     </div>
 </div>
 <script type="text/javascript">
@@ -42,4 +42,3 @@
         $('#accordion').css('opacity', 1);
     });
 </script>
-<!-- End SubscriptionBox -->
