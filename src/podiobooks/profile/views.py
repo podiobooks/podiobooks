@@ -3,15 +3,38 @@
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import redirect, get_object_or_404
+from django.contrib.auth.models import User
+from podiobooks.profile.models import UserProfile
 
-@login_required
-def profile(request):
+def profile_redirect(request):
+    return redirect('/contributor/')
+
+def profile(request, slug):
     """
-    Profile View/Manage Page
+    Profile View Page
 
     url: /profile/
     
     template : profile/profile.html
+    """
+    
+    profile = get_object_or_404(UserProfile, slug=slug)
+    
+    response_data = {
+                     'profile':profile
+    }
+    
+    return render_to_response('profile/profile.html', response_data, context_instance=RequestContext(request))
+    
+@login_required
+def profile_manage(request):
+    """
+    Profile Manage Page
+
+    url: /profile/manage/
+    
+    template : profile/profile_manage.html
     """
     
     all_subscriptions = request.user.title_subscriptions.all()
@@ -26,4 +49,4 @@ def profile(request):
         'completed_subscriptions' : completed_subscriptions
          }
     
-    return render_to_response('profile/profile.html', response_data, context_instance=RequestContext(request))
+    return render_to_response('profile/profile_manage.html', response_data, context_instance=RequestContext(request))
