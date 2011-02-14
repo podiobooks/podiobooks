@@ -13,14 +13,17 @@ class UserProfile(models.Model):
     user = models.ForeignKey(User, related_name='userprofile') #User is an OOTB Django Auth Model
     slug = models.SlugField()
     url = models.URLField(blank=True, verify_exists=True)
-    twitter_username = models.CharField(max_length=50)
-    disqus_username = models.CharField(max_length=50)
-    image = models.ImageField(upload_to=settings.MEDIA_CONTRIBUTORS, max_length=255)
+    twitter_username = models.CharField(max_length=50, blank=True)
+    disqus_username = models.CharField(max_length=50, blank=True)
+    image = models.ImageField(upload_to=settings.MEDIA_CONTRIBUTORS, max_length=255, blank=True)
     short_profile = models.CharField(max_length=255)
-    long_profile = models.TextField()
+    long_profile = models.TextField(blank=True)
     deleted = models.BooleanField(default=False)
     date_created = models.DateTimeField(default=datetime.datetime.now())
     date_updated = models.DateTimeField(default=datetime.datetime.now())
+    
+    class Meta:
+        verbose_name_plural = "User Profiles"
         
     def __unicode__(self):
         return "UserProfile for %s" % self.user.username
