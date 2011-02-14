@@ -4,19 +4,30 @@ from __future__ import division
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
+from django.conf import settings
 import datetime
-
 
 class UserProfile(models.Model):
     """Information about the user which we need for preferences, social needs,
     etc."""
     user = models.ForeignKey(User, related_name='userprofile') #User is an OOTB Django Auth Model
     slug = models.SlugField()
+    url = models.URLField(blank=True, verify_exists=True)
+    twitter_username = models.CharField(max_length=50)
+    disqus_username = models.CharField(max_length=50)
+    image = models.ImageField(upload_to=settings.MEDIA_CONTRIBUTORS, max_length=255)
+    short_profile = models.CharField(max_length=255)
+    long_profile = models.TextField()
+    deleted = models.BooleanField(default=False)
     date_created = models.DateTimeField(default=datetime.datetime.now())
     date_updated = models.DateTimeField(default=datetime.datetime.now())
         
     def __unicode__(self):
         return "UserProfile for %s" % self.user.username
+
+# This adds a property to the main User module enabling access to the profile as a property rather than a function
+# This came from http://www.codekoala.com/blog/2009/quick-django-tip-user-profiles/    
+User.profile = property(lambda u: UserProfile.objects.get_or_create(user=u)[0])
     
 def create_userprofile_callback(sender, instance, **kwargs):
     """Callback to automatically create a UserProfile whenever a user is created 
