@@ -31,83 +31,55 @@
     }
 </style>
 {% endblock %}
-{% block title %}Podiobooks User Profile{% endblock %}
+{% block title %}Podiobooks Profile{% endblock %}
 {% block content %}
 {% if msg %}
 <p class="error">
     {{ msg }}
 </p>
 {% endif %}
-<h1>{{ user.username }}'s Profile</h1>
-<h3><a href="{% url subscription %}">Manage Your Podiobook Subscriptions</a></h3>
 <dl class="table-display">
     <dt>
-        Username:
+        Name:
     </dt>
     <dd>
-        {{ user.username }}&nbsp;
+        {{ profile.user.get_full_name }}&nbsp;
     </dd>
     <dt>
-        Email:
+        Short Description:
     </dt>
     <dd>
-        {{ user.email }}&nbsp;
+        {{ profile.short_profile }}&nbsp;
     </dd>
     <dt>
-        Full Name:
+        Long Description:
     </dt>
     <dd>
-        {{ user.get_full_name }}&nbsp;
+        {{ profile.long_profile }}&nbsp;
     </dd>
     <dt>
-        First Name:
+        URL:
     </dt>
     <dd>
-        {{ user.first_name }}&nbsp;
+        <a href="{{ profile.url }}">{{ profile.url }}</a>&nbsp;
     </dd>
     <dt>
-        Last Name:
+        Twitter Username:
     </dt>
     <dd>
-        {{ user.last_name }}&nbsp;
-    </dd>
-    <dt>
-        Staff:
-    </dt>
-    <dd>
-        {% if user.is_staff %}Yes{% else %}No{% endif %}&nbsp;
-    </dd>
-    <dt>
-        Superuser:
-    </dt>
-    <dd>
-        {% if user.is_superuser %}Yes{% else %}No{% endif %}&nbsp;
-    </dd>
-    <dt>
-        Last Login:
-    </dt>
-    <dd>
-        {{ user.last_login }}&nbsp;
-    </dd>
-    <dt>
-        Date Joined:
-    </dt>
-    <dd>
-        {{ user.date_joined }}&nbsp;
-    </dd>
-    <dt>
-        Profile Slug:
-    </dt>
-    <dd>
-        {{ user.get_profile.slug }}&nbsp;
+        <a href="http://twitter.com/{{ profile.twitter_username }}">{{ profile.twitter_username }}</a>&nbsp;
     </dd>
     <dt>
         Avatar (Defaults to Gravatar for your Email Address):
     </dt>
     <dd>
+    	{% if profile.image %}
+    	<img src={{ MEDIA_URL }}/{{ profile.image }} style="width:200px; height:200px;">
+    	{% else %}
         <img src="{% avatar_url user 65 %}" alt="user avatar">
+        {% endif %}
     </dd>
 </dl>
-<div class="pb-float-clear">
+<div class="clearfix">
 </div>
 {% endblock %}
