@@ -44,6 +44,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = PROJECT_PATH + '/media/'
 MEDIA_COVERS = 'images/covers/'
 MEDIA_AWARDS = 'images/awards/'
+MEDIA_CONTRIBUTORS = 'images/authors'
 
 # URL that is used to fetch the covers for the titles
 COVER_MEDIA_URLS = (MEDIA_URL,)
