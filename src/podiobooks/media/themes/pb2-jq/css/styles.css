@@ -68,6 +68,10 @@ a:hover{
 	font-size: 13px;
 }
 
+.loading {
+    background: url(img/loading.gif) no-repeat center center;
+}
+
 .nav{
 	list-style:none;
 	display:inline;
