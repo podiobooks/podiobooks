@@ -2,8 +2,10 @@
 <ul>
     {% for title in title_list %}
     <li style="margin: 15px 0 30px 5px; list-style: none;">
-        <img src="http://podiobooks.com/images/covers/{{ title.cover }}" height="150" width="100" alt="Cover for {{ title.name }}" style="float: left;">
-        <div id="titleList" style="float: left; height:80px; margin: 5px 0 0 15px; width: 850px; font-size: 12px">
+    	<div style="float: left;">
+        	{% show_titlecover title 150 100 %}
+        </div>
+        <div id="titleList" style="float: left; margin: 5px 0 0 15px; width: 820px; font-size: 12px">
             <div style="font-size: 16px">
                 <a href="{{ title.get_absolute_url }}">{{ title.name }}</a>
             </div>
