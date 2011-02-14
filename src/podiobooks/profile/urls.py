@@ -10,6 +10,7 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    # Profile
-    url(r'^$', 'podiobooks.profile.views.profile', name="profile"),
+    url(r'^$', 'podiobooks.profile.views.profile_redirect', name="profile_redirect"),
+    url(r'^manage', 'podiobooks.profile.views.profile_manage', name="profile_manage"),
+    url(r'^(?P<slug>[^/]+)', 'podiobooks.profile.views.profile', name="profile"),
 )
