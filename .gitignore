@@ -2,6 +2,7 @@
 .coverage
 .DS_Store
 .installed.cfg
+.py[co]
 .pydevproject.bak
 .pydevproject
 .settings
