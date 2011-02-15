@@ -1,0 +1,19 @@
+[
+     {
+          "pk": 1, 
+          "model": "profile.userprofile", 
+          "fields": {
+               "short_profile": "Nathan Lowell is the author of the Traders' Tale, Ravenwood, and South Coast series.", 
+               "url": "http://nathanlowell.org/", 
+               "image": "images/contributors/contributor_lowell.jpg", 
+               "deleted": false, 
+               "twitter_username": "nlowell", 
+               "long_profile": "Nathan Lowell is the author of the Tales from the Golden Age of the Solar Clipper, Tales of the Lammas Wood series.", 
+               "user": 4, 
+               "date_updated": "2011-02-14 10:39:49", 
+               "date_created": "2011-02-14 10:39:49", 
+               "slug": "nathan-lowell", 
+               "disqus_username": ""
+          }
+     }
+]
