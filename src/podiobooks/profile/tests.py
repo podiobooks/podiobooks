@@ -21,7 +21,7 @@ class ProfileTestCase(TestCase):
     
     def testProfileManageRedirect(self):
         response = self.c.get('/profile/manage/', follow=True)
-        self.assertRedirects(response, "http://testserver/account/signin/?next=/profile/")
+        self.assertRedirects(response, "http://testserver/account/signin/?next=/profile/manage/")
         
     def testProfileManagePage(self):
         self.c.login(username='testuser1', password='testuser1password')
