@@ -38,12 +38,13 @@ a:hover{
 	box-shadow:0 3px 5px #aaa;
 	margin:0 0 25px 0;
 	text-align:center;
+	font-size: 15px;
 }
 .pg-head h2{
 	display:inline;
 	margin: 0 8px 0 60px;
-	color:#464646;
-	font-weight:normal;
+	color: #464646;
+	font-weight: normal;
 }
 .pg-head a{
 	text-decoration:none;
