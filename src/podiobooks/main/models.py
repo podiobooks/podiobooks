@@ -47,10 +47,6 @@ class Award(models.Model):
     def __unicode__(self):
         return self.name
 
-    @models.permalink
-    def get_absolute_url(self):
-        return ('award_detail', [self.slug])
-
 class Category(models.Model):
     """Categories describe titles for easy of browsing and for recommendations."""
     slug = models.SlugField(max_length=50)
@@ -83,6 +79,7 @@ class Contributor(models.Model):
     display_name = models.CharField(max_length=255)
     deleted = models.BooleanField(default=False)
     # Note: Titles are available a title_set.all()
+    # Note: TitleContributor Objects (intermediate table) are available as titlecontributors.all()
     date_created = models.DateTimeField(default=datetime.datetime.now())
     date_updated = models.DateTimeField(default=datetime.datetime.now())
 
@@ -101,6 +98,7 @@ class ContributorType(models.Model):
     slug = models.SlugField()
     name = models.CharField(max_length=255)
     byline_text = models.CharField(max_length=255)
+    # Note: TitleContributor Objects (intermediate table) are available as titlecontributors.all()
     
     class Meta:
         verbose_name_plural = "Contributor Types"
@@ -206,17 +204,17 @@ class Promo(models.Model):
     material per a single title for folks what want to add some serious
     marketing mojo to their arsenal."""
     title = models.ForeignKey('Title', related_name='promos')
-    display_text = models.CharField(max_length=255)
+    name = models.CharField(max_length=255)
     url = models.URLField(verify_exists=True)
     display_order = models.IntegerField(null=False, default=1)
     date_created = models.DateTimeField(default=datetime.datetime.now())
     date_updated = models.DateTimeField(default=datetime.datetime.now())
     
     class Meta:
-        ordering = ['display_text']
+        ordering = ['name']
     
     def __unicode__(self):
-        return self.display_text
+        return self.name
     
 class Rating(models.Model):
     """The last rating that was loaded from the pb1 site"""
@@ -278,21 +276,24 @@ class Title(models.Model):
     detractor_count = models.IntegerField(default=0, db_index=True)
     deleted = models.BooleanField(default=False)
     contributors = models.ManyToManyField('Contributor', through='TitleContributor')
+    # Note: TitleContributor Objects (intermediate table) are available as titlecontributors.all()
     byline = models.CharField(max_length=1024) # This is a formatted cache of the title contributors
     categories = models.ManyToManyField('Category', through='TitleCategory')
-    category_list = models.CharField(max_length=1024) # This is a formatted cache of the title contributors
-    partner = models.ForeignKey('partner', null=True, related_name='partners')
-    awards = models.ManyToManyField('Award', null=True)
+    category_list = models.CharField(max_length=1024) # This is a formatted cache of the categories
+    partner = models.ForeignKey('partner', null=True, related_name='titles')
+    awards = models.ManyToManyField('Award', null=True, related_name='titles')
     libsyn_show_id = models.CharField(max_length=50, db_index=True, blank=True)
     podiobooker_blog_url = models.URLField(max_length=255, blank=True, verify_exists=True)
     enable_comments = models.BooleanField(default=True)
     # Note: episodes are available as episodes.all()
     # Note: subscriptions are available as subscriptions.all()
+    # Note: media are available as media.all()
+    # Note: promos are available as promos.all()
     date_created = models.DateTimeField(default=datetime.datetime.now(), db_index=True)
     date_updated = models.DateTimeField(default=datetime.datetime.now(), db_index=True)
     
     # Optionally configure Sphinx as search engine for titles
-    if (settings.SEARCH_PROVIDER == 'SPHINX'):
+    if (settings.SEARCH_PROVIDER == 'SPHINX'): # pragma: no cover
         import djangosphinx.models # pylint: disable=F0401
         search = djangosphinx.models.SphinxSearch(index="pb2_titles", weights={'display_name': 100000, 'name': 75000, 'description': 1})
     
@@ -370,7 +371,7 @@ post_save.connect(update_byline, sender=TitleContributor)
 
 class TitleUrl(models.Model):
     """Allows us to have several links for a book, for display. For utility."""
-    title = models.ManyToManyField('Title')
+    title = models.ForeignKey('Title', related_name='urls')
     url = models.URLField(verify_exists=True)
     linktext = models.CharField(max_length=255)
     displayorder = models.IntegerField(null=False, default=1)

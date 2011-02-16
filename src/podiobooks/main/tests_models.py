@@ -5,7 +5,6 @@
 from django.test import TestCase
 from podiobooks.main.models import *  #@UnusedWildImport
 from podiobooks.subscription.models import TitleSubscription
-from podiobooks.profile.models import UserProfile
 from django.template.defaultfilters import slugify
 from django.db.models import Count
 
@@ -45,17 +44,17 @@ class TitleTestCase(TestCase):
             name="Podiobooks Series #1",
             description="A wonderful sample series that contains many fine books",
             url="http://www.Podiobooks.com",
-            deleted=False
             )
         self.series1.slug = slugify(self.series1.name)
+        self.series1.save()
         
         self.series2 = Series.objects.create (
             name="Podiobooks Series #2",
             description="Another wonderful sample series that contains many fine books",
             url="http://www.Podiobooks.com",
-            deleted=False
             )
         self.series2.slug = slugify(self.series2.name)
+        self.series2.save()
         
         # Create Some Titles
         self.title1 = Title.objects.create (
@@ -73,7 +72,8 @@ class TitleTestCase(TestCase):
                 avg_narration=3.5,
                 avg_writing=2.5,
                 avg_overall=3.75,
-                deleted=False
+                promoter_count=211,
+                detractor_count=100,
                 )
         
         self.title2 = Title.objects.create (
@@ -91,7 +91,6 @@ class TitleTestCase(TestCase):
                 avg_narration=4.5,
                 avg_writing=5.5,
                 avg_overall=6.75,
-                deleted=False
                 )
         
         self.title3 = Title.objects.create (
@@ -109,7 +108,6 @@ class TitleTestCase(TestCase):
                 avg_narration=2.5,
                 avg_writing=3.5,
                 avg_overall=4.75,
-                deleted=False
                 )
         
         #Create a Partner Object
@@ -117,7 +115,6 @@ class TitleTestCase(TestCase):
             name="Podiobooks Partner #1",
             url="http://Podiobooks.com",
             logo="http://Podiobooks.com",
-            deleted=False
             )
         
         #Create some Episodes
@@ -128,8 +125,6 @@ class TitleTestCase(TestCase):
             description="This is the first wonderful episode of the test title1!",
             url="http://www.Podiobooks.com",
             filesize=328886,
-            status=1,
-            deleted=False,
             )
         
         self.episode2 = Episode.objects.create (
@@ -139,19 +134,15 @@ class TitleTestCase(TestCase):
             description="This is the first wonderful episode of the test title2!",
             url="http://www.Podiobooks.com",
             filesize=32886,
-            status=1,
-            deleted=False,
             )
         
         self.episode3 = Episode.objects.create (
             title=self.title2,
             name="Podiobooks Title #2 Episode #2",
-            sequence=1,
+            sequence=2,
             description="This is the second wonderful episode of the test title2!",
             url="http://www.Podiobooks.com",
             filesize=32886,
-            status=1,
-            deleted=False,
             )
         
         self.episode4 = Episode.objects.create (
@@ -161,8 +152,6 @@ class TitleTestCase(TestCase):
             description="This is the first wonderful episode of the test title3!",
             url="http://www.Podiobooks.com",
             filesize=32886,
-            status=1,
-            deleted=False,
             )
         
         # Create Some Subscriptions
@@ -220,7 +209,7 @@ class TitleTestCase(TestCase):
                 name='Parsec Award 2010',
                 deleted=False
                 )
-        self.award1.title_set.add(self.title1)
+        self.award1.titles.add(self.title1)
         self.title2.awards.add(self.award1)
         
         self.award2 = Award.objects.create(
@@ -228,8 +217,62 @@ class TitleTestCase(TestCase):
                 name='Parsec Award 2011',
                 deleted=False
                 )
-        self.award2.title_set.add(self.title3)
+        self.award2.titles.add(self.title3)
         self.title3.awards.add(self.award1) #Title 3 should have two awards now
+        
+        # Advisories
+        self.advisory1 = Advisory.objects.create(
+                slug='advisory-test-1',
+                name='Advisory Test 1',
+                )
+        self.advisory1.titles.add(self.title1)
+        self.title2.advisory = self.advisory1
+        
+        self.advisory2 = Award.objects.create(
+                slug='advisory-test-2',
+                name='Advisory Test 2',
+                )
+        self.advisory2.titles.add(self.title3)
+        
+        # License
+        self.license1 = License.objects.create(
+                slug='by-nc-nd',
+                text='Attribution Noncommercial No Derivatives',
+                )
+        self.license1.titles.add(self.title1)
+        self.title2.license = self.license1
+        
+        # Media
+        self.media1 = Media.objects.create(
+                title=self.title1,
+                name='Smashwords Version',
+                )
+        
+        # Partner
+        self.partner1 = Partner.objects.create(
+                name='Audible',
+                url="http://audible.com"
+        )
+        self.title1.partner = self.partner1
+        self.partner1.titles.add(self.title2)
+        
+        # Promo
+        self.promo1 = Promo.objects.create(
+                title=self.title1,
+                name='Promo 1',
+                url="http://corgis.com"
+        )
+        
+        # URLs
+        self.url1 = TitleUrl.objects.create(
+                title=self.title1,
+                url="http://corgis.com"
+        )
+        
+        # Rating
+        self.rating = Rating.objects.create(
+                last_rating_id=999,
+        )
         
         # Contributors
         self.contributortype1 = ContributorType.objects.create(
@@ -256,7 +299,6 @@ class TitleTestCase(TestCase):
         TitleContributor.objects.create(title=self.title3, contributor_type=self.contributortype1, contributor=self.contributor1)
         TitleContributor.objects.create(title=self.title3, contributor_type=self.contributortype1, contributor=self.contributor2) #Title 3 should belong to two contributors now
 
-
     def testTitle(self):
         # USERS
         print '---Users---'
@@ -274,12 +316,16 @@ class TitleTestCase(TestCase):
         # SERIES
         print '\n---Series---'
         for currentSeries in Series.objects.all().filter(name__startswith='Podiobooks Series') :
-            print '\n\tName: %s' % currentSeries.name
+            print '\n\tName: %s' % currentSeries
             print '\tSlug: %s' % currentSeries.slug
+            print '\tURL: %s' % currentSeries.get_absolute_url()
             print '\tTitles:'
             for currentTitle in currentSeries.titles.all() :
                 print '\t\tName: %s' % currentTitle.name
                 print '\t\tSlug: %s' % currentTitle.slug
+                print '\tURL: %s' % currentTitle.get_absolute_url()
+                print '\tNet Promoter Score: %s' % currentTitle.net_promoter_score()
+                print '\tDesc With <br>: %s' % currentTitle.description_br()
             
             # Series Assertions
             if currentSeries.name == "Podiobooks Series #1" :
@@ -291,36 +337,49 @@ class TitleTestCase(TestCase):
                 
         # TITLES 
         print '\n---Titles---'
-        for currentTitle in Title.objects.all().filter(name__startswith='Podiobooks Title') :
-            print '\n\tName: %s' % currentTitle.name
+        for currentTitle in Title.objects.all().filter( name__startswith='Podiobooks Title' ) :
+            print '\n\tName: %s' % currentTitle
             print '\tSlug: %s' % currentTitle.slug
             print '\tSeries: %s' % currentTitle.series.name
             print '\tEpisodes:'
             for currentEpisode in currentTitle.episodes.all() :
-                print '\t\tName: %s' % currentEpisode.name
+                print '\t\tName: %s - %s - %s' % ( currentEpisode, currentEpisode.get_absolute_url(), currentEpisode.filesize_mb )
             print '\tSubscriptions:'
             for currentSubscription in currentTitle.subscriptions.all() :
-                print '\t\tUserName: %s every %d days' % (currentSubscription.user.username, currentSubscription.day_interval)
+                print '\t\tUserName: %s every %d days' % ( currentSubscription.user.username, currentSubscription.day_interval )
             print '\tCategories:'
             for currentCategory in currentTitle.categories.all() :
-                print '\t\t%s - url: %s' % (currentCategory.name, currentCategory.get_absolute_url())
+                print '\t\t%s - url: %s' % ( currentCategory, currentCategory.get_absolute_url() )
             print '\tAwards:'
             for currentAward in currentTitle.awards.all() :
-                print '\t\t%s - %s %s' % (currentAward.name, currentAward.slug, currentAward.url)
+                print '\t\t%s' % ( currentAward )
             print '\tContributors:'
-            for currentContributor in currentTitle.contributors.all() :
-                print '\t\t%s' % currentContributor.display_name
+            for currentTitleContributor in currentTitle.titlecontributors.all() :
+                print '\t\t%s (%s) - %s' % ( currentTitleContributor.contributor, currentTitleContributor.contributor_type, currentTitleContributor.contributor.get_absolute_url() )
+            if currentTitle.advisory:
+                print '\tAdvisory: %s' % currentTitle.advisory
+            if currentTitle.license:
+                print '\tLicense: %s' % currentTitle.license
+            if currentTitle.partner:
+                print '\tPartner: %s' % currentTitle.partner
+            if currentTitle.media:
+                for currentMedia in currentTitle.media.all() :
+                    print '\tMedia: %s' % currentMedia
+            if currentTitle.promos:
+                for currentPromo in currentTitle.promos.all() :
+                    print '\tPromo: %s' % currentPromo
+            if currentTitle.urls:
+                for currentURL in currentTitle.urls.all() :
+                    print '\tURL: %s' % currentURL
             
             # Title Assertions
             if currentTitle.name == "Podiobooks Title #1" :
-                self.assertEquals(len(currentTitle.episodes.all()), 1)
-                self.assertEquals(len(currentTitle.subscriptions.all()), 2)
+                self.assertEquals( len( currentTitle.episodes.all() ), 1 )
+                self.assertEquals( len( currentTitle.subscriptions.all()), 2 )
             elif currentTitle.name == "Podiobooks Title #2" :
                 self.assertEquals(len(currentTitle.episodes.all()), 2)
-                # self.assertEquals(len(currentTitle.subscriptions.all()), 1)
             elif currentTitle.name == "Podiobooks Title #3" :
                 self.assertEquals(len(currentTitle.episodes.all()), 1)
-                # self.assertEquals(len(currentTitle.subscriptions.all()), 0)
             else :
                 self.fail('Non-matching Title!' + currentTitle.name)
                 
@@ -437,7 +496,10 @@ class TitleTestCase(TestCase):
         title3titlecontributors = title3.titlecontributors.all().order_by('contributor_type__slug', 'date_created')
         bylineFromTemplate = render_to_string('main/title/tags/show_contributors.html', {'titlecontributors': title3titlecontributors,})
         
-        print "\t\Template Byline: %s" % bylineFromTemplate
+        print "\t\tTemplate Byline: %s" % bylineFromTemplate
         print "\t\tAuto Byline: %s" % title3.byline
-        self.assertEquals(bylineFromTemplate, title3.byline)
+        self.assertEquals(bylineFromTemplate.strip(), title3.byline)
+        
+        # Test Max Rating Capture
+        print "\t\tLast Rating Loaded: %s" % self.rating
 
