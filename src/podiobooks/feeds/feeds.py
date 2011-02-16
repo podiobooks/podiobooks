@@ -60,7 +60,7 @@ class EpisodeFeed(Feed):
         if obj.license:
             return obj.license.slug
         else:
-            return "All Rights Reserved by Author" #pragma: nocover
+            return "All Rights Reserved by Author" # pragma: no cover
     
     def feed_extra_kwargs(self, obj):
         """
@@ -168,7 +168,7 @@ class CustomTitleSubscriptionFeed(EpisodeFeed):
             try:
                 next_episode = Episode.objects.get(title__id__exact=obj.id, sequence=self.subscription.last_downloaded_episode.sequence + 1)
                 self.subscription.last_downloaded_episode = next_episode
-            except ObjectDoesNotExist: # pragma no cover
+            except ObjectDoesNotExist: # pragma: no cover
                 pass # likely because we're at the end of the book
                 
             self.subscription.last_downloaded_date = datetime.now()
