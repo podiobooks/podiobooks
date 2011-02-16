@@ -73,3 +73,11 @@ class UrlTestCase(TestCase):
     def testEpisodeDetail(self):
         response = self.c.get('/episode/68250/') # Double Share, Episode 1
         self.assertEquals(200, response.status_code)
+
+    def testSeriesList(self):
+        response = self.c.get('/series/')
+        self.assertEquals(200, response.status_code)
+        
+    def testSeriesDetail(self):
+        response = self.c.get('/series/a-traders-tale-from-the-golden-age-of-the-solar-clipper/')
+        self.assertEquals(200, response.status_code)
