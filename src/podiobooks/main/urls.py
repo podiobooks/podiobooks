@@ -8,7 +8,7 @@ from podiobooks.main.models import * #@UnusedWildImport
 urlpatterns = patterns('',
     
     # series
-    url(r'^series/$', 'django.views.generic.list_detail.object_list', { 'queryset': Series.objects.all(), 'template_object_name': 'series', 'template_name': 'main/series/series_list.html'}, name='series_list'),
+    url(r'^series/$', 'django.views.generic.list_detail.object_list', { 'queryset': Series.objects.all().order_by('id'), 'template_object_name': 'series', 'template_name': 'main/series/series_list.html'}, name='series_list'),
     url(r'^series/(?P<slug>[^/]+)/$', 'django.views.generic.list_detail.object_detail', {'queryset': Series.objects.all(), 'template_object_name': 'series', 'template_name': 'main/series/series_detail.html'}, name='series_detail'),
     
     # title
