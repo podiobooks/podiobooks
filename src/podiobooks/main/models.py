@@ -265,7 +265,7 @@ class Title(models.Model):
     license = models.ForeignKey('License', null=True, related_name='titles')
     display_on_homepage = models.BooleanField(default=False, db_index=True)
     is_hosted_at_pb = models.BooleanField(default=True)
-    advisory = models.ForeignKey('Advisory', null=True, related_name='titles')
+    advisory = models.ForeignKey('Advisory', null=True, blank=True, related_name='titles')
     is_adult = models.BooleanField(default=False, db_index=True)
     is_complete = models.BooleanField(default=False, db_index=True)
     avg_audio_quality = models.FloatField(default=0)
@@ -280,10 +280,10 @@ class Title(models.Model):
     byline = models.CharField(max_length=1024) # This is a formatted cache of the title contributors
     categories = models.ManyToManyField('Category', through='TitleCategory')
     category_list = models.CharField(max_length=1024) # This is a formatted cache of the categories
-    partner = models.ForeignKey('partner', null=True, related_name='titles')
-    awards = models.ManyToManyField('Award', null=True, related_name='titles')
+    partner = models.ForeignKey('partner', null=True, blank=True, related_name='titles')
+    awards = models.ManyToManyField('Award', null=True, blank=True, related_name='titles')
     libsyn_show_id = models.CharField(max_length=50, db_index=True, blank=True)
-    podiobooker_blog_url = models.URLField(max_length=255, blank=True, verify_exists=True)
+    podiobooker_blog_url = models.URLField(max_length=255, null=True, blank=True, verify_exists=True)
     enable_comments = models.BooleanField(default=True)
     # Note: episodes are available as episodes.all()
     # Note: subscriptions are available as subscriptions.all()
