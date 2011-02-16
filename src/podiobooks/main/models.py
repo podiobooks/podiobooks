@@ -351,6 +351,7 @@ class TitleContributor(models.Model):
     contributor = models.ForeignKey('Contributor', related_name='titlecontributors')
     contributor_type = models.ForeignKey('ContributorType', related_name='titlecontributors')
     date_created = models.DateTimeField(default=datetime.datetime.now())
+    date_updated = models.DateTimeField(default=datetime.datetime.now())
     
     class Meta:
         verbose_name_plural = "Title Contributors"
@@ -361,8 +362,8 @@ def update_byline(sender, instance, **kwargs):
     """ Update byline cache on titles when a new title contributor is added...hooked to pre_save trigger for titlecontributor below """
     titlecontributors = instance.title.titlecontributors.all().order_by('contributor_type__slug', 'date_created')
     byline = render_to_string('main/title/tags/show_contributors.html', {'titlecontributors': titlecontributors,})
-    print byline
-    instance.title.byline = byline
+    print byline.strip()
+    instance.title.byline = byline.strip()
     instance.title.save()
     
 post_save.connect(update_byline, sender=TitleContributor)

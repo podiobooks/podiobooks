@@ -60,6 +60,8 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django_authopenid',
     'faq',
+    'markdown',
+    'markitup',
     'tagging',
     'podiobooks.author',
     'podiobooks.feeds',

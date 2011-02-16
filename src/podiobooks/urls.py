@@ -38,6 +38,9 @@ urlpatterns = patterns('',
     # FAQ
     (r'^faq/', include('faq.urls')),
     
+    # MarkItUp
+    url(r'^markitup/', include('markitup.urls')),
+    
     # Profile
     (r'^profile/', include('podiobooks.profile.urls')),
     

@@ -11,9 +11,9 @@ class TitleInline(admin.TabularInline):
     model = Title
     exclude = ("deleted", "date_created", "date_updated")
     
-#class TitleContributorInline(admin.TabularInline):
-#    model = TitleContributor
-#    exclude = ("deleted", "date_created", "date_updated")
+class TitleContributorInline(admin.TabularInline):
+    model = TitleContributor
+    exclude = ("date_created", "date_updated")
 
 class EpisodeInline(admin.TabularInline):
     model = Episode
@@ -27,11 +27,11 @@ class CategoryAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('name',)}
     exclude = ('date_created', 'date_updated',)
     
-#class ContributorAdmin(admin.ModelAdmin):
-#    inlines = [
-#            TitleContributorInline
-#        ]
-#    exclude = ("deleted", "date_created", "date_updated")
+class ContributorAdmin(admin.ModelAdmin):
+    inlines = [
+            TitleContributorInline,
+        ]
+    exclude = ("deleted", "date_created", "date_updated")
     
 class EpisodeAdmin(admin.ModelAdmin):
     list_display = ('sequence', 'name', 'description', 'url', 'filesize')
@@ -56,7 +56,7 @@ class TitleAdmin(admin.ModelAdmin):
     exclude = ("date_updated", "avg_overall", "avg_audio_quality", 'avg_narration', 'avg_writing')
     inlines = [
             EpisodeInline,
-#            TitleContributorInline
+            TitleContributorInline
         ]
     ordering = ['name']
     prepopulated_fields = {"slug": ("name",)}
@@ -66,7 +66,7 @@ class TitleAdmin(admin.ModelAdmin):
 admin.site.register(Award)
 admin.site.register(Advisory)
 admin.site.register(Category, CategoryAdmin)
-#admin.site.register(Contributor, ContributorAdmin)
+admin.site.register(Contributor, ContributorAdmin)
 admin.site.register(ContributorType)
 admin.site.register(License, LicenseAdmin)
 admin.site.register(Episode, EpisodeAdmin)
