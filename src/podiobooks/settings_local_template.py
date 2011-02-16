@@ -187,11 +187,12 @@ FEED_MANAGING_EDITOR = 'editor@podiobooks.com (Evo Terra)'
 FEED_GLOBAL_CATEGORIES = ('podiobooks', 'audio books',)
 
 ### LOGGING
-import logging
-logging.basicConfig(level=logging.DEBUG,
-    format='%(asctime)s %(levelname)s %(message)s',
-    filename=os.path.join(PROJECT_PATH, 'django.log'),
-    filemode='a+')
+if DEBUG:
+    import logging
+    logging.basicConfig(level=logging.DEBUG,
+        format='%(asctime)s %(levelname)s %(message)s',
+        filename=os.path.join(PROJECT_PATH, 'django.log'),
+        filemode='a+')
 
 ### SEARCH
 SEARCH_PROVIDER = 'DEFAULT'
