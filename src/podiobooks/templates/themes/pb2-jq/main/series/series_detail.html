@@ -2,11 +2,11 @@
 {% load title_templatetags %}
 {% block headtitle %}{{ category.name }} Series - {{ site_name }}{% endblock %}
 {% block content %}
-{% if series.title_set.all.count %}
+{% if series.titles.all.count %}
 <h1>
     All Titles in {{ series.name }}
 </h1>
-{% show_titlelist series.title_set.all "series_title_list" %}
+{% show_titlelist series.titles.all "series_title_list" %}
 {% else %}
 <div style="font-size: 18px; margin: 20px;">
     There are currently no titles available in {{ series.name }}
