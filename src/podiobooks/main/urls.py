@@ -8,11 +8,11 @@ from podiobooks.main.models import * #@UnusedWildImport
 urlpatterns = patterns('',
     
     # series
-    url(r'^series/$', 'django.views.generic.list_detail.object_list', { 'queryset': Series.objects.all().order_by('name'), 'template_object_name': 'series_list', 'template_name': 'main/series/series_list.html'}, name='series_list'),
+    url(r'^series/$', 'django.views.generic.list_detail.object_list', { 'queryset': Series.objects.all(), 'template_object_name': 'series', 'template_name': 'main/series/series_list.html'}, name='series_list'),
     url(r'^series/(?P<slug>[^/]+)/$', 'django.views.generic.list_detail.object_detail', {'queryset': Series.objects.all(), 'template_object_name': 'series', 'template_name': 'main/series/series_detail.html'}, name='series_detail'),
     
     # title
-    url(r'^title/$', 'django.views.generic.list_detail.object_list', { 'queryset': Title.objects.all().order_by('name'), 'template_object_name': 'title_list', 'template_name': 'main/title/title_list.html'}, name='title_list'),
+    url(r'^title/$', 'django.views.generic.list_detail.object_list', { 'queryset': Title.objects.all().order_by('name'), 'template_object_name': 'title', 'template_name': 'main/title/title_list.html'}, name='title_list'),
     url(r'^title/search/$', 'podiobooks.main.views.title_search', name='title_search'),
     url(r'^title/search/(?P<keywords>[^/]+)/$', 'podiobooks.main.views.title_search', name='title_search_keywords'),
     url(r'^title/summary/(?P<object_id>[^/]+)/$', 'django.views.generic.list_detail.object_detail', {'queryset': Title.objects.all(), 'template_object_name': 'title', 'template_name': 'main/title/title_detail_summary.html'}, name='title_detail_summary'),
