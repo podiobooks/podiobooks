@@ -161,21 +161,20 @@ TEST_RUNNER = 'django_nose.NoseTestSuiteRunner' # Should work with Django 1.2.1
 ### Local add-ons to main inclusion variables
 # TEMPLATE_CONTEXT_PROCESSORS +=
 
-MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
-
-INSTALLED_APPS += ('debug_toolbar',)
-
 ### DEBUG TOOLBAR
+if DEBUG:
+    MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
+    INSTALLED_APPS += ('debug_toolbar',)
 
-DEBUG_TOOLBAR_PANELS = (
-    'debug_toolbar.panels.timer.TimerDebugPanel',
-    'debug_toolbar.panels.headers.HeaderDebugPanel',
-    'debug_toolbar.panels.request_vars.RequestVarsDebugPanel',
-    'debug_toolbar.panels.template.TemplateDebugPanel',
-    'debug_toolbar.panels.sql.SQLDebugPanel',
-    'debug_toolbar.panels.signals.SignalDebugPanel',
-    'debug_toolbar.panels.logger.LoggingPanel',
-)
+    DEBUG_TOOLBAR_PANELS = (
+        'debug_toolbar.panels.timer.TimerDebugPanel',
+        'debug_toolbar.panels.headers.HeaderDebugPanel',
+        'debug_toolbar.panels.request_vars.RequestVarsDebugPanel',
+        'debug_toolbar.panels.template.TemplateDebugPanel',
+        'debug_toolbar.panels.sql.SQLDebugPanel',
+        'debug_toolbar.panels.signals.SignalDebugPanel',
+        'debug_toolbar.panels.logger.LoggingPanel',
+    )
 
 ##### Custom Variables Below Here #######
 
@@ -218,3 +217,9 @@ DATALOAD_DIR = PROJECT_PATH + "/../../../podiobooks-dataload/datafiles/"
 ### DISQUS
 DISQUS_API_KEY = 'FOOBARFOOBARFOOBARFOOBARFOOBARF'
 DISQUS_WEBSITE_SHORTNAME = 'podioadventures'
+
+### MARKITUP
+MARKITUP_SET = 'markitup/sets/markdown'
+#MARKITUP_SKIN = 'markitup/skins/markitup'
+MARKITUP_FILTER = ('markdown.markdown', {'safe_mode': True})
+MARKITUP_PREVIEW_FILTER = ('markdown.markdown', {'safe_mode': True})
