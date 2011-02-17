@@ -1,5 +1,7 @@
 """Profile Module Models File"""
 
+# pylint: disable=C0111,R0201,W0232
+
 from __future__ import division
 from django.db import models
 from django.contrib.auth.models import User
@@ -33,7 +35,7 @@ class UserProfile(models.Model):
 # This came from http://www.codekoala.com/blog/2009/quick-django-tip-user-profiles/    
 User.profile = property(lambda u: UserProfile.objects.get_or_create(user=u)[0])
     
-def create_userprofile_callback(sender, instance, **kwargs):
+def create_userprofile_callback(sender, instance, **kwargs): # pylint: disable=W0613
     """Callback to automatically create a UserProfile whenever a user is created 
     - it's hooked in at the bottom of this file"""
     if kwargs.get('created'):
