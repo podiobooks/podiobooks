@@ -10,8 +10,7 @@ MADE LOCALLY BY ALL INSTALLATIONS
 local_settings.py, once created, should never be checked into source control
 It is ignored by default by .gitignore, so if you don't mess with that, you should be fine.
 """
-# pylint: disable=R0801
-
+# pylint: disable=R0801, W0611
 import os
 from settings_main import MIDDLEWARE_CLASSES, INSTALLED_APPS
 
@@ -77,7 +76,7 @@ JS_DIR = os.path.join(MEDIA_ROOT, "themes", TEMPLATE_THEMES[0], JS_EXT)
 CSS_DIR = os.path.join(MEDIA_ROOT, "themes", TEMPLATE_THEMES[0], CSS_EXT)
 
 # Some CSS ordering settings
-CSS_FIRST = ["clear.css","reset.css","style.css","styles.css"]
+CSS_FIRST = ["clear.css", "reset.css", "style.css", "styles.css"]
 CSS_LAST = ["mobile.css"]
 
 # Google JavaScript API Key
