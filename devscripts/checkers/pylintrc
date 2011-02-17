@@ -70,7 +70,7 @@ include-ids=yes
 # written in a file name "pylint_global.[txt|html]".
 files-output=no
 
-# Tells wether to display a full report or only the messages
+# Tells whether to display a full report or only the messages
 reports=yes
 
 # Python expression which should return a note less than 10 (10 is the highest
@@ -213,7 +213,7 @@ defining-attr-methods=__init__,__new__,setUp
 [DESIGN]
 
 # Maximum number of arguments for function / method
-max-args=5
+max-args=10
 
 # Maximum number of locals for function / method body
 max-locals=15
@@ -222,7 +222,7 @@ max-locals=15
 max-returns=6
 
 # Maximum number of branch for function / method body
-max-branchs=12
+max-branches=18
 
 # Maximum number of statements in function / method body
 max-statements=50
@@ -231,7 +231,7 @@ max-statements=50
 max-parents=7
 
 # Maximum number of attributes for a class (see R0902).
-max-attributes=7
+max-attributes=12
 
 # Minimum number of public methods for a class (see R0903).
 min-public-methods=2
