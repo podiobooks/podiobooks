@@ -32,6 +32,9 @@ urlpatterns = patterns('',
     # episode
     url(r'^episode/(?P<object_id>[^/]+)/$', 'django.views.generic.list_detail.object_detail', {'queryset': Episode.objects.all(), 'template_object_name': 'episode', 'template_name': 'main/episode/episode_detail.html'}, name='episode_detail'),
     
+    # Lazy Loaders
+    (r'^lazy/',include('podiobooks.main.urls_lazy')),
+    
     # JSON API
     (r'^json/', include('podiobooks.main.urls_json')),
 )

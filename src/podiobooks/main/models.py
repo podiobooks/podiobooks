@@ -251,6 +251,7 @@ class Series(models.Model):
     def get_absolute_url(self):
         return ('series_detail', [self.slug])
 
+
 class Title(models.Model):
     """Title is the central class, and represents the media item as a whole.
     Example: A book. A season of a TV Series. A volume of a Comic Book. A set of
@@ -313,9 +314,11 @@ class Title(models.Model):
             return int((self.promoter_count / total_count) * 100)
         else:
             return 0
-        
+    
     def description_br(self):
         return self.description.replace('\n', '\n<br/>') # pylint: disable=E1101
+
+
 
 class TitleModerator(CommentModerator):
     """ Sets up comments moderation for Titles """

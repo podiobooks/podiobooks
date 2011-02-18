@@ -22,25 +22,15 @@
 </style>
 -->
 {% endblock %}
+
 {% block content %} 
 <h2 class='shelf-heading'>Featured</h2>
-<div class='shelf clearfix'>
-	
+<div id="featured-shelf" class='shelf clearfix'>
+	<div>
 	{% for t in featured_title_list %}
-	<div class='clearfix shelf-item'>
-		<h3><a href='{{t.get_absolute_url}}'>{{ t.name|striptags|truncatewords_afterchar:"25" }}</a></h3>
-		<p class='shelf-cover'>	<a href='{{t.get_absolute_url}}'>
-			{% if title.libsyn_show_id %}
-				<img src="http://images.libsyn.com/show/{{ tlibsyn_show_id }}/height/212/width/144" alt="Podiobook Cover for {{ t.name }}"/>
-			{% else %}
-				<img src="http://podiobooks.com/images/covers/{{ t.cover }}" alt="Podiobook Cover for '{{ t.name }}'" />
-			{% endif %}
-			</a>
-		</p>
-	
-		<p>{% autoescape off %}{{ t.description|striptags|truncatewords_afterchar:"100" }}{% endautoescape %}</p>
-	</div>
+	{% shelf_item t %}
 	{% endfor %}
+	</div>
 </div>
 
 
