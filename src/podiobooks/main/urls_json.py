@@ -16,6 +16,8 @@ TITLE_RESOURCE = Collection(
     responder=JSONResponder()
 )
 
+
+
 CATEGORY_RESOURCE = Collection(
     queryset=Category.objects.all(),
     permitted_methods=('GET',),
@@ -29,7 +31,6 @@ CONTRIBUTOR_RESOURCE = Collection(
 )
 
 urlpatterns = patterns('',
-    
     # title
     url(r'^title/(.*?)/?$', TITLE_RESOURCE, name='json_title_detail'),
     url(r'^title/$', TITLE_RESOURCE, name='json_title_list'),
