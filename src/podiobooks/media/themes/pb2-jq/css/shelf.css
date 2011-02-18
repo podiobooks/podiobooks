@@ -46,9 +46,32 @@
 	-o-box-shadow:0 3px 5px #aaa;
 	box-shadow:0 3px 5px #aaa;
 	
-	padding:0 10px;
+	padding:0 10px 5px 10px;
+	
+	position:relative;
+	z-index:3;
 }
-
+.shelf-view{
+	height:100%;
+	width:100%;
+	position:absolute;
+	top:0;
+	left:0;
+	
+	overflow:hidden;
+}
+.whole-shelf>div{
+	float:left;
+	margin-left:12px;
+}
+.whole-shelf{
+	overflow:hidden;
+	width:5000px;
+	height:100%;
+	position:absolute;
+	top:0;
+	left:0;
+}
 .shelf-item{
 	background:#fff;
 	float:left;
@@ -60,6 +83,7 @@
 	border-radius:10px;
 	padding:10px;
 	height:140px;
+	overflow:hidden;
 }
 .shelf-item .shelf-cover{
 	float:left;
@@ -85,6 +109,30 @@
 .shelf-item h3 a{
 	color:#0054a6;
 	text-decoration:none;
+}
+
+/*
+ * Next/Prev Arrows
+ */
+.shelf-arrow{
+	display:block;
+	position:absolute;
+	width:14px;
+	height:14px;
+	font-size:0;
+	color:transparent;
+	top:70px;
+}
+.shelf-arrow-right{
+	background:url(img/arrow-right.png) top left no-repeat;
+	z-index:5;
+	right:-7px;
+	
+}
+.shelf-arrow-left{
+	background:url(img/arrow-left.png) top left no-repeat;
+	z-index:5;
+	left:-7px;
 }
 
 
