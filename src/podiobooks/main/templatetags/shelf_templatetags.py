@@ -31,3 +31,11 @@ def show_shelf_pages(shelf_id, shelf_name, title_list, shelf_title_width):
 def show_shelf_item(shelf_id, title):
     """ Displays a detail snippet for a single title """
     return { 'shelf_id': shelf_id, 'title' : title, 'MEDIA_URL': settings.MEDIA_URL}
+
+
+@register.inclusion_tag('main/shelf/renders/shelf_item.html')
+def shelf_item(item):
+    """ Making my own so I dont mess with anything that has come before """
+    return {"t":item}
+
+
