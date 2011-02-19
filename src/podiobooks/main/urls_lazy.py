@@ -6,5 +6,5 @@ from django.conf.urls.defaults import * #@UnusedWildImport
 from podiobooks.main.models import * #@UnusedWildImport
 
 urlpatterns = patterns('',
-    url(r'^featured/','main.views.lazy.homepage_featured',name="lazy_load_featured_title"),
+    url(r'^featured/','podiobooks.main.views.lazy.homepage_featured',name="lazy_load_featured_title"),
 )
