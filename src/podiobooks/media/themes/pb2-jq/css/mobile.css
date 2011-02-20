@@ -1,0 +1,17 @@
+@media all and (max-width:967px){
+	.pg{
+		width:726px;
+	}
+}
+
+@media all and (max-width:725px){
+	.pg{
+		width:484px;
+	}
+}
+
+@media all and (max-width:483px){
+	.pg{
+		width:242px;
+	}
+}

@@ -26,13 +26,17 @@
 {% block content %} 
 <h2 class='shelf-heading'>Featured</h2>
 <div id="featured-shelf" class='shelf clearfix'>
-	<div>
 	{% for t in featured_title_list %}
 	{% shelf_item t %}
 	{% endfor %}
-	</div>
 </div>
 
+<h2 class='shelf-heading'>Featured 2</h2>
+<div id="featured-shelf2" class='shelf clearfix'>
+	{% for t in featured_title_list %}
+	{% shelf_item t %}
+	{% endfor %}
+</div>
 
 
 <!-- Begin JavaScript Includes for Shelf Interactivity -->
