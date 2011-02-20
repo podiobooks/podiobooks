@@ -16,7 +16,7 @@ a:hover{
  * Layout
  */
 .pg{
-	width:970px;
+	width:968px;
 	margin:0 auto;
 }
 .logo{
@@ -24,6 +24,11 @@ a:hover{
 	margin:0;
 	padding:0;
 	
+	
+}
+.logo,
+.logo img{
+	max-width:100%;
 }
 .pg-head{
 	background:#BDD1EA;
