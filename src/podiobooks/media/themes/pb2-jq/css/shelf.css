@@ -143,3 +143,8 @@
 .genre-change label{
 	display:none;
 }
+.shelf-ajax-loader{
+	padding-top:70px;
+	height:160px;
+	text-align: center;
+}
