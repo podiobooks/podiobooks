@@ -194,7 +194,7 @@
 						},
 						swipeStatus:function(event, phase, direction, distance){
 							if(phase == "move"){
-								if (direct == "left"){
+								if (direction == "left"){
 									wholeShelf.css("left",wholeShelf.css("left")-distance);
 								}
 								if (direction == "right"){
