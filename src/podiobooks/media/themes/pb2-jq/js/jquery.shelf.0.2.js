@@ -191,6 +191,16 @@
 						},
 						swipeRight:function(event){
 							leftArrow.trigger("click");
+						},
+						swipeStatus:function(event, phase, direction, distance){
+							if(phase == "move"){
+								if (direct == "left"){
+									wholeShelf.css("left",wholeShelf.css("left")-distance);
+								}
+								if (direction == "right"){
+									wholeShelf.css("left",wholeShelf.css("left")+distance);
+								}
+							}							
 						}
 					});
 					
