@@ -39,33 +39,9 @@
     {{ title.byline|safe }}
     <br>
     {{ title.category_list|safe }}
-    <div style="margin: 15px 0 0 0; height: 380px; overflow-y: hidden;" id="topTabs">
-        <ul>
-            <li>
-                <a href="#description-tab">Description</a>
-            </li>
-            <li>
-                <a href="#news-tab">News</a>
-            </li>
-            <li>
-                <a href="#featured-comments-tab">Featured Comments</a>
-            </li>
-            <li>
-                <a href="/social/twitter/search/{{ title.contributors.all|first }}" title="social-tab">Social</a>
-            </li>
-        </ul>
-        <div id="description-tab" style="height: 300px; overflow-y: scroll;">
-            {% autoescape off %}{{ title.description_br|removetags:"img"|safe }}{% endautoescape %}
-        </div>
-        <div id="news-tab" style="height: 300px; overflow-y: scroll;">
-            Lorem News
-        </div>
-        <div id="featured-comments-tab" style="height: 300px; overflow-y: scroll;">
-            Lorem Comments
-        </div>
-        <div id="social-tab" style="height: 300px; overflow-y: scroll;">
-            Searching the internets for references to {{ title.contributors.all|first }}...
-        </div>
+    
+    <div id="description">
+        {% autoescape off %}{{ title.description_br|removetags:"img"|safe }}{% endautoescape %}
     </div>
 </div>
 {% include "main/title/title_subscriptionbox.html" %}
@@ -79,6 +55,9 @@
         <li>
             <a href="#chapters-tab">Chapters</a>
         </li>
+        <li>
+            <a href="/social/twitter/search/{{ title.contributors.all|first }}" title="social-tab">Social</a>
+        </li>
     </ul>
     <div title="All Comments" id="comments-tab" style="height: 595px; overflow-y: scroll;">
         {% disqus_show_comments %}
@@ -91,6 +70,9 @@
             No Episodes Are Available Yet
         </div>
         {% endif %}
+    </div>
+    <div id="social-tab" style="height: 300px; overflow-y: scroll;">
+        Searching the internets for references to {{ title.contributors.all|first }}...
     </div>
 </div>
 {% if title.license %}
