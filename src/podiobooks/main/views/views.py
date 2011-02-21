@@ -18,12 +18,14 @@ def get_initial_category(request):
     
     Checks for a cookie, otherwise defaults to INITIAL_CATEGORY
     """
+    
+    return INTIIAL_CATEGORY
+
     if "featured_cat" in request.COOKIES:
         return request.COOKIES['featured_cat']
     else:
         return INTIIAL_CATEGORY
     
-@cache_page(1)
 def index(request):
     """
     Main site page page.

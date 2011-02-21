@@ -18,9 +18,9 @@ def homepage_featured(request, cat=None):
     
     also sets cookie for that selected category
     """
+    
     homepage_title_list = Title.objects.filter(display_on_homepage=True).order_by('-date_created').all()
-    
-    
+        
     if not cat:
         cat = get_initial_category(request)
     
@@ -30,7 +30,7 @@ def homepage_featured(request, cat=None):
     
     
     response = HttpResponse(rendered)
-    response.set_cookie("featured_cat", cat, max_age=60*60*24*7)
+    #response.set_cookie("featured_cat", cat, max_age=60*60*24*7)
     
     return response
     
