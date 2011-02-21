@@ -3,7 +3,7 @@
 	$.fn.pbShelf = function( options ) {
   
 		var settings = {
-			'url'         : '/'
+			'url' 		: 		'/'
 		};
 		
 		return this.each(function(){
@@ -19,6 +19,14 @@
 						
 			var shelf = $(this);
 			shelf.height(shelf.height());
+			
+			shelf.children().each(function(){
+				if (!($(this).is("form"))){
+					$(this).html("");
+					$(this).remove();
+				}
+			});
+			
 			
 			shelf.addClass('fun-shelf');
 			
@@ -46,6 +54,7 @@
 					rightArrow.hide();
 				}
 			};
+			
 			
 			$.ajax({
 				method:"get",
