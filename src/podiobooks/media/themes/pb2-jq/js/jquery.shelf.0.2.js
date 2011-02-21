@@ -194,22 +194,20 @@
 						},
 						swipeStatus:function(event, phase, direction, distance){
 							
-							if (direction == "left"){
+							if (direction == "left" && cur > 0){
 								wholeShelf.animate({"left": parseInt(wholeShelf.css("left").replace("px","")) - distance},1);
-								l("swiping left");
-								l(wholeShelf.css("left")-distance);
+								cur -= parseInt(wholeShelf.css("left").replace("px","")) - distance;
+								status();
 							}
-							if (direction == "right"){
+							if (direction == "right" && cur < maxWidth - shelf.width()){
 								wholeShelf.animate({"left":parseInt(wholeShelf.css("left").replace("px","")) + distance},1);
-								l("swiping right");
-								l(wholeShelf.css("left")+distance);
+								cur -= parseInt(wholeShelf.css("left").replace("px","")) + distance;
+								status();
+								
 							} 
 														
 						}
 					});
-					
-					
-					
 					
 				}
 			});
