@@ -194,12 +194,12 @@
 						},
 						swipeStatus:function(event, phase, direction, distance){
 							
-							if (direction == "left" && cur > 0){
+							if (direction == "left" && cur < maxWidth - shelf.width()){
 								wholeShelf.animate({"left": parseInt(wholeShelf.css("left").replace("px","")) - distance},1);
 								cur -= parseInt(wholeShelf.css("left").replace("px","")) - distance;
 								status();
 							}
-							if (direction == "right" && cur < maxWidth - shelf.width()){
+							if (direction == "right" && cur > 0){
 								wholeShelf.animate({"left":parseInt(wholeShelf.css("left").replace("px","")) + distance},1);
 								cur -= parseInt(wholeShelf.css("left").replace("px","")) + distance;
 								status();
