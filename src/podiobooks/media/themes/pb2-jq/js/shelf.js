@@ -8,7 +8,9 @@ $(function(){
 		var ele = $(this);
 		ele.change(function(){
 			l(ele.val());
-			ele.parents(".shelf").pbShelf({"url" : "/lazy/featured/" + ele.val()});
+			var shelf = ele.parents(".shelf");
+			var frm = shelf.find("form");
+			shelf.pbShelf({"url" : frm.attr("action") + ele.val()});
 		});
 	});
 	
