@@ -12,19 +12,6 @@ from django.views.decorators.cache import cache_page
 INTIIAL_CATEGORY = 'science-fiction'
 INTIIAL_CONTRIBUTOR = 'mur-lafferty'
 
-def get_initial_category(request):
-    """
-    Gets the initial category for featured shelf
-    
-    Checks for a cookie, otherwise defaults to INITIAL_CATEGORY
-    """
-    
-    return INTIIAL_CATEGORY
-
-    if "featured_cat" in request.COOKIES:
-        return request.COOKIES['featured_cat']
-    else:
-        return INTIIAL_CATEGORY
     
 def index(request):
     """
@@ -37,7 +24,7 @@ def index(request):
     
     homepage_title_list = Title.objects.filter(display_on_homepage=True).order_by('-date_created').all()
     
-    featured_title_list = homepage_title_list.filter(categories__slug = get_initial_category(request)).order_by('-date_created', 'name')[:4]
+    featured_title_list = homepage_title_list.filter(categories__slug = INTIIAL_CATEGORY).order_by('-date_created', 'name')[:4]
     
     minimal_title_list = featured_title_list[:1]
     
@@ -47,7 +34,7 @@ def index(request):
     
     recentlycomplete_title_list = homepage_title_list.filter(is_complete=True).all()[:5]
     
-    category_choice_form = CategoryChoiceForm(initial={'category': get_initial_category(request)})
+    category_choice_form = CategoryChoiceForm(initial={'category': INTIIAL_CATEGORY})
     category_choice_form.submit_url = reverse('title_category_shelf', kwargs={'category_slug': 'placeholder_slug'}) # This placeholder slug is because the url command expects there to to be an argument, which won't be known till later
     
     contributor_choice_form = ContributorChoiceForm(initial={'contributor': INTIIAL_CONTRIBUTOR})
