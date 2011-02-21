@@ -92,8 +92,14 @@
 }
 .shelf-item .shelf-cover img{
 	float:left;
-	width:100%;
+	width:75px;
+	height:110px;
+}
+.shelf-item .shelf-cover .shelf-cover-loading{
+	width:auto;
 	height:auto;
+	float:none;
+	margin:30px auto;
 }
 .shelf-item h3{
 	float:right;
