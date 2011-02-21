@@ -18,12 +18,10 @@ def get_initial_category(request):
     Checks for a cookie, otherwise defaults to INITIAL_CATEGORY
     """
     if "featured_cat" in request.COOKIES:
-        init_cat = request.COOKIES['featured_cat']
+        return request.COOKIES['featured_cat']
     else:
-        init_cat = INTIIAL_CATEGORY
-        
-    return init_cat
-
+        return INTIIAL_CATEGORY
+    
 def index(request):
     """
     Main site page page.
@@ -35,7 +33,7 @@ def index(request):
     
     homepage_title_list = Title.objects.filter(display_on_homepage=True).order_by('-date_created').all()
     
-    featured_title_list = homepage_title_list.filter(categories__slug=get_initial_category(request)).order_by('-date_created', 'name')[:4]
+    featured_title_list = homepage_title_list.filter(categories__slug = get_initial_category(request)).order_by('-date_created', 'name')[:4]
     
     minimal_title_list = featured_title_list[:1]
     
