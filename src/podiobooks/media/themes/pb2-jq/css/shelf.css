@@ -95,6 +95,11 @@
 	width:100%;
 	height:auto;
 }
+.shelf-item .shelf-cover .shelf-cover-loading{
+	width:auto;
+	float:none;
+	margin:30px auto;
+}
 .shelf-item h3{
 	float:right;
 	width:120px;
