@@ -35,14 +35,7 @@
 				}
 			});
 			
-			if (settings.checkCookie){
-				if($.cookie(settings.cookie)){
-					if (shelf.has("form select")){
-						shelf.find("form select").val($.cookie(settings.cookie));
-						settings.url += $.cookie(settings.cookie);
-					}					
-				}
-			}
+			
 			
 			if (shelf.has("form select")){
 				var sel = shelf.find("form select");
@@ -63,6 +56,14 @@
 				});				
 			}
 	
+			if (settings.checkCookie){
+				if($.cookie(settings.cookie)){
+					if (shelf.has("form select")){
+						shelf.find("form select").val($.cookie(settings.cookie));
+						settings.url += $.cookie(settings.cookie);
+					}					
+				}
+			}
 			
 			if(settings.cookie){
 				$.cookie(settings.cookie,shelf.find("form select").val(),{expires:7});
