@@ -69,8 +69,8 @@
 			
 			shelf.addClass('fun-shelf');
 			
-			var leftArrow = $("<a class='shelf-arrow shelf-arrow-left' href='#'>previous</a>");
-			var rightArrow = $("<a class='shelf-arrow shelf-arrow-right' href='#'>next</a>");
+			var leftArrow = $("<a class='shelf-arrow shelf-arrow-left' href='#'></a>");
+			var rightArrow = $("<a class='shelf-arrow shelf-arrow-right' href='#'></a>");
 			
 			
 			
