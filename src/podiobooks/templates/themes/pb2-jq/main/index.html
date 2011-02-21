@@ -34,17 +34,6 @@
 	</form>
 </div>
 
-<h2 class='shelf-heading'>Featured 2</h2>
-<div id="featured-shelf2" class='shelf clearfix'>
-	{% for t in featured_title_list %}
-	{% shelf_item t %}
-	{% endfor %}
-	<form class='genre-change' action="/lazy/featured/" method="post">
-		{{category_choice_form.as_p}}
-	</form>
-</div>
-
-
 <!-- Begin JavaScript Includes for Shelf Interactivity -->
 
 <!--
