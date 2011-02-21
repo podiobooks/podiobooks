@@ -201,11 +201,10 @@
 							}
 							if (direction == "right" && cur > 0){
 								wholeShelf.animate({"left":parseInt(wholeShelf.css("left").replace("px","")) + distance},1);
-								cur -= parseInt(wholeShelf.css("left").replace("px","")) + distance;
-								status();
-								
+								cur += parseInt(wholeShelf.css("left").replace("px","")) + distance;
+								status();								
 							} 
-														
+												
 						}
 					});
 					
