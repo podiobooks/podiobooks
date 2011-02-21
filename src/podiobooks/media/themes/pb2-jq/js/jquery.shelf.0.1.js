@@ -3,7 +3,9 @@
 	$.fn.pbShelf = function( options ) {
   
 		var settings = {
-			'url' 		: 		'/'
+			'url' 			: 		'/',
+			"cookie"		: 		null,
+			"checkCookie"	: 		false
 		};
 		
 		return this.each(function(){
@@ -26,8 +28,42 @@
 					$(this).remove();
 				}
 			});
+			
+			if (settings.checkCookie){
+				if($.cookie(settings.cookie)){
+					if (shelf.has("form select")){
+						shelf.find("form select").val($.cookie(settings.cookie));
+						settings.url += $.cookie(settings.cookie);
+					}					
+				}
+			}
+			
+			if (shelf.has("form select")){
+				var sel = shelf.find("form select");
+				
+				sel.unbind("change");
+				
+				sel.change(function(){
+					
+					if (settings.cookie){
+						shelf.pbShelf({
+							"url" : sel.parents("form").attr("action") + sel.val(), 
+							"cookie":settings.cookie
+						});
+					}
+					else{
+						shelf.pbShelf({"url" : sel.parents("form").attr("action") + sel.val()});
+					}
+				});				
+			}
+	
+			
+			if(settings.cookie){
+				$.cookie(settings.cookie,shelf.find("form select").val());
+			}		
+			
 			var progress = $("<p class='shelf-ajax-loader'><img src='" + siteVars("img") + "ajax-loader-bar.gif'/></p>");
-			l(siteVars("img"));
+			
 			progress.appendTo($("body")).hide();
 			progress.appendTo(shelf).show();
 			
@@ -35,6 +71,8 @@
 			
 			var leftArrow = $("<a class='shelf-arrow shelf-arrow-left' href='#'>previous</a>");
 			var rightArrow = $("<a class='shelf-arrow shelf-arrow-right' href='#'>next</a>");
+			
+			
 			
 			var status = function(){
 				l("cur: " + cur);
@@ -65,6 +103,20 @@
 				success:function(data){
 					
 					$(data).appendTo(shelf);
+					
+					$(shelf).find(".shelf-cover img:not(.shelf-cover-loading)").each(function(){
+						
+						var img = $(this);
+						
+						img.hide();
+						var l = $("<img class='shelf-cover-loading' src='" + siteVars("img") + "loading.gif' />").appendTo(img.parents(".shelf-cover"));
+						
+						img.load(function(){
+							l.remove();
+							img.fadeIn();
+							
+						});
+					});
 					
 					progress.hide();
 					
