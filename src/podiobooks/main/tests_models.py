@@ -299,8 +299,8 @@ class TitleTestCase(TestCase):
         TitleContributor.objects.create(title=self.title3, contributor_type=self.contributortype1, contributor=self.contributor1)
         TitleContributor.objects.create(title=self.title3, contributor_type=self.contributortype1, contributor=self.contributor2) #Title 3 should belong to two contributors now
 
-    def testTitle(self):
-        # USERS
+    def testUsers(self):
+        """Assert that we created users correctly and that we can access subscriptions from users."""
         print '---Users---'
         testUsers = User.objects.all().filter(username__startswith='test')
         
@@ -311,9 +311,29 @@ class TitleTestCase(TestCase):
                 print '\t\tTitle: %s' % currentSubscription.title.name
         # User Assertions
         self.assertEquals(len(testUsers), 3)
-        
 
-        # SERIES
+    def testSubscriptions(self):
+        """Assert that we created subscriptions attached to users and titles correctly."""
+        print '\n---TitleSubscriptions---'
+        for currentSubscription in TitleSubscription.objects.all() :
+            print '\n\tUser: %s:%s' % (currentSubscription.user.username, currentSubscription.user.get_profile().slug)
+            print '\tTitle: %s' % currentSubscription.title.name
+            print '\tDay Interval: %s' % currentSubscription.day_interval
+            print '\tLast Episode Downloaded: %s' % currentSubscription.last_downloaded_episode.name
+            print '\tHousekeeping: %s,  %s,  %s,  %s' % (str(currentSubscription.date_created), str(currentSubscription.date_updated), str(currentSubscription.finished), str(currentSubscription.deleted))
+                
+            # Subscription Assertions
+            if currentSubscription.user.username == "testuser1" :
+                self.assertEquals("test1-user1", currentSubscription.user.get_profile().slug)
+            elif currentSubscription.user.username == "testuser2" :
+                self.assertEquals("test2-user2", currentSubscription.user.get_profile().slug)
+            elif currentSubscription.user.username == "testuser3" :
+                self.assertEquals("test3-user3", currentSubscription.user.get_profile().slug)
+            else :
+                self.fail('Non-matching Subscription!' + currentSubscription.user.username)
+
+    def testSeries(self):
+        """Assert that we creates series correctly, and can access titles from series."""
         print '\n---Series---'
         for currentSeries in Series.objects.all().filter(name__startswith='Podiobooks Series') :
             print '\n\tName: %s' % currentSeries
@@ -335,7 +355,8 @@ class TitleTestCase(TestCase):
             else :
                 self.fail('Non-matching Series!' + currentSeries.name)
                 
-        # TITLES 
+    def testTitles(self):      
+        """Assert that we created titles correctly, and can access everything from titles.""" 
         print '\n---Titles---'
         for currentTitle in Title.objects.all().filter( name__startswith='Podiobooks Title' ) :
             print '\n\tName: %s' % currentTitle
@@ -382,27 +403,9 @@ class TitleTestCase(TestCase):
                 self.assertEquals(len(currentTitle.episodes.all()), 1)
             else :
                 self.fail('Non-matching Title!' + currentTitle.name)
-                
-        # SUBSCRIPTIONS  
-        print '\n---TitleSubscriptions---'
-        for currentSubscription in TitleSubscription.objects.all() :
-            print '\n\tUser: %s:%s' % (currentSubscription.user.username, currentSubscription.user.get_profile().slug)
-            print '\tTitle: %s' % currentTitle.name
-            print '\tDay Interval: %s' % currentSubscription.day_interval
-            print '\tLast Episode Downloaded: %s' % currentSubscription.last_downloaded_episode.name
-            print '\tHousekeeping: %s,  %s,  %s,  %s' % (str(currentSubscription.date_created), str(currentSubscription.date_updated), str(currentSubscription.finished), str(currentSubscription.deleted))
-                
-            # Subscription Assertions
-            if currentSubscription.user.username == "testuser1" :
-                self.assertEquals("test1-user1", currentSubscription.user.get_profile().slug)
-            elif currentSubscription.user.username == "testuser2" :
-                self.assertEquals("test2-user2", currentSubscription.user.get_profile().slug)
-            elif currentSubscription.user.username == "testuser3" :
-                self.assertEquals("test3-user3", currentSubscription.user.get_profile().slug)
-            else :
-                self.fail('Non-matching Subscription!' + currentSubscription.user.username)
-        
-        # CATEGORIES  
+                     
+    def testCategories(self):
+        """Assert that we created Categories correctly, and can access titles from categories."""
         print '\n---Categories---'
         for currentCategory in Category.objects.all() :
             print '\n\tSlug/Name: %s/%s' % (currentCategory.slug, currentCategory.name)
@@ -415,7 +418,7 @@ class TitleTestCase(TestCase):
             elif currentCategory.slug == "fantasy" :
                 self.assertEquals(len(currentCategory.title_set.all()), 1)
             else :
-                self.fail('Non-matching Category!' + currentSubscription.user.username)
+                self.fail('Non-matching Category!' + currentCategory.name)
                 
         # Count Titles By Category
         categoryTitleCount = Category.objects.aggregate(title_count=Count('title')) # Counts the main_title_category table
@@ -439,7 +442,6 @@ class TitleTestCase(TestCase):
         for categorySubset in categoryTitleGroupCountsFilteredSubset:
             print  '\t\t%s/%s' % (categorySubset[0], categorySubset[1])
         self.assertEquals(len(categoryTitleGroupCountsFilteredSubset), 1)
-        
             
         title3 = Title.objects.get(name='Podiobooks Title #3')
         print ('\n\t' + title3.name + ":")
@@ -447,7 +449,8 @@ class TitleTestCase(TestCase):
             print '\t\tCategory Name: %s' % currentCategory.name
         self.assertEquals(len(title3.categories.all()), 2)
         
-        # CONTRIBUTORS  
+    def testContributors(self):
+        """Assert that we created Categories correctly, and can access titles from categories.""" 
         print '\n---Contributors---'
         for currentContributor in Contributor.objects.all() :
             print '\n\tSlug/Name: %s/%s' % (currentContributor.slug, currentContributor.display_name)
@@ -492,14 +495,16 @@ class TitleTestCase(TestCase):
             print '\t\tContributor Name: %s' % currentContributor.display_name
         self.assertEquals(len(title3.contributors.all()), 2)
         
-        # Test building bylines
-        title3titlecontributors = title3.titlecontributors.all().order_by('contributor_type__slug', 'date_created')
+    def testBylines(self):
+        """Assert that the creation of bylines is working."""
+        title3titlecontributors = self.title3.titlecontributors.all().order_by('contributor_type__slug', 'date_created')
         bylineFromTemplate = render_to_string('main/title/tags/show_contributors.html', {'titlecontributors': title3titlecontributors,})
         
         print "\t\tTemplate Byline: %s" % bylineFromTemplate
-        print "\t\tAuto Byline: %s" % title3.byline
-        self.assertEquals(bylineFromTemplate.strip(), title3.byline)
-        
-        # Test Max Rating Capture
+        print "\t\tAuto Byline: %s" % self.title3.byline
+        self.assertEquals(bylineFromTemplate.strip(), self.title3.byline)
+    
+    def testMaxRating(self):
+        """Assert that we can capture the last loaded rating from the PB1 Site."""
         print "\t\tLast Rating Loaded: %s" % self.rating
 
