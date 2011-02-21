@@ -35,14 +35,7 @@
 				}
 			});
 			
-			if (settings.checkCookie){
-				if($.cookie(settings.cookie)){
-					if (shelf.has("form select")){
-						shelf.find("form select").val($.cookie(settings.cookie));
-						settings.url += $.cookie(settings.cookie);
-					}					
-				}
-			}
+			
 			
 			if (shelf.has("form select")){
 				var sel = shelf.find("form select");
@@ -63,6 +56,14 @@
 				});				
 			}
 	
+			if (settings.checkCookie){
+				if($.cookie(settings.cookie)){
+					if (shelf.has("form select")){
+						shelf.find("form select").val($.cookie(settings.cookie));
+						settings.url += $.cookie(settings.cookie);
+					}					
+				}
+			}
 			
 			if(settings.cookie){
 				$.cookie(settings.cookie,shelf.find("form select").val(),{expires:7});
@@ -183,6 +184,33 @@
 						handleArrows();
 						status();
 					});
+					
+					wholeShelf.swipe({
+						swipeLeft:function(event){
+							rightArrow.trigger("click");	
+						},
+						swipeRight:function(event){
+							leftArrow.trigger("click");
+						},
+						swipeStatus:function(event, phase, direction, distance){
+							
+							if (direction == "left"){
+								wholeShelf.animate({"left": wholeShelf.css("left")-distance},1);
+								l("swiping left");
+								l(wholeShelf.css("left")-distance);
+							}
+							if (direction == "right"){
+								wholeShelf.animate({"left": wholeShelf.css("left")+distance},1);
+								l("swiping right");
+								l(wholeShelf.css("left")+distance);
+							} 
+														
+						}
+					});
+					
+					
+					
+					
 				}
 			});
 		});
