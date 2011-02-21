@@ -135,6 +135,8 @@
 }
 
 
-@media all and (max-width:400px){
-	
+.genre-change{
+	position:absolute;
+	right:100px;
+	top:-30px;
 }
