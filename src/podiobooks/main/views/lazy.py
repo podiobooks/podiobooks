@@ -6,7 +6,7 @@ from podiobooks.main.models import Title
 from django.conf import settings
 from django.template.loader import render_to_string
 from django.http import HttpResponse
-
+from django.views.decorators.cache import cache_page
 from podiobooks.main.views import get_initial_category
 
 @cache_page(1)
