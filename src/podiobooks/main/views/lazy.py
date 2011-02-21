@@ -29,7 +29,7 @@ def homepage_featured(request,cat=None):
     
     
     response = HttpResponse(str)
-    response.set_cookie("featured_cat",cat,max_age=60*60*24*100)
+    response.set_cookie("featured_cat",cat,max_age=60*60*24*7)
     
     return response
     
