@@ -276,10 +276,11 @@ class Title(models.Model):
     promoter_count = models.IntegerField(default=0, db_index=True)
     detractor_count = models.IntegerField(default=0, db_index=True)
     deleted = models.BooleanField(default=False)
-    contributors = models.ManyToManyField('Contributor', through='TitleContributor')
+    contributors = models.ManyToManyField('Contributor', through='TitleContributor') #related_name doesn't work with manual intermediary tables
     # Note: TitleContributor Objects (intermediate table) are available as titlecontributors.all()
     byline = models.CharField(max_length=1024) # This is a formatted cache of the title contributors
-    categories = models.ManyToManyField('Category', through='TitleCategory')
+    categories = models.ManyToManyField('Category', through='TitleCategory') #related_name doesn't work with manual intermediary tables
+    # Note: TitleCategory Objects (intermediate table) are available as titlecategories.all()
     category_list = models.CharField(max_length=1024) # This is a formatted cache of the categories
     partner = models.ForeignKey('partner', null=True, blank=True, related_name='titles')
     awards = models.ManyToManyField('Award', null=True, blank=True, related_name='titles')
@@ -317,8 +318,6 @@ class Title(models.Model):
     
     def description_br(self):
         return self.description.replace('\n', '\n<br/>') # pylint: disable=E1101
-
-
 
 class TitleModerator(CommentModerator):
     """ Sets up comments moderation for Titles """
@@ -370,7 +369,7 @@ def update_byline(sender, instance, **kwargs):
     instance.title.byline = byline.strip()
     instance.title.save()
     
-post_save.connect(update_byline, sender=TitleContributor)
+post_save.connect(update_byline, sender=TitleContributor) # Fires update_byline when a TitleContributor is saved
 
 class TitleUrl(models.Model):
     """Allows us to have several links for a book, for display. For utility."""
