@@ -193,7 +193,7 @@
 							leftArrow.trigger("click");
 						},
 						swipeStatus:function(event, phase, direction, distance){
-							
+							/*
 							if (direction == "left" && cur < maxWidth - shelf.width()){
 								wholeShelf.animate({"left": parseInt(wholeShelf.css("left").replace("px","")) - distance},1);
 								cur -= parseInt(wholeShelf.css("left").replace("px","")) - distance;
@@ -204,7 +204,7 @@
 								cur += parseInt(wholeShelf.css("left").replace("px","")) + distance;
 								status();								
 							} 
-												
+								*/				
 						}
 					});
 					
