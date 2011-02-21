@@ -183,6 +183,13 @@
 						handleArrows();
 						status();
 					});
+					
+					wholeShelf.swipeLeft(function(){
+						rightArrow.trigger("click");
+					});
+					wholeShelf.swipeRight(function(){
+						leftArrow.trigger("click");
+					});
 				}
 			});
 		});
