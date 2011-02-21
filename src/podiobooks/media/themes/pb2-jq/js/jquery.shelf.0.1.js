@@ -59,7 +59,7 @@
 	
 			
 			if(settings.cookie){
-				$.cookie(settings.cookie,shelf.find("form select").val());
+				$.cookie(settings.cookie,shelf.find("form select").val(),{expires:7});
 			}		
 			
 			var progress = $("<p class='shelf-ajax-loader'><img src='" + siteVars("img") + "ajax-loader-bar.gif'/></p>");
