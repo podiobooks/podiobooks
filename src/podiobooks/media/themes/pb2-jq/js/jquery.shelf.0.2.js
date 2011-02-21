@@ -195,12 +195,12 @@
 						swipeStatus:function(event, phase, direction, distance){
 							
 							if (direction == "left"){
-								wholeShelf.animate({"left": wholeShelf.css("left")-distance},1);
+								wholeShelf.animate({"left": parseInt(wholeShelf.css("left").replace("px","")) - distance},1);
 								l("swiping left");
 								l(wholeShelf.css("left")-distance);
 							}
 							if (direction == "right"){
-								wholeShelf.animate({"left": wholeShelf.css("left")+distance},1);
+								wholeShelf.animate({"left":parseInt(wholeShelf.css("left").replace("px","")) + distance},1);
 								l("swiping right");
 								l(wholeShelf.css("left")+distance);
 							} 
