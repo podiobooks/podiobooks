@@ -14,4 +14,16 @@
 	.pg{
 		width:242px;
 	}
+	
+	.shelf-heading{
+		
+		padding:10px 10px 35px 20px;
+	}
+	
+	.genre-change{
+		position:absolute;
+		left:15px;
+		top:-30px;
+	}
+	
 }
