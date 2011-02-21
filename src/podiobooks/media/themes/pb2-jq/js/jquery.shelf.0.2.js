@@ -1,3 +1,9 @@
+/*
+ * History:
+ * 
+ * 0.1: Initial plugin creation
+ * 0.2: Internalized checking for change form, adding binding for onChange
+ */
 (function( $ ){
 
 	$.fn.pbShelf = function( options ) {
@@ -59,7 +65,7 @@
 	
 			
 			if(settings.cookie){
-				$.cookie(settings.cookie,shelf.find("form select").val());
+				$.cookie(settings.cookie,shelf.find("form select").val(),{expires:7});
 			}		
 			
 			var progress = $("<p class='shelf-ajax-loader'><img src='" + siteVars("img") + "ajax-loader-bar.gif'/></p>");
@@ -69,8 +75,8 @@
 			
 			shelf.addClass('fun-shelf');
 			
-			var leftArrow = $("<a class='shelf-arrow shelf-arrow-left' href='#'>previous</a>");
-			var rightArrow = $("<a class='shelf-arrow shelf-arrow-right' href='#'>next</a>");
+			var leftArrow = $("<a class='shelf-arrow shelf-arrow-left' href='#'></a>");
+			var rightArrow = $("<a class='shelf-arrow shelf-arrow-right' href='#'></a>");
 			
 			
 			
