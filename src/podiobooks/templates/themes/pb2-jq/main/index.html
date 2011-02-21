@@ -29,6 +29,9 @@
 	{% for t in featured_title_list %}
 	{% shelf_item t %}
 	{% endfor %}
+	<form class='genre-change'>
+		{{category_choice_form.as_p}}
+	</form>
 </div>
 
 <h2 class='shelf-heading'>Featured 2</h2>
