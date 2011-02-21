@@ -7,6 +7,7 @@ from podiobooks.main.forms import CategoryChoiceForm, ContributorChoiceForm, Tit
 from django.conf import settings
 from django.db.models import Q
 from django.core.urlresolvers import reverse
+from django.views.decorators.cache import cache_page
 
 INTIIAL_CATEGORY = 'science-fiction'
 INTIIAL_CONTRIBUTOR = 'mur-lafferty'
@@ -22,6 +23,7 @@ def get_initial_category(request):
     else:
         return INTIIAL_CATEGORY
     
+@cache_page(1)
 def index(request):
     """
     Main site page page.
