@@ -1,3 +1,9 @@
+/*
+ * History:
+ * 
+ * 0.1: Initial plugin creation
+ * 0.2: Internalized checking for change form, adding binding for onChange
+ */
 (function( $ ){
 
 	$.fn.pbShelf = function( options ) {
