@@ -185,12 +185,18 @@
 						status();
 					});
 					
-					wholeShelf.swipeLeft(function(){
-						rightArrow.trigger("click");
+					wholeShelf.swipe({
+						swipeLeft:function(event){
+							rightArrow.trigger("click");	
+						},
+						swipeRight:function(event){
+							leftArrow.trigger("click");
+						}
 					});
-					wholeShelf.swipeRight(function(){
-						leftArrow.trigger("click");
-					});
+					
+					
+					
+					
 				}
 			});
 		});
