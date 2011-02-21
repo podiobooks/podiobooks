@@ -28,8 +28,8 @@
 			});
 			var progress = $("<p class='shelf-ajax-loader'><img src='" + siteVars("img") + "ajax-loader-bar.gif'/></p>");
 			l(siteVars("img"));
-			progress.appendTo(shelf);
-			
+			progress.appendTo($("body")).hide();
+			progress.appendTo(shelf).show();
 			
 			shelf.addClass('fun-shelf');
 			
@@ -66,7 +66,7 @@
 					
 					$(data).appendTo(shelf);
 					
-					progress.remove();
+					progress.hide();
 					
 					var shelfItems = shelf.find(".shelf-item");
 					var w = 0;
