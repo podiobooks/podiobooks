@@ -23,15 +23,13 @@ def homepage_featured(request,cat=None):
     if not cat:
         cat = get_initial_category(request)
     
-    
-    
     featured_title_list = homepage_title_list.filter(categories__slug=cat).order_by('-date_created', 'name')[:16]
     
     str = render_to_string("main/lazy/shelf_items.html", {"items":featured_title_list}, context_instance=RequestContext(request))
     
     
     response = HttpResponse(str)
-    response.set_cookie("featured_cat",cat)
+    response.set_cookie("featured_cat",cat,max_age=60*60*24*100)
     
     return response
     
