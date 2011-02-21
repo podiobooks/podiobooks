@@ -26,6 +26,9 @@
 					$(this).remove();
 				}
 			});
+			var progress = $("<p><img src='" + siteVars("img") + "ajax-loader-bar.gif'/></p>");
+			l(siteVars("img"));
+			progress.appendTo(shelf);
 			
 			
 			shelf.addClass('fun-shelf');
@@ -62,6 +65,8 @@
 				success:function(data){
 					
 					$(data).appendTo(shelf);
+					
+					progress.remove();
 					
 					var shelfItems = shelf.find(".shelf-item");
 					var w = 0;
