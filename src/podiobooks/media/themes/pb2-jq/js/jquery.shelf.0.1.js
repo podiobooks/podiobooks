@@ -66,6 +66,16 @@
 					
 					$(data).appendTo(shelf);
 					
+					$(shelf).find(".shelf-cover img").each(function(){
+						var img = $(this);
+						img.hide();
+						var l = $("<img class='shelf-cover-loading' src='" + siteVars("img") + "loading.gif' />").appendTo(img.parents(".shelf-cover"));
+						img.bind("load",function(){
+							l.remove();
+							img.show();
+							
+						});
+					});
 					progress.hide();
 					
 					var shelfItems = shelf.find(".shelf-item");
