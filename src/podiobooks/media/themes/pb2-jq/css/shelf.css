@@ -137,6 +137,9 @@
 
 .genre-change{
 	position:absolute;
-	right:100px;
+	right:10px;
 	top:-30px;
+}
+.genre-change label{
+	display:none;
 }
