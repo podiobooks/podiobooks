@@ -26,7 +26,7 @@
 					$(this).remove();
 				}
 			});
-			var progress = $("<p><img src='" + siteVars("img") + "ajax-loader-bar.gif'/></p>");
+			var progress = $("<p class='shelf-ajax-loader'><img src='" + siteVars("img") + "ajax-loader-bar.gif'/></p>");
 			l(siteVars("img"));
 			progress.appendTo(shelf);
 			
