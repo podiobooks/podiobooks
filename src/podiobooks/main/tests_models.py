@@ -204,6 +204,7 @@ class TitleTestCase(TestCase):
         TitleCategory.objects.create(title=self.title3, category=self.category2)
         
         # Awards
+        # @TODO: Add Award-centric test
         self.award1 = Award.objects.create(
                 slug='parsec2010',
                 name='Parsec Award 2010',
@@ -221,6 +222,7 @@ class TitleTestCase(TestCase):
         self.title3.awards.add(self.award1) #Title 3 should have two awards now
         
         # Advisories
+        # @TODO: Add Advisory-centric test
         self.advisory1 = Advisory.objects.create(
                 slug='advisory-test-1',
                 name='Advisory Test 1',
@@ -235,6 +237,7 @@ class TitleTestCase(TestCase):
         self.advisory2.titles.add(self.title3)
         
         # License
+        # @TODO: Add License-centric test
         self.license1 = License.objects.create(
                 slug='by-nc-nd',
                 text='Attribution Noncommercial No Derivatives',
@@ -249,6 +252,7 @@ class TitleTestCase(TestCase):
                 )
         
         # Partner
+        # @TODO: Add Partner-centric test
         self.partner1 = Partner.objects.create(
                 name='Audible',
                 url="http://audible.com"
@@ -260,13 +264,13 @@ class TitleTestCase(TestCase):
         self.promo1 = Promo.objects.create(
                 title=self.title1,
                 name='Promo 1',
-                url="http://corgis.com"
+                url="http://podiobooks.com"
         )
         
         # URLs
         self.url1 = TitleUrl.objects.create(
                 title=self.title1,
-                url="http://corgis.com"
+                url="http://podiobooks.com"
         )
         
         # Rating
@@ -497,6 +501,7 @@ class TitleTestCase(TestCase):
         
     def testBylines(self):
         """Assert that the creation of bylines is working."""
+        print '\n---Bylines---'
         title3titlecontributors = self.title3.titlecontributors.all().order_by('contributor_type__slug', 'date_created')
         bylineFromTemplate = render_to_string('main/title/tags/show_contributors.html', {'titlecontributors': title3titlecontributors,})
         
@@ -506,5 +511,6 @@ class TitleTestCase(TestCase):
     
     def testMaxRating(self):
         """Assert that we can capture the last loaded rating from the PB1 Site."""
+        print '\n---Max Rating---'
         print "\t\tLast Rating Loaded: %s" % self.rating
 
