@@ -8,7 +8,7 @@ import os
 from django.contrib.sites.models import Site
 from django.conf import settings
 from dirs import app_css_dirs,app_js_dirs
-from django.template.loader import get_template,render_to_string
+from django.template.loader import get_template, render_to_string
 from django.template import Context, Template
 from django.core.urlresolvers import reverse
 from django.utils.encoding import smart_str
