@@ -72,7 +72,7 @@
 						var l = $("<img class='shelf-cover-loading' src='" + siteVars("img") + "loading.gif' />").appendTo(img.parents(".shelf-cover"));
 						img.bind("load",function(){
 							l.remove();
-							img.show();
+							img.fadeIn();
 							
 						});
 					});
