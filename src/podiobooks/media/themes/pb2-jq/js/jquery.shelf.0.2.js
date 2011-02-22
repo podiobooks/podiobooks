@@ -205,7 +205,8 @@
 								status();								
 							} 
 								*/				
-						}
+						},
+						allowPageScroll:"vertical"						
 					});
 					
 				}
