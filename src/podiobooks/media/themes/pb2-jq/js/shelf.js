@@ -6,6 +6,13 @@ $(function(){
 		"checkCookie": true
 	});
 	
+	$("#top-rated-shelf").pbShelf({
+		"url" : "/lazy/top-rated/",
+		"cookie": "toprated_cat", 
+		"checkCookie": true
+	});
+	
+	
 	/*
 	$(".genre-change select").each(function(){
 		var ele = $(this);
