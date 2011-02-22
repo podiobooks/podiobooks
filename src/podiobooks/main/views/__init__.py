@@ -12,7 +12,6 @@ from django.views.decorators.cache import cache_page
 INTIIAL_CATEGORY = 'science-fiction'
 INTIIAL_CONTRIBUTOR = 'mur-lafferty'
 
-@cache_page(1)
 def index(request):
     """
     Main site page page.
