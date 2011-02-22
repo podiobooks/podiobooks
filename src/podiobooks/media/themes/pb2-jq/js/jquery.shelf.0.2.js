@@ -111,40 +111,46 @@
 					
 					$(data).appendTo(shelf);
 					
-					$(shelf).find(".shelf-cover img:not(.shelf-cover-loading)").each(function(){
+					if(shelf.find(".shelf-item").length){
 						
-						var img = $(this);
-						
-						img.hide();
-						var l = $("<img class='shelf-cover-loading' src='" + siteVars("img") + "loading.gif' />").appendTo(img.parents(".shelf-cover"));
-						
-						img.load(function(){
-							l.remove();
-							img.fadeIn();
+						$(shelf).find(".shelf-cover img:not(.shelf-cover-loading)").each(function(){
 							
+							var img = $(this);
+							
+							img.hide();
+							var l = $("<img class='shelf-cover-loading' src='" + siteVars("img") + "loading.gif' />").appendTo(img.parents(".shelf-cover"));
+							
+							img.load(function(){
+								l.remove();
+								img.fadeIn();
+								
+							});
 						});
-					});
-					
-					progress.hide();
-					
-					var shelfItems = shelf.find(".shelf-item");
-					var w = 0;
-					
-					shelfItems.each(function(){
-						itemWidth = parseInt($(this).width()) + parseInt($(this).css("padding-left")) + parseInt($(this).css("padding-right")) + parseInt($(this).css("margin-left")) + parseInt($(this).css("margin-right"));
-						w += itemWidth;
-					});
-					
-					maxWidth = w;
-					
-					shelf.children("div").wrapAll("<div class='whole-shelf'/>");
-					var wholeShelf = shelf.children(".whole-shelf");
-					wholeShelf.wrap("<div class='shelf-view'/>");
-					
-					leftArrow.appendTo(shelf);
-					rightArrow.appendTo(shelf);
-					
-					handleArrows();
+						
+						progress.hide();
+						
+						var shelfItems = shelf.find(".shelf-item");
+						var w = 0;
+						
+						shelfItems.each(function(){
+							itemWidth = parseInt($(this).width()) + parseInt($(this).css("padding-left")) + parseInt($(this).css("padding-right")) + parseInt($(this).css("margin-left")) + parseInt($(this).css("margin-right"));
+							w += itemWidth;
+						});
+						
+						maxWidth = w;
+						
+						shelf.children("div").wrapAll("<div class='whole-shelf'/>");
+						var wholeShelf = shelf.children(".whole-shelf");
+						wholeShelf.wrap("<div class='shelf-view'/>");
+						
+						leftArrow.appendTo(shelf);
+						rightArrow.appendTo(shelf);
+						
+						handleArrows();
+					}
+					else{
+						progress.hide();
+					}
 					
 					rightArrow.click(function(e){
 						e.preventDefault();
