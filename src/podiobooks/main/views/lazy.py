@@ -3,8 +3,6 @@
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from podiobooks.main.models import Title
-from django.conf import settings
-from django.http import HttpResponse
 from django.views.decorators.cache import cache_page
 from podiobooks.main.views import INTIIAL_CATEGORY, INTIIAL_CONTRIBUTOR
 
@@ -29,7 +27,7 @@ def homepage_featured(request, cat=None):
 @cache_page(1)
 def top_rated(request, author=None):
     """
-    Gets a requested set of featured titles
+    Gets a requested set of top rated authors
     
     for use with ajax
     
