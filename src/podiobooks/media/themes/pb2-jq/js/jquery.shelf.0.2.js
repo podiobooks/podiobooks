@@ -143,6 +143,8 @@
 						var wholeShelf = shelf.children(".whole-shelf");
 						wholeShelf.wrap("<div class='shelf-view'/>");
 						
+						
+						
 						leftArrow.appendTo(shelf);
 						rightArrow.appendTo(shelf);
 						
