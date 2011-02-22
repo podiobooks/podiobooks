@@ -1,8 +1,8 @@
+/*
+ * Basic Shelf Styling
+ */
 .shelf-heading{
-	background:#4280bd;
 	padding:10px 10px 5px 20px;
-	color:#fff;
-	
 	
 	-webkit-border-top-left-radius:10px;
 	-webkit-border-top-right-radius:10px;
@@ -25,7 +25,7 @@
 	
 }
 .shelf{
-	background:#06539e;
+	
 	
 	-webkit-border-top-left-radius:0px;
 	-webkit-border-top-right-radius:0px;
@@ -55,6 +55,28 @@
 	height:177px;
 	margin-bottom:40px;
 }
+
+/*
+ * Shelf Themes
+ */
+.shelf-dark{
+	background:#06539e;
+}
+.shelf-heading-dark{
+	background:#4280bd;
+	color:#fff;
+}
+
+.shelf-light{
+	background:#d0deee;
+}
+.shelf-heading-light{
+	background:#90b3dd;
+	color:#fff;
+}
+/*
+ * Shelf slider (js driven)
+ */
 .shelf-view{
 	height:100%;
 	width:100%;
@@ -141,12 +163,12 @@
 }
 
 
-.genre-change{
+.shelf form{
 	position:absolute;
 	right:10px;
 	top:-30px;
 }
-.genre-change label{
+.shelf form label{
 	display:none;
 }
 .shelf-ajax-loader{
