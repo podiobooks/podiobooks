@@ -29,11 +29,11 @@ class ContributorChoiceForm(forms.Form):
     
     if (not contributors):
         top_contributors = Contributor.objects.annotate(title_count=Count('title')).filter(title__display_on_homepage=True).order_by('-title_count').values_list('slug', 'display_name', 'title_count')[:10]
-         
+        
         contributors = []
-        for contributor_row in top_contributors:
-            contributors += [(contributor_row[0],contributor_row[1])]; #strip off the count, which has to be in the values list because of the order_by
-         
+        for slug,name,titles in top_contributors:
+            contributors += [(slug,name)]; #strip off the count, which has to be in the values list because of the order_by
+          
         cache.set('contributor_dropdown_values', top_contributors, 240)
     contributor = forms.ChoiceField(choices=contributors, widget=forms.Select(attrs={'class':'pb-contributor-choice'}))
     
