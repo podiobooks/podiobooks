@@ -13,13 +13,13 @@
 				<a href="{% url profile_manage %}">My Account</a></li>
 				<li><a href="{% url django_authopenid.views.signout %}">Logout {{ user.username }}</a>
 			{% else %} 	
-				<a href="{% ssl_site_login_url %}">Login/Register</a>
+				<a href="{% ssl_site_login_url %}">Login<span class='hide-on-mobile'>/Register</span></a>
 			{% endif %}
 			</li>
 		</ul>
-		
+		{% show_searchbox %}
 		{% show_browsebox %}
 		
-		{% show_searchbox %}
+		
 	</div>
 <!-- End Header - Logo and Navigation Bar -->

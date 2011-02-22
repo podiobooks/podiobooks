@@ -1,22 +1,79 @@
-@media all and (max-width:967px){
+/*
+ * 3 panes per shelf
+ */
+@media all and (max-width:985px){
 	.pg{
 		width:726px;
 	}
+		
+	.browse-by{
+		float:none;
+		display:block;
+		margin:10px 0 0 0;
+		text-align: left;
+		float:left;
+		width:100%;
+	}
+	
+	.nav{
+		margin:0;
+		float:left;
+	}
+	.search{
+	}
+	
 }
 
-@media all and (max-width:725px){
+
+
+/* 
+ * 2 panes per shelf
+ */
+@media all and (max-width:743px){
+	
+	#djDebug{
+		display:none;
+	}
+
 	.pg{
 		width:484px;
 	}
+	.hide-on-mobile{
+		display:none;
+	}
 }
 
-@media all and (max-width:483px){
-	.pg{
+
+
+/*
+ * 1 pane per shelf
+ */
+@media all and (max-width:501px){
+	
+	.shelf{
 		width:242px;
 	}
-	
 	.shelf-heading{
+		width:212px;
+	}
+	.pg{
+		width:auto;
+		padding:10px 10px 50px 10px;
+		position:relative;
 		
+	}
+	.pg-head{
+		background:none;
+		-webkit-box-shadow:none;
+		-webkit-border-radius:0;
+		padding:0;
+		margin:0 0 20px 0;
+		position:static;
+	}
+	.pg-head li{
+		margin:0;
+	}
+	.shelf-heading{
 		padding:10px 10px 35px 20px;
 	}
 	
@@ -29,4 +86,43 @@
 	.shelf form select{
 		max-width:90%;
 	}
+	
+	.search{
+		float:left;
+		margin:10px 0 0 0;
+		position:absolute;
+		bottom:20px;
+		left:10px;	
+		width:95%;
+	}
+	#id_keywords{
+		width:75%
+	}
+	.search button{
+		left:75%;
+	}
+	
+	.nav{
+		float:none;
+		display:block;
+		width:auto;
+		margin:10px 0 5px 0;
+		
+	}
+	.nav li{
+		display:block;
+		float:none;
+		
+	}
+	.nav li a{
+		display:block;
+		padding:3px 0 2px;
+		margin:5px 0 2px 0;
+		border-bottom:solid 1px #b2b2b2;
+		background:url(img/arrow-right.png) right center no-repeat;
+	}
+	.nav li:first-of-type a{
+		border-top:solid 1px #b2b2b2;
+	}
+	
 }
