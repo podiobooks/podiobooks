@@ -94,10 +94,10 @@
 		-o-border-radius:0;
 		border-radius:0;
 		
-		padding:10px 10px 20px 0px;
+		padding:10px 10px 35px 0px;
 		
 		color:#000;
-		width:160px;
+		width:60%;
 	}
 	.shelf-item{
 		-webkit-box-shadow:none;
@@ -144,8 +144,8 @@
 	
 	.shelf form{
 		position:absolute;
-		right:0px;
-		top:-42px;
+		left:-2px;
+		top:-32px;
 		width:120px;
 		
 	}
