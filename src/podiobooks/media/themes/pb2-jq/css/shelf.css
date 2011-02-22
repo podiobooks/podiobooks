@@ -176,3 +176,7 @@
 	height:160px;
 	text-align: center;
 }
+.shelf-no-items{
+	text-align: center;
+	padding-top:70px;
+}
