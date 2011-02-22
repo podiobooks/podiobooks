@@ -20,10 +20,13 @@
 		padding:10px 10px 35px 20px;
 	}
 	
-	.genre-change{
+	.shelf form{
 		position:absolute;
 		left:15px;
 		top:-30px;
+		
 	}
-	
+	.shelf form select{
+		max-width:90%;
+	}
 }
