@@ -204,7 +204,7 @@
 								cur += parseInt(wholeShelf.css("left").replace("px","")) + distance;
 								status();								
 							} 
-								*/				
+							*/				
 						},
 						allowPageScroll:"vertical"						
 					});
