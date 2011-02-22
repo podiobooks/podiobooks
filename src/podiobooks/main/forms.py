@@ -23,7 +23,7 @@ class CategoryChoiceForm(forms.Form):
 class ContributorChoiceForm(forms.Form):
     """ Form used to select contributors on the Author Spotlight shelf """
     contributors = cache.get('contributor_dropdown_values')
-    cache.get('contributor_dropdown_values') 
+    
     submit_url = None
     form_name = 'contributor'
     
@@ -35,10 +35,8 @@ class ContributorChoiceForm(forms.Form):
             contributors.append( (str(slug), str(name)), )  #strip off the count, which has to be in the values list because of the order_by
           
         cache.set('contributor_dropdown_values', contributors, 240)
-    
-    
         
-    contributor = forms.ChoiceField(choices=contributors, widget=forms.Select(attrs={'class':'pb-contributor-choice'}))
+    contributor = forms.ChoiceField(choices=[(slug, display) for slug, display in contributors], widget=forms.Select(attrs={'class':'pb-contributor-choice'}))
     
 
 class TitleSearchForm(forms.Form):
