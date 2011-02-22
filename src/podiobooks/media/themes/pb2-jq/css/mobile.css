@@ -97,7 +97,6 @@
 		padding:10px 10px 40px 0px;
 		
 		color:#000;
-		width:60%;
 	}
 	.shelf-item{
 		-webkit-box-shadow:none;
@@ -118,7 +117,7 @@
 	}
 	.shelf-item h3,
 	.shelf-item p{
-		width:140px;	
+		width:160px;	
 	}
 	.pg-head{
 		background:none;
