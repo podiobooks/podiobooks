@@ -24,16 +24,30 @@
 {% endblock %}
 
 {% block content %} 
-<h2 class='shelf-heading'>Featured</h2>
-<div id="featured-shelf" class='shelf clearfix'>
+<h2 class='shelf-heading shelf-heading-dark'>Featured</h2>
+<div id="featured-shelf" class='shelf shelf-dark clearfix'>
+	
 	{% for t in featured_title_list %}
-	{% shelf_item t %}
+		{% shelf_item t %}
 	{% endfor %}
 	<form class='genre-change' action="/lazy/featured/" method="post">
 		{{category_choice_form.as_p}}
 	</form>
+	
 </div>
 
+<h2 class='shelf-heading shelf-heading-light'>Top Rated</h2>
+<div id="top-rated-shelf" class='shelf shelf-light clearfix'>
+	{% for t in toprated_title_list %}
+		{% shelf_item t %}
+	{% endfor %}
+	
+	<form class='genre-change' action="/lazy/top-rated/" method="post">
+		{{contributor_choice_form.as_p}}
+	</form>
+	
+	
+</div>
 <!-- Begin JavaScript Includes for Shelf Interactivity -->
 
 <!--

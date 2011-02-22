@@ -1,8 +1,8 @@
 {% load shelf_templatetags %}
 
 {% for item in items %}
-{# cycle <div>,,, #}
 	{% shelf_item item %}
-{# cycle ,,,</div> #}
+{% empty %}
+<div><p>None, sorry.</p></div>
 {% endfor %}
 
