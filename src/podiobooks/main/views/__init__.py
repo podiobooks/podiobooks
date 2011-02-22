@@ -8,6 +8,8 @@ from django.conf import settings
 from django.db.models import Q
 from django.core.urlresolvers import reverse
 from django.views.decorators.cache import cache_page
+from django.http import HttpResponse
+from django.core.cache import cache
 
 INTIIAL_CATEGORY = 'science-fiction'
 INTIIAL_CONTRIBUTOR = 'mur-lafferty'
@@ -49,7 +51,7 @@ def index(request):
                      'category_choice_form': category_choice_form,
                      'contributor_choice_form': contributor_choice_form,
                      }
-    
+    #return HttpResponse(cache.get('category_dropdown_values').__str__())
     return render_to_response('main/index.html', response_data, context_instance=RequestContext(request))
 
 

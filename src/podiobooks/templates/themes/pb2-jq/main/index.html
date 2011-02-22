@@ -10,17 +10,6 @@
 {% block body_class %}home{% endblock %}
 
 {% block head %}
-<!--
-<link rel="stylesheet" type="text/css" href="{{ THEME_MEDIA_URL }}css/infobox.css">
-<link rel="stylesheet" type="text/css" href="{{ THEME_MEDIA_URL }}css/shelf.css">
-<style type=text/css>
-	.specific-box {
-		border:2px solid #000;
-		border-radius:5px 5px 5px 5px;
-		padding: 5px;
-	}  
-</style>
--->
 {% endblock %}
 
 {% block content %} 
@@ -36,7 +25,7 @@
 	
 </div>
 
-<h2 class='shelf-heading shelf-heading-light'>Top Rated</h2>
+<h2 class='shelf-heading shelf-heading-light'>Top Authors</h2>
 <div id="top-rated-shelf" class='shelf shelf-light clearfix'>
 	{% for t in toprated_title_list %}
 		{% shelf_item t %}
@@ -48,40 +37,4 @@
 	
 	
 </div>
-<!-- Begin JavaScript Includes for Shelf Interactivity -->
-
-<!--
-<script src="{{ MEDIA_URL }}js/jquery/jcarousellite_1.0.1.pack.js">
-</script>
-<script src="{{ MEDIA_URL }}js/jquery/jquery.appear-1.1.1.min.js">
-</script>
-<script src="{{ THEME_MEDIA_URL }}js/book_shelf_jq.js">
-</script>
--->
-
-<!-- End JavaScript Includes for Shelf Interactivity -->
-
-<!-- Begin JavaScript to Attach Interactivity to Shelves -->
-<!--
-<script type="text/javascript">
-    /* On page ready, attach a jCarousel Widget to the Featured Shelf, setting the divs on either end as buttons */
-    $(function(){
-        attachCarousel('featuredPodiobooksShelf', 4);
-    });
-    // Updates a shelf by changing doing an AJAX call to load new pages into the shelf - called from shelf dropdowns
-    function shelfChange(shelf_id, shelf_url, dropdown_value){
-        $('#' + shelf_id + 'PageContainer').load(shelf_url.replace('placeholder_slug', dropdown_value), function(response, status, xhr){
-            if (status == "error") {
-                var msg = "Sorry but there was an error: ";
-                $('#' + shelf_id + 'PageContainer').html(msg + xhr.status + " " + xhr.statusText);
-            }
-            else {
-                attachCarousel(shelf_id, 4);
-            }
-        });
-    }
-</script>
--->
-
-<!-- End JavaScript to Attach Interactivity to Shelves -->
 {% endblock %}
