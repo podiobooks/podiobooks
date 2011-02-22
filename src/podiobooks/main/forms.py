@@ -32,7 +32,7 @@ class ContributorChoiceForm(forms.Form):
          
         contributors = []
         for contributor_row in top_contributors:
-            contributors.append((contributor_row[0], contributor_row[1]),) #strip off the count, which has to be in the values list because of the order_by
+            contributors += [(contributor_row[0],contributor_row[1])]; #strip off the count, which has to be in the values list because of the order_by
          
         cache.set('contributor_dropdown_values', top_contributors, 240)
     contributor = forms.ChoiceField(choices=contributors, widget=forms.Select(attrs={'class':'pb-contributor-choice'}))
