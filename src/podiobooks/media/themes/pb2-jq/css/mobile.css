@@ -71,8 +71,6 @@
 		margin:10px 0 0px 0;
 		display:none;
 	}
-		
-	 
 	
 	.pg-head{
 		background:none;
@@ -96,11 +94,10 @@
 		margin:0;
 	}
 	
-	.shelf form{
-		
-		width:90px;
-		
+	.shelf form{		
+		width:90px;		
 	}
+	
 	.shelf form select{
 		width:90px;
 	}
