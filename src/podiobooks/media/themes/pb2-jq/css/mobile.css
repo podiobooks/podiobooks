@@ -103,13 +103,10 @@
 		margin-bottom:20px;
 		color:#fff;
 		background:#4280BD;
-		width:auto;
 		margin-top:30px;
 		-webkit-box-shadow:0 3px 6px #666;
 	}
-	.shelf-arrow-right{
-		right:-40px;
-	}
+	
 	.shelf-item{
 		-webkit-box-shadow:none;
 		-moz-box-shadow:none;
