@@ -52,11 +52,12 @@
 	
 	.shelf{
 		width:242px;
-		margin-bottom:45px;
+		margin:0 auto;
 	}
 	
 	.shelf-heading{
 		width:212px;
+		margin:30px auto 0;
 	}
 	
 	.pg{
@@ -71,64 +72,8 @@
 		display:none;
 	}
 		
-	.shelf-dark,
-	.shelf-light{
-		background:transparent;
-		
-		-webkit-box-shadow:none;
-		-moz-box-shadow:none;
-		-o-box-shadow:none;
-		box-shadow:none;
-		
-		-webkit-border-radius:0;
-		-moz-border-radius:0;
-		-o-border-radius:0;
-		border-radius:0;
-		
-	}
+	 
 	
-	.shelf-heading{
-		background:transparent;
-		-webkit-box-shadow:none;
-		-moz-box-shadow:none;
-		-o-box-shadow:none;
-		box-shadow:none;
-		
-		-webkit-border-radius:0;
-		-moz-border-radius:0;
-		-o-border-radius:0;
-		border-radius:0;
-		
-		padding:10px 0px 5px 10px;
-		margin-bottom:20px;
-		color:#fff;
-		background:#4280BD;
-		margin-top:30px;
-		-webkit-box-shadow:0 3px 6px #666;
-	}
-	
-	.shelf-item{
-		-webkit-box-shadow:none;
-		-moz-box-shadow:none;
-		-o-box-shadow:none;
-		box-shadow:none;
-		
-		-webkit-border-radius:0;
-		-moz-border-radius:0;
-		-o-border-radius:0;
-		border-radius:0;
-		
-		background:transparent;
-		margin:0px;
-		padding:0 8px;
-		width:226px;
-		
-	}
-	.shelf-item h3,
-	.shelf-item p{
-		width:140px;
-			
-	}
 	.pg-head{
 		background:none;
 		
@@ -152,13 +97,12 @@
 	}
 	
 	.shelf form{
-		position:absolute;
-		left:-2px;
-		bottom:15px;
-		top:auto;
+		
+		width:90px;
 		
 	}
 	.shelf form select{
+		width:90px;
 	}
 	
 	.search{
