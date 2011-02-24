@@ -41,7 +41,7 @@ class ContributorChoiceForm(forms.Form):
 
 class TitleSearchForm(forms.Form):
     """ Form used to search for titles, used in header and on search page. """
-    keywords = forms.CharField(label="Search for", widget=forms.Select(attrs={'class':'search-keywords',}))
+    keywords = forms.CharField(label="Search for", widget=forms.TextInput(attrs={'class':'search-keywords',}))
     include_adult = forms.BooleanField(required=False, initial=False)
     completed_only = forms.BooleanField(required=False, initial=False)
     
