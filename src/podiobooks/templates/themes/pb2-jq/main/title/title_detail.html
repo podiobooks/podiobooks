@@ -4,111 +4,110 @@
 {% load disqus_tags %}
 {% block headtitle %}{{ title.name }} - {{ site_name }}{% endblock %}
 {% block head %}
-<link rel="stylesheet" type="text/css" href="{{ THEME_MEDIA_URL }}css/infobox.css">
 {% disqus_dev %}
+<link rel="stylesheet" type="text/css" href="{{ THEME_MEDIA_URL }}/css/styles_detail.css" />
 {% endblock %}
 {% block title %}Book Information{% endblock %}
 {% block content %}
-<div class="title-detail" style="margin: 0 0 30px 0;">
-    <div style="float:left; text-align: center;">
-        {% show_titlecover title 212 144 %}
-		<div style="font-size:10px;">
-		    This title is <span style="color:green; font-weight:bold;">{% if title.is_complete %}complete{% else %}still releasing{% endif %}</span>
+<div id="title-detail">
+	<div id="imagebox">
+		{% show_titlecover title 212 144 %}
+		This title is
+		<span style="color:green; font-weight:bold;">{% if title.is_complete %}complete{% else %}still releasing{% endif %}</span>
+		<div class="net-promoter-box">
+			<div class="promoter-count">
+				{{ title.promoter_count }}
+			</div>
+			<div class="detractor-count">
+				{{ title.detractor_count }}
+			</div>
+			<div class="clearfix">
+			</div>
 		</div>
-        <div style="margin: 10px 0 0 30px; width: 90px; font-size: 11px; font-weight: bold; text-align: center; color: #000;">
-            <div style="width: 34px; height: 48px; background: url('{{ THEME_MEDIA_URL }}/images/pb-thumbs-both.png') no-repeat top left; float: left;">
-                {{ title.promoter_count }}
-            </div>
-            <div style="width: 33px; height: 48px; background: url('{{ THEME_MEDIA_URL }}/images/pb-thumbs-both.png') no-repeat top right; float: right; padding: 12px 0 0 0;">
-                {{ title.detractor_count }}
-            </div>
-            <div class="clearfix">
-            </div>
-        </div>
-        <div class="clearfix">
-        </div>
-        <div style="margin: 5px 0 0 15px; height: 100px; width: 100px;">
-            {% show_awardshow title %}
-        </div>
-    </div>
+		<div class="clearfix">
+		</div>
+		<div class="awardShow">
+			{% show_awardshow title %}
+		</div>
+	</div>
 </div>
-<div style="float:left; width: 558px; margin: 0 0 20px 20px">
-    <div style="font-size: 18px; font-weight: bold;">
-        {{ title.name }}
-    </div>
-    {{ title.byline|safe }}
-    <br>
-    {{ title.category_list|safe }}
-    <br>
-    {% if title.series %}
-    <a href="{% url series_detail title.series.slug %}">{{ title.series.name|safe }}</a>
-    {% endif %}
-    <div id="description">
-        {% autoescape off %}{{ title.description_br|removetags:"img"|safe }}{% endautoescape %}
-    </div>
+<div id="titlebox">
+	<h2 class="title">
+		{{ title.name }}
+	</h2>
+	{{ title.byline|safe }}
+	<br>
+	{{ title.category_list|safe }}
+	<br>
+	{% if title.series %}
+	<a href="{% url series_detail title.series.slug %}">{{ title.series.name|safe }}</a>
+	{% endif %}
+	<div id="description">
+		{% autoescape off %}{{ title.description_br|removetags:"img"|safe }}{% endautoescape %}
+	</div>
 </div>
 {% include "main/title/title_subscriptionbox.html" %}
 <div class="clearfix">
 </div>
 <div style="margin: 0; padding: 0; width: 100%;" id="bottomTabs">
-    <ul>
-        <li>
-            <a href="#comments-tab">Comments</a>
-        </li>
-        <li>
-            <a href="#chapters-tab">Chapters</a>
-        </li>
-        <li>
-            <a href="/social/twitter/search/{{ title.contributors.all|first }}" title="social-tab">Social</a>
-        </li>
-    </ul>
-    <div title="All Comments" id="comments-tab">
-        {% disqus_show_comments %}
-    </div>
-    <div title="Chapters" id="chapters-tab">
-        {% if title.episodes.all %}
-        {% show_episodelist title %}
-        {% else %}
-        <div style="font-size: 18px; clear: both; font-weight: bold;">
-            No Episodes Are Available Yet
-        </div>
-        {% endif %}
-    </div>
-    <div id="social-tab">
-        Searching the internets for references to {{ title.contributors.all|first }}...
-    </div>
+	<ul>
+		<li>
+			<a href="#comments-tab">Comments</a>
+		</li>
+		<li>
+			<a href="#chapters-tab">Chapters</a>
+		</li>
+		<li>
+			<a href="/social/twitter/search/{{ title.contributors.all|first }}" title="social-tab">Social</a>
+		</li>
+	</ul>
+	<div title="All Comments" id="comments-tab">
+		{% disqus_show_comments %}
+	</div>
+	<div title="Chapters" id="chapters-tab">
+		{% if title.episodes.all %}
+		{% show_episodelist title %}
+		{% else %}
+		<div style="font-size: 18px; clear: both; font-weight: bold;">
+			No Episodes Are Available Yet
+		</div>
+		{% endif %}
+	</div>
+	<div id="social-tab">
+		Searching the internets for references to {{ title.contributors.all|first }}...
+	</div>
 </div>
 {% if title.license %}
 <div style="float: left; margin: 20px 0px 0px 0px;">
-    <a rel="license" href="{{ title.license.url }}">
-    <img alt="{{ title.license.text }} Logo" style="border-width:0" src="{{ title.license.image_url }}" />
-    </a>
+	<a rel="license" href="{{ title.license.url }}">
+	<img alt="{{ title.license.text }} Logo" style="border-width:0" src="{{ title.license.image_url }}" />
+	</a>
 </div>
 <div style="float: left; margin: 26px 0px 10px 10px;">
-    This work is licensed under a
-    <a href="{{ title.license.url }}">{{ title.license.text }}</a> license.
+	This work is licensed under a
+	<a href="{{ title.license.url }}">{{ title.license.text }}</a> license.
 </div>
 <div style="clear: both">
 </div>
 <script type="text/javascript">
-    $( function() {
-        $("#topTabs").tabs({
-            ajaxOptions: {
-                error: function(xhr, status, index, anchor) {
-                    $(anchor.hash).html("Couldn't load this tab.");
-                }
-            }
-        });
-    });
-    $( function() {
-        $("#bottomTabs").tabs({
-            ajaxOptions: {
-                error: function(xhr, status, index, anchor) {
-                    $(anchor.hash).html("Couldn't load this tab.");
-                }
-            }
-        });
-    });
+	$( function() {
+		$("#topTabs").tabs({
+			ajaxOptions: {
+				error: function(xhr, status, index, anchor) {
+					$(anchor.hash).html("Couldn't load this tab.");
+				}
+			}
+		});
+	});
+	$( function() {
+		$("#bottomTabs").tabs({
+			ajaxOptions: {
+				error: function(xhr, status, index, anchor) {
+					$(anchor.hash).html("Couldn't load this tab.");
+				}
+			}
+		});
+	});
 </script>
 {% endif %}
 {% endblock %}
