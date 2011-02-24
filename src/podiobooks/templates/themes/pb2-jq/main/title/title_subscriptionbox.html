@@ -1,42 +1,71 @@
 {% load title_templatetags %}
 {% load subscription_templatetags %}
-<div id="subscriptionBox" style="float: right; position: relative; margin: 0 5px 0 0;">
-    <div style="float: left; height: 463px; width: 13px; background: url(../images/pb-infobox-light-ends.png) bottom left no-repeat;">
-    </div>
-    <div style="float: left; height: 463px; width: 190px; font-size: 12px; background: url(../images/pb-infobox-light-middle.png) repeat-x;">
-        <div style="background: url(../images/pb-headphones.png) no-repeat; height: 63px; width: 165px; text-align: center; font-size: 14px; font-weight: bold; margin: 0 0 0 13px; padding: 18px 0 0 0;">
-            Get This
-            <br>
-            Book Now!
-        </div>
-        <div class="clearfix">
-        </div>
-        <div id="accordion" style="opacity: 0;">
-            <h2><a href="#rss">Subscribe for Free!</a></h2>
-            <div id="rss">
-                <a href="/rss/feeds/episodes/{{ title.slug }}">Copy This URL</a>
-                into Your Podcatcher
-            </div>
-            <h2><a href="#customrss">Custom Subscription</a></h2>
-            <div id="customrss">
-                <div>
-                    {% show_title_subscription_action title user %}
-                </div>
-            </div>
-            <h2><a href="#buydownload">Buy The Whole Book At Once</a></h2>
-            <div id="buydownload">
-                Coming Soon...
-            </div>
-        </div>
-        <br>
-        {% show_donation_button title %}
-    </div>
-    <div style="float: left; height: 463px; width: 13px; background: url(../images/pb-infobox-light-ends.png) bottom right no-repeat;">
-    </div>
+<style type="text/css">
+	#subscriptionBox {
+		background:#D9E4F0;
+		margin:0 5px 20px 0;
+		padding:0px 15px 8px 15px;
+		-webkit-border-radius:10px;
+		-moz-border-radius:10px;
+		-o-border-radius:10px;
+		border-radius:10px;
+		-webkit-box-shadow:0 3px 5px #aaa;
+		-moz-box-shadow:0 3px 5px #aaa;
+		-o-box-shadow:0 3px 5px #aaa;
+		box-shadow:0 3px 5px #aaa;
+		font-size: 12px;
+		width: 165px;
+		height: 450px;
+		float: right;
+		position:relative;
+	}
+	 #headphone-title {
+		background: url({{ THEME_MEDIA_URL }}/images/pb-headphones.png) no-repeat;
+		height: 63px;
+		text-align: center;
+		font-size: 14px;
+		font-weight: bold;
+		margin: 0 0 0 0;
+		padding: 18px 0 0 0;
+	}
+</style>
+<div id="subscriptionBox">
+	<div id="headphone-title">
+		Get This
+		<br>
+		Book Now!
+	</div>
+	<div class="clearfix">
+	</div>
+	<div id="accordion" style="opacity: 0;">
+		<h2>
+		<a href="#rss">Subscribe for Free!</a>
+		</h2>
+		<div id="rss">
+			<a href="/rss/feeds/episodes/{{ title.slug }}">Copy This URL</a>
+			into Your Podcatcher
+		</div>
+		<h2>
+		<a href="#customrss">Custom Subscription</a>
+		</h2>
+		<div id="customrss">
+			<div>
+				{% show_title_subscription_action title user %}
+			</div>
+		</div>
+		<h2>
+		<a href="#buydownload">Buy The Whole Book At Once</a>
+		</h2>
+		<div id="buydownload">
+			Coming Soon...
+		</div>
+	</div>
+	<br>
+	{% show_donation_button title %}
 </div>
 <script type="text/javascript">
-    $(document).ready(function(){
-        $('#accordion').accordion();
-        $('#accordion').css('opacity', 1);
-    });
+	$(document).ready( function() {
+		$('#accordion').accordion();
+		$('#accordion').css('opacity', 1);
+	});
 </script>
