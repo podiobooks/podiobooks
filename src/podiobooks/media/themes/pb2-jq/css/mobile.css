@@ -54,13 +54,13 @@
  */
 @media all and (max-width:501px){
 	
-	.shelf-step{
-		display:none;
-	}
-	
 	.shelf{
 		width:242px;
 		margin:0 auto;
+	}
+	
+	.shelf-step{
+		display:none;
 	}
 	
 	.shelf-heading{
