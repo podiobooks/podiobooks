@@ -118,7 +118,7 @@ a:hover {
 	.search-p {
 		height:27px;
 	}
-	.search #id_keywords {
+	.search-keywords {
 		width:142px;
 		border:none;
 		background:#fff;
