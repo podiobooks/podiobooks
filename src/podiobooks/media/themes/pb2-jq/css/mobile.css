@@ -104,19 +104,22 @@
 	}
 	
 	.search{
-		float:left;
-		margin:10px 0 0 0;
+		float:none;
+		margin:0px 0 0 0;
 		position:absolute;
 		bottom:20px;
-		left:10px;	
-		width:95%;
+		padding:0;
+		left:0;
+		width:100%;
+		text-align:center;
 	}
-	#id_keywords{
-		width:75%
+	.search #id_keywords{
+		width:200px;
 	}
 	.search button{
-		left:75%;
+		margin-left:10px;
 	}
+	
 	.nav{
 		float:none;
 		display:block;
