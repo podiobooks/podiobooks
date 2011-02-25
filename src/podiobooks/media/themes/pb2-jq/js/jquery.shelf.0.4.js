@@ -216,6 +216,7 @@
 			 	 */
 			 	if (numSteps < 2 && shelf.find(settings.shelfItem).length < perSlide){
 			 		shelfSteps.children().remove();
+			 		
 			 	}
 			 };
 			 
