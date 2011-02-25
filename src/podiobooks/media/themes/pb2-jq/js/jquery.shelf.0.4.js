@@ -179,13 +179,13 @@
 			 * Current shelf position
 			 */
 			 var handleShelfPosition = function(){
-			 	
+			 	shelfSteps.show();
 			 	shelfSteps.children().remove();
 			 	
 			 	// make sure we always round up
 			 	numSteps = Math.ceil(maxWidth / shelf.width());	
 			 	var perSlide = Math.floor(shelf.width() / itemWidth);
-			 				 	
+			 	
 			 	curStep = Math.ceil((cur / itemWidth) / perSlide);
 			 	
 			 	for (var i = 0; i < numSteps; i++){
@@ -203,8 +203,20 @@
 			 		
 			 		
 			 	}
+			 	
+			 	/*
+			 	 * Center the step indicator based on percentage
+			 	 */
 			 	shelfSteps.css({'left':(shelf.width() / 2 - shelfSteps.width() / 2) / shelf.width() * 100 + "%"});
 			 	
+			 	/*
+			 	 * If there is only 1 step and there 
+			 	 * are less shelf items than shelf spaces,
+			 	 * hide the shelf progress indicator
+			 	 */
+			 	if (numSteps < 2 && shelf.find(settings.shelfItem).length < perSlide){
+			 		shelfSteps.hide();
+			 	}
 			 };
 			 
 			/*
