@@ -5,7 +5,7 @@
  * 0.2: Internalized checking for change form, adding binding for onChange
  * 0.3: Added some more settings for custom classes
  * 0.4: Shelf position indicator
- * 0.5: Support for shelves that don't need ajax calls'
+ * 0.5: Support for shelves that don't need ajax calls
  */
 (function( $ ){
 
@@ -17,7 +17,6 @@
 			"shelfItem"		: 		".shelf-item",
 			"shelfItemCover": 		".shelf-cover",
 		};
-		
 		
 		/*
 		 * Debugging function for logging the current shelf status
@@ -31,8 +30,6 @@
 			l("numSteps : " + numSteps);
 			l("curStep : " + curStep);
 		};
-		
-		
 		
 		return this.each(function(){
 			
@@ -56,7 +53,13 @@
 			 * Some shelf element localization
 			 */
 			var wholeShelf;
+			
+			var shelf = $(this);
+			shelf.height(shelf.height());
+			
 			var shelfSteps;
+			var leftArrow;
+			var rightArrow;
 						
 			/*
 			 * Store the shelf as local variable,
@@ -64,8 +67,7 @@
 			 * 
 			 * (otherwise it compresses when elements are removed)
 			 */
-			var shelf = $(this);
-			shelf.height(shelf.height());
+			
 			
 			
 			/*
@@ -94,6 +96,9 @@
 			
 	
 			var makeShelf = function(){
+				
+				shelfSteps = $("<ul class='shelf-step'/>").prependTo(shelf);
+				
 				/*
 				 * If the appended data has shelf items,
 				 * proceed with building shelf functionality
@@ -120,7 +125,6 @@
 						img.load(function(){
 							loader.remove();
 							img.fadeIn();
-							
 						});
 					});
 					
@@ -147,7 +151,6 @@
 					maxWidth = w;
 					
 					
-					
 					/*
 					 * Wrap all the shelf items,
 					 * create a "field of vision"
@@ -155,6 +158,7 @@
 					shelf.children(settings.shelfItem).wrapAll("<div class='whole-shelf'/>");
 					wholeShelf = shelf.children(".whole-shelf");
 					wholeShelf.wrap("<div class='shelf-view'/>");
+					
 					
 					/*
 					 * Append the right/left arrows,
@@ -170,6 +174,7 @@
 					 * If there were no returned shelf items,
 					 * Just hide the progress bar
 					 */
+					handleArrows();
 					progress.hide();
 				}
 				
@@ -177,42 +182,45 @@
 				/*
 				 * Click events for right and left arrows
 				 */
-				rightArrow.click(function(e){
-					e.preventDefault();
-					if (cur < maxWidth - shelf.width()){							
-						where += shelf.width() / itemWidth;
-						if (where * itemWidth > maxWidth - shelf.width()){
-							where = (maxWidth - shelf.width()) / itemWidth;
+				if (rightArrow){
+					rightArrow.click(function(e){
+						e.preventDefault();
+						if (cur < maxWidth - shelf.width()){							
+							where += shelf.width() / itemWidth;
+							if (where * itemWidth > maxWidth - shelf.width()){
+								where = (maxWidth - shelf.width()) / itemWidth;
+							}
+							var targ = "-" + (where * itemWidth) + "px";
+							
+							
+							cur = where * itemWidth;
+							
+							wholeShelf.animate({
+								left:targ
+							},600,"easeOutCirc");
 						}
-						var targ = "-" + (where * itemWidth) + "px";
-						
-						
-						cur = where * itemWidth;
-						
-						wholeShelf.animate({
-							left:targ
-						},600,"easeOutCirc");
-					}
-					handleArrows();
-				});
+						handleArrows();
+					});
+				}
 				
-				leftArrow.click(function(e){
-					e.preventDefault();
-					
-					if (cur > 0){							
-						where -= shelf.width() / itemWidth;
-						if (where < 0){
-							where = 0;
+				if (leftArrow){
+					leftArrow.click(function(e){
+						e.preventDefault();
+						
+						if (cur > 0){							
+							where -= shelf.width() / itemWidth;
+							if (where < 0){
+								where = 0;
+							}
+							var targ = "-" + (where * itemWidth) + "px";
+							cur = where * itemWidth;							
+							wholeShelf.animate({
+								left:targ
+							},600,"easeOutCirc");
 						}
-						var targ = "-" + (where * itemWidth) + "px";
-						cur = where * itemWidth;							
-						wholeShelf.animate({
-							left:targ
-						},600,"easeOutCirc");
-					}
-					handleArrows();
-				});
-				
+						handleArrows();
+					});
+				}
 				/*
 				 * Add arrow/positioner to window resize
 				 * 
@@ -229,16 +237,19 @@
 				 * to have swipes trigger click events 
 				 * on the arrows
 				 */
-				wholeShelf.swipe({
-					swipeLeft:function(event){
-						rightArrow.trigger("click");	
-					},
-					swipeRight:function(event){
-						leftArrow.trigger("click");
-					},
-					allowPageScroll:"vertical"						
-				});
+				if (wholeShelf){
+					wholeShelf.swipe({
+						swipeLeft:function(event){
+							rightArrow.trigger("click");	
+						},
+						swipeRight:function(event){
+							leftArrow.trigger("click");
+						},
+						allowPageScroll:"vertical"						
+					});
+				}
 			};
+			
 			
 			/*
 			 * If we should be checking the cookie,
@@ -263,14 +274,17 @@
 			}		
 			
 			
+			
 			/*
 			 * Right/left shelf arrows
 			 * create, added/removed to/from shelf later
 			 */
-			var leftArrow = $("<a class='shelf-arrow shelf-arrow-left' href='#'></a>");
-			var rightArrow = $("<a class='shelf-arrow shelf-arrow-right' href='#'></a>");
-			shelfSteps = $("<ul class='shelf-step'/>");
-			shelfSteps.prependTo(shelf);
+			
+			leftArrow = $("<a class='shelf-arrow shelf-arrow-left' href='#'></a>");
+			rightArrow = $("<a class='shelf-arrow shelf-arrow-right' href='#'></a>");
+			
+			
+			
 			
 			/*
 			 * Swift step: 
@@ -302,44 +316,46 @@
 			 * Current shelf position
 			 */
 			 var handleShelfPosition = function(){
-			 	l(shelf.attr("id"));
 			 	shelfSteps.children().remove();
 			 	
-			 	// make sure we always round up
-			 	numSteps = Math.ceil(maxWidth / shelf.width());	
-			 	var perSlide = Math.floor(shelf.width() / itemWidth);
-			 	
-			 	curStep = Math.ceil((cur / itemWidth) / perSlide);
-			 	
-			 	for (var i = 0; i < numSteps; i++){
-			 		var li;
-			 		if (i == curStep){
-			 			li = $("<li><a class='shelf-step-cur' href='#'></a></li>").appendTo(shelfSteps);
-			 		}
-			 		else{
-			 			li = $("<li><a href='#'></a></li>").appendTo(shelfSteps);
-			 		}
+			 	if (shelf.find(settings.shelfItem).length){
 			 		
-			 		circ = li.find("a");
-			 		
-			 		bindSwiftStep(circ,i,perSlide);
-			 		
-			 		
-			 	}
-			 	
-			 	/*
-			 	 * Center the step indicator based on percentage
-			 	 */
-			 	shelfSteps.css({'left':(shelf.width() / 2 - shelfSteps.width() / 2) / shelf.width() * 100 + "%"});
-			 	
-			 	/*
-			 	 * If there is only 1 step and there 
-			 	 * are less shelf items than shelf spaces,
-			 	 * hide the shelf progress indicator
-			 	 */
-			 	if (numSteps < 2 && shelf.find(settings.shelfItem).length < perSlide){
-			 		shelfSteps.children().remove();
-			 		
+				 	// make sure we always round up
+				 	numSteps = Math.ceil(maxWidth / shelf.width());	
+				 	var perSlide = Math.floor(shelf.width() / itemWidth);
+				 	
+				 	curStep = Math.ceil((cur / itemWidth) / perSlide);
+				 	
+				 	for (var i = 0; i < numSteps; i++){
+				 		var li;
+				 		if (i == curStep){
+				 			li = $("<li><a class='shelf-step-cur' href='#'></a></li>").appendTo(shelfSteps);
+				 		}
+				 		else{
+				 			li = $("<li><a href='#'></a></li>").appendTo(shelfSteps);
+				 		}
+				 		
+				 		circ = li.find("a");
+				 		
+				 		bindSwiftStep(circ,i,perSlide);
+				 	}
+				 	
+				 	
+				 	/*
+				 	 * Center the step indicator based on percentage
+				 	 */
+				 	shelfSteps.css({'left':(shelf.width() / 2 - shelfSteps.width() / 2) / shelf.width() * 100 + "%"});
+				 	
+				 	
+				 	/*
+				 	 * If there is only 1 step and there 
+				 	 * are less shelf items than shelf spaces,
+				 	 * hide the shelf progress indicator
+				 	 */
+				 	if (numSteps < 2 && shelf.find(settings.shelfItem).length < perSlide){
+				 		shelfSteps.children().remove();
+				 		
+				 	}
 			 	}
 			 };
 			 
@@ -381,7 +397,7 @@
 				 * an on-change event for the select box
 				 */
 				shelf.children().each(function(){
-					if (!($(this).is("form")) && (!($(this).hasClass("shelf-step")))){
+					if (!($(this).is("form"))){
 						$(this).html("");
 						$(this).remove();
 					}
@@ -414,8 +430,7 @@
 					}
 				});
 			}
-			else{
-				
+			else{				
 				makeShelf();
 			}
 		});
