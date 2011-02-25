@@ -41,6 +41,9 @@
 	.hide-on-mobile{
 		display:none;
 	}
+	.shelf form select{
+		width:120px;
+	}
 	
 }
 
