@@ -22,6 +22,11 @@
 	.search{
 	}
 	
+	.half-shelf{
+		width:100%;
+		
+	}
+	
 }
 
 
@@ -56,7 +61,10 @@
 	.hide-lowest-width{
 		display:none;
 	}
-	.shelf{
+	
+	
+	.shelf,
+	.half-shelf{
 		width:242px;
 		margin:0 auto;
 	}

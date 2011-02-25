@@ -193,3 +193,21 @@
 .shelf-light .shelf-step-cur{
 	background:#f0beb9;
 }
+
+
+/*
+ * Half Shelf
+ */
+.half-shelf{
+	width:484px;
+	
+}
+
+
+.quarter-shelf{
+	width:242px;
+	float:right;
+}
+.quarter-shelf .shelf-step{
+	display:none;
+}

@@ -5,24 +5,41 @@
  * 0.2: Internalized checking for change form, adding binding for onChange
  * 0.3: Added some more settings for custom classes
  * 0.4: Shelf position indicator
+ * 0.5: Support for shelves that don't need ajax calls'
  */
 (function( $ ){
 
 	$.fn.pbShelf = function( options ) {
   
 		var settings = {
-			'url' 			: 		'/',
 			"cookie"		: 		null,
 			"checkCookie"	: 		false,
 			"shelfItem"		: 		".shelf-item",
-			"shelfItemCover": 		".shelf-cover"
+			"shelfItemCover": 		".shelf-cover",
 		};
+		
+		
+		/*
+		 * Debugging function for logging the current shelf status
+		 */
+		var status = function(){
+			l("cur: " + cur);
+			l("where: " + where);
+			l("maxWidth: "  + maxWidth);
+			l("itemWidth: " + itemWidth);
+			l("numItems: " + numItems);
+			l("numSteps : " + numSteps);
+			l("curStep : " + curStep);
+		};
+		
+		
 		
 		return this.each(function(){
 			
 			if (options){
 				$.extend(settings,options);
 			}
+			
 			
 			/*
 			 * Shelf status variables
@@ -52,22 +69,6 @@
 			
 			
 			/*
-			 * Remove all content from shelf,
-			 * except for the select box
-			 * 
-			 * This allows the plugin to call itself,
-			 * instead of the calling script needing to declare
-			 * an on-change event for the select box
-			 */
-			shelf.children().each(function(){
-				if (!($(this).is("form"))){
-					$(this).html("");
-					$(this).remove();
-				}
-			});
-			
-			
-			/*
 			 * If the shelf has a select box,
 			 * bind the on-change event to reset the plugin
 			 */
@@ -89,7 +90,156 @@
 					}
 				});				
 			}
+			
+			
 	
+			var makeShelf = function(){
+				/*
+				 * If the appended data has shelf items,
+				 * proceed with building shelf functionality
+				 */
+				if(shelf.find(settings.shelfItem).length){
+					
+					/*
+					 * Find all shelf items that arent marked as covers being loaded
+					 */
+					$(shelf).find(settings.shelfItemCover).find("img:not(.shelf-cover-loading)").each(function(){
+						
+						var img = $(this);
+						
+						/*
+						 * Hide the image, replace it with a progress loader graphic
+						 */
+						img.hide();
+						var loader = $("<img class='shelf-cover-loading' src='" + siteVars("img") + "loading.gif' />").appendTo(img.parents(".shelf-cover"));
+						
+						/*
+						 * Once the real cover has loaded,
+						 * remove the loader graphic, fade in the cover
+						 */
+						img.load(function(){
+							loader.remove();
+							img.fadeIn();
+							
+						});
+					});
+					
+					
+					/*
+					 * while the covers are loading, hide the progress bar
+					 */
+					if (progress){
+						progress.hide();
+					}
+					
+					
+					/*
+					 * Find all the shelf items,
+					 * add up their total widths
+					 */
+					var shelfItems = shelf.find(settings.shelfItem);
+					var w = 0;
+					shelfItems.each(function(){
+						numItems++;
+						itemWidth = parseInt($(this).width()) + parseInt($(this).css("padding-left")) + parseInt($(this).css("padding-right")) + parseInt($(this).css("margin-left")) + parseInt($(this).css("margin-right"));
+						w += itemWidth;
+					});
+					maxWidth = w;
+					
+					
+					
+					/*
+					 * Wrap all the shelf items,
+					 * create a "field of vision"
+					 */
+					shelf.children(settings.shelfItem).wrapAll("<div class='whole-shelf'/>");
+					wholeShelf = shelf.children(".whole-shelf");
+					wholeShelf.wrap("<div class='shelf-view'/>");
+					
+					/*
+					 * Append the right/left arrows,
+					 * let the arrow handler figure out
+					 * if they should be shown or hidden
+					 */
+					leftArrow.appendTo(shelf);
+					rightArrow.appendTo(shelf);
+					handleArrows();
+				}
+				else{
+					/*
+					 * If there were no returned shelf items,
+					 * Just hide the progress bar
+					 */
+					progress.hide();
+				}
+				
+				
+				/*
+				 * Click events for right and left arrows
+				 */
+				rightArrow.click(function(e){
+					e.preventDefault();
+					if (cur < maxWidth - shelf.width()){							
+						where += shelf.width() / itemWidth;
+						if (where * itemWidth > maxWidth - shelf.width()){
+							where = (maxWidth - shelf.width()) / itemWidth;
+						}
+						var targ = "-" + (where * itemWidth) + "px";
+						
+						
+						cur = where * itemWidth;
+						
+						wholeShelf.animate({
+							left:targ
+						},600,"easeOutCirc");
+					}
+					handleArrows();
+				});
+				
+				leftArrow.click(function(e){
+					e.preventDefault();
+					
+					if (cur > 0){							
+						where -= shelf.width() / itemWidth;
+						if (where < 0){
+							where = 0;
+						}
+						var targ = "-" + (where * itemWidth) + "px";
+						cur = where * itemWidth;							
+						wholeShelf.animate({
+							left:targ
+						},600,"easeOutCirc");
+					}
+					handleArrows();
+				});
+				
+				/*
+				 * Add arrow/positioner to window resize
+				 * 
+				 * I don't know if there are serious 
+				 * performance implications here...
+				 * 
+				 */
+				$(window).unbind("resize",handleArrows);
+				$(window).bind("resize",handleArrows);
+				
+				
+				/*
+				 * Use the jquery.touchSwipe plugin
+				 * to have swipes trigger click events 
+				 * on the arrows
+				 */
+				wholeShelf.swipe({
+					swipeLeft:function(event){
+						rightArrow.trigger("click");	
+					},
+					swipeRight:function(event){
+						leftArrow.trigger("click");
+					},
+					allowPageScroll:"vertical"						
+				});
+			};
+			
 			/*
 			 * If we should be checking the cookie,
 			 * check it, then set the inital select box value
@@ -114,38 +264,11 @@
 			
 			
 			/*
-			 * Ajax Progress element image, 
-			 * appears in middle of shelf during onchange ajax call
-			 * 
-			 * Create it, append it to the body for caching, 
-			 * move it into the shelf and show
-			 */ 
-			var progress = $("<p class='shelf-ajax-loader'><img src='" + siteVars("img") + "ajax-loader-bar.gif'/></p>");
-			progress.appendTo($("body")).hide();
-			progress.appendTo(shelf).show();
-			
-			
-			/*
 			 * Right/left shelf arrows
 			 * create, added/removed to/from shelf later
 			 */
 			var leftArrow = $("<a class='shelf-arrow shelf-arrow-left' href='#'></a>");
 			var rightArrow = $("<a class='shelf-arrow shelf-arrow-right' href='#'></a>");
-						
-			/*
-			 * Debugging function for logging the current shelf status
-			 */
-			var status = function(){
-				l("cur: " + cur);
-				l("where: " + where);
-				l("maxWidth: "  + maxWidth);
-				l("itemWidth: " + itemWidth);
-				l("numItems: " + numItems);
-				l("numSteps : " + numSteps);
-				l("curStep : " + curStep);
-			};
-			
-			
 			shelfSteps = $("<ul class='shelf-step'/>");
 			shelfSteps.prependTo(shelf);
 			
@@ -179,7 +302,7 @@
 			 * Current shelf position
 			 */
 			 var handleShelfPosition = function(){
-			 	
+			 	l(shelf.attr("id"));
 			 	shelfSteps.children().remove();
 			 	
 			 	// make sure we always round up
@@ -220,6 +343,7 @@
 			 	}
 			 };
 			 
+			 
 			/*
 			 * Hiding/showing arrows 
 			 * based on shelf position
@@ -246,162 +370,57 @@
 			/*
 			 * Big beefy ajax workhorse
 			 */
-			$.ajax({
-				method:"get",
-				url:settings.url,
-				success:function(data){
-					
-					/*
-					 * Ajax request should return HTML
-					 * 
-					 * Append all data to the shelf
-					 */
-					$(data).appendTo(shelf);
-					
-					/*
-					 * If the appended data has shelf items,
-					 * proceed with building shelf functionality
-					 */
-					if(shelf.find(settings.shelfItem).length){
-						
-						/*
-						 * Find all shelf items that arent marked as covers being loaded
-						 */
-						$(shelf).find(settings.shelfItemCover).find("img:not(.shelf-cover-loading)").each(function(){
-							
-							var img = $(this);
-							
-							/*
-							 * Hide the image, replace it with a progress loader graphic
-							 */
-							img.hide();
-							var loader = $("<img class='shelf-cover-loading' src='" + siteVars("img") + "loading.gif' />").appendTo(img.parents(".shelf-cover"));
-							
-							/*
-							 * Once the real cover has loaded,
-							 * remove the loader graphic, fade in the cover
-							 */
-							img.load(function(){
-								loader.remove();
-								img.fadeIn();
-								
-							});
-						});
-						
-						
-						/*
-						 * while the covers are loading, hide the progress bar
-						 */
-						progress.hide();
-						
-						
-						/*
-						 * Find all the shelf items,
-						 * add up their total widths
-						 */
-						var shelfItems = shelf.find(settings.shelfItem);
-						var w = 0;
-						shelfItems.each(function(){
-							numItems++;
-							itemWidth = parseInt($(this).width()) + parseInt($(this).css("padding-left")) + parseInt($(this).css("padding-right")) + parseInt($(this).css("margin-left")) + parseInt($(this).css("margin-right"));
-							w += itemWidth;
-						});
-						maxWidth = w;
-						
-						
-						
-						/*
-						 * Wrap all the shelf items,
-						 * create a "field of vision"
-						 */
-						shelf.children(settings.shelfItem).wrapAll("<div class='whole-shelf'/>");
-						wholeShelf = shelf.children(".whole-shelf");
-						wholeShelf.wrap("<div class='shelf-view'/>");
-						
-						/*
-						 * Append the right/left arrows,
-						 * let the arrow handler figure out
-						 * if they should be shown or hidden
-						 */
-						leftArrow.appendTo(shelf);
-						rightArrow.appendTo(shelf);
-						handleArrows();
+			if (settings.url){
+				
+				/*
+				 * Remove all content from shelf,
+				 * except for the select box
+				 * 
+				 * This allows the plugin to call itself,
+				 * instead of the calling script needing to declare
+				 * an on-change event for the select box
+				 */
+				shelf.children().each(function(){
+					if (!($(this).is("form")) && (!($(this).hasClass("shelf-step")))){
+						$(this).html("");
+						$(this).remove();
 					}
-					else{
-						/*
-						 * If there were no returned shelf items,
-						 * Just hide the progress bar
-						 */
-						progress.hide();
-					}
-					
-					
-					/*
-					 * Click events for right and left arrows
-					 */
-					rightArrow.click(function(e){
-						e.preventDefault();
-						if (cur < maxWidth - shelf.width()){							
-							where += shelf.width() / itemWidth;
-							if (where * itemWidth > maxWidth - shelf.width()){
-								where = (maxWidth - shelf.width()) / itemWidth;
-							}
-							var targ = "-" + (where * itemWidth) + "px";
-							
-							
-							cur = where * itemWidth;
-							
-							wholeShelf.animate({
-								left:targ
-							},600,"easeOutCirc");
-						}
-						handleArrows();
-					});
-					
-					leftArrow.click(function(e){
-						e.preventDefault();
+				});
+				
+				/*
+				 * Ajax Progress element image, 
+				 * appears in middle of shelf during onchange ajax call
+				 * 
+				 * Create it, append it to the body for caching, 
+				 * move it into the shelf and show
+				 */ 
+				var progress = $("<p class='shelf-ajax-loader'><img src='" + siteVars("img") + "ajax-loader-bar.gif'/></p>");
+				progress.appendTo($("body"));
+				progress.appendTo(shelf).show();
+			
+				
+				$.ajax({
+					method:"get",
+					url:settings.url,
+					success:function(data){
 						
-						if (cur > 0){							
-							where -= shelf.width() / itemWidth;
-							if (where < 0){
-								where = 0;
-							}
-							var targ = "-" + (where * itemWidth) + "px";
-							cur = where * itemWidth;							
-							wholeShelf.animate({
-								left:targ
-							},600,"easeOutCirc");
-						}
-						handleArrows();
-					});
-					
-					/*
-					 * Add arrow/positioner to window resize
-					 * 
-					 * I don't know if there are serious 
-					 * performance implications here...
-					 * 
-					 */
-					$(window).unbind("resize",handleArrows);
-					$(window).bind("resize",handleArrows);
-					
-					
-					/*
-					 * Use the jquery.touchSwipe plugin
-					 * to have swipes trigger click events 
-					 * on the arrows
-					 */
-					wholeShelf.swipe({
-						swipeLeft:function(event){
-							rightArrow.trigger("click");	
-						},
-						swipeRight:function(event){
-							leftArrow.trigger("click");
-						},
-						allowPageScroll:"vertical"						
-					});					
-				}
-			});
+						/*
+						 * Ajax request should return HTML
+						 * 
+						 * Append all data to the shelf
+						 */
+						$(data).appendTo(shelf);
+						makeShelf();			
+					}
+				});
+			}
+			else{
+				
+				makeShelf();
+			}
 		});
 	};
 })( jQuery );
+
+
+						
