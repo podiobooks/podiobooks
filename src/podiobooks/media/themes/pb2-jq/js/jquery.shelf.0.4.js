@@ -212,6 +212,7 @@
 			 * based on shelf position
 			 */
 			var handleArrows = function(){
+				l("here");
 				if (cur == 0){
 					leftArrow.hide();
 				}
@@ -360,6 +361,16 @@
 						handleArrows();
 						//status();
 					});
+					
+					/*
+					 * Add arrow/positioner to window resize
+					 * 
+					 * I don't know if there are serious 
+					 * performance implications here...
+					 * 
+					 */
+					$(window).unbind("resize",handleArrows);
+					$(window).bind("resize",handleArrows);
 					
 					
 					/*
