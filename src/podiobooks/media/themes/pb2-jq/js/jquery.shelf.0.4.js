@@ -212,7 +212,7 @@
 			 * based on shelf position
 			 */
 			var handleArrows = function(){
-				l("here");
+				
 				if (cur == 0){
 					leftArrow.hide();
 				}
@@ -225,7 +225,9 @@
 				else{
 					rightArrow.hide();
 				}
-				handleShelfPosition();				
+				//status();
+				handleShelfPosition();
+								
 			};
 			
 			/*
@@ -341,7 +343,6 @@
 							},600,"easeOutCirc");
 						}
 						handleArrows();
-						//status();
 					});
 					
 					leftArrow.click(function(e){
@@ -359,7 +360,6 @@
 							},600,"easeOutCirc");
 						}
 						handleArrows();
-						//status();
 					});
 					
 					/*
