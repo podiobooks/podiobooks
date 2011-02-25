@@ -340,7 +340,7 @@
 							},600,"easeOutCirc");
 						}
 						handleArrows();
-						status();
+						//status();
 					});
 					
 					leftArrow.click(function(e){
@@ -358,8 +358,9 @@
 							},600,"easeOutCirc");
 						}
 						handleArrows();
-						status();
+						//status();
 					});
+					
 					
 					/*
 					 * Use the jquery.touchSwipe plugin
