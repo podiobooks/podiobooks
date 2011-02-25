@@ -16,7 +16,8 @@ $(function(){
 			"cookie": "toprated_cat", 
 			"checkCookie": true
 		});
-			
+		
+		
 		
 	}
 });
