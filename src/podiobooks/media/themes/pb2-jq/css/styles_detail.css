@@ -35,7 +35,7 @@
 	position:relative;
 }
 #headphone-title {
-	background: url('../images/pb-headphones.png') no-repeat;
+	background: url(../images/pb-headphones.png) no-repeat;
 	height: 63px;
 	text-align: center;
 	font-size: 14px;
@@ -58,13 +58,13 @@
 .detractor-count {
 	width: 33px;
 	height: 48px;
-	background: url('../images/pb-thumbs-both.png') no-repeat top right;
+	background: url(../images/pb-thumbs-both.png) no-repeat top right;
 	float: right;
 	padding: 12px 0 0 0;
 }
 .promoter-count {
 	width: 34px;
 	height: 48px;
-	background: url('../images/pb-thumbs-both.png') no-repeat top left;
+	background: url(../images/pb-thumbs-both.png) no-repeat top left;
 	float: left;
 }
