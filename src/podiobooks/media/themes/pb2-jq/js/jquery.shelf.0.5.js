@@ -122,7 +122,8 @@
 						 * Once the real cover has loaded,
 						 * remove the loader graphic, fade in the cover
 						 */
-						img.load(function(){
+						img.imagesLoaded(function(){
+							img.unbind("load");
 							loader.remove();
 							img.fadeIn();
 						});
