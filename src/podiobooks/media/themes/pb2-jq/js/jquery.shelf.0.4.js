@@ -179,7 +179,7 @@
 			 * Current shelf position
 			 */
 			 var handleShelfPosition = function(){
-			 	shelfSteps.show();
+			 	
 			 	shelfSteps.children().remove();
 			 	
 			 	// make sure we always round up
@@ -215,7 +215,7 @@
 			 	 * hide the shelf progress indicator
 			 	 */
 			 	if (numSteps < 2 && shelf.find(settings.shelfItem).length < perSlide){
-			 		shelfSteps.hide();
+			 		shelfSteps.children().remove();
 			 	}
 			 };
 			 
