@@ -285,8 +285,8 @@ class Title(models.Model):
     partner = models.ForeignKey('partner', null=True, blank=True, related_name='titles')
     awards = models.ManyToManyField('Award', null=True, blank=True, related_name='titles')
     libsyn_show_id = models.CharField(max_length=50, db_index=True, blank=True)
+    itunes_adam_id = models.IntegerField(null=True)
     podiobooker_blog_url = models.URLField(max_length=255, null=True, blank=True, verify_exists=True)
-    enable_comments = models.BooleanField(default=True)
     # Note: episodes are available as episodes.all()
     # Note: subscriptions are available as subscriptions.all()
     # Note: media are available as media.all()
@@ -318,13 +318,6 @@ class Title(models.Model):
     
     def description_br(self):
         return self.description.replace('\n', '\n<br/>') # pylint: disable=E1101
-
-class TitleModerator(CommentModerator):
-    """ Sets up comments moderation for Titles """
-    email_notification = True
-    enable_field = 'enable_comments'
-
-moderator.register(Title, TitleModerator)
 
 class TitleCategory(models.Model):
     """
