@@ -124,6 +124,24 @@ def getLibsynIDCache():
         
     return libsynIDCache
 
+def getiTunesIDCache():
+    iTunesIDCache = {}
+    
+    #Open Cache File for Import
+    cacheCSVFile = open(settings.DATALOAD_DIR + "podiobooks_itunes_id_cache.csv")
+    
+    #Parse the Cache File CSV into a dictionary based on the first row values
+    cacheCSVReader = csv.DictReader(cacheCSVFile, dialect='excel')
+    
+    for title in cacheCSVReader:
+        if title['ID']:
+            iTunesIDCache[ title['ID'] ] = title['iTunesID']
+        
+        if title['Slug']:
+            iTunesIDCache[ title['Slug'] ] = title['iTunesID']
+            
+    return iTunesIDCache
+
 def importBooksFromCSV():
     """Reads in the CSV and using the Django model objects to populate the DB"""
     
@@ -144,10 +162,18 @@ def createTitlesFromRows(titleList):
     """Takes a list of title rows from a database query or a CSV file read and creates Title objects"""
     
     libsynIDCache = getLibsynIDCache()  #Load the Libsyn ID Cache from its CSV
+    iTunesIDCache = getiTunesIDCache()  #Load the iTunes ID Cache from its CSV
     
     # Loop through the rest of the rows in the CSV
     for row in titleList:
-        #print row
+        
+        # Look up iTunesID in Cache
+        iTunesID = None
+        if iTunesIDCache[row['ID']]:
+            iTunesID = iTunesIDCache[row['ID']]
+        
+        if iTunesIDCache[row['Slug']]:
+            iTunesID = iTunesIDCache[row['Slug']]
         
         if (int(row['Enabled']) == 1 and int(row['Standby']) == 0):
             # Create a title object in the database based on the current book row
@@ -170,6 +196,7 @@ def createTitlesFromRows(titleList):
                 deleted=False,
                 podiobooker_blog_url=row['DiscussURL'],
                 libsyn_show_id=libsynIDCache.get(row['ID'],""),
+                itunes_adam_id=iTunesID,
                 date_created=row['DateCreated']
             )
             
