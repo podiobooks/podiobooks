@@ -159,3 +159,55 @@
 	text-align: center;
 	padding-top:70px;
 }
+
+
+
+/*
+ * Steps
+ */
+.shelf-step{
+	float:left;
+	list-style:none;
+	position:absolute;
+	top:-22px;
+	left:45%;
+}
+.shelf-step li{
+	float:left;
+}
+.shelf-step a{
+	float:left;
+	width:10px;
+	height:10px;
+	background:#fff;
+	margin-right:3px;
+	-webkit-border-radius:6px;
+	-moz-border-radius:6px;
+	-o-border-radius:6px;
+	border-radius:6px;
+	
+}
+.shelf-dark .shelf-step-cur{
+	background:#c59e76;
+}
+.shelf-light .shelf-step-cur{
+	background:#f0beb9;
+}
+
+
+/*
+ * Half Shelf
+ */
+.half-shelf{
+	width:484px;
+	
+}
+
+
+.quarter-shelf{
+	width:242px;
+	float:right;
+}
+.quarter-shelf .shelf-step{
+	display:none;
+}
