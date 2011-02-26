@@ -48,7 +48,6 @@ OPENID_SREG = {
 INSTALLED_APPS = (
     'avatar',
     'contrib.django_restapi',
-    'disqus',
     'django.contrib.admin',
     'django.contrib.admindocs',
     'django.contrib.auth',
@@ -64,6 +63,7 @@ INSTALLED_APPS = (
     'markitup',
     'tagging',
     'podiobooks.author',
+    'podiobooks.disqus_utils',
     'podiobooks.feeds',
     'podiobooks.main',
     'podiobooks.profile',
