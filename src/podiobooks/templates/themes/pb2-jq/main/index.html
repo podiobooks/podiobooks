@@ -34,7 +34,25 @@
 	<form class='genre-change' action="/lazy/top-rated/" method="post">
 		{{contributor_choice_form.as_p}}
 	</form>
+</div>
+
+<div class='clearfix'>
+	<div class='half-shelf'>
+		<h2 class='shelf-heading shelf-heading-light'>Recently Completed</h2>
+		<div id="recently-completed-shelf" class='shelf shelf-light clearfix'>
+			{% for t in recentlycomplete_title_list %}
+				{% shelf_item t %}
+			{% endfor %}
+		</div>
+	</div>
 	
-	
+	<div class='half-shelf'>
+		<h2 class='shelf-heading shelf-heading-light'>Now Releasing</h2>
+		<div id="now-releasing-shelf" class='shelf shelf-light clearfix'>
+			{% for t in nowreleasing_title_list %}
+				{% shelf_item t %}
+			{% endfor %}
+		</div>
+	</div>
 </div>
 {% endblock %}
