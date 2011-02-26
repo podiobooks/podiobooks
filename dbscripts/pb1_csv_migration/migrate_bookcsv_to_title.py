@@ -134,6 +134,7 @@ def getiTunesIDCache():
     cacheCSVReader = csv.DictReader(cacheCSVFile, dialect='excel')
     
     for title in cacheCSVReader:
+        print title
         if title['ID']:
             iTunesIDCache[ title['ID'] ] = title['iTunesID']
         
@@ -169,11 +170,13 @@ def createTitlesFromRows(titleList):
         
         # Look up iTunesID in Cache
         iTunesID = None
-        if iTunesIDCache[row['ID']]:
+        try:
             iTunesID = iTunesIDCache[row['ID']]
-        
-        if iTunesIDCache[row['Slug']]:
-            iTunesID = iTunesIDCache[row['Slug']]
+        except KeyError:
+            try:
+                iTunesID = iTunesIDCache[row['Subtitle']]
+            except KeyError:
+                pass
         
         if (int(row['Enabled']) == 1 and int(row['Standby']) == 0):
             # Create a title object in the database based on the current book row

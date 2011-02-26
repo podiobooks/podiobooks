@@ -1,4 +1,4 @@
 {% if title_subscription and not title_subscription.deleted %}
 <a href="{% url title_unsubscribe title_subscription.title %}">Unsubscribe from this {% if title_subscription.finished %}finished{% endif %} book</a>
-{% else %}{% if title_subscription.deleted %}Re-{% endif %}Subscribe for Free with a <a href="{% url title_subscribe title %}">Custom RSS Feed</a>
+{% else %}{% if title_subscription.deleted %}Re-{% endif %}Subscribe on your schedule with a <a href="{% url title_subscribe title %}">Custom RSS Feed</a>
 {% endif %}
