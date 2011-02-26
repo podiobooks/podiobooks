@@ -22,6 +22,11 @@
 	.search{
 	}
 	
+	.half-shelf{
+		width:100%;
+		
+	}
+	
 }
 
 
@@ -41,6 +46,9 @@
 	.hide-on-mobile{
 		display:none;
 	}
+	.shelf form select{
+		width:120px;
+	}
 	
 }
 
@@ -50,10 +58,19 @@
  * 1 pane per shelf
  */
 @media all and (max-width:501px){
+	.hide-lowest-width{
+		display:none;
+	}
 	
-	.shelf{
+	
+	.shelf,
+	.half-shelf{
 		width:242px;
 		margin:0 auto;
+	}
+	
+	.shelf-step{
+		display:none;
 	}
 	
 	.shelf-heading{
@@ -63,36 +80,24 @@
 	
 	.pg{
 		width:auto;
-		padding:10px 10px 50px 10px;
+		padding:10px 10px 70px 10px;
 		position:relative;
 		
 	}
-	
+	.nav{
+		width:auto;
+	}
 	.browse-by{
-		margin:10px 0 0px 0;
-		display:none;
+		margin:5px 0 0 0;
+		float:right;
+		width:auto;
+		font-size:10px;			
 	}
-	
+	.browse-by li{
+		margin:0 0 0 10px;
+	}
 	.pg-head{
-		background:none;
-		
-		-webkit-box-shadow:none;
-		-moz-box-shadow:none;
-		-o-box-shadow:none;
-		box-shadow:none;
-		
-		-webkit-border-radius:0;
-		-moz-border-radius:0;
-		-o-border-radius:0;
-		border-radius:0;
-		
-		padding:0;
-		margin:0 0 0px 0;
-		
 		position:static;
-	}
-	.pg-head li{
-		margin:0;
 	}
 	
 	.shelf form{		
@@ -104,44 +109,22 @@
 	}
 	
 	.search{
-		float:left;
-		margin:10px 0 0 0;
+		float:none;
+		margin:0px 0 0 0;
 		position:absolute;
 		bottom:20px;
-		left:10px;	
-		width:95%;
+		padding:0;
+		left:0;
+		width:100%;
+		text-align:center;
 	}
-	#id_keywords{
-		width:75%
+	.search-keywords{
+		width:200px;
 	}
 	.search button{
-		left:75%;
+		margin-left:10px;
 	}
-	.nav{
-		float:none;
-		display:block;
-		width:auto;
-		margin:0px -10px 0px -10px;
-		
-	}
-	.nav li{
-		display:block;
-		float:none;
-		
-	}
-	.nav li a{
-		display:block;
-		padding:11px 10px 8px 10px;
-		margin:0px 0 0px 0;
-		color:#fff;
-		background: #A2C2E8; /* old browsers */
-		background: -moz-linear-gradient(top, #A2C2E8 0%, #7A9FC9 100%); /* firefox */
-		
-		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#A2C2E8), color-stop(100%,#7A9FC9)); /* webkit */
-		
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#A2C2E8', endColorstr='#7A9FC9',GradientType=0 ); /* ie */
-		font-weight:bold;
-	}
+	
 	
 	.pg-foot{
 		border-top:solid 1px #b2b2b2;
