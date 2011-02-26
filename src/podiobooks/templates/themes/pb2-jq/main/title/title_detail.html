@@ -1,10 +1,9 @@
 {% extends "base.html" %}
 {% load global_templatetags %}
 {% load title_templatetags %}
-{% load disqus_tags %}
+{% load disqus_templatetags %}
 {% block headtitle %}{{ title.name }} - {{ site_name }}{% endblock %}
 {% block head %}
-{% disqus_dev %}
 {% endblock %}
 {% block title %}Book Information{% endblock %}
 {% block content %}
@@ -61,7 +60,9 @@
 		</li>
 	</ul>
 	<div title="All Comments" id="comments-tab">
-		{% disqus_show_comments %}
+		{% url title_detail title as title_url %}
+		{% show_disqus_comments title.name title.name site_url title_url %}
+		{% show_disqus_comment_count %}
 	</div>
 	<div title="Chapters" id="chapters-tab">
 		{% if title.episodes.all %}
@@ -90,19 +91,10 @@
 </div>
 <script type="text/javascript">
 	$( function() {
-		$("#topTabs").tabs({
-			ajaxOptions: {
-				error: function(xhr, status, index, anchor) {
-					$(anchor.hash).html("Couldn't load this tab.");
-				}
-			}
-		});
-	});
-	$( function() {
 		$("#bottomTabs").tabs({
 			ajaxOptions: {
 				error: function(xhr, status, index, anchor) {
-					$(anchor.hash).html("Couldn't load this tab.");
+					$(anchor.hash).html("Sorry, an error occurred, and this tab couldn't be loaded.");
 				}
 			}
 		});
