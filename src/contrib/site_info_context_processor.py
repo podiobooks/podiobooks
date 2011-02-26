@@ -7,4 +7,5 @@ def site(request):
         site_info['site_name'] = Site.objects.get_current().name
     else:
         site_info['domain'] = RequestSite(request).domain
+    site_info['site_url'] = "%s://%s" % (site_info['protocol'], site_info['domain'])
     return site_info
