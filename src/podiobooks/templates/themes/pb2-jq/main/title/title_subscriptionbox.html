@@ -1,8 +1,5 @@
 {% load title_templatetags %}
 {% load subscription_templatetags %}
-<style type="text/css">
-	
-</style>
 <div id="subscriptionBox">
 	<div id="headphone-title">
 		Get This
@@ -11,13 +8,24 @@
 	</div>
 	<div class="clearfix">
 	</div>
-	<div id="accordion" style="opacity: 0;">
+	<div id="subscription-accordion">
+		{% if title.itunes_adam_id %}
 		<h2>
-		<a href="#rss">Subscribe for Free!</a>
+		<a href="#itunes">Listen via iTunes</a>
+		</h2>
+		<div id="itunes">
+			<a href="http://itunes.apple.com/podcast/id{{ title.itunes_adam_id }}">
+				<div style="background: url({{ THEME_MEDIA_URL }}/images/itunes_chicklet.jpg) left no-repeat; width: 150px;">View in iTunes</div>
+			</a>
+		</div>
+		{% endif %}
+		<h2>
+		<a href="#rss">Subscribe via RSS</a>
 		</h2>
 		<div id="rss">
-			<a href="/rss/feeds/episodes/{{ title.slug }}">Copy This URL</a>
-			into Your Podcatcher
+			<a href="/rss/feeds/episodes/{{ title.slug }}">
+				<div style="background: url({{ THEME_MEDIA_URL }}/images/rss_chicklet.jpg) left no-repeat; width: 130px;">RSS Feed</div>
+			</a>
 		</div>
 		<h2>
 		<a href="#customrss">Custom Subscription</a>
@@ -39,7 +47,7 @@
 </div>
 <script type="text/javascript">
 	$(document).ready( function() {
-		$('#accordion').accordion();
-		$('#accordion').css('opacity', 1);
+		$( '#subscription-accordion' ).accordion( { autoHeight: false } );
+		$( '#subscription-accordion' ).css( 'opacity', 1 );
 	});
 </script>
