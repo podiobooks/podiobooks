@@ -29,8 +29,8 @@
 	-o-box-shadow:0 3px 5px #aaa;
 	box-shadow:0 3px 5px #aaa;
 	font-size: 12px;
-	width: 165px;
-	height: 450px;
+	width: 170px;
+	height: 475px;
 	float: right;
 	position:relative;
 }
@@ -42,6 +42,16 @@
 	font-weight: bold;
 	margin: 0 0 0 0;
 	padding: 18px 0 0 0;
+}
+#subscription-accordion {
+	opacity: 0;
+	height: 250px;
+	overflow: hidden;
+}
+#subscription-accordion div {
+	padding: 10px;
+	margin: 0 0 0 0;
+	text-align: center;
 }
 .title {
 	font-size: 18px;
