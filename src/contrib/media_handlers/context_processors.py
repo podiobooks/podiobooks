@@ -15,7 +15,12 @@ from django.utils.encoding import smart_str
 
 def mini_css(request):
     
-    main_css_files = filter(lambda x: x.endswith('.css'), os.listdir(settings.CSS_DIR))
+    p = settings.CSS_DIR
+    
+    if not os.path.isdir(p):
+        return {}
+    
+    main_css_files = filter(lambda x: x.endswith('.css'), os.listdir(p))
     
     app_css_files = []
     
@@ -25,7 +30,7 @@ def mini_css(request):
             app_css_files.append((f.__str__(),os.path.join(dir,f)))
         
     latest_mod = 0
-    p = settings.CSS_DIR
+    
     
     if not os.path.isdir("%scache" % p):
         os.mkdir("%scache" % p)
@@ -103,7 +108,13 @@ def mini_css(request):
     return {'MINI_CSS' : settings.THEME_MEDIA_URL + settings.CSS_EXT + 'cache/' + cache_name }
 
 def mini_js(request):
-    js_theme_files = filter(lambda x: x.endswith('.js'), os.listdir(settings.JS_DIR))
+    
+    p = settings.JS_DIR
+    
+    if not os.path.isdir(p):
+        return {}
+    
+    js_theme_files = filter(lambda x: x.endswith('.js'), os.listdir(p))
     js_app_files = []
     
     for dir in app_js_dirs:
@@ -113,7 +124,7 @@ def mini_js(request):
     
         
     latest_mod = 0
-    p = settings.JS_DIR
+    
     
     if not os.path.isdir("%scache" % p):
         os.mkdir("%scache" % p)
