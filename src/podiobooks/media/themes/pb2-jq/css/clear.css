@@ -55,6 +55,7 @@ mark {
 	font-weight:bold;
 }
 del {
+
 	text-decoration: line-through;
 }
 abbr[title], dfn[title] {
@@ -165,3 +166,4 @@ button {
 .clearfix {
 	display: block;
 }
+

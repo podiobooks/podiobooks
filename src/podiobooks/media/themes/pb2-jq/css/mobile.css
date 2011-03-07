@@ -26,6 +26,12 @@
 		width:100%;
 		
 	}
+	.half-shelf-wrap{
+		float:none;
+		width:auto;
+	}
+	
+	
 	
 }
 
@@ -68,6 +74,8 @@
 		width:242px;
 		margin:0 auto;
 	}
+	
+	
 	
 	.shelf-step{
 		display:none;
