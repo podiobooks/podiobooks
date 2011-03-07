@@ -12,7 +12,7 @@ from django.http import HttpResponse
 from django.core.cache import cache
 
 INITIAL_CATEGORY = 'science-fiction'
-INTIIAL_CONTRIBUTOR = 'mur-lafferty'
+INITIAL_CONTRIBUTOR = 'mur-lafferty'
 
 def index(request):
     """
@@ -25,7 +25,7 @@ def index(request):
     
     homepage_title_list = Title.objects.filter(display_on_homepage=True).order_by('-date_created').all()
     
-    featured_title_list = homepage_title_list.filter(categories__slug = INTIIAL_CATEGORY).order_by('-date_created', 'name')[:4]
+    featured_title_list = homepage_title_list.filter(categories__slug = INITIAL_CATEGORY).order_by('-date_created', 'name')[:4]
     
     minimal_title_list = featured_title_list[:1]
     
@@ -40,7 +40,7 @@ def index(request):
     category_choice_form = CategoryChoiceForm(initial={'category': INITIAL_CATEGORY})
     category_choice_form.submit_url = reverse('title_category_shelf', kwargs={'category_slug': 'placeholder_slug'}) # This placeholder slug is because the url command expects there to to be an argument, which won't be known till later
     
-    contributor_choice_form = ContributorChoiceForm(initial={'contributor': INTIIAL_CONTRIBUTOR})
+    contributor_choice_form = ContributorChoiceForm(initial={'contributor': INITIAL_CONTRIBUTOR})
     
     contributor_choice_form.submit_url = reverse('title_contributor_shelf', kwargs={'contributor_slug': 'placeholder_slug'})                         
     
