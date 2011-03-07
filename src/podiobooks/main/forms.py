@@ -29,10 +29,11 @@ class ContributorChoiceForm(forms.Form):
     
     if (not contributors):
         top_contributors = Contributor.objects.annotate(title_count=Count('title')).filter(title__display_on_homepage=True).order_by('-title_count').values_list('slug', 'display_name', 'title_count')[:10]
-        
+         
         contributors = []
         for slug, name, titles in top_contributors:
-            contributors.append( (str(slug), str(name)), )  #strip off the count, which has to be in the values list because of the order_by
+            if titles > 0:
+                contributors.append( (str(slug), str(name)), )  #strip off the count, which has to be in the values list because of the order_by
           
         cache.set('contributor_dropdown_values', contributors, 240)
         
