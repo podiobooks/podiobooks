@@ -163,7 +163,7 @@ class License(models.Model):
         ordering = ['slug']
     
     def __unicode__(self):
-        return self.text
+        return self.slug
 
 class Media(models.Model):
     """Media are links to other forms of the title. In the case of books, these

@@ -231,6 +231,8 @@ def createTitlesFromRows(titleList):
             if category:
                 TitleCategory.objects.create(title=title,category=category)
                 print "\t\tCategories: %s" % (title.categories.values('name'))
+                if category.slug == 'erotica':
+                    title.is_adult = True
             
             """ Partner """
             partner = getPartner(row['PartnerID'])
