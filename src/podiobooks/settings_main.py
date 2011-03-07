@@ -70,4 +70,5 @@ INSTALLED_APPS = (
     'podiobooks.social',
     'podiobooks.subscription',
     'registration',
+    'south',
 )
