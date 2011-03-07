@@ -268,6 +268,7 @@ class Title(models.Model):
     is_hosted_at_pb = models.BooleanField(default=True)
     advisory = models.ForeignKey('Advisory', null=True, blank=True, related_name='titles')
     is_adult = models.BooleanField(default=False, db_index=True)
+    is_explicit = models.BooleanField(default=False, db_index=True)
     is_complete = models.BooleanField(default=False, db_index=True)
     avg_audio_quality = models.FloatField(default=0)
     avg_narration = models.FloatField(default=0)
