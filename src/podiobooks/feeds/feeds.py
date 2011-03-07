@@ -51,7 +51,7 @@ class EpisodeFeed(Feed):
         return(strip_tags(obj.description).replace('&amp;', '&'))
     
     def explicit(self, obj):
-        if obj.is_adult:
+        if obj.is_explicit:
             return 'yes'
         else:
             return 'no'
