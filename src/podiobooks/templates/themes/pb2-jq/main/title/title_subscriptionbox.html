@@ -8,25 +8,14 @@
 	</div>
 	<div class="clearfix">
 	</div>
-	<div id="subscription-accordion">
+	<ul class='subscribe'>
 		{% if title.itunes_adam_id %}
-		<h2>
-		<a href="#itunes">Listen via iTunes</a>
-		</h2>
-		<div id="itunes">
-			<a href="http://itunes.apple.com/podcast/id{{ title.itunes_adam_id }}">
-				<div style="background: url({{ THEME_MEDIA_URL }}/images/itunes_chicklet.jpg) left no-repeat; width: 150px;">View in iTunes</div>
-			</a>
-		</div>
+			<li><a class='subscribe-itunes' href="http://itunes.apple.com/podcast/id{{ title.itunes_adam_id }}">View in iTunes</a></li>
 		{% endif %}
-		<h2>
-		<a href="#rss">Subscribe via RSS</a>
-		</h2>
-		<div id="rss">
-			<a href="/rss/feeds/episodes/{{ title.slug }}">
-				<div style="background: url({{ THEME_MEDIA_URL }}/images/rss_chicklet.jpg) left no-repeat; width: 130px;">RSS Feed</div>
-			</a>
-		</div>
+		<li><a class='subscribe-rss' href="/rss/feeds/episodes/{{ title.slug }}">RSS Feed</a></li>
+	</ul>
+	<div id="subscription-accordion">
+		
 		<h2>
 		<a href="#customrss">Custom Subscription</a>
 		</h2>
