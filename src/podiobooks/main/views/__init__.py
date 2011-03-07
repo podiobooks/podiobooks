@@ -11,7 +11,7 @@ from django.views.decorators.cache import cache_page
 from django.http import HttpResponse
 from django.core.cache import cache
 
-INTIIAL_CATEGORY = 'science-fiction'
+INITIAL_CATEGORY = 'science-fiction'
 INTIIAL_CONTRIBUTOR = 'mur-lafferty'
 
 def index(request):
@@ -37,7 +37,7 @@ def index(request):
     print nowreleasing_title_list
     print recentlycomplete_title_list
     
-    category_choice_form = CategoryChoiceForm(initial={'category': INTIIAL_CATEGORY})
+    category_choice_form = CategoryChoiceForm(initial={'category': INITIAL_CATEGORY})
     category_choice_form.submit_url = reverse('title_category_shelf', kwargs={'category_slug': 'placeholder_slug'}) # This placeholder slug is because the url command expects there to to be an argument, which won't be known till later
     
     contributor_choice_form = ContributorChoiceForm(initial={'contributor': INTIIAL_CONTRIBUTOR})
