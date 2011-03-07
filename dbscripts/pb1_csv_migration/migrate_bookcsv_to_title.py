@@ -190,7 +190,7 @@ def createTitlesFromRows(titleList):
                 status=1,
                 display_on_homepage=booleanClean(row['DisplayOnHomepage']),
                 is_hosted_at_pb=True,
-                is_adult=booleanClean(row['Explicit']),
+                is_explicit=booleanClean(row['Explicit']),
                 is_complete=booleanClean(row['Complete']),
                 avg_audio_quality=row['AvgAudioQuality'],
                 avg_narration=row['AvgNarration'],
