@@ -33,10 +33,7 @@ def index(request):
     
     nowreleasing_title_list = homepage_title_list.filter(is_complete=False).all()[:5]    
     recentlycomplete_title_list = homepage_title_list.filter(is_complete=True).all()[:5]
-    
-    print nowreleasing_title_list
-    print recentlycomplete_title_list
-    
+        
     category_choice_form = CategoryChoiceForm(initial={'category': INTIIAL_CATEGORY})
     category_choice_form.submit_url = reverse('title_category_shelf', kwargs={'category_slug': 'placeholder_slug'}) # This placeholder slug is because the url command expects there to to be an argument, which won't be known till later
     
