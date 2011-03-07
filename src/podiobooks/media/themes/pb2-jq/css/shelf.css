@@ -15,10 +15,10 @@
 	-o-border-radius:10px 10px 0 0;
 	border-radius:10px 10px 0 0;
 	
-	-webkit-box-shadow:0 3px 5px #aaa;
-	-moz-box-shadow:0 3px 5px #aaa;
-	-o-box-shadow:0 3px 5px #aaa;
-	box-shadow:0 3px 5px #aaa;
+	-webkit-box-shadow:0 3px 5px rgba(150,150,150,.8);
+	-moz-box-shadow:0 3px 5px rgba(150,150,150,.8);
+	-o-box-shadow:0 3px 5px rgba(150,150,150,.8);
+	box-shadow:0 3px 5px rgba(150,150,150,.8);
 }
 .shelf {
 	-webkit-border-top-left-radius:0px;
@@ -31,10 +31,11 @@
 	-moz-border-radius-bottomright:10px;
 	-o-border-radius:0px 0px 10px 10px;
 	border-radius:0px 0px 10px 10px;
-	-webkit-box-shadow:0 3px 5px #aaa;
-	-moz-box-shadow:0 3px 5px #aaa;
-	-o-box-shadow:0 3px 5px #aaa;
-	box-shadow:0 3px 5px #aaa;
+	
+	-webkit-box-shadow:0 3px 5px rgba(150,150,150,.8);
+	-moz-box-shadow:0 3px 5px rgba(150,150,150,.8);
+	-o-box-shadow:0 3px 5px rgba(150,150,150,.8);
+	box-shadow:0 3px 5px rgba(150,150,150,.8);
 	padding:0 0px 0px 0px;
 	position:relative;
 	z-index:3;
@@ -188,6 +189,10 @@
 	-o-border-radius:6px;
 	border-radius:6px;
 	
+}
+.half-shelf .shelf,
+.half-shelf .shelf-heading{
+	-webkit-box-shadow:none;
 }
 .shelf-dark .shelf-step-cur{
 	background:#c59e76;

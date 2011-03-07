@@ -1,3 +1,28 @@
+.subscription-box {
+	background:#D9E4F0;
+	margin:-15px 5px 20px 0;
+	padding:0px 15px 8px 15px;
+	/*
+	
+	-webkit-box-shadow:0 3px 5px #aaa;
+	-moz-box-shadow:0 3px 5px #aaa;
+	-o-box-shadow:0 3px 5px #aaa;
+	box-shadow:0 3px 5px #aaa;
+	*/
+	-webkit-border-radius:10px;
+	-moz-border-radius:10px;
+	-o-border-radius:10px;
+	border-radius:10px;
+	font-size: 12px;
+	width: 170px;
+	height: 475px;
+	float: right;
+	position:relative;
+}
+
+/*
+ * Itunes / RSS
+ */
 .subscribe{
 	list-style: none;
 	margin:0;
@@ -22,4 +47,22 @@
 }
 .subscribe-rss{
 	background:url(img/rss.png) left bottom no-repeat;
+}
+
+/*
+ * Donate
+ */
+.donate{
+	padding: 10px; 
+	width: 150px; 
+	background-color: #bbd1ec; 
+	text-align: center;
+	position: absolute;
+	bottom:20px;
+	left:16px;
+	-webkit-border-radius:10px;
+	-moz-border-radius:10px;
+	-o-border-radius:10px;
+	border-radius:10px;
+	
 }
