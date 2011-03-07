@@ -4,7 +4,7 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from podiobooks.main.models import Title
 from django.views.decorators.cache import cache_page
-from podiobooks.main.views import INTIIAL_CATEGORY, INTIIAL_CONTRIBUTOR
+from podiobooks.main.views import INITIAL_CATEGORY, INITIAL_CONTRIBUTOR
 
 @cache_page(1)
 def homepage_featured(request, cat=None):
@@ -18,7 +18,7 @@ def homepage_featured(request, cat=None):
     homepage_title_list = Title.objects.filter(display_on_homepage=True).order_by('-date_created').all()
         
     if not cat:
-        cat = INTIIAL_CATEGORY
+        cat = INITIAL_CATEGORY
     
     featured_title_list = homepage_title_list.filter(categories__slug=cat).order_by('-date_created', 'name')[:16]
     
@@ -36,7 +36,7 @@ def top_rated(request, author=None):
     homepage_title_list = Title.objects.filter(display_on_homepage=True).order_by('-date_created').all()
         
     if not author:
-        author = INTIIAL_CONTRIBUTOR
+        author = INITIAL_CONTRIBUTOR
     
     toprated_title_list = homepage_title_list.filter(promoter_count__gte=20).order_by('-promoter_count').all().filter(contributors__slug=author)[:18]
        
