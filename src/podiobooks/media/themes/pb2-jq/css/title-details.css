@@ -94,7 +94,10 @@
 	border-radius:10px;
 	
 }
-
+.pb-twitter-container ul{
+	list-style:none;
+	overflow:hidden;
+}
 
 /*
  * Itunes / RSS
