@@ -5,21 +5,9 @@
 	width: 100px;
 }
 
-#headphone-title {
-	background: url(../images/pb-headphones.png) no-repeat;
-	height: 63px;
-	text-align: center;
-	font-size: 14px;
-	font-weight: bold;
-	margin: 0 0 0 0;
-	padding: 18px 0 0 0;
-}
 
-#subscription-accordion div {
-	padding: 10px;
-	margin: 0 0 0 0;
-	text-align: center;
-}
+
+
 
 .net-promoter-box {
 	margin: 10px 0 0 30px;
