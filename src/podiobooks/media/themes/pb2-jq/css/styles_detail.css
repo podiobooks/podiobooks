@@ -1,39 +1,10 @@
-#title-detail {
-	margin: 0 0 30px 0;
-}
-#imagebox {
-	float: left;
-	text-align: center;
-	font-size:10px;
-}
+
 #awardShow {
 	margin: 5px 0 0 15px;
 	height: 100px;
 	width: 100px;
 }
-#titlebox {
-	float:left;
-	width: 558px;
-	margin: 0 0 20px 20px;
-}
-#subscriptionBox {
-	background:#D9E4F0;
-	margin:0 5px 20px 0;
-	padding:0px 15px 8px 15px;
-	-webkit-border-radius:10px;
-	-moz-border-radius:10px;
-	-o-border-radius:10px;
-	border-radius:10px;
-	-webkit-box-shadow:0 3px 5px #aaa;
-	-moz-box-shadow:0 3px 5px #aaa;
-	-o-box-shadow:0 3px 5px #aaa;
-	box-shadow:0 3px 5px #aaa;
-	font-size: 12px;
-	width: 170px;
-	height: 475px;
-	float: right;
-	position:relative;
-}
+
 #headphone-title {
 	background: url(../images/pb-headphones.png) no-repeat;
 	height: 63px;
@@ -43,20 +14,13 @@
 	margin: 0 0 0 0;
 	padding: 18px 0 0 0;
 }
-#subscription-accordion {
-	opacity: 0;
-	height: 250px;
-	overflow: hidden;
-}
+
 #subscription-accordion div {
 	padding: 10px;
 	margin: 0 0 0 0;
 	text-align: center;
 }
-.title {
-	font-size: 18px;
-	font-weight: bold;
-}
+
 .net-promoter-box {
 	margin: 10px 0 0 30px;
 	width: 90px;
