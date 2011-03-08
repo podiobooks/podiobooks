@@ -1,29 +1,29 @@
 {% load title_templatetags %}
 {% if episode_list %}
-<div style="font-size: 12px; font-weight: normal">
-    <div style="font-weight: bold;">
-        <div style="float:left; width:160px">
+<div>
+    <div>
+        <div>
             Title
         </div>
-        <div style="float:left; width:600px; margin-left: 10px;">
+        <div>
             Description
         </div>
-        <div style="float:left; width:150px; margin-left: 10px;">
+        <div>
             Date Created
         </div>
     </div>
     <div style="clear:both;">
     </div>
     {% for episode in episode_list %}
-    <div style="margin-top: 15px;">
-        <div style="float:left; width:160px;">
+    <div >
+        <div>
             <a href="{{ episode.url }}">{{ episode.name }}</a>
-            <div style="margin: 5px 0 0 15px; font-size: 10px">({{ episode.filesize|filesizeformat }})</div>
+            <div>({{ episode.filesize|filesizeformat }})</div>
         </div>
-        <div style="float:left; width:600px; margin-left: 10px;">
+        <div>
             {{ episode.description }}
         </div>
-        <div style="float:left; width:150px; margin-left: 10px;">
+        <div>
             {{ episode.date_updated|date:"d-M-Y" }}
         </div>
     </div>
