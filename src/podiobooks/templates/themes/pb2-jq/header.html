@@ -1,6 +1,10 @@
 {% load global_templatetags %}<!-- Header - Logo and Navigation Bar -->
 
-	<h1 class='hidden'><a href='/'>Podiobooks</a></h1>
+	{% url podiobooks.main.views.index as home_url %}
+	{% if request.path == home_url %}
+		<h1 class='hidden'><a href='/'>Podiobooks</a></h1>
+	{% endif %}
+	
 	<p class='hidden'>Free Downloadable Audiobooks</p>
 	<p class='logo'><a href='/'><img alt='Podiobooks Logo' src='{{THEME_MEDIA_URL}}images/pb-logo.jpg' /></a></p>
 	
