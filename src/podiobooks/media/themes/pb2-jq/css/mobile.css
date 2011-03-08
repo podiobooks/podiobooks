@@ -31,6 +31,14 @@
 		width:auto;
 	}
 	
+	/*
+	 * title details page
+	 */
+	.title-details {
+		float:right;
+		width: 460px;
+		margin: 0 30px 20px 15px;
+	}
 	
 	
 }
@@ -55,6 +63,13 @@
 	.shelf form select{
 		width:120px;
 	}
+	
+	.title-details {
+		float:none;
+		width: auto;
+		margin: 0 30px 20px 15px;
+	}
+	
 	
 }
 
