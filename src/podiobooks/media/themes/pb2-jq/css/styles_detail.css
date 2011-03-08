@@ -1,20 +1,8 @@
-#title-detail {
-	margin: 0 0 30px 0;
-}
-#imagebox {
-	float: left;
-	text-align: center;
-	font-size:10px;
-}
+
 #awardShow {
 	margin: 5px 0 0 15px;
 	height: 100px;
 	width: 100px;
-}
-#titlebox {
-	float:left;
-	width: 558px;
-	margin: 0 0 20px 20px;
 }
 
 #headphone-title {
@@ -32,10 +20,7 @@
 	margin: 0 0 0 0;
 	text-align: center;
 }
-.title {
-	font-size: 18px;
-	font-weight: bold;
-}
+
 .net-promoter-box {
 	margin: 10px 0 0 30px;
 	width: 90px;
