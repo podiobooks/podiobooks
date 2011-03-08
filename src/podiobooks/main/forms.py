@@ -3,7 +3,7 @@
 from podiobooks.main.models import Category, Contributor
 from django.core.cache import cache
 from django import forms
-from django.db.models import Count
+from django.db.models import Count, Q
 
 class BrowseByForm(forms.Form):
     """ Form used to choose a way to browse - used in header """
@@ -16,7 +16,7 @@ class CategoryChoiceForm(forms.Form):
     submit_url = None
     form_name = 'category'
     if (not categories):
-        categories = Category.objects.filter(title__display_on_homepage=True).annotate(title_count=Count('title')).filter(title_count__gt=2).order_by('name').values_list('slug','name')
+        categories = Category.objects.filter(~Q(slug="erotica"),title__display_on_homepage=True).annotate(title_count=Count('title')).filter(title_count__gt=2).order_by('name').values_list('slug','name')
         cache.set('category_dropdown_values', categories, 240)
     category = forms.ChoiceField(choices=categories, widget=forms.Select(attrs={'class':'pb-category-choice'}))
 
