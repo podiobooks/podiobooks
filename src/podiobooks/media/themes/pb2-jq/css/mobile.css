@@ -39,6 +39,9 @@
 		width: 460px;
 		margin: 0 30px 20px 15px;
 	}
+	.title-details-info{
+		width:250px;
+	}
 	
 	
 }
@@ -68,6 +71,56 @@
 		float:none;
 		width: auto;
 		margin: 0 30px 20px 15px;
+	}
+	
+	
+	.subscription-box {
+		background:#D9E4F0;
+		margin:0px 0px 30px 0px;
+		padding:0px 15px 10px 15px;
+		/*
+		
+		-webkit-box-shadow:0 3px 5px #aaa;
+		-moz-box-shadow:0 3px 5px #aaa;
+		-o-box-shadow:0 3px 5px #aaa;
+		box-shadow:0 3px 5px #aaa;
+		*/
+		-webkit-border-radius:10px;
+		-moz-border-radius:10px;
+		-o-border-radius:10px;
+		border-radius:10px;
+		
+		font-size: 12px;
+		width:auto;
+		height:auto;
+		float: none;
+		position:relative;
+		height:230px;
+	}
+	
+	.headphone-title {
+		height: 63px;
+		text-align: center;
+		width:170px;
+	}
+	.subscribe{
+		padding:0px 0 0 0;
+		margin:0 0 10px 0px;
+		position:absolute;
+		right:15px;
+		top:15px;
+		width:240px
+	}
+	.subscription-accordion{
+		position:absolute;
+		top:95px;
+		right:15px;
+		width:240px;
+	}
+	
+	.donate{
+		bottom:15px;
+		left:15px;
 	}
 	
 	
@@ -153,5 +206,51 @@
 		border-top:solid 1px #b2b2b2;
 		padding-top:10px;
 	}
-			
+	.net-promoter-box{
+		margin:10px 0 0 0;
+		padding:0;
+		float:left;
+		height:auto;
+	}
+	.loading{
+		float:left;
+		margin-right:10px;
+	}
+	.imagebox{
+		text-align:left;
+		width:auto;
+		float:none;
+	}
+	.promoter-count,
+	.detractor-count {
+		height:30px;
+	}
+	.title-details-info{
+		width:140px;
+		margin:0px 0 30px 0;
+	}
+	.title-details-title{
+		margin-right:0;
+	}
+	
+	.subscription-box {
+	height:300px;
+	}
+	.subscribe{
+		
+		right:auto;
+		top:85px;
+		left:25px;
+		width:240px;
+	}
+	.subscription-accordion{
+		position:absolute;
+		top:auto;
+		bottom:15px;
+		right:15px;
+		width:40%;
+	}
+	
+	
+	
 }

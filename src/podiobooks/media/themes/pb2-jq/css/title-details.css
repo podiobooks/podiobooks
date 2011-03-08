@@ -61,6 +61,21 @@
 	position:relative;
 }
 
+.subscription-accordion div {
+	padding: 10px;
+	margin: 0 0 0 0;
+	text-align: center;
+}
+
+.headphone-title {
+	background: url(img/pb-headphones.png) no-repeat;
+	height: 63px;
+	text-align: center;
+	font-size: 14px;
+	font-weight: bold;
+	margin: 0 0 0 0;
+	padding: 18px 0 0 0;
+}
 
 /*
  * Donate
