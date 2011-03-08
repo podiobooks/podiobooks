@@ -1,12 +1,10 @@
 {% load title_templatetags %}
 {% load subscription_templatetags %}
-<div class="subscription-box">
-	<div id="headphone-title">
+<div class="subscription-box clearfix">
+	<div class="headphone-title">
 		Get This
 		<br>
 		Book Now!
-	</div>
-	<div class="clearfix">
 	</div>
 	<ul class='subscribe'>
 		{% if title.itunes_adam_id %}
@@ -14,8 +12,7 @@
 		{% endif %}
 		<li><a class='subscribe-rss' href="/rss/feeds/episodes/{{ title.slug }}">RSS Feed</a></li>
 	</ul>
-	<div id="subscription-accordion">
-		
+	<div class="subscription-accordion">
 		<h2>
 		<a href="#customrss">Custom Subscription</a>
 		</h2>
@@ -36,7 +33,7 @@
 </div>
 <script type="text/javascript">
 	$(document).ready( function() {
-		$( '#subscription-accordion' ).accordion( { autoHeight: false } );
-		$( '#subscription-accordion' ).css( 'opacity', 1 );
+		$( '.subscription-accordion' ).accordion( { autoHeight: false } );
+		$( '.subscription-accordion' ).css( 'opacity', 1 );
 	});
 </script>
