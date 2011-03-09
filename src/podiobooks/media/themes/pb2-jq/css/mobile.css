@@ -209,24 +209,28 @@
 	.net-promoter-box{
 		margin:10px 0 0 0;
 		padding:0;
-		float:left;
+		float:none;
 		height:auto;
 	}
 	.loading img{
 		
 	}
 	.loading{
-		float:left;
-		margin-right:10px;
+		float:none;
+		margin-right:0px;
 	}
 	.imagebox{
 		text-align:left;
 		width:auto;
-		float:none;
+		float:left;
+		margin:0 10px 0 0;
 	}
 	.promoter-count,
 	.detractor-count {
 		height:30px;
+	}
+	.title-details{
+		margin:0;
 	}
 	.title-details-info{
 		width:120px;
