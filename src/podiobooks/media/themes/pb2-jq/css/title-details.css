@@ -127,3 +127,8 @@
 .subscribe-rss{
 	background:url(img/rss.png) left bottom no-repeat;
 }
+
+.award-show{
+	float:left;
+	margin-top:20px;
+}

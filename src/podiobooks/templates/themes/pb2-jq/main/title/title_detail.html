@@ -29,9 +29,7 @@
 					{{ title.detractor_count }}
 				</div>
 			</div>
-			<div class="awardShow">
-				{% show_awardshow title %}
-			</div>
+			
 		</div>
 		
 		<div class='title-details-info'>
@@ -43,7 +41,9 @@
 				<a href="{% url series_detail title.series.slug %}">{{ title.series.name|safe }}</a>
 			{% endif %}
 		</div>
-		
+		<div class="award-show">
+				{% show_awardshow title %}
+			</div>
 	</div>
 	
 	<div class="title-description" id="description">
