@@ -228,6 +228,7 @@
 	.this-title-is{
 		
 	}
+	
 	.promoter-count,
 	.detractor-count {
 		height:30px;
@@ -236,7 +237,7 @@
 		margin:0;
 	}
 	.title-details-info{
-		width:120px;
+		width:130px;
 		margin:0px 0 30px 0;
 		float:left;
 	}
