@@ -82,6 +82,9 @@ a:hover {
 	display:inline;
 	margin-left:110px;
 }
+.browse-by .hide-lowest-width{
+	margin:0 5px 0 0;
+}
 .browse-by li {
 	display:inline;
 }
