@@ -37,13 +37,17 @@
 	.title-details {
 		float:right;
 		width: 460px;
-		margin: 0 30px 20px 15px;
+		margin: 0 30px 0px 15px;
 	}
 	.title-details-info{
 		width:250px;
 	}
 	
-	
+	.award-show{
+		float:left;
+		width:200px;
+		margin-top:20px;
+	}
 }
 
 
@@ -270,6 +274,9 @@
 		float:none;
 		width:auto;
 		background-position: center top;
+	}
+	.award-show{
+		width:130px;
 	}
 	
 }
