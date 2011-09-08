@@ -1,5 +1,0 @@
-"""
-Mediabrute
-
-See README
-"""
