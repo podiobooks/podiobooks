@@ -1,0 +1,39 @@
+{% load title_templatetags %}
+{% load subscription_templatetags %}
+<div class="subscription-box clearfix">
+	<div class="headphone-title">
+		Get This
+		<br>
+		Book Now!
+	</div>
+	<ul class='subscribe'>
+		{% if title.itunes_adam_id %}
+			<li><a class='subscribe-itunes' href="http://itunes.apple.com/podcast/id{{ title.itunes_adam_id }}">View in iTunes</a></li>
+		{% endif %}
+		<li><a class='subscribe-rss' href="/rss/feeds/episodes/{{ title.slug }}">RSS Feed</a></li>
+	</ul>
+	<div class="subscription-accordion">
+		<h2>
+		<a href="#customrss">Custom Subscription</a>
+		</h2>
+		<div id="customrss">
+			<div>
+				{% show_title_subscription_action title user %}
+			</div>
+		</div>
+		<h2>
+		<a href="#buydownload">Buy The Whole Book At Once</a>
+		</h2>
+		<div id="buydownload">
+			Coming Soon...
+		</div>
+	</div>
+	<br>
+	{% show_donation_button title %}
+</div>
+<script type="text/javascript">
+	$(document).ready( function() {
+		$( '.subscription-accordion' ).accordion( { autoHeight: false } );
+		$( '.subscription-accordion' ).css( 'opacity', 1 );
+	});
+</script>

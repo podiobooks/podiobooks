@@ -1,0 +1,6 @@
+{% if titlecontributors %}
+	{% for titlecontributor in titlecontributors %}
+	<span class="contributor-attribution">{% if titlecontributor.contributor_type.slug == 'author' and forloop.first %}by {% else %}{{ titlecontributor.contributor_type.byline_text }}{% endif %}</span>
+	<span class="contributor"><a href="{% url contributor_detail titlecontributor.contributor.slug %}">{{ titlecontributor.contributor.display_name }}</a></span>
+	{% endfor %}
+{% endif %}

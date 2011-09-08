@@ -1,0 +1,29 @@
+{% load global_templatetags %}<!-- Header - Logo and Navigation Bar -->
+
+	{% url podiobooks.main.views.index as home_url %}
+	{% if request.path == home_url %}
+		<h1 class='hidden'><a href='/'>Podiobooks</a></h1>
+	{% endif %}
+	
+	<p class='hidden'>Free Downloadable Audiobooks</p>
+	<p class='logo'><a href='/'><img alt='Podiobooks Logo' src='{{THEME_MEDIA_URL}}images/pb-logo.jpg' /></a></p>
+	
+	<div class='pg-head clearfix'>
+		<ul class='nav'>
+			<li><a href='#'>Blog</a></li>
+			<li><a href='#'>Community</a></li>
+			<li>
+			{% if user.is_authenticated %}
+				<a href="{% url profile_manage %}">My Account</a></li>
+				<li class='hide-on-mobile'><a href="{% url django_authopenid.views.signout %}">Logout {{ user.username }}</a>
+			{% else %} 	
+				<a href="{% ssl_site_login_url %}">Login<span class='hide-on-mobile'>/Register</span></a>
+			{% endif %}
+			</li>
+		</ul>
+		{% show_searchbox %}
+		{% show_browsebox %}
+		
+		
+	</div>
+<!-- End Header - Logo and Navigation Bar -->
