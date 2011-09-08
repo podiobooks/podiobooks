@@ -63,6 +63,10 @@ THEME_MEDIA_URL = MEDIA_URL + THE_THEME  + '/'
 JS_DIR = THE_THEME + "/js/"
 CSS_DIR = THE_THEME + "/css/"
 
+STATIC_URL = THEME_MEDIA_URL
+
+CSS_TOP_FILES = ["boilerplate.css", ]
+
 
 # Google JavaScript API Key
 GOOGLE_JS_API_KEY = "ABQIAAAApKHrTPdMsrKnaI74fSfnhBQ1oE6XAUbmObyC_RwYQIb0R2PjHBRZWTF3zf-YwVXFv_qiaAb_sT04aA"
@@ -72,24 +76,24 @@ TYPEKIT_KIT_ID = "coc0qsu"
 
 # Local DB settings. (Postgres)
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'pb2',
-        'USER': 'pb2',
-        'PASSWORD': '',
-        'HOST': '127.0.0.1',
-        'PORT': '', # Set to empty string for default.
-        'SUPPORTS_TRANSACTIONS': 'true',
-    },
-#     'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': 'pb2.db',
+#    'default': {
+#        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#        'NAME': 'pb2',
 #        'USER': 'pb2',
 #        'PASSWORD': '',
 #        'HOST': '127.0.0.1',
 #        'PORT': '', # Set to empty string for default.
 #        'SUPPORTS_TRANSACTIONS': 'true',
-#    }
+#    },
+     'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'pb',
+        'USER': 'pb2',
+        'PASSWORD': '',
+#        'HOST': '127.0.0.1',
+#        'PORT': '', # Set to empty string for default.
+#        'SUPPORTS_TRANSACTIONS': 'true',
+    }
 }
 
 # Local DB settings. (MySQL)
