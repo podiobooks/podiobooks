@@ -16,7 +16,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.request',
     'django_authopenid.context_processors.authopenid',
     'contrib.site_info_context_processor.site',
-    'contrib.mediabrute.context_processors.mini_media',
+    'mediabrute.context_processors.mini_media',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -56,8 +56,8 @@ INSTALLED_APPS = (
     'django.contrib.flatpages',
     'django.contrib.sessions',
     'django.contrib.sites',
-    'django_authopenid',
     'django.contrib.staticfiles',
+    'django_authopenid',
     'mediabrute',
     'markdown',
     'markitup',
