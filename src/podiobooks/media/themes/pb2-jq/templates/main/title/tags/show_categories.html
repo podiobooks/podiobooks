@@ -1,0 +1,3 @@
+{% if categories %}
+<span class="category-list">{% for category in categories %}<a href="{% url category_detail category.slug %}">{{ category.name }}</a>{% if not forloop.last %},{% endif %}{% endfor %}</span>
+{% endif %}
