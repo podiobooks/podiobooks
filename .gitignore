@@ -8,8 +8,7 @@
 .tmp_*
 .tox
 *.db
-*.egg
-*.egg-info
+eggs/*
 *.log
 *.py[co]
 bin
