@@ -45,6 +45,8 @@ def compile_and_cache_css(css_dirs, cache_dir, app_name=None):
         css_contents = css_contents.replace('url(', 'url(../')
         css_contents = css_contents.replace('url (', 'url(../')
         css_contents = css_contents.replace('url(../http', 'url(http')
+        css_contents = css_contents.replace('url(../"', 'url("../')
+        css_contents = css_contents.replace("url(../'", "url('../")
         
         cache_file.write(minify.cssmin(css_contents))
         cache_file.close()
