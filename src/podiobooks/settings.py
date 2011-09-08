@@ -4,6 +4,12 @@
 
 # NOTE
 # see settings_local.template for instructions on making your local settings file
+import os
+
+
+# uncomment next 2 lines for using external runserver
+# from settings_runserver import add_path_places
+# add_path_places()
 
 from podiobooks.settings_main import * #@UnusedWildImport
 
