@@ -58,7 +58,6 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.staticfiles',
     'django_authopenid',
-    'mediabrute',
     'markdown',
     'markitup',
     'tagging',
