@@ -25,7 +25,7 @@ def get_js_settings():
     except AttributeError:
         return ""
     
-    return render_to_string(tpl, {"settings":settings})
+    return render_to_string(tpl, {"settings": settings})
 
 def unlink_cache(cache_dir, ext, app_name=None, unlink_all=False):
     """
