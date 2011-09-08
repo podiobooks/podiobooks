@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block head %}
+<style type="text/css">
+.pass {
+	color: green
+}
+.fail {
+	color: red
+}
+</style>
+{% endblock %}
+{% block headtitle %}Audio File Check Results - {{ site_name }}{% endblock %}
+{% block title %}Audio File Check Results - {{ site_name }}{% endblock %}
+{% block content %}
+<pre>
+{% autoescape off %}
+{% for result in results %}
+{{ result }}
+{% endfor %}
+</pre>
+{% endautoescape %}
+
+<p><a href="{% url author_upload %}">Upload and Test a New File</a> | <a href="{% url home_page %}">Return to Home Page</a> </p>
+
+{% endblock %}
