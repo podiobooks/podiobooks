@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block headtitle %}All Categories - {{ site_name }}{% endblock %}
+
+{% block content %}
+<h1>
+	All Categories
+</h1>
+<ul style="margin: 0 0 0 40px">
+  {% for category in category_list %} 
+  <li class="category_{{category.slug}}"><a href="{{category.get_absolute_url}}">{{ category.name }}</a> - {{ category.title_set.all.count }} title{{ category.title_set.all.count|pluralize }}</li>
+  {% endfor %}
+</ul>
+{% endblock %}
+

@@ -1,0 +1,19 @@
+{% load comments %}
+
+{% if title %}
+	{% get_comment_list for title as comment_list %}
+	
+	{% if comment_list %}
+	<ul>
+	{% for comment in comment_list %}
+	
+		<li>{{ comment }}</li>
+	
+	{% endfor %}
+	</ul>
+	{% endif %}
+	
+	<br>
+	
+	{% render_comment_form for title %}
+{% endif %}
