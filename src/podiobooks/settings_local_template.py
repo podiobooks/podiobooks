@@ -54,7 +54,7 @@ COVER_MEDIA_URLS = (MEDIA_URL,)
 ADMIN_MEDIA_PREFIX = '/adminmedia/'
 
 # Theming
-THE_THEME = "themes/pb2-jq"
+THE_THEME = "themes/jerome"
 
 TEMPLATE_DIRS = (MEDIA_ROOT + "/" + THE_THEME + "/templates/", )
 
