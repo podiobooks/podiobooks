@@ -1,0 +1,14 @@
+{% if tweets %}
+{% load global_templatetags %}
+<div class="pb-twitter-container">
+<ul>
+	{% for tweet in tweets %}
+	<li style="margin: 5px 0 0 0">
+		<strong>{{tweet.user.screen_name}}:</strong> {{ tweet.text|safe|replace_bad_words }}
+	</li>
+	{% endfor %}
+</ul>
+</div>
+{% else %}
+Sorry, no tweets found!
+{% endif %}

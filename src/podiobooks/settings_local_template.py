@@ -56,14 +56,12 @@ ADMIN_MEDIA_PREFIX = '/adminmedia/'
 # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
 # Always use forward slashes, even on Windows.
 # Don't forget to use absolute paths, not relative paths.
-TEMPLATE_ROOT = PROJECT_PATH + '/templates'
-TEMPLATE_DIRS = (TEMPLATE_ROOT, TEMPLATE_ROOT + '/base')
-MAIN_TEMPLATE_THEME = 'base'
-TEMPLATE_THEMES = ('pb2-jq',)
-for theme in reversed(TEMPLATE_THEMES):
-    TEMPLATE_DIRS = (TEMPLATE_ROOT + '/themes/' + theme,) + TEMPLATE_DIRS
-MAIN_TEMPLATE_THEME = TEMPLATE_THEMES[0]
-THEME_MEDIA_URL = MEDIA_URL + 'themes/' + MAIN_TEMPLATE_THEME + '/'  
+
+THE_THEME = "themes/pb2-jq"
+
+TEMPLATE_DIRS = (MEDIA_ROOT + "/" + THE_THEME + "/templates/", )
+
+THEME_MEDIA_URL = MEDIA_URL + THE_THEME  + '/'  
 
 # The folder that each of these things goes in
 # will be appended to MEDIA_ROOT and MEDIA_URL, plus theme info
@@ -72,8 +70,8 @@ JS_EXT = "js/"
 CSS_EXT = "css/"
 
 # Final directory variables needed in contrib.minigy.context_processors
-JS_DIR = os.path.join(MEDIA_ROOT, "themes", TEMPLATE_THEMES[0], JS_EXT)
-CSS_DIR = os.path.join(MEDIA_ROOT, "themes", TEMPLATE_THEMES[0], CSS_EXT)
+JS_DIR = os.path.join(MEDIA_ROOT, THE_THEME, JS_EXT)
+CSS_DIR = os.path.join(MEDIA_ROOT, THE_THEME, CSS_EXT)
 
 # Some CSS ordering settings
 CSS_FIRST = ["clear.css", "reset.css", "style.css", "styles.css"]
@@ -95,7 +93,16 @@ DATABASES = {
         'HOST': '127.0.0.1',
         'PORT': '', # Set to empty string for default.
         'SUPPORTS_TRANSACTIONS': 'true',
-    }
+    },
+#     'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': 'pb2',
+#        'USER': 'pb2',
+#        'PASSWORD': '',
+#        'HOST': '127.0.0.1',
+#        'PORT': '', # Set to empty string for default.
+#        'SUPPORTS_TRANSACTIONS': 'true',
+#    }
 }
 
 # Local DB settings. (MySQL)
@@ -207,10 +214,10 @@ SEARCH_PROVIDER = 'DEFAULT'
 # SPHINX_API_VERSION = 0x116
 
 ### LIBSYN
-LIBSYN_USER = ''
-LIBSYN_KEY = ''
-LIBSYN_NETWORK_SLUG = ''
-LIBSYN_API_SERVER_URL = ''
+LIBSYN_USER = 'evo@podiobooks.com'
+LIBSYN_KEY = '1158b2d59957871de21b4a2f4fe173b6'
+LIBSYN_NETWORK_SLUG = 'podiobooks'
+LIBSYN_API_SERVER_URL = 'http://api.libsyn.com/xmlrpc'
 
 ### DONATIONS
 DONATION_BUSINESS_NAME = 'evo@podiobooks.com'

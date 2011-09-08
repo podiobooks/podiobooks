@@ -7,6 +7,7 @@
 .settings
 .tmp_*
 .tox
+*.db
 *.egg
 *.egg-info
 *.log
