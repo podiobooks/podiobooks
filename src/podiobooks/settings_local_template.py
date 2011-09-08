@@ -53,29 +53,16 @@ COVER_MEDIA_URLS = (MEDIA_URL,)
 # Examples: "http://foo.com/media/", "/media/".
 ADMIN_MEDIA_PREFIX = '/adminmedia/'
 
-# Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-# Always use forward slashes, even on Windows.
-# Don't forget to use absolute paths, not relative paths.
-
+# Theming
 THE_THEME = "themes/pb2-jq"
 
 TEMPLATE_DIRS = (MEDIA_ROOT + "/" + THE_THEME + "/templates/", )
 
 THEME_MEDIA_URL = MEDIA_URL + THE_THEME  + '/'  
 
-# The folder that each of these things goes in
-# will be appended to MEDIA_ROOT and MEDIA_URL, plus theme info
-# used in contrib.minify.dirs
-JS_EXT = "js/"
-CSS_EXT = "css/"
+JS_DIR = THE_THEME + "/js/"
+CSS_DIR = THE_THEME + "/css/"
 
-# Final directory variables needed in contrib.minigy.context_processors
-JS_DIR = os.path.join(MEDIA_ROOT, THE_THEME, JS_EXT)
-CSS_DIR = os.path.join(MEDIA_ROOT, THE_THEME, CSS_EXT)
-
-# Some CSS ordering settings
-CSS_FIRST = ["clear.css", "reset.css", "style.css", "styles.css"]
-CSS_LAST = ["mobile.css"]
 
 # Google JavaScript API Key
 GOOGLE_JS_API_KEY = "ABQIAAAApKHrTPdMsrKnaI74fSfnhBQ1oE6XAUbmObyC_RwYQIb0R2PjHBRZWTF3zf-YwVXFv_qiaAb_sT04aA"
@@ -96,7 +83,7 @@ DATABASES = {
     },
 #     'default': {
 #        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': 'pb2',
+#        'NAME': 'pb2.db',
 #        'USER': 'pb2',
 #        'PASSWORD': '',
 #        'HOST': '127.0.0.1',
