@@ -1,10 +1,10 @@
 function siteVars(opt){
 	switch (opt){
 		case 'home':
-			return '{{home}}';
+			return '{% url podiobooks.main.views.index %}';
 			break;
 		case 'theme':
-			return '{{theme}}';
+			return '{{ settings.THEME_MEDIA_URL }}';
 			break;
 		case 'img':
 			return siteVars('theme') + 'images/';
@@ -13,7 +13,7 @@ function siteVars(opt){
 			return siteVars('theme') + 'css/';
 			break; 
 		case 'swf':
-			return siteVars('theme') + 'swf/';
+			return siteVars('theme') + 'flash/';
 			break;
 		case 'js':
 			return siteVars('theme') + 'js/';
