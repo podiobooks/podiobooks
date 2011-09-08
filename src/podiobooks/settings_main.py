@@ -73,4 +73,3 @@ INSTALLED_APPS = (
     'south',
     
 )
-STATIC_URL = "/"
