@@ -36,7 +36,7 @@ urlpatterns = patterns('',
     (r'^comments/', include('django.contrib.comments.urls')),
     
     # FAQ
-    (r'^faq/', include('faq.urls')),
+#    (r'^faq/', include('faq.urls')),
     
     # MarkItUp
     url(r'^markitup/', include('markitup.urls')),
