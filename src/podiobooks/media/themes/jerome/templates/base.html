@@ -8,7 +8,9 @@
 	 	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;"> 
 		
 		<!-- 1140px Grid styles for IE -->
-		<!--[if lte IE 9]><link rel="stylesheet" href="{{ STATIC_URL }}css/no-cache/ie.css" type="text/css" media="screen" /><![endif]-->
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" href="{{ STATIC_URL }}css/no-cache/ie.css" type="text/css" media="screen" />
+		<![endif]-->
 	
 		<title>{% block headtitle %}{{ site_name }}{% endblock %}</title>
 	
@@ -50,6 +52,10 @@
 		{% for js in MINI_JS %}
 			<script type="text/javascript" src="{{ js }}"></script>
 		{% endfor %}
+		
+		<!--[if lte IE 9]>
+			<script type="text/javascript" src="{{ MEDIA_URL }}js/no-cache/css3-mediaqueries.js"></script>
+		<![endif]-->
 		
 		{% block head %}
 		{% endblock %}
