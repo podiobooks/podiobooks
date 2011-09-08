@@ -6,6 +6,9 @@
 		<meta name="language" content="english"> 
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
 	 	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;"> 
+		
+		<!-- 1140px Grid styles for IE -->
+		<!--[if lte IE 9]><link rel="stylesheet" href="{{ STATIC_URL }}css/no-cache/ie.css" type="text/css" media="screen" /><![endif]-->
 	
 		<title>{% block headtitle %}{{ site_name }}{% endblock %}</title>
 	
@@ -13,8 +16,10 @@
 		<meta name="Keywords" content="audio books, audiobooks, books, novels, podcast, podcasting, podiobooks" /> 
 		<meta name="Description" content="Free audio books delivered as podcasts. Subscribe for free to any book and start from chapter one. Podiobooks.com" />
 		{% endblock %}
-	
-		<link rel="stylesheet" type="text/css" href="{{ MINI_CSS }}" />
+		
+		{% for sheet in MINI_CSS %}
+			<link rel="stylesheet" type="text/css" href="{{ sheet }}" />
+		{% endfor %}
 		
 		<!--
 		<link rel="stylesheet" type=text/css href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/themes/base/jquery-ui.css" >
@@ -37,12 +42,15 @@
 		<script src="http://www.google.com/jsapi?key={{ GOOGLE_JS_API_KEY }}" type="text/javascript"></script>
 		<script language="Javascript" type="text/javascript">
 		    //<![CDATA[
-		    google.load("jquery", "1.5.1");
+		    google.load("jquery", "1.6.2");
 			google.load("jqueryui", "1.8.9");
 			//]]>
 		</script>		
 		
-		<script type="text/javascript" src="{{ MINI_JS }}"></script>
+		{% for js in MINI_JS %}
+			<script type="text/javascript" src="{{ js }}"></script>
+		{% endfor %}
+		
 		{% block head %}
 		{% endblock %}
 	</head>
