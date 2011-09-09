@@ -1,0 +1,8 @@
+.billboard{
+	background:#4d3939 url(img/dot.png) left top repeat;
+	
+}
+.billboard .flare{
+	background:url(img/flare.png) 40% -137px no-repeat;
+	height:400px;
+}

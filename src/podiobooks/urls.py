@@ -24,20 +24,14 @@ urlpatterns = patterns('',
     # Admin Site
     (r'^admin/', include(admin.site.urls)),
     
-    # Authopenid
-    (r'^account/', include('django_authopenid.urls')),
-    
-     # Author Interface
-    (r'^author/', include('podiobooks.author.urls')),
+    (r'^accounts/', include('socialregistration.urls')),
+    (r'^account/signin/$', 'django.contrib.auth.views.login'),
     
     # Avatars
     (r'^avatar/', include('avatar.urls')),
     
     # Django Comments
     (r'^comments/', include('django.contrib.comments.urls')),
-    
-    # FAQ
-#    (r'^faq/', include('faq.urls')),
     
     # MarkItUp
     url(r'^markitup/', include('markitup.urls')),
@@ -48,9 +42,6 @@ urlpatterns = patterns('',
     # Feeds
     (r'^rss/', include('podiobooks.feeds.urls')),
 
-    # Social Media Views
-    (r'^social/', include('podiobooks.social.urls')),
-    
     # Subscriptions
     (r'^subscription/', include('podiobooks.subscription.urls')),
 )

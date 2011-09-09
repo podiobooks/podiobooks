@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load global_templatetags %}
 {% load title_templatetags %}
-{% load disqus_templatetags %}
+
 {% block headtitle %}{{ title.name }} - {{ site_name }}{% endblock %}
 {% block head %}
 {% endblock %}
@@ -67,8 +67,7 @@
 	</ul>
 	<div title="All Comments" id="comments-tab">
 		{% url title_detail title as title_url %}
-		{% show_disqus_comments title.name title.name site_url title_url %}
-		{% show_disqus_comment_count %}
+
 	</div>
 	<div title="Chapters" id="chapters-tab">
 		{% if title.episodes.all %}
