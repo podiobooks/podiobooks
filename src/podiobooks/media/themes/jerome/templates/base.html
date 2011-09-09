@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-{% load disqus_templatetags %}
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 		<meta name="language" content="english"> 
@@ -62,20 +61,29 @@
 	</head>
 	
 	<body class='{% block body_class %}{% endblock %}'>
-		<div class='pg clearfix'>
-			<!-- Begin Header -->
-			{% block header %}{% include "header.html" %}{% endblock %}
-			<!-- End Header -->
+		
+		<!-- Begin Header -->
+		<div class="container top-bar">
 			
-			<!-- Begin Main Content -->
-			{% block content %}<p>No Content Defined</p>{% endblock %}
-			<!-- End Main Content -->
-			
-			<!-- Begin Footer -->
-			{% block footer %}{% include "footer.html" %}{% endblock %}
-			<!-- End Footer -->
-			
-			{% show_disqus_comment_count %}
 		</div>
+		<div class="container head">
+			<div class="flare">
+			
+			{% block header %}{% include "header.html" %}{% endblock %}
+			
+			</div>
+		</div>
+		
+		<!-- End Header -->
+		
+		<!-- Begin Main Content -->
+		{% block content %}<p>No Content Defined</p>{% endblock %}
+		<!-- End Main Content -->
+		
+		<!-- Begin Footer -->
+		{% block footer %}{% include "footer.html" %}{% endblock %}
+		<!-- End Footer -->
+		
+		
 	</body>
 </html>

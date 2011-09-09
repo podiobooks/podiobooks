@@ -207,8 +207,10 @@ class SubscriptionTestCase(TestCase):
         self.assertContains(response, "Custom RSS")
         
     def testTitleSubscriptionActionTagWhenSubscribed(self):
+        
+        
         self.c.login(username='testuser1', password='testuser1password')
         response = self.c.get('/title/trader-tales-4-double-share/', follow=True)
-        self.assertContains(response, "Unsubscribe")
         
+        self.assertContains(response, "Unsubscribe")
         

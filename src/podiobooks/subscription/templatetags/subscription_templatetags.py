@@ -9,13 +9,17 @@ register = template.Library()
 @register.inclusion_tag('subscription/tags/show_title_subscription_action.html')
 def show_title_subscription_action(title, user):
     """ Determine if a user is subscribed to a title, and show a subscription/unsubscription action """
-    
+    print "HELLO!"
     if user.is_authenticated():
         try:
             subscription = TitleSubscription.objects.get(title=title, user=user)
+            
         except:
+        
             subscription = None
+            
     else:
+        
         subscription = None
         
     return {'title': title,

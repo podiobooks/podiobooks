@@ -14,7 +14,6 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'podiobooks.main.context_processors.theme_media',
     'podiobooks.main.context_processors.js_api_keys',
     'django.core.context_processors.request',
-    'django_authopenid.context_processors.authopenid',
     'contrib.site_info_context_processor.site',
     "django.core.context_processors.static",
     'mediabrute.context_processors.mini_media',
@@ -26,7 +25,6 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.doc.XViewMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django_authopenid.middleware.OpenIDMiddleware',
     'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
@@ -41,6 +39,7 @@ AUTH_PROFILE_MODULE = 'profile.UserProfile'
 #authopenid
 ugettext = lambda s: s # pylint: disable=C0103
 LOGIN_URL = '/%s%s' % (ugettext('account/'), ugettext('signin/'))
+
 LOGIN_REDIRECT_URL = '/'
 OPENID_SREG = {
     "required": ['fullname', 'country']
@@ -59,16 +58,13 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.staticfiles',
-    'django_authopenid',
+    'socialregistration',
     'markdown',
     'markitup',
-    'tagging',
-    'podiobooks.author',
-    'podiobooks.disqus_utils',
+    'taggit',
     'podiobooks.feeds',
     'podiobooks.main',
     'podiobooks.profile',
-    'podiobooks.social',
     'podiobooks.subscription',
     'registration',
     'south',

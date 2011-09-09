@@ -40,7 +40,7 @@ MEDIA_URL = '/media/'
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = PROJECT_PATH + '/media/'
+MEDIA_ROOT = PROJECT_PATH + '/media'
 MEDIA_COVERS = 'images/covers/'
 MEDIA_AWARDS = 'images/awards/'
 MEDIA_CONTRIBUTORS = 'images/contributors/'
@@ -58,15 +58,15 @@ THE_THEME = "themes/jerome"
 
 TEMPLATE_DIRS = (MEDIA_ROOT + "/" + THE_THEME + "/templates/", )
 
-THEME_MEDIA_URL = MEDIA_URL + THE_THEME  + '/'  
+THEME_MEDIA_URL = MEDIA_URL + THE_THEME  + '/'
 
-JS_DIR = THE_THEME + "/js/"
-CSS_DIR = THE_THEME + "/css/"
+JS_DIR = THE_THEME + "/js"
+CSS_DIR = THE_THEME + "/css"
+JS_SETTINGS_TEMPLATE = TEMPLATE_DIRS[0] + "js/config.txt"
 
 STATIC_URL = THEME_MEDIA_URL
 
-CSS_TOP_FILES = ["boilerplate.css", ]
-
+CSS_TOP_FILES = ["boilerplate.css", "1140.css", "fonts.css", "style.css" ]
 
 # Google JavaScript API Key
 GOOGLE_JS_API_KEY = "ABQIAAAApKHrTPdMsrKnaI74fSfnhBQ1oE6XAUbmObyC_RwYQIb0R2PjHBRZWTF3zf-YwVXFv_qiaAb_sT04aA"
@@ -87,7 +87,7 @@ DATABASES = {
 #    },
      'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'pb',
+        'NAME': 'pb2.db',
         'USER': 'pb2',
         'PASSWORD': '',
 #        'HOST': '127.0.0.1',

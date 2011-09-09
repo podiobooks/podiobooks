@@ -28,7 +28,7 @@ def ssl_site_login_url():
     try:
         login_url = settings.SSL_SITE_LOGIN_URL
     except:
-        login_url = reverse('django_authopenid.views.signin')
+        login_url = "#"
         
     return login_url
 
