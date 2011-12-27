@@ -5,7 +5,7 @@
 <listEntry value="org.eclipse.ui.externaltools.launchGroup"/>
 </listAttribute>
 <stringAttribute key="org.eclipse.ui.externaltools.ATTR_LAUNCH_CONFIGURATION_BUILD_SCOPE" value="${none}"/>
-<stringAttribute key="org.eclipse.ui.externaltools.ATTR_LOCATION" value="${workspace_loc:/podiobooks/bin/podiobooks-test}"/>
+<stringAttribute key="org.eclipse.ui.externaltools.ATTR_LOCATION" value="${workspace_loc:/podiobooks/buildout/bin/podiobooks-test}"/>
 <stringAttribute key="org.eclipse.ui.externaltools.ATTR_TOOL_ARGUMENTS" value="test podiobooks.libsyn&#10;--with-cov&#10;--cov-config=devscripts/checkers/coveragerc&#10;--cov-report=term-missing&#10;--cov=podiobooks.libsyn"/>
 <stringAttribute key="org.eclipse.ui.externaltools.ATTR_WORKING_DIRECTORY" value="${workspace_loc:/podiobooks}"/>
 </launchConfiguration>

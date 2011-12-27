@@ -24,7 +24,7 @@ urlpatterns = patterns('',
     # Admin Site
     (r'^admin/', include(admin.site.urls)),
     
-    (r'^accounts/', include('socialregistration.urls')),
+    # Auth / Login
     (r'^account/signin/$', 'django.contrib.auth.views.login'),
     
     # Avatars
