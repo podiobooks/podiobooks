@@ -2,15 +2,15 @@
 <launchConfiguration type="org.python.pydev.debug.regularLaunchConfigurationType">
 <stringAttribute key="org.eclipse.debug.core.ATTR_REFRESH_SCOPE" value="${workspace}"/>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
-<listEntry value="/podiobooks/bootstrap.py"/>
+<listEntry value="/podiobooks/buildout/bootstrap.py"/>
 </listAttribute>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
 <listEntry value="1"/>
 </listAttribute>
-<stringAttribute key="org.eclipse.ui.externaltools.ATTR_LOCATION" value="${workspace_loc:podiobooks/bootstrap.py}"/>
-<stringAttribute key="org.eclipse.ui.externaltools.ATTR_OTHER_WORKING_DIRECTORY" value="${workspace_loc:podiobooks}"/>
+<stringAttribute key="org.eclipse.ui.externaltools.ATTR_LOCATION" value="${workspace_loc:podiobooks/buildout/bootstrap.py}"/>
+<stringAttribute key="org.eclipse.ui.externaltools.ATTR_OTHER_WORKING_DIRECTORY" value="${workspace_loc:podiobooks/buildout}"/>
 <stringAttribute key="org.eclipse.ui.externaltools.ATTR_TOOL_ARGUMENTS" value=""/>
-<stringAttribute key="org.eclipse.ui.externaltools.ATTR_WORKING_DIRECTORY" value="${workspace_loc:podiobooks}"/>
+<stringAttribute key="org.eclipse.ui.externaltools.ATTR_WORKING_DIRECTORY" value="${workspace_loc:podiobooks/buildout}"/>
 <stringAttribute key="org.python.pydev.debug.ATTR_INTERPRETER" value="__default"/>
 <stringAttribute key="org.python.pydev.debug.ATTR_PROJECT" value="podiobooks"/>
 <intAttribute key="org.python.pydev.debug.ATTR_RESOURCE_TYPE" value="1"/>
