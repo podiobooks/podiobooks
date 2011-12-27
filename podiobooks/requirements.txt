@@ -4,6 +4,7 @@ django-debug-toolbar
 django-haystack
 django-nose
 django-taggit
+django-tastypie
 django-markitup
 docutils
 feedparser
