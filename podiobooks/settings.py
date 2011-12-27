@@ -18,3 +18,9 @@ try:
 except ImportError:
     from podiobooks.settings_local_template import * #@UnusedWildImport
     print("WARNING!  Using default Settings")
+
+# Import Gondor auto-generated local settings if they exist.
+try:
+    from local_settings import *
+except ImportError:
+    pass
