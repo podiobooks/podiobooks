@@ -11,10 +11,7 @@ This software is licensed under a GPL v3.0 license. Please visit http://www.gnu.
 
 Contributors
 ------------
-Jason Penney (jpenney@jczorkmid.net)
-David Moore (eroomd@gmail.com)
-Thomas Gideon (cmdln@thecommandline.net)
-Brant Steen
+Brant Steen (brant@brantsteen.com)
 
 Purpose
 -------
@@ -38,9 +35,6 @@ python-openid       # http://openidenabled.com/python-openid/   version 2.x
 django-authopenid   # http://bitbucket.org/benoitc/django-authopenid
 django-registration # http://bitbucket.org/ubernostrum/django-registration/
 httplib2 			# http://code.google.com/p/httplib2
-
-# For MP3 Validation
-eyeD3				# http://eyed3.nicfit.net (Must add 'eyeD3' to Forced Builtins in PyDev to work right)
 
 # Search:
 django-sphinx 2.2.1 # http://github.com/dcramer/django-sphinx (do a git clone of the latest)
