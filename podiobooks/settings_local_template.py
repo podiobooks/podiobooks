@@ -208,7 +208,7 @@ LIBSYN_API_SERVER_URL = 'http://api.libsyn.com/xmlrpc'
 DONATION_BUSINESS_NAME = 'evo@podiobooks.com'
 
 ### DATALOAD
-DATALOAD_DIR = PROJECT_PATH + "/../../../podiobooks-dataload/datafiles/"
+DATALOAD_DIR = PROJECT_PATH + "/../../podiobooks-dataload/datafiles/"
 
 ### DISQUS
 DISQUS_API_KEY = 'FOOBARFOOBARFOOBARFOOBARFOOBARF'
