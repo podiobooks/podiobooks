@@ -28,4 +28,4 @@ settings_local_test.py
 settings_test_local.py
 style-*_.css
 css-*_.css
-src/podiobooks.egg-info
+*.egg-info
