@@ -1,11 +1,10 @@
 django
 django-avatar
 django-debug-toolbar
+django-haystack
 django-nose
-django-sphinx
 django-taggit
 django-markitup
-django-socialregistration
 docutils
 feedparser
 httplib2
@@ -16,3 +15,4 @@ podiobooks
 python-memcached
 south
 sphinx
+whoosh
