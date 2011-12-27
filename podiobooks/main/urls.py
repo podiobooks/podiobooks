@@ -34,7 +34,4 @@ urlpatterns = patterns('',
     
     # Lazy Loaders
     (r'^lazy/',include('podiobooks.main.urls_lazy')),
-    
-    # JSON API
-    (r'^json/', include('podiobooks.main.urls_json')),
 )
