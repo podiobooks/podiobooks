@@ -1,0 +1,18 @@
+<VirtualHost *:8001>
+        WSGIScriptAlias / "/Users/cyface/Dropbox/Personal/Podiobooks/Aptana3Workspace/podiobooks/buildout/bin/podiobooks.wsgi"
+        <Location />
+            Order allow,deny
+            Allow from all
+        </Location>
+
+        Alias /adminmedia "/Users/cyface/Dropbox/Personal/Podiobooks/Aptana3Workspace/podiobooks/buildout/parts/podiobooks/django/contrib/admin/media"
+
+        Alias /media/markitup "/Users/cyface/Dropbox/Personal/Podiobooks/Aptana3Workspace/podiobooks/eggs/django_markitup-0.6.1-py2.7.egg/markitup/media/markitup"
+        Alias /media "/Users/cyface/Dropbox/Personal/Podiobooks/Aptana3Workspace/podiobooks/podiobooks/media"
+
+        # favicon.ico
+        <Location "/favicon.ico">
+            SetHandler None
+        </Location>
+        alias /favicon.ico "/Users/cyface/Dropbox/Personal/Podiobooks/Aptana3Workspace/podiobooks/podiobooks/media/themes/pb2-jq/images/favicon.ico"
+</VirtualHost>
