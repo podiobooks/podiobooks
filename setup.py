@@ -15,8 +15,8 @@ setup(
     author='PodioBooks Team',
     author_email='feedback@podiobooks.com',
 
-    packages=find_packages('src'),
-    package_dir={'': 'src'},
+    packages=find_packages('.'),
+    package_dir={'': '.'},
 
     install_requires=['setuptools'],
 
