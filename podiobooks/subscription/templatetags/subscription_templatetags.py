@@ -25,7 +25,7 @@ def show_title_subscription_action(title, user):
     return {'title': title,
             'title_subscription': subscription,
             'MEDIA_URL': settings.MEDIA_URL,
-            'THEME_MEDIA_URL': settings.THEME_MEDIA_URL, }
+            'THEME_STATIC_URL': settings.THEME_STATIC_URL, }
     
 @register.inclusion_tag('subscription/tags/show_title_subscriptions.html')
 def show_title_subscriptions(user):

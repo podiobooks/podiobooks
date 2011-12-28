@@ -7,6 +7,7 @@
 
 from django.conf.urls.defaults import * #@UnusedWildImport # pylint: disable=W0401,W0614
 from django.contrib import admin
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf import settings
 
 admin.autodiscover()
@@ -59,9 +60,11 @@ urlpatterns += patterns('',
         (r'^db/(.*)', databrowse.site.root),
 )
 
-#if settings.DEBUG:
-#    urlpatterns += patterns('',
-#        url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {
-#            'document_root': settings.THEME_MEDIA_ROOT,
-#        }),
-#   )
+# Staticfiles Setup
+if settings.DEBUG:
+    urlpatterns += staticfiles_urlpatterns()
+    urlpatterns += patterns('',
+        url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {
+            'document_root': settings.MEDIA_ROOT,
+        }),
+   )

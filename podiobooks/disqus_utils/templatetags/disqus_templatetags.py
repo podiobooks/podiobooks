@@ -14,7 +14,7 @@ def show_disqus_comments(disqus_identifier, disqus_title, site_url, disqus_url):
             'disqus_url': site_url + disqus_url,
             'DISQUS_WEBSITE_SHORTNAME': settings.DISQUS_WEBSITE_SHORTNAME,
             'MEDIA_URL': settings.MEDIA_URL,
-            'THEME_MEDIA_URL': settings.THEME_MEDIA_URL, }
+            'THEME_STATIC_URL': settings.THEME_STATIC_URL, }
     
 @register.inclusion_tag('disqus_utils/tags/show_disqus_comment_counts.html')   
 def show_disqus_comment_count():
@@ -22,4 +22,4 @@ def show_disqus_comment_count():
     
     return {'DISQUS_WEBSITE_SHORTNAME': settings.DISQUS_WEBSITE_SHORTNAME,
             'MEDIA_URL': settings.MEDIA_URL,
-            'THEME_MEDIA_URL': settings.THEME_MEDIA_URL, }
+            'THEME_STATIC_URL': settings.THEME_STATIC_URL, }
