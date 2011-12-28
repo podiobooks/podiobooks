@@ -74,7 +74,7 @@
     </dt>
     <dd>
     	{% if profile.image %}
-    	<img src={{ MEDIA_URL }}/{{ profile.image }} style="width:200px; height:200px;">
+    	<img src={{ STATIC_URL }}/{{ profile.image }} style="width:200px; height:200px;">
     	{% else %}
         <img src="{% avatar_url user 65 %}" alt="user avatar">
         {% endif %}

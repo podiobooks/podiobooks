@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block head %}
-<link rel="StyleSheet" HREF="{{ MEDIA_URL }}openid-selector/css/openid.css" TYPE="text/css">
+<link rel="StyleSheet" HREF="{{ STATIC_URL }}openid-selector/css/openid.css" TYPE="text/css">
 {% endblock %}
 {% block headtitle %}{{ site_name }} - Log In{% endblock %}
 {% block content %}
@@ -103,11 +103,11 @@
 <h1 style="text-align: center">Podiobooks.com is Free for Anyone to Use!</h1>
 <br>
 <br>
-<script type="text/javascript" src="{{ MEDIA_URL }}openid-selector/js/openid-jquery.js">
+<script type="text/javascript" src="{{ STATIC_URL }}openid-selector/js/openid-jquery.js">
 </script>
 <script type="text/javascript">
     $(document).ready(function(){
-        openid.init('openid_url', '{{ MEDIA_URL }}openid-selector/images/');
+        openid.init('openid_url', '{{ STATIC_URL }}openid-selector/images/');
     });
 </script>
 {% endblock %}

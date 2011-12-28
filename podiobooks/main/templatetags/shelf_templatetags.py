@@ -13,9 +13,7 @@ def show_shelf(shelf_id, shelf_title, title_list, dropdown_form, base_css_class,
             'title_list': title_list,
             'dropdown_form': dropdown_form,
             'base_css_class': base_css_class,
-            'shelf_title_width': shelf_title_width,
-            'THEME_STATIC_URL': settings.THEME_STATIC_URL,
-            'MEDIA_URL': settings.MEDIA_URL
+            'shelf_title_width': shelf_title_width
             }
     
 @register.inclusion_tag('main/shelf/tags/show_shelf_pages.html')
@@ -30,7 +28,7 @@ def show_shelf_pages(shelf_id, shelf_name, title_list, shelf_title_width):
 @register.inclusion_tag('main/shelf/tags/show_shelf_item.html')
 def show_shelf_item(shelf_id, title):
     """ Displays a detail snippet for a single title """
-    return { 'shelf_id': shelf_id, 'title' : title, 'MEDIA_URL': settings.MEDIA_URL}
+    return { 'shelf_id': shelf_id, 'title' : title }
 
 
 @register.inclusion_tag('main/shelf/renders/shelf_item.html')

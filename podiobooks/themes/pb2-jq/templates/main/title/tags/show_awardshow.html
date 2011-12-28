@@ -1,4 +1,5 @@
-<script type="text/javascript" src="{{ MEDIA_URL }}js/jquery/jquery.cycle.lite.1.0.min.js">
+{% load static %}
+<script type="text/javascript" src="{{ get_static_prefix }}js/jquery/jquery.cycle.lite.1.0.min.js">
 </script>
 {% if award_list %}
 {% if award_list|length_is:"1" %}
