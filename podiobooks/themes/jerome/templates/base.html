@@ -5,6 +5,13 @@
 		<meta name="language" content="english"> 
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
 	 	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;"> 
+	 	
+		<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/boilerplate.css" />
+		<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/1140.css" />
+		<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/fonts.css" />
+		<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/home.css" />
+		<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/style.css" />
+	 	<link href='http://fonts.googleapis.com/css?family=Trykker' rel='stylesheet' type='text/css'>
 		
 		<!-- 1140px Grid styles for IE -->
 		<!--[if lte IE 9]>
@@ -18,18 +25,6 @@
 		<meta name="Description" content="Free audio books delivered as podcasts. Subscribe for free to any book and start from chapter one. Podiobooks.com" />
 		{% endblock %}
 		
-		{% for sheet in MINI_CSS %}
-			<link rel="stylesheet" type="text/css" href="{{ sheet }}" />
-		{% endfor %}
-		
-		<!--
-		<link rel="stylesheet" type=text/css href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/themes/base/jquery-ui.css" >
-		-->
-		<script type="text/javascript" src="http://use.typekit.com/coc0qsu.js"></script>
-		<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
-		
-		
-
 		{% if debug %}
 			<script type="text/javascript">
 				var isDebug = true;
@@ -46,14 +41,10 @@
 		    google.load("jquery", "1.6.2");
 			google.load("jqueryui", "1.8.9");
 			//]]>
-		</script>		
-		
-		{% for js in MINI_JS %}
-			<script type="text/javascript" src="{{ js }}"></script>
-		{% endfor %}
+		</script>
 		
 		<!--[if lte IE 9]>
-			<script type="text/javascript" src="{{ MEDIA_URL }}js/no-cache/css3-mediaqueries.js"></script>
+			<script type="text/javascript" src="{{ STATIC_URL }}js/no-cache/css3-mediaqueries.js"></script>
 		<![endif]-->
 		
 		{% block head %}
