@@ -78,9 +78,6 @@
 		</div>
 		{% endif %}
 	</div>
-	<div id="social-tab">
-		Searching the internets for references to {{ title.contributors.all|first }}...
-	</div>
 </div>
 {% if title.license %}
 <div style="float: left; margin: 20px 10px 0px 0px;">
@@ -94,16 +91,5 @@
 </div>
 <div style="clear: both">
 </div>
-<script type="text/javascript">
-	$( function() {
-		$("#bottomTabs").tabs({
-			ajaxOptions: {
-				error: function(xhr, status, index, anchor) {
-					$(anchor.hash).html("Sorry, an error occurred, and this tab couldn't be loaded.");
-				}
-			}
-		});
-	});
-</script>
 {% endif %}
 {% endblock %}
