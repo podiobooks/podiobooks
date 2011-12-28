@@ -257,7 +257,7 @@ if __name__ == "__main__":
 #series = models.ForeignKey('Series', null=True, blank=True)
 #description = models.TextField()
 #slug = models.SlugField(max_length=255)
-#cover = models.ImageField(upload_to=settings.MEDIA_COVERS)
+#cover = models.ImageField(upload_to=settings.MEDIA_ROOT)
 #status = models.IntegerField(default=1)
 #license = models.ForeignKey('License', null=True, blank=True)
 #display_on_homepage = models.BooleanField(default=False)
