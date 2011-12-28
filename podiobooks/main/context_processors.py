@@ -9,7 +9,7 @@ def theme_media(request): # pylint: disable=W0613
     Adds theme-media-related context variables to the context.
     """
     
-    return { 'THEME_MEDIA_URL': settings.THEME_MEDIA_URL }
+    return { 'THEME_STATIC_URL': settings.THEME_STATIC_URL }
 
 def js_api_keys(request): # pylint: disable=W0613
     """
