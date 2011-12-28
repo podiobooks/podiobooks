@@ -35,12 +35,12 @@ def ssl_site_login_url():
 @register.inclusion_tag('main/tags/show_browsebox.html')
 def show_browsebox():
     """ Shows the browse by section of the header """
-    return { 'browse_by_form': BrowseByForm(), 'MEDIA_URL': settings.MEDIA_URL }
+    return { 'browse_by_form': BrowseByForm() }
 
 @register.inclusion_tag('main/tags/show_searchbox.html')
 def show_searchbox():
     """ Shows the search section of the header """
-    return { 'title_search_form': TitleSearchForm(), 'MEDIA_URL': settings.MEDIA_URL }
+    return { 'title_search_form': TitleSearchForm() }
 
 @register.filter("replace_bad_words")
 def replace_bad_words(value):
@@ -59,7 +59,7 @@ def show_variable(variable): # pragma: nocover
     for var in vardir:
         result[var] = getattr(variable, var)
         
-    return { 'result': result, 'MEDIA_URL': settings.MEDIA_URL }
+    return { 'result': result }
 
 @register.filter
 def truncatewords_afterchar(value, limit=80):
