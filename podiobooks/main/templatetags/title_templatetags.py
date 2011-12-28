@@ -8,7 +8,7 @@ register = template.Library()
 @register.inclusion_tag('main/title/tags/show_awardshow.html')
 def show_awardshow(title):
     """ Show a slideshow of all the awards for a title, used on title detail page """
-    return { 'award_list': title.awards.order_by('-date_updated').all(), 'MEDIA_URL': settings.MEDIA_URL, 'THEME_MEDIA_URL': settings.THEME_MEDIA_URL, 'MEDIA_AWARDS': settings.MEDIA_AWARDS}
+    return { 'award_list': title.awards.order_by('-date_updated').all(), 'MEDIA_URL': settings.MEDIA_URL, 'THEME_STATIC_URL': settings.THEME_STATIC_URL}
 
 @register.inclusion_tag('main/title/tags/show_categories.html')
 def show_categories(title):
@@ -25,19 +25,14 @@ def show_contributors(title):
 @register.inclusion_tag('main/title/tags/show_titlecover.html')
 def show_titlecover(title, cover_height, cover_width):
     """ Pulls and formats the cover for a Title """
-    return { 'title': title, 'cover_height': cover_height, 'cover_width': cover_width, 'MEDIA_URL': settings.MEDIA_URL, 'THEME_MEDIA_URL': settings.THEME_MEDIA_URL, }
+    return { 'title': title, 'cover_height': cover_height, 'cover_width': cover_width, 'MEDIA_URL': settings.MEDIA_URL, 'THEME_STATIC_URL': settings.THEME_STATIC_URL, }
 
 @register.inclusion_tag('main/title/tags/show_titlelist.html')
 def show_titlelist(title_list, page_name):
     """ Formats a list of titles, used on search, category, author list pages """
-    return { 'title_list': title_list, 'page_name': page_name, 'MEDIA_URL': settings.MEDIA_URL, 'THEME_MEDIA_URL': settings.THEME_MEDIA_URL, }
+    return { 'title_list': title_list, 'page_name': page_name, 'MEDIA_URL': settings.MEDIA_URL, 'THEME_STATIC_URL': settings.THEME_STATIC_URL, }
 
 @register.inclusion_tag('main/title/tags/show_episodelist.html')
 def show_episodelist(title):
     """ Show a list of all the episodes for a title, used on title detail page """
-    return { 'episode_list': title.episodes.order_by('sequence').all(), 'MEDIA_URL': settings.MEDIA_URL, 'THEME_MEDIA_URL': settings.THEME_MEDIA_URL, }
-
-@register.inclusion_tag('main/title/tags/show_donation_button.html')
-def show_donation_button(title):
-    """ Show button to enable people to donate to this title """
-    return { 'title': title, 'DONATION_BUSINESS_NAME': settings.DONATION_BUSINESS_NAME, 'MEDIA_URL': settings.MEDIA_URL, 'THEME_MEDIA_URL': settings.THEME_MEDIA_URL, }
+    return { 'episode_list': title.episodes.order_by('sequence').all(), 'MEDIA_URL': settings.MEDIA_URL, 'THEME_STATIC_URL': settings.THEME_STATIC_URL, }
