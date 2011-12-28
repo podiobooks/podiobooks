@@ -13,8 +13,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.media',
     'podiobooks.main.context_processors.js_api_keys',
     'django.core.context_processors.request',
-    "django.core.context_processors.static",
-    
+    'django.core.context_processors.static',
 )
 
 MIDDLEWARE_CLASSES = (
