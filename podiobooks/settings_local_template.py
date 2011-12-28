@@ -41,9 +41,6 @@ MEDIA_URL = '/media/'
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
 MEDIA_ROOT = PROJECT_PATH + '/media'
-MEDIA_COVERS = 'images/covers/'
-MEDIA_AWARDS = 'images/awards/'
-MEDIA_CONTRIBUTORS = 'images/contributors/'
 
 # URL that is used to fetch the covers for the titles
 COVER_MEDIA_URLS = (MEDIA_URL,)
@@ -58,13 +55,13 @@ THE_THEME = "themes/jerome"
 
 TEMPLATE_DIRS = (MEDIA_ROOT + "/" + THE_THEME + "/templates/", )
 
-THEME_MEDIA_URL = MEDIA_URL + THE_THEME  + '/'
+THEME_STATIC_URL = MEDIA_URL + THE_THEME  + '/'
 
 JS_DIR = THE_THEME + "/js"
 CSS_DIR = THE_THEME + "/css"
 JS_SETTINGS_TEMPLATE = TEMPLATE_DIRS[0] + "js/config.txt"
 
-STATIC_URL = THEME_MEDIA_URL
+STATIC_URL = THEME_STATIC_URL
 
 CSS_TOP_FILES = ["boilerplate.css", "1140.css", "fonts.css", "style.css" ]
 
@@ -203,9 +200,6 @@ LIBSYN_USER = 'evo@podiobooks.com'
 LIBSYN_KEY = '1158b2d59957871de21b4a2f4fe173b6'
 LIBSYN_NETWORK_SLUG = 'podiobooks'
 LIBSYN_API_SERVER_URL = 'http://api.libsyn.com/xmlrpc'
-
-### DONATIONS
-DONATION_BUSINESS_NAME = 'evo@podiobooks.com'
 
 ### DATALOAD
 DATALOAD_DIR = PROJECT_PATH + "/../../podiobooks-dataload/datafiles/"
