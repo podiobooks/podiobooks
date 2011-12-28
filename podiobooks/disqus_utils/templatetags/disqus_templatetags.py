@@ -12,14 +12,10 @@ def show_disqus_comments(disqus_identifier, disqus_title, site_url, disqus_url):
     return {'disqus_identifier': disqus_identifier,
             'disqus_title': disqus_title,
             'disqus_url': site_url + disqus_url,
-            'DISQUS_WEBSITE_SHORTNAME': settings.DISQUS_WEBSITE_SHORTNAME,
-            'MEDIA_URL': settings.MEDIA_URL,
-            'THEME_STATIC_URL': settings.THEME_STATIC_URL, }
+            'DISQUS_WEBSITE_SHORTNAME': settings.DISQUS_WEBSITE_SHORTNAME }
     
 @register.inclusion_tag('disqus_utils/tags/show_disqus_comment_counts.html')   
 def show_disqus_comment_count():
     """ Pull the counts for each post so they can be displayed in a list """
     
-    return {'DISQUS_WEBSITE_SHORTNAME': settings.DISQUS_WEBSITE_SHORTNAME,
-            'MEDIA_URL': settings.MEDIA_URL,
-            'THEME_STATIC_URL': settings.THEME_STATIC_URL, }
+    return {'DISQUS_WEBSITE_SHORTNAME': settings.DISQUS_WEBSITE_SHORTNAME }

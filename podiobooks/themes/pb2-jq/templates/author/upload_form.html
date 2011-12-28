@@ -8,5 +8,5 @@
 {{ form.as_p }}
 <input type="submit" value="Submit" onClick="document.getElementById('progressDiv').style.visibility='visible'"/>
 </form>
-<div id="progressDiv" style="visibility: hidden"><img src="{{ MEDIA_URL }}/images/progress.gif" /></div>
+<div id="progressDiv" style="visibility: hidden"><img src="{{ STATIC_URL }}/images/progress.gif" /></div>
 {% endblock %}
