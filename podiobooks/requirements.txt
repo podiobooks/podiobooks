@@ -1,8 +1,6 @@
 django
 django-avatar
-django-debug-toolbar
 django-haystack
-django-nose
 django-taggit
 django-tastypie
 django-markitup
@@ -10,10 +8,7 @@ docutils
 feedparser
 httplib2
 markdown
-nose
-nose-cov
 PIL
 python-memcached
 south
-sphinx
 whoosh
