@@ -12,7 +12,6 @@ httplib2
 markdown
 nose
 nose-cov
-podiobooks
 python-memcached
 south
 sphinx
