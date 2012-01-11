@@ -12,6 +12,7 @@ httplib2
 markdown
 nose
 nose-cov
+PIL
 python-memcached
 south
 sphinx
