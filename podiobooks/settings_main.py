@@ -53,15 +53,12 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.staticfiles',
-#    'haystack',
     'markdown',
     'markitup',
     'taggit',
     'podiobooks.feeds',
     'podiobooks.main',
     'podiobooks.profile',
-    'podiobooks.subscription',
-    'registration',
     'south',
     
 )
