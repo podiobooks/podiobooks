@@ -120,7 +120,6 @@ class Episode(models.Model):
     contributors = models.ManyToManyField('Contributor', through='EpisodeContributor')
     status = models.IntegerField(default=1)
     deleted = models.BooleanField(default=False)
-    # Note: Title Subscriptions are available as titlesubscriptions
     date_created = models.DateTimeField(default=datetime.datetime.now())
     date_updated = models.DateTimeField(default=datetime.datetime.now())
     
@@ -228,10 +227,7 @@ class Rating(models.Model):
         return str(self.last_rating_id)
 
 class Series(models.Model):
-    """Titles can belong to a series, wich allows for higher level grouping.
-    Additionally, we might want to allow a setting to let users autosubscribe to
-    the next book in a series automatically, or even just to subscribe to the
-    series in one fell swoop."""
+    """Titles can belong to a series, which allows for higher level grouping."""
     slug = models.SlugField(max_length=255)
     name = models.CharField(max_length=255)
     description = models.TextField()
@@ -289,7 +285,6 @@ class Title(models.Model):
     itunes_adam_id = models.IntegerField(null=True)
     podiobooker_blog_url = models.URLField(max_length=255, null=True, blank=True, verify_exists=True)
     # Note: episodes are available as episodes.all()
-    # Note: subscriptions are available as subscriptions.all()
     # Note: media are available as media.all()
     # Note: promos are available as promos.all()
     date_created = models.DateTimeField(default=datetime.datetime.now(), db_index=True)

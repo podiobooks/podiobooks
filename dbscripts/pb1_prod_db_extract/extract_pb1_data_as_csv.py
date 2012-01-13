@@ -97,24 +97,6 @@ def get_partner_data(cursor):
         csvWriter.writerow(partner)
     
     print ('%d partners output into the csv file' % len(partners))
-    
-def get_subscription_data(cursor):
-    
-    cursor.execute("SELECT * FROM subscription WHERE subscription.enabled = 1")
-    
-    subscription_output_file = open (DATALOAD_DIR + 'podiobooks_legacy_subscription_table.csv', 'w')
-    
-    csvWriter = UnicodeWriter(subscription_output_file)
-    
-    # Print out the Title Row
-    csvWriter.writerow( ["ID","UserID","BookID","DayInterval","LastDownloadDate","LastDownloadChapter","Enabled","DateCreated","DateEnded","PartnerID"] )
-    
-    subscriptions = cursor.fetchall()
-    
-    for subscription in subscriptions:
-        csvWriter.writerow(subscription)
-    
-    print ('%d subscriptions output into the csv file' % len(subscriptions))
 
 
 ##### MAIN FUNCTION TO RUN IF THIS SCRIPT IS CALLED ALONE ###
@@ -125,5 +107,4 @@ if __name__ == "__main__":
     get_book_data(cursor)
     get_chapter_data(cursor)
     get_bookrating_data(cursor)
-    get_subscription_data(cursor)
     
