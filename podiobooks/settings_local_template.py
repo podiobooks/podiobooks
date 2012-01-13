@@ -43,28 +43,16 @@ MEDIA_URL = '/media/'
 # Example: "/home/media/media.lawrence.com/"
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'mediaroot')
 
-#Staticfiles Config
+# Staticfiles Config
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticroot')
-STATIC_URL = '/static/'
-STATICFILES_DIRS = [ os.path.join(PROJECT_ROOT, 'static')  ]
+STATIC_URL = '/static/themes/jerome'
+STATICFILES_DIRS = [ os.path.join(PROJECT_ROOT, 'static', 'themes', 'jerome'), ]
+TEMPLATE_DIRS = [ os.path.join(PROJECT_ROOT, 'static', 'themes', 'jerome', 'templates') ]
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
 # Examples: "http://foo.com/media/", "/media/".
 ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
-
-# Theming
-THE_THEME = "themes/jerome"
-
-TEMPLATE_DIRS = (os.path.join(PROJECT_ROOT, 'static', THE_THEME, "templates", ))
-
-STATIC_URL = STATIC_URL + THE_THEME  + '/'
-
-# Google JavaScript API Key
-GOOGLE_JS_API_KEY = "ABQIAAAApKHrTPdMsrKnaI74fSfnhBQ1oE6XAUbmObyC_RwYQIb0R2PjHBRZWTF3zf-YwVXFv_qiaAb_sT04aA"
-
-# TypeKit Font Kit ID
-TYPEKIT_KIT_ID = "coc0qsu"
 
 # Local DB settings. (Postgres)
 DATABASES = {
@@ -121,9 +109,6 @@ SERVER_EMAIL = 'a real email address'
 ### django-registration Settings
 ACCOUNT_ACTIVATION_DAYS = 14
 
-### TESTS
-TEST_RUNNER = 'django_nose.NoseTestSuiteRunner' # Should work with Django 1.2.1
-
 ### Local add-ons to main inclusion variables
 # TEMPLATE_CONTEXT_PROCESSORS +=
 
@@ -147,6 +132,9 @@ if DEBUG:
     }
 
 ##### Custom Variables Below Here #######
+
+# Google JavaScript API Key
+GOOGLE_JS_API_KEY = "ABQIAAAApKHrTPdMsrKnaI74fSfnhBQ1oE6XAUbmObyC_RwYQIb0R2PjHBRZWTF3zf-YwVXFv_qiaAb_sT04aA"
 
 ### SECURE SITE
 # SSL_SITE_LOGIN_URL = '' # URL to HTTPS version of site for secure sign-in.
