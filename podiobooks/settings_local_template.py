@@ -15,7 +15,7 @@ import os
 from settings_main import MIDDLEWARE_CLASSES, INSTALLED_APPS
 
 # Set the root path of the project so it's not hard coded
-PROJECT_PATH = os.path.abspath(os.path.dirname(__file__))
+PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -29,7 +29,7 @@ CACHE_MIDDLEWARE_KEY_PREFIX = 'pb2'
 
 # List of Admin users to be emailed by error system
 MANAGERS = (
-    # ('Tim White', 'tim@cyface.com'),
+# ('Tim White', 'tim@cyface.com'),
 )
 ADMINS = MANAGERS
 
@@ -39,31 +39,26 @@ ADMINS = MANAGERS
 MEDIA_URL = '/media/'
 
 # Absolute path to the directory that holds media.
+# Note that as of Django 1.3 - media is for uploaded files only.
 # Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = PROJECT_PATH + '/media'
+MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'mediaroot')
 
-# URL that is used to fetch the covers for the titles
-COVER_MEDIA_URLS = (MEDIA_URL,)
+#Staticfiles Config
+STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticroot')
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [ os.path.join(PROJECT_ROOT, 'static')  ]
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
 # Examples: "http://foo.com/media/", "/media/".
-ADMIN_MEDIA_PREFIX = '/adminmedia/'
+ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
 
 # Theming
 THE_THEME = "themes/jerome"
 
-TEMPLATE_DIRS = (MEDIA_ROOT + "/" + THE_THEME + "/templates/", )
+TEMPLATE_DIRS = (os.path.join(PROJECT_ROOT, 'static', THE_THEME, "templates", ))
 
-THEME_STATIC_URL = MEDIA_URL + THE_THEME  + '/'
-
-JS_DIR = THE_THEME + "/js"
-CSS_DIR = THE_THEME + "/css"
-JS_SETTINGS_TEMPLATE = TEMPLATE_DIRS[0] + "js/config.txt"
-
-STATIC_URL = THEME_STATIC_URL
-
-CSS_TOP_FILES = ["boilerplate.css", "1140.css", "fonts.css", "style.css" ]
+STATIC_URL = STATIC_URL + THE_THEME  + '/'
 
 # Google JavaScript API Key
 GOOGLE_JS_API_KEY = "ABQIAAAApKHrTPdMsrKnaI74fSfnhBQ1oE6XAUbmObyC_RwYQIb0R2PjHBRZWTF3zf-YwVXFv_qiaAb_sT04aA"
@@ -73,48 +68,25 @@ TYPEKIT_KIT_ID = "coc0qsu"
 
 # Local DB settings. (Postgres)
 DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#        'NAME': 'pb2',
-#        'USER': 'pb2',
-#        'PASSWORD': '',
-#        'HOST': '127.0.0.1',
-#        'PORT': '', # Set to empty string for default.
-#        'SUPPORTS_TRANSACTIONS': 'true',
-#    },
-     'default': {
+    #    'default': {
+    #        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+    #        'NAME': 'pb2',
+    #        'USER': 'pb2',
+    #        'PASSWORD': '',
+    #        'HOST': '127.0.0.1',
+    #        'PORT': '', # Set to empty string for default.
+    #        'SUPPORTS_TRANSACTIONS': 'true',
+    #    },
+    'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': 'pb2.db',
         'USER': 'pb2',
         'PASSWORD': '',
-#        'HOST': '127.0.0.1',
-#        'PORT': '', # Set to empty string for default.
-#        'SUPPORTS_TRANSACTIONS': 'true',
+        #        'HOST': '127.0.0.1',
+        #        'PORT': '', # Set to empty string for default.
+        #        'SUPPORTS_TRANSACTIONS': 'true',
     }
 }
-
-# Local DB settings. (MySQL)
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.mysql',
-#        'NAME': 'pb2',
-#        'USER': 'pb2',
-#        'PASSWORD': '',
-#        'HOST': '127.0.0.1',
-#        'PORT': '', # Set to empty string for default.
-#        'SUPPORTS_TRANSACTIONS': 'false',
-#        'OPTIONS': {'init_command': 'SET storage_engine=INNODB'},
-#    }
-#}
-
-# Local DB settings. (SQLLite)
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.sqlite3',
-#        'NAME': PROJECT_PATH + '/pb2.db',
-#        'SUPPORTS_TRANSACTIONS': 'false',
-#    }
-#}
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -168,8 +140,8 @@ if DEBUG:
         'debug_toolbar.panels.sql.SQLDebugPanel',
         'debug_toolbar.panels.signals.SignalDebugPanel',
         'debug_toolbar.panels.logger.LoggingPanel',
-    )
-    
+        )
+
     DEBUG_TOOLBAR_CONFIG = {
         'INTERCEPT_REDIRECTS': False
     }
@@ -189,7 +161,7 @@ if DEBUG:
     import logging
     logging.basicConfig(level=logging.DEBUG,
         format='%(asctime)s %(levelname)s %(message)s',
-        filename=os.path.join(PROJECT_PATH, 'django.log'),
+        filename=os.path.join(PROJECT_ROOT, 'django.log'),
         filemode='a+')
 
 ### SEARCH
@@ -202,7 +174,7 @@ LIBSYN_NETWORK_SLUG = 'podiobooks'
 LIBSYN_API_SERVER_URL = 'http://api.libsyn.com/xmlrpc'
 
 ### DATALOAD
-DATALOAD_DIR = PROJECT_PATH + "/../../podiobooks-dataload/datafiles/"
+DATALOAD_DIR = PROJECT_ROOT + "/../../podiobooks-dataload/datafiles/"
 
 ### DISQUS
 DISQUS_API_KEY = 'FOOBARFOOBARFOOBARFOOBARFOOBARF'
