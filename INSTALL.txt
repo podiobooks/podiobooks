@@ -10,17 +10,16 @@ Typically, you don't need to install all the python bits except on windows, but 
 
 ----------INSTALL YOUR TOOLS---------
 1)Install Python
-    -- The ActiveState Community Edition is a quick and easy free way to get Python up and going on Windows: http://www.activestate.com/activepython/downloads
-    -- The ActiveState version comes with pypm, which makes it quick to install other packages from the bat file included in devscripts/virtualenv
+    -- The ActiveState Community Edition is recommended.
+        --It's a quick and easy free way to get Python up and going on Windows
+        -- http://www.activestate.com/activepython/downloads
+    -- The ActiveState version comes with pypm, which enables devscripts/virtualenv/setup_dev_env.bat to install for you.
 	-- The 32-bit version is best for local development, as it presents the fewest compatibility issues with other packages.
 
 2) Download PyCharm from http://www.jetbrains.com/pycharm/
     -- PyCharm is not free, but seems to be smoother overall than Aptana/PyDev.
+    -- PyCharm does have a free 30-day trial, student, and open-source licenses.
     -- Use whatever IDE or text editor you want, but the rest of the instructions assume PyCharm.
-
-3) Download and install MS Visual Studio Express: http://www.microsoft.com/visualstudio/en-us/products/2010-editions/visual-cpp-express
-    -- Python packages such as PIL that need to compile their extensions need a C compiler, and this one is free and easy to install.
-    -- You will never have to even launch it.
 		
 For all of those items, you should be able to basically follow the Installer prompts and get them installed with the default settings.
 
