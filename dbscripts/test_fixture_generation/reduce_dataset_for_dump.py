@@ -7,7 +7,6 @@ This script deletes things from the database to get down to a reduced dataset fo
 """
 
 from podiobooks.main.models import *
-from podiobooks.subscription.models import TitleSubscription
 from django.db.models import Q
 from django.contrib.comments.models import Comment
 
@@ -32,10 +31,6 @@ def reduceData():
     contributor_list = Contributor.objects.exclude(title__id__in=Title.objects.all())
     print contributor_list
     contributor_list.delete()
-    
-    title_subscription_list = TitleSubscription.objects.all()
-    print title_subscription_list
-    title_subscription_list.delete()
     
 ##### MAIN FUNCTION TO RUN IF THIS SCRIPT IS CALLED ALONE ###
 if __name__ == "__main__":

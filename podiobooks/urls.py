@@ -42,9 +42,6 @@ urlpatterns = patterns('',
     
     # Feeds
     (r'^rss/', include('podiobooks.feeds.urls')),
-
-    # Subscriptions
-    (r'^subscription/', include('podiobooks.subscription.urls')),
 )
     
 # Databrowse setup

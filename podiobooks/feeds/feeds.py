@@ -10,7 +10,6 @@ from django.conf import settings
 from django.core.exceptions import ObjectDoesNotExist
 
 from podiobooks.main.models import Title, Episode
-from podiobooks.subscription.models import TitleSubscription
 from podiobooks.feeds import feed_tools
 from podiobooks.feeds.protocols.itunes import ITunesFeed
 
@@ -143,35 +142,3 @@ class EpisodeFeed(Feed):
     
     def title(self, obj):
         return obj.name
-    
-class CustomTitleSubscriptionFeed(EpisodeFeed):
-    
-    # pylint: disable=W0221
-    def get_object(self, request, title_slug, username):
-        title = Title.objects.get(slug__exact=title_slug)
-        user = User.objects.get(username=username)
-        subscription = TitleSubscription.objects.get(title=title, user=user)
-        self.subscription = subscription
-        
-        return title
-
-    def items(self, obj):
-        date_diff = datetime.now() - self.subscription.date_created
-        episodes_to_show = (date_diff.days / self.subscription.day_interval) + 1
-        
-        # Make sure they haven't manually released episodes rule
-        if episodes_to_show < self.subscription.last_downloaded_episode.sequence:
-            episodes_to_show = self.subscription.last_downloaded_episode.sequence
-            
-        # Update last_downloaded_episode if we are releasing a new one rule
-        if episodes_to_show > self.subscription.last_downloaded_episode.sequence:
-            try:
-                next_episode = Episode.objects.get(title__id__exact=obj.id, sequence=self.subscription.last_downloaded_episode.sequence + 1)
-                self.subscription.last_downloaded_episode = next_episode
-            except ObjectDoesNotExist: # pragma: no cover
-                pass # likely because we're at the end of the book
-                
-            self.subscription.last_downloaded_date = datetime.now()
-            self.subscription.save()
-            
-        return Episode.objects.filter(title__id__exact=obj.id, sequence__lte=episodes_to_show).order_by('-sequence')
