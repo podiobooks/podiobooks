@@ -1,6 +1,5 @@
 django
 django-avatar
-django-haystack
 django-taggit
 django-tastypie
 django-markitup
@@ -11,4 +10,3 @@ markdown
 PIL
 python-memcached
 south
-whoosh
