@@ -102,25 +102,16 @@ def title_search(request, keywords=None):
         completed_only = False
     
     if keywords:
-        if settings.SEARCH_PROVIDER == 'SPHINX': #pragma: nocover
-            exclusions = {}
-            if (not include_adult):
-                exclusions['is_adult'] = True
-            if (completed_only):
-                exclusions['is_complete'] = False
-            search_results = Title.search.query(keywords).exclude(**exclusions).order_by('-@weight') #@UndefinedVariable
-            search_metadata = search_results._sphinx # pylint: disable=W0212
+        if (not include_adult):
+            adult_filter = Q(is_adult=False)
         else:
-            if (not include_adult):
-                adult_filter = Q(is_adult=False)
-            else:
-                adult_filter = Q()
-            if (completed_only):
-                completed_filter = Q(is_complete=True)
-            else:
-                completed_filter = Q()
-            search_results = Title.objects.filter((Q(name__icontains=keywords) | Q(description__icontains=keywords)) & adult_filter & completed_filter)
-            search_metadata = None
+            adult_filter = Q()
+        if (completed_only):
+            completed_filter = Q(is_complete=True)
+        else:
+            completed_filter = Q()
+        search_results = Title.objects.filter((Q(name__icontains=keywords) | Q(description__icontains=keywords)) & adult_filter & completed_filter)
+        search_metadata = None
         result_count = len(search_results)
         response_data = {'title_list': search_results, 'keywords': keywords, 'result_count': result_count, 'titleSearchForm': form, 'categoryChoiceForm':CategoryChoiceForm(), 'search_metadata': search_metadata}
         return render_to_response('main/title/title_search_results.html', response_data, context_instance=RequestContext(request))
