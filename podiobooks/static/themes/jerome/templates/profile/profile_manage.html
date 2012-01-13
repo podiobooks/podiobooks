@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+{% load avatar_tags %}
+{% load title_templatetags %}
+{% block headtitle %}Podiobooks User Profile{% endblock %}
+{% block head %}
+<style type="text/css" media="screen">
+    dl.table-display {
+        float: left;
+        width: 520px;
+        margin: 1em 0;
+        padding: 0;
+        border-bottom: 1px solid #999;
+    }
+    
+    .table-display dt {
+        clear: left;
+        float: left;
+        width: 200px;
+        margin: 0;
+        padding: 5px;
+        border-top: 1px solid #999;
+        font-weight: bold;
+    }
+    
+    .table-display dd {
+        float: left;
+        width: 300px;
+        margin: 0;
+        padding: 5px;
+        border-top: 1px solid #999;
+    }
+</style>
+{% endblock %}
+{% block title %}Podiobooks User Profile{% endblock %}
+{% block content %}
+{% if msg %}
+<p class="error">
+    {{ msg }}
+</p>
+{% endif %}
+<h1>{{ user.username }}'s Profile</h1>
+<dl class="table-display">
+    <dt>
+        Username:
+    </dt>
+    <dd>
+        {{ user.username }}&nbsp;
+    </dd>
+    <dt>
+        Email:
+    </dt>
+    <dd>
+        {{ user.email }}&nbsp;
+    </dd>
+    <dt>
+        Full Name:
+    </dt>
+    <dd>
+        {{ user.get_full_name }}&nbsp;
+    </dd>
+    <dt>
+        First Name:
+    </dt>
+    <dd>
+        {{ user.first_name }}&nbsp;
+    </dd>
+    <dt>
+        Last Name:
+    </dt>
+    <dd>
+        {{ user.last_name }}&nbsp;
+    </dd>
+    <dt>
+        Staff:
+    </dt>
+    <dd>
+        {% if user.is_staff %}Yes{% else %}No{% endif %}&nbsp;
+    </dd>
+    <dt>
+        Superuser:
+    </dt>
+    <dd>
+        {% if user.is_superuser %}Yes{% else %}No{% endif %}&nbsp;
+    </dd>
+    <dt>
+        Last Login:
+    </dt>
+    <dd>
+        {{ user.last_login }}&nbsp;
+    </dd>
+    <dt>
+        Date Joined:
+    </dt>
+    <dd>
+        {{ user.date_joined }}&nbsp;
+    </dd>
+    <dt>
+        Profile Slug:
+    </dt>
+    <dd>
+        {{ user.get_profile.slug }}&nbsp;
+    </dd>
+    <dt>
+        Avatar (Defaults to Gravatar for your Email Address):
+    </dt>
+    <dd>
+        <img src="{% avatar_url user 65 %}" alt="user avatar">
+    </dd>
+</dl>
+<div class="clearfix">
+</div>
+{% endblock %}

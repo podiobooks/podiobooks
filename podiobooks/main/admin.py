@@ -5,7 +5,6 @@
 from django.contrib import admin
 
 from podiobooks.main.models import *  #@UnusedWildImport # pylint: disable=W0401,W0614
-from podiobooks.subscription.models import TitleSubscription
 
 class TitleInline(admin.TabularInline):
     model = Title
@@ -73,6 +72,5 @@ admin.site.register(Episode, EpisodeAdmin)
 admin.site.register(Media)
 admin.site.register(Partner, PartnerAdmin)
 admin.site.register(Series, SeriesAdmin)
-admin.site.register(TitleSubscription)
 admin.site.register(Title, TitleAdmin)
 admin.site.register(TitleContributor)
