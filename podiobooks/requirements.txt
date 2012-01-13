@@ -7,6 +7,6 @@ docutils
 feedparser
 httplib2
 markdown
-PIL
+pil
 python-memcached
 south
