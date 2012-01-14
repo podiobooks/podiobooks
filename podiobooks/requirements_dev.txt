@@ -3,4 +3,5 @@ coverage
 django-debug-toolbar
 django-nose
 nose
+nosexcover
 sphinx
