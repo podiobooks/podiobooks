@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-{% load avatar_tags %}
 {% load title_templatetags %}
 {% block headtitle %}Podiobooks User Profile{% endblock %}
 {% block head %}
@@ -99,12 +98,6 @@
     </dt>
     <dd>
         {{ user.get_profile.slug }}&nbsp;
-    </dd>
-    <dt>
-        Avatar (Defaults to Gravatar for your Email Address):
-    </dt>
-    <dd>
-        <img src="{% avatar_url user 65 %}" alt="user avatar">
     </dd>
 </dl>
 <div class="clearfix">
