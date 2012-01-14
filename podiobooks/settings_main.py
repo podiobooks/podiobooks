@@ -42,7 +42,6 @@ OPENID_SREG = {
 }
 
 INSTALLED_APPS = (
-    'avatar',
     'django.contrib.admin',
     'django.contrib.admindocs',
     'django.contrib.auth',
