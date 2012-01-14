@@ -20,5 +20,6 @@ class DisqusUtilsTest(unittest.TestCase):
 
 
     def testName(self):
-        disqus = DisqusAPI(key=settings.DISQUS_API_SECRET_KEY)
-        print disqus.trends.listThreads()
+        disqus = DisqusAPI(settings.DISQUS_API_SECRET_KEY, settings.DISQUS_API_PUBLIC_KEY)
+        for result in disqus.trends.listThreads():
+            print result
