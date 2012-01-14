@@ -1,4 +1,6 @@
 -r requirements.txt
+coverage
 django-debug-toolbar
 django-nose
+nose
 sphinx
