@@ -7,7 +7,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.conf import settings
-from markitup.fields import MarkupField
 import datetime
 
 class UserProfile(models.Model):
@@ -20,7 +19,7 @@ class UserProfile(models.Model):
     disqus_username = models.CharField(max_length=50, blank=True)
     image = models.ImageField(upload_to=settings.MEDIA_ROOT, max_length=255, blank=True)
     short_profile = models.CharField(max_length=255)
-    long_profile = MarkupField(blank=True)
+    long_profile = models.TextField(blank=True)
     deleted = models.BooleanField(default=False)
     date_created = models.DateTimeField(default=datetime.datetime.now())
     date_updated = models.DateTimeField(default=datetime.datetime.now())
