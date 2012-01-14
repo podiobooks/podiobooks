@@ -9,146 +9,61 @@ This build is specifically for Windows developers, but the basics are cross-plat
 Typically, you don't need to install all the python bits except on windows, but you should double check you have them.
 
 ----------INSTALL YOUR TOOLS---------
-1) Download Python 2.6 from http://python.org
-		-- Don't run the 64-bit version, you will go into compatibility heck
-		
-2) Download Python-PIL for Python 2.6 from http://www.pythonware.com/products/pil/
-		-- You want the platform-specific installer for your OS and Python 2.6.
-		-- This library is required for Django image support.
-		-- It has a platform-specific component, which is why you have to install it from a binary.
-		-- This should be working from the buildout now, be curious to hear back how it's working?
+1)Install Python
+    -- The ActiveState Community Edition is recommended.
+        --It's a quick and easy free way to get Python up and going on Windows
+        -- http://www.activestate.com/activepython/downloads
+    -- The ActiveState version comes with pypm, which enables devscripts/virtualenv/setup_dev_env.bat to install for you.
+	-- The 32-bit version is best for local development, as it presents the fewest compatibility issues with other packages.
 
-3) Download Python-setuptools for Python 2.6 from http://pypi.python.org/pypi/setuptools
-		-- You want the platform-specific installer for your OS and Python 2.6.
-		-- This library is required to install other Python packages automatically.
-
-3.5) Download Python's PsycoPG2 Database Adapter from http://stickpeople.com/projects/python/win-psycopg/
-		-- You want the platform-specific installer for your OS and Python 2.6.
-
-4) Download Aptana Studio from http://aptana.org/
-		-- This is a customized version of the free Eclipse IDE
-		-- As of 11/10/2009 there is a major bug in this for Ubuntu 9.10 - you can't click 'accept' buttons
-
-5) Download the Git GUI from http://code.google.com/p/msysgit/
-		-- You want the Git-xxx-xxx-previewxxxxx.exe download
-		-- This is the most stable interface to the GIT source code control system for Windows
-		-- Make sure you select 'git-bash' and 'unix line endings' during the installer.
-		-- Tim has been using SmartGit from http://www.syntevo.com/smartgit , you can try that too
-
-6) Download PostgreSQL from http://www.postgresql.org/download/
-		-- This is the preferred DBMS for Django, and the Fixtures don't work with MySQL.
-		-- The latest 8.4.x binary for your platform is what you need.
-		-- It comes with the pgadminIII utility to set up new databases.
-		-- It will ask you to set a password for the posgres user, you will need this later
-		
-7) Download Apache 2.2 from http://httpd.apache.org/download.cgi
-		-- You can run Django as a dev server, but the Apache route is more stable
-
-8) Download mod_wsgi from http://code.google.com/p/modwsgi/downloads/list
-		-- You want the platform-specific installer for your Apache 2.2, your OS and Python 2.6
-		-- Save the .so file as mod_wsgi.so in the Apache modules folder:
-			e.g. c:\program files\apache software foundation\apache 2.2\modules
+2) Download PyCharm from http://www.jetbrains.com/pycharm/
+    -- PyCharm is not free, but seems to be smoother overall than Aptana/PyDev.
+    -- PyCharm does have a free 30-day trial, student, and open-source licenses.
+    -- Use whatever IDE or text editor you want, but the rest of the instructions assume PyCharm.
 		
 For all of those items, you should be able to basically follow the Installer prompts and get them installed with the default settings.
 
 ----------CLONE THE CODE-------
-1) Make sure you have an account at GitHub
-2) Open Git-GUI, and choose "Clone Existing Repository"
-3) If you are committing to the core codebase, then paste in this URL at the top field:
-	git@github.com:podiobooks/podiobooks.git
-4) In the bottom field, browse to your Aptana workspace, which is by default in your Documents directory, and then append 'podiobooks' to the end of the path.
-	e.g. C:\Users\Tim\Documents\Aptana Studio Workspace\podiobooks
-5) Click 'clone now'.  It will download the code into your workspace directory.
+1) Go to GitHub.com and setup an account
+2) If you want to check in code regularly, email tim@cyface.com to on the contributor list.
+3) If you just want to look through the code, go to https://github.com/podiobooks/podiobooks and click the "Watch" button.
+4) Open PyCharm.
+5) Choose "Check out from Version Control".
+6) Select GitHub.
+7) You will see a list of projects, choose podiobooks/podiobooks.
+8) Wait for the clone to complete, and then choose "Open Directory" when prompted to do so.
+9) You have the code!
 
------------SETUP APTANA--------
-1) Open Aptana Studio
-2) If you wish, set up an Aptana ID in the bottom bar lower-right corner.
-3) On the Aptana splash screen, choose 'Plugins'.
-4) Find PyDev, and choose 'Install Now'...this will install the Python extensions.
-5) It will ask you to restart Aptana at the end, do so.
-6) Once it's back, Window->Preferences
-7) On the left, open "PyDev"
-8) Under PyDev, open "Interpreter->Python"
-9) On the upper right, choose "New..." and browse to your Python install
-	e.g. c:\Python26\pythonw.exe
-10) Click OK, and it will add all the libs in your core install to the PYTHONPATH
+-----------SETUP PYTHON ENVIRONMENT--------
+1) Run the devscripts/virtualenv/setup_dev_env.bat script.
+    -- You can setup an "External Tool" in PyCharm to run this, just set the working dir to the podiobooks dir, not the podiobooks/podiobooks dir.
+    -- You need to run this from the podiobooks dir (not podiobooks/podiobooks), so if you want to run from the command line, make sure you cd into there first.
+    -- This will create a local virtual environment with all the needed Python packages for development.
 
------------IMPORT THE PROJECT----------
-1) Open Aptana Studio
-2) File->Import...
-3) General->Import Existing Projects Into Workspace
-4) Browse to where you cloned the code
-	e.g. C:\Users\Tim\Documents\Aptana Studio Workspace\podiobooks
-5) It will create an Aptana project for the code.
+-----------SETUP PYCHARM----------
+1) Open PyCharm
+2) File->Settings...
+3) Python Interpreters
+4) Add (button)
+5) Add the podiobooks-env directory that was created by running the virtualenv step above
+6) In Settings, under "Project Interpreter", select the new Interpreter you just created.
+7) In Settings, under "Django Support", select the project directory to be the podiobooks/podiobooks dir, and choose the manage and settings files from there.
+8) Save the settings
 
------------RUN THE BOOTSTRAP-------------
-1) Open Aptana Studio
-2) Open the podiobooks project if it isn't open
-3) Find the 'bootstrap.py' file, right click->Run As->Python Run
-4) It will download the basic stuff to make buildout work, which will take some time
+----------SETUP THE DJANGO DB-------
+1) From the Tools menu choose "Run manage.py task".
+2) Type "syncdb" and click run.
+3) Follow the prompts to set up an admin user.
+4) From the Tools menu choose "Run manage.py task".
+5) Type "migrate" and click run.
 
------------RUN THE BUILDOUT-------------
-1) Open Aptana Studio
-2) Open the podiobooks project if it isn't open
-3) Run->External Tools->podiobooks buildout
-4) It will download all the required eggs and other bits, which will take some time
-5) It will try and create a .pydevproject file...if it fails with permissions issues (win7) you may have to add the .eggs to your project by hand in the PyDev preferences.
-
------------SETUP POSTGRESQL---------------
-1) Open pgAdmin III, the Postgres Admin Utility
-2) Double-click on the server listed on the left
-	e.g. PostgreSQL 8.4 (localhost:5432)
-2) You will have to enter the password you set during the install
-3) Right-Click on "Login Roles" on the left, and choose "New Login Role..."
-4) Role Name: pb2   Password: <your choice>
-5) Right-Click on "Databases" on the left, and choose "New Database..."
-6) Name: pb2     Owner: pb2      Encoding: UTF8
-7) Click OK and quit
-
------------SETUP THE DJANGO SETTINGS----------
-1) Open Aptana Studio
-2) Open the podiobooks project if it isn't open
-3) Open the src->podiobooks folder
-4) Right-Click on settings_local_template.py and choose "Copy"
-5) Right-Click on the src->podiobooks folder and choose "Paste"
-6) It will prompt you to rename, enter "settings_local.py"
-7) Double-Click on settings_local.py to edit it
-8) Find the PostgreSql database settings, and enter the password you chose for the pb2 role
-9) Look the file over, there may be other changes you need to make for your local environment
-
------------SYNC THE DJANGO DB----------
-1) Open Aptana Studio
-2) Open the podiobooks project if it isn't open
-3) In the toolbar, find the green button with the white arrow in it, and click the down arrow to the right of it
-4) Choose podiobooks syncdb from the list that appears
-5) Django will try and use the settings you specified to connect to the DB and setup the tables
-6) Django will try and setup the working data from the fixture, this may take a while
-
------------CONFIGURE APACHE THE DJANGO DEV SERVER----------
-1) Open the httpd.conf file from your Apache installation in a text editor
-	e.g. c:\program files\apache software foundation\apache 2.2\conf\httpd.conf
-2) At the bottom of the file add something along these lines:
-	#mod_wsgi for Django Dev
-	LoadModule wsgi_module modules/mod_wsgi.so
-	WSGIScriptAlias / "C:/Documents and Settings/tlwhit2/My Documents/Aptana Studio Workspace/podiobooks\bin/django.wsgi-script.py"
-	<Location />
-	    Order allow,deny
-	    Allow from all
-	</Location>
-3) This will take over the root of your server with podiobooks.  If you don't want that, you can do a virtualhost like this:
-	Listen 8000
-	<VirtualHost *:8000>
-		#mod_wsgi for Django Dev
-		LoadModule wsgi_module modules/mod_wsgi.so
-		WSGIScriptAlias / "C:/Documents and Settings/tim/My Documents/Aptana Studio Workspace/podiobooks/bin/django.wsgi-script.py"
-		<Location />
-	    		Order allow,deny
-	   	 	Allow from all
-		</Location>
-	</VirtualHost>
-
-------------RUN IT!!!!-------
-1) Start Apache if it's not already started
-2) Browse to http://localhost:8000 (or however you set it up above)
+-----------RUN----------
+1) At the top of the PyCharm window, there should now be a dropdown that says "podiobooks" with a green arrow to the right.
+2) Click the drop down and select "Edit Configurations".
+3) Click on "podiobooks"
+4) Check "Run Browser"
+5) Set the working directory to the podiobooks\podiobooks directory
+8) Save Configuration
+7) Select podiobooks from the dropdown and click the green arrow.
 
         
