@@ -11,12 +11,12 @@ import os
 # from settings_runserver import add_path_places
 # add_path_places()
 
-from podiobooks.settings_main import * #@UnusedWildImport
+from settings_main import * #@UnusedWildImport
 
 try:
-    from podiobooks.settings_local import * #@UnusedWildImport
+    from settings_local import * #@UnusedWildImport
 except ImportError:
-    from podiobooks.settings_local_template import * #@UnusedWildImport
+    from settings_local_template import * #@UnusedWildImport
     print("WARNING!  Using default Settings")
 
 # Import Gondor auto-generated local settings if they exist.
