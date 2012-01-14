@@ -2,10 +2,10 @@
 
 # pylint: disable=W0401, W0614
 
-from podiobooks.settings_main import * #@UnusedWildImport 
-from podiobooks.settings_local_template import * #@UnusedWildImport
+from settings_main import * #@UnusedWildImport
+from settings_local_template import * #@UnusedWildImport
 try:
-    from podiobooks.settings_test_local import * #@UnusedWildImport
+    from settings_test_local import * #@UnusedWildImport
 except:
     pass
 import tempfile
