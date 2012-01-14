@@ -1,3 +1,4 @@
+disqus-python
 django
 django-avatar
 django-taggit
@@ -9,4 +10,5 @@ httplib2
 markdown
 pil
 python-memcached
+simplejson
 south
