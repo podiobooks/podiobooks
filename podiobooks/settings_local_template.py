@@ -168,9 +168,3 @@ DATALOAD_DIR = PROJECT_ROOT + "/../../podiobooks-dataload/datafiles/"
 DISQUS_WEBSITE_SHORTNAME = 'podioadventures'
 DISQUS_API_PUBLIC_KEY = ''
 DISQUS_API_SECRET_KEY = ''
-
-### MARKITUP
-MARKITUP_SET = 'markitup/sets/markdown'
-#MARKITUP_SKIN = 'markitup/skins/markitup'
-MARKITUP_FILTER = ('markdown.markdown', {'safe_mode': True})
-MARKITUP_PREVIEW_FILTER = ('markdown.markdown', {'safe_mode': True})
