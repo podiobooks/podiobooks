@@ -16,33 +16,19 @@ Brant Steen (brant@brantsteen.com)
 Purpose
 -------
 
-The purpose of the Podiobooks project is to create a platform for distributing media via either direct download or via scheduled, updated RSS feeds. Additionally, there should be a strong community element, allowing consumers to connect with each other and the author.  This software will eventually replace the current PHP-based solution at http://www.podiobooks.com.
+The purpose of the Podiobooks project is to create a platform for distributing serialized audiobooks. Additionally, there should be a strong community element, allowing consumers to connect with each other and the author.  This software will eventually replace the current PHP-based solution at http://www.podiobooks.com.
 
 Required Packages
 -----------------
 This software depends on the following libraries being available on the Python Path (e.g. having been easy_installed into the site-packages directory)
 
-# Main
-django  # 1.x
-psycopg2 # 2.x - PostgreSQL driver for Python.  Windows version: http://www.stickpeople.com/projects/python/win-psycopg/
-PIL - Python Imaging Library is required to support the ImageFields in the model (requires .exe installer on Windows)
+The project has been set up to use Python pip and virtualenv, so you can find an list of all dependencies in the podiobooks/requirements.txt file.
 
-# Admin Site Documentation
-docutils # .5
+You can choose to install that list of dependencies directly in your Python installation, or using virtualenv.
 
-# For Auth OpenID:
-python-openid       # http://openidenabled.com/python-openid/   version 2.x
-django-authopenid   # http://bitbucket.org/benoitc/django-authopenid
-django-registration # http://bitbucket.org/ubernostrum/django-registration/
-httplib2 			# http://code.google.com/p/httplib2
+For development use, a requirements_dev.txt exists to pull in additional packages useful for testing and debugging.
 
-# Search:
-django-sphinx 2.2.1 # http://github.com/dcramer/django-sphinx (do a git clone of the latest)
-Sphinx # Not python, standalone daemon - http://sphinxsearch.com - make sure you compile --with-pgsql or download the binary with PostgreSQL support baked in.
+In the devscripts/virtualenv folder are a series of scripts that will be useful in setting up your local development environment with virtualenv, which creates an isolated Python environment just for this project.
 
-# Cache:
-memcached # Not python, standalone daemon - http://www.danga.com/memcached/
+A warning that getting the "PIL" imaging library to install correctly using any method is tricky, the easiest way on windows seems to be to install the free Visual Studio Express so that PIP can be compiled.
 
-# WYSIWYG HTML Editor Integration
-django-tinymce # http://code.google.com/p/django-tinymce/
-#
