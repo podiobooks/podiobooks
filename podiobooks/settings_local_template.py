@@ -46,8 +46,8 @@ MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'mediaroot')
 # Staticfiles Config
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticroot')
 STATIC_URL = '/static/themes/jerome'
-STATICFILES_DIRS = [ os.path.join(PROJECT_ROOT, 'static', 'themes', 'jerome'), ]
-TEMPLATE_DIRS = [ os.path.join(PROJECT_ROOT, 'static', 'themes', 'jerome', 'templates') ]
+STATICFILES_DIRS = [ os.path.join(PROJECT_ROOT, 'themes', 'jerome'), ]
+TEMPLATE_DIRS = [ os.path.join(PROJECT_ROOT, 'themes', 'jerome', 'templates') ]
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
