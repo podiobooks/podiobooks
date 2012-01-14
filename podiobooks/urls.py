@@ -27,15 +27,9 @@ urlpatterns = patterns('',
     
     # Auth / Login
     (r'^account/signin/$', 'django.contrib.auth.views.login'),
-    
-    # Avatars
-    (r'^avatar/', include('avatar.urls')),
-    
+
     # Django Comments
     (r'^comments/', include('django.contrib.comments.urls')),
-    
-    # MarkItUp
-    url(r'^markitup/', include('markitup.urls')),
     
     # Profile
     (r'^profile/', include('podiobooks.profile.urls')),

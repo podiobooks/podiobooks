@@ -42,6 +42,7 @@ OPENID_SREG = {
 }
 
 INSTALLED_APPS = (
+    'disqus_utils',
     'django.contrib.admin',
     'django.contrib.admindocs',
     'django.contrib.auth',
@@ -52,12 +53,12 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.staticfiles',
-    'markdown',
-    'markitup',
+    'libsyn',
     'taggit',
-    'podiobooks.feeds',
-    'podiobooks.main',
-    'podiobooks.profile',
+    'podiobooks',
+    'feeds',
+    'main',
+    'profile',
     'south',
     
 )
