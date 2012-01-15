@@ -6,7 +6,7 @@ from settings_main import * #@UnusedWildImport
 from settings_local_template import * #@UnusedWildImport
 try:
     from settings_test_local import * #@UnusedWildImport
-except:
+except ImportError:
     pass
 import tempfile
 
