@@ -24,6 +24,7 @@ Typically, you don't need to install all the python bits except on windows, but 
 3) Download GIT for Windows from http://code.google.com/p/msysgit/downloads/list
     -- Usually the first one on the list of downloads is the one you want.
     -- This is the source code control system you need to pull down the code from GitHub
+    -- You need to specify "force unix line endings", "modify path", and "update shell" options.
 		
 For all of those items, you should be able to basically follow the Installer prompts and get them installed with the default settings.
 
