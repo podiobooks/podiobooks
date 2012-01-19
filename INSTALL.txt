@@ -49,7 +49,7 @@ For all of those items, you should be able to basically follow the Installer pro
 1) Open PyCharm
 2) File->Settings...
 3) Python Interpreters
-4) Add (button)
+4) Add (button on bottom of screen)
 5) Add the podiobooks-env directory that was created by running the virtualenv step above
 6) In Settings, under "Project Interpreter", select the new Interpreter you just created.
 7) In Settings, under "Django Support", select the project directory to be the podiobooks/podiobooks dir, and choose the manage and settings files from there.
