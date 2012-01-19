@@ -20,6 +20,10 @@ Typically, you don't need to install all the python bits except on windows, but 
     -- PyCharm is not free, but seems to be smoother overall than Aptana/PyDev.
     -- PyCharm does have a free 30-day trial, student, and open-source licenses.
     -- Use whatever IDE or text editor you want, but the rest of the instructions assume PyCharm.
+
+3) Download GIT for Windows from http://code.google.com/p/msysgit/downloads/list
+    -- Usually the first one on the list of downloads is the one you want.
+    -- This is the source code control system you need to pull down the code from GitHub
 		
 For all of those items, you should be able to basically follow the Installer prompts and get them installed with the default settings.
 
