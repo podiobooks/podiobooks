@@ -14,7 +14,7 @@ Typically, you don't need to install all the python bits except on windows, but 
         --It's a quick and easy free way to get Python up and going on Windows
         -- http://www.activestate.com/activepython/downloads
     -- The ActiveState version comes with pypm, which enables devscripts/virtualenv/setup_dev_env.bat to install for you.
-	-- The 32-bit version is best for local development, as it presents the fewest compatibility issues with other packages.
+	-- The 32-bit version is required to use the setup scripts, as the 64-bit version requires a subscription.
 
 2) Download PyCharm from http://www.jetbrains.com/pycharm/
     -- PyCharm is not free, but seems to be smoother overall than Aptana/PyDev.
@@ -49,7 +49,7 @@ For all of those items, you should be able to basically follow the Installer pro
 1) Open PyCharm
 2) File->Settings...
 3) Python Interpreters
-4) Add (button on bottom of screen)
+4) Add (button on top of screen)
 5) Add the podiobooks-env directory that was created by running the virtualenv step above
 6) In Settings, under "Project Interpreter", select the new Interpreter you just created.
 7) In Settings, under "Django Support", select the project directory to be the podiobooks/podiobooks dir, and choose the manage and settings files from there.
