@@ -11,11 +11,11 @@ Typically, you don't need to install all the python bits except on windows, but 
 ----------INSTALL YOUR TOOLS---------
 1)Install Python
     -- The ActiveState Community Edition is recommended.
-        -- It's a quick and easy free way to get Python up and going on Windows.
-        -- http://www.activestate.com/activepython/downloads.
-	-- The ActiveState version comes with pypm, which enables devscripts/virtualenv/setup_dev_env.bat to install for you.
-	-- The 32-bit version is required to use the setup scripts, as the 64-bit version requires a subscription.
-	-- In order to avoid strange path errors, you should reboot after installing ActiveState Python.
+    -- It's a quick and easy free way to get Python up and going on Windows.
+    -- http://www.activestate.com/activepython/downloads.
+    -- The ActiveState version comes with pypm, which enables devscripts/virtualenv/setup_dev_env.bat to install for you.
+    -- The 32-bit version is required to use the setup scripts, as the 64-bit version requires a subscription.
+    -- In order to avoid strange path errors, you should reboot after installing ActiveState Python.
 	
 
 2) Download PyCharm from http://www.jetbrains.com/pycharm/
