@@ -6,15 +6,3 @@ body{
 	font-family:"MuseoSans300", sans-serif;
 	font-weight:normal;
 }
-
-.top-bar{
-	background:#1d1616 url(img/flare.png) 40% 0px no-repeat;
-	height:39px;
-}
-.head{
-	background:url(img/head.png) left top;
-}
-.head .flare{
-	background:url(img/flare.png) 40% -39px no-repeat;
-	height:100px;
-}
