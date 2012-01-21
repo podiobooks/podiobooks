@@ -6,6 +6,6 @@ pypm install distribute
 pypm install pip
 pypm install virtualenv
 pypm install pil
-virtualenv  --system-site-packages --distribute podiobooks-env
+virtualenv --system-site-packages --distribute podiobooks-env
 call podiobooks-env\Scripts\activate.bat
 pip install -r podiobooks\requirements_dev.txt
