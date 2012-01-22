@@ -8,4 +8,5 @@ def js_api_keys(request): # pylint: disable=W0613
     """
     Adds JavaScript API Keys variables to the context.
     """
-    return { 'GOOGLE_JS_API_KEY': settings.GOOGLE_JS_API_KEY }
+    return { 'GOOGLE_JS_API_KEY': settings.GOOGLE_JS_API_KEY,
+             'GOOGLE_ANALYTICS_KEY': settings.GOOGLE_ANALYTICS_KEY,}
