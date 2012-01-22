@@ -8,13 +8,13 @@
 <p class='logo'><a href='/'><img alt='Podiobooks Logo' src='{{ STATIC_URL }}img/pb-logo.jpg' /></a></p>
 
 <nav class='pg-head clearfix'>
-    <ul class='nav'>
-        <li><a href='#'>Blog</a></li>
+    <ul>
+        <li class="first"><a href='#'>Blog</a></li>
         <li><a href='#'>Community</a></li>
         <li>
         {% if user.is_authenticated %}
             <a href="{% url profile_manage %}">My Account</a></li>
-            <li class='hide-on-mobile'><a href="#">Logout {{ user.username }}</a>
+            <li><a href="#">Logout {{ user.username }}</a>
         {% else %}
             <a href="{% ssl_site_login_url %}">Author Login</a>
         {% endif %}

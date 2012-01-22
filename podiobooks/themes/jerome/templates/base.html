@@ -34,7 +34,7 @@
 		{% endif %}
 
         <!-- All JavaScript at the bottom, except for Modernizr / Respond. -->
-        <script src="js/libs/modernizr-2.0.6.min.js"></script>
+        <script src="{{ STATIC_URL }}js/libs/modernizr-2.0.6.min.js"></script>
         {% block head %}
         {% endblock %}
     </head>
@@ -60,8 +60,8 @@
         </script>
 
         <!-- scripts concatenated and minified via ant build script-->
-        <script defer src="js/plugins.js"></script>
-        <script defer src="js/script.js"></script>
+        <script defer src="{{ STATIC_URL }}js/plugins.js"></script>
+        <script defer src="{{ STATIC_URL }}js/script.js"></script>
         <!-- end scripts-->
 
         <script>
