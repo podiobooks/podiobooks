@@ -28,6 +28,15 @@ header nav ul li.first {
     list-style: none;
     display: inline;
 }
+header form {
+    display: inline;
+}
+header label {
+    margin-right: 5px;
+}
+header button {
+    margin-left: 5px;
+}
 footer {
     padding: 5px;
     border-top: 1px solid #000;
