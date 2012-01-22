@@ -45,8 +45,8 @@ MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'mediaroot')
 
 # Staticfiles Config
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticroot')
-STATIC_URL = '/static/themes/jerome'
-STATICFILES_DIRS = [ os.path.join(PROJECT_ROOT, 'themes', 'jerome'), ]
+STATIC_URL = '/static/themes/jerome/'
+STATICFILES_DIRS = [ os.path.join(PROJECT_ROOT, 'themes', 'jerome'), os.path.join(PROJECT_ROOT, 'static') ]
 TEMPLATE_DIRS = [ os.path.join(PROJECT_ROOT, 'themes', 'jerome', 'templates') ]
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
@@ -135,6 +135,12 @@ if DEBUG:
 
 # Google JavaScript API Key
 GOOGLE_JS_API_KEY = "ABQIAAAApKHrTPdMsrKnaI74fSfnhBQ1oE6XAUbmObyC_RwYQIb0R2PjHBRZWTF3zf-YwVXFv_qiaAb_sT04aA"
+
+# Google Analytics Key
+GOOGLE_ANALYTICS_KEY = "UA-28536335-1"
+
+# <meta name="descripton"> default value
+BASE_META_DESCRIPTION = "Free audio books delivered as podcasts. Subscribe for free to any book and start from chapter one. Podiobooks.com"
 
 ### SECURE SITE
 # SSL_SITE_LOGIN_URL = '' # URL to HTTPS version of site for secure sign-in.
