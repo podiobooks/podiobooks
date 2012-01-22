@@ -1,8 +1,55 @@
-h1, h2{
+h1, h2 {
 	font-family:"Trykker", sans-serif;
 	font-weight:normal;	
 }
-body{
+body {
 	font-family:"Trykker", sans-serif;
 	font-weight:normal;
+}
+header {
+    padding: 5px;
+    border-bottom: 1px solid #000;
+}
+header nav ul {
+    margin-left: 0;
+    padding-left: 0;
+    display: inline;
+}
+header nav ul li {
+    margin-left: 0;
+    padding: 3px 15px;
+    border-left: 1px solid #000;
+    list-style: none;
+    display: inline;
+}
+header nav ul li.first {
+    margin-left: 0;
+    border-left: none;
+    list-style: none;
+    display: inline;
+}
+footer {
+    padding: 5px;
+    border-top: 1px solid #000;
+}
+footer nav ul {
+    margin-left: 0;
+    padding-left: 0;
+    display: inline;
+}
+footer nav ul li {
+    margin-left: 0;
+    padding: 3px 15px;
+    border-left: 1px solid #000;
+    list-style: none;
+    display: inline;
+}
+footer nav ul li.first {
+    margin-left: 0;
+    border-left: none;
+    list-style: none;
+    display: inline;
+}
+footer p {
+    text-align: center;
 }
