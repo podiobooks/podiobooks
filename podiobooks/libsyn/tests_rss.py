@@ -12,11 +12,11 @@ class LibsynRSSTestCase(TestCase):
         pass
     
     def testParseRss(self):
-        titleData = create_title_from_libsyn_rss.parseLibsynRSS('http://infected.podiobooks.libsynpro.com/rss')
+        titleData = create_title_from_libsyn_rss.create_title_from_libsyn_rss('http://infected.podiobooks.libsynpro.com/rss')
         print titleData
         self.assertEquals(titleData['Subtitle'], 'infected')
         
-        titleData = create_title_from_libsyn_rss.parseLibsynRSS('http://shadowmagic2.podiobooks.libsynpro.com/rss')
+        titleData = create_title_from_libsyn_rss.create_title_from_libsyn_rss('http://shadowmagic2.podiobooks.libsynpro.com/rss')
         print titleData
         self.assertEquals(titleData['Subtitle'], 'shadowmagic2')
         
