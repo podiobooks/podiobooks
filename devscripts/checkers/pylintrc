@@ -20,7 +20,7 @@ profile=no
 
 # Add <file or directory> to the black list. It should be a base name, not a
 # path. You may set this option multiple times.
-ignore=settings, tests, urls, migrations
+ignore=settings.py, settings_test.py, settings_main.py, settings_local_template.py, tests, urls, migrations
 
 # Pickle collected data for later comparisons.
 persistent=yes
