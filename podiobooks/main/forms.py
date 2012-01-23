@@ -16,7 +16,7 @@ class CategoryChoiceForm(forms.Form):
     submit_url = None
     form_name = 'category'
     if (not categories):
-        categories = Category.objects.filter(~Q(slug="erotica"),title__display_on_homepage=True).annotate(title_count=Count('title')).filter(title_count__gt=2).order_by('name').values_list('slug','name')
+        categories = Category.objects.filter(~Q(slug="erotica"), title__display_on_homepage=True).annotate(title_count=Count('title')).filter(title_count__gt=2).order_by('name').values_list('slug', 'name')
         cache.set('category_dropdown_values', categories, 240)
     category = forms.ChoiceField(choices=categories, widget=forms.Select(attrs={'class':'pb-category-choice'}))
 
