@@ -1,7 +1,6 @@
 """ Django Custom Template Tags for Advertising-Related Stuff """
 
 from django import template
-from django.conf import settings
 
 register = template.Library()
 
