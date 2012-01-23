@@ -4,7 +4,6 @@ from django import template
 from podiobooks.main.forms import TitleSearchForm, BrowseByForm
 from django.conf import settings
 from django.conf.global_settings import PROFANITIES_LIST
-from django.core.urlresolvers import reverse
 import itertools
 
 register = template.Library()
