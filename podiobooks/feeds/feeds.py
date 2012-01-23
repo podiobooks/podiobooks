@@ -13,8 +13,6 @@ from podiobooks.main.models import Title, Episode
 from podiobooks.feeds import feed_tools
 from podiobooks.feeds.protocols.itunes import ITunesFeed
 
-from datetime import datetime
-
 class TitleFeed(Feed):
     """A simple feed that lists recent Titles"""
     feed_type = Rss201rev2Feed
