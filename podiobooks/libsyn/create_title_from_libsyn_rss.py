@@ -6,7 +6,8 @@ Created on Mar 7, 2011
 
 import feedparser
 
-def parseLibsynRSS(rssFeedUrl):
+def create_title_from_libsyn_rss(rssFeedUrl):
+    """Parses a libsyn-generated RSS feed"""
     title = {}
     
     feed = feedparser.parse(rssFeedUrl)
@@ -30,7 +31,3 @@ def parseLibsynRSS(rssFeedUrl):
     title['DateCreated'] = feed.updated
 
     return title
-    
-
-if __name__ == '__main__':
-    pass
