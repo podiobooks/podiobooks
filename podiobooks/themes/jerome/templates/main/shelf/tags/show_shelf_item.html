@@ -1,29 +1,13 @@
 {% load global_templatetags %}
-{% load title_templatetags %}
-<div class="pb-shelf-item" id="{{ shelf_id }}_title_{{ title.id }}">
-    <div class="pb-shelf-item-loading loading">
-    </div>
-    <a href="{% url title_detail title.slug %}">{% if title.libsyn_show_id %}<img class="pb-shelf-item-cover-image" src="http://images.libsyn.com/show/{{ title.libsyn_show_id }}/height/99/width/67" width="67" height="99" alt="Podiobook Cover for {{ title.name }}"/>{% else %}<img class="pb-shelf-item-cover-image" src="{% cover_media_url %}images/covers/67x99/{{ title.cover }}" width="67" height="99" alt="Podiobook Cover for {{ title.name }}"/>{% endif %}</a>
-    <div class="pb-shelf-item-rating">
-        <div class="pb-item-rating-promoter">
-            {{ title.promoter_count }}
-        </div>
-        <div class="pb-item-rating-detractor">
-            {{ title.detractor_count }}
-        </div>
-    </div>
-    <div class="pb-shelf-item-text">
-        <p class="pb-shelf-item-title">
-            <a href="{% url title_detail title.slug %}" style="text-decoration:none;">{{ title.name|striptags|truncatewords_afterchar:"25" }}</a>
-        </p>
-        <p class="pb-shelf-item-contributors">
-            {{ title.byline|safe }}
-        </p>
-        <p class="pb-shelf-item-categories">
-            in {{ title.category_list|safe }}
-        </p>
-        <p class="pb-shelf-item-tags">
-            {% autoescape off %}{{ title.description|striptags|truncatewords_afterchar:"130" }}{% endautoescape %}
-        </p>
-    </div>
+
+<div class='shelf-item'>
+	<p class='shelf-cover'>	<a href='{{title.get_absolute_url}}'>
+		{% if title.libsyn_show_id %}
+			<img src="http://asset-server.libsyn.com/show/{{ title.libsyn_show_id }}/height/212/width/144" alt="Podiobook Cover for {{ title.name|striptags }}"/>
+		{% else %}
+			<img src="http://podiobooks.com/images/covers/{{ title.cover }}" alt="Podiobook Cover for '{{ title.name }}'" />
+		{% endif %}
+		</a>
+	</p>
+	<p>{% autoescape off %}{{ title.description|striptags|truncatewords_afterchar:"200" }}{% endautoescape %}</p>
 </div>

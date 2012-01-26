@@ -30,9 +30,3 @@ def show_shelf_item(shelf_id, title):
     return { 'shelf_id': shelf_id, 'title' : title }
 
 
-@register.inclusion_tag('main/shelf/renders/shelf_item.html')
-def shelf_item(item):
-    """ Making my own so I dont mess with anything that has come before """
-    return {"t":item}
-
-
