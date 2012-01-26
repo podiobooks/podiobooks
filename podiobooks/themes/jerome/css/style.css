@@ -1,64 +1,97 @@
-h1, h2 {
-	font-family:"Trykker", sans-serif;
-	font-weight:normal;	
+H1, H2
+{
+	font-family: Trykker, sans-serif;
+	font-weight: normal;
 }
-body {
-	font-family:"Trykker", sans-serif;
-	font-weight:normal;
+BODY
+{
+	font-family: Trykker, sans-serif;
+	font-weight: normal;
 }
-header {
-    padding: 5px;
-    border-bottom: 1px solid #000;
+HEADER
+{
+	padding: 5px;
+	border-bottom: 1px solid #000;
 }
-header nav ul {
-    margin-left: 0;
-    padding-left: 0;
-    display: inline;
+HEADER NAV UL
+{
+	margin-left: 0;
+	padding-left: 0;
+	display: inline;
 }
-header nav ul li {
-    margin-left: 0;
-    padding: 3px 15px;
-    border-left: 1px solid #000;
-    list-style: none;
-    display: inline;
+HEADER NAV UL LI
+{
+	margin-left: 0;
+	padding: 3px 15px;
+	border-left: 1px solid #000;
+	list-style: none;
+	display: inline;
 }
-header nav ul li.first {
-    margin-left: 0;
-    border-left: none;
-    list-style: none;
-    display: inline;
+HEADER NAV UL LI.first
+{
+	margin-left: 0;
+	border-left: none;
+	list-style: none;
+	display: inline;
 }
-header form {
-    display: inline;
+HEADER FORM
+{
+	display: inline;
 }
-header label {
-    margin-right: 5px;
+HEADER LABEL
+{
+	margin-right: 5px;
 }
-header button {
-    margin-left: 5px;
+HEADER BUTTON
+{
+	margin-left: 5px;
 }
-footer {
-    padding: 5px;
-    border-top: 1px solid #000;
+FOOTER
+{
+	padding: 5px;
+	border-top: 1px solid #000;
 }
-footer nav ul {
-    margin-left: 0;
-    padding-left: 0;
-    display: inline;
+FOOTER NAV UL
+{
+	margin-left: 0;
+	padding-left: 0;
+	display: inline;
 }
-footer nav ul li {
-    margin-left: 0;
-    padding: 3px 15px;
-    border-left: 1px solid #000;
-    list-style: none;
-    display: inline;
+FOOTER NAV UL LI
+{
+	margin-left: 0;
+	padding: 3px 15px;
+	border-left: 1px solid #000;
+	list-style: none;
+	display: inline;
 }
-footer nav ul li.first {
-    margin-left: 0;
-    border-left: none;
-    list-style: none;
-    display: inline;
+FOOTER NAV UL LI.first
+{
+	margin-left: 0;
+	border-left: none;
+	list-style: none;
+	display: inline;
 }
-footer p {
-    text-align: center;
+FOOTER P
+{
+	text-align: center;
+}
+.shelf-cover
+{
+	float: left;
+	position: relative;
+    margin-left: 25px;
+	margin-right: 25px;
+}
+.shelf-cover IMG
+{
+    width: 144px;
+    height: 212px;
+}
+.shelf-item
+{
+    float: left;
+	margin-right: 50px;
+	margin-left: 20px;
+    width: 200px;
 }

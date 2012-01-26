@@ -59,6 +59,8 @@
             //]]>
         </script>
 
+        {% block footerscripts %}{% endblock %}
+
         <!-- scripts concatenated and minified via ant build script-->
         <script defer src="{{ STATIC_URL }}js/plugins.js"></script>
         <script defer src="{{ STATIC_URL }}js/script.js"></script>
