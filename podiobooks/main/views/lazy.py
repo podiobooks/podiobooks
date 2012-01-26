@@ -22,7 +22,7 @@ def homepage_featured(request, cat=None):
     
     featured_title_list = homepage_title_list.filter(categories__slug=cat).order_by('-date_created', 'name')[:16]
     
-    return render_to_response("main/lazy/shelf_items.html", {"items":featured_title_list}, context_instance=RequestContext(request))
+    return render_to_response("main/shelf/shelf_items.html", {"items":featured_title_list}, context_instance=RequestContext(request))
     
 @cache_page(1)
 def top_rated(request, author=None):
@@ -40,5 +40,5 @@ def top_rated(request, author=None):
     
     toprated_title_list = homepage_title_list.filter(promoter_count__gte=20).order_by('-promoter_count').all().filter(contributors__slug=author)[:18]
        
-    return render_to_response("main/lazy/shelf_items.html", {"items":toprated_title_list}, context_instance=RequestContext(request))
+    return render_to_response("main/shelf/shelf_items.html", {"items":toprated_title_list}, context_instance=RequestContext(request))
     
