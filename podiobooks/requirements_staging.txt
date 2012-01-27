@@ -1,5 +1,6 @@
 -r requirements.txt
-psycopg2
 django-redis
 django-redis-admin
 django-redis-sessions
+psycopg2
+redis-py
