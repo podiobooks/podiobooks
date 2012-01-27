@@ -16,11 +16,11 @@ Typically, you don't need to install all the python bits except on windows, but 
     -- The ActiveState version comes with pypm, which enables devscripts/virtualenv/setup_dev_env.bat to install for you.
     -- The 32-bit version is required to use the setup scripts, as the 64-bit version requires a subscription.
     -- In order to avoid strange path errors, you should reboot after installing ActiveState Python.
-	
 
 2) Download PyCharm from http://www.jetbrains.com/pycharm/
     -- PyCharm is not free, but seems to be smoother overall than Aptana/PyDev.
     -- PyCharm does have a free 30-day trial, student, and open-source licenses.
+    -- We have an open-source license for PyCharm for this project - email the lead if you need it.
     -- Use whatever IDE or text editor you want, but the rest of the instructions assume PyCharm.
 
 3) Download GIT for Windows from http://code.google.com/p/msysgit/downloads/list
@@ -46,15 +46,16 @@ For all of those items, you should be able to basically follow the Installer pro
     -- You can setup an "External Tool" in PyCharm to run this, just set the working dir to the podiobooks dir, not the podiobooks/podiobooks dir.
     -- You need to run this from the podiobooks dir (not podiobooks/podiobooks), so if you want to run from the command line, make sure you cd into there first.
     -- This will create a local virtual environment with all the needed Python packages for development.
+    -- It will look like it's hung - and depending on your network connection, it can take up to an hour to run.
 
 -----------SETUP PYCHARM----------
 1) Open PyCharm
 2) File->Settings...
 3) Python Interpreters
 4) Add (button on top of screen)
-5) Add the podiobooks-env directory that was created by running the virtualenv step above
+5) Browse to [YOUR PROJECT PATH]\podiobooks-env\Scripts\python.exe and click "Add".
 6) In Settings, under "Project Interpreter", select the new Interpreter you just created.
-7) In Settings, under "Django Support", select the project directory to be the podiobooks/podiobooks dir, and choose the manage and settings files from there.
+7) In Settings, under "Django Support", select the project directory to be the podiobooks/podiobooks dir, it should auto-pop settings.py and manage.py.
 8) Save the settings
 
 ----------SETUP THE DJANGO DB-------
@@ -62,7 +63,7 @@ For all of those items, you should be able to basically follow the Installer pro
 2) Type "syncdb" and click run.
 3) Follow the prompts to set up an admin user.
 4) From the Tools menu choose "Run manage.py task".
-5) Type "migrate" and click run.
+5) Type "migrate" and click run the base South migration to update the 'main' tables.
 
 -----------RUN----------
 1) At the top of the PyCharm window, there should now be a dropdown that says "podiobooks" with a green arrow to the right.
