@@ -54,20 +54,12 @@ class UrlTestCase(TestCase):
         response = self.c.get('/category/science-fiction/')
         self.assertEquals(200, response.status_code)
     
-    def testCategoryShelf(self):
-        response = self.c.get('/title/category/shelf/science-fiction/')
-        self.assertEquals(200, response.status_code)
-    
     def testContributorList(self):
         response = self.c.get('/contributor/')
         self.assertEquals(200, response.status_code)
         
     def testContributorDetail(self):
         response = self.c.get('/contributor/nathan-lowell/')
-        self.assertEquals(200, response.status_code)  
-        
-    def testContributorShelf(self):
-        response = self.c.get('/title/contributor/shelf/nathan-lowell/')
         self.assertEquals(200, response.status_code)
         
     def testEpisodeDetail(self):
