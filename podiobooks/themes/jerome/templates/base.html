@@ -61,11 +61,6 @@
 
         {% block footerscripts %}{% endblock %}
 
-        <!-- scripts concatenated and minified via ant build script-->
-        <script defer src="{{ STATIC_URL }}js/plugins.js"></script>
-        <script defer src="{{ STATIC_URL }}js/script.js"></script>
-        <!-- end scripts-->
-
         <script>
             window._gaq = [['_setAccount','{{ GOOGLE_ANALYTICS_KEY }}'],['_trackPageview'],['_trackPageLoadTime']];
             Modernizr.load({
