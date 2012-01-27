@@ -10,6 +10,7 @@
 {% block body_class %}home{% endblock %}
 
 {% block head %}
+<link rel="stylesheet" href="{{ STATIC_URL }}css/flexslider.css" type="text/css">
 {% endblock %}
 
 {% block content %}
@@ -58,6 +59,7 @@
 {% endblock %}
 
 {% block footerscripts %}
+<script src="{{ STATIC_URL}}js/libs/jquery.flexslider-min.js"></script>
 <script>
     $('#id_category').change(function() {
         $('#id_category').closest('form').submit();
