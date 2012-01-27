@@ -4,12 +4,27 @@
 
 {% block content %}
 <h1>
-	All Categories
+    All Categories
 </h1>
-<ul style="margin: 0 0 0 40px">
-  {% for category in category_list %} 
-  <li class="category_{{category.slug}}"><a href="{{category.get_absolute_url}}">{{ category.name }}</a> - {{ category.title_set.all.count }} title{{ category.title_set.all.count|pluralize }}</li>
-  {% endfor %}
-</ul>
+<table>
+    <thead>
+    <tr>
+        <th>Category Name</th>
+        <th>Number of Titles</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for category in category_list %}
+    <tr>
+        <td>
+            <a href="{{ category.get_absolute_url }}">{{ category.name }}</a>
+        </td>
+        <td>
+            {{ category.title_set.all.count }}
+        </td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
 {% endblock %}
 
