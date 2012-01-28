@@ -2,7 +2,7 @@
 
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from podiobooks.main.models import Title
+from podiobooks.main.models import Title, Contributor, TitleContributor
 from podiobooks.main.forms import CategoryChoiceForm, ContributorChoiceForm, TitleSearchForm
 from django.conf import settings
 from django.db.models import Q
@@ -10,9 +10,17 @@ from django.core.urlresolvers import reverse
 from django.views.decorators.cache import cache_page
 from django.http import HttpResponse
 from django.core.cache import cache
-
+from django.db.models import Avg, Max, Min, Count
 INITIAL_CATEGORY = 'science-fiction'
 INITIAL_CONTRIBUTOR = 'mur-lafferty'
+
+def contributor_list(request):
+    """
+    List of all contributors, annotated with a title count
+    """
+    contributors = Contributor.objects.annotate(contributes_to_count = Count("titlecontributors"))
+    response_data = {"contributor_list": contributors}
+    return render_to_response("main/contributor/contributor_list.html", response_data, context_instance=RequestContext(request))
 
 def index(request):
     """
