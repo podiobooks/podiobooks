@@ -3,6 +3,6 @@
 # curl -O https://raw.github.com/pypa/virtualenv/master/virtualenv.py
 # This should be run from the project directory, not inside the socialprofile dir
 
-virtualenv --no-site-packages podiobooks-env
+virtualenv --distribute --system-site-packages podiobooks-env
 . podiobooks-env/bin/activate
 pip install -r podiobooks/requirements_dev.txt
