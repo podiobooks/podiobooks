@@ -26,7 +26,8 @@ urlpatterns = patterns('',
     url(r'^category/(?P<slug>[^/]+)/$', 'django.views.generic.list_detail.object_detail', {'queryset': Category.objects.all(), 'template_object_name': 'category', 'template_name': 'main/category/category_detail.html'}, name='category_detail'),
 
     # contributor
-    url(r'^contributor/$', 'django.views.generic.list_detail.object_list', { 'queryset': Contributor.objects.all().order_by('last_name'), 'template_object_name': 'contributor', 'template_name': 'main/contributor/contributor_list.html'}, name='contributor_list'),
+    url(r'^contributor/$', 'podiobooks.main.views.contributor_list', name='contributor_list'),
+#    url(r'^contributor/$', 'django.views.generic.list_detail.object_list', { 'queryset': Contributor.objects.all().order_by('last_name'), 'template_object_name': 'contributor', 'template_name': 'main/contributor/contributor_list.html'}, name='contributor_list'),
     url(r'^contributor/(?P<slug>[^/]+)/$', 'django.views.generic.list_detail.object_detail', {'queryset': Contributor.objects.all(), 'template_object_name': 'contributor', 'template_name': 'main/contributor/contributor_detail.html'}, name='contributor_detail'),
 
     # episode
