@@ -343,6 +343,9 @@ class TitleContributor(models.Model):
         verbose_name_plural = "Title Contributors"
         ordering = ['contributor_type__slug', 'date_created']
 
+    def __unicode__(self):
+        return self.contributor.display_name + ": " + self.contributor_type.name + " of " + self.title.name
+
 # pylint: disable=W0613     
 def update_byline(sender, instance, **kwargs):
     """ Update byline cache on titles when a new title contributor is added...hooked to pre_save trigger for titlecontributor below """

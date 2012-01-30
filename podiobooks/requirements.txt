@@ -9,6 +9,5 @@ feedparser
 httplib2
 markdown
 pil
-python-memcached
 simplejson
 south
