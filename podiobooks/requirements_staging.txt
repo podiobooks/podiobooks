@@ -1,6 +1,6 @@
 -r requirements.txt
-django-redis
-django-redis-admin
+django-redis-cache
+django-redisboard
 django-redis-sessions
 psycopg2
 redis-py
