@@ -21,32 +21,11 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 # Cache Settings
-CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
-        }
-}
-# The Redis cache backend requires the redis-py and django-redis-cache (or django-redis) eggs
-#CACHES = {
-#    'default': {
-#        'BACKEND': 'redis_cache.RedisCache',
-#        'LOCATION': '127.0.0.1:6379',
-#        'OPTIONS': {
-#            'DB': 1,
-#            'PARSER_CLASS': 'redis.connection.HiredisParser'
-#        }
-#    }
-#}
-#CACHES = {
-#    'default': {
-#        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
-#        'LOCATION': '127.0.0.1:11211',
-#        }
-#}
-
-# Session Backend Settings
-# The Redis session backend requires the redis-py django-redis-sessions egg
-# SESSION_ENGINE = 'redis_sessions.session'
+# CACHE_BACKEND = 'memcached://127.0.0.1:11211/'
+CACHE_BACKEND = 'dummy:///'
+CACHE_MIDDLEWARE_SECONDS = 30
+CACHE_MIDDLEWARE_ANONYMOUS_ONLY = True
+CACHE_MIDDLEWARE_KEY_PREFIX = 'pb2'
 
 # List of Admin users to be emailed by error system
 MANAGERS = (
@@ -67,8 +46,8 @@ MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'mediaroot')
 # Staticfiles Config
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticroot')
 STATIC_URL = '/static/themes/jerome/'
-STATICFILES_DIRS = [os.path.join(PROJECT_ROOT, 'themes', 'jerome'), os.path.join(PROJECT_ROOT, 'static')]
-TEMPLATE_DIRS = [os.path.join(PROJECT_ROOT, 'themes', 'jerome', 'templates')]
+STATICFILES_DIRS = [ os.path.join(PROJECT_ROOT, 'themes', 'jerome'), os.path.join(PROJECT_ROOT, 'static') ]
+TEMPLATE_DIRS = [ os.path.join(PROJECT_ROOT, 'themes', 'jerome', 'templates') ]
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
@@ -79,8 +58,8 @@ ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
 DATABASES = {
     #    'default': {
     #        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    #        'NAME': '',
-    #        'USER': '',
+    #        'NAME': 'pb2',
+    #        'USER': 'pb2',
     #        'PASSWORD': '',
     #        'HOST': '127.0.0.1',
     #        'PORT': '', # Set to empty string for default.
@@ -174,7 +153,6 @@ FEED_GLOBAL_CATEGORIES = ('podiobooks', 'audio books',)
 ### LOGGING
 if DEBUG:
     import logging
-
     logging.basicConfig(level=logging.DEBUG,
         format='%(asctime)s %(levelname)s %(message)s',
         filename=os.path.join(PROJECT_ROOT, 'django.log'),

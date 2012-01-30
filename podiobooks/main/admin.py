@@ -9,7 +9,11 @@ from podiobooks.main.models import *  #@UnusedWildImport # pylint: disable=W0401
 class TitleInline(admin.TabularInline):
     model = Title
     exclude = ("deleted", "date_created", "date_updated")
-    
+
+class TitleContributorAdmin(admin.ModelAdmin):
+    list_display = ('title','contributor', 'contributor_type')
+    exclude = ("date_created", "date_updated")
+
 class TitleContributorInline(admin.TabularInline):
     model = TitleContributor
     exclude = ("date_created", "date_updated")
@@ -73,4 +77,4 @@ admin.site.register(Media)
 admin.site.register(Partner, PartnerAdmin)
 admin.site.register(Series, SeriesAdmin)
 admin.site.register(Title, TitleAdmin)
-admin.site.register(TitleContributor)
+admin.site.register(TitleContributor, TitleContributorAdmin)
