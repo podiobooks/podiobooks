@@ -10,6 +10,14 @@ except ImportError:
     pass
 import tempfile
 
+# Test DB settings. (SQLLite)
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        #        'NAME': # DO NOT SPECIFY A NAME SO THAT TEST RUNNER WILL USE IN-MEMORY DB
+        'SUPPORTS_TRANSACTIONS': 'false',
+        }
+}
 
 INSTALLED_APPS += ('django_nose',)
 

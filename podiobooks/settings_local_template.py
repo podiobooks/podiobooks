@@ -46,8 +46,8 @@ MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'mediaroot')
 # Staticfiles Config
 STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticroot')
 STATIC_URL = '/static/themes/jerome/'
-STATICFILES_DIRS = [ os.path.join(PROJECT_ROOT, 'themes', 'jerome'), os.path.join(PROJECT_ROOT, 'static') ]
-TEMPLATE_DIRS = [ os.path.join(PROJECT_ROOT, 'themes', 'jerome', 'templates') ]
+STATICFILES_DIRS = [os.path.join(PROJECT_ROOT, 'themes', 'jerome'), os.path.join(PROJECT_ROOT, 'static')]
+TEMPLATE_DIRS = [os.path.join(PROJECT_ROOT, 'themes', 'jerome', 'templates')]
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
@@ -149,14 +149,6 @@ BASE_META_DESCRIPTION = "Free audio books delivered as podcasts. Subscribe for f
 FEED_WEBMASTER = 'webmaster@podiobooks.com (Chris Miller)'
 FEED_MANAGING_EDITOR = 'editor@podiobooks.com (Evo Terra)'
 FEED_GLOBAL_CATEGORIES = ('podiobooks', 'audio books',)
-
-### LOGGING
-if DEBUG:
-    import logging
-    logging.basicConfig(level=logging.DEBUG,
-        format='%(asctime)s %(levelname)s %(message)s',
-        filename=os.path.join(PROJECT_ROOT, 'django.log'),
-        filemode='a+')
 
 ### SEARCH
 SEARCH_PROVIDER = 'DEFAULT'
