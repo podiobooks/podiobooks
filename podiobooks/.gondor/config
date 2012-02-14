@@ -12,7 +12,7 @@ requirements_file = requirements.txt
 wsgi_entry_point = wsgi:application
 
 ; Can be either nashvegas, south or none
-migrations = none
+migrations = south
 
 ; Whether or not to run collectstatic during deployment
 staticfiles = on
