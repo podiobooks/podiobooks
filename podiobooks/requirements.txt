@@ -1,6 +1,7 @@
 disqus-python
 django
 django-avatar
+django-debug-toolbar
 django-taggit
 django-tastypie
 django-markitup
