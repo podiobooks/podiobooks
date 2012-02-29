@@ -9,9 +9,9 @@ This script reads in an "CSV for Excel" export from phpMyAdmin into a the new Po
 import csv # first we need import necessary lib:csv
 from podiobooks.main.models import *
 from django.template.defaultfilters import slugify
-from data_cleanup import contributor_translation
-from data_cleanup import award_translation
-from data_cleanup import series_translation
+from podiobooks.main.dataload.data_cleanup import contributor_translation
+from podiobooks.main.dataload.data_cleanup import award_translation
+from podiobooks.main.dataload.data_cleanup import series_translation
 
 #Book/Title Helper Functions
 
