@@ -8,7 +8,7 @@ This script exports a CSV mapping file of the title_id to libsyn_id mapping so w
 
 import csv
 from podiobooks.main.models import *
-from pb1_prod_db_extract.unicode_writer import UnicodeWriter
+from podiobooks.main.dataload.pb1_prod_db_extract.unicode_writer import UnicodeWriter
 from django.conf import settings
 
 DATALOAD_DIR = settings.DATALOAD_DIR
