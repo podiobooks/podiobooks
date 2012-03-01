@@ -74,4 +74,12 @@ For all of those items, you should be able to basically follow the Installer pro
 8) Save Configuration
 7) Select podiobooks from the dropdown and click the green arrow.
 
+----------LOAD DATA------------
+1) In PyCharm, do Tools->Run manage.py task...
+2) Type loaddata
+3) Type shift-enter (enables you to add params)
+4) Type alldata.json.zip
+5) Hit return
+6) It will take a while. :)
+
         
