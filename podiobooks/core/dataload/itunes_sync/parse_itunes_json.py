@@ -4,6 +4,8 @@ import json
 from django.conf import settings
 
 def parse_itunes_json():
+    """Extract itunes ids for podiobooks titles"""
+
     # Open File for parsing
     itunes_json_file = open(settings.DATALOAD_DIR + "podiobooks_itunes_data.json")
     itunes_json = itunes_json_file.read()
@@ -46,5 +48,4 @@ def parse_itunes_json():
 
 ##### MAIN FUNCTION TO RUN IF THIS SCRIPT IS CALLED ALONE ###
 if __name__ == "__main__":
-    """extract itunes ids for podiobooks titles"""
     parse_itunes_json()
