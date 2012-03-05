@@ -30,7 +30,7 @@ class UserProfile(models.Model):
     def __unicode__(self):
         return "UserProfile for %s" % self.user.username
 
-# This adds a property to the main User module enabling access to the profile as a property rather than a function
+# This adds a property to the django User module enabling access to the profile as a property rather than a function
 # This came from http://www.codekoala.com/blog/2009/quick-django-tip-user-profiles/    
 User.profile = property(lambda u: UserProfile.objects.get_or_create(user=u)[0])
     
