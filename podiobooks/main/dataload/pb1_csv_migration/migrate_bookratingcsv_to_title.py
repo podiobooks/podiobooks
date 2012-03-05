@@ -12,7 +12,7 @@ from django.template.defaultfilters import slugify
 from django.core.exceptions import ObjectDoesNotExist
 
 #Define functions for use in importing ratings
-def getTitle(legacyBookID):
+def get_title(legacyBookID):
     """Returns a Title object based on a Legacy Book ID"""
     try:
         foundTitle = Title.objects.get(id=legacyBookID)
@@ -20,7 +20,7 @@ def getTitle(legacyBookID):
         foundTitle = None
     return foundTitle
 
-def importRatingsFromCSV():
+def import_ratings_from_csv():
     """Loops through the chapter rows in the CSV and increment promoter/detractor counts from them"""
     
     #Open Chapter File for Import
@@ -32,14 +32,14 @@ def importRatingsFromCSV():
     #PRE CLEANOUT
     Title.objects.all().update(promoter_count=0, detractor_count=0)
     
-    createRatingsFromRows(ratingCSVReader)
+    create_ratings_from_rows(ratingCSVReader)
 
-def createRatingsFromRows(ratingsList):
+def create_ratings_from_rows(ratingsList):
    
     # Loop through the rest of the rows in the CSV
     print "Starting Ratings Load:"
     for row in ratingsList:
-        foundTitle = getTitle(row['BookID'])
+        foundTitle = get_title(row['BookID'])
         
         if (foundTitle != None):
             # Update the title object in the database based on the current rating row
@@ -67,7 +67,7 @@ def createRatingsFromRows(ratingsList):
     
 ##### MAIN FUNCTION TO RUN IF THIS SCRIPT IS CALLED ALONE ###
 if __name__ == "__main__":
-    importRatingsFromCSV()
+    import_ratings_from_csv()
 
 
 # Handy Mapping Reference:

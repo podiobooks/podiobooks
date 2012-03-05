@@ -1,4 +1,13 @@
-from django.core.management.base import BaseCommand, CommandError
+""" Django management command to load all data into database from external CSV Files.
+In general, you shouldn't need this unless you are working on a new set of dataload scripts, or are tuning them.
+You can just use the fixture 'alldata.json.zip' to load up a full set of data into your env.
+You can use this script to load fresh from the CSV files, and then do manage.py dumpdata to refresh alldata.json.
+"""
+
+# pylint: disable=E0611,F0401,W0401,W0614
+
+
+"""from django.core.management.base import BaseCommand, CommandError
 from podiobooks.main.dataload import data_cleanup
 from podiobooks.main.dataload.pb1_csv_migration.migrate_bookcategorycsv_to_category import *
 from podiobooks.main.dataload.pb1_csv_migration.migrate_partnercsv_to_partner import *
@@ -15,21 +24,21 @@ class Command(BaseCommand):
         """Reads in an "CSV for Excel" export from phpMyAdmin into a the new Podiobooks Schema"""
 
         # IMPORT CATEGORIES
-        importBookCategoriesFromCSV()
+        import_book_categories_from_csv()
 
         # IMPORT PARTNERS
-        importPartnersFromCSV()
+        import_partners_from_csv()
 
         # IMPORT BOOKS
-        importBooksFromCSV()
+        import_books_from_csv()
 
         # IMPORT CHAPTERS
-        importChaptersFromCSV()
+        import_chapters_from_csv()
 
         # IMPORT RATINGS
-        importRatingsFromCSV()
+        import_ratings_from_csv()
 
         # UPDATE LIBSYN SHOW ID CACHE
-        extractLibsynShowIdCache()
+        extract_libsyn_showid_cache()
 
         self.stdout.write('Imported all Data\n')

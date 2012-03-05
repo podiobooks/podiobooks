@@ -1,3 +1,5 @@
+"""Migrate comments from Podiobooker Blog to Local Comments"""
+
 import os
 import sys
 import time
@@ -5,7 +7,6 @@ import socket
 import optparse
 import datetime
 import feedparser
-from django.conf import settings
 from django.contrib import comments
 from django.contrib.contenttypes.models import ContentType
 from podiobooks.main.models import Title
@@ -13,16 +14,17 @@ import tempfile
 
 LOCKFILE = tempfile.gettempdir() + "/update_feeds.lock"
 
-feed_list = Title.objects.all().filter(podiobooker_blog_url__isnull=False).values('id', 'podiobooker_blog_url')
+feedlist = Title.objects.all().filter(podiobooker_blog_url__isnull=False).values('id', 'podiobooker_blog_url')
 
 def update_feeds(verbose=False):
-    for feed in feed_list:
+    """Grab latest data from podiobooker RSS feed"""
+    for feed in feedlist:
         if verbose:
             print feed
         parsed_feed = feedparser.parse(feed['podiobooker_blog_url'] + 'feed/')
         for entry in parsed_feed.entries:
-            title = entry.title.encode(parsed_feed.encoding, "xmlcharrefreplace")
-            guid = entry.get("id", entry.link).encode(parsed_feed.encoding, "xmlcharrefreplace")
+            # title = entry.title.encode(parsed_feed.encoding, "xmlcharrefreplace")
+            # guid = entry.get("id", entry.link).encode(parsed_feed.encoding, "xmlcharrefreplace")
 
             content = entry.description
             content = content.encode(parsed_feed.encoding, "xmlcharrefreplace")
@@ -36,6 +38,7 @@ def update_feeds(verbose=False):
             print new_comment
 
 def main(argv):
+    """Pull data from RSS feed, import comments"""
     socket.setdefaulttimeout(15)
     parser = optparse.OptionParser()
     parser.add_option('--settings')
