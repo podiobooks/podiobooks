@@ -8,7 +8,8 @@ This script runs the update_byline function on all the titles
 
 from podiobooks.core.models import Title, TitleContributor, update_byline
 
-def updateBylines():
+def update_bylines():
+    """Fix Bylines for Titles by applying cleanup rules"""
     titles = Title.objects.all()
     for title in titles:
         print title.name
@@ -17,4 +18,4 @@ def updateBylines():
 
 ##### MAIN FUNCTION TO RUN IF THIS SCRIPT IS CALLED ALONE ###
 if __name__ == "__main__":
-    updateBylines()
+    update_bylines()

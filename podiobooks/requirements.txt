@@ -12,3 +12,4 @@ markdown
 pil
 simplejson
 south
+tastypie

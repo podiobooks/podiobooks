@@ -2,7 +2,7 @@
     This file provides translation from unstructured authors to structured authors during data migration
 """
 
-award_translation = {
+AWARD_TRANSLATION = {
                       
                       
                       '40':  ['parsec-awards-2006-winner', ],
@@ -43,8 +43,10 @@ award_translation = {
                       }
 
 def translate_award(title_id):
+    """Translate an award ID to an award slug"""
+
     try:
-        award_list = award_translation[title_id]
+        award_list = AWARD_TRANSLATION[title_id]
     except:
         award_list = None
         

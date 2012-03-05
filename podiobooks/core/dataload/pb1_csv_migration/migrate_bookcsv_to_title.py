@@ -6,7 +6,7 @@ This script reads in an "CSV for Excel" export from phpMyAdmin into a the new Po
 ##############################################
 """
 
-# pylint: disable=E0611,F0401,W0401,W0614
+# pylint: disable=E0611,F0401,W0401,W0614,W0612,R0914
 
 import csv # first we need import necessary lib:csv
 from podiobooks.core.models import *
@@ -20,16 +20,16 @@ from podiobooks.core.dataload.data_cleanup import series_translation
 def determine_license(license_slug):
     """Function to look up the license object to attach to the Title"""
     try:
-        license = License.objects.get(slug=license_slug)
+        found_license = License.objects.get(slug=license_slug)
     except:
         if license_slug[:2] == 'by':
-            license = License.objects.create(slug=license_slug)
+            found_license = License.objects.create(slug=license_slug)
         elif license_slug == 'all':
-            license = License.objects.create(slug=license_slug)
+            found_license = License.objects.create(slug=license_slug)
         else:
-            license = license = License.objects.get(slug='by-nc-nd')
+            found_license = License.objects.get(slug='by-nc-nd')
     
-    return license
+    return found_license
 
 ###### Define general utility functions ##########
 def boolean_clean(data):
@@ -46,7 +46,7 @@ def get_or_create_award(award_slug):
     """Retrieves or creates an Award type based on the slug of the award"""
 
     award, created = Award.objects.get_or_create(slug__iexact=award_slug,
-              defaults={ 'slug': award_slug, 'name':award_slug, 'image': 'unknown', 'url': 'unknown' })
+              defaults={ 'slug': award_slug, 'name': award_slug, 'image': 'unknown', 'url': 'unknown' })
     return award
 
 def get_or_create_contributor(contributor_name):
@@ -207,7 +207,7 @@ def create_titles_from_book_rows(title_list):
                 date_created=row['DateCreated']
             )
             
-            """ Contributors """
+            # Contributors
             contributor_list = contributor_translation.translate_contributor(row['Authors']) #Manual Contributor Lookup Translation
             for contributor in contributor_list:
                 contributorObject = get_or_create_contributor(contributor['name'])
@@ -215,7 +215,7 @@ def create_titles_from_book_rows(title_list):
                 TitleContributor.objects.create(title=title, contributor=contributorObject, contributor_type=contributorType)
             print "Title: %s\n\t\tContributors: %s" % (title.name, title.contributors.values('display_name'))
             
-            """ Awards """
+           # Awards
             award_list = award_translation.translate_award(row['ID']) #Manual Award Lookup Translation
             if award_list:
                 for awardSlug in award_list:
@@ -223,14 +223,14 @@ def create_titles_from_book_rows(title_list):
                     title.awards.add(awardObject)
                 print "\t\tAwards: %s" % (title.awards.values('name'))
             
-            """ Series """
+            # Series
             series_slug = series_translation.translate_series(row['ID']) #Manual Series Lookup Translation
             if series_slug:
                 seriesObject = get_or_create_series(series_slug)
                 title.series = seriesObject
                 print "\t\tSeries: %s" % (title.series.name)
             
-            """ Category """
+            # Category
             category = get_category(row['CategoryID'])
             if category:
                 TitleCategory.objects.create(title=title,category=category)
@@ -238,7 +238,7 @@ def create_titles_from_book_rows(title_list):
                 if category.slug == 'erotica':
                     title.is_adult = True
             
-            """ Partner """
+            # Partner
             partner = get_partner(row['PartnerID'])
             if partner:
                 title.partner = partner

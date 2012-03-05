@@ -7,8 +7,7 @@ You can use this script to load fresh from the CSV files, and then do manage.py 
 # pylint: disable=E0611,F0401,W0401,W0614
 
 
-from django.core.management.base import BaseCommand, CommandError
-from podiobooks.core.dataload import data_cleanup
+from django.core.management.base import BaseCommand
 from podiobooks.core.dataload.pb1_csv_migration.migrate_bookcategorycsv_to_category import *
 from podiobooks.core.dataload.pb1_csv_migration.migrate_partnercsv_to_partner import *
 from podiobooks.core.dataload.pb1_csv_migration.migrate_bookcsv_to_title import *
@@ -17,6 +16,7 @@ from podiobooks.core.dataload.pb1_csv_migration.migrate_bookratingcsv_to_title i
 from podiobooks.core.dataload.pb1_csv_migration.extract_libsyn_show_id_cache import *
 
 class Command(BaseCommand):
+    """Defines a manage.py command to load PB1 Data in CSV format into PB2 Data Structures"""
     args = ''
     help = 'Imports CSV Data Through Models Into DB'
 
