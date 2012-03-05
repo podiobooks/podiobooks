@@ -10,9 +10,7 @@ This script reads in an "CSV for Excel" export from phpMyAdmin into a the new Po
 
 import csv # first we need import necessary lib:csv
 from podiobooks.core.models import *
-from django.template.defaultfilters import slugify
 from podiobooks.libsyn import libsyn_utils
-import pprint
 
 #Define functions for use in importing chapters
 def get_title(pb1_book_id):
@@ -38,6 +36,7 @@ def import_chapters_from_csv():
     create_episodes_from_chapter_rows(chapter_csv_reader)
 
 def create_episodes_from_chapter_rows(chapter_list):
+    """Create Episode objects from each PB1 Chapter"""
   
     # Loop through the rows
     for row in chapter_list:
@@ -75,7 +74,7 @@ def create_episodes_from_chapter_rows(chapter_list):
                         episode.title.save()
                         print "LibsynShowId:" + episode.title.libsyn_show_id
         else:
-            "Could not find TitleID#%s" % row['BookID']
+            print ("Could not find TitleID#%s" % row['BookID'])
     
 ##### MAIN FUNCTION TO RUN IF THIS SCRIPT IS CALLED ALONE ###
 if __name__ == "__main__":
