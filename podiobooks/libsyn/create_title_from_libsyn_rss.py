@@ -1,16 +1,14 @@
-'''
-Created on Mar 7, 2011
-
-@author: cyface
-'''
+"""
+Create a PB2 Title Object by parsing a libsyn RSS feed.
+"""
 
 import feedparser
 
-def create_title_from_libsyn_rss(rssFeedUrl):
+def create_title_from_libsyn_rss(rss_feed_url):
     """Parses a libsyn-generated RSS feed"""
     title = {}
     
-    feed = feedparser.parse(rssFeedUrl)
+    feed = feedparser.parse(rss_feed_url)
     if feed.feed:
         feed = feed.feed
     print feed

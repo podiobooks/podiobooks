@@ -14,7 +14,7 @@ from podiobooks.core.models import *
 from django.template.defaultfilters import slugify
 
 def import_book_categories_from_csv():
-    # Now, begin reading in the CSV and using the Django model objects to populate the DB
+    """Import PB1 Book Categories from the CSV Export file"""
     
     #Open Category File for Import
     categoryCSVFile = open(settings.DATALOAD_DIR + "podiobooks_legacy_bookcategory_table.csv") #prepare a csv file for our example
@@ -33,6 +33,8 @@ def import_book_categories_from_csv():
 
 
 def create_categories_from_rows(title_list):
+    """ Create PB2 Category Objects for each row in the PB1 CSV Extract"""
+
     # Loop through the rest of the rows in the CSV
     for row in title_list:
         print row

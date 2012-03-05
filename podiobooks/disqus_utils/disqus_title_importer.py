@@ -1,8 +1,4 @@
-'''
-Created on Feb 22, 2011
-
-@author: cyface
-'''
+"""Import comments from podiobooker blog into Disqus for a given title"""
 
 import feedparser
 
