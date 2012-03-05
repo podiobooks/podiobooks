@@ -109,7 +109,7 @@ SERVER_EMAIL = 'a real email address'
 ### django-registration Settings
 ACCOUNT_ACTIVATION_DAYS = 14
 
-### Local add-ons to main inclusion variables
+### Local add-ons to core inclusion variables
 # TEMPLATE_CONTEXT_PROCESSORS +=
 
 ### DEBUG TOOLBAR

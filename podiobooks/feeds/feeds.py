@@ -7,7 +7,7 @@ from django.utils.html import strip_tags
 from django.utils.feedgenerator import Rss201rev2Feed
 from django.conf import settings
 
-from podiobooks.main.models import Title, Episode
+from podiobooks.core.models import Title, Episode
 from podiobooks.feeds import feed_tools
 from podiobooks.feeds.protocols.itunes import ITunesFeed
 
