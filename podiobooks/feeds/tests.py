@@ -5,7 +5,7 @@
 from django.test import TestCase
 from django.test.client import Client
 from django.contrib.auth.models import User
-from podiobooks.main.models import Title, Episode
+from podiobooks.core.models import Title, Episode
 from datetime import datetime, timedelta
 
 class FeedUrlTestCase(TestCase):
