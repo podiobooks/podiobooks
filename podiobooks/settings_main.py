@@ -11,7 +11,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.debug',
     'django.core.context_processors.auth',
     'django.core.context_processors.media',
-    'podiobooks.main.context_processors.js_api_keys',
+    'podiobooks.core.context_processors.js_api_keys',
     'django.core.context_processors.request',
     'django.core.context_processors.static',
 )
@@ -57,7 +57,7 @@ INSTALLED_APPS = (
     'taggit',
     'podiobooks',
     'feeds',
-    'main',
+    'core',
     'profile',
     'south',
     

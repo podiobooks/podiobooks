@@ -14,10 +14,10 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Home Page
-    url(r'^$', 'podiobooks.main.views.index', name="home_page"),
+    url(r'^$', 'podiobooks.core.views.index', name="home_page"),
                        
-    # URLs from main package
-    (r'^', include('podiobooks.main.urls')),
+    # URLs from core package
+    (r'^', include('podiobooks.core.urls')),
 
     # Admin documentation
     (r'^admin/doc/', include('django.contrib.admindocs.urls')),
@@ -40,7 +40,7 @@ urlpatterns = patterns('',
     
 # Databrowse setup
 from django.contrib import databrowse
-from podiobooks.main.models import Category, Contributor, Episode, Title
+from podiobooks.core.models import Category, Contributor, Episode, Title
 
 databrowse.site.register(Category)
 databrowse.site.register(Contributor)
