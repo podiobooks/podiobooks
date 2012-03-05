@@ -14,7 +14,7 @@ from django.conf import settings
 DATALOAD_DIR = settings.DATALOAD_DIR
 
 ## Main Function ##
-def extractLibsynShowIdCache():
+def extract_libsyn_showid_cache():
     titles = Title.objects.exclude(libsyn_show_id="").values_list('id', 'libsyn_show_id')
     print titles
     
@@ -36,4 +36,5 @@ def extractLibsynShowIdCache():
 
 ##### MAIN FUNCTION TO RUN IF THIS SCRIPT IS CALLED ALONE ###
 if __name__ == "__main__":
-    extractLibsynShowIdCache()
+    """extract libsyn ids from libsyn for podiobooks titles"""
+    extract_libsyn_showid_cache()

@@ -11,7 +11,7 @@ from django.conf import settings
 from podiobooks.main.models import *
 from django.template.defaultfilters import slugify
 
-def importBookCategoriesFromCSV():
+def import_book_categories_from_csv():
     # Now, begin reading in the CSV and using the Django model objects to populate the DB
     
     #Open Category File for Import
@@ -27,10 +27,10 @@ def importBookCategoriesFromCSV():
     #PRE CLEANOUT
     Category.objects.all().delete()
     
-    createCategoriesFromRows(categoryCSVReader)
+    create_categories_from_rows(categoryCSVReader)
 
 
-def createCategoriesFromRows(titleList):    
+def create_categories_from_rows(titleList):
     # Loop through the rest of the rows in the CSV
     for row in titleList:
         print row
@@ -46,7 +46,7 @@ def createCategoriesFromRows(titleList):
 
 ##### MAIN FUNCTION TO RUN IF THIS SCRIPT IS CALLED ALONE ###
 if __name__ == "__main__":
-    importBookCategoriesFromCSV()
+    import_book_categories_from_csv()
     
     
 # HANDY MAPPING REFERENCE

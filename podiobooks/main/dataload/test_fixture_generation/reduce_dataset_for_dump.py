@@ -12,7 +12,7 @@ from django.contrib.comments.models import Comment
 
 #Book/Title Helper Functions
 
-def reduceData():
+def reduce_data():
     """Function to delete data from the database to get down to a reduced subset"""
     titles_to_delete = Title.objects.exclude(Q(slug='shadowmagic')|Q(slug='earthcore')|Q(slug='trader-tales-4-double-share')|Q(slug='the-plump-buffet'))
     print titles_to_delete
@@ -34,5 +34,5 @@ def reduceData():
     
 ##### MAIN FUNCTION TO RUN IF THIS SCRIPT IS CALLED ALONE ###
 if __name__ == "__main__":
-    reduceData()
+    reduce_data()
 
