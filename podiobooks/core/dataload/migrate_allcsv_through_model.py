@@ -3,12 +3,12 @@
 # pylint: disable=E0611,F0401,W0401,W0614
 
 from podiobooks.core.dataload.data_cleanup import *
-from pb1_csv_migration.migrate_bookcategorycsv_to_category import *
-from pb1_csv_migration.migrate_partnercsv_to_partner import *
-from pb1_csv_migration.migrate_bookcsv_to_title import *
-from pb1_csv_migration.migrate_chaptercsv_to_episode import *
-from pb1_csv_migration.migrate_bookratingcsv_to_title import *
-from pb1_csv_migration.extract_libsyn_show_id_cache import *
+from podiobooks.core.dataload.pb1_csv_migration.migrate_bookcategorycsv_to_category import *
+from podiobooks.core.dataload.pb1_csv_migration.migrate_partnercsv_to_partner import *
+from podiobooks.core.dataload.pb1_csv_migration.migrate_bookcsv_to_title import *
+from podiobooks.core.dataload.pb1_csv_migration.migrate_chaptercsv_to_episode import *
+from podiobooks.core.dataload.pb1_csv_migration.migrate_bookratingcsv_to_title import *
+from podiobooks.core.dataload.pb1_csv_migration.extract_libsyn_show_id_cache import *
 
 # IMPORT CATEGORIES
 import_book_categories_from_csv()

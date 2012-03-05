@@ -2,9 +2,9 @@ from django.db import connections, transaction
 import csv, cStringIO, codecs
 from podiobooks.core.models import Title, Category, Episode, Partner, Rating
 from django.db.models import Max
-from podiobooks.core.dataload.pb1_csv_migration.migrate_bookcsv_to_title import createTitlesFromRows
-from podiobooks.core.dataload.pb1_csv_migration.migrate_chaptercsv_to_episode import createEpisodesFromRows
-from podiobooks.core.dataload.pb1_csv_migration.migrate_bookratingcsv_to_title import createRatingsFromRows
+from podiobooks.core.dataload.pb1_csv_migration.migrate_bookcsv_to_title import create_titles_from_book_rows
+from podiobooks.core.dataload.pb1_csv_migration.migrate_chaptercsv_to_episode import create_episodes_from_chapter_rows
+from podiobooks.core.dataload.pb1_csv_migration.migrate_bookratingcsv_to_title import create_ratings_from_rows
 from itertools import izip
 
 def get_book_data(cursor, last_book_id):
@@ -25,7 +25,7 @@ def get_book_data(cursor, last_book_id):
     
     if len(books) > 0:
         print ('%d books need to be loaded.' % len(books))
-        createTitlesFromRows(books)
+        create_titles_from_book_rows(books)
     else:
         print ('No new books needs to be loaded.')
 
@@ -47,7 +47,7 @@ def get_chapter_data(cursor, last_chapter_id):
     
     if len(chapters) > 0:
         print ('%d episodes need to be loaded.' % len(chapters))
-        createEpisodesFromRows(chapters)
+        create_episodes_from_chapter_rows(chapters)
     else:
         print ('No new episodes needs to be loaded.')
         
@@ -59,7 +59,7 @@ def get_ratings_data(cursor, last_rating_id):
     
     ratings = []
     
-    """ Merges the col names and data into a dictionary object """
+    # Merges the col names and data into a dictionary object
     while True:
         row = cursor.fetchone()
         if row is None:
@@ -69,7 +69,7 @@ def get_ratings_data(cursor, last_rating_id):
     
     if len(ratings) > 0:
         print ('%d ratings need to be loaded.' % len(ratings))
-        createRatingsFromRows(ratings)
+        create_ratings_from_rows(ratings)
     else:
         print ('No new ratings need to be loaded.')
 
@@ -100,8 +100,8 @@ def get_max_partner_id():
 
 ##### MAIN FUNCTION TO RUN IF THIS SCRIPT IS CALLED ALONE ###
 if __name__ == "__main__":
-    cursor = connections['pb1prod'].cursor()
-    get_book_data(cursor, get_max_book_id())
-    get_chapter_data(cursor, get_max_episode_id())
-    get_ratings_data(cursor, get_max_rating_id())
+    DB_CURSOR = connections['pb1prod'].cursor()
+    get_book_data(DB_CURSOR, get_max_book_id())
+    get_chapter_data(DB_CURSOR, get_max_episode_id())
+    get_ratings_data(DB_CURSOR, get_max_rating_id())
     

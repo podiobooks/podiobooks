@@ -10,7 +10,6 @@ This script reads in an "CSV for Excel" export from phpMyAdmin into a the new Po
 
 import csv # first we need import necessary lib:csv
 from podiobooks.core.models import *
-from django.template.defaultfilters import slugify
 
 def import_partners_from_csv():
     # Now, begin reading in the CSV and using the Django model objects to populate the DB
@@ -27,6 +26,8 @@ def import_partners_from_csv():
     create_partners_from_rows(partnerCSVReader)
 
 def create_partners_from_rows(partner_list):
+    """Create Pb2 Partner Objects for each PB1 Partner CSV Row"""
+
     # Loop through the rest of the rows in the CSV
     for row in partner_list:
         print row
@@ -40,7 +41,7 @@ def create_partners_from_rows(partner_list):
             deleted=False,
             date_created=row['datecreated'],
         )
-        print "Partner: %s" % (partner.name)
+        print ("Partner: %s" % partner.name)
 
 ##### MAIN FUNCTION TO RUN IF THIS SCRIPT IS CALLED ALONE ###
 if __name__ == "__main__":

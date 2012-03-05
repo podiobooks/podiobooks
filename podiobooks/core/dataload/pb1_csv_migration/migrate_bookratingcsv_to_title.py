@@ -10,7 +10,6 @@ This script reads in an "CSV for Excel" export from phpMyAdmin into a the new Po
 
 import csv # first we need import necessary lib:csv
 from podiobooks.core.models import *
-from django.template.defaultfilters import slugify
 from django.core.exceptions import ObjectDoesNotExist
 
 #Define functions for use in importing ratings
@@ -37,13 +36,14 @@ def import_ratings_from_csv():
     create_ratings_from_rows(rating_csv_reader)
 
 def create_ratings_from_rows(ratings_list):
+    """Create PB2 Ratings Entries for each PB1 CSV Extract Row"""
    
     # Loop through the rest of the rows in the CSV
     print "Starting Ratings Load:"
     for row in ratings_list:
         found_title = get_title(row['BookID'])
         
-        if (found_title != None):
+        if found_title != None:
             # Update the title object in the database based on the current rating row
             if float(row['Overall']) >= 3.0:
                 found_title.promoter_count = found_title.promoter_count + 1
@@ -52,14 +52,14 @@ def create_ratings_from_rows(ratings_list):
             found_title.save()
             
         else:
-            "Could not find TitleID#%s" % row['BookID']
+            print ("Could not find TitleID#%s" % row['BookID'])
             
         try:
             last_rating = Rating.objects.latest()
         except ObjectDoesNotExist:
             last_rating = Rating()
         
-        if (last_rating.last_rating_id < int(row['RatingID'])):
+        if last_rating.last_rating_id < int(row['RatingID']):
             last_rating.last_rating_id = int(row['RatingID'])
             last_rating.date_created = row['DateCreated']
             last_rating.save()

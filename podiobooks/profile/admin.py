@@ -1,6 +1,6 @@
 """Admin site customizations for Podiobooks main"""
 
-# pylint: disable=C0111,E0602,F0401,R0904
+# pylint: disable=C0111,E0602,F0401,R0904,W0612
 
 from django.contrib import admin
 
