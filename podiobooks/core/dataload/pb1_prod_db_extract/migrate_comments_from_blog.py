@@ -1,5 +1,7 @@
 """Migrate comments from Podiobooker Blog to Local Comments"""
 
+# pylint: disable=W0612
+
 import os
 import sys
 import time
@@ -12,13 +14,13 @@ from django.contrib.contenttypes.models import ContentType
 from podiobooks.core.models import Title
 import tempfile
 
-LOCKFILE = tempfile.gettempdir() + "/update_feeds.lock"
+LOCKFILE_PATH = tempfile.gettempdir() + "/update_feeds.lock"
 
-feedlist = Title.objects.all().filter(podiobooker_blog_url__isnull=False).values('id', 'podiobooker_blog_url')
+FEEDLIST = Title.objects.all().filter(podiobooker_blog_url__isnull=False).values('id', 'podiobooker_blog_url')
 
 def update_feeds(verbose=False):
     """Grab latest data from podiobooker RSS feed"""
-    for feed in feedlist:
+    for feed in FEEDLIST:
         if verbose:
             print feed
         parsed_feed = feedparser.parse(feed['podiobooker_blog_url'] + 'feed/')
@@ -50,11 +52,11 @@ def main(argv):
 
 if __name__ == '__main__':
     try:
-        lockfile = os.open(LOCKFILE, os.O_CREAT | os.O_EXCL)
+        LOCKFILE = os.open(LOCKFILE_PATH, os.O_CREAT | os.O_EXCL)
     except OSError:
         sys.exit(0)
     try:
         sys.exit(main(sys.argv))
     finally:
-        os.close(lockfile)
-        os.unlink(LOCKFILE)
+        os.close(LOCKFILE)
+        os.unlink(LOCKFILE_PATH)

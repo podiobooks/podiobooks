@@ -8,7 +8,6 @@ This script exports a CSV mapping file of the title_id to libsyn_id mapping so w
 
 # pylint: disable=E0611,F0401,W0401,W0614
 
-import csv
 from podiobooks.core.models import *
 from podiobooks.core.dataload.pb1_prod_db_extract.unicode_writer import UnicodeWriter
 from django.conf import settings
@@ -17,6 +16,8 @@ DATALOAD_DIR = settings.DATALOAD_DIR
 
 ## Main Function ##
 def extract_libsyn_showid_cache():
+    """Extract libsyn show ids from libsyn and output in a cache CSV file"""
+
     titles = Title.objects.exclude(libsyn_show_id="").values_list('id', 'libsyn_show_id')
     print titles
     
@@ -38,5 +39,4 @@ def extract_libsyn_showid_cache():
 
 ##### MAIN FUNCTION TO RUN IF THIS SCRIPT IS CALLED ALONE ###
 if __name__ == "__main__":
-    """extract libsyn ids from libsyn for podiobooks titles"""
     extract_libsyn_showid_cache()

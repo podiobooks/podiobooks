@@ -2,7 +2,7 @@
     This file provides translation from unstructured authors to structured authors during data migration
 """
 
-contributor_translation = {
+CONTRIBUTOR_TRANSLATION = {
                       'jeff white': [{'name': 'Jeff White', 'type': 'Author'}, ],
                       'Mur Lafferty (editor)': [{'name': 'Mur Lafferty', 'type': 'Editor'}, ],
                       'Jeff Kafer (Editor)': [{'name': 'Jeffrey Kafer', 'type': 'Editor'}, ],
@@ -48,8 +48,9 @@ contributor_translation = {
                       }
 
 def translate_contributor(legacy_display_name):
+    """Translate from a PB1 Contributor text name to a cleaned PB2 Name"""
     try:
-        translated_name = contributor_translation[legacy_display_name]
+        translated_name = CONTRIBUTOR_TRANSLATION[legacy_display_name]
     except:
         translated_name = [{'name': legacy_display_name, 'type': 'Author' }, ]
         
