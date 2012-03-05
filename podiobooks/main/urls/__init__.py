@@ -34,7 +34,10 @@ urlpatterns = patterns('',
     url(r'^episode/(?P<object_id>[^/]+)/$', 'django.views.generic.list_detail.object_detail', {'queryset': Episode.objects.all(), 'template_object_name': 'episode', 'template_name': 'main/episode/episode_detail.html'}, name='episode_detail'),
 
     # Lazy Loaders
-    (r'^lazy/',include('podiobooks.main.urls.urls_lazy')),
+    url(r'^featured/$','podiobooks.main.views.homepage_featured',name="lazy_load_featured_title"),
+    url(r'^featured/(?P<cat>[\w\-]+)/$','podiobooks.main.views.homepage_featured',name="lazy_load_featured_title_cat"),
+    url(r'^top-rated/$','podiobooks.main.views.top_rated',name="lazy_load_top_rated_title"),
+    url(r'^top-rated/(?P<author>[\w\-]+)/$','podiobooks.main.views.top_rated',name="lazy_load_top_rated_title_author"),
 
     # API
     (r'^api/',include('podiobooks.main.urls.urls_api')),
