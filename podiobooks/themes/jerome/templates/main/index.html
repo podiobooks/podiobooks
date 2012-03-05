@@ -61,7 +61,7 @@
 <script>
     $('#id_category').change(function () {
         $.ajax({
-            url:"/lazy/featured/" + $('#id_category').val(),
+            url:"/featured/" + $('#id_category').val(),
             success:function (html) {
                 $("#featured-shelf").html(html);
             }
@@ -69,7 +69,7 @@
     });
     $('#id_contributor').change(function () {
         $.ajax({
-            url:"/lazy/top-rated/" + $('#id_contributor').val(),
+            url:"/top-rated/" + $('#id_contributor').val(),
             success:function (html) {
                 $("#top-rated-shelf").html(html);
             }
