@@ -1,42 +1,50 @@
+"""Import JSON Data Structure from iTunes to grab iTunes IDs for podiobooks titles"""
+
 import json
 from django.conf import settings
 
-# Open File for parsing
-itunesJsonFile = open(settings.DATALOAD_DIR + "podiobooks_itunes_data.json")
-itunesJson = itunesJsonFile.read()
+def parse_itunes_json():
+    # Open File for parsing
+    itunes_json_file = open(settings.DATALOAD_DIR + "podiobooks_itunes_data.json")
+    itunes_json = itunes_json_file.read()
 
-# Fix invalid JSON
-itunesJson = itunesJson.replace("{originalFeedURL:", "{\"originalFeedURL\":")
-itunesJson = itunesJson.replace(",artistId:", ",\"artistId\":")
-itunesJson = itunesJson.replace(",title:", ",\"title\":")
-itunesJson = itunesJson.replace(",tags:", ",\"tags\":")
-itunesJson = itunesJson.replace(",lastPublishedDate:", ",\"lastPublishedDate\":")
-itunesJson = itunesJson.replace(",adamId:", ",\"adamId\":")
-itunesJson = itunesJson.replace(",lastChecked:", ",\"lastChecked\":")
-itunesJson = itunesJson.replace(",status:", ",\"status\":")
-itunesJson = itunesJson.replace(",themeName:", ",\"themeName\":")
-itunesJson = itunesJson.replace(",isAppleHosted:", ",\"isAppleHosted\":")
-itunesJson = itunesJson.replace(",contributors:", ",\"contributors\":")
-itunesJson = itunesJson.replace(",brandNew:", ",\"brandNew\":")
-itunesJson = itunesJson.replace(",numItems:", ",\"numItems\":")
-itunesJson = itunesJson.replace(",category:", ",\"category\":")
-itunesJson = itunesJson.replace(",shortFeedError:", ",\"shortFeedError\":")
+    # Fix invalid JSON
+    itunes_json = itunes_json.replace("{originalFeedURL:", "{\"originalFeedURL\":")
+    itunes_json = itunes_json.replace(",artistId:", ",\"artistId\":")
+    itunes_json = itunes_json.replace(",title:", ",\"title\":")
+    itunes_json = itunes_json.replace(",tags:", ",\"tags\":")
+    itunes_json = itunes_json.replace(",lastPublishedDate:", ",\"lastPublishedDate\":")
+    itunes_json = itunes_json.replace(",adamId:", ",\"adamId\":")
+    itunes_json = itunes_json.replace(",lastChecked:", ",\"lastChecked\":")
+    itunes_json = itunes_json.replace(",status:", ",\"status\":")
+    itunes_json = itunes_json.replace(",themeName:", ",\"themeName\":")
+    itunes_json = itunes_json.replace(",isAppleHosted:", ",\"isAppleHosted\":")
+    itunes_json = itunes_json.replace(",contributors:", ",\"contributors\":")
+    itunes_json = itunes_json.replace(",brandNew:", ",\"brandNew\":")
+    itunes_json = itunes_json.replace(",numItems:", ",\"numItems\":")
+    itunes_json = itunes_json.replace(",category:", ",\"category\":")
+    itunes_json = itunes_json.replace(",shortFeedError:", ",\"shortFeedError\":")
 
-itunesData = json.loads(itunesJson)
+    itunes_data = json.loads(itunes_json)
 
-cache_output_file = open (settings.DATALOAD_DIR + 'podiobooks_itunes_id_cache.csv', 'w')
+    cache_output_file = open (settings.DATALOAD_DIR + 'podiobooks_itunes_id_cache.csv', 'w')
 
-#svWriter = UnicodeWriter(cache_output_file)
+    #svWriter = UnicodeWriter(cache_output_file)
 
-# Print out the Title Row
-cache_output_file.write("\"ID\",\"Slug\",\"iTunesID\"\n")
+    # Print out the Title Row
+    cache_output_file.write("\"ID\",\"Slug\",\"iTunesID\"\n")
 
-for title in itunesData:
-    titleSlug = title['originalFeedURL'].replace("http://www.podiobooks.com/title/",",")
-    titleSlug = titleSlug.replace("/feed/", "")
-    titleSlug = titleSlug.replace("/feed", "")
-    titleSlug = titleSlug.replace("http://www.podiobooks.com/bookfeed/sampler/","")
-    titleSlug = titleSlug.replace("/book.xml",",")
-    titleSlug = titleSlug.replace("http://www.podiobooks.com/api/bookrss2.php?user=sampler&book=","")
-    titleSlug = titleSlug.replace("http://www.podiobooks.com/maint.htmltitle/origin-scroll?user=sampler&book=","")
-    cache_output_file.write( "%s,%s\n" % ( titleSlug, title['adamId'] ))
+    for title in itunes_data:
+        title_slug = title['originalFeedURL'].replace("http://www.podiobooks.com/title/",",")
+        title_slug = title_slug.replace("/feed/", "")
+        title_slug = title_slug.replace("/feed", "")
+        title_slug = title_slug.replace("http://www.podiobooks.com/bookfeed/sampler/","")
+        title_slug = title_slug.replace("/book.xml",",")
+        title_slug = title_slug.replace("http://www.podiobooks.com/api/bookrss2.php?user=sampler&book=","")
+        title_slug = title_slug.replace("http://www.podiobooks.com/maint.htmltitle/origin-scroll?user=sampler&book=","")
+        cache_output_file.write( "%s,%s\n" % ( title_slug, title['adamId'] ))
+
+##### MAIN FUNCTION TO RUN IF THIS SCRIPT IS CALLED ALONE ###
+if __name__ == "__main__":
+    """extract itunes ids for podiobooks titles"""
+    parse_itunes_json()

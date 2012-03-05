@@ -2,12 +2,13 @@ from django.db import connections, transaction
 import csv, cStringIO, codecs
 from podiobooks.main.models import Title, Category, Episode, Partner, Rating
 from django.db.models import Max
-from pb1_csv_migration.migrate_bookcsv_to_title import createTitlesFromRows
-from pb1_csv_migration.migrate_chaptercsv_to_episode import createEpisodesFromRows
-from pb1_csv_migration.migrate_bookratingcsv_to_title import createRatingsFromRows
+from podiobooks.main.dataload.pb1_csv_migration.migrate_bookcsv_to_title import createTitlesFromRows
+from podiobooks.main.dataload.pb1_csv_migration.migrate_chaptercsv_to_episode import createEpisodesFromRows
+from podiobooks.main.dataload.pb1_csv_migration.migrate_bookratingcsv_to_title import createRatingsFromRows
 from itertools import izip
 
 def get_book_data(cursor, last_book_id):
+    """Get Book Data from Live PB1 Database"""
     cursor.execute("SELECT * FROM book WHERE enabled = 1 AND standby = 0 AND id > %s", [last_book_id,])
 
     col_names = [desc[0] for desc in cursor.description]
@@ -29,6 +30,7 @@ def get_book_data(cursor, last_book_id):
         print ('No new books needs to be loaded.')
 
 def get_chapter_data(cursor, last_chapter_id):
+    """Get Chapter Data from Live PB1 Database"""
     cursor.execute("SELECT chapter.* FROM chapter, book WHERE chapter.bookid = book.id AND book.enabled = 1 AND book.standby = 0 AND chapter.id > %s", [last_chapter_id,])
 
     col_names = [desc[0] for desc in cursor.description]
@@ -50,6 +52,7 @@ def get_chapter_data(cursor, last_chapter_id):
         print ('No new episodes needs to be loaded.')
         
 def get_ratings_data(cursor, last_rating_id):
+    """Get Ratings Data from Live PB1 Database"""
     cursor.execute("SELECT bookrating.* FROM bookrating, book WHERE bookrating.bookid = book.id AND book.enabled = 1 AND book.standby = 0 AND bookrating.ratingid > %s", [last_rating_id,])
 
     col_names = [desc[0] for desc in cursor.description]
@@ -71,22 +74,27 @@ def get_ratings_data(cursor, last_rating_id):
         print ('No new ratings need to be loaded.')
 
 def get_max_book_id():
+    """Get Max Book ID Currently Loaded"""
     max_id_results = Title.objects.aggregate(max_id=Max('id'))
     return max_id_results['max_id']
 
 def get_max_episode_id():
+    """Get Max Episode ID Currently Loaded"""
     max_id_results = Episode.objects.aggregate(max_id=Max('id'))
     return max_id_results['max_id']
 
 def get_max_rating_id():
+    """Get Max Rating ID Currently Loaded"""
     max_id_results = Rating.objects.aggregate(max_id=Max('last_rating_id'))
     return max_id_results['max_id']
 
 def get_max_category_id():
+    """Get Max Category ID Currently Loaded"""
     max_id_results = Category.objects.aggregate(max_id=Max('id'))
     return max_id_results['max_id']
 
 def get_max_partner_id():
+    """Get Max partner ID Currently Loaded"""
     max_id_results = Partner.objects.aggregate(max_id=Max('id'))
     return max_id_results['max_id']
 
