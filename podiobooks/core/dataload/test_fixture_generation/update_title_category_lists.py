@@ -9,6 +9,7 @@ This script runs the update_category_list function on all the titles to regenera
 from podiobooks.core.models import Title, TitleCategory, update_category_list
 
 def update_category_lists():
+    """Update the category lists for all titles"""
     titles = Title.objects.all()
     for title in titles:
         print title.name

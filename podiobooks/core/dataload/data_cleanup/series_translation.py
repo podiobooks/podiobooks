@@ -2,7 +2,7 @@
     This file provides translation from unstructured titles to structured series during data migration
 """
 
-series_translation = {
+SERIES_TRANSLATION = {
                       '53': '7th-son',
                       '103': '7th-son',
                       '192': '7th-son',
@@ -21,8 +21,9 @@ series_translation = {
                       }
 
 def translate_series(title_id):
+    """Translate from a PB1 Book ID to a PB2 Series Slug"""
     try:
-        series = series_translation[title_id]
+        series = SERIES_TRANSLATION[title_id]
     except:
         series = None
         

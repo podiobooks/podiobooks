@@ -14,6 +14,7 @@ class UnicodeWriter:
     """
 
     def __init__(self, f, dialect=csv.excel, encoding="utf-8", **kwds):
+        """Initialize the Unicodewriter"""
         # Redirect output to a queue
         self.queue = cStringIO.StringIO()
         self.writer = csv.writer(self.queue, dialect=dialect, **kwds)
@@ -21,6 +22,7 @@ class UnicodeWriter:
         self.encoder = codecs.getincrementalencoder(encoding)()
 
     def writerow(self, row):
+        """Write a unicode row to a file"""
         self.writer.writerow([unicode(s).encode('utf-8', 'ignore') for s in row])
         # Fetch UTF-8 output from the queue ...
         data = self.queue.getvalue()
@@ -33,5 +35,6 @@ class UnicodeWriter:
         self.queue.truncate(0)
 
     def writerows(self, rows):
+        """Write all the rows to a file"""
         for row in rows:
             self.writerow(row)

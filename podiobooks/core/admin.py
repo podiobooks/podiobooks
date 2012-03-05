@@ -10,57 +10,70 @@ class TitleInline(admin.TabularInline):
     model = Title
     exclude = ("deleted", "date_created", "date_updated")
 
+
 class TitleContributorAdmin(admin.ModelAdmin):
-    list_display = ('title','contributor', 'contributor_type')
+    list_display = ('title', 'contributor', 'contributor_type')
     exclude = ("date_created", "date_updated")
+
 
 class TitleContributorInline(admin.TabularInline):
     model = TitleContributor
     exclude = ("date_created", "date_updated")
 
+
 class EpisodeInline(admin.TabularInline):
     model = Episode
     exclude = ("deleted", "date_created", "date_updated")
 
+
 class AwardAdmin(admin.ModelAdmin):
     list_display = ('name',)
+
 
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('name',)
     prepopulated_fields = {'slug': ('name',)}
     exclude = ('date_created', 'date_updated',)
-    
+
+
 class ContributorAdmin(admin.ModelAdmin):
     inlines = [
-            TitleContributorInline,
+        TitleContributorInline,
         ]
     exclude = ("deleted", "date_created", "date_updated")
-    
+
+
 class EpisodeAdmin(admin.ModelAdmin):
     list_display = ('sequence', 'name', 'description', 'url', 'filesize')
 
+
 class LicenseAdmin(admin.ModelAdmin):
     list_display = ('slug', 'text',)
-    
+
+
 class PartnerAdmin(admin.ModelAdmin):
     list_display = ('name', 'url',)
     exclude = ('date_created', 'date_updated',)
+
 
 class SeriesAdmin(admin.ModelAdmin):
     list_display = ('name',)
     prepopulated_fields = {'slug': ('name',)}
     exclude = ("date_created", "date_updated",)
 
+
 class TitleAdmin(admin.ModelAdmin):
     date_hierarchy = 'date_created'
-    list_display = ('name', 'license', 'advisory', 'is_explicit', 'is_adult', 'is_complete', 'display_on_homepage', 'date_updated')
+    list_display = (
+        'name', 'license', 'advisory', 'is_explicit', 'is_adult', 'is_complete', 'display_on_homepage', 'date_updated')
     list_editable = ('display_on_homepage',)
-    list_filter = ('license', 'advisory', 'display_on_homepage', 'is_complete', 'is_explicit', 'is_adult', 'date_updated')
+    list_filter = (
+        'license', 'advisory', 'display_on_homepage', 'is_complete', 'is_explicit', 'is_adult', 'date_updated')
     exclude = ("date_updated", "avg_overall", "avg_audio_quality", 'avg_narration', 'avg_writing')
     inlines = [
-            EpisodeInline,
-            TitleContributorInline
-        ]
+        EpisodeInline,
+        TitleContributorInline
+    ]
     ordering = ['name']
     prepopulated_fields = {"slug": ("name",)}
     save_on_tap = True

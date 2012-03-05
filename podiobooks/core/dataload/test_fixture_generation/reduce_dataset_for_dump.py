@@ -6,6 +6,8 @@ This script deletes things from the database to get down to a reduced dataset fo
 ##############################################
 """
 
+# pylint: disable=E0611,F0401,W0401,W0614
+
 from podiobooks.core.models import *
 from django.db.models import Q
 from django.contrib.comments.models import Comment
@@ -18,10 +20,10 @@ def reduce_data():
     print titles_to_delete
     titles_to_delete.delete()
     
-    id_list = Title.objects.all().values('id')
+    id_list = Title.objects.all().values('title_id')
     id_list_strings = []
-    for id in id_list:
-        id_list_strings.append(str(id['id']))
+    for title_id in id_list:
+        id_list_strings.append(str(title_id['title_id']))
     print id_list_strings
     
     comments_to_delete = Comment.objects.exclude(object_pk__in=id_list_strings)
