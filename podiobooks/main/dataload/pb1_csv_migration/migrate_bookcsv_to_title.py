@@ -15,7 +15,7 @@ from podiobooks.main.dataload.data_cleanup import series_translation
 
 #Book/Title Helper Functions
 
-def determineLicense(licenseSlug):
+def determine_license(licenseSlug):
     """Function to look up the license object to attach to the Title"""
     try:
         license = License.objects.get(slug=licenseSlug)
@@ -30,7 +30,7 @@ def determineLicense(licenseSlug):
     return license
 
 ###### Define general utility functions ##########
-def booleanClean(data):
+def boolean_clean(data):
     """Function to check fields that we need to convert to boolean"""
     if (data == None) or (data == ''):
         return 0
@@ -40,14 +40,14 @@ def booleanClean(data):
         else:
             return False
     
-def getOrCreateAward(awardSlug):
+def get_or_create_award(awardSlug):
     """Retrieves or creates an Award type based on the slug of the award"""
 
     award, created = Award.objects.get_or_create(slug__iexact=awardSlug,
               defaults={ 'slug': awardSlug, 'name':awardSlug, 'image': 'unknown', 'url': 'unknown' })
     return award
 
-def getOrCreateContributor(contributorName):
+def get_or_create_contributor(contributorName):
     """Retrieves or creates a Contributor object based on the name of the Contributor"""
     contributorName = contributorName.strip().replace('  ', ' ').replace('\\', '').replace('&apos;', '\'').replace('Theater', 'Theatre').replace('J. C.', 'J.C.').replace('J. A.', 'J.A.').replace('J. J.', 'J.J.').replace('J. T.', 'J.T.').replace('J. P.', 'J.P.').replace('JP', 'J.P.').replace('I G', 'I.G.')
     try:
@@ -67,7 +67,7 @@ def getOrCreateContributor(contributorName):
                   defaults={ 'display_name':contributorName, 'slug': slugify(contributorName), 'first_name': firstNameGuess, 'middle_name': middleNameGuess.replace(',', ''), 'last_name': lastNameGuess.replace(',', '').replace(' Ph.D.', '') })
     return contributor
 
-def getOrCreateContributorType(contributorType):
+def get_or_create_contributor_type(contributorType):
     """Retrieves or creates a Contributor type based on the name of the type"""
     contributorTypeSlug = slugify(contributorType)
     contributorTypeToBylineMapping = {
@@ -85,7 +85,7 @@ def getOrCreateContributorType(contributorType):
                   defaults={'name': contributorType, 'byline_text': byline_text })
     return contributorTypeObject
 
-def getCategory(categoryID):
+def get_category(categoryID):
     """Retrieves a category by id or none if not found"""
     try:
         category = Category.objects.get(id=categoryID)
@@ -94,7 +94,7 @@ def getCategory(categoryID):
     
     return category
 
-def getPartner(partnerID):
+def get_partner(partnerID):
     """Retrieves a partner by id or none if not found"""
     try:
         partner = Partner.objects.get(id=partnerID)
@@ -103,14 +103,14 @@ def getPartner(partnerID):
     
     return partner
 
-def getOrCreateSeries(seriesSlug):
+def get_or_create_series(seriesSlug):
     """Retrieves or creates an Series based on the slug of the series"""
 
     series, created = Series.objects.get_or_create(slug__iexact=seriesSlug,
               defaults={ 'slug': seriesSlug, 'name': seriesSlug, })
     return series
 
-def getLibsynIDCache():
+def get_libsyn_id_cache():
     libsynIDCache = {}
     
     #Open Cache File for Import
@@ -124,7 +124,7 @@ def getLibsynIDCache():
         
     return libsynIDCache
 
-def getiTunesIDCache():
+def get_itunes_id_cache():
     iTunesIDCache = {}
     
     #Open Cache File for Import
@@ -143,7 +143,7 @@ def getiTunesIDCache():
             
     return iTunesIDCache
 
-def importBooksFromCSV():
+def import_books_from_csv():
     """Reads in the CSV and using the Django model objects to populate the DB"""
     
     #Open Book File for Import
@@ -157,13 +157,13 @@ def importBooksFromCSV():
     TitleContributor.objects.all().delete()
     Contributor.objects.all().delete()
     
-    createTitlesFromRows(bookCSVReader)
+    create_titles_from_book_rows(bookCSVReader)
  
-def createTitlesFromRows(titleList):
+def create_titles_from_book_rows(titleList):
     """Takes a list of title rows from a database query or a CSV file read and creates Title objects"""
     
-    libsynIDCache = getLibsynIDCache()  #Load the Libsyn ID Cache from its CSV
-    iTunesIDCache = getiTunesIDCache()  #Load the iTunes ID Cache from its CSV
+    libsynIDCache = get_libsyn_id_cache()  #Load the Libsyn ID Cache from its CSV
+    iTunesIDCache = get_itunes_id_cache()  #Load the iTunes ID Cache from its CSV
     
     # Loop through the rest of the rows in the CSV
     for row in titleList:
@@ -184,14 +184,14 @@ def createTitlesFromRows(titleList):
                 id=row['ID'],
                 name=row['Title'].replace('\\', ''),
                 slug=slugify(row['Title']),
-                license=determineLicense(row['license']),
+                license=determine_license(row['license']),
                 description=row['Description'].replace('\\', ''),
                 cover=row['Coverimage'],
                 status=1,
-                display_on_homepage=booleanClean(row['DisplayOnHomepage']),
+                display_on_homepage=boolean_clean(row['DisplayOnHomepage']),
                 is_hosted_at_pb=True,
-                is_explicit=booleanClean(row['Explicit']),
-                is_complete=booleanClean(row['Complete']),
+                is_explicit=boolean_clean(row['Explicit']),
+                is_complete=boolean_clean(row['Complete']),
                 avg_audio_quality=row['AvgAudioQuality'],
                 avg_narration=row['AvgNarration'],
                 avg_writing=row['AvgWriting'],
@@ -206,8 +206,8 @@ def createTitlesFromRows(titleList):
             """ Contributors """
             contributorList = contributor_translation.translate_contributor(row['Authors']) #Manual Contributor Lookup Translation
             for contributor in contributorList:
-                contributorObject = getOrCreateContributor(contributor['name'])
-                contributorType = getOrCreateContributorType(contributor['type'])
+                contributorObject = get_or_create_contributor(contributor['name'])
+                contributorType = get_or_create_contributor_type(contributor['type'])
                 TitleContributor.objects.create(title=title, contributor=contributorObject, contributor_type=contributorType)
             print "Title: %s\n\t\tContributors: %s" % (title.name, title.contributors.values('display_name'))
             
@@ -215,19 +215,19 @@ def createTitlesFromRows(titleList):
             awardList = award_translation.translate_award(row['ID']) #Manual Award Lookup Translation
             if awardList:
                 for awardSlug in awardList:
-                    awardObject = getOrCreateAward(awardSlug)
+                    awardObject = get_or_create_award(awardSlug)
                     title.awards.add(awardObject)
                 print "\t\tAwards: %s" % (title.awards.values('name'))
             
             """ Series """
             seriesSlug = series_translation.translate_series(row['ID']) #Manual Series Lookup Translation
             if seriesSlug:
-                seriesObject = getOrCreateSeries(seriesSlug)
+                seriesObject = get_or_create_series(seriesSlug)
                 title.series = seriesObject
                 print "\t\tSeries: %s" % (title.series.name)
             
             """ Category """
-            category = getCategory(row['CategoryID'])
+            category = get_category(row['CategoryID'])
             if category:
                 TitleCategory.objects.create(title=title,category=category)
                 print "\t\tCategories: %s" % (title.categories.values('name'))
@@ -235,7 +235,7 @@ def createTitlesFromRows(titleList):
                     title.is_adult = True
             
             """ Partner """
-            partner = getPartner(row['PartnerID'])
+            partner = get_partner(row['PartnerID'])
             if partner:
                 title.partner = partner
                 print "\t\tPartner: %s" % (title.partner.name)
@@ -248,7 +248,7 @@ def createTitlesFromRows(titleList):
 
 ##### MAIN FUNCTION TO RUN IF THIS SCRIPT IS CALLED ALONE ###
 if __name__ == "__main__":
-    importBooksFromCSV()
+    import_books_from_csv()
     
     
 # HANDY MAPPING REFERENCE

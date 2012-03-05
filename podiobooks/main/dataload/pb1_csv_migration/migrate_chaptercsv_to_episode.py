@@ -13,7 +13,7 @@ from podiobooks.libsyn import libsyn_utils
 import pprint
 
 #Define functions for use in importing chapters
-def getTitle(legacyBookID):
+def get_title(legacyBookID):
     """Returns a Title object based on a Legacy Book ID"""
     try:
         foundTitle = Title.objects.get(id=legacyBookID)
@@ -21,7 +21,7 @@ def getTitle(legacyBookID):
         foundTitle = None
     return foundTitle
 
-def importChaptersFromCSV():
+def import_chapters_from_csv():
     """Loops through the chapter rows in the CSV and build Episode objects for them"""
     
     #Open Chapter File for Import
@@ -33,13 +33,13 @@ def importChaptersFromCSV():
     #PRE CLEANOUT
     Episode.objects.all().delete()
     
-    createEpisodesFromRows(chapterCSVReader)
+    create_episodes_from_chapter_rows(chapterCSVReader)
 
-def createEpisodesFromRows(chapterList):
+def create_episodes_from_chapter_rows(chapterList):
   
     # Loop through the rows
     for row in chapterList:
-        foundTitle = getTitle(row['BookID'])
+        foundTitle = get_title(row['BookID'])
         
         if (foundTitle != None):
             print "Found Title %s" % foundTitle.slug
@@ -77,7 +77,7 @@ def createEpisodesFromRows(chapterList):
     
 ##### MAIN FUNCTION TO RUN IF THIS SCRIPT IS CALLED ALONE ###
 if __name__ == "__main__":
-    importChaptersFromCSV()
+    import_chapters_from_csv()
 
 
 # Handy Mapping Reference:

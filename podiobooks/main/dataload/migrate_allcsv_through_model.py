@@ -1,27 +1,29 @@
 """This script reads in an "CSV for Excel" export from phpMyAdmin into a the new Podiobooks Schema"""
 
-from data_cleanup import *
+# pylint: disable=E0611,F0401,W0401,W0614
+
+from podiobooks.main.dataload.data_cleanup import *
+from pb1_csv_migration.migrate_bookcategorycsv_to_category import *
+from pb1_csv_migration.migrate_partnercsv_to_partner import *
+from pb1_csv_migration.migrate_bookcsv_to_title import *
+from pb1_csv_migration.migrate_chaptercsv_to_episode import *
+from pb1_csv_migration.migrate_bookratingcsv_to_title import *
+from pb1_csv_migration.extract_libsyn_show_id_cache import *
 
 # IMPORT CATEGORIES
-from pb1_csv_migration.migrate_bookcategorycsv_to_category import *
-importBookCategoriesFromCSV()
+import_book_categories_from_csv()
 
 # IMPORT PARTNERS
-from pb1_csv_migration.migrate_partnercsv_to_partner import *
-importPartnersFromCSV()
+import_partners_from_csv()
 
 # IMPORT BOOKS
-from pb1_csv_migration.migrate_bookcsv_to_title import *
-importBooksFromCSV()
+import_books_from_csv()
 
 # IMPORT CHAPTERS
-from pb1_csv_migration.migrate_chaptercsv_to_episode import *
-importChaptersFromCSV()
+import_chapters_from_csv()
 
 # IMPORT RATINGS
-from pb1_csv_migration.migrate_bookratingcsv_to_title import *
-importRatingsFromCSV()
+import_ratings_from_csv()
 
 # UPDATE LIBSYN SHOW ID CACHE
-from pb1_csv_migration.extract_libsyn_show_id_cache import *
-extractLibsynShowIdCache()
+extract_libsyn_showid_cache()
