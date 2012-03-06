@@ -1,5 +1,7 @@
 """Django TastyPie API Definitions"""
 
+# pylint: disable=R0904
+
 from tastypie.resources import ModelResource
 from podiobooks.core.models import Title
 
