@@ -1,4 +1,3 @@
-disqus-python
 django
 django-avatar
 django-debug-toolbar
