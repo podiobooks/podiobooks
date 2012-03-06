@@ -46,9 +46,9 @@ def create_ratings_from_rows(ratings_list):
         if found_title != None:
             # Update the title object in the database based on the current rating row
             if float(row['Overall']) >= 3.0:
-                found_title.promoter_count = found_title.promoter_count + 1
+                found_title.promoter_count += 1
             else:
-                found_title.detractor_count = found_title.detractor_count + 1
+                found_title.detractor_count += 1
             found_title.save()
             
         else:
