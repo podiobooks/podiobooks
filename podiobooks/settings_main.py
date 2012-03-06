@@ -52,12 +52,11 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.staticfiles',
-    'libsyn',
-    'taggit',
     'podiobooks',
-    'feeds',
-    'core',
-    'profile',
+    'podiobooks.core',
+    'podiobooks.libsyn',
+    'podiobooks.profile',
+    'podiobooks.feeds',
+    'taggit',
     'south',
-    
 )
