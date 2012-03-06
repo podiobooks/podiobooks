@@ -5,7 +5,7 @@
 		height: 350px;
 		width: 350px;
 		font-size: 15px;
-		font-family: "Arial Narrow";
+		font-family: "Arial Narrow", sans-serif;
 		background-color: #FFFFFF;
 	}
 	.title-summary-header {
@@ -16,7 +16,7 @@
 	.title-summary-name {
 		font-size: 11px;
 		font-weight: bold;
-		font-family: "Arial Black";
+		font-family: "Arial Black", sans-serif;
 	}
 	.title-summary-contributors {
 		font-size: 17px;
@@ -39,9 +39,7 @@
 	.title-summary-episodes-complete {
 		float: left;
 		vertical-align: text-top;
-		background-image: url("{{ STATIC_URL }}images/complete.png");
-		background-repeat: no-repeat;
-		background-position: left top;
+		background: url("{{ STATIC_URL }}images/complete.png") no-repeat left top;
 		padding-top: 1px;
 		margin-bottom: 1px;
 		margin-left: 30px;
