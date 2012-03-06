@@ -20,7 +20,7 @@ def contributor_list(request):
     """
     contributors = Contributor.objects.annotate(contributes_to_count = Count("titlecontributors"))
     response_data = {"contributor_list": contributors}
-    return render_to_response("main/contributor/contributor_list.html", response_data, context_instance=RequestContext(request))
+    return render_to_response("core/contributor/contributor_list.html", response_data, context_instance=RequestContext(request))
 
 def index(request):
     """
@@ -59,7 +59,7 @@ def index(request):
                      'contributor_choice_form': contributor_choice_form,
                      }
     #return HttpResponse(cache.get('category_dropdown_values').__str__())
-    return render_to_response('main/index.html', response_data, context_instance=RequestContext(request))
+    return render_to_response('core/index.html', response_data, context_instance=RequestContext(request))
 
 
 def title_list_by_category(request, category_slug='science-fiction', template_name='core/title/title_list.html'):
@@ -122,10 +122,10 @@ def title_search(request, keywords=None):
         search_metadata = None
         result_count = len(search_results)
         response_data = {'title_list': search_results, 'keywords': keywords, 'result_count': result_count, 'titleSearchForm': form, 'categoryChoiceForm':CategoryChoiceForm(), 'search_metadata': search_metadata}
-        return render_to_response('main/title/title_search_results.html', response_data, context_instance=RequestContext(request))
+        return render_to_response('core/title/title_search_results.html', response_data, context_instance=RequestContext(request))
     else:
         response_data = {'titleSearchForm': form}
-        return render_to_response('main/title/title_search_results.html', response_data, context_instance=RequestContext(request))
+        return render_to_response('core/title/title_search_results.html', response_data, context_instance=RequestContext(request))
 
 @cache_page(1)
 def homepage_featured(request, cat=None):
@@ -143,7 +143,7 @@ def homepage_featured(request, cat=None):
 
     featured_title_list = homepage_title_list.filter(categories__slug=cat).order_by('-date_created', 'name')[:16]
 
-    return render_to_response("main/shelf/shelf_items.html", {"items":featured_title_list}, context_instance=RequestContext(request))
+    return render_to_response("core/shelf/shelf_items.html", {"items":featured_title_list}, context_instance=RequestContext(request))
 
 @cache_page(1)
 def top_rated(request, author=None):
@@ -161,4 +161,4 @@ def top_rated(request, author=None):
 
     toprated_title_list = homepage_title_list.filter(promoter_count__gte=20).order_by('-promoter_count').all().filter(contributors__slug=author)[:18]
 
-    return render_to_response("main/shelf/shelf_items.html", {"items":toprated_title_list}, context_instance=RequestContext(request))
+    return render_to_response("core/shelf/shelf_items.html", {"items":toprated_title_list}, context_instance=RequestContext(request))
