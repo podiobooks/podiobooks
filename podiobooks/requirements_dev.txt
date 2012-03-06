@@ -2,6 +2,7 @@
 coverage
 django-nose
 gondor
+pylint
 nose
 nosexcover
 sphinx
