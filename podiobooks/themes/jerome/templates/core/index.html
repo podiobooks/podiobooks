@@ -17,41 +17,41 @@
 
 <h2 class='shelf-heading shelf-heading-dark'>Featured</h2>
 {{category_choice_form.as_p}}
-<div id="featured-shelf" class='shelf shelf-dark clearfix'>
+<section id="featured-shelf" class='shelf shelf-dark clearfix'>
     {% for title in featured_title_list %}
     {% show_shelf_item 'featured-shelf' title %}
     {% endfor %}
-</div>
+</section>
 
 <h2 class='shelf-heading shelf-heading-light'>Top Authors</h2>
 {{contributor_choice_form.as_p}}
-<div id="top-rated-shelf" class='shelf shelf-light clearfix'>
+<section id="top-rated-shelf" class='shelf shelf-light clearfix'>
     {% for title in toprated_title_list %}
     {% show_shelf_item 'top-rated-shelf' title %}
     {% endfor %}
-</div>
+</section>
 
-<div class='half-shelf-wrap clearfix'>
-    <div class='half-shelf'>
+<section class='half-shelf-wrap clearfix'>
+    <section class='half-shelf'>
         <h2 class='shelf-heading shelf-heading-light'>Recently Completed</h2>
 
-        <div id="recently-completed-shelf" class='shelf shelf-light clearfix'>
+        <section id="recently-completed-shelf" class='shelf shelf-light clearfix'>
             {% for title in recentlycomplete_title_list %}
             {% show_shelf_item 'recently-completed-shelf' title %}
             {% endfor %}
-        </div>
-    </div>
+        </section>
+    </section>
 
-    <div class='half-shelf clearfix'>
+    <section class='half-shelf clearfix'>
         <h2 class='shelf-heading shelf-heading-light'>Now Releasing</h2>
 
-        <div id="now-releasing-shelf" class='shelf shelf-light clearfix'>
+        <section id="now-releasing-shelf" class='shelf shelf-light clearfix'>
             {% for title in nowreleasing_title_list %}
             {% show_shelf_item 'now-releasing-shelf' title %}
             {% endfor %}
-        </div>
-    </div>
-</div>
+        </section>
+    </section>
+</section>
 
 <div class='clearfix'></div>
 {% endblock %}
