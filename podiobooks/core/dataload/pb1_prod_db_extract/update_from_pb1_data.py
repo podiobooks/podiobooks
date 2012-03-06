@@ -1,9 +1,10 @@
-from django.db import connections, transaction
-import csv, cStringIO, codecs
+"""Update PB2 database based on latest live PB1 Data"""
+
+from django.db import connections
 from podiobooks.core.models import Title, Category, Episode, Partner, Rating
 from django.db.models import Max
 from podiobooks.core.dataload.pb1_csv_migration.migrate_bookcsv_to_title import create_titles_from_book_rows
-from podiobooks.core.dataload.pb1_csv_migration.migrate_chaptercsv_to_episode import create_episodes_from_chapter_rows
+from podiobooks.core.dataload.pb1_csv_migration.migrate_chaptercsv_to_episode import create_episodes_from_rows
 from podiobooks.core.dataload.pb1_csv_migration.migrate_bookratingcsv_to_title import create_ratings_from_rows
 from itertools import izip
 
@@ -15,7 +16,7 @@ def get_book_data(cursor, last_book_id):
     
     books = []
     
-    """ Merges the col names and data into a dictionary object """
+    # Merges the col names and data into a dictionary object
     while True:
         row = cursor.fetchone()
         if row is None:
@@ -37,7 +38,7 @@ def get_chapter_data(cursor, last_chapter_id):
     
     chapters = []
     
-    """ Merges the col names and data into a dictionary object """
+    # Merges the col names and data into a dictionary object
     while True:
         row = cursor.fetchone()
         if row is None:
@@ -47,7 +48,7 @@ def get_chapter_data(cursor, last_chapter_id):
     
     if len(chapters) > 0:
         print ('%d episodes need to be loaded.' % len(chapters))
-        create_episodes_from_chapter_rows(chapters)
+        create_episodes_from_rows(chapters)
     else:
         print ('No new episodes needs to be loaded.')
         
