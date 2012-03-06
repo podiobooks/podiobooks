@@ -31,12 +31,12 @@ def ssl_site_login_url():
         
     return login_url
 
-@register.inclusion_tag('main/tags/show_browsebox.html')
+@register.inclusion_tag('core/tags/show_browsebox.html')
 def show_browsebox():
     """ Shows the browse by section of the header """
     return { 'browse_by_form': BrowseByForm() }
 
-@register.inclusion_tag('main/tags/show_searchbox.html')
+@register.inclusion_tag('core/tags/show_searchbox.html')
 def show_searchbox():
     """ Shows the search section of the header """
     return { 'title_search_form': TitleSearchForm() }
@@ -50,7 +50,7 @@ def replace_bad_words(value):
             value = value.replace(word, "%s%s%s" % (word[0], '-'*(len(word) - 2), word[-1]))
     return value
 
-@register.inclusion_tag('main/tags/show_variable.html')
+@register.inclusion_tag('core/tags/show_variable.html')
 def show_variable(variable): # pragma: nocover
     """ Shows a variable dump of the header """
     vardir = dir(variable)
