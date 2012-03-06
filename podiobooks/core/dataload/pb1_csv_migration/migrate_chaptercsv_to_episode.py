@@ -33,9 +33,9 @@ def import_chapters_from_csv():
     #PRE CLEANOUT
     Episode.objects.all().delete()
     
-    create_episodes_from_chapter_rows(chapter_csv_reader)
+    create_episodes_from_rows(chapter_csv_reader)
 
-def create_episodes_from_chapter_rows(chapter_list):
+def create_episodes_from_rows(chapter_list):
     """Create Episode objects from each PB1 Chapter"""
   
     # Loop through the rows
