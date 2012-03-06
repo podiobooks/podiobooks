@@ -1,0 +1,13 @@
+{% load global_templatetags %}
+
+<div class='shelf-item'>
+	<p class='shelf-cover'>	<a href='{{title.get_absolute_url}}'>
+		{% if title.libsyn_show_id %}
+			<img src="http://asset-server.libsyn.com/show/{{ title.libsyn_show_id }}/height/212/width/144" alt="{{ title.name|striptags }}"/>
+		{% else %}
+			<img src="http://podiobooks.com/images/covers/{{ title.cover }}" alt="{{ title.name|striptags }}" />
+		{% endif %}
+		</a>
+	</p>
+	<p>{% autoescape off %}{{ title.description|striptags|truncatewords_afterchar:"200" }}{% endautoescape %}</p>
+</div>

@@ -324,7 +324,7 @@ class TitleCategory(models.Model):
 def update_category_list(sender, instance, **kwargs):
     """ Update category list cache on titles when a new title category is added...hooked to pre_save trigger for titlecategory below """
     categories = instance.title.categories.all()
-    category_list = render_to_string('main/title/tags/show_categories.html', {'categories': categories,})
+    category_list = render_to_string('core/title/tags/show_categories.html', {'categories': categories,})
     
     instance.title.category_list = category_list
     instance.title.save()
@@ -350,7 +350,7 @@ class TitleContributor(models.Model):
 def update_byline(sender, instance, **kwargs):
     """ Update byline cache on titles when a new title contributor is added...hooked to pre_save trigger for titlecontributor below """
     titlecontributors = instance.title.titlecontributors.all().order_by('contributor_type__slug', 'date_created')
-    byline = render_to_string('main/title/tags/show_contributors.html', {'titlecontributors': titlecontributors,})
+    byline = render_to_string('core/title/tags/show_contributors.html', {'titlecontributors': titlecontributors,})
     
     instance.title.byline = byline.strip()
     instance.title.save()
