@@ -12,7 +12,7 @@ import csv # first we need import necessary lib:csv
 from podiobooks.core.models import *
 
 def import_partners_from_csv():
-    # Now, begin reading in the CSV and using the Django model objects to populate the DB
+    """Import PB1 Partners data into PB2 Data structures from CSV data file"""
     
     #Open Partner File for Import
     partnerCSVFile = open(settings.DATALOAD_DIR + "podiobooks_legacy_partner_table.csv")
