@@ -1,11 +1,14 @@
-from django.db import connections, transaction
-import csv
+"""Make calls to live PB1 database to download a CSV extract for use in loading PB2 structures"""
+
+from django.db import connections
 from unicode_writer import UnicodeWriter
 from django.conf import settings
 
 DATALOAD_DIR = settings.DATALOAD_DIR
 
 def get_book_data(cursor):
+    """Make call to PB1 Database and pull SQL data, then write out to CSV"""
+
     cursor.execute("SELECT * FROM book WHERE enabled = 1 AND standby = 0")
 
     books = cursor.fetchall()
@@ -13,10 +16,10 @@ def get_book_data(cursor):
     if len(books) > 0:
         book_output_file = open(DATALOAD_DIR + 'podiobooks_legacy_book_table.csv', 'w')
 
-        csvWriter = UnicodeWriter(book_output_file)
+        csv_writer = UnicodeWriter(book_output_file)
 
         # Print out the Title Row
-        csvWriter.writerow(
+        csv_writer.writerow(
             ["ID", "Title", "DateCreated", "Enabled", "AvgRating", "Description", "Authors", "Webpage", "FeedURL",
              "UserID", "Coverimage", "DisplayOnHomepage", "CategoryID", "Explicit", "Subtitle", "Standby", "Complete",
              "DiscussURL", "Notes", "BookISBN", "AudioISBN", "ITunesLink", "EBookLink", "LuluLink", "PartnerID",
@@ -24,7 +27,7 @@ def get_book_data(cursor):
              "FullLocation", "FullLength", "FullPrice"])
 
         for book in books:
-            csvWriter.writerow(book)
+            csv_writer.writerow(book)
 
         print ('%d books output into the csv file.' % len(books))
     else:
@@ -120,10 +123,10 @@ def get_partner_data(cursor):
 
 ##### MAIN FUNCTION TO RUN IF THIS SCRIPT IS CALLED ALONE ###
 if __name__ == "__main__":
-    cursor = connections['pb1prod'].cursor()
-    get_partner_data(cursor)
-    get_bookcategory_data(cursor)
-    get_book_data(cursor)
-    get_chapter_data(cursor)
-    get_bookrating_data(cursor)
+    DB_CURSOR = connections['pb1prod'].cursor()
+    get_partner_data(DB_CURSOR)
+    get_bookcategory_data(DB_CURSOR)
+    get_book_data(DB_CURSOR)
+    get_chapter_data(DB_CURSOR)
+    get_bookrating_data(DB_CURSOR)
     
