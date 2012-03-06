@@ -1,7 +1,7 @@
 """Make calls to live PB1 database to download a CSV extract for use in loading PB2 structures"""
 
 from django.db import connections
-from unicode_writer import UnicodeWriter
+from podiobooks.core.dataload.pb1_prod_db_extract.unicode_writer import UnicodeWriter
 from django.conf import settings
 
 DATALOAD_DIR = settings.DATALOAD_DIR
