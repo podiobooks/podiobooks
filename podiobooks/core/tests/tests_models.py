@@ -446,7 +446,7 @@ class TitleTestCase(TestCase):
         """Assert that the creation of bylines is working."""
         print '\n---Bylines---'
         title3titlecontributors = self.title3.titlecontributors.all().order_by('contributor_type__slug', 'date_created')
-        bylineFromTemplate = render_to_string('main/title/tags/show_contributors.html', {'titlecontributors': title3titlecontributors,})
+        bylineFromTemplate = render_to_string('core/title/tags/show_contributors.html', {'titlecontributors': title3titlecontributors,})
         
         print "\t\tTemplate Byline: %s" % bylineFromTemplate
         print "\t\tAuto Byline: %s" % self.title3.byline
