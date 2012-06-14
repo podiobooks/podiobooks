@@ -2,14 +2,14 @@
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
-    'django.template.loaders.filesystem.load_template_source',
-    'django.template.loaders.app_directories.load_template_source',
+    'django.template.loaders.filesystem.Loader',
+    'django.template.loaders.app_directories.Loader',
 )
 
 #List of callables that add their data to each template
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.debug',
-    'django.core.context_processors.auth',
+    'django.contrib.auth.context_processors.auth',
     'django.core.context_processors.media',
     'podiobooks.core.context_processors.js_api_keys',
     'django.core.context_processors.request',
