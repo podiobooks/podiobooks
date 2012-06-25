@@ -9,7 +9,7 @@ from podiobooks.profile.models import UserProfile
 from django.core.exceptions import ObjectDoesNotExist
 
 class ProfileTestCase(TestCase):
-    fixtures = ['test_data.json', ]
+    fixtures = ['profile_data.json', ]
     
     def setUp(self):
         self.c = Client()

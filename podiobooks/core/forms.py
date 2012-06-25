@@ -15,7 +15,7 @@ class CategoryChoiceForm(forms.Form):
     categories = cache.get('category_dropdown_values')
     submit_url = None
     form_name = 'category'
-    if (not categories):
+    if not categories:
         categories = Category.objects.filter(~Q(slug="erotica"), title__display_on_homepage=True).annotate(title_count=Count('title')).filter(title_count__gt=2).order_by('name').values_list('slug', 'name')
         cache.set('category_dropdown_values', categories, 240)
     category = forms.ChoiceField(choices=categories, widget=forms.Select(attrs={'class':'pb-category-choice'}))
@@ -27,7 +27,7 @@ class ContributorChoiceForm(forms.Form):
     submit_url = None
     form_name = 'contributor'
     
-    if (not contributors):
+    if not contributors:
         top_contributors = Contributor.objects.annotate(title_count=Count('title')).filter(title__display_on_homepage=True, title__promoter_count__gte=20).order_by('-title_count').values_list('slug', 'display_name', 'title_count')[:10]
          
         contributors = []
