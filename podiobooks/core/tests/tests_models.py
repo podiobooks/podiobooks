@@ -9,7 +9,6 @@ from django.db.models import Count
 
 class TitleTestCase(TestCase):
     """Test the Podiobooks Models from a Title-Centric POV"""
-    fixtures = []
     
     def setUp(self):
         
@@ -365,7 +364,7 @@ class TitleTestCase(TestCase):
             elif currentCategory.slug == "fantasy" :
                 self.assertEquals(len(currentCategory.title_set.all()), 1)
             else :
-                self.fail('Non-matching Category!' + currentCategory.name)
+                self.fail('Non-matching Category: ' + currentCategory.name)
                 
         # Count Titles By Category
         categoryTitleCount = Category.objects.aggregate(title_count=Count('title')) # Counts the main_title_category table
