@@ -10,54 +10,59 @@
 {% block body_class %}home{% endblock %}
 
 {% block head %}
-<link rel="stylesheet" href="{{ STATIC_URL }}css/flexslider.css" type="text/css">
+<link rel="stylesheet" href="{{ STATIC_URL }}css/slides.css" type="text/css">
 {% endblock %}
 
 {% block content %}
 
 <h2 class='shelf-heading shelf-heading-dark'>Featured</h2>
 {{category_choice_form.as_p}}
-<section id="featured-shelf" class='shelf shelf-dark clearfix'>
-    {% for title in featured_title_list %}
-    {% show_shelf_item 'featured-shelf' title %}
-    {% endfor %}
-</section>
+<div id="slides" class='clearfix'>
+    <ul class="slides_container">
+        {% for title in featured_title_list %}
+        {% show_shelf_item 'featured-shelf' title %}
+        {% endfor %}
+    </ul>
+</div>
 
+        <!--
 <h2 class='shelf-heading shelf-heading-light'>Top Authors</h2>
 {{contributor_choice_form.as_p}}
-<section id="top-rated-shelf" class='shelf shelf-light clearfix'>
+<ul id="top-rated-shelf" class='shelf shelf-light clearfix'>
     {% for title in toprated_title_list %}
     {% show_shelf_item 'top-rated-shelf' title %}
     {% endfor %}
-</section>
+</ul>
 
-<section class='half-shelf-wrap clearfix'>
-    <section class='half-shelf'>
+<div class='half-shelf-wrap clearfix'>
+    <div class='half-shelf'>
         <h2 class='shelf-heading shelf-heading-light'>Recently Completed</h2>
 
-        <section id="recently-completed-shelf" class='shelf shelf-light clearfix'>
+        <ul id="recently-completed-shelf" class='shelf shelf-light clearfix'>
             {% for title in recentlycomplete_title_list %}
             {% show_shelf_item 'recently-completed-shelf' title %}
             {% endfor %}
-        </section>
-    </section>
+        </ul>
+    </div>
 
-    <section class='half-shelf clearfix'>
+    <div class='half-shelf clearfix'>
         <h2 class='shelf-heading shelf-heading-light'>Now Releasing</h2>
 
-        <section id="now-releasing-shelf" class='shelf shelf-light clearfix'>
+        <ul id="now-releasing-shelf" class='shelf shelf-light clearfix'>
             {% for title in nowreleasing_title_list %}
             {% show_shelf_item 'now-releasing-shelf' title %}
             {% endfor %}
-        </section>
-    </section>
-</section>
+        </ul>
+    </div>
+</div>
+
+-->
 
 <div class='clearfix'></div>
 {% endblock %}
 
 {% block footerscripts %}
-<script src="{{ STATIC_URL}}js/libs/jquery.flexslider-min.js"></script>
+<script src="{{ STATIC_URL}}js/libs/slides.min.jquery.js"></script>
 <script>
     $('#id_category').change(function () {
         $.ajax({
@@ -73,6 +78,11 @@
             success:function (html) {
                 $("#top-rated-shelf").html(html);
             }
+        });
+    });
+    $(function () {
+        $('#slides').slides({
+            preload:true
         });
     });
 </script>
