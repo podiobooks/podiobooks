@@ -1,6 +1,4 @@
-""" This is a *type* of feed, and not an actual feed.  It controls what elements come out in the feed """
-
-# pylint: disable=R0801
+""" This file controls the type of output that appears in the iTunes feed. It's a feed type definition. """
 
 from django.utils.feedgenerator import Rss201rev2Feed
 
