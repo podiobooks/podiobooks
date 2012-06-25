@@ -17,7 +17,7 @@ try:
     from settings_local import * #@UnusedWildImport
 except ImportError:
     from settings_local_template import * #@UnusedWildImport
-    print("WARNING!  Using default Settings")
+    print("WARNING!  Using default Settings!\n")
 
 # Import Gondor auto-generated local settings if they exist.
 try:
