@@ -14,11 +14,11 @@ import tempfile
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        #        'NAME': # DO NOT SPECIFY A NAME SO THAT TEST RUNNER WILL USE IN-MEMORY DB
+        'NAME': ':memory:',
         'SUPPORTS_TRANSACTIONS': 'false',
         }
 }
 
-INSTALLED_APPS += ('django_nose',)
+#INSTALLED_APPS += ('django_nose',)
 
-TEST_RUNNER = 'django_nose.NoseTestSuiteRunner' # Should work with Django 1.2.1
+#TEST_RUNNER = 'django_nose.NoseTestSuiteRunner' # Should work with Django 1.2.1
