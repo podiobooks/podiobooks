@@ -1,79 +1,89 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
-<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
-<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
-	<head>
-        <meta charset="utf-8">
-		<meta name="language" content="english"> 
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <meta name="viewport" content="width=device-width,initial-scale=1">
-	 	
-		<link rel="stylesheet" href="{{ STATIC_URL }}css/boilerplate.css" >
-		<link rel="stylesheet" href="{{ STATIC_URL }}css/style.css" >
-	 	<link href='http://fonts.googleapis.com/css?family=Trykker' rel='stylesheet' type='text/css' >
-	
-		<title>{% block headtitle %}{{ site_name }}{% endblock %}</title>
+<!--[if lt IE 7]>
+<html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-        <meta name="application-name" content="{{ SITE_NAME }}">
-        <meta name="msapplication-tooltip" content="{{ BASE_META_DESCRIPTION }}">
-	
-		{% block metatags %}
-		<meta name="description" content="{{ BASE_META_DESCRIPTION }}">
-        <meta name="author" content="{{ FEED_MANAGING_EDITOR }}">
-		{% endblock %}
-		
-		{% if debug %}
-			<script>
-				var isDebug = true;
-			</script>
-		{% else %}
-			<script>
-				var isDebug = false;
-			</script>
-		{% endif %}
+    <title>{% block headtitle %}{{ site_name }}{% endblock %}</title>
 
-        <!-- All JavaScript at the bottom, except for Modernizr / Respond. -->
-        <script src="{{ STATIC_URL }}js/libs/modernizr-2.0.6.min.js"></script>
-        {% block head %}
-        {% endblock %}
-    </head>
-    <body>
-        <div id="container">
-            <header>
-                {% block header %}{% include "header.html" %}{% endblock %}
-            </header>
-            <div id="main" role="main">
-                {% block content %}<p>No Content Defined</p>{% endblock %}
-            </div>
-            <footer>
-                {% block footer %}{% include "footer.html" %}{% endblock %}
-            </footer>
-        </div> <!--! end of #container -->
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="application-name" content="{{ SITE_NAME }}">
+    <meta name="msapplication-tooltip" content="{{ BASE_META_DESCRIPTION }}">
 
-        <script src="http://www.google.com/jsapi?key={{ GOOGLE_JS_API_KEY }}"></script>
-        <script>
-            //<![CDATA[
-            google.load("jquery", "1.7.1");
-            google.load("jqueryui", "1.8.9");
-            //]]>
-        </script>
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/boilerplate.css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/style.css">
+    <link href='http://fonts.googleapis.com/css?family=Trykker' rel='stylesheet' type='text/css'>
 
-        {% block footerscripts %}{% endblock %}
+    {% block metatags %}
+    <meta name="description" content="{{ BASE_META_DESCRIPTION }}">
+    <meta name="author" content="{{ FEED_MANAGING_EDITOR }}">
+    {% endblock %}
 
-        <script>
-            window._gaq = [['_setAccount','{{ GOOGLE_ANALYTICS_KEY }}'],['_trackPageview'],['_trackPageLoadTime']];
-            Modernizr.load({
-                load: ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js'
-            });
-        </script>
+    {% if debug %}
+    <script>
+        var isDebug = true;
+    </script>
+    {% else %}
+    <script>
+        var isDebug = false;
+    </script>
+    {% endif %}
+
+    <!-- All JavaScript at the bottom, except for Modernizr / Respond. -->
+    <script src="{{ STATIC_URL }}js/libs/modernizr-2.0.6.min.js"></script>
+    {% block head %}
+    {% endblock %}
+</head>
+<body>
+<div id="container">
+    <header>
+        {% block header %}{% include "header.html" %}{% endblock %}
+    </header>
+    <div id="main" role="main">
+        {% block content %}<p>No Content Defined</p>{% endblock %}
+    </div>
+    <footer>
+        {% block footer %}{% include "footer.html" %}{% endblock %}
+    </footer>
+</div>
+<!--! end of #container -->
+
+<script src="http://www.google.com/jsapi?key={{ GOOGLE_JS_API_KEY }}"></script>
+<script>
+    //<![CDATA[
+    google.load("jquery", "1.7.1");
+    google.load("jqueryui", "1.8.9");
+    //]]>
+</script>
+
+{% block footerscripts %}{% endblock %}
+
+<script>
+    window._gaq = [
+        ['_setAccount', '{{ GOOGLE_ANALYTICS_KEY }}'],
+        ['_trackPageview'],
+        ['_trackPageLoadTime']
+    ];
+    Modernizr.load({
+        load:('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js'
+    });
+</script>
 
 
-        <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
-        chromium.org/developers/how-tos/chrome-frame-getting-started -->
-        <!--[if lt IE 7 ]>
-        <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
-        <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
-        <![endif]-->
-    </body>
+<!-- Prompt IE 6 users to install Chrome Frame. Remove this if you want to support IE 6.
+chromium.org/developers/how-tos/chrome-frame-getting-started -->
+<!--[if lt IE 7 ]>
+<script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+<script>window.attachEvent('onload', function () {
+    CFInstall.check({mode:'overlay'})
+})</script>
+<![endif]-->
+</body>
 </html>
