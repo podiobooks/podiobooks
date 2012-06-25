@@ -16,7 +16,6 @@ class UserProfile(models.Model):
     slug = models.SlugField()
     url = models.URLField(blank=True, verify_exists=True)
     twitter_username = models.CharField(max_length=50, blank=True)
-    disqus_username = models.CharField(max_length=50, blank=True)
     image = models.ImageField(upload_to=settings.MEDIA_ROOT, max_length=255, blank=True)
     short_profile = models.CharField(max_length=255)
     long_profile = models.TextField(blank=True)
