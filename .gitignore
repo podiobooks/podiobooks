@@ -6,6 +6,7 @@
 *.py[co]
 .coverage
 .DS_Store
+.env
 .idea
 .pydevproject
 .pydevproject.bak
