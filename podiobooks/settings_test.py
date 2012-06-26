@@ -4,6 +4,9 @@
 
 from settings_main import * #@UnusedWildImport
 from settings_local_template import * #@UnusedWildImport
+
+PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
+
 try:
     from settings_test_local import * #@UnusedWildImport
 except ImportError:
@@ -14,8 +17,8 @@ import tempfile
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': ':memory:',
-        'SUPPORTS_TRANSACTIONS': 'false',
+        'NAME': os.path.join(PROJECT_ROOT, 'test_sqlite.db'),
+        'TEST_NAME': os.path.join(PROJECT_ROOT, 'test_sqlite.db'),
         }
 }
 
