@@ -7,6 +7,7 @@
 .coverage
 .DS_Store
 .env
+*-env/
 .idea
 .pydevproject
 .pydevproject.bak
@@ -22,4 +23,3 @@ settings_local.py
 settings_local_test.py
 settings_test_local.py
 style-*_.css
-podiobooks-env/
