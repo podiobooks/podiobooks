@@ -3,9 +3,9 @@
     pass-offs to sub-modules, who will have their own urls.py defining actions within.
 """
 
-# pylint: disable=E0602,F0401
+# pylint: disable=E1120
 
-from django.conf.urls.defaults import * #@UnusedWildImport # pylint: disable=W0401,W0614
+from django.conf.urls.defaults import patterns, url, include
 from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf import settings
