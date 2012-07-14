@@ -7,7 +7,7 @@
 .coverage
 .DS_Store
 .env
-*-env/
+*-env/*
 .idea
 .pydevproject
 .pydevproject.bak
@@ -19,6 +19,7 @@ css-*_.css
 js-*_.js
 local_settings.py
 nosetests.xml
+reports/*
 settings_local.py
 settings_local_test.py
 settings_test_local.py
