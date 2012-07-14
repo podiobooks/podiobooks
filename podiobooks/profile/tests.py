@@ -12,25 +12,24 @@ class ProfileTestCase(TestCase):
     fixtures = ['profile_data.json', ]
     
     def setUp(self):
-        self.c = Client()
         self.user1 = User.objects.create_user('testuser1', 'testuser1@test.com', 'testuser1password')
     
     def testProfileContributorRedirect(self):
-        response = self.c.get('/profile/', follow=True)
+        response = self.client.get('/profile/', follow=True)
         self.assertRedirects(response, "http://testserver/contributor/")
     
     def testProfileManageRedirect(self):
-        response = self.c.get('/profile/manage/', follow=True)
+        response = self.client.get('/profile/manage/', follow=True)
         self.assertRedirects(response, "http://testserver/account/signin/?next=/profile/manage/")
         
     def testProfileManagePage(self):
-        self.c.login(username='testuser1', password='testuser1password')
-        response = self.c.get('/profile/manage/')
+        self.client.login(username='testuser1', password='testuser1password')
+        response = self.client.get('/profile/manage/')
         self.assertContains(response, 'testuser1@test.com')
         
     def testProfileDetailPage(self):
-        self.c.login(username='testuser1', password='testuser1password')
-        response = self.c.get('/profile/nathan-lowell/')
+        self.client.login(username='testuser1', password='testuser1password')
+        response = self.client.get('/profile/nathan-lowell/')
         self.assertContains(response, 'Nathan Lowell')
     
     def testUserProfileObj(self):

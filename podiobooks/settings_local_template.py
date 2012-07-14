@@ -166,3 +166,13 @@ DATALOAD_DIR = PROJECT_ROOT + "/../../podiobooks-dataload/datafiles/"
 DISQUS_WEBSITE_SHORTNAME = 'podioadventures'
 DISQUS_API_PUBLIC_KEY = ''
 DISQUS_API_SECRET_KEY = ''
+
+# JENKINS REPORTS
+JENKINS_TASKS = (
+    'django_jenkins.tasks.run_pylint',
+    'django_jenkins.tasks.with_coverage',
+    'django_jenkins.tasks.django_tests',
+    'django_jenkins.tasks.run_jslint',
+    'django_jenkins.tasks.run_csslint',
+    'django_jenkins.tasks.run_sloccount',
+    )
