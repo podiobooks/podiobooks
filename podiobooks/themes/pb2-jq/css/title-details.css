@@ -1,0 +1,135 @@
+/*
+ * title details
+ */
+
+.title-details {
+	float:right;
+	width: 700px;
+	margin: 0 30px 0px 15px;
+}
+
+.title-details-title {
+	font-size: 24px;
+	font-weight: bold;
+	margin:0px 30px 15px 0;
+	border-bottom:solid 1px #b2b2b2;
+}
+.title-details-info{
+	margin:30px 0 0 0;
+	float:left;
+}
+.imagebox{
+	margin:0 20px 0px 0;
+}
+.title-details-top {
+	margin: 0px 0 0px 0;
+}
+.imagebox {
+	float: left;
+	text-align: center;
+	font-size:10px;
+}
+.title-description{
+	margin:0 0 40px 0;
+	line-height:1.4em;
+	font-size:14px;
+}
+
+/*
+ * subscriptions
+ */
+.subscription-box {
+	background:#D9E4F0;
+	margin:0px 10px 30px 0px;
+	padding:0px 15px 10px 15px;
+	/*
+	
+	-webkit-box-shadow:0 3px 5px #aaa;
+	-moz-box-shadow:0 3px 5px #aaa;
+	-o-box-shadow:0 3px 5px #aaa;
+	box-shadow:0 3px 5px #aaa;
+	*/
+	-webkit-border-radius:10px;
+	-moz-border-radius:10px;
+	-o-border-radius:10px;
+	border-radius:10px;
+	
+	font-size: 12px;
+	width: 170px;
+	height: 495px;
+	float: left;
+	position:relative;
+}
+
+.subscription-accordion div {
+	padding: 10px;
+	margin: 0 0 0 0;
+	text-align: center;
+}
+
+.headphone-title {
+	background: url(img/pb-headphones.png) no-repeat;
+	height: 63px;
+	text-align: center;
+	font-size: 14px;
+	font-weight: bold;
+	margin: 0 0 0 0;
+	padding: 18px 0 0 0;
+}
+
+/*
+ * Donate
+ */
+.donate{
+	padding: 10px; 
+	width: 150px; 
+	background-color: #bbd1ec; 
+	text-align: center;
+	position: absolute;
+	bottom:20px;
+	left:16px;
+	-webkit-border-radius:10px;
+	-moz-border-radius:10px;
+	-o-border-radius:10px;
+	border-radius:10px;
+	
+}
+.pb-twitter-container ul{
+	list-style:none;
+	overflow:hidden;
+}
+
+/*
+ * Itunes / RSS
+ */
+.subscribe{
+	list-style: none;
+	margin:0 0 30px;
+}
+.subscribe li{
+	display:block;
+	
+	margin-bottom:15px;
+}
+.subscribe a{
+	text-decoration: none;	
+	display:block;
+	height:24px;
+	line-height:35px;
+	padding-left:35px;
+}
+.subscribe a:hover{
+	text-decoration:underline;
+}
+.subscribe-itunes{
+	background:url(img/itunes.png) left bottom no-repeat;
+}
+.subscribe-rss{
+	background:url(img/rss.png) left bottom no-repeat;
+}
+
+.award-show{
+	float:left;
+	width:500px;
+	margin-top:20px;
+}
