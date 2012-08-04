@@ -6,13 +6,13 @@ $(function(){
 		}
 		
 		$("#featured-shelf").pbShelf({
-			"url" : "/lazy/featured/",
+			"url" : "/featured/",
 			"cookie": "featured_cat", 
 			"checkCookie": true
 		});
 		
 		$("#top-rated-shelf").pbShelf({
-			"url" : "/lazy/top-rated/",
+			"url" : "/top-rated/",
 			"cookie": "toprated_cat", 
 			"checkCookie": true
 		});
