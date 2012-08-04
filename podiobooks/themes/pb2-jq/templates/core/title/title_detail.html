@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 {% load global_templatetags %}
 {% load title_templatetags %}
-{% load disqus_templatetags %}
 {% block headtitle %}{{ title.name }} - {{ site_name }}{% endblock %}
 {% block head %}
 {% endblock %}
@@ -50,7 +49,6 @@
 		{% autoescape off %}{{ title.description_br|removetags:"img"|safe }}{% endautoescape %}
 	</div>
 </div>
-{% include "main/title/title_subscriptionbox.html" %}
 <div class="clearfix">
 </div>
 <div style="margin: 0; padding: 0; width: 100%;" id="bottomTabs">
@@ -65,11 +63,6 @@
 			<a href="/social/twitter/search/{{ title.contributors.all|first }}" title="social-tab">Social</a>
 		</li>
 	</ul>
-	<div title="All Comments" id="comments-tab">
-		{% url title_detail title as title_url %}
-		{% show_disqus_comments title.name title.name site_url title_url %}
-		{% show_disqus_comment_count %}
-	</div>
 	<div title="Chapters" id="chapters-tab">
 		{% if title.episodes.all %}
 		{% show_episodelist title %}

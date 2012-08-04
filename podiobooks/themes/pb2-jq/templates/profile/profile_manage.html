@@ -39,7 +39,6 @@
 </p>
 {% endif %}
 <h1>{{ user.username }}'s Profile</h1>
-<h3><a href="{% url subscription %}">Manage Your Podiobook Subscriptions</a></h3>
 <dl class="table-display">
     <dt>
         Username:
@@ -100,12 +99,6 @@
     </dt>
     <dd>
         {{ user.get_profile.slug }}&nbsp;
-    </dd>
-    <dt>
-        Avatar (Defaults to Gravatar for your Email Address):
-    </dt>
-    <dd>
-        <img src="{% avatar_url user 65 %}" alt="user avatar">
     </dd>
 </dl>
 <div class="clearfix">
