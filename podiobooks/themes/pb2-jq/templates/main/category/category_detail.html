@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load title_templatetags %}
+{% block headtitle %}{{ category.name }} Category - {{ site_name }}{% endblock %}
+{% block content %}
+{% if category.title_set.all.count %}
+<h1>
+    All Titles in {{ category.name }}
+</h1>
+{% show_titlelist category.title_set.all "category_title_list" %}
+{% else %}
+<div style="font-size: 18px; margin: 20px;">
+    There are currently no titles available in {{ category.name }}
+</div>
+{% endif %}
+{% endblock %}
