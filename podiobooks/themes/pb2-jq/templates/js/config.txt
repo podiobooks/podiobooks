@@ -1,0 +1,25 @@
+function siteVars(opt){
+	switch (opt){
+		case 'home':
+			return '{{home}}';
+			break;
+		case 'theme':
+			return '{{theme}}';
+			break;
+		case 'img':
+			return siteVars('theme') + 'images/';
+			break; 
+		case 'css':
+			return siteVars('theme') + 'css/';
+			break; 
+		case 'swf':
+			return siteVars('theme') + 'swf/';
+			break;
+		case 'js':
+			return siteVars('theme') + 'js/';
+			break;
+		default:
+			return null;
+			break;
+	}
+}

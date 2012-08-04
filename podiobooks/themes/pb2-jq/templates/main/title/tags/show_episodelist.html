@@ -1,0 +1,34 @@
+{% load title_templatetags %}
+{% if episode_list %}
+<div>
+    <div>
+        <div>
+            Title
+        </div>
+        <div>
+            Description
+        </div>
+        <div>
+            Date Created
+        </div>
+    </div>
+    <div style="clear:both;">
+    </div>
+    {% for episode in episode_list %}
+    <div >
+        <div>
+            <a href="{{ episode.url }}">{{ episode.name }}</a>
+            <div>({{ episode.filesize|filesizeformat }})</div>
+        </div>
+        <div>
+            {{ episode.description }}
+        </div>
+        <div>
+            {{ episode.date_updated|date:"d-M-Y" }}
+        </div>
+    </div>
+    <div style="clear:both;">
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
