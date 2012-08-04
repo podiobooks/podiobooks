@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load disqus_templatetags %}
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<meta name="language" content="english"> 
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+	 	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;"> 
+	
+		<title>{% block headtitle %}{{ site_name }}{% endblock %}</title>
+	
+		{% block metatags %}
+		<meta name="Keywords" content="audio books, audiobooks, books, novels, podcast, podcasting, podiobooks" /> 
+		<meta name="Description" content="Free audio books delivered as podcasts. Subscribe for free to any book and start from chapter one. Podiobooks.com" />
+		{% endblock %}
+	
+		<link rel="stylesheet" type="text/css" href="{{ MINI_CSS }}" />
+		
+		<!--
+		<link rel="stylesheet" type=text/css href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/themes/base/jquery-ui.css" >
+		-->
+		<script type="text/javascript" src="http://use.typekit.com/coc0qsu.js"></script>
+		<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+		
+		
+
+		{% if debug %}
+			<script type="text/javascript">
+				var isDebug = true;
+			</script>
+		{% else %}
+			<script type="text/javascript">
+				var isDebug = false;
+			</script>
+		{% endif %}
+		
+		<script src="http://www.google.com/jsapi?key={{ GOOGLE_JS_API_KEY }}" type="text/javascript"></script>
+		<script language="Javascript" type="text/javascript">
+		    //<![CDATA[
+		    google.load("jquery", "1.5.1");
+			google.load("jqueryui", "1.8.9");
+			//]]>
+		</script>		
+		
+		<script type="text/javascript" src="{{ MINI_JS }}"></script>
+		{% block head %}
+		{% endblock %}
+	</head>
+	
+	<body class='{% block body_class %}{% endblock %}'>
+		<div class='pg clearfix'>
+			<!-- Begin Header -->
+			{% block header %}{% include "header.html" %}{% endblock %}
+			<!-- End Header -->
+			
+			<!-- Begin Main Content -->
+			{% block content %}<p>No Content Defined</p>{% endblock %}
+			<!-- End Main Content -->
+			
+			<!-- Begin Footer -->
+			{% block footer %}{% include "footer.html" %}{% endblock %}
+			<!-- End Footer -->
+			
+			{% show_disqus_comment_count %}
+		</div>
+	</body>
+</html>
