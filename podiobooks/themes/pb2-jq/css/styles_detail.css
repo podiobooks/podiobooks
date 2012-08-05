@@ -167,3 +167,17 @@
     float: left;
     margin: 20px 10px 0px 0px;
 }
+
+.title-comment-byline {
+    margin: 10px 0 0 0;
+    font-weight: bold;
+}
+
+.title-comment-text {
+    margin: 2px 0 2px 0;
+}
+
+.title-comment-readmore {
+    margin: 15px 0 0 0;
+    font-weight: bold;
+}
