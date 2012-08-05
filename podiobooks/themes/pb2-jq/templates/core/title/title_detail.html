@@ -3,101 +3,99 @@
 {% load title_templatetags %}
 {% block headtitle %}{{ title.name }} - {{ site_name }}{% endblock %}
 {% block head %}
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/styles_detail.css">
 {% endblock %}
 {% block title %}Book Information{% endblock %}
 {% block content %}
 
-<div class="title-details">
-	
-	<h1 class="title-details-title">{{ title.name }}</h1>
-	
-	<div class="title-details-top clearfix">
-		<div class='imagebox' id="imagebox">
-			{% show_titlecover title 212 144 %}
-			
-			<p class='this-title-is'>This title is
-			<span style="color:green; font-weight:bold;">{% if title.is_complete %}complete{% else %}still releasing{% endif %}</span>
-			</p>
-			<div class="net-promoter-box">
-				
-				<div class="promoter-count">
-					{{ title.promoter_count }}
-				</div>
-				
-				<div class="detractor-count">
-					{{ title.detractor_count }}
-				</div>
-			</div>
-			
-		</div>
-		
-		<div class='title-details-info'>
-			{{ title.byline|safe }}
-			<br/>
-			{{ title.category_list|safe }}
-			<br/>
-			{% if title.series %}
-				<a href="{% url series_detail title.series.slug %}">{{ title.series.name|safe }}</a>
-			{% endif %}
-		</div>
-		<div class="award-show">
-				{% show_awardshow title %}
-			</div>
-	</div>
-	
-	<div class="title-description" id="description">
-		{% autoescape off %}{{ title.description_br|removetags:"img"|safe }}{% endautoescape %}
-	</div>
-</div>
-<div class="clearfix">
-</div>
-<div style="margin: 0; padding: 0; width: 100%;" id="bottomTabs">
-	<ul>
-		<li>
-			<a href="#comments-tab">Comments</a>
-		</li>
-		<li>
-			<a href="#chapters-tab">Chapters</a>
-		</li>
-		<li>
-			<a href="/social/twitter/search/{{ title.contributors.all|first }}" title="social-tab">Social</a>
-		</li>
-	</ul>
-	<div title="Chapters" id="chapters-tab">
-		{% if title.episodes.all %}
-		{% show_episodelist title %}
-		{% else %}
-		<div style="font-size: 18px; clear: both; font-weight: bold;">
-			No Episodes Are Available Yet
-		</div>
-		{% endif %}
-	</div>
-	<div id="social-tab">
-		Searching the internets for references to {{ title.contributors.all|first }}...
-	</div>
-</div>
-{% if title.license %}
-<div style="float: left; margin: 20px 10px 0px 0px;">
-	<a rel="license" href="{{ title.license.url }}">
-	<img alt="{{ title.license.text }} Logo" style="border-width:0" src="{{ title.license.image_url }}" />
-	</a>
-</div>
-<div style="float: left; margin: 26px 0px 10px 0px;">
-	This work is licensed under a
-	<a href="{{ title.license.url }}">{{ title.license.text }}</a> license.
-</div>
-<div style="clear: both">
-</div>
-<script type="text/javascript">
-	$( function() {
-		$("#bottomTabs").tabs({
-			ajaxOptions: {
-				error: function(xhr, status, index, anchor) {
-					$(anchor.hash).html("Sorry, an error occurred, and this tab couldn't be loaded.");
-				}
-			}
-		});
-	});
-</script>
-{% endif %}
+    <div class="title-details">
+
+        <h1 class="title-details-title">{{ title.name }}</h1>
+
+        <div class="title-details-top clearfix">
+            <div class='imagebox' id="imagebox">
+                {% show_titlecover title 212 144 %}
+
+                <p class='this-title-is'>This title is
+                    <span style="color:green; font-weight:bold;">{% if title.is_complete %}complete{% else %}still
+                        releasing{% endif %}</span>
+                </p>
+
+                <div class="net-promoter-box">
+
+                    <div class="promoter-count">
+                        {{ title.promoter_count }}
+                    </div>
+
+                    <div class="detractor-count">
+                        {{ title.detractor_count }}
+                    </div>
+
+                    <div class="award-show">
+                        {% show_awardshow title %}
+                    </div>
+                </div>
+
+            </div>
+
+            <div class='title-details-info'>
+                {{ title.byline|safe }}
+                <br/>
+                {{ title.category_list|safe }}
+                <br/>
+                {% if title.series %}
+                    <a href="{% url series_detail title.series.slug %}">{{ title.series.name|safe }}</a>
+                {% endif %}
+            </div>
+
+            <div class="title-description" id="description">
+                {% autoescape off %}{{ title.description_br|removetags:"img"|safe }}{% endautoescape %}
+            </div>
+        </div>
+
+
+    </div>
+    {% include "core/title/title_subscriptionbox.html" %}
+    <div class="clearfix">
+    </div>
+    <div style="margin: 0; padding: 0; width: 100%;" id="bottomTabs">
+        <ul>
+            <li>
+                <a href="#chapters-tab">Chapters</a>
+            </li>
+        </ul>
+        <div title="Chapters" id="chapters-tab">
+            {% if title.episodes.all %}
+                {% show_episodelist title %}
+            {% else %}
+                <div style="font-size: 18px; clear: both; font-weight: bold;">
+                    No Episodes Are Available Yet
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    {% if title.license %}
+        <div style="float: left; margin: 20px 10px 0px 0px;">
+            <a rel="license" href="{{ title.license.url }}">
+                <img alt="{{ title.license.text }} Logo" style="border-width:0" src="{{ title.license.image_url }}"/>
+            </a>
+        </div>
+        <div style="float: left; margin: 26px 0px 10px 0px;">
+            This work is licensed under a
+            <a href="{{ title.license.url }}">{{ title.license.text }}</a> license.
+        </div>
+        <div style="clear: both">
+        </div>
+        <script type="text/javascript">
+            $(function () {
+                $("#bottomTabs").tabs({
+                    ajaxOptions:{
+                        error:function (xhr, status, index, anchor) {
+                            $(anchor.hash).html("Sorry, an error occurred, and this tab couldn't be loaded.");
+                        }
+                    }
+                });
+            });
+        </script>
+    {% endif %}
 {% endblock %}
