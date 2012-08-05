@@ -60,6 +60,18 @@ def show_variable(variable): # pragma: nocover
         
     return { 'result': result }
 
+@register.inclusion_tag('core/tags/show_plusone.html')
+def show_plusone():
+    """ Display Google +1 Button """
+
+    return { }
+
+@register.inclusion_tag('core/tags/show_like.html')
+def show_like():
+    """ Display Facebook Like Button """
+
+    return { }
+
 @register.filter
 def truncatewords_afterchar(value, limit=80):
     """
