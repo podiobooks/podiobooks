@@ -224,10 +224,8 @@ LIBSYN_API_SERVER_URL = 'http://api.libsyn.com/xmlrpc'
 ### DATALOAD
 DATALOAD_DIR = PROJECT_ROOT + "/../../podiobooks-dataload/datafiles/"
 
-### DISQUS
-DISQUS_WEBSITE_SHORTNAME = 'podioadventures'
-DISQUS_API_PUBLIC_KEY = ''
-DISQUS_API_SECRET_KEY = ''
+### DONATIONS
+DONATION_BUSINESS_NAME = 'evo@podiobooks.com'
 
 ### Import override settings
 try:

@@ -1,0 +1,16 @@
+{% load title_templatetags %}
+<div class="subscription-box clearfix">
+    <div class="headphone-title">
+        Get This
+        <br>
+        Book Now!
+    </div>
+    <ul class='subscribe'>
+        {% if title.itunes_adam_id %}
+            <li class='subscribe-itunes'><a href="http://itunes.apple.com/podcast/id{{ title.itunes_adam_id }}">View in iTunes</a></li>
+        {% endif %}
+        <li class='subscribe-rss'><a href="/rss/feeds/episodes/{{ title.slug }}">RSS Feed</a></li>
+    </ul>
+    <br>
+    {% show_donation_button title %}
+</div>
