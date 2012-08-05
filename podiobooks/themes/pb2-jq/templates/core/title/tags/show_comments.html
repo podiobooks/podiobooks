@@ -1,0 +1,5 @@
+{% for comment in comments|slice:":10" %}
+    <div class="title-comment-byline"><a href="{{ comment.link }}">{{ comment.title }}</a></div>
+    <div class="title-comment-text">{{ comment.summary|truncatewords:50 }}</div>
+{% endfor %}
+    <div class="title-comment-readmore"><a href="{{ comment.href }}">Read more comments...</a></div>
