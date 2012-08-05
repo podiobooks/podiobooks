@@ -65,23 +65,23 @@
     <div style="margin: 0; padding: 0; width: 100%;" id="bottomTabs">
         <ul>
             <li>
-                <a href="#chapters-tab">Chapters</a>
-            </li>
-            <li>
                 <a href="#comments-tab">Comments</a>
             </li>
+            <li>
+                <a href="#chapters-tab">Chapters</a>
+            </li>
         </ul>
+        <div title="Comments" id="comments-tab">
+            {% show_comments title.podiobooker_blog_url %}
+        </div>
         <div title="Chapters" id="chapters-tab">
             {% if title.episodes.all %}
                 {% show_episodelist title %}
             {% else %}
-                <div style="font-size: 18px; clear: both; font-weight: bold;">
-                    No Episodes Are Available Yet
-                </div>
+                <h3>
+                    No Episodes Are Available Yet.
+                </h3>
             {% endif %}
-        </div>
-        <div title="Comments" id="comments-tab">
-            {% show_comments title.podiobooker_url %}
         </div>
     </div>
     {% if title.license %}
