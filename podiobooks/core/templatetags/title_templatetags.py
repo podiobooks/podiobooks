@@ -54,8 +54,6 @@ def show_donation_button(title):
 def show_comments(podiobooker_url):
     """Pulls in a template to show a list of comments"""
 
-    podiobooker_url = 'http://www.podiobooks.com/blog/2005/11/25/earthcore/'
-
     feed_url = podiobooker_url + '/feed/'
 
     feed = feedparser.parse(feed_url)
