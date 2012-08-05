@@ -43,6 +43,11 @@ def show_episodelist(title):
     """ Show a list of all the episodes for a title, used on title detail page """
     return {'episode_list': title.episodes.order_by('sequence').all()}
 
+@register.inclusion_tag('core/title/tags/show_sharebox.html')
+def show_sharebox(name, url):
+    """ Show a box enabling sharing this title via social media"""
+    return {'name': name, 'url': url}
+
 
 @register.inclusion_tag('core/title/tags/show_donation_button.html')
 def show_donation_button(title):
