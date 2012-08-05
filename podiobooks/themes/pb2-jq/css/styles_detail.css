@@ -156,3 +156,14 @@
     background: url(../images/pb-thumbs-both.png) no-repeat top left;
     float: left;
 }
+
+.title-license-txt {
+    float: left;
+    margin: 26px 0px 10px 0px;
+    font-size: smaller;
+}
+
+.title-license-img {
+    float: left;
+    margin: 20px 10px 0px 0px;
+}

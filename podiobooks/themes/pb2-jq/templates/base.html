@@ -14,10 +14,8 @@
 		{% endblock %}
 	
 		<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/clear.css" />
-        <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/shelf.css" />
+        <link rel="stylesheet" type=text/css href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/themes/base/jquery-ui.css" >
         <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/styles.css" />
-
-		<link rel="stylesheet" type=text/css href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/themes/base/jquery-ui.css" >
 
 		{% if debug %}
 			<script type="text/javascript">
@@ -32,14 +30,11 @@
 		<script src="http://www.google.com/jsapi?key={{ GOOGLE_JS_API_KEY }}" type="text/javascript"></script>
 		<script language="Javascript" type="text/javascript">
 		    //<![CDATA[
-		    google.load("jquery", "1.5.1");
-			google.load("jqueryui", "1.8.9");
+		    google.load("jquery", "1");
+			google.load("jqueryui", "1");
 			//]]>
-		</script>		
-		
-		<script type="text/javascript" src="{{ MINI_JS }}"></script>
-		{% block head %}
-		{% endblock %}
+		</script>
+		{% block head %}{% endblock %}
 	</head>
 	
 	<body class='{% block body_class %}{% endblock %}'>
