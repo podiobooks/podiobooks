@@ -3,7 +3,8 @@
 {% load title_templatetags %}
 {% block headtitle %}{{ title.name }} - {{ site_name }}{% endblock %}
 {% block head %}
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/styles_detail.css">
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/styles_detail.css" />
+    <link rel="canonical" href="{{ request.build_absolute_uri }}" />
 {% endblock %}
 {% block title %}Book Information{% endblock %}
 {% block content %}
@@ -30,6 +31,9 @@
                     <div class="detractor-count">
                         {{ title.detractor_count }}
                     </div>
+
+                    {% show_plusone %}
+                    {% show_like %}
 
                     <div class="award-show">
                         {% show_awardshow title %}
@@ -75,12 +79,12 @@
         </div>
     </div>
     {% if title.license %}
-        <div style="float: left; margin: 20px 10px 0px 0px;">
+        <div class="title-license-img">
             <a rel="license" href="{{ title.license.url }}">
                 <img alt="{{ title.license.text }} Logo" style="border-width:0" src="{{ title.license.image_url }}"/>
             </a>
         </div>
-        <div style="float: left; margin: 26px 0px 10px 0px;">
+        <div class="title-license-txt">
             This work is licensed under a
             <a href="{{ title.license.url }}">{{ title.license.text }}</a> license.
         </div>
