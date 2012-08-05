@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-{% load avatar_tags %}
 {% load title_templatetags %}
 {% block headtitle %}Podiobooks User Profile{% endblock %}
 {% block head %}
@@ -68,16 +67,6 @@
     </dt>
     <dd>
         <a href="http://twitter.com/{{ profile.twitter_username }}">{{ profile.twitter_username }}</a>&nbsp;
-    </dd>
-    <dt>
-        Avatar:
-    </dt>
-    <dd>
-    	{% if profile.image %}
-    	<img src={{ STATIC_URL }}/{{ profile.image }} style="width:200px; height:200px;">
-    	{% else %}
-        <img src="{% avatar_url user 65 %}" alt="user avatar">
-        {% endif %}
     </dd>
 </dl>
 <div class="clearfix">
