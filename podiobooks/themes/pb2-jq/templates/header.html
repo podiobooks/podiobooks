@@ -12,14 +12,6 @@
 		<ul class='nav'>
 			<li><a href='#'>Blog</a></li>
 			<li><a href='#'>Community</a></li>
-			<li>
-			{% if user.is_authenticated %}
-				<a href="{% url profile_manage %}">My Account</a></li>
-				<li class='hide-on-mobile'><a href="{% url django_authopenid.views.signout %}">Logout {{ user.username }}</a>
-			{% else %} 	
-				<a href="{% ssl_site_login_url %}">Login<span class='hide-on-mobile'>/Register</span></a>
-			{% endif %}
-			</li>
 		</ul>
 		{% show_searchbox %}
 		{% show_browsebox %}
