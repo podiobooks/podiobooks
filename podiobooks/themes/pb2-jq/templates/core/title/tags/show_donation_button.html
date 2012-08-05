@@ -1,0 +1,24 @@
+{% load staticfiles %}
+{% if title %}
+<div style="margin: 5px auto 5px auto; padding: 5px; width: 140px; background-color: #bbd1ec; text-align: center;">
+    <b>Donate!</b>
+    <p>
+        The author gets 75%
+        <br>
+        of what you <a href="/donate" target="blank">donate</a>,
+        <br>
+        so be generous!
+    </p>
+    <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
+        <input type="hidden" name="cmd" value="_xclick"><input type="hidden" name="business" value="{{ DONATION_BUSINESS_NAME }}">
+		<input type="hidden" name="item_name" value="Podiobooks.com author donation">
+		<input type="hidden" name="item_number" value="{{ title.name }}{{ title.byline|striptags }}">
+		$<input type="text" name="amount" value="9.99" size="8">
+		<input type="hidden" name="no_note" value="1">
+		<input type="hidden" name="currency_code" value="USD">
+		<input type="hidden" name="tax" value="0">
+        <br/>
+        <input type="image" src="{% static 'images/make-a-donation.gif' %}" border="0" name="submit" alt="Make donations with PayPal - it's fast, free and secure!">
+    </form>
+</div>
+{% endif %}
