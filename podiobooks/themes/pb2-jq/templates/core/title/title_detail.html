@@ -3,8 +3,8 @@
 {% load title_templatetags %}
 {% block headtitle %}{{ title.name }} - {{ site_name }}{% endblock %}
 {% block head %}
-    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/styles_detail.css" />
-    <link rel="canonical" href="{{ request.build_absolute_uri }}" />
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/styles_detail.css"/>
+    <link rel="canonical" href="{{ request.build_absolute_uri }}"/>
 {% endblock %}
 {% block title %}Book Information{% endblock %}
 {% block content %}
@@ -67,6 +67,9 @@
             <li>
                 <a href="#chapters-tab">Chapters</a>
             </li>
+            <li>
+                <a href="#comments-tab">Comments</a>
+            </li>
         </ul>
         <div title="Chapters" id="chapters-tab">
             {% if title.episodes.all %}
@@ -76,6 +79,9 @@
                     No Episodes Are Available Yet
                 </div>
             {% endif %}
+        </div>
+        <div title="Comments" id="comments-tab">
+            {% show_comments title.podiobooker_url %}
         </div>
     </div>
     {% if title.license %}
