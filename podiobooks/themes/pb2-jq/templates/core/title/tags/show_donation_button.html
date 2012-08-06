@@ -18,7 +18,7 @@
 		<input type="hidden" name="currency_code" value="USD">
 		<input type="hidden" name="tax" value="0">
         <br/>
-        <input type="image" src="{% static 'images/make-a-donation.gif' %}" border="0" name="submit" alt="Make donations with PayPal - it's fast, free and secure!">
+        <input type="image" src="{% get_static_prefix %}images/make-a-donation.gif" border="0" name="submit" alt="Make donations with PayPal - it's fast, free and secure!">
     </form>
 </div>
 {% endif %}
