@@ -68,7 +68,7 @@ a:hover {
 }
 
 .loading {
-    background: url(img/loading.gif) no-repeat center center;
+    background: url('../images/loading.gif') no-repeat center center;
 }
 
 /*
