@@ -201,6 +201,9 @@ GOOGLE_JS_API_KEY = "ABQIAAAApKHrTPdMsrKnaI74fSfnhBQ1oE6XAUbmObyC_RwYQIb0R2PjHBR
 # Google Analytics Key
 GOOGLE_ANALYTICS_KEY = "UA-28536335-1"
 
+# Facebook Application Key
+FACEBOOK_APP_ID = "316069408433708"
+
 # <meta name="descripton"> default value
 BASE_META_DESCRIPTION = "Free audio books delivered as podcasts. Subscribe for free to any book and start from chapter one. Podiobooks.com"
 
