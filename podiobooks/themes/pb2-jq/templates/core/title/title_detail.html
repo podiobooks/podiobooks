@@ -56,6 +56,9 @@
             <div class="title-description" id="description">
                 {% autoescape off %}{{ title.description_br|removetags:"img"|safe }}{% endautoescape %}
             </div>
+            {% with title.episodes.all|first as episode %}
+                {% show_player title.name episode.url %}
+            {% endwith %}
         </div>
 
 
