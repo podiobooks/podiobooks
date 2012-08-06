@@ -12,7 +12,6 @@ It is ignored by default by .gitignore, so if you don't mess with that, you shou
 """
 # pylint: disable=R0801, W0611
 import os
-from settings_main import MIDDLEWARE_CLASSES, INSTALLED_APPS
 
 # Set the root path of the project so it's not hard coded
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
