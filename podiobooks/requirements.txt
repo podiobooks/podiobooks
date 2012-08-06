@@ -1,6 +1,7 @@
 django
 django-avatar
 django-debug-toolbar
+django-jenkins
 django-taggit
 django-tastypie
 django-markitup
