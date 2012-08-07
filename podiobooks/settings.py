@@ -128,7 +128,7 @@ DATABASES = {
     #    },
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'pb2.db',
+        'NAME': os.path.join(PROJECT_ROOT , 'pb2.db'),
         'USER': 'pb2',
         'PASSWORD': '',
         #        'HOST': '127.0.0.1',
