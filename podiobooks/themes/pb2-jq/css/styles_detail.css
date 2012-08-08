@@ -127,6 +127,11 @@
     background: url('../images/pb-rss-icon.gif') 15px center no-repeat;
 }
 
+.buy-from-amazon {
+    background: url('../images/pb-amazon-logo.png') 15px center no-repeat;
+    background-size: 48px 48px;
+}
+
 .award-show {
     float: left;
     width: 50px;
