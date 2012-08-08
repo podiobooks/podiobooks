@@ -6,7 +6,7 @@ This script reads in an "CSV for Excel" export from phpMyAdmin into a the new Po
 ##############################################
 """
 
-# pylint: disable=E0611,F0401,W0401,W0614,W0612,R0914
+# pylint: disable=E0611,F0401,W0401,W0614,W0612,R0914,R0902
 
 import csv # first we need import necessary lib:csv
 from podiobooks.core.models import *
