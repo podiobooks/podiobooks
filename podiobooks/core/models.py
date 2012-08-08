@@ -177,8 +177,8 @@ class Media(models.Model):
     would be dead tree editions, epub, etc."""
     title = models.ForeignKey('Title', related_name='media')
     name = models.CharField(max_length=255, default="Book Version")
-    identifier = models.CharField(max_length=255, null=True, help_text="ISBN or Product ID")
-    url = models.CharField(max_length=255, null=True)
+    identifier = models.CharField(max_length=255, blank=True, help_text="ISBN or Product ID")
+    url = models.CharField(max_length=255, blank=True)
     deleted = models.BooleanField(default=False)
     date_created = models.DateTimeField(default=datetime.datetime.now())
     date_updated = models.DateTimeField(default=datetime.datetime.now())
