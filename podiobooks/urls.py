@@ -36,9 +36,6 @@ urlpatterns = patterns('',
     
     # Feeds
     (r'^rss/', include('podiobooks.feeds.urls')),
-
-    # Debug
-    url(r'^debug/', 'podiobooks.core.views.show_url_patterns', name='debug_urls')
 )
     
 # Databrowse setup
