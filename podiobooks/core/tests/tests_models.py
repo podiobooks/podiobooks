@@ -217,7 +217,8 @@ class TitleTestCase(TestCase):
         # Media
         self.media1 = Media.objects.create(
                 title=self.title1,
-                name='Smashwords Version',
+                name='Print Version',
+                identifier='3838742922'
                 )
         
         # Partner
@@ -455,4 +456,11 @@ class TitleTestCase(TestCase):
         """Assert that we can capture the last loaded rating from the PB1 Site."""
         print '\n---Max Rating---'
         print "\t\tLast Rating Loaded: %s" % self.rating
+
+    def test_media(self):
+        """Test pulling Particular Media Items"""
+        #http://www.amazon.com/dp/0312384378/?tag=podiobookscom-20
+        self.assertEquals(len(self.title1.media.all()), 1)
+        print_version = self.title1.media.all().filter(name="Print Version").get()
+        self.assertEquals(print_version.identifier, "3838742922")
 

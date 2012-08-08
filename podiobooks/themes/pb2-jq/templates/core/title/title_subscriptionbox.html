@@ -9,7 +9,12 @@
         {% if title.itunes_adam_id %}
             <li class='subscribe-itunes'><a href="http://itunes.apple.com/podcast/id{{ title.itunes_adam_id }}">View in iTunes</a></li>
         {% endif %}
-        <li class='subscribe-rss'><a href="/rss/feeds/episodes/{{ title.slug }}">RSS Feed</a></li>
+        <li class='subscribe-rss'><a href="{% url title_episodes_feed title.slug %}">RSS Feed</a></li>
+        {% for item in title.media.all %}
+            {% if item.name == 'Print Version' %}
+                <li class='buy-from-amazon'><a href="http://www.amazon.com/dp/{{ item.identifier }}/?tag=podiobookscom-20">Buy Book</a></li>
+            {% endif %}
+        {% endfor %}
     </ul>
     <br>
     {% show_donation_button title %}
