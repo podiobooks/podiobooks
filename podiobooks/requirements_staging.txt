@@ -3,3 +3,4 @@ django-redis-cache
 django-redisboard
 django-redis-sessions
 psycopg2
+redis
