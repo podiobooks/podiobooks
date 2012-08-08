@@ -1,4 +1,4 @@
-django
+django==1.4.1
 django-avatar
 django-debug-toolbar
 django-jenkins
