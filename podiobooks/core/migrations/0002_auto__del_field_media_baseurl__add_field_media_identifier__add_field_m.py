@@ -13,12 +13,12 @@ class Migration(SchemaMigration):
 
         # Adding field 'Media.identifier'
         db.add_column('core_media', 'identifier',
-                      self.gf('django.db.models.fields.CharField')(default='', max_length=255, blank=True),
+                      self.gf('django.db.models.fields.CharField')(max_length=255, null=True),
                       keep_default=False)
 
         # Adding field 'Media.url'
         db.add_column('core_media', 'url',
-                      self.gf('django.db.models.fields.CharField')(default='', max_length=255, blank=True),
+                      self.gf('django.db.models.fields.CharField')(max_length=255, null=True),
                       keep_default=False)
 
 
@@ -163,10 +163,10 @@ class Migration(SchemaMigration):
             'date_updated': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2012, 8, 8, 0, 0)'}),
             'deleted': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'identifier': ('django.db.models.fields.CharField', [], {'max_length': '255', 'blank': 'True'}),
+            'identifier': ('django.db.models.fields.CharField', [], {'max_length': '255', 'null': 'True'}),
             'name': ('django.db.models.fields.CharField', [], {'default': "'Book Version'", 'max_length': '255'}),
             'title': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'media'", 'to': "orm['core.Title']"}),
-            'url': ('django.db.models.fields.CharField', [], {'max_length': '255', 'blank': 'True'})
+            'url': ('django.db.models.fields.CharField', [], {'max_length': '255', 'null': 'True'})
         },
         'core.partner': {
             'Meta': {'ordering': "['name']", 'object_name': 'Partner'},
