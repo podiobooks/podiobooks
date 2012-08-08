@@ -34,7 +34,7 @@ def determine_license(license_slug):
 ###### Define general utility functions ##########
 def boolean_clean(data):
     """Function to check fields that we need to convert to boolean"""
-    if (data == None) or (data == ''):
+    if data is None or data == '':
         return 0
     else:
         if int(data) >= 1:
@@ -59,7 +59,7 @@ def get_or_create_contributor(contributor_name):
     try:
         contributor_name_to_split = contributor_name.replace(' III', '')
         contributor_name_tokens = contributor_name_to_split.split(" ", 2)
-        if (len(contributor_name_tokens) > 2):
+        if len(contributor_name_tokens) > 2:
             first_name_guess, middle_name_guess, last_name_guess = contributor_name_tokens[:3]
         else:
             first_name_guess, last_name_guess = contributor_name_tokens[:2]
@@ -228,7 +228,7 @@ def create_titles_from_book_rows(title_list):
                 contributorType = get_or_create_contributor_type(contributor['type'])
                 TitleContributor.objects.create(title=title, contributor=contributorObject,
                     contributor_type=contributorType)
-            print "Title: %s\n\t\tContributors: %s" % (title.name, title.contributors.values('display_name'))
+            print ("Title: %s\n\t\tContributors: %s" % (title.name, title.contributors.values('display_name')))
 
             # Awards
             award_list = award_translation.translate_award(row['ID']) #Manual Award Lookup Translation
@@ -236,20 +236,20 @@ def create_titles_from_book_rows(title_list):
                 for awardSlug in award_list:
                     awardObject = get_or_create_award(awardSlug)
                     title.awards.add(awardObject)
-                print "\t\tAwards: %s" % (title.awards.values('name'))
+                print ("\t\tAwards: %s" % title.awards.values('name'))
 
             # Series
             series_slug = series_translation.translate_series(row['ID']) #Manual Series Lookup Translation
             if series_slug:
                 seriesObject = get_or_create_series(series_slug)
                 title.series = seriesObject
-                print "\t\tSeries: %s" % (title.series.name)
+                print ("\t\tSeries: %s" % title.series.name)
 
             # Category
             category = get_category(row['CategoryID'])
             if category:
                 TitleCategory.objects.create(title=title, category=category)
-                print "\t\tCategories: %s" % (title.categories.values('name'))
+                print ("\t\tCategories: %s" % title.categories.values('name'))
                 if category.slug == 'erotica':
                     title.is_adult = True
 
@@ -257,13 +257,39 @@ def create_titles_from_book_rows(title_list):
             partner = get_partner(row['PartnerID'])
             if partner:
                 title.partner = partner
-                print "\t\tPartner: %s" % (title.partner.name)
+                print "\t\tPartner: %s" % title.partner.name
 
+            # Save the title!
             title.save()
 
-            # @TODO Need to double check what we want to do with URLs to iTunes, etc.
+            # Create Media Items
+            if row.get('BookISBN'):
+                book_media = Media.objects.create(
+                    title=title,
+                    name='Print Version',
+                    identifier=row.get('BookISBN')
+                )
 
-            # @TODO Create Media Objects for the URL Fields from the Book Row
+            if row.get('AudioISBN'):
+                book_media = Media.objects.create(
+                    title=title,
+                    name='Audiobook Version',
+                    identifier=row.get('AudioISBN')
+                )
+
+            if row.get('EBookLink'):
+                book_media = Media.objects.create(
+                    title=title,
+                    name='eBook Version',
+                    url=row.get('EBookLink')
+                )
+
+            if row.get('LuluLink'):
+                book_media = Media.objects.create(
+                    title=title,
+                    name='Print On Demand Version',
+                    url=row.get('LuluLink')
+                )
 
 ##### MAIN FUNCTION TO RUN IF THIS SCRIPT IS CALLED ALONE ###
 if __name__ == "__main__":
