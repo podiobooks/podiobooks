@@ -11,6 +11,7 @@ from django.views.decorators.cache import cache_page
 from django.http import HttpResponse
 from django.core.cache import cache
 from django.db.models import Avg, Max, Min, Count
+
 INITIAL_CATEGORY = 'science-fiction'
 INITIAL_CONTRIBUTOR = 'mur-lafferty'
 
@@ -18,9 +19,10 @@ def contributor_list(request):
     """
     List of all contributors, annotated with a title count
     """
-    contributors = Contributor.objects.annotate(contributes_to_count = Count("titlecontributors"))
+    contributors = Contributor.objects.annotate(contributes_to_count=Count("titlecontributors"))
     response_data = {"contributor_list": contributors}
     return render_to_response("core/contributor/contributor_list.html", response_data, context_instance=RequestContext(request))
+
 
 def index(request):
     """
@@ -30,25 +32,26 @@ def index(request):
     
     template : core/templates/index.html
     """
-    
+
     homepage_title_list = Title.objects.filter(display_on_homepage=True).order_by('-date_created').all()
-    
-    featured_title_list = homepage_title_list.filter(categories__slug = INITIAL_CATEGORY).order_by('-date_created', 'name')[:4]
-    
+
+    featured_title_list = homepage_title_list.filter(categories__slug=INITIAL_CATEGORY).order_by('-date_created', 'name')[:4]
+
     minimal_title_list = featured_title_list[:1]
-    
+
     toprated_title_list = homepage_title_list.filter(promoter_count__gte=20).order_by('-promoter_count').all()[:18]
-    
-    nowreleasing_title_list = homepage_title_list.filter(is_complete=False).all()[:5]    
+
+    nowreleasing_title_list = homepage_title_list.filter(is_complete=False).all()[:5]
     recentlycomplete_title_list = homepage_title_list.filter(is_complete=True).all()[:5]
-    
+
     category_choice_form = CategoryChoiceForm(initial={'category': INITIAL_CATEGORY})
-    category_choice_form.submit_url = reverse('title_category_shelf', kwargs={'category_slug': 'placeholder_slug'}) # This placeholder slug is because the url command expects there to to be an argument, which won't be known till later
-    
+    category_choice_form.submit_url = reverse('title_category_shelf',
+        kwargs={'category_slug': 'placeholder_slug'}) # This placeholder slug is because the url command expects there to to be an argument, which won't be known till later
+
     contributor_choice_form = ContributorChoiceForm(initial={'contributor': INITIAL_CONTRIBUTOR})
-    
-    contributor_choice_form.submit_url = reverse('title_contributor_shelf', kwargs={'contributor_slug': 'placeholder_slug'})                         
-    
+
+    contributor_choice_form.submit_url = reverse('title_contributor_shelf', kwargs={'contributor_slug': 'placeholder_slug'})
+
     response_data = {'homepage_title_list': homepage_title_list,
                      'featured_title_list': featured_title_list,
                      'minimal_title_list': minimal_title_list,
@@ -67,25 +70,27 @@ def title_list_by_category(request, category_slug='science-fiction', template_na
         Returns the most recent titles for a particular category filtered by show-on-homepage=true.
     """
     category_title_list = Title.objects.filter(display_on_homepage=True, categories__slug=category_slug).order_by('-date_created', 'name').all()[:20]
-    
+
     response_data = {'title_list': category_title_list,
                      'category_slug': category_slug,
                      }
-    
+
     return render_to_response(template_name, response_data, context_instance=RequestContext(request))
+
 
 def title_list_by_contributor(request, contributor_slug='mur-lafferty', template_name='core/title/title_list.html'):
     """
         Returns the most recent titles for a particular contributor filtered by show-on-homepage=true.
     """
     contributor_title_list = Title.objects.filter(display_on_homepage=True, contributors__slug=contributor_slug).order_by('-date_created', 'name').all()[:20]
-    
+
     response_data = {'title_list': contributor_title_list,
                      'contributor_slug': contributor_slug,
                      }
-    
+
     return render_to_response(template_name, response_data, context_instance=RequestContext(request))
-    
+
+
 def title_search(request, keywords=None):
     """
     takes in a list of keywords to full-text search titles on
@@ -98,7 +103,7 @@ def title_search(request, keywords=None):
         form = TitleSearchForm(request.POST) # A form bound to the POST data
     else:
         form = TitleSearchForm({'keywords': keywords})
-    
+
     if form.is_valid(): # All validation rules pass
         keywords = form.cleaned_data['keywords']
         include_adult = form.cleaned_data['include_adult']
@@ -108,7 +113,7 @@ def title_search(request, keywords=None):
         keywords = False
         include_adult = False
         completed_only = False
-    
+
     if keywords:
         if (not include_adult):
             adult_filter = Q(is_adult=False)
@@ -121,11 +126,13 @@ def title_search(request, keywords=None):
         search_results = Title.objects.filter((Q(name__icontains=keywords) | Q(description__icontains=keywords)) & adult_filter & completed_filter)
         search_metadata = None
         result_count = len(search_results)
-        response_data = {'title_list': search_results, 'keywords': keywords, 'result_count': result_count, 'titleSearchForm': form, 'categoryChoiceForm':CategoryChoiceForm(), 'search_metadata': search_metadata}
+        response_data = {'title_list': search_results, 'keywords': keywords, 'result_count': result_count, 'titleSearchForm': form, 'categoryChoiceForm': CategoryChoiceForm(),
+                         'search_metadata': search_metadata}
         return render_to_response('core/title/title_search_results.html', response_data, context_instance=RequestContext(request))
     else:
         response_data = {'titleSearchForm': form}
         return render_to_response('core/title/title_search_results.html', response_data, context_instance=RequestContext(request))
+
 
 @cache_page(1)
 def homepage_featured(request, cat=None):
@@ -143,7 +150,8 @@ def homepage_featured(request, cat=None):
 
     featured_title_list = homepage_title_list.filter(categories__slug=cat).order_by('-date_created', 'name')[:16]
 
-    return render_to_response("core/shelf/shelf_items.html", {"items":featured_title_list}, context_instance=RequestContext(request))
+    return render_to_response("core/shelf/shelf_items.html", {"items": featured_title_list}, context_instance=RequestContext(request))
+
 
 @cache_page(1)
 def top_rated(request, author=None):
@@ -161,4 +169,34 @@ def top_rated(request, author=None):
 
     toprated_title_list = homepage_title_list.filter(promoter_count__gte=20).order_by('-promoter_count').all().filter(contributors__slug=author)[:18]
 
-    return render_to_response("core/shelf/shelf_items.html", {"items":toprated_title_list}, context_instance=RequestContext(request))
+    return render_to_response("core/shelf/shelf_items.html", {"items": toprated_title_list}, context_instance=RequestContext(request))
+
+from django.core import urlresolvers
+from django.http import HttpResponse
+
+intro_text = """Named URL patterns for the {% url %} tag
+========================================
+
+e.g. {% url pattern-name %}
+or   {% url pattern-name arg1 %} if the pattern requires arguments
+
+"""
+
+def show_url_patterns(request):
+    patterns = _get_named_patterns()
+    r = HttpResponse(intro_text, content_type='text/plain')
+    longest = max([len(pair[0]) for pair in patterns])
+    for key, value in patterns:
+        r.write('%s %s\n' % (key.ljust(longest + 1), value))
+    return r
+
+
+def _get_named_patterns():
+    "Returns list of (pattern-name, pattern) tuples"
+    resolver = urlresolvers.get_resolver(None)
+    patterns = sorted([
+    (key, value[0][0][0])
+    for key, value in resolver.reverse_dict.items()
+    if isinstance(key, basestring)
+    ])
+    return patterns
