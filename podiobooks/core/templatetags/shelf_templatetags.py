@@ -4,10 +4,6 @@ from django import template
 
 register = template.Library()
 
-"""Django Custom Template Tags For Handling Shelves Full of Titles"""
-
-register = template.Library()
-
 @register.inclusion_tag('core/shelf/tags/show_shelf.html')
 def show_shelf(shelf_id, shelf_title, title_list, dropdown_form, base_css_class, shelf_title_width):
     """Pulls in a template to show a title shelf for a particular set of titles"""
