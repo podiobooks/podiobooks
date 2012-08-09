@@ -19,7 +19,7 @@
             {% endif %}
         </div>
         <div class="title-list-text">
-            {% autoescape off %}{{ title.description|striptags|truncatewords_html:85 }}{% endautoescape %} [<a href="{{ title.get_absolute_url }}">more</a>]
+            {% autoescape off %}{{ title.description|striptags|truncatewords:85 }}{% endautoescape %} [<a href="{{ title.get_absolute_url }}">more</a>]
         </div>
         <div class="clearfix">
         </div>
