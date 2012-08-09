@@ -95,9 +95,7 @@
     overflow: hidden;
 }
 
-/*
- * Itunes / RSS
- */
+/* SubscriptionBox */
 .subscribe {
     list-style: none;
 }
