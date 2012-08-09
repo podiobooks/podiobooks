@@ -27,9 +27,9 @@ def show_contributors(title):
 
 
 @register.inclusion_tag('core/title/tags/show_titlecover.html')
-def show_titlecover(title, cover_height, cover_width):
+def show_titlecover(title):
     """ Pulls and formats the cover for a Title """
-    return {'title': title, 'cover_height': cover_height, 'cover_width': cover_width}
+    return {'title': title}
 
 
 @register.inclusion_tag('core/title/tags/show_titlelist.html')
