@@ -1,32 +1,25 @@
 {% load title_templatetags %}
-<ul>
+<ul class="title-list">
     {% for title in title_list %}
-    <li style="margin: 15px 0 30px 5px; list-style: none;">
-    	<div style="float: left;">
-        	{% show_titlecover title 150 100 %}
-        </div>
-        <div id="titleList" style="float: left; margin: 5px 0 0 15px; width: 820px; font-size: 12px">
-            <div style="font-size: 16px">
+    <li>
+        {% show_titlecover title %}
+        <div class="title-list-bar">
+            <div class="title">
                 <a href="{{ title.get_absolute_url }}">{{ title.name }}</a>
             </div>
             {% if page_name != 'contributor_title_list' %}
-            <div style="font-size: 13px; margin: 10px 0 7px 0;">
-               	{{ title.byline|safe }}
+            <div class="byline">
+                {{ title.byline|safe }}
             </div>
             {% endif %}
             {% if page_name != 'category_title_list' %}
-            <div style="font-size: 13px; margin: 0 0 7px 0;">
+            <div class="category">
                 {{ title.category_list|safe }}
             </div>
             {% endif %}
-            <div class="clearfix">
-                {% autoescape off %}{{ title.description|striptags|truncatewords_html:95 }}{% endautoescape %} <a href="{{ title.get_absolute_url }}">[more]</a>
-            </div>
-			{% if title.sphinx %}
-			<div style="font-size: 9px; font-style: italic">
-				Search Result Weight: {{ title.sphinx.weight }}
-			</div>
-			{% endif %}
+        </div>
+        <div class="title-list-text">
+            {% autoescape off %}{{ title.description|striptags|truncatewords_html:85 }}{% endautoescape %} [<a href="{{ title.get_absolute_url }}">more</a>]
         </div>
         <div class="clearfix">
         </div>
