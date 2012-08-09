@@ -1,0 +1,93 @@
+[
+    {
+        "pk":5,
+        "model":"core.license",
+        "fields":{
+            "code":"",
+            "url":"",
+            "text":"",
+            "date_updated":"2011-02-05 09:33:24",
+            "image_url":"",
+            "date_created":"2011-02-05 09:33:24",
+            "slug":"all"
+        }
+    },
+    {
+        "pk":7,
+        "model":"core.license",
+        "fields":{
+            "code":"",
+            "url":"",
+            "text":"",
+            "date_updated":"2011-02-06 16:28:57",
+            "image_url":"",
+            "date_created":"2011-02-06 16:28:57",
+            "slug":"by-nc-nc"
+        }
+    },
+    {
+        "pk":1,
+        "model":"core.license",
+        "fields":{
+            "code":"",
+            "url":"http://creativecommons.org/licenses/by-nc-nd/3.0/",
+            "text":"Creative Commons Attribution-Noncommercial-No Derivative Works 3.0",
+            "date_updated":"2009-12-09 21:52:27",
+            "image_url":"http://i.creativecommons.org/l/by-nc-nd/3.0/us/88x31.png",
+            "date_created":"2009-12-09 21:52:27",
+            "slug":"by-nc-nd"
+        }
+    },
+    {
+        "pk":3,
+        "model":"core.license",
+        "fields":{
+            "code":"",
+            "url":"http://creativecommons.org/licenses/by-nc-sa/3.0/",
+            "text":"Creative Commons Attribution-Noncommercial-Share Alike",
+            "date_updated":"2009-12-09 21:53:00",
+            "image_url":"http://i.creativecommons.org/l/by-nc-sa/3.0/us/88x31.png",
+            "date_created":"2009-12-09 21:53:00",
+            "slug":"by-nc-sa"
+        }
+    },
+    {
+        "pk":4,
+        "model":"core.license",
+        "fields":{
+            "code":"",
+            "url":"http://creativecommons.org/licenses/by-nd/3.0/",
+            "text":"Creative Commons Attribution-No Derivative Works",
+            "date_updated":"2009-12-09 21:53:00",
+            "image_url":"http://i.creativecommons.org/l/by-nd/3.0/us/88x31.png",
+            "date_created":"2009-12-09 21:53:00",
+            "slug":"by-nd"
+        }
+    },
+    {
+        "pk":6,
+        "model":"core.license",
+        "fields":{
+            "code":"",
+            "url":"",
+            "text":"",
+            "date_updated":"2011-02-06 16:28:57",
+            "image_url":"",
+            "date_created":"2011-02-06 16:28:57",
+            "slug":"by-nd-nd"
+        }
+    },
+    {
+        "pk":2,
+        "model":"core.license",
+        "fields":{
+            "code":"",
+            "url":"http://creativecommons.org/licenses/by-sa/3.0/",
+            "text":"Creative Commons Attribution-Share Alike 3.0",
+            "date_updated":"2009-12-09 21:52:27",
+            "image_url":"http://i.creativecommons.org/l/by-sa/3.0/us/88x31.png",
+            "date_created":"2009-12-09 21:52:27",
+            "slug":"by-sa"
+        }
+    }
+]
