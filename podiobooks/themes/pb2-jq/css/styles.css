@@ -240,6 +240,10 @@ a:hover {
     margin-right: auto;
 }
 
+.title-titlebar {
+    height: 40px;
+}
+
 .title a {
     text-decoration: none;
 }
@@ -247,6 +251,14 @@ a:hover {
 .byline {
     font-size: smaller;
     float: right;
+}
+
+.byline a {
+    text-decoration: none;
+}
+
+.byline a:hover {
+    text-decoration: underline;
 }
 
 .category {
