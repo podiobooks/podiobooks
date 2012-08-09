@@ -1,0 +1,50 @@
+[
+    {
+        "pk":1,
+        "model":"core.partner",
+        "fields":{
+            "name":"Librivox",
+            "url":"http://www.librivox.org",
+            "deleted":false,
+            "date_updated":"2011-02-11 13:32:32",
+            "date_created":"2006-01-27 00:00:00",
+            "logo":"librivox.JPG"
+        }
+    },
+    {
+        "pk":4,
+        "model":"core.partner",
+        "fields":{
+            "name":"New Fiction",
+            "url":"http://www.newfiction.com",
+            "deleted":false,
+            "date_updated":"2011-02-11 13:32:32",
+            "date_created":"2008-10-27 00:00:00",
+            "logo":"newfiction.jpg"
+        }
+    },
+    {
+        "pk":2,
+        "model":"core.partner",
+        "fields":{
+            "name":"Podshow",
+            "url":"http://www.podshow.com",
+            "deleted":false,
+            "date_updated":"2011-02-11 13:32:32",
+            "date_created":"2006-06-15 00:00:00",
+            "logo":"podshow.jpg"
+        }
+    },
+    {
+        "pk":3,
+        "model":"core.partner",
+        "fields":{
+            "name":"Prometheus Radio Theatre",
+            "url":"http://prometheus.libsyn.com",
+            "deleted":false,
+            "date_updated":"2011-02-11 13:32:32",
+            "date_created":"2007-09-19 00:00:00",
+            "logo":"prometheus.jpg"
+        }
+    }
+]
