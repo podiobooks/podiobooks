@@ -74,6 +74,7 @@
 .title-sharebox a {
     text-decoration: none;
 }
+
 .title-sharebox a:hover {
     text-decoration: underline;
 }
@@ -83,13 +84,14 @@
 }
 
 .title-details-top {
-    margin: 10px 0 40px 0 ;
+    margin: 10px 0 40px 0;
 }
 
 .imagebox {
     float: left;
     text-align: center;
     font-size: 10px;
+    margin-right: 15px;
 }
 
 .award-show {
@@ -147,12 +149,10 @@
     margin: 0;
 }
 
-
 /*
  * Consumption Box
  */
 .consumption-box {
-    background: #D9E4F0;
     margin: 0 10px 30px 0;
     -webkit-box-shadow: 0 3px 5px #aaa;
     -moz-box-shadow: 0 3px 5px #aaa;
@@ -168,6 +168,14 @@
     height: 380px;
     float: left;
     position: relative;
+    background: #d9e4f0; /* Old browsers */
+    background: -moz-linear-gradient(top, #d9e4f0 0%, #a9d4f9 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #d9e4f0), color-stop(100%, #a9d4f9)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #d9e4f0 0%, #a9d4f9 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #d9e4f0 0%, #a9d4f9 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #d9e4f0 0%, #a9d4f9 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #d9e4f0 0%, #a9d4f9 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#d9e4f0', endColorstr = '#a9d4f9', GradientType = 0); /* IE6-9 */
 }
 
 .headphone-title {
@@ -185,7 +193,6 @@
 .donate-box {
     padding: 5px;
     width: 145px;
-    background-color: #bbd1ec;
     text-align: center;
     position: absolute;
     bottom: 10px;
@@ -194,6 +201,15 @@
     -moz-border-radius: 10px;
     -o-border-radius: 10px;
     border-radius: 10px;
+    background: #dce5ef; /* Old browsers */
+    background: -moz-linear-gradient(top,  #dce5ef 0%, #74a7bf 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#dce5ef), color-stop(100%,#74a7bf)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #dce5ef 0%,#74a7bf 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #dce5ef 0%,#74a7bf 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #dce5ef 0%,#74a7bf 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #dce5ef 0%,#74a7bf 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dce5ef', endColorstr='#74a7bf',GradientType=0 ); /* IE6-9 */
+
 }
 
 .donate-box input {
