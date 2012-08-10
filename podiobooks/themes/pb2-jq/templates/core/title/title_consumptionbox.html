@@ -7,15 +7,19 @@
     </div>
     <ul class='consume-list'>
         {% if title.itunes_adam_id %}
-            <li class='consume-itunes'><a href="http://itunes.apple.com/podcast/id{{ title.itunes_adam_id }}">View in iTunes</a></li>
+            <li class='consume-itunes'><a href="http://itunes.apple.com/podcast/id{{ title.itunes_adam_id }}">View in
+                iTunes</a></li>
         {% endif %}
         {% for item in title.media.all %}
             {% if item.name == 'Print Version' %}
-                <li class='consume-amazon'><a href="http://www.amazon.com/dp/{{ item.identifier }}/?tag=podiobookscom-20">Buy Book</a></li>
+                <li class='consume-amazon'><a
+                        href="http://www.amazon.com/dp/{{ item.identifier }}/?tag=podiobookscom-20">Buy Book</a></li>
             {% endif %}
         {% endfor %}
         <li class='consume-rss'><a href="{% url title_episodes_feed title.slug %}">RSS Feed</a></li>
     </ul>
-    <br>
+    {% if not title.is_complete %}
+        <div class='title-release-status'>This title is <span class="incomplete">still releasing</span></div>
+    {% endif %}
     {% show_donation_button title %}
 </div>
