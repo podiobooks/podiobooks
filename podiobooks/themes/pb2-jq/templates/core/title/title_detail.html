@@ -31,9 +31,7 @@
 
         <div class='title-details-infobar'>
             <div class="category">{{ title.category_list|safe }}</div>
-            {% if title.series %}
-            <div class="series"><a href="{% url series_detail title.series.slug %}">{{ title.series.name|safe }}</a></div>
-            {% endif %}
+
             <div class="net-promoter-box">
                 <div class="promoter-count">
                     Likes: {{ title.promoter_count }}
