@@ -103,11 +103,12 @@
 }
 
 .award-show {
-    width: 50px;
+    width: 80px;
     margin: 20px 0 0 10px;
 }
 
 .award-show img {
+    width: 80px;
     border: none;
 }
 
