@@ -1,105 +1,112 @@
 {% extends "base.html" %}
+{% load ad_templatetags %}
 {% load global_templatetags %}
 {% load title_templatetags %}
 {% block headtitle %}{{ title.name }} - {{ site_name }}{% endblock %}
 {% block head %}
-<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/styles_detail.css" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html"/>
-<link rel="canonical" href="{{ request.build_absolute_uri }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/styles_detail.css"
+          xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html"/>
+    <link rel="canonical" href="{{ request.build_absolute_uri }}"/>
 {% endblock %}
 {% block title %}Book Information{% endblock %}
 {% block content %}
 
-{% include "core/title/title_consumptionbox.html" %}
+    {% include "core/title/title_consumptionbox.html" %}
 
-<div class="title-details">
+    <div class="title-details">
 
-    <div class="title-details-titlebar">
-        <h1 class="title-details-title">{{ title.name }}</h1>
+        <div class="title-details-titlebar">
+            <h1 class="title-details-title">{{ title.name }}</h1>
 
-        <div class="byline">{{ title.byline|safe }}</div>
-    </div>
+            <div class="byline">{{ title.byline|safe }}</div>
+        </div>
+
+        {% if title.series %}
+            <div class="title-details-seriesbar">
+                <a href="{{ title.series.get_absolute_url }}">{{ title.series.name }}</a>: Book {{ title.series_sequence }}
+            </div>
+        {% endif %}
+
+        <div class="title-details-top">
+            <div class='imagebox'>
+                {% show_titlecover title %}
 
 
-    <div class="title-details-top clearfix">
-        <div class='imagebox'>
-            {% show_titlecover title %}
-
-            <div class="award-show">
                 {% show_awardshow title %}
             </div>
-        </div>
 
-        <div class='title-details-infobar'>
-            <div class="category">{{ title.category_list|safe }}</div>
+            <div class='title-details-infobar'>
+                <div class="category">{{ title.category_list|safe }}</div>
 
-            <div class="net-promoter-box">
-                <div class="promoter-count">
-                    Likes: {{ title.promoter_count }}
+                <div class="net-promoter-box">
+                    <div class="promoter-count">
+                        Likes: {{ title.promoter_count }}
+                    </div>
+
+                    <div class="detractor-count">
+                        Dislikes: {{ title.detractor_count }}
+                    </div>
                 </div>
-
-                <div class="detractor-count">
-                    Dislikes: {{ title.detractor_count }}
+                <div class="ratebox">
+                    {% show_plusone %}
+                    {% show_like %}
                 </div>
+                {% show_sharebox title.name request.build_absolute_uri %}
             </div>
-            <div class="ratebox">
-            {% show_plusone %}
-            </div>
-            {% show_sharebox title.name request.build_absolute_uri %}
-        </div>
 
-        <div class="title-description">
-            {% autoescape off %}{{ title.description_br|removetags:"img"|safe }}{% endautoescape %}
+            <div class="title-description">
+                {% autoescape off %}{{ title.description_br|removetags:"img"|safe }}{% endautoescape %}
+            </div>
+            {% with title.episodes.all|first as episode %}
+            {% endwith %}
         </div>
-        {% with title.episodes.all|first as episode %}
-        {% endwith %}
     </div>
-</div>
-<div class="clearfix">
-</div>
-<div class="title-tabs">
-    <ul>
-        <li>
-            <a href="#comments-tab">Comments</a>
-        </li>
-        <li>
-            <a href="#chapters-tab">Chapters</a>
-        </li>
-    </ul>
-    <div title="Comments" id="comments-tab">
-        {% show_comments title.podiobooker_blog_url %}
+    <div class="clearfix"></div>
+    {% ad_placeholder 'wide-skyscraper' %}
+    <div class="title-tabs">
+        <ul>
+            <li>
+                <a href="#comments-tab">Comments</a>
+            </li>
+            <li>
+                <a href="#chapters-tab">Chapters</a>
+            </li>
+        </ul>
+        <div title="Comments" id="comments-tab">
+            {% show_comments title.podiobooker_blog_url %}
+        </div>
+        <div title="Chapters" id="chapters-tab">
+            {% if title.episodes.all %}
+                {% show_episodelist title %}
+            {% else %}
+                <h3>
+                    No Episodes Are Available Yet.
+                </h3>
+            {% endif %}
+        </div>
     </div>
-    <div title="Chapters" id="chapters-tab">
-        {% if title.episodes.all %}
-        {% show_episodelist title %}
-        {% else %}
-        <h3>
-            No Episodes Are Available Yet.
-        </h3>
-        {% endif %}
-    </div>
-</div>
-{% if title.license %}
-<div class="title-license-img">
-    <a rel="license" href="{{ title.license.url }}">
-        <img alt="{{ title.license.text }} Logo" style="border-width:0" src="{{ title.license.image_url }}"/>
-    </a>
-</div>
-<div class="title-license-txt">
-    This work is licensed under a
-    <a href="{{ title.license.url }}">{{ title.license.text }}</a> license.
-</div>
-<div style="clear: both">
-</div>
-<script type="text/javascript">
-    $(function () {
-        $(".title-tabs").tabs({
-            ajaxOptions:{
-                error:function (xhr, status, index, anchor) {
-                    $(anchor.hash).html("Sorry, an error occurred, and this tab couldn't be loaded.");
-                }
-            }
-        });
-    });
-</script>
-{% endif %}
+    {% if title.license %}
+        <div class="title-license-img">
+            <a rel="license" href="{{ title.license.url }}">
+                <img alt="{{ title.license.text }} Logo" style="border-width:0" src="{{ title.license.image_url }}"/>
+            </a>
+        </div>
+        <div class="title-license-txt">
+            This work is licensed under a
+            <a href="{{ title.license.url }}">{{ title.license.text }}</a> license.
+        </div>
+        <div style="clear: both">
+        </div>
+        <script type="text/javascript">
+            $(function () {
+                $(".title-tabs").tabs({
+                    ajaxOptions:{
+                        error:function (xhr, status, index, anchor) {
+                            $(anchor.hash).html("Sorry, an error occurred, and this tab couldn't be loaded.");
+                        }
+                    }
+                });
+            });
+        </script>
+    {% endif %}
 {% endblock %}

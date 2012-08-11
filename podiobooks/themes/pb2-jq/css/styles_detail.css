@@ -16,7 +16,7 @@
 }
 
 .title-details-titlebar {
-    height: 36px;
+    min-height: 36px;
     border-bottom: solid 1px #b2b2b2;
 }
 
@@ -24,15 +24,23 @@
     margin-top: 10px;
 }
 
+.title-details-seriesbar {
+    min-height: 20px;
+    margin-top: 10px;
+}
+
 .title-details-infobar {
     background-color: #D9E4F0;
     padding: 5px;
     text-align: center;
-    margin: 0 10px 10px 10px;
-    height: 200px;
+    margin: 0 0 15px 15px;
     float: right;
     width: 100px;
     box-shadow: 0 3px 5px #aaa;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -o-border-radius: 3px;
+    border-radius: 3px;
 }
 
 .category {
@@ -91,13 +99,16 @@
     float: left;
     text-align: center;
     font-size: 10px;
-    margin-right: 15px;
+    margin: 0 15px 15px 0;
 }
 
 .award-show {
-    float: left;
     width: 50px;
-    margin-top: 20px;
+    margin: 20px 0 0 10px;
+}
+
+.award-show img {
+    border: none;
 }
 
 .title-description {
@@ -131,22 +142,15 @@
     font-weight: bold;
 }
 
-.title-release-status {
-
-}
-
-.title-release-status span.complete {
+.span.complete {
     font-weight: bold;
     color: green;
 }
 
-.title-release-status span.incomplete {
-
-}
-
 .title-tabs {
-    width: 100%;
-    margin: 0;
+    margin: 0 0 0 20px;
+    float: left;
+    width: 770px;
 }
 
 /*
@@ -162,10 +166,9 @@
     -moz-border-radius: 10px;
     -o-border-radius: 10px;
     border-radius: 10px;
-
     font-size: 12px;
     width: 173px;
-    height: 380px;
+    min-height: 300px;
     float: left;
     position: relative;
     background: #d9e4f0; /* Old browsers */
@@ -193,10 +196,8 @@
 .donate-box {
     padding: 5px;
     width: 145px;
+    margin: 9px;
     text-align: center;
-    position: absolute;
-    bottom: 10px;
-    left: 10px;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
     -o-border-radius: 10px;
@@ -226,8 +227,7 @@
     display: block;
     height: 48px;
     line-height: 48px;
-    margin-left: 55px;
-    margin-top: 3px;
+    margin: 3px 0 0 55px;
     text-align: left;
 }
 
@@ -248,4 +248,23 @@
 .consume-amazon {
     background: url('../images/pb-amazon-logo.png') left center no-repeat;
     background-size: 48px 48px;
+}
+
+.episode-list {
+    list-style: none;
+}
+
+.episode-list-item {
+    margin: 15px 0 0 0;
+}
+
+.episode-list-title {
+    float:left;
+    width:160px;
+}
+
+.episode-list-description {
+    float:left;
+    width:500px;
+    margin-left: 10px;
 }
