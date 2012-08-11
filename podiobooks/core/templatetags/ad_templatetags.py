@@ -5,6 +5,7 @@ from django import template
 register = template.Library()
 
 @register.inclusion_tag('core/ad/tags/ad_placeholder.html')
-def ad_placeholder():
+def ad_placeholder(size):
     """Placeholder for Future Ads"""
-    return { }
+
+    return {'size': size}

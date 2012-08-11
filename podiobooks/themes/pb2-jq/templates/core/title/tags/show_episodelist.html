@@ -1,28 +1,17 @@
 {% load title_templatetags %}
 {% if episode_list %}
-    <div style="font-size: 12px; font-weight: normal">
-        <div style="font-weight: bold;">
-            <div style="float:left; width:160px">
-                Title
-            </div>
-            <div style="float:left; width:600px; margin-left: 10px;">
-                Description
-            </div>
-        </div>
-        <div style="clear:both;">
-        </div>
+    <ul class="episode-list">
         {% for episode in episode_list %}
-            <div style="margin-top: 15px;">
-                <div style="float:left; width:160px;">
+            <li class="episode-list-item">
+                <div class="episode-list-title">
                     <a href="{{ episode.url }}">{{ episode.name }}</a>
-                    <div style="margin: 5px 0 0 15px; font-size: 10px">({{ episode.filesize|filesizeformat }})</div>
+                    <div class="episode-list-fileinfo">({{ episode.filesize|filesizeformat }})</div>
                 </div>
-                <div style="float:left; width:600px; margin-left: 10px;">
+                <div class="episode-list-description">
                     {{ episode.description }}
                 </div>
-            </div>
-            <div style="clear:both;">
-            </div>
+                <div class="clearfix"></div>
+            </li>
         {% endfor %}
-    </div>
+    </ul>
 {% endif %}
