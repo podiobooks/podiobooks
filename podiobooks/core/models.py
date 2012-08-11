@@ -241,10 +241,10 @@ class Rating(models.Model):
 
 class Series(models.Model):
     """Titles can belong to a series, which allows for higher level grouping."""
-    slug = models.SlugField(max_length=255)
+    slug = models.SlugField(max_length=255, unique=True)
     name = models.CharField(max_length=255)
-    description = models.TextField()
-    url = models.URLField(blank=True, verify_exists=True)
+    short_name = models.CharField(max_length=255)
+    description = models.TextField(blank=True)
     deleted = models.BooleanField(default=False)
     date_created = models.DateTimeField(default=datetime.datetime.now())
     date_updated = models.DateTimeField(default=datetime.datetime.now())
@@ -268,8 +268,9 @@ class Title(models.Model):
 
     name = models.CharField(max_length=255)
     series = models.ForeignKey('Series', null=True, related_name='titles')
+    series_sequence = models.IntegerField(default=1)
     description = models.TextField()
-    slug = models.SlugField(max_length=255)
+    slug = models.SlugField(max_length=255, unique=True)
     cover = models.ImageField(upload_to=settings.MEDIA_ROOT)
     status = models.IntegerField(default=1)
     license = models.ForeignKey('License', null=True, related_name='titles')
