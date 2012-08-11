@@ -45,18 +45,15 @@ a:hover {
     margin: 0 0 25px 0;
     font-size: 15px;
     position: relative;
-    background: #e1ffff; /* Old browsers */
-    background: -moz-linear-gradient(top,  #e1ffff 0%, #fdffff 12%, #e6f8fd 30%, #c8eefb 54%, #bee4f8 75%, #d0deee 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#e1ffff), color-stop(12%,#fdffff), color-stop(30%,#e6f8fd), color-stop(54%,#c8eefb), color-stop(75%,#bee4f8), color-stop(100%,#d0deee)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top,  #e1ffff 0%,#fdffff 12%,#e6f8fd 30%,#c8eefb 54%,#bee4f8 75%,#d0deee 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top,  #e1ffff 0%,#fdffff 12%,#e6f8fd 30%,#c8eefb 54%,#bee4f8 75%,#d0deee 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top,  #e1ffff 0%,#fdffff 12%,#e6f8fd 30%,#c8eefb 54%,#bee4f8 75%,#d0deee 100%); /* IE10+ */
-    background: linear-gradient(to bottom,  #e1ffff 0%,#fdffff 12%,#e6f8fd 30%,#c8eefb 54%,#bee4f8 75%,#d0deee 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e1ffff', endColorstr='#d0deee',GradientType=0 ); /* IE6-9 */
-
+    background: #d0deee; /* Old browsers */
+    background: -moz-linear-gradient(top, #d0deee 0%, #b8d1ed 88%, #d0deee 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #d0deee), color-stop(88%, #b8d1ed), color-stop(100%, #d0deee)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #d0deee 0%, #b8d1ed 88%, #d0deee 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #d0deee 0%, #b8d1ed 88%, #d0deee 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #d0deee 0%, #b8d1ed 88%, #d0deee 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #d0deee 0%, #b8d1ed 88%, #d0deee 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#d0deee', endColorstr = '#d0deee', GradientType = 0); /* IE6-9 */
 }
-
-
 
 .pg-head h2 {
     display: inline;
@@ -75,6 +72,11 @@ a:hover {
 
 .pg-head .cur {
     text-decoration: underline;
+}
+
+.headerbar {
+    padding: 15px 20px 8px 20px;
+    margin: 0 0 20px 0;
 }
 
 .loading {
@@ -295,4 +297,19 @@ a:hover {
 
 .title-list-text {
 
+}
+
+.wide-skyscraper-ad-placeholder {
+    width: 160px;
+    height: 600px;
+    margin-left: 8px;
+    float: left;
+    background: url('http://www.google.com/help/hc/images/adsense/adsense_185665_adformat-text_160x600_en.png');
+}
+
+.leaderboard-ad-placeholder {
+    width: 160px;
+    height: 600px;
+    margin-left: 8px;
+    background: url('http://www.google.com/help/hc/images/adsense/adsense_185665_adformat-text_728x90_en.png');
 }
