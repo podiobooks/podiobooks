@@ -324,6 +324,10 @@ class Title(models.Model):
     def description_br(self):
         return self.description.replace('\n', '\n<br/>') # pylint: disable=E1101
 
+    def computed_rating(self):
+        nps = self.net_promoter_score() / 100
+        return nps * 5
+
 
 class TitleCategory(models.Model):
     """
@@ -340,7 +344,7 @@ class TitleCategory(models.Model):
 def update_category_list(sender, instance, **kwargs):
     """ Update category list cache on titles when a new title category is added...hooked to pre_save trigger for titlecategory below """
     categories = instance.title.categories.all()
-    category_list = render_to_string('core/title/tags/show_categories.html', {'categories': categories, })
+    category_list = render_to_string('core/title/tags/title_category_list.html', {'categories': categories, })
 
     instance.title.category_list = category_list
     instance.title.save()
