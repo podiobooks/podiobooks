@@ -5,10 +5,12 @@
 
 # pylint: disable=E1120
 
-from django.conf.urls.defaults import patterns, url, include
+from django.conf.urls import patterns, url, include
 from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf import settings
+from django.views.generic import RedirectView
+from podiobooks.core.views import TextTemplateView
 
 admin.autodiscover()
 
@@ -36,19 +38,10 @@ urlpatterns = patterns('',
     
     # Feeds
     (r'^rss/', include('podiobooks.feeds.urls')),
-)
-    
-# Databrowse setup
-from django.contrib import databrowse
-from podiobooks.core.models import Category, Contributor, Episode, Title
 
-databrowse.site.register(Category)
-databrowse.site.register(Contributor)
-databrowse.site.register(Episode)
-databrowse.site.register(Title)
-
-urlpatterns += patterns('',
-        (r'^db/(.*)', databrowse.site.root),
+    # Robots and Favicon
+    (r'^robots\.txt$', TextTemplateView.as_view(template_name='robots.txt')),
+    (r'^favicon\.ico$', RedirectView.as_view(url=settings.STATIC_URL + 'images/favicon.ico')),
 )
 
 #Only hook up the static and media to run through Django in a dev environment...in prod, needs to be handled by web server
