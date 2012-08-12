@@ -1,0 +1,3 @@
+{# This template is used by the Title method category_list (in models.py) #}{% if categories %}
+<span class="category-list">{% for category in categories %}<a href="{% url category_detail category.slug %}"><span itemprop="genre" content="{{ category.name }}">{{ category.name }}</span></a>{% if not forloop.last %},{% endif %}{% endfor %}</span>
+{% endif %}
