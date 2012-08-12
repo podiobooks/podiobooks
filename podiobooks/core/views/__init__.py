@@ -2,15 +2,13 @@
 
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from django.core.cache import cache
-from podiobooks.core.models import Title, Contributor, TitleContributor
+from podiobooks.core.models import Title, Contributor
 from podiobooks.core.forms import CategoryChoiceForm, ContributorChoiceForm, TitleSearchForm
-from django.conf import settings
 from django.db.models import Q
 from django.core.urlresolvers import reverse
 from django.views.decorators.cache import cache_page
-from django.http import HttpResponse
-from django.db.models import Avg, Max, Min, Count
+from django.db.models import Count
+from django.views.generic import TemplateView
 
 INITIAL_CATEGORY = 'science-fiction'
 INITIAL_CONTRIBUTOR = 'mur-lafferty'
@@ -170,3 +168,10 @@ def top_rated(request, author=None):
     toprated_title_list = homepage_title_list.filter(promoter_count__gte=20).order_by('-promoter_count').all().filter(contributors__slug=author)[:18]
 
     return render_to_response("core/shelf/shelf_items.html", {"items": toprated_title_list}, context_instance=RequestContext(request))
+
+class TextTemplateView(TemplateView):
+    """Utility View to Render text/plain MIME Type"""
+    def render_to_response(self, context, **response_kwargs):
+        """Returns a Template as text/plain"""
+        response_kwargs['mimetype'] = 'text/plain'
+        return super(TemplateView, self).render_to_response(context, **response_kwargs)

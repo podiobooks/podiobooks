@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block headtitle %}{{ site_name }} - Register New Account{% endblock %}
+{% block headtitle %}{{ SITE.name }} - Register New Account{% endblock %}
 {% block content %}<h1>Create a New Podiobooks.com Account</h1>
 <div style="margin-left: 40px; line-height:2">
     <form action="{% url registration_register %}" method="POST">
