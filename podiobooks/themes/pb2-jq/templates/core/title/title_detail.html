@@ -2,7 +2,7 @@
 {% load ad_templatetags %}
 {% load global_templatetags %}
 {% load title_templatetags %}
-{% block headtitle %}{{ title.name }} - {{ site_name }}{% endblock %}
+{% block headtitle %}{{ title.name }} - {{ SITE.name }}{% endblock %}
 {% block head %}
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/styles_detail.css"
           xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html"/>
@@ -23,7 +23,8 @@
 
         {% if title.series %}
             <div class="title-details-seriesbar">
-                <a href="{{ title.series.get_absolute_url }}">{{ title.series.name }}</a>: Book {{ title.series_sequence }}
+                <a href="{{ title.series.get_absolute_url }}">{{ title.series.name }}</a>:
+                Book {{ title.series_sequence }}
             </div>
         {% endif %}
 
@@ -95,18 +96,18 @@
             This work is licensed under a
             <a href="{{ title.license.url }}">{{ title.license.text }}</a> license.
         </div>
-        <div style="clear: both">
+        <div class="clearfix">
         </div>
-        <script type="text/javascript">
-            $(function () {
-                $(".title-tabs").tabs({
-                    ajaxOptions:{
-                        error:function (xhr, status, index, anchor) {
-                            $(anchor.hash).html("Sorry, an error occurred, and this tab couldn't be loaded.");
-                        }
-                    }
-                });
-            });
-        </script>
     {% endif %}
+    <script type="text/javascript">
+        $(function () {
+            $(".title-tabs").tabs({
+                ajaxOptions:{
+                    error:function (xhr, status, index, anchor) {
+                        $(anchor.hash).html("Sorry, an error occurred, and this tab couldn't be loaded.");
+                    }
+                }
+            });
+        });
+    </script>
 {% endblock %}

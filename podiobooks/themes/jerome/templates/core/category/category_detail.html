@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load title_templatetags %}
-{% block headtitle %}{{ category.name }} Category - {{ site_name }}{% endblock %}
+{% block headtitle %}{{ category.name }} Category - {{ SITE.name }}{% endblock %}
 {% block content %}
 {% if category.title_set.all.count %}
 <h1>
