@@ -13,12 +13,14 @@
 
     {% include "core/title/title_consumptionbox.html" %}
 
-    <div class="title-details">
+    <div class="title-details" itemscope itemtype="http://schema.org/Book">
+        <meta itemprop="bookFormat" content="AudioBook/Serialized">
 
         <div class="title-details-titlebar">
-            <h1 class="title-details-title">{{ title.name }}</h1>
+            <h1 class="title-details-title" itemprop="name">{{ title.name }}</h1>
 
-            <div class="byline">{{ title.byline|safe }}</div>
+            <div class="byline" itemprop="author"><span itemscope itemtype="http://schema.org/Person"><span
+                    itemprop="name">{{ title.byline|safe }}</span></span></div>
         </div>
 
         {% if title.series %}
@@ -36,8 +38,9 @@
                 {% show_awardshow title %}
             </div>
 
-            <div class='title-details-infobar'>
-                <div class="category">{{ title.category_list|safe }}</div>
+            <div class="title-details-infobar">
+                <div class="category">{{ title.category_list|safe }}
+                </div>
 
                 <div class="net-promoter-box">
                     <div class="promoter-count">
@@ -47,15 +50,18 @@
                     <div class="detractor-count">
                         Dislikes: {{ title.detractor_count }}
                     </div>
+                    <span itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating"><meta
+                            itemprop="ratingValue" content="{{ title.computed_rating }}"><meta itemprop="bestRating"
+                                                                                           content="5"></span>
                 </div>
-                <div class="ratebox">
+                <div class="sharebox">
+                    {% show_tweet %}
                     {% show_plusone %}
                     {% show_like %}
                 </div>
-                {% show_sharebox title.name request.build_absolute_uri %}
             </div>
 
-            <div class="title-description">
+            <div class="title-description" itemprop="description">
                 {% autoescape off %}{{ title.description_br|removetags:"img"|safe }}{% endautoescape %}
             </div>
             {% with title.episodes.all|first as episode %}

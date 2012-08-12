@@ -72,6 +72,12 @@ def show_like():
 
     return { }
 
+@register.inclusion_tag('core/tags/show_tweet.html')
+def show_tweet():
+    """ Display Tweet Button """
+
+    return { }
+
 @register.filter
 def truncatewords_afterchar(value, limit=80):
     """

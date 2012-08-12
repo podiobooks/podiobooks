@@ -1,12 +1,20 @@
 {% load global_templatetags %}
 {% if title %}
-<div class="loading">
-    <a href="{{ title.get_absolute_url }}">{% if title.libsyn_show_id %}<img class="cover-image" src="http://asset-server.libsyn.com/show/{{ title.libsyn_show_id }}/height/{{ cover_height }}/width/{{ cover_width }}" alt="Cover for {{ title.name }}"/>{% else %}<img class="cover-image" src="http://podiobooks.com/images/covers/{{ title.cover }}" alt="Cover for '{{ title.name }}'"/>{% endif %}</a>
-</div>
-<script type="text/javascript">
-    $('.cover-image').hide();
-    $('.cover-image').load(function(){
-        $(this).fadeIn();
-    });
-</script>
+    <div class="loading">
+        <a href="{{ title.get_absolute_url }}">
+            <img itemprop="image" class="cover-image" alt="Cover for '{{ title.name }}'"
+                    {% if title.libsyn_show_id %}
+                 src="http://asset-server.libsyn.com/show/{{ title.libsyn_show_id }}/height/{{ cover_height }}/width/{{ cover_width }}"
+                    {% else %}
+                 src="http://podiobooks.com/images/covers/{{ title.cover }}"
+                    {% endif %}
+                    >
+        </a>
+    </div>
+    <script type="text/javascript">
+        $('.cover-image').hide();
+        $('.cover-image').load(function () {
+            $(this).fadeIn();
+        });
+    </script>
 {% endif %}
