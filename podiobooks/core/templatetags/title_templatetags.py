@@ -12,13 +12,6 @@ def show_awardshow(title):
     return {'award_list': title.awards.order_by('-date_updated').all()}
 
 
-@register.inclusion_tag('core/title/tags/show_categories.html')
-def show_categories(title):
-    """ Pulls and formats a list of all the categories for a Title """
-    categories = title.categories.all()
-    return {'categories': categories}
-
-
 @register.inclusion_tag('core/title/tags/show_contributors.html')
 def show_contributors(title):
     """ Pulls and formats a list of all the contributors for a Title """

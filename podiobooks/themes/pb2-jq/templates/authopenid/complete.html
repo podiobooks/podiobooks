@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 
-{% block title %}{{ site_name }} - Associate Your Account With Podiobooks{% endblock %}
+{% block title %}{{ SITE.name }} - Associate Your Account With Podiobooks{% endblock %}
 
 {% block content %}
 	<div id="completetxt">
 	<h1>Your External Account is Verified!</h1>
-	<p>You now need to associate your External Account new or existing {{ site_name }} nickname.</p>
+	<p>You now need to associate your External Account new or existing {{ SITE.name }} nickname.</p>
 	<p>You can change the association later in your preferences.</p>
 	<br />
 	</div>
@@ -14,7 +14,7 @@
         <form name="fregister" action="{% url user_register %}" method="POST">
             <input type="hidden" name="next" value="{{ next }}" />
 			<fieldset>
-				<legend style="font-weight:bold">Choose A {{ site_name }} Nickname for This Account:</legend>
+				<legend style="font-weight:bold">Choose A {{ SITE.name }} Nickname for This Account:</legend>
 				{{ form1.errors.username }}
 				<div class="form-row"><label for="id_username">Username</label><br />{{ form1.username }}</div>
 				{{ form1.errors.email }}
@@ -29,7 +29,7 @@
         <form name="fverify" action="{% url user_register %}" method="POST">
             <input type="hidden" name="next" value="{{ next }}" />
 			<fieldset>
-				<legend style="font-weight:bold">If you have an existing {{ site_name }} account, associate this External Account with it by logging in:</legend>
+				<legend style="font-weight:bold">If you have an existing {{ SITE.name }} account, associate this External Account with it by logging in:</legend>
 				{{ form2.errors.username }}
 				<div class="form-row"><label for="id_username">Username</label><br />{{ form2.username }}</div>
 				{{ form2.errors.email }}
