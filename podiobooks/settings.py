@@ -65,6 +65,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
     'django.core.context_processors.media',
     'podiobooks.core.context_processors.js_api_keys',
+    'podiobooks.core.context_processors.current_site',
     'django.core.context_processors.request',
     'django.core.context_processors.static',
     )
