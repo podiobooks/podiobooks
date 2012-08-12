@@ -41,7 +41,6 @@ class TitleTestCase(TestCase):
         self.series1 = Series.objects.create (
             name="Podiobooks Series #1",
             description="A wonderful sample series that contains many fine books",
-            url="http://www.Podiobooks.com",
             )
         self.series1.slug = slugify(self.series1.name)
         self.series1.save()
@@ -49,7 +48,6 @@ class TitleTestCase(TestCase):
         self.series2 = Series.objects.create (
             name="Podiobooks Series #2",
             description="Another wonderful sample series that contains many fine books",
-            url="http://www.Podiobooks.com",
             )
         self.series2.slug = slugify(self.series2.name)
         self.series2.save()
