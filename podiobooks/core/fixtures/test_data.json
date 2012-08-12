@@ -2376,8 +2376,7 @@
           "pk": 4, 
           "model": "core.series",
           "fields": {
-               "description": "7th Son", 
-               "url": "", 
+               "description": "7th Son",
                "deleted": false, 
                "date_updated": "2010-01-31 20:23:01", 
                "date_created": "2010-01-31 20:23:01", 
@@ -2389,8 +2388,7 @@
           "pk": 13, 
           "model": "core.series",
           "fields": {
-               "description": "A Shaman's Tale from the Golden Age of the Solar Clipper", 
-               "url": "", 
+               "description": "A Shaman's Tale from the Golden Age of the Solar Clipper",
                "deleted": false, 
                "date_updated": "2010-01-31 20:23:15", 
                "date_created": "2010-01-31 20:23:15", 
@@ -2402,8 +2400,7 @@
           "pk": 33, 
           "model": "core.series",
           "fields": {
-               "description": "A Trader's Tale from the Golden Age of the Solar Clipper", 
-               "url": "", 
+               "description": "A Trader's Tale from the Golden Age of the Solar Clipper",
                "deleted": false, 
                "date_updated": "2010-02-05 11:46:41", 
                "date_created": "2010-02-05 11:46:41", 
@@ -2415,8 +2412,7 @@
           "pk": 37, 
           "model": "core.series",
           "fields": {
-               "description": "Heaven", 
-               "url": "", 
+               "description": "Heaven",
                "deleted": false, 
                "date_updated": "2010-02-05 11:46:41", 
                "date_created": "2010-02-05 11:46:41", 
