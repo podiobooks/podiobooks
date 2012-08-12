@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% load title_templatetags %}
-{% block headtitle %}{{ episode.display_name }} - {{ site_name }}{% endblock %}
+{% block headtitle %}{{ episode.display_name }} - {{ SITE.name }}{% endblock %}
 {% block content %}
 {% if episode.title_set.all.count %}
 <div style="font-size: 24px; margin: 20px 20px 30px 20px;">
