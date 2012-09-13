@@ -344,7 +344,7 @@ class TitleCategory(models.Model):
 def update_category_list(sender, instance, **kwargs):
     """ Update category list cache on titles when a new title category is added...hooked to pre_save trigger for titlecategory below """
     categories = instance.title.categories.all()
-    category_list = render_to_string('core/title/tags/title_category_list.html', {'categories': categories, })
+    category_list = render_to_string('core/title/title_category_list.html', {'categories': categories, })
 
     instance.title.category_list = category_list
     instance.title.save()
