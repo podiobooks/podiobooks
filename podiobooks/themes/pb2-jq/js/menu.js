@@ -4,7 +4,7 @@ $(function(){
 	$(".nav-bar>ul").each(function(){
 		$(this).clone().appendTo(menu);
 	});
-	
+	$("<ul><li><a href='" + siteVars("home") + "'>Home</a></li></ul>").prependTo(menu);
 	var triggers = $("<ul class='menu-triggers' />").appendTo(".nav-bar");
 	var menuTrigger = $("<li><a href='#' class='menu-trigger' id='site-menu-trigger'><img src='" + siteVars("img") + "pb-logo-icon.png' /></a></li>").appendTo(triggers);
 	
