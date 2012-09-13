@@ -43,15 +43,18 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'mediaroot')
 
 # Staticfiles Config
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticroot')
-STATIC_URL = '/static/themes/pb2-jq/'
-STATICFILES_DIRS = [os.path.join(PROJECT_ROOT, 'themes', 'pb2-jq'), os.path.join(PROJECT_ROOT, 'static')]
+#STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticroot')
+STATIC_ROOT = PROJECT_ROOT +  "/themes/pb2-jq/"
+STATIC_URL = '/static/'
+#STATICFILES_DIRS = [os.path.join(PROJECT_ROOT, 'themes', 'pb2-jq'), os.path.join(PROJECT_ROOT, 'static')]
+STATICFILES_DIRS = []
 TEMPLATE_DIRS = [os.path.join(PROJECT_ROOT, 'themes', 'pb2-jq', 'templates')]
+
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
 # Examples: "http://foo.com/media/", "/media/".
-ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
+#ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -64,10 +67,11 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.debug',
     'django.contrib.auth.context_processors.auth',
     'django.core.context_processors.media',
+    'django.core.context_processors.static',
     'podiobooks.core.context_processors.js_api_keys',
     'podiobooks.core.context_processors.current_site',
     'django.core.context_processors.request',
-    'django.core.context_processors.static',
+    "mediabrute.context_processors.mini_media",
     )
 
 MIDDLEWARE_CLASSES = (
@@ -115,6 +119,7 @@ INSTALLED_APPS = (
     'podiobooks.feeds',
     'taggit',
     'south',
+    "mediabrute",
     )
 
 # Local DB settings. (Postgres)
@@ -246,3 +251,23 @@ try:
 except ImportError:
     # No Gondor Settings
     pass
+
+CSS_TOP_FILES = ["clear.css", "style.css", ]
+CSS_BOTTOM_FILES = ["mobile.css"]
+
+# This is a hack to get mediabrute to play nice with runserver + staticfiles app
+if DEBUG and STATIC_URL.startswith("/") and not STATIC_URL.startswith("//"):
+    MEDIABRUTE_CACHE_BASE_URL = "/"
+    CSS_DIR = "pb2-jq/css"
+    JS_DIR = "pb2-jq/js"
+    MEDIABRUTE_CSS_URL_PATH = "css"
+    MEDIABRUTE_JS_URL_PATH = "js"
+    
+    STATICFILES_DIRS = (
+        # Put strings here, like "/home/html/static" or "C:/www/django/static".
+        # Always use forward slashes, even on Windows.
+        # Don't forget to use absolute paths, not relative paths.
+        PROJECT_ROOT + "/themes/pb2-jq/",
+    )
+    
+    STATIC_ROOT = PROJECT_ROOT + "/themes/"
