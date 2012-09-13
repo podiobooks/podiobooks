@@ -12,7 +12,7 @@
             {{ title.byline|safe }}
         </div>
         <p>
-            {% autoescape off %}{{ title.description|striptags|truncatewords_afterchar:"180" }}{% endautoescape %}
+            {% autoescape off %}{{ title.description|striptags|truncatewords_afterchar:"160" }}{% endautoescape %}
         </p>
     </div>
     

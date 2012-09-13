@@ -67,7 +67,7 @@
 	.hide-on-mobile{
 		display:none;
 	}
-	.shelf form select{
+	.shelf-select-form select{
 		width:120px;
 	}
 	
@@ -140,15 +140,24 @@
 		display:none;
 	}
 	
-	
 	.shelf,
 	.half-shelf{
 		width:242px;
 		margin:0 auto;
+		padding-bottom:30px;
 	}
-	
-	
-	
+	.shelf-select-form{
+		position:absolute;
+		bottom:8px;
+		left:10%;
+		top:auto;
+		right:auto;
+		width:80%;
+		z-index:99;
+	}
+	.shelf-select-form select{
+		width:100%;
+	}
 	.shelf-step{
 		display:none;
 	}
@@ -178,14 +187,6 @@
 	}
 	.pg-head{
 		position:static;
-	}
-	
-	.shelf form{		
-		width:90px;		
-	}
-	
-	.shelf form select{
-		width:90px;
 	}
 	
 	.search{
