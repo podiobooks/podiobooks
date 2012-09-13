@@ -1,29 +1,28 @@
 {% load global_templatetags %}
 {% load title_templatetags %}
-<div class="pb-shelf-item" id="{{ shelf_id }}_title_{{ title.id }}">
-    <div class="pb-shelf-item-loading loading">
+<div class="shelf-item" id="{{ shelf_id }}_title_{{ title.id }}">
+    <div class="shelf-item-loading loading">
     </div>
-    <a href="{% url title_detail title.slug %}">{% if title.libsyn_show_id %}<img class="pb-shelf-item-cover-image" src="http://asset-server.libsyn.com/show/{{ title.libsyn_show_id }}/height/99/width/67" width="67" height="99" alt="Podiobook Cover for {{ title.name }}"/>{% else %}<img class="pb-shelf-item-cover-image" src="{% cover_media_url %}images/covers/67x99/{{ title.cover }}" width="67" height="99" alt="Podiobook Cover for {{ title.name }}"/>{% endif %}</a>
-    <div class="pb-shelf-item-rating">
-        <div class="pb-item-rating-promoter">
-            {{ title.promoter_count }}
-        </div>
-        <div class="pb-item-rating-detractor">
-            {{ title.detractor_count }}
-        </div>
+    <a href="{% url title_detail title.slug %}">{% if title.libsyn_show_id %}
+        <img class="shelf-cover" src="http://asset-server.libsyn.com/show/{{ title.libsyn_show_id }}/height/99/width/67"
+             width="67" height="99" alt="Podiobook Cover for {{ title.name }}"/>
+        {% else %}<img class="shelf-cover" src="{% cover_media_url %}images/covers/67x99/{{ title.cover }}" width="67"
+                       height="99" alt="Podiobook Cover for {{ title.name }}"/>{% endif %}</a>
+
+    <div class="shelf-item-rating">
+        {{ title.promoter_count }}
     </div>
-    <div class="pb-shelf-item-text">
-        <p class="pb-shelf-item-title">
-            <a href="{% url title_detail title.slug %}" style="text-decoration:none;">{{ title.name|striptags|truncatewords_afterchar:"25" }}</a>
-        </p>
-        <p class="pb-shelf-item-contributors">
+    <div class="shelf-item-text">
+        <h3>
+            <a href="{% url title_detail title.slug %}"
+               style="text-decoration:none;">{{ title.name|striptags|truncatewords_afterchar:"30" }}</a>
+        </h3>
+
+        <div class="shelf-item-contributors">
             {{ title.byline|safe }}
-        </p>
-        <p class="pb-shelf-item-categories">
-            in {{ title.category_list|safe }}
-        </p>
-        <p class="pb-shelf-item-tags">
-            {% autoescape off %}{{ title.description|striptags|truncatewords_afterchar:"130" }}{% endautoescape %}
+        </div>
+        <p>
+            {% autoescape off %}{{ title.description|striptags|truncatewords_afterchar:"180" }}{% endautoescape %}
         </p>
     </div>
 </div>
