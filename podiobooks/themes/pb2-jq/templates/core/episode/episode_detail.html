@@ -1,10 +1,7 @@
 {% extends "base.html" %}
-{% load title_templatetags %}
 {% block headtitle %}{{ episode.display_name }} - {{ SITE.name }}{% endblock %}
 {% block content %}
-{% if episode.title_set.all.count %}
-<div style="font-size: 24px; margin: 20px 20px 30px 20px;">
-    {{ episode.display_name }}
-</div>
-{% endif %}
+<h2>{{ episode.name }}</h2>
+<p>{{ episode.description }}</p>
+<p>{{episode.url|urlize}}</p>
 {% endblock %}
