@@ -8,6 +8,7 @@
 .DS_Store
 .env
 *-env/*
+env/
 .idea
 .pydevproject
 .pydevproject.bak
