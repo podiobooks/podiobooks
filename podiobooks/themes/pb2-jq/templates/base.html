@@ -20,6 +20,9 @@
 		{% for sheet in MINI_CSS %}
 		    <link rel="stylesheet" type="text/css" href="{{ sheet }}" />
 		{% endfor %}
+		
+		<script type="text/javascript" src="{{ STATIC_URL }}js/no-cache/modernizr.js"></script>
+		
 		{% if debug %}
 			<script type="text/javascript">
 				var isDebug = true;
