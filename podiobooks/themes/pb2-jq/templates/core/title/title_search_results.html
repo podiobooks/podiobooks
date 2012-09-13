@@ -3,7 +3,7 @@
 {% block headtitle %}Title Search Results - {{ SITE.name }}{% endblock %}
 {% block content %}
 <div id="searchPageTopBlock" style="width:100%; margin: 15px 15px 15px 30px">
-    <div id="searchForm" style="float:left; width:50%;">
+    <div class="advanced-search" id="searchForm" style="float:left; width:50%;">
         <form action="{% url title_search %}" method="POST">
             <div id="searchFields" style="float: left; line-height: 1.5">
                 {{ titleSearchForm.as_p }}
