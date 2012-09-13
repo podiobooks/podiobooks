@@ -2,7 +2,7 @@
 {% load shelf_templatetags %}
 
 <!-- Begin {{ shelf_title }} Shelf -->
-<div id="{{ shelf_id }}Container">
+<section class="shelf-wrapper clearfix" id="{{ shelf_id }}Container">
     <h2 class="shelf-heading shelf-heading-{{ base_css_class }}">{{ shelf_title }}</h2>
 
     
@@ -15,8 +15,6 @@
         <div id="{{ shelf_id }}Controller" class="pb-shelf-controller"></div>
         {% show_shelf_pages shelf_id shelf_title title_list shelf_title_width %}
     </div>
-</div>
+</section>
 
-<div class="clearfix">
-</div>
 <!-- End {{ shelf_title }} Shelf -->

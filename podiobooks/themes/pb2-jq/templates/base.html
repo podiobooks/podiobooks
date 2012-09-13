@@ -44,10 +44,13 @@
 	</head>
 	
 	<body class='{% block body_class %}{% endblock %}'>
-		<div class='pg clearfix'>
-			<!-- Begin Header -->
-			{% block header %}{% include "header.html" %}{% endblock %}
-			<!-- End Header -->
+		<header class="head width clearfix">
+		<!-- Begin Header -->
+		{% block header %}{% include "header.html" %}{% endblock %}
+		<!-- End Header -->
+		</header>
+		<div class='pg clearfix width'>
+			
 			
 			<!-- Begin Main Content -->
 			{% block content %}<p>No Content Defined</p>{% endblock %}
