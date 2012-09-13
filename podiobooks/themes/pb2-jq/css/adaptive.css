@@ -335,8 +335,8 @@
 	
 	.menu-trigger img{
 		height:30px;
-		margin:5px 35px 0 5px;
-		padding:0;
+		padding:5px 35px 0 5px;
+		margin:0;
 	}
 	.search{
 		float:right;
