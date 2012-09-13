@@ -5,13 +5,13 @@ $(function(){
 			$("#djDebug").remove();
 		}
 		
-		$("#featured-shelf").pbShelf({
+		$("#featured_shelfPageContainer").pbShelf({
 			"url" : "/featured/",
 			"cookie": "featured_cat", 
 			"checkCookie": true
 		});
 		
-		$("#top-rated-shelf").pbShelf({
+		$("#top_titles_shelfPageContainer").pbShelf({
 			"url" : "/top-rated/",
 			"cookie": "toprated_cat", 
 			"checkCookie": true

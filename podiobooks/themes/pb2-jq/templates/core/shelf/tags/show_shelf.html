@@ -1,11 +1,11 @@
 {% load global_templatetags %}
 {% load shelf_templatetags %}
+
 <!-- Begin {{ shelf_title }} Shelf -->
-<div class="" id="{{ shelf_id }}Container">
+<div id="{{ shelf_id }}Container">
     <h2 class="shelf-heading shelf-heading-{{ base_css_class }}">{{ shelf_title }}</h2>
 
-    <div class="shelf-arrow shelf-arrow-left">
-    </div>
+    
     <div class="shelf shelf-{{ base_css_class }}" id="{{ shelf_id }}PageContainer">
         {% if dropdown_form %}
             <form class="" action="{{ dropdown_form.submit_url }}" name="{{ shelf_id }}" id="{{ shelf_id }}Dropdown">
@@ -16,8 +16,7 @@
         {% show_shelf_pages shelf_id shelf_title title_list shelf_title_width %}
     </div>
 </div>
-<div class="shelf-arrow shelf-arrow-right">
-</div>
+
 <div class="clearfix">
 </div>
 <!-- End {{ shelf_title }} Shelf -->
