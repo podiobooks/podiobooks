@@ -43,12 +43,10 @@ def index(request):
     recentlycomplete_title_list = homepage_title_list.filter(is_complete=True).all()[:5]
 
     category_choice_form = CategoryChoiceForm(initial={'category': INITIAL_CATEGORY})
-    category_choice_form.submit_url = reverse('title_category_shelf',
-        kwargs={'category_slug': 'placeholder_slug'}) # This placeholder slug is because the url command expects there to to be an argument, which won't be known till later
+    category_choice_form.submit_url = reverse("lazy_load_featured_title") # This placeholder slug is because the url command expects there to to be an argument, which won't be known till later
 
     contributor_choice_form = ContributorChoiceForm(initial={'contributor': INITIAL_CONTRIBUTOR})
-
-    contributor_choice_form.submit_url = reverse('title_contributor_shelf', kwargs={'contributor_slug': 'placeholder_slug'})
+    contributor_choice_form.submit_url = reverse("lazy_load_top_rated_title")
 
     response_data = {'homepage_title_list': homepage_title_list,
                      'featured_title_list': featured_title_list,
@@ -148,7 +146,7 @@ def homepage_featured(request, cat=None):
 
     featured_title_list = homepage_title_list.filter(categories__slug=cat).order_by('-date_created', 'name')[:16]
 
-    return render_to_response("core/shelf/shelf_items.html", {"items": featured_title_list}, context_instance=RequestContext(request))
+    return render_to_response("core/shelf/tags/show_shelf_pages.html", {"title_list": featured_title_list}, context_instance=RequestContext(request))
 
 
 @cache_page(1)
@@ -167,7 +165,7 @@ def top_rated(request, author=None):
 
     toprated_title_list = homepage_title_list.filter(promoter_count__gte=20).order_by('-promoter_count').all().filter(contributors__slug=author)[:18]
 
-    return render_to_response("core/shelf/shelf_items.html", {"items": toprated_title_list}, context_instance=RequestContext(request))
+    return render_to_response("core/shelf/tags/show_shelf_pages.html", {"title_list": toprated_title_list}, context_instance=RequestContext(request))
 
 class TextTemplateView(TemplateView):
     """Utility View to Render text/plain MIME Type"""
@@ -175,3 +173,4 @@ class TextTemplateView(TemplateView):
         """Returns a Template as text/plain"""
         response_kwargs['mimetype'] = 'text/plain'
         return super(TemplateView, self).render_to_response(context, **response_kwargs)
+    
