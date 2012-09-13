@@ -1,26 +1,23 @@
 {% load global_templatetags %}
 {% load shelf_templatetags %}
 <!-- Begin {{ shelf_title }} Shelf -->
-<div class="{{ base_css_class }}" id="{{ shelf_id }}Container">
-	<div class="pb-shelf-end pb-shelf-end-left disabled">
+<div class="" id="{{ shelf_id }}Container">
+    <h2 class="shelf-heading shelf-heading-{{ base_css_class }}">{{ shelf_title }}</h2>
+
+    <div class="shelf-arrow shelf-arrow-left">
     </div>
-	<div class="pb-shelf-middle">
-        <div class="pb-shelf-titlebar">
-            <h2 style="float: left;">{{ shelf_title }}</h2>
-			{% if dropdown_form %}
-			<form class="pb-shelf-dropdown" action="{{ dropdown_form.submit_url }}" name="{{ shelf_id }}" id="{{ shelf_id }}Dropdown">
-				{{ dropdown_form.as_p }}
+    <div class="shelf shelf-{{ base_css_class }}" id="{{ shelf_id }}PageContainer">
+        {% if dropdown_form %}
+            <form class="" action="{{ dropdown_form.submit_url }}" name="{{ shelf_id }}" id="{{ shelf_id }}Dropdown">
+                {{ dropdown_form.as_p }}
             </form>
-			{% endif %}
-			<div id="{{ shelf_id }}Controller" class="pb-shelf-controller"></div>
-        </div>
-		<div class="pb-shelf-page-container" id="{{ shelf_id }}PageContainer">
-        	{% show_shelf_pages shelf_id shelf_title title_list shelf_title_width %}
-		</div>
+        {% endif %}
+        <div id="{{ shelf_id }}Controller" class="pb-shelf-controller"></div>
+        {% show_shelf_pages shelf_id shelf_title title_list shelf_title_width %}
     </div>
-	<div class="pb-shelf-end pb-shelf-end-right disabled">  	
-	</div>
 </div>
-<div class="pb-float-clear">
+<div class="shelf-arrow shelf-arrow-right">
+</div>
+<div class="clearfix">
 </div>
 <!-- End {{ shelf_title }} Shelf -->
