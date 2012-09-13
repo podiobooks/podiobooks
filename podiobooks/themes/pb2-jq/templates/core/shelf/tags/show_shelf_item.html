@@ -1,19 +1,9 @@
 {% load global_templatetags %}
 {% load title_templatetags %}
 <div class="shelf-item" id="{{ shelf_id }}_title_{{ title.id }}">
-    <div class="shelf-item-loading loading">
-    </div>
-    <a href="{% url title_detail title.slug %}">{% if title.libsyn_show_id %}
-        <img class="shelf-cover" src="http://asset-server.libsyn.com/show/{{ title.libsyn_show_id }}/height/99/width/67"
-             width="67" height="99" alt="Podiobook Cover for {{ title.name }}"/>
-        {% else %}<img class="shelf-cover" src="{% cover_media_url %}images/covers/67x99/{{ title.cover }}" width="67"
-                       height="99" alt="Podiobook Cover for {{ title.name }}"/>{% endif %}</a>
-
-    <div class="shelf-item-rating">
-        {{ title.promoter_count }}
-    </div>
+    
     <div class="shelf-item-text">
-        <h3>
+        <h3 class="shelf-item-heading">
             <a href="{% url title_detail title.slug %}"
                style="text-decoration:none;">{{ title.name|striptags|truncatewords_afterchar:"30" }}</a>
         </h3>
@@ -25,4 +15,18 @@
             {% autoescape off %}{{ title.description|striptags|truncatewords_afterchar:"180" }}{% endautoescape %}
         </p>
     </div>
+    
+    <a href="{% url title_detail title.slug %}">
+    	{% if title.libsyn_show_id %}
+        	<img class="shelf-cover" src="http://asset-server.libsyn.com/show/{{ title.libsyn_show_id }}/height/99/width/67" alt="Cover for {{ title.name }}"/>
+        {% else %}
+        	<img class="shelf-cover" src="{% cover_media_url %}images/covers/67x99/{{ title.cover }}" alt="Cover for {{ title.name }}"/>
+        {% endif %}
+    </a>
+
+    <aside class="shelf-item-rating">
+        {{ title.promoter_count }}
+    </aside>
+    
+    
 </div>
