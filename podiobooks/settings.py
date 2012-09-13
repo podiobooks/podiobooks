@@ -231,6 +231,9 @@ DATALOAD_DIR = PROJECT_ROOT + "/../../podiobooks-dataload/datafiles/"
 ### DONATIONS
 DONATION_BUSINESS_NAME = 'evo@podiobooks.com'
 
+### COVER URLS
+COVER_MEDIA_URLS = {'http://podiobooks.com/images',}
+
 ### Import override settings
 try:
     from settings_local import *
