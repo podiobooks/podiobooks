@@ -46,9 +46,8 @@ urlpatterns = patterns('',
 
 #Only hook up the static and media to run through Django in a dev environment...in prod, needs to be handled by web server
 if settings.DEBUG:
-    urlpatterns += staticfiles_urlpatterns()
     urlpatterns += patterns('',
         url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {
-            'document_root': settings.MEDIA_ROOT,
+            'document_root': settings.MEDIA_ROOT
             }),
     )

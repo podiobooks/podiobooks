@@ -12,12 +12,14 @@
 		<meta name="Keywords" content="audio books, audiobooks, books, novels, podcast, podcasting, podiobooks" /> 
 		<meta name="Description" content="Free audio books delivered as podcasts. Subscribe for free to any book and start from chapter one. Podiobooks.com" />
 		{% endblock %}
-	
-		<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/clear.css" />
+		
+		
+		
         <link rel="stylesheet" type=text/css href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/themes/cupertino/jquery-ui.css" >
-        <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/jq.css" />
-        <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/styles.css" />
-
+	
+		{% for sheet in MINI_CSS %}
+		    <link rel="stylesheet" type="text/css" href="{{ sheet }}" />
+		{% endfor %}
 		{% if debug %}
 			<script type="text/javascript">
 				var isDebug = true;
@@ -52,5 +54,9 @@
 			{% block footer %}{% include "footer.html" %}{% endblock %}
 			<!-- End Footer -->
 		</div>
+		
+		{% for SCRIPT in MINI_JS %}
+			<script type="text/javascript" src="{{ SCRIPT }}"></script>
+		{% endfor %}
 	</body>
 </html>
