@@ -69,7 +69,6 @@
 			 */
 			
 			
-			
 			/*
 			 * If the shelf has a select box,
 			 * bind the on-change event to reset the plugin
@@ -105,10 +104,12 @@
 				 */
 				if(shelf.find(settings.shelfItem).length){
 					
+					
 					/*
 					 * Find all shelf items that arent marked as covers being loaded
 					 */
 					$(shelf).find(settings.shelfItemCover).find("img:not(.shelf-cover-loading)").each(function(){
+						
 						
 						var img = $(this);
 						
@@ -152,13 +153,12 @@
 					});
 					maxWidth = w;
 					
-					
 					/*
 					 * Wrap all the shelf items,
 					 * create a "field of vision"
 					 */
-					shelf.children(settings.shelfItem).wrapAll("<div class='whole-shelf'/>");
-					wholeShelf = shelf.children(".whole-shelf");
+					shelf.find(settings.shelfItem).wrapAll("<div class='whole-shelf'/>");
+					wholeShelf = shelf.find(".whole-shelf");
 					wholeShelf.wrap("<div class='shelf-view'/>");
 					
 					
@@ -187,7 +187,7 @@
 				if (rightArrow){
 					rightArrow.click(function(e){
 						e.preventDefault();
-						if (cur < maxWidth - shelf.width()){							
+						if (cur < maxWidth - shelf.width()){
 							where += shelf.width() / itemWidth;
 							if (where * itemWidth > maxWidth - shelf.width()){
 								where = (maxWidth - shelf.width()) / itemWidth;

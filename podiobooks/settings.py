@@ -254,7 +254,7 @@ except ImportError:
 
 CSS_TOP_FILES = ["clear.css", "style.css", ]
 CSS_BOTTOM_FILES = ["mobile.css"]
-
+JS_SETTINGS_TEMPLATE = "mediabrute/js/config.txt"
 # This is a hack to get mediabrute to play nice with runserver + staticfiles app
 if DEBUG and STATIC_URL.startswith("/") and not STATIC_URL.startswith("//"):
     MEDIABRUTE_CACHE_BASE_URL = "/"
