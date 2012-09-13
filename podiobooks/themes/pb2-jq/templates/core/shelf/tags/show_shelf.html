@@ -8,7 +8,7 @@
     
     <div class="shelf shelf-{{ base_css_class }}" id="{{ shelf_id }}PageContainer">
         {% if dropdown_form %}
-            <form class="" action="{{ dropdown_form.submit_url }}" name="{{ shelf_id }}" id="{{ shelf_id }}Dropdown">
+            <form class="shelf-select-form" action="{{ dropdown_form.submit_url }}" name="{{ shelf_id }}" id="{{ shelf_id }}Dropdown">
                 {{ dropdown_form.as_p }}
             </form>
         {% endif %}
