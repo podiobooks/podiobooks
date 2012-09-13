@@ -192,16 +192,18 @@
     left: -7px;
 }
 
-.shelf form {
+.shelf-select-form {
     position: absolute;
     right: 10px;
     top: -30px;
 }
 
-.shelf form label {
+.shelf-select-form label {
     display: none;
 }
-
+.shelf-select-form p{
+	padding:0;
+}
 .shelf-ajax-loader {
     padding-top: 70px;
     height: 160px;
