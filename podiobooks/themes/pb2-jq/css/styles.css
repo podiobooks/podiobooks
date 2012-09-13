@@ -20,7 +20,7 @@ p{
 /*
 * Layout
 */
-.pg {
+.width {
     width: 968px;
     margin: 0 auto;
 }
@@ -35,7 +35,7 @@ p{
     max-width: 100%;
 }
 
-.pg-head {
+.nav-bar {
     padding: 15px 20px 8px 20px;
     -webkit-border-radius: 10px;
     -moz-border-radius: 10px;
@@ -49,31 +49,25 @@ p{
     font-size: 15px;
     position: relative;
     background: #d0deee; /* Old browsers */
-    background: -moz-linear-gradient(top, #d0deee 0%, #b8d1ed 88%, #d0deee 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #d0deee), color-stop(88%, #b8d1ed), color-stop(100%, #d0deee)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top, #d0deee 0%, #b8d1ed 88%, #d0deee 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top, #d0deee 0%, #b8d1ed 88%, #d0deee 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top, #d0deee 0%, #b8d1ed 88%, #d0deee 100%); /* IE10+ */
-    background: linear-gradient(to bottom, #d0deee 0%, #b8d1ed 88%, #d0deee 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#d0deee', endColorstr = '#d0deee', GradientType = 0); /* IE6-9 */
+    
 }
 
-.pg-head h2 {
+.nav-bar h2 {
     display: inline;
     margin: 0 8px 0 60px;
     color: #464646;
     font-weight: normal;
 }
 
-.pg-head a {
+.nav-bar a {
     text-decoration: none;
 }
 
-.pg-head li {
+.nav-bar li {
     margin: 0 10px 0 0;
 }
 
-.pg-head .cur {
+.nav-bar .cur {
     text-decoration: underline;
 }
 
@@ -318,4 +312,7 @@ p{
     height: 600px;
     margin-left: 8px;
     background: url('http://www.google.com/help/hc/images/adsense/adsense_185665_adformat-text_728x90_en.png');
+}
+.menu-triggers{
+	display: none;
 }
