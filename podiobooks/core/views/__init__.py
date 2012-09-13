@@ -8,7 +8,7 @@ from django.db.models import Q
 from django.core.urlresolvers import reverse
 from django.views.decorators.cache import cache_page
 from django.db.models import Count
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, RedirectView
 
 INITIAL_CATEGORY = 'science-fiction'
 INITIAL_CONTRIBUTOR = 'mur-lafferty'
@@ -173,4 +173,10 @@ class TextTemplateView(TemplateView):
         """Returns a Template as text/plain"""
         response_kwargs['mimetype'] = 'text/plain'
         return super(TemplateView, self).render_to_response(context, **response_kwargs)
+
+class FeedRedirectView(RedirectView):
+    """Redirect the PB1 Feed Path to the PB2 Feed Path"""
+
+    def get_redirect_url(self, slug):
+        return reverse('title_episodes_feed', args=(slug,))
     
