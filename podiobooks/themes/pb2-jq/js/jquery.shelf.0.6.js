@@ -6,6 +6,7 @@
  * 0.3: Added some more settings for custom classes
  * 0.4: Shelf position indicator
  * 0.5: Support for shelves that don't need ajax calls
+ * 0.6: Uses 'find' instead of 'children' for digging up relevant shelf peices
  */
 (function( $ ){
 
