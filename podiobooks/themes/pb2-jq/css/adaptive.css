@@ -283,6 +283,9 @@
 		position:relative;
 		z-index:9;
 		min-height:43px;
+		position:fixed;
+		left:0;
+		right:0;
 	}
 	.nav, .browse-by{
 		display:none;
@@ -332,6 +335,8 @@
 		position:absolute;
 		z-index:99;
 		background:#b1cded;
+		
+		position:fixed;
 	}
 	
 	.menu-trigger img{
@@ -344,7 +349,7 @@
 		margin:0;	
 	}
 	.pg{
-		padding:30px 10px 70px;
+		padding:75px 10px 70px;
 		background:#fff url(img/pb-background.jpg) left top repeat-x;
 		position: relative;
 	}
