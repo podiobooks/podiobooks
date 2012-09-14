@@ -1,12 +1,28 @@
-"""WSGI File that enables Apache/GUnicorn to run Django"""
+"""
+WSGI config for stepweaver_weave project.
 
-# pylint: disable=C0103
+This module contains the WSGI application used by Django's development server
+and any production WSGI deployments. It should expose a module-level variable
+named ``application``. Django's ``runserver`` and ``runfcgi`` commands discover
+this application via the ``WSGI_APPLICATION`` setting.
 
-import os, sys
+Usually you will have the standard Django WSGI application here, but it also
+might make sense to replace the whole Django WSGI application with a custom one
+that later delegates to the Django one. For example, you could introduce WSGI
+middleware here, or combine a Django application with an application of another
+framework.
 
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.abspath(os.path.dirname(__file__)), os.pardir)))
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.abspath(os.path.dirname(__file__)))))
+"""
+import os
 
-from django.core.handlers.wsgi import WSGIHandler
-os.environ["DJANGO_SETTINGS_MODULE"] = "podiobooks.settings"
-application = WSGIHandler()
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "podiobooks.settings")
+
+# This application object is used by any WSGI server configured to use this
+# file. This includes Django's development server, if the WSGI_APPLICATION
+# setting points here.
+from django.core.wsgi import get_wsgi_application
+application = get_wsgi_application()
+
+# Apply WSGI middleware here.
+# from helloworld.wsgi import HelloWorldApplication
+# application = HelloWorldApplication(application)
