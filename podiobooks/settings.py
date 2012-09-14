@@ -239,19 +239,6 @@ DONATION_BUSINESS_NAME = 'evo@podiobooks.com'
 ### COVER URLS
 COVER_MEDIA_URLS = {'http://podiobooks.com/images',}
 
-### Import override settings
-try:
-    from settings_local import *
-except ImportError:
-    # No Local Settings
-    pass
-
-try:
-    from settings_gondor import *
-except ImportError:
-    # No Gondor Settings
-    pass
-
 CSS_TOP_FILES = ["clear.css", "style.css", ]
 CSS_BOTTOM_FILES = ["adaptive.css"]
 JS_SETTINGS_TEMPLATE = "mediabrute/js/config.txt"
