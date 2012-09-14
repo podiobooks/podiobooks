@@ -1,8 +1,7 @@
 /*
  * 3 panes per shelf
  */
-@media all and (max-width:985px){
-	
+@media all and (max-width:985px){	
 	.width{
 		width:726px;
 	}
@@ -21,8 +20,7 @@
 		float:left;
 	}
 	.half-shelf{
-		width:100%;
-		
+		width:100%;		
 	}
 	.half-shelf-wrap{
 		float:none;
@@ -41,6 +39,9 @@
 		width:250px;
 	}
 	
+	/*
+	 * Awards
+	 */
 	.award-show{
 		float:left;
 		width:200px;
