@@ -68,7 +68,7 @@ urlpatterns = patterns('',
 
     # category
     url(r'^category/$', ListView.as_view(
-        queryset=Category.objects.all().order_by('name'),
+        queryset=Category.objects.all().order_by('name').prefetch_related("title_set"),
         context_object_name='category_list',
         template_name='core/category/category_list.html'),
         name='category_list'),
