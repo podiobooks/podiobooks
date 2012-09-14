@@ -384,14 +384,24 @@
 		text-decoration:none;
 		font-weight:bold;
 	}
-	.podiobooks-nav-text{
+	.podiobooks-nav-text,
+	.podiobooks-nav-text a,
+	.podiobooks-nav-text a:link,
+	.podiobooks-nav-text a:active,
+	.podiobooks-nav-text a:visited,
+	.podiobooks-nav-text a:hover{
 		display:block;
 		float:left;
 		font-size:18px;
 		font-weight:Bold;
-		padding:11px 0 0 10px;
+		padding:0;
 		text-shadow:-1px -1px #a5c6ed, 1px 1px #c7d9ed;
 		color:#fff;
+		margin:0;
+	}
+	.podiobooks-nav-text{
+		padding:11px 0 0 10px;
+		
 	}
 	/*
 	 * Search
