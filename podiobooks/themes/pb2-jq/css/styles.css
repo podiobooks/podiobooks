@@ -33,7 +33,6 @@ p{
 
 .logo, .logo img {
     max-width: 100%;
-    display:none;
 }
 
 .nav-bar {
@@ -318,5 +317,8 @@ p{
 	display: none;
 }
 .podiobooks-nav-text{
+	display:none;
+}
+.site-menu{
 	display:none;
 }
