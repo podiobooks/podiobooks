@@ -29,6 +29,25 @@ if "GONDOR_REDIS_URL" in os.environ:
     GONDOR_REDIS_PORT = url.port
     GONDOR_REDIS_PASSWORD = url.password
 
+# Cache Settings
+CACHES = {
+    'default': {
+        'BACKEND': 'redis_cache.RedisCache',
+        'LOCATION': '127.0.0.1:6379',
+        'OPTIONS': {
+            'DB': 1,
+            'PARSER_CLASS': 'redis.connection.HiredisParser'
+        },
+        #'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        #'LOCATION': '127.0.0.1:11211',
+    },
+    }
+
+# Configure Django to use Redis for sessions instead of DB
+SESSION_ENGINE = 'redis_sessions.session'
+
+INSTALLED_APPS += ("redisboard", )
+
 SITE_ID = 1 # set this to match your Sites setup
 
 MEDIA_ROOT = os.path.join(os.environ["GONDOR_DATA_DIR"], "site_media", "mediaroot",)
