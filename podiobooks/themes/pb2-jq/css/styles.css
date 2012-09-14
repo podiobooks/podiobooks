@@ -33,6 +33,7 @@ p{
 
 .logo, .logo img {
     max-width: 100%;
+    display:none;
 }
 
 .nav-bar {
