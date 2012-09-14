@@ -3,3 +3,9 @@ function l(msg){
 		console.log(msg);	
 	}
 }
+$(function(){
+	if ($("body").width() < 501){
+		$("#djDebug").remove();
+	}
+	
+});
