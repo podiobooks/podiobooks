@@ -45,7 +45,7 @@ if "GONDOR_REDIS_URL" in os.environ:
     # Configure Django to use Redis for sessions instead of DB
     SESSION_ENGINE = 'redis_sessions.session'
     SESSION_REDIS_HOST = GONDOR_REDIS_HOST
-    SESSION_REDIS_PORT = GONDOR_REDIS_PORT
+    SESSION_REDIS_PORT = int(GONDOR_REDIS_PORT)
     SESSION_REDIS_DB = 1
     SESSION_REDIS_PASSWORD = GONDOR_REDIS_PASSWORD
     SESSION_REDIS_PREFIX = 'session'
