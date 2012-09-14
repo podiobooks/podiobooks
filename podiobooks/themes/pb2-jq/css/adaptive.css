@@ -282,6 +282,10 @@
 		padding:0;
 		margin:0;
 		border-bottom:solid 1px #c1d6ee;
+		background:#c1d6ee;
+		box-shadow:0 1px 7px rgba(0,0,0,.2);
+		position:relative;
+		z-index:9;
 	}
 	.nav, .browse-by{
 		display:none;
@@ -338,12 +342,7 @@
 		padding:5px 35px 0 5px;
 		margin:0;
 	}
-	.search{
-		float:right;
-		padding:0;
-		display:none;
-		margin:0;
-	}
+	
 	.head{
 		margin:0;	
 	}
@@ -387,5 +386,62 @@
 		text-decoration:none;
 		font-weight:bold;
 	}
-	
+	.podiobooks-nav-text{
+		display:block;
+		float:left;
+		font-size:18px;
+		font-weight:Bold;
+		padding:11px 0 0 10px;
+		text-shadow:-1px -1px #a5c6ed, 1px 1px #c7d9ed;
+		color:#fff;
+	}
+	/*
+	 * Search
+	 */
+	.search{
+		float:right;
+		padding:0;
+		margin:0;
+		padding:12px 10px 0 0;
+	}
+	.search p{
+		margin:0;
+		padding:0;
+	}
+	.search .search-keywords{
+		display:none;
+	}
+	.search .search-submit{
+		border:none;
+		color:transparent;
+		background: url(img/search-white.png) center center no-repeat;
+		display:inline-block;
+		width:22px;
+		height:22px;
+	}
+	.nav-bar-searching .search .search-keywords{
+		display:block;
+		float:left;
+		
+		font-size:18px;
+		padding:3px 0 3px 35px;
+		width:85%;
+		
+	}
+	.nav-bar-searching .search{
+		position:absolute;
+		right:10px;
+		left:100px;
+		padding:0;
+		margin:5px 10px 0 0;
+	}
+	.nav-bar-searching .search .search-submit{
+		position:absolute;
+		left:0px;
+		top:7px;
+		background: url(img/search.png) center center no-repeat;
+	}
+	.nav-bar-searching .podiobooks-nav-text{
+		display:none;
+	}
 }
