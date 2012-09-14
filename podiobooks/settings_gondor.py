@@ -33,7 +33,7 @@ if "GONDOR_REDIS_URL" in os.environ:
     CACHES = {
         'default': {
             'BACKEND': 'redis_cache.RedisCache',
-            'LOCATION': GONDOR_REDIS_HOST + ":" + GONDOR_REDIS_PASSWORD,
+            'LOCATION': GONDOR_REDIS_HOST + ":" + GONDOR_REDIS_PORT,
             'OPTIONS': {
                 'DB': 1,
                 'PARSER_CLASS': 'redis.connection.HiredisParser',
