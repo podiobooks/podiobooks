@@ -176,10 +176,6 @@
 	.width{
 		width:auto;
 	}
-	.pg{
-		padding:10px 10px 70px 10px;
-		position:relative;		
-	}
 	.nav{
 		width:auto;
 	}
@@ -347,8 +343,9 @@
 		margin:0;	
 	}
 	.pg{
-		padding-top:20px;
+		padding:30px 10px 70px;
 		background:#fff url(img/pb-background.jpg) left top repeat-x;
+		position: relative;
 	}
 	.site-menu-active{
 		background:#b1cded;
