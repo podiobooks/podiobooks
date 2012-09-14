@@ -2,6 +2,7 @@
  * 3 panes per shelf
  */
 @media all and (max-width:985px){
+	
 	.width{
 		width:726px;
 	}
