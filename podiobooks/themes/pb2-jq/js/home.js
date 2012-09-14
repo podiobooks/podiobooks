@@ -1,10 +1,6 @@
 $(function(){
 	if ($("body").hasClass("home")){
 		
-		if ($("body").width() < 501){
-			$("#djDebug").remove();
-		}
-		
 		$("#featured_shelfPageContainer").pbShelf({
 			"url" : "/featured/",
 			"cookie": "featured_cat", 
