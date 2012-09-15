@@ -148,8 +148,9 @@
 					var shelfItems = shelf.find(settings.shelfItem);
 					var w = 0;
 					shelfItems.each(function(){
-						numItems++;
-						itemWidth = parseInt($(this).width()) + parseInt($(this).css("padding-left")) + parseInt($(this).css("padding-right")) + parseInt($(this).css("margin-left")) + parseInt($(this).css("margin-right"));
+						var item = $(this);
+						numItems++;						
+						itemWidth = parseInt(item.width()) + parseInt(item.css("padding-left")) + parseInt(item.css("padding-right")) + parseInt(item.css("margin-left")) + parseInt(item.css("margin-right"));
 						w += itemWidth;
 					});
 					maxWidth = w;
@@ -258,11 +259,16 @@
 			 * If we should be checking the cookie,
 			 * check it, then set the inital select box value
 			 */
+			var select = shelf.find("form select");
+			
 			if (settings.checkCookie){
-				if($.cookie(settings.cookie)){
-					if (shelf.has("form select")){
-						shelf.find("form select").val($.cookie(settings.cookie));
+				if (select.length > 0){
+					if($.cookie(settings.cookie)){
+						select.val($.cookie(settings.cookie));
 						settings.url += $.cookie(settings.cookie);
+					}
+					else{
+						settings.url += select.val();
 					}					
 				}
 			}
@@ -387,7 +393,7 @@
 			};
 			
 			/*
-			 * Big beefy ajax workhorse
+			 * Ajax workhorse
 			 */
 			if (settings.url){
 				
@@ -400,9 +406,10 @@
 				 * an on-change event for the select box
 				 */
 				shelf.children().each(function(){
-					if (!($(this).is("form"))){
-						$(this).html("");
-						$(this).remove();
+					var item = $(this);
+					if (!(item.is("form"))){
+						item.html("");
+						item.remove();
 					}
 				});
 				
