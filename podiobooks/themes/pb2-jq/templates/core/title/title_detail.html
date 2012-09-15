@@ -2,7 +2,7 @@
 {% load ad_templatetags %}
 {% load global_templatetags %}
 {% load title_templatetags %}
-{% block headtitle %}{{ title.name }} - {{ SITE.name }}{% endblock %}
+{% block headtitle %}{{ title.name }} {{ title.byline|striptags }} on Podiobooks.com{% endblock %}
 
 {% block head %}
     <link rel="canonical" href="{{ request.build_absolute_uri }}"/>
