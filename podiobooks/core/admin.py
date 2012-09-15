@@ -20,6 +20,9 @@ class TitleContributorInline(admin.TabularInline):
     model = TitleContributor
     exclude = ("date_created", "date_updated")
 
+class TitleCategoryInline(admin.TabularInline):
+    model = TitleCategory
+
 
 class EpisodeInline(admin.TabularInline):
     model = Episode
@@ -65,14 +68,15 @@ class SeriesAdmin(admin.ModelAdmin):
 class TitleAdmin(admin.ModelAdmin):
     date_hierarchy = 'date_created'
     list_display = (
-        'name', 'license', 'advisory', 'is_explicit', 'is_adult', 'is_complete', 'display_on_homepage', 'status', 'date_updated')
+        'name', 'license', 'advisory', 'is_explicit', 'is_adult', 'is_complete', 'display_on_homepage', 'deleted', 'status', 'date_updated')
     list_editable = ('display_on_homepage',)
     list_filter = (
-        'license', 'advisory', 'display_on_homepage', 'is_complete', 'is_explicit', 'is_adult', 'status', 'date_updated')
-    exclude = ("date_updated", "avg_overall", "avg_audio_quality", 'avg_narration', 'avg_writing')
+        'license', 'advisory', 'display_on_homepage', 'is_complete', 'is_explicit', 'is_adult', 'deleted', 'status', 'date_updated')
+    exclude = ('byline', 'category_list', 'date_updated', 'avg_overall', 'avg_audio_quality', 'avg_narration', 'avg_writing')
     inlines = [
-        EpisodeInline,
-        TitleContributorInline
+        TitleCategoryInline,
+        TitleContributorInline,
+        EpisodeInline
     ]
     ordering = ['name']
     prepopulated_fields = {"slug": ("name",)}
