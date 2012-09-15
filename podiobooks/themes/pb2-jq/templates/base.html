@@ -1,68 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-		<meta name="language" content="english"> 
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
-	 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
-	
-		<title>{% block headtitle %}{{ SITE.name }}{% endblock %}</title>
-	
-		{% block metatags %}
-		<meta name="Keywords" content="audio books, audiobooks, books, novels, podcast, podcasting, podiobooks" /> 
-		<meta name="Description" content="Free audio books delivered as podcasts. Subscribe for free to any book and start from chapter one. Podiobooks.com" />
-		{% endblock %}
-		
-		
-		
-        <link rel="stylesheet" type=text/css href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/themes/cupertino/jquery-ui.css" >
-	
-		{% for sheet in MINI_CSS %}
-		    <link rel="stylesheet" type="text/css" href="{{ sheet }}" />
-		{% endfor %}
-		
-		<script type="text/javascript" src="{{ STATIC_URL }}js/no-cache/modernizr.js"></script>
-		
-		{% if debug %}
-			<script type="text/javascript">
-				var isDebug = true;
-			</script>
-		{% else %}
-			<script type="text/javascript">
-				var isDebug = false;
-			</script>
-		{% endif %}
-		
-		<script src="http://www.google.com/jsapi?key={{ GOOGLE_JS_API_KEY }}" type="text/javascript"></script>
-		<script language="Javascript" type="text/javascript">
-		    //<![CDATA[
-		    google.load("jquery", "1");
-			google.load("jqueryui", "1");
-			//]]>
-		</script>
-		{% block head %}{% endblock %}
-	</head>
-	
-	<body class='{% block body_class %}{% endblock %}'>
-		<header class="head width clearfix">
-		<!-- Begin Header -->
-		{% block header %}{% include "header.html" %}{% endblock %}
-		<!-- End Header -->
-		</header>
-		<div class='pg clearfix width'>
-			
-			
-			<!-- Begin Main Content -->
-			{% block content %}<p>No Content Defined</p>{% endblock %}
-			<!-- End Main Content -->
-			
-			
-		</div>
-		<!-- Begin Footer -->
-			{% block footer %}{% include "footer.html" %}{% endblock %}
-			<!-- End Footer -->
-		{% for SCRIPT in MINI_JS %}
-			<script type="text/javascript" src="{{ SCRIPT }}"></script>
-		{% endfor %}
-	</body>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="language" content="english">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
+
+    <title>{% block headtitle %}{{ SITE.name }}{% endblock %}</title>
+
+    {% block metatags %}
+        <meta name="Keywords" content="audio books, audiobooks, books, novels, podcast, podcasting, podiobooks"/>
+        <meta name="Description"
+              content="Free audio books delivered as podcasts. Subscribe for free to any book and start from chapter one. Podiobooks.com"/>
+    {% endblock %}
+
+    <link rel="stylesheet" type=text/css
+          href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/themes/cupertino/jquery-ui.css">
+
+    {% for sheet in MINI_CSS %}
+        <link rel="stylesheet" type="text/css" href="{{ sheet }}"/>
+    {% endfor %}
+
+    <script type="text/javascript" src="{{ STATIC_URL }}js/no-cache/modernizr.js"></script>
+
+    {% if debug %}
+        <script type="text/javascript">
+            var isDebug = true;
+        </script>
+    {% else %}
+        <script type="text/javascript">
+            var isDebug = false;
+        </script>
+    {% endif %}
+
+    <script src="http://www.google.com/jsapi?key={{ GOOGLE_JS_API_KEY }}" type="text/javascript"></script>
+    <script language="Javascript" type="text/javascript">
+        //<![CDATA[
+        google.load("jquery", "1");
+        google.load("jqueryui", "1");
+        //]]>
+    </script>
+    {% block head %}{% endblock %}
+</head>
+
+<body class='{% block body_class %}{% endblock %}'>
+<header class="head width clearfix">
+    <!-- Begin Header -->
+    {% block header %}{% include "header.html" %}{% endblock %}
+    <!-- End Header -->
+</header>
+<div class='pg clearfix width'>
+
+
+    <!-- Begin Main Content -->
+    {% block content %}<p>No Content Defined</p>{% endblock %}
+    <!-- End Main Content -->
+
+
+</div>
+<!-- Begin Footer -->
+{% block footer %}{% include "footer.html" %}{% endblock %}
+<!-- End Footer -->
+{% for SCRIPT in MINI_JS %}
+    <script type="text/javascript" src="{{ SCRIPT }}"></script>
+{% endfor %}
+</body>
 </html>
