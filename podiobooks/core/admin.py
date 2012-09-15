@@ -65,10 +65,10 @@ class SeriesAdmin(admin.ModelAdmin):
 class TitleAdmin(admin.ModelAdmin):
     date_hierarchy = 'date_created'
     list_display = (
-        'name', 'license', 'advisory', 'is_explicit', 'is_adult', 'is_complete', 'display_on_homepage', 'date_updated')
+        'name', 'license', 'advisory', 'is_explicit', 'is_adult', 'is_complete', 'display_on_homepage', 'status', 'date_updated')
     list_editable = ('display_on_homepage',)
     list_filter = (
-        'license', 'advisory', 'display_on_homepage', 'is_complete', 'is_explicit', 'is_adult', 'date_updated')
+        'license', 'advisory', 'display_on_homepage', 'is_complete', 'is_explicit', 'is_adult', 'status', 'date_updated')
     exclude = ("date_updated", "avg_overall", "avg_audio_quality", 'avg_narration', 'avg_writing')
     inlines = [
         EpisodeInline,
