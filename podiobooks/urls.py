@@ -42,6 +42,9 @@ urlpatterns = patterns('',
     # Robots and Favicon
     (r'^robots\.txt$', TextTemplateView.as_view(template_name='robots.txt')),
     (r'^favicon\.ico$', RedirectView.as_view(url=settings.STATIC_URL + 'images/favicon.ico')),
+
+    # Blog
+    (r'^blog$', RedirectView.as_view(url='http://blog.podiobooks.com')),
 )
 
 #Only hook up the static and media to run through Django in a dev environment...in prod, needs to be handled by web server
