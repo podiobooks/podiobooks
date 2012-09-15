@@ -267,7 +267,7 @@ class Title(models.Model):
     college lectures."""
 
     name = models.CharField(max_length=255)
-    series = models.ForeignKey('Series', null=True, related_name='titles')
+    series = models.ForeignKey('Series', null=True, blank=True, related_name='titles')
     series_sequence = models.IntegerField(default=1)
     description = models.TextField()
     slug = models.SlugField(max_length=255, unique=True)
