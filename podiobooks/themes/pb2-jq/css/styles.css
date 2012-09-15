@@ -336,16 +336,22 @@ p {
 }
 
 .leaderboard-ad-placeholder {
-    width: 160px;
-    height: 600px;
+    width: 728px;
+    height: 90px;
     margin-left: 8px;
     background: url('http://www.google.com/help/hc/images/adsense/adsense_185665_adformat-text_728x90_en.png');
 }
 
 .leaderboard-ad {
-    width: 160px;
-    height: 600px;
-    margin-left: 8px;
+    width: 728px;
+    height: 90px;
+    text-align: center;
+}
+
+.leaderboard-ad-short {
+    width: 728px;
+    height: 15px;
+    text-align: center;
 }
 
 .menu-triggers {
