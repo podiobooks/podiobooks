@@ -45,6 +45,9 @@ urlpatterns = patterns('',
 
     # Blog
     (r'^blog$', RedirectView.as_view(url='http://blog.podiobooks.com')),
+
+    # Redis Stats
+    url(r'^redis/status/', include('redis_cache.stats.urls', namespace='redis_cache'))
 )
 
 #Only hook up the static and media to run through Django in a dev environment...in prod, needs to be handled by web server
