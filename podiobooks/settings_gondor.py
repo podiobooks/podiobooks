@@ -32,7 +32,7 @@ if "GONDOR_REDIS_URL" in os.environ:
     # Cache Settings
     CACHES = {
         'default': {
-            'BACKEND': 'redis_cache.RedisCache',
+            'BACKEND': 'redis_cache.cache.RedisCache',
             'LOCATION': GONDOR_REDIS_HOST + ":" + str(GONDOR_REDIS_PORT),
             'OPTIONS': {
                 'DB': 1,
