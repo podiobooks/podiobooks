@@ -345,13 +345,13 @@ p {
 .leaderboard-ad {
     width: 728px;
     height: 90px;
-    text-align: center;
+    margin: 0 auto 0 auto;
 }
 
 .horizontal-large-ad {
     width: 728px;
     height: 15px;
-    text-align: center;
+    margin: 0 auto 0 auto;
 }
 
 .menu-triggers {
