@@ -1,7 +1,5 @@
 -r requirements.txt
-django-redis-cache
-django-redisboard
-django-redis-sessions
+django-redis==2.2.1
 eventlet==0.9.16
 gunicorn==0.14.3
 hiredis
