@@ -40,6 +40,13 @@
 	padding:0 0 0 100px
 	
 }
+.title-license a,
+.title-license a:visited,
+.title-license a:hover,
+.title-license a:link,
+.title-license a:active{
+	text-decoration:none;
+}
 .title-license img{
 	
 	position:absolute;
