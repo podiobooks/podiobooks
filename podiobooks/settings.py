@@ -118,7 +118,6 @@ INSTALLED_APPS = (
     'podiobooks.libsyn',
     'podiobooks.profile',
     'podiobooks.feeds',
-    'redis_cache.stats',
     'south',
     'taggit',
     )
