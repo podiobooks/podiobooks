@@ -112,14 +112,15 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.staticfiles',
     'django_jenkins',
+    'mediabrute',
     'podiobooks',
     'podiobooks.core',
     'podiobooks.libsyn',
     'podiobooks.profile',
     'podiobooks.feeds',
-    'taggit',
+    'redis_cache.stats',
     'south',
-    "mediabrute",
+    'taggit',
     )
 
 # Local DB settings. (Postgres)
