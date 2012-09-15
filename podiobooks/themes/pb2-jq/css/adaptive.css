@@ -394,6 +394,7 @@
 		float:none;
 		width:auto;
 		position:absolute;
+		z-index:999;
 		top:0;	
 		right:0;
 		margin:0;
