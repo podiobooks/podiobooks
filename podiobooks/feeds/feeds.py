@@ -76,7 +76,7 @@ class EpisodeFeed(Feed):
         return Title.objects.get(slug__exact=title_slug)
 
     def image(self, obj):
-        return 'http://www.podiobooks.com/images/covers/%s' % obj.cover
+        return "http://asset-server.libsyn.com/show/{0}".format(obj.libsyn_show_id)
 
     def items(self, obj):
         return Episode.objects.filter(title__id__exact=obj.id).order_by('-sequence')
