@@ -21,8 +21,6 @@ class ITunesFeed(Rss201rev2Feed):
         handler.addQuickElement(u'atom:link', None, {u'href':self.feed['feed_url'], u'rel':u'self', u'type':u'application/rss+xml'})
         
         #Basic Attributes
-        handler.addQuickElement(u'webMaster', self.feed['web_master'])
-        handler.addQuickElement(u'managingEditor', self.feed['managing_editor'])
         for category in self.feed['global_categories']:
             handler.addQuickElement(u'category', category)
         
@@ -31,12 +29,12 @@ class ITunesFeed(Rss201rev2Feed):
             handler.addQuickElement(u'itunes:explicit', self.feed['explicit'])
         if self.feed['author_name'] is not None:
             handler.addQuickElement(u'itunes:author', self.feed['author_name'])
-        if self.feed['subtitle'] is not None:
-            handler.addQuickElement(u'itunes:subtitle', self.feed['subtitle'])
         if self.feed['image'] is not None:
             handler.addQuickElement(u'itunes:image', None, {u'href':self.feed['image']})
         if self.feed['description'] is not None:
             handler.addQuickElement(u'itunes:summary', strip_tags(self.feed['description']))
+        if self.feed['feed_url'] is not None:
+            handler.addQuickElement(u'itunes:new-feed-url', strip_tags(self.feed['feed_url']))
         
         
         #iTunes Category
@@ -59,7 +57,7 @@ class ITunesFeed(Rss201rev2Feed):
         if self.feed['author_name'] is not None:
             handler.addQuickElement(u'itunes:author', self.feed['author_name'])
         if self.feed['subtitle'] is not None:
-            handler.addQuickElement(u'itunes:subtitle', self.feed['subtitle'])
+            handler.addQuickElement(u'itunes:subtitle', item['title'])
         if item['description'] is not None:
             handler.addQuickElement(u'itunes:summary', item['description'])
         if item['duration'] is not None:
