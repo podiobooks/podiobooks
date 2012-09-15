@@ -12,11 +12,13 @@ a:link,
 a:active {
     color: #0054A6;
 }
+
 a:hover {
     color: #c35230;
 }
-p{
-	padding:0 0 20px;
+
+p {
+    padding: 0 0 20px;
 }
 
 /*
@@ -36,9 +38,11 @@ p{
 .logo, .logo img {
     max-width: 100%;
 }
-.pg{
-	padding:0 0 25px;
+
+.pg {
+    padding: 0 0 25px;
 }
+
 .nav-bar {
     padding: 15px 20px 8px 20px;
     -webkit-border-radius: 10px;
@@ -53,7 +57,7 @@ p{
     font-size: 15px;
     position: relative;
     background: #d0deee; /* Old browsers */
-    
+
 }
 
 .nav-bar h2 {
@@ -178,8 +182,9 @@ p{
         -o-border-radius: 10px 0 0 10px;
         border-radius: 10px 0 0 10px
     }
-    .advanced-search .search-keywords{
-    	position:static;
+
+    .advanced-search .search-keywords {
+        position: static;
     }
 
     .search button {
@@ -209,32 +214,37 @@ p{
         border-radius: 0px 10px 10px 0;
     }
 }
+
 #fb-root,
-.fb-reset{
-	width:0;
-	height:0;
-	margin:0;
-	padding:0;
-	display:none;
+.fb-reset {
+    width: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    display: none;
 }
-.fb-like{
-	width:100px;
-	overflow:hidden;
-	margin:0;
-	padding:0;
+
+.fb-like {
+    width: 100px;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
 }
+
 /*
 * Foot
 */
 .pg-foot {
     text-align: center;
-    border-top:solid 1px #c7c7c7;
-    padding:30px 0 10px;
+    border-top: solid 1px #c7c7c7;
+    padding: 30px 0 10px;
 }
+
 .pg-foot ul {
     list-style: none;
     margin: 5px 0 0 0;
 }
+
 .pg-foot li {
     display: inline;
     margin: 0 4px;
@@ -318,18 +328,34 @@ p{
     background: url('http://www.google.com/help/hc/images/adsense/adsense_185665_adformat-text_160x600_en.png');
 }
 
+.wide-skyscraper-ad {
+    width: 160px;
+    height: 600px;
+    margin-left: 8px;
+    float: left;
+}
+
 .leaderboard-ad-placeholder {
     width: 160px;
     height: 600px;
     margin-left: 8px;
     background: url('http://www.google.com/help/hc/images/adsense/adsense_185665_adformat-text_728x90_en.png');
 }
-.menu-triggers{
-	display: none;
+
+.leaderboard-ad {
+    width: 160px;
+    height: 600px;
+    margin-left: 8px;
 }
-.podiobooks-nav-text{
-	display:none;
+
+.menu-triggers {
+    display: none;
 }
-.site-menu{
-	display:none;
+
+.podiobooks-nav-text {
+    display: none;
+}
+
+.site-menu {
+    display: none;
 }
