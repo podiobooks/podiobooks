@@ -239,7 +239,7 @@ DONATION_BUSINESS_NAME = 'evo@podiobooks.com'
 ### COVER URLS
 COVER_MEDIA_URLS = {'http://podiobooks.com/images',}
 
-CSS_TOP_FILES = ["clear.css", "style.css", ]
+CSS_TOP_FILES = ["clear.css", "styles.css", ]
 CSS_BOTTOM_FILES = ["adaptive.css"]
 JS_SETTINGS_TEMPLATE = "mediabrute/js/config.txt"
 # This is a hack to get mediabrute to play nice with runserver + staticfiles app
