@@ -1,10 +1,13 @@
 {% load title_templatetags %}
+
 <div class="consumption-box clearfix">
+    
     <div class="headphone-title">
         Get This
         <br>
         Book Now!
     </div>
+    
     <ul class='consume-list'>
         {% if title.itunes_adam_id %}
             <li class='consume-itunes'><a href="http://itunes.apple.com/podcast/id{{ title.itunes_adam_id }}">View in
@@ -18,8 +21,11 @@
         {% endfor %}
         <li class='consume-rss'><a href="{% url title_episodes_feed title.slug %}">RSS Feed</a></li>
     </ul>
+    
     {% if not title.is_complete %}
         <div class='title-release-status'>This title is <span class="incomplete">still releasing</span></div>
     {% endif %}
+    
     {% show_donation_button title %}
+    
 </div>

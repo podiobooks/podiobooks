@@ -1,7 +1,9 @@
 {% extends "base.html" %}
+
 {% load ad_templatetags %}
 {% load global_templatetags %}
 {% load title_templatetags %}
+
 {% block headtitle %}{{ title.name }} {{ title.byline|striptags }} on Podiobooks.com{% endblock %}
 
 {% block head %}
@@ -12,38 +14,42 @@
 
 {% block content %}
 
-    {% include "core/title/title_consumptionbox.html" %}
-
-    <div class="title-details" itemscope itemtype="http://schema.org/Book">
+   <aside class="title-details-extras">
+	   {% include "core/title/title_consumptionbox.html" %}
+	   {% ad_placeholder 'wide-skyscraper' %}
+   </aside>
+   
+    <article class="title-details" itemscope itemtype="http://schema.org/Book">
+    	
         <meta itemprop="bookFormat" content="AudioBook/Serialized">
-
-        <div class="title-details-titlebar">
-            <h1 class="title-details-title" itemprop="name">{{ title.name }}</h1>
-
-            <div class="byline" itemprop="author"><span itemscope itemtype="http://schema.org/Person"><span
-                    itemprop="name">{{ title.byline|safe }}</span></span></div>
-        </div>
-
-        {% if title.series %}
-            <div class="title-details-seriesbar">
-                <a href="{{ title.series.get_absolute_url }}">{{ title.series.name }}</a>:
-                Book {{ title.series_sequence }}
-            </div>
-        {% endif %}
-
-        <div class="title-details-top">
-            <div class='imagebox'>
+		<header>
+	        <div class="title-details-titlebar">
+	            <h1 class="title-details-title" itemprop="name">{{ title.name }}</h1>
+	
+	            <div class="byline" itemprop="author">
+	            	<span itemscope itemtype="http://schema.org/Person">
+	            		<span itemprop="name">{{ title.byline|safe }}</span>
+	            	</span>
+	            </div>
+	        </div>
+			<div class='imagebox'>
                 {% show_titlecover title %}
-
-
                 {% show_awardshow title %}
             </div>
+	        {% if title.series %}
+	            <div class="title-details-seriesbar">
+	                <a href="{{ title.series.get_absolute_url }}">{{ title.series.name }}</a>: Book {{ title.series_sequence }}
+	            </div>
+	        {% endif %}
+		</header>
+        <div class="title-details-top">
 
             <div class="title-details-infobar">
-                <div class="category">{{ title.category_list|safe }}
-                </div>
+            	
+                <div class="category">{{ title.category_list|safe }}</div>
 
                 <div class="net-promoter-box">
+                	
                     <div class="promoter-count">
                         Likes: {{ title.promoter_count }}
                     </div>
@@ -51,70 +57,71 @@
                     <div class="detractor-count">
                         Dislikes: {{ title.detractor_count }}
                     </div>
-                    <span itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating"><meta
-                            itemprop="ratingValue" content="{{ title.computed_rating }}"><meta itemprop="bestRating"
-                                                                                           content="5"></span>
+                    
+                    <span itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+                    	<meta itemprop="ratingValue" content="{{ title.computed_rating }}" />
+                    	<meta itemprop="bestRating" content="5" />
+                    </span>
+                    
                 </div>
+                
                 <div class="sharebox">
+                	
                     {% show_tweet %}
                     {% show_plusone %}
                     {% show_like %}
+                    
                 </div>
             </div>
 
             <div class="title-description" itemprop="description">
                 {% autoescape off %}{{ title.description_br|removetags:"img"|safe }}{% endautoescape %}
             </div>
+            
             {% with title.episodes.all|first as episode %}
             {% endwith %}
+            
         </div>
-    </div>
-    <div class="clearfix"></div>
-    {% ad_placeholder 'wide-skyscraper' %}
-    <div class="title-tabs">
-        <ul>
-            <li>
-                <a href="#comments-tab">Comments</a>
-            </li>
-            <li>
-                <a href="#chapters-tab">Chapters</a>
-            </li>
-        </ul>
-        <div title="Comments" id="comments-tab">
-            {% show_comments title.podiobooker_blog_url %}
-        </div>
-        <div title="Chapters" id="chapters-tab">
-            {% if title.episodes.all %}
-                {% show_episodelist title %}
-            {% else %}
-                <h3>
-                    No Episodes Are Available Yet.
-                </h3>
-            {% endif %}
-        </div>
-    </div>
-    {% if title.license %}
-        <div class="title-license-img">
-            <a rel="license" href="{{ title.license.url }}">
-                <img alt="{{ title.license.text }} Logo" style="border-width:0" src="{{ title.license.image_url }}"/>
-            </a>
-        </div>
-        <div class="title-license-txt">
-            This work is licensed under a
-            <a href="{{ title.license.url }}">{{ title.license.text }}</a> license.
-        </div>
-        <div class="clearfix">
-        </div>
-    {% endif %}
-    <script type="text/javascript">
-        $(function () {
-            $(".title-tabs").tabs({
-                ajaxOptions:{
-                    error:function (xhr, status, index, anchor) {
-                        $(anchor.hash).html("Sorry, an error occurred, and this tab couldn't be loaded.");
-                    }
-                }
-            });
-        });
-    </script>
+	   
+	   <aside class="title-details-extras title-details-extras-inline">
+		   {% include "core/title/title_consumptionbox.html" %}
+		   {% ad_placeholder 'wide-skyscraper' %}
+	   </aside>
+	   
+	    <footer class="title-footer">
+		    <div class="title-tabs">
+		        <ul>
+		            <li>
+		                <a href="#comments-tab">Comments</a>
+		            </li>
+		            <li>
+		                <a href="#chapters-tab">Chapters</a>
+		            </li>
+		        </ul>
+		        <div title="Comments" id="comments-tab">
+		            {% show_comments title.podiobooker_blog_url %}
+		        </div>
+		        <div title="Chapters" id="chapters-tab">
+		            {% if title.episodes.all %}
+		                {% show_episodelist title %}
+		            {% else %}
+		                <h3>
+		                    No Episodes Are Available Yet.
+		                </h3>
+		            {% endif %}
+		        </div>
+		    </div>
+		    
+		    {% if title.license %}
+		        <p class="title-license">
+		        	<a rel="license" href="{{ title.license.url }}"><img class="title-license-img" alt="{{ title.license.text }} Logo" src="{{ title.license.image_url }}" /></a>
+		            
+		            This work is licensed under a
+		            <a href="{{ title.license.url }}">{{ title.license.text }}</a> license.
+		         </p>
+		        
+		    {% endif %}
+	    </footer>
+   </article>
+   
 {% endblock %}
