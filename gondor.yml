@@ -15,7 +15,7 @@ requirements_file: podiobooks/requirements_gondor.txt
 on_deploy:
     - manage.py syncdb --noinput
     - manage.py migrate --noinput
-    - manage.py collectstatic --noinput
+    - manage.py collectstatic --noinput --clear
 
 # URLs which should be served by Gondor mapping to a filesystem location
 # relative to your writable storage area.
