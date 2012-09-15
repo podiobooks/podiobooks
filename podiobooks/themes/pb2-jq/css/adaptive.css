@@ -26,27 +26,15 @@
 		float:none;
 		width:auto;
 	}
-	
-	/*
-	 * title details page
-	 */
-	.title-details {
+	.title-details-extras{
+		width:28%;
 		float:right;
-		width: 460px;
-		margin: 0 30px 0px 15px;
 	}
-	.title-details-info{
-		width:250px;
+	.title-details{
+		width:68%;
+		float:left;
 	}
 	
-	/*
-	 * Awards
-	 */
-	.award-show{
-		float:left;
-		width:200px;
-		margin-top:20px;
-	}
 }
 
 
@@ -56,6 +44,34 @@
  */
 @media all and (max-width:743px){
 	
+	.title-details-extras{
+		display:none;
+	}
+	
+	.title-details-extras-inline{
+		display:block;
+		
+	}
+	.title-details-extras-inline .consumption-box{
+		width:auto;
+		position: relative;
+		min-height:185px;
+	}
+	.title-details-extras-inline .headphone-title{
+		text-align:left;
+		background-position:left top;
+		padding:16px 0 0 40px
+	}
+	.title-details-extras-inline .consume-list{
+		float:left;
+	}
+	.title-details-extras-inline .donate-box{
+		position:absolute;
+		right:0;
+		top:15px;
+	}
+	.title-details-top{
+	}
 	#djDebug{
 		display:none;
 	}
@@ -70,63 +86,19 @@
 		width:120px;
 	}
 	
-	.title-details {
-		float:none;
-		width: auto;
-		margin: 0 30px 20px 15px;
-	}
-	
-	
-	.subscription-box {
-		background:#D9E4F0;
-		margin:0px 0px 30px 0px;
-		padding:0px 15px 10px 15px;
-		/*
-		
-		-webkit-box-shadow:0 3px 5px #aaa;
-		-moz-box-shadow:0 3px 5px #aaa;
-		-o-box-shadow:0 3px 5px #aaa;
-		box-shadow:0 3px 5px #aaa;
-		*/
-		-webkit-border-radius:10px;
-		-moz-border-radius:10px;
-		-o-border-radius:10px;
-		border-radius:10px;
-		
-		font-size: 12px;
+	.title-details-extras{
 		width:auto;
-		height:auto;
-		float: none;
-		position:relative;
-		height:230px;
+		float:none;
 	}
 	
-	.headphone-title {
-		height: 63px;
-		text-align: center;
-		width:170px;
-	}
-	.subscribe{
-		padding:0px 0 0 0;
-		margin:0 0 10px 0px;
-		position:absolute;
-		right:15px;
-		top:15px;
-		width:240px
-	}
-	.subscription-accordion{
-		position:absolute;
-		top:95px;
-		right:15px;
-		width:240px;
+	.title-details{
+		width:auto;
+		float:none;
 	}
 	
-	.donate{
-		bottom:15px;
-		left:15px;
+	.wide-skyscraper-ad-placeholder{
+		display:none;
 	}
-	
-	
 }
 
 
@@ -135,6 +107,8 @@
  * 1 pane per shelf
  */
 @media all and (max-width:501px){
+	
+	
 	.hide-lowest-width{
 		display:none;
 	}
@@ -201,7 +175,7 @@
 	
 	.pg-foot{
 		border-top:solid 1px #b2b2b2;
-		padding-top:10px;
+		
 	}
 	.net-promoter-box{
 		margin:10px 0 0 0;
@@ -225,48 +199,6 @@
 	.promoter-count,
 	.detractor-count {
 		height:30px;
-	}
-	.title-details{
-		margin:0;
-	}
-	.title-details-info{
-		width:130px;
-		margin:0px 0 30px 0;
-		float:left;
-	}
-	.title-details-title{
-		margin-right:0;
-	}
-	
-	.subscription-box {
-		height:300px;
-	}
-	.subscribe{
-		right:auto;
-		top:85px;
-		left:25px;
-		width:240px;
-	}
-	.subscription-accordion{
-		position:absolute;
-		top:auto;
-		bottom:15px;
-		right:15px;
-		width:40%;
-	}
-	.donate{
-		width:40%;
-	}
-	.headphone-title {
-		height: 63px;
-		text-align: center;
-		float:none;
-		width:auto;
-		background-position: center top;
-	}
-	
-	.award-show{
-		width:130px;
 	}
 	
 	.logo{
@@ -450,5 +382,37 @@
 	}
 	.nav-bar-searching .podiobooks-nav-text{
 		display:none;
+	}
+	.title-details-titlebar{
+		min-height:92px;
+		padding:0 90px 20px 0;
+	}
+	.title-details{
+		position:relative;
+	}
+	.imagebox{
+		float:none;
+		width:auto;
+		position:absolute;
+		top:0;	
+		right:0;
+		margin:0;
+		padding:0;
+	}
+	.cover-image{
+		width:60px;	
+	}
+	.award-show{
+		padding:0;
+		width:auto;
+		float:none;
+		position:absolute;
+		top:30px;
+		right:60px;
+		margin:0;
+	}
+	.award-show img{
+		height:30px;
+		width:auto;
 	}
 }
