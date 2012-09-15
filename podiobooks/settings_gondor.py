@@ -36,13 +36,12 @@ if "GONDOR_REDIS_URL" in os.environ:
             'LOCATION': GONDOR_REDIS_HOST + ":" + str(GONDOR_REDIS_PORT),
             'OPTIONS': {
                 'DB': 1,
-                'PARSER_CLASS': 'redis.connection.HiredisParser',
                 'PASSWORD': GONDOR_REDIS_PASSWORD
             },
         },
     }
 
-SITE_ID = 1 # set this to match your Sites setup
+INSTALLED_APPS += ()
 
 MEDIA_ROOT = os.path.join(os.environ["GONDOR_DATA_DIR"], "site_media", "mediaroot", )
 STATIC_ROOT = os.path.join(os.environ["GONDOR_DATA_DIR"], "site_media", "staticroot") + "/"
