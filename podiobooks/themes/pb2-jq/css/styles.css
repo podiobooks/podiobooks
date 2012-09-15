@@ -295,6 +295,11 @@ p{
     height: 27px;
 }
 
+.title-list-bar .category {
+    float: right;
+    margin-right: 7px;
+}
+
 .title-list-text {
 
 }
