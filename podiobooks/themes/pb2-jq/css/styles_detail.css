@@ -120,13 +120,13 @@
 
 .title-license-txt {
     float: left;
-    margin: 26px 0 10px 0;
+    margin: 26px 0 10px 20px;
     font-size: smaller;
 }
 
 .title-license-img {
     float: left;
-    margin: 20px 10px 0 0;
+    margin: 20px 10px 0 20px;
 }
 
 .title-comment-byline {
