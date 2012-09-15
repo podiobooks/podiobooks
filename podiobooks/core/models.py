@@ -271,7 +271,7 @@ class Title(models.Model):
     series_sequence = models.IntegerField(default=1)
     description = models.TextField()
     slug = models.SlugField(max_length=255, unique=True)
-    cover = models.ImageField(upload_to=settings.MEDIA_ROOT)
+    cover = models.ImageField(upload_to=settings.MEDIA_ROOT, blank=True, null=True)
     status = models.IntegerField(default=1)
     license = models.ForeignKey('License', null=True, related_name='titles')
     display_on_homepage = models.BooleanField(default=False, db_index=True)
@@ -289,14 +289,14 @@ class Title(models.Model):
     deleted = models.BooleanField(default=False)
     contributors = models.ManyToManyField('Contributor', through='TitleContributor') #related_name doesn't work with manual intermediary tables
     # Note: TitleContributor Objects (intermediate table) are available as titlecontributors.all()
-    byline = models.CharField(max_length=1024) # This is a formatted cache of the title contributors
+    byline = models.CharField(max_length=1024, blank=True) # This is a formatted cache of the title contributors
     categories = models.ManyToManyField('Category', through='TitleCategory') #related_name doesn't work with manual intermediary tables
     # Note: TitleCategory Objects (intermediate table) are available as titlecategories.all()
-    category_list = models.CharField(max_length=1024) # This is a formatted cache of the categories
+    category_list = models.CharField(max_length=1024, blank=True) # This is a formatted cache of the categories
     partner = models.ForeignKey('partner', null=True, blank=True, related_name='titles')
     awards = models.ManyToManyField('Award', null=True, blank=True, related_name='titles')
     libsyn_show_id = models.CharField(max_length=50, db_index=True, blank=True)
-    itunes_adam_id = models.IntegerField(null=True)
+    itunes_adam_id = models.IntegerField(null=True, blank=True)
     podiobooker_blog_url = models.URLField(max_length=255, null=True, blank=True, verify_exists=True)
     # Note: episodes are available as episodes.all()
     # Note: media are available as media.all()
