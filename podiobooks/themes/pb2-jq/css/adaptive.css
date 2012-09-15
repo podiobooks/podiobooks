@@ -415,4 +415,17 @@
 		height:30px;
 		width:auto;
 	}
+	.title-license{
+	
+		padding:0;
+		
+	}
+	.title-license img{
+		position:static;
+		left:auto;
+		top:auto;
+		float:left;
+		padding:0;
+		margin:3px 10px 0px 0;
+	}
 }
