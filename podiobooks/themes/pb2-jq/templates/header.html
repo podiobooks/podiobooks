@@ -1,21 +1,2 @@
-{% load global_templatetags %}<!-- Header - Logo and Navigation Bar -->
 
-{% url podiobooks.main.views.index as home_url %}
-{% if request.path == home_url %}
-    <h1 class='hidden'><a href='/'>Podiobooks</a></h1>
-{% endif %}
-
-<p class='hidden'>Free Downloadable Audiobooks</p>
-<p class='logo'><a href='/'><img alt='Podiobooks Logo' src='{{ STATIC_URL }}images/pb-logo.jpg'/></a></p>
-
-<div class='nav-bar clearfix'>
-    <ul class='nav'>
-        <li><a href='http://blog.podiobooks.com/'>Blog</a></li>
-        <li><a href='http://community.podiobooks.com/'>Community</a></li>
-    </ul>
-    <p class="podiobooks-nav-text"><a href="{% url home_page %}">Podiobooks.com</a></p>
-    
-    {% show_searchbox %}
-    {% show_browsebox %}
-</div>
 <!-- End Header - Logo and Navigation Bar -->
