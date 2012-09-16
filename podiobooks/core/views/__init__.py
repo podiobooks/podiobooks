@@ -2,13 +2,10 @@
 
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-<<<<<<< HEAD
-from podiobooks.core.models import Category, Contributor, Title
-from podiobooks.core.forms import CategoryChoiceForm, ContributorChoiceForm, TitleSearchForm
-=======
+
 from podiobooks.core.models import Title, Contributor
 from podiobooks.core.forms import CategoryChoiceForm, ContributorChoiceForm, TitleSearchForm, TitleSearchAdditionalFieldsForm
->>>>>>> more work on search results
+
 from django.db.models import Q
 from django.core.urlresolvers import reverse
 from django.views.decorators.cache import cache_page
@@ -141,24 +138,7 @@ def title_search(request, keywords=None):
             (Q(name__icontains=keywords) | Q(description__icontains=keywords)) & adult_filter & completed_filter)
         search_metadata = None
         result_count = len(search_results)
-<<<<<<< HEAD
 
-        response_data = {
-            'title_list': search_results,
-            'keywords': keywords,
-            'result_count': result_count,
-            'titleSearchForm': form,
-            'categoryChoiceForm': CategoryChoiceForm(),
-            'search_metadata': search_metadata
-        }
-
-        return render_to_response('core/title/title_search_results.html', response_data,
-            context_instance=RequestContext(request))
-
-    response_data = {'titleSearchForm': form}
-    return render_to_response('core/title/title_search_results.html', response_data,
-        context_instance=RequestContext(request))
-=======
         
         response_data.update({
             'title_list': search_results, 
@@ -173,7 +153,7 @@ def title_search(request, keywords=None):
     
     
     return render_to_response('core/title/title_search_results.html', response_data, context_instance=RequestContext(request))
->>>>>>> more work on search results
+
 
 
 @cache_page(1)
