@@ -2,14 +2,34 @@
 
 <ul class="title-list">
     {% for title in title_list %}
+    	{% if forloop.counter == 3 %}
+    	<aside class="horizontal-large-ad">
+	        <script type="text/javascript">
+	            <!--
+	            google_ad_client = "ca-pub-1276519440300441";
+	            /* Search Link Bar */
+	            google_ad_slot = "9277887087";
+	            google_ad_width = 728;
+	            google_ad_height = 15; //-->
+	        </script>
+	        
+	        <script type="text/javascript"
+	                src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+	        </script>
+	    </aside>
+    	{% endif %}
         <li>
             
-            {% show_titlecover title %}
-            <article>
+            
+            <article class="clearfix title-list-item">
 	            
-	                <h1 class="title">
+	            	<a href="{{ title.get_absolute_url }}">{% show_titlecover title %}</a>
+	                
+	                <h1 class="title-list-title">
 	                    <a href="{{ title.get_absolute_url }}">{{ title.name }}</a>
 	                </h1>
+	                
+	                
 	                {% if page_name != 'contributor_title_list' %}
 	                    <div class="byline">
 	                        {{ title.byline|safe }}
@@ -23,10 +43,9 @@
 	                {% endif %}
 	                
 	                {% autoescape off %}
-	                	{{ title.description|striptags|truncatewords:85 }}
+	                	{{ title.description|striptags|truncatewords:65 }}
 	                {% endautoescape %} 
 	                
-	                [<a href="{{ title.get_absolute_url }}">more</a>]
 	            
             </article>
             

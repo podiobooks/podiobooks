@@ -1,3 +1,32 @@
+/*
+ * ads
+ */
 .search-results .block-ad{
 	float:right;
+	margin:20px 0 20px 40px;
 }
+.search-results .horizontal-large-ad{
+	margin:20px auto 30px;
+}
+
+/*
+ * results
+ */
+.title-list{
+	list-style:none;
+}
+.title-list-item{
+	padding:30px 0;
+}
+.title-list-item a,
+.title-list-item a:active,
+.title-list-item a:visited,
+.title-list-item a:hover,
+.title-list-item a:link{
+	text-decoration:none;
+}
+.title-list-item .cover-image{
+	float:left;
+	margin:10px 30px 15px 0;
+}
+
