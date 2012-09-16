@@ -3,14 +3,9 @@
 # pylint: disable=W0401,W0614,C0103
 
 from django.conf.urls import include, patterns, url
-<<<<<<< HEAD
-from podiobooks.core.models import Category, Contributor, Episode, Series, Title
-from django.views.generic import DetailView, ListView
-=======
-from django.views.generic import DetailView, ListView, RedirectView
 
 from podiobooks.core.models import Category, Contributor, Episode, Series, Title
->>>>>>> Fixes legacy feed urls, I believe
+from django.views.generic import DetailView, ListView, RedirectView
 from podiobooks.core.views import FeedRedirectView, CategoryTitleListView
 
 urlpatterns = patterns('',
