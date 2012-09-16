@@ -3,7 +3,7 @@
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 
-from podiobooks.core.models import Title, Contributor
+from podiobooks.core.models import Title, Contributor, Category
 from podiobooks.core.forms import CategoryChoiceForm, ContributorChoiceForm, TitleSearchForm, TitleSearchAdditionalFieldsForm
 
 from django.db.models import Q
