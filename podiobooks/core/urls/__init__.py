@@ -4,7 +4,7 @@
 
 from django.conf.urls import include, patterns, url
 from podiobooks.core.models import Category, Contributor, Episode, Series, Title
-from django.views.generic import DetailView, ListView, RedirectView
+from django.views.generic import DetailView, ListView
 from podiobooks.core.views import FeedRedirectView, CategoryTitleListView
 
 urlpatterns = patterns('',
