@@ -16,19 +16,21 @@
 
     <aside class="title-details-extras">
         {% include "core/title/title_consumptionbox.html" %}
-        <div class="wide-skyscraper-ad">
-            <script type="text/javascript">
-                <!--
-                google_ad_client = "ca-pub-1276519440300441";
-                /* 160x600, created 8/8/10 */
-                google_ad_slot = "1145406808";
-                google_ad_width = 160;
-                google_ad_height = 600; //-->
-            </script>
-            <script type="text/javascript"
-                    src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-            </script>
-        </div>
+        {% if 'Erotica' not in title.category_list %}
+            <div class="wide-skyscraper-ad">
+                <script type="text/javascript">
+                    <!--
+                    google_ad_client = "ca-pub-1276519440300441";
+                    /* 160x600, created 8/8/10 */
+                    google_ad_slot = "1145406808";
+                    google_ad_width = 160;
+                    google_ad_height = 600; //-->
+                </script>
+                <script type="text/javascript"
+                        src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+                </script>
+            </div>
+        {% endif %}
     </aside>
 
     <article class="title-details" itemscope itemtype="http://schema.org/Book">
