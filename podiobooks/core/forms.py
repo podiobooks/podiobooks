@@ -42,9 +42,21 @@ class ContributorChoiceForm(forms.Form):
     contributor = forms.ChoiceField(choices=[(slug, display) for slug, display in contributors], widget=forms.Select(attrs={'class':'pb-contributor-choice'}))
     
 
-class TitleSearchForm(forms.Form):
-    """ Form used to search for titles, used in header and on search page. """
-    keyword = forms.CharField(label="Search for", widget=forms.TextInput(attrs={'class':'search-keywords', "autocapitalize": "off"}))
+class TitleSearchAdditionalFieldsForm(forms.Form):
+    """ Additional fields for search (beyond the search term """    
     include_adult = forms.BooleanField(required=False, initial=False)
     completed_only = forms.BooleanField(required=False, initial=False)
+
+
+class TitleSearchForm(TitleSearchAdditionalFieldsForm):
+    """ Form used to search for titles, used in header and on search page. """
+        
+    def __init__(self, *args, **kwargs):
+        """ Reorder fields """
+        super(TitleSearchForm, self).__init__(*args, **kwargs)
+        self.fields.keyOrder =  ["keyword", "include_adult", "completed_only"]        
+    
+    keyword = forms.CharField(label="Search for", widget=forms.TextInput(attrs={'class':'search-keywords', "autocapitalize": "off"}))
+    
+    
     

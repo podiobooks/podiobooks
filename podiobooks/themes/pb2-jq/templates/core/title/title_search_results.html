@@ -7,11 +7,21 @@
 
 {% block search_box %}
 
-	<form class="advanced-search search" action="{% url title_search %}" method="GET">
-        {{ titleSearchForm.as_p }}
-        
-        <input type="submit" value="Search" class="search-submit " />
-    </form>
+	<form action="{% url title_search %}" method="GET" class="search">
+	    <p>
+	    	<label for="id_keywords">Search</label>
+	    	{{ titleSearchForm.keyword }}
+	    </p>
+	    
+	    <div class="search-additional-fields">
+	    	{{ additionalFields.as_p }}
+	    	
+	    		
+	    </div>
+	   	<input value="Search" type="submit" class="search-submit" />
+	   	
+	</form>
+
     
 {% endblock %}
 

@@ -35,6 +35,11 @@
 		float:left;
 	}
 	
+	.search-additional-fields{
+		left:-200px;
+		top:-30px;
+	}
+	
 }
 
 
@@ -101,6 +106,13 @@
 	}
 	.horizontal-large-ad{
 		display:none;
+	}
+	.search-additional-fields{
+		left:10px;
+		top:25px;
+	}
+	.search-results .pg{
+		padding-top:40px;
 	}
 }
 
@@ -431,5 +443,35 @@
 	.title-description {
 		font-size:17px;
 		line-height:1.5em;
+	}
+	.fdbk_tab_left{
+		display:none;
+	}
+	
+	.search-additional-fields{
+		margin:0;
+		padding:10px 0;
+		border-radius:0px;
+		position:static;
+		left:0;
+		position:absolute;
+		top:45px;
+		width:100%;
+		height:auto;
+		box-shadow:0 3px 6px rgba(0,0,0,.1);
+	}
+	
+	.search-additional-fields p{
+		display:inline;
+		padding:0 10px;
+	}
+	.nav-bar-searching .search-additional-fields{
+		visibility:hidden;
+	}
+	.search-additional-fields input{
+		float:none;
+	}
+	.search-results .pg{
+		padding-top:60px;
 	}
 }
