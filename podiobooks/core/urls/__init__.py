@@ -3,8 +3,14 @@
 # pylint: disable=W0401,W0614,C0103
 
 from django.conf.urls import include, patterns, url
+<<<<<<< HEAD
 from podiobooks.core.models import Category, Contributor, Episode, Series, Title
 from django.views.generic import DetailView, ListView
+=======
+from django.views.generic import DetailView, ListView, RedirectView
+
+from podiobooks.core.models import Category, Contributor, Episode, Series, Title
+>>>>>>> Fixes legacy feed urls, I believe
 from podiobooks.core.views import FeedRedirectView, CategoryTitleListView
 
 urlpatterns = patterns('',
@@ -62,9 +68,13 @@ urlpatterns = patterns('',
         'podiobooks.core.views.title_list_by_contributor',
         {'template_name': 'core/shelf/contributor_shelf.html'},
         name='title_contributor_shelf'),
+    url(r'^title/(?P<title_id>\d+)/feed', 
+        FeedRedirectView.as_view()
+    ),
     url(r'^title/(?P<slug>[^/]+)/feed',
         FeedRedirectView.as_view()
     ),
+    
 
     # category
     url(r'^category/$', ListView.as_view(
