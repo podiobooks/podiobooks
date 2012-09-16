@@ -40,9 +40,11 @@
 	
 	.search-additional-fields{
 		left:-200px;
-		top:-30px;
+		top:-27px;
 	}
-	
+	.nav-bar{
+		padding: 15px 20px 15px 20px;
+	}
 }
 
 
