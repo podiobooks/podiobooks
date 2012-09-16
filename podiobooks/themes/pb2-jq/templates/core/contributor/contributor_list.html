@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 
-{% block headtitle %}All Contributors - {{ SITE.name }}{% endblock %}
+{% block headtitle %}Audio book authors, producers and narrators on {{ SITE.name }}{% endblock %}
+
+{% block metatags %}
+    <meta name="Description"
+          content="Quickly find the free audio books by your favorite author, producer or narrator."/>
+{% endblock %}
 
 {% block content %}
 <style type="text/css">
