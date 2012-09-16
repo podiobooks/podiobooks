@@ -6,7 +6,8 @@
 		width:726px;
 	}
 		
-	.browse-by{
+	.browse-by,
+	.search-results .browse-by{
 		float:none;
 		display:block;
 		margin:10px 0 0 0;
@@ -14,6 +15,7 @@
 		float:left;
 		width:100%;
 	}
+	
 	
 	.nav{
 		margin:0;
