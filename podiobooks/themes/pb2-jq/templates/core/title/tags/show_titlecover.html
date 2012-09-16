@@ -1,6 +1,6 @@
 {% load global_templatetags %}
 {% if title %}
-    <div class="loading">
+    <span class="loading">
         
             <img itemprop="image" class="cover-image" alt="Cover for '{{ title.name }}'"
                     {% if title.libsyn_show_id %}
@@ -9,7 +9,7 @@
                  src="http://podiobooks.com/images/covers/{{ title.cover }}"
                     {% endif %}
                     >
-    </div>
+    </span>
     <script type="text/javascript">
         $('.cover-image').hide();
         $('.cover-image').load(function () {
