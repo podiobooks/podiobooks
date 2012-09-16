@@ -104,10 +104,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.admindocs',
     'django.contrib.auth',
-    'django.contrib.comments',
     'django.contrib.contenttypes',
-    'django.contrib.databrowse',
-    'django.contrib.flatpages',
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.staticfiles',
@@ -119,7 +116,6 @@ INSTALLED_APPS = (
     'podiobooks.profile',
     'podiobooks.feeds',
     'south',
-    'taggit',
     )
 
 # Local DB settings. (Postgres)
