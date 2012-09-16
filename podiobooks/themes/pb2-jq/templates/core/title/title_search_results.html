@@ -5,56 +5,42 @@
 
 {% block body_class %}search-results{% endblock %}
 
+{% block search_box %}
+
+	<form class="advanced-search search" action="{% url title_search %}" method="GET">
+        {{ titleSearchForm.as_p }}
+        
+        <input type="submit" value="Search" class="search-submit " />
+    </form>
+    
+{% endblock %}
+
 {% block content %}
     
-    <div class="advanced-search" id="searchForm">
-        <form action="{% url title_search %}" method="GET">
-            <div id="searchFields">
-                {{ titleSearchForm.as_p }}
-            </div>
-            <div id="searchButton">
-                <input type="submit" value="Search" class="formbutton" />
-            </div>
-        </form>
-    </div>
     
-    <aside class="block-ad">
-        <script type="text/javascript">
-            <!--
-            google_ad_client = "ca-pub-1276519440300441";
-            /* Search 1 */
-            google_ad_slot = "6347144263";
-            google_ad_width = 200;
-            google_ad_height = 200; //-->
-        </script>
-        <script type="text/javascript"
-                src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-        </script>
-   </aside>
+    {% if result_count %}
+    	<h1>{{ result_count }} results for "{{ keywords }}"</h1>
+    {% else %}
+    	<h1>No results for "{{ keywords }}"</h1>
+    {% endif %}
    
     {% if result_count %}
-		<h1>{{ result_count }} titles found whose name or description contained "{{ keywords }}"</h1>
 	    
-	    <aside class="horizontal-large-ad">
+	     <aside class="block-ad">
 	        <script type="text/javascript">
 	            <!--
 	            google_ad_client = "ca-pub-1276519440300441";
-	            /* Search Link Bar */
-	            google_ad_slot = "9277887087";
-	            google_ad_width = 728;
-	            google_ad_height = 15; //-->
+	            /* Search 1 */
+	            google_ad_slot = "6347144263";
+	            google_ad_width = 200;
+	            google_ad_height = 200; //-->
 	        </script>
-	        
 	        <script type="text/javascript"
 	                src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 	        </script>
-	    </aside>
+	   </aside>
 	    
 	    {% show_titlelist title_list "title_search_results" %}
     
-    {% else %}
-    	{% if titleSearchForm.cleaned_data.keywords %}
-        	<h3>No titles found whose name, description, or contributors contained "{{ keywords }}"</h3>
-    	{% endif %}
 	{% endif %}
 {% endblock %}
