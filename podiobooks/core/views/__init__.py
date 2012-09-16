@@ -95,13 +95,13 @@ def title_search(request, keywords=None):
     
     template : N/A
     """
-    if request.method == 'POST': # If the form has been submitted...
-        form = TitleSearchForm(request.POST) # A form bound to the POST data
+    if "keyword" in request.GET:
+        form = TitleSearchForm(request.GET)
     else:
-        form = TitleSearchForm({'keywords': keywords})
+        form = TitleSearchForm({'keyword': keywords})
 
     if form.is_valid(): # All validation rules pass
-        keywords = form.cleaned_data['keywords']
+        keywords = form.cleaned_data['keyword']
         include_adult = form.cleaned_data['include_adult']
         completed_only = form.cleaned_data['completed_only']
     else:
@@ -115,19 +115,29 @@ def title_search(request, keywords=None):
             adult_filter = Q(is_adult=False)
         else:
             adult_filter = Q()
+            
         if (completed_only):
             completed_filter = Q(is_complete=True)
         else:
             completed_filter = Q()
+            
         search_results = Title.objects.filter((Q(name__icontains=keywords) | Q(description__icontains=keywords)) & adult_filter & completed_filter)
         search_metadata = None
         result_count = len(search_results)
-        response_data = {'title_list': search_results, 'keywords': keywords, 'result_count': result_count, 'titleSearchForm': form, 'categoryChoiceForm': CategoryChoiceForm(),
-                         'search_metadata': search_metadata}
+        
+        response_data = {
+            'title_list': search_results, 
+            'keywords': keywords, 
+            'result_count': result_count, 
+            'titleSearchForm': form, 
+            'categoryChoiceForm': CategoryChoiceForm(),
+            'search_metadata': search_metadata
+        }
+        
         return render_to_response('core/title/title_search_results.html', response_data, context_instance=RequestContext(request))
-    else:
-        response_data = {'titleSearchForm': form}
-        return render_to_response('core/title/title_search_results.html', response_data, context_instance=RequestContext(request))
+    
+    response_data = {'titleSearchForm': form}
+    return render_to_response('core/title/title_search_results.html', response_data, context_instance=RequestContext(request))
 
 
 @cache_page(1)
