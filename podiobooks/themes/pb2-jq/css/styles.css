@@ -140,7 +140,7 @@ p {
         padding: 0;
     }
 
-    .search button {
+    .search-submit {
         margin: -5px 0 0 0;
         border: 1px solid #448ccb;
         background-color: #06539e;
@@ -187,7 +187,7 @@ p {
         position: static;
     }
 
-    .search button {
+    .search-submit {
         margin: 0px 0 0 0;
         padding: 0 5px 0 5px;
         display: inline-block;

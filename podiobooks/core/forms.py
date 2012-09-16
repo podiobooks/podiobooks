@@ -5,10 +5,12 @@ from django.core.cache import cache
 from django import forms
 from django.db.models import Count, Q
 
+
 class BrowseByForm(forms.Form):
     """ Form used to choose a way to browse - used in header """
     browse_by_list = [('none', 'Author, Genre...'), ('author', 'Author'), ('category', 'Genre/Category'), ]
     browseby = forms.ChoiceField(choices=browse_by_list, widget=forms.Select(attrs={'class':'pb-browseby-choice', 'onchange':'browseByChange(this.form.name, this.form.action, this.value);'}))
+
 
 class CategoryChoiceForm(forms.Form):
     """ Form used to select a category - used in header """
@@ -19,6 +21,7 @@ class CategoryChoiceForm(forms.Form):
         categories = Category.objects.filter(~Q(slug="erotica"), title__display_on_homepage=True).annotate(title_count=Count('title')).filter(title_count__gt=2).order_by('name').values_list('slug', 'name')
         cache.set('category_dropdown_values', categories, 240)
     category = forms.ChoiceField(choices=categories, widget=forms.Select(attrs={'class':'pb-category-choice'}))
+
 
 class ContributorChoiceForm(forms.Form):
     """ Form used to select contributors on the Author Spotlight shelf """
@@ -41,7 +44,7 @@ class ContributorChoiceForm(forms.Form):
 
 class TitleSearchForm(forms.Form):
     """ Form used to search for titles, used in header and on search page. """
-    keywords = forms.CharField(label="Search for", widget=forms.TextInput(attrs={'class':'search-keywords',}))
+    keyword = forms.CharField(label="Search for", widget=forms.TextInput(attrs={'class':'search-keywords',}))
     include_adult = forms.BooleanField(required=False, initial=False)
     completed_only = forms.BooleanField(required=False, initial=False)
     
