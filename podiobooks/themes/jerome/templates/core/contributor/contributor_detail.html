@@ -1,16 +1,18 @@
 {% extends "base.html" %}
 {% load title_templatetags %}
 {% block headtitle %}{{ category.name }} {{ contributor.display_name }} Profile - {{ SITE.name }}{% endblock %}
+
 {% block content %}
-{% if contributor.title_set.all.count %}
-<h1>
-    {{ contributor.display_name }}
-</h1>
-{% show_titlelist contributor.title_set.all "contributor_title_list" %}
-<div style="margin: 400px 20px 300px 20px;"></div>
-{% else %}
-<div style="font-size: 18px; margin: 20px 20px 30px 20px;">
-    There are currently no titles available for {{ contributor.display_name }}
-</div>
-{% endif %}
+	{% if contributor.title_set.all.count %}
+		<h1>
+		    {{ contributor.display_name }}
+		</h1>
+		
+		{% show_titlelist contributor.title_set.all "contributor_title_list" %}
+		
+	{% else %}
+		<div style="font-size: 18px; margin: 20px 20px 30px 20px;">
+		    There are currently no titles available for {{ contributor.display_name }}
+		</div>
+	{% endif %}
 {% endblock %}
