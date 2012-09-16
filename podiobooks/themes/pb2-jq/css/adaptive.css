@@ -29,11 +29,12 @@
 		width:auto;
 	}
 	.title-details-extras{
-		width:28%;
+		width:24%;
 		float:right;
+		text-align:right;
 	}
 	.title-details{
-		width:68%;
+		width:72%;
 		float:left;
 	}
 	
