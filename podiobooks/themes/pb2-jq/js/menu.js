@@ -13,11 +13,12 @@ $(function(){
 		activeMenuClass: "menu-active",
 		activateCallback: function(){
 			$(".pg").width($(".pg").width());
-			$(".pg").css("marginLeft", $(".site-menu").width());
+			$(".pg-foot").width($(".pg-foot").width());
+			$(".pg, .pg-foot").css("marginLeft", $(".site-menu").width());
 			$("body, html").addClass("site-menu-active");
 		},
 		deactivateCallback: function(){
-			$(".pg").css("width","").css("marginLeft", "");
+			$(".pg, .pg-foot").css("width","").css("marginLeft", "");
 			$("body, html").removeClass("site-menu-active");
 		}
 	});
