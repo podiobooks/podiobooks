@@ -3,7 +3,14 @@
  */
 body {
     background: #fff url('../images/pb-background.jpg') left top repeat-x;
-    font-family: "ff-dax-wide-web-pro-1", "ff-dax-wide-web-pro-2", "Verdana", "Arial", sans-serif;
+    font-family: "ff-dax-wide-web-pro-1", "ff-dax-wide-web-pro-2", "Verdana", sans-serif;
+    color:#111;
+}
+
+h1{
+    font-size: 24px;
+    font-weight: bold;
+    padding:0 0 15px;
 }
 
 a,
@@ -84,8 +91,11 @@ p {
     margin: 0 0 20px 0;
 }
 
-.loading {
+.loading img {
+	display:inline-block;
     background: url('../images/loading.gif') no-repeat center center;
+    min-height:50px;
+    min-width:50px;
 }
 
 /*
@@ -270,12 +280,7 @@ p {
     box-shadow: 0 3px 5px #aaa;
 }
 
-.title {
-    font-size: larger;
-    font-weight: bold;
-    float: left;
-    margin-right: auto;
-}
+
 
 .title-titlebar {
     height: 40px;
