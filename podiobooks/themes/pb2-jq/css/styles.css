@@ -118,7 +118,9 @@ p {
     display: inline;
     margin-left: 200px;
 }
-
+.search-results .browse-by{
+	margin-left: 110px;
+}
 .browse-by li {
     display: inline;
 }
