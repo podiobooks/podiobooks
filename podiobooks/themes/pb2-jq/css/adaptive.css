@@ -463,7 +463,7 @@
 	
 	.search-additional-fields p{
 		display:inline;
-		padding:0 10px;
+		padding:0 0 0 10px;
 	}
 	.nav-bar-searching .search-additional-fields{
 		visibility:hidden;
