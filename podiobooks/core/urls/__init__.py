@@ -5,7 +5,7 @@
 from django.conf.urls import include, patterns, url
 from podiobooks.core.models import Category, Contributor, Episode, Series, Title
 from django.views.generic import DetailView, ListView, RedirectView
-from podiobooks.core.views import FeedRedirectView
+from podiobooks.core.views import FeedRedirectView, CategoryTitleListView
 
 urlpatterns = patterns('',
 
@@ -72,10 +72,7 @@ urlpatterns = patterns('',
         context_object_name='category_list',
         template_name='core/category/category_list.html'),
         name='category_list'),
-    url(r'^category/(?P<slug>[^/]+)/$', DetailView.as_view(
-        queryset=Category.objects.all(),
-        context_object_name='category',
-        template_name='core/category/category_detail.html'),
+    url(r'^category/(?P<category_slug>[^/]+)/$', CategoryTitleListView.as_view(),
         name='category_detail'),
 
     # contributor
