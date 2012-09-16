@@ -294,32 +294,6 @@ p {
     margin: 0px 0 7px 0;
 }
 
-.title-list {
-    list-style: none;
-}
-
-.title-list li {
-    margin: 15px 0 30px 5px;
-}
-
-.title-list img {
-    float: left;
-    margin-right: 15px;
-}
-
-.title-list-bar {
-    height: 27px;
-}
-
-.title-list-bar .category {
-    float: right;
-    margin-right: 7px;
-}
-
-.title-list-text {
-
-}
-
 .wide-skyscraper-ad-placeholder {
     width: 160px;
     height: 600px;
