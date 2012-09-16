@@ -26,4 +26,4 @@ class BlogRedirectView(RedirectView):
     permanent = True
 
     def get_redirect_url(self, **kwargs):
-        return 'http://blog.podiobooks.com' + self.kwargs.get('url_remainder', '/')
+        return 'http://blog.podiobooks.com' + self.kwargs.get('url_remainder', '')
