@@ -11,7 +11,14 @@ $(function(){
 			$(".nav-bar .search-keywords").trigger("focus");
 		}
 	});
+	
 	$(".search-additional-fields input").change(function(){
-		$(this).parents("form").trigger("submit");
+		var form = $(this).parents("form");
+		var container = $(this).parents(".search-additional-fields");
+		
+		form.trigger("submit");
+		
+		container.addClass("search-additional-fields-thinking")
+		
 	});
 });
