@@ -35,7 +35,7 @@ class Award(models.Model):
     """Awards are just that: awards for a title, like winning a Parsec, etc."""
     slug = models.SlugField()
     name = models.CharField(blank=True, max_length=255)
-    url = models.URLField(blank=True, verify_exists=True)
+    url = models.URLField(blank=True)
     image = models.ImageField(upload_to=settings.MEDIA_ROOT, max_length=255)
     deleted = models.BooleanField(default=False)
     date_created = models.DateTimeField(default=datetime.datetime.now())
@@ -118,7 +118,7 @@ class Episode(models.Model):
     name = models.CharField(max_length=255)
     sequence = models.IntegerField() #Order in the Story
     description = models.TextField(blank=True)
-    url = models.URLField(verify_exists=True)
+    url = models.URLField()
     filesize = models.IntegerField(default=0) #Size of the media file
     length = models.FloatField(default=0) #Length of the media file (usually minutes (or pages))
     contributors = models.ManyToManyField('Contributor', through='EpisodeContributor')
@@ -159,8 +159,8 @@ class License(models.Model):
     Reserved, etc."""
     slug = models.SlugField()
     text = models.CharField(max_length=255)
-    url = models.URLField(verify_exists=True)
-    image_url = models.URLField(verify_exists=True)
+    url = models.URLField()
+    image_url = models.URLField()
     code = models.TextField(blank=True)
     date_created = models.DateTimeField(default=datetime.datetime.now())
     date_updated = models.DateTimeField(default=datetime.datetime.now())
@@ -196,7 +196,7 @@ class Partner(models.Model):
     who wish to be recognized in some fashion (usually a graphic and link back
     to their site)."""
     name = models.CharField(max_length=255)
-    url = models.URLField(verify_exists=True)
+    url = models.URLField()
     logo = models.ImageField(upload_to="/dir/path")
     deleted = models.BooleanField(default=False)
     date_created = models.DateTimeField(default=datetime.datetime.now())
@@ -215,7 +215,7 @@ class Promo(models.Model):
     marketing mojo to their arsenal."""
     title = models.ForeignKey('Title', related_name='promos')
     name = models.CharField(max_length=255)
-    url = models.URLField(verify_exists=True)
+    url = models.URLField()
     display_order = models.IntegerField(null=False, default=1)
     date_created = models.DateTimeField(default=datetime.datetime.now())
     date_updated = models.DateTimeField(default=datetime.datetime.now())
@@ -297,7 +297,7 @@ class Title(models.Model):
     awards = models.ManyToManyField('Award', null=True, blank=True, related_name='titles')
     libsyn_show_id = models.CharField(max_length=50, db_index=True, blank=True)
     itunes_adam_id = models.IntegerField(null=True, blank=True)
-    podiobooker_blog_url = models.URLField(max_length=255, null=True, blank=True, verify_exists=True)
+    podiobooker_blog_url = models.URLField(max_length=255, null=True, blank=True)
     # Note: episodes are available as episodes.all()
     # Note: media are available as media.all()
     # Note: promos are available as promos.all()
@@ -380,7 +380,7 @@ post_save.connect(update_byline, sender=TitleContributor) # Fires update_byline 
 class TitleUrl(models.Model):
     """Allows us to have several links for a book, for display. For utility."""
     title = models.ForeignKey('Title', related_name='urls')
-    url = models.URLField(verify_exists=True)
+    url = models.URLField()
     linktext = models.CharField(max_length=255)
     displayorder = models.IntegerField(null=False, default=1)
     date_created = models.DateTimeField(default=datetime.datetime.now())
