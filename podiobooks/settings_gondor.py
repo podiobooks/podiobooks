@@ -54,6 +54,8 @@ STATIC_URL = "/assets/static/" # make sure this maps inside of a static_urls URL
 
 FILE_UPLOAD_PERMISSIONS = 0640
 
+MEDIABRUTE_REMOVE_OLD = False
+
 LOGGING = {
     "version": 1,
     "disable_existing_loggers": False,
