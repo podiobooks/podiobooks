@@ -14,11 +14,12 @@ $(function(){
 		activateCallback: function(){
 			$(".pg").width($(".pg").width());
 			$(".pg-foot").width($(".pg-foot").width());
-			$(".pg, .pg-foot").css("marginLeft", $(".site-menu").width());
+			$(".search-additional-fields").width($(".pg-foot").width());
+			$(".pg, .pg-foot, .search-additional-fields").css("marginLeft", $(".site-menu").width());
 			$("body, html").addClass("site-menu-active");
 		},
 		deactivateCallback: function(){
-			$(".pg, .pg-foot").css("width","").css("marginLeft", "");
+			$(".pg, .pg-foot, .search-additional-fields").css("width","").css("marginLeft", "");
 			$("body, html").removeClass("site-menu-active");
 		}
 	});
