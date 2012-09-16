@@ -10,7 +10,7 @@ from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf import settings
 from django.views.generic import RedirectView
-from .views import TextTemplateView, RobotsView
+from .views import BlogRedirectView, TextTemplateView, RobotsView
 
 admin.autodiscover()
 
@@ -46,7 +46,10 @@ urlpatterns = patterns('',
     (r'^crossdomain\.xml', TextTemplateView.as_view(template_name='crossdomain.xml')),
 
     # Blog
-    (r'^blog$', RedirectView.as_view(url='http://blog.podiobooks.com')),
+    (r'^blog(?P<url_remainder>[a-zA-Z0-9_.-/]+)', BlogRedirectView.as_view()),
+
+    # PB1 Search Redirect
+    (r'podiobooks/search.php', RedirectView.as_view(url='/title/search/', query_string=True)),
 )
 
 #Only hook up the static and media to run through Django in a dev environment...in prod, needs to be handled by web server
