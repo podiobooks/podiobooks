@@ -11,4 +11,7 @@ $(function(){
 			$(".nav-bar .search-keywords").trigger("focus");
 		}
 	});
+	$(".search-additional-fields input").change(function(){
+		$(this).parents("form").trigger("submit");
+	});
 });
