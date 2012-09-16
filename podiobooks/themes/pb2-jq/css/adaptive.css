@@ -457,7 +457,7 @@
 		position:absolute;
 		top:45px;
 		width:100%;
-		height:auto;
+		height:18px;
 		box-shadow:0 3px 6px rgba(0,0,0,.1);
 	}
 	
@@ -473,5 +473,11 @@
 	}
 	.search-results .pg{
 		padding-top:60px;
+	}
+	.search-additional-fields-thinking{
+		
+	}
+	.search-additional-fields-thinking p{
+		display:none;
 	}
 }
