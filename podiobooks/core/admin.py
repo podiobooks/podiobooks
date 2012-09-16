@@ -72,7 +72,7 @@ class TitleAdmin(admin.ModelAdmin):
     list_editable = ('display_on_homepage',)
     list_filter = (
         'license', 'advisory', 'display_on_homepage', 'is_complete', 'is_explicit', 'is_adult', 'deleted', 'status', 'date_updated')
-    exclude = ('byline', 'category_list', 'date_updated', 'avg_overall', 'avg_audio_quality', 'avg_narration', 'avg_writing')
+    exclude = ('byline', 'category_list', 'cover', 'date_updated', 'avg_overall', 'avg_audio_quality', 'avg_narration', 'avg_writing')
     inlines = [
         TitleCategoryInline,
         TitleContributorInline,
