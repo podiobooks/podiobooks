@@ -15,8 +15,8 @@ class Migration(SchemaMigration):
             ('name', self.gf('django.db.models.fields.CharField')(max_length=100)),
             ('displaytext', self.gf('django.db.models.fields.CharField')(max_length=255)),
             ('hexcolor', self.gf('django.db.models.fields.CharField')(max_length=6)),
-            ('date_created', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime(2012, 9, 15, 0, 0))),
-            ('date_updated', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime(2012, 9, 15, 0, 0))),
+            ('date_created', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime(2012, 9, 16, 0, 0))),
+            ('date_updated', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime(2012, 9, 16, 0, 0))),
         ))
         db.send_create_signal('core', ['Advisory'])
 
@@ -28,8 +28,8 @@ class Migration(SchemaMigration):
             ('url', self.gf('django.db.models.fields.URLField')(max_length=200, blank=True)),
             ('image', self.gf('django.db.models.fields.files.ImageField')(max_length=255)),
             ('deleted', self.gf('django.db.models.fields.BooleanField')(default=False)),
-            ('date_created', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime(2012, 9, 15, 0, 0))),
-            ('date_updated', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime(2012, 9, 15, 0, 0))),
+            ('date_created', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime(2012, 9, 16, 0, 0))),
+            ('date_updated', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime(2012, 9, 16, 0, 0))),
         ))
         db.send_create_signal('core', ['Award'])
 
@@ -39,8 +39,8 @@ class Migration(SchemaMigration):
             ('slug', self.gf('django.db.models.fields.SlugField')(max_length=50)),
             ('name', self.gf('django.db.models.fields.CharField')(max_length=50)),
             ('deleted', self.gf('django.db.models.fields.BooleanField')(default=False)),
-            ('date_created', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime(2012, 9, 15, 0, 0))),
-            ('date_updated', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime(2012, 9, 15, 0, 0))),
+            ('date_created', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime(2012, 9, 16, 0, 0))),
+            ('date_updated', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime(2012, 9, 16, 0, 0))),
         ))
         db.send_create_signal('core', ['Category'])
 
@@ -54,8 +54,8 @@ class Migration(SchemaMigration):
             ('last_name', self.gf('django.db.models.fields.CharField')(max_length=255)),
             ('display_name', self.gf('django.db.models.fields.CharField')(max_length=255)),
             ('deleted', self.gf('django.db.models.fields.BooleanField')(default=False)),
-            ('date_created', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime(2012, 9, 15, 0, 0))),
-            ('date_updated', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime(2012, 9, 15, 0, 0))),
+            ('date_created', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime(2012, 9, 16, 0, 0))),
+            ('date_updated', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime(2012, 9, 16, 0, 0))),
         ))
         db.send_create_signal('core', ['Contributor'])
 
@@ -80,8 +80,8 @@ class Migration(SchemaMigration):
             ('length', self.gf('django.db.models.fields.FloatField')(default=0)),
             ('status', self.gf('django.db.models.fields.IntegerField')(default=1)),
             ('deleted', self.gf('django.db.models.fields.BooleanField')(default=False)),
-            ('date_created', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime(2012, 9, 15, 0, 0))),
-            ('date_updated', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime(2012, 9, 15, 0, 0))),
+            ('date_created', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime(2012, 9, 16, 0, 0))),
+            ('date_updated', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime(2012, 9, 16, 0, 0))),
         ))
         db.send_create_signal('core', ['Episode'])
 
@@ -91,7 +91,7 @@ class Migration(SchemaMigration):
             ('episode', self.gf('django.db.models.fields.related.ForeignKey')(related_name='episodecontributors', to=orm['core.Episode'])),
             ('contributor', self.gf('django.db.models.fields.related.ForeignKey')(related_name='episodecontributors', to=orm['core.Contributor'])),
             ('contributor_type', self.gf('django.db.models.fields.related.ForeignKey')(related_name='episodecontributors', to=orm['core.ContributorType'])),
-            ('date_created', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime(2012, 9, 15, 0, 0))),
+            ('date_created', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime(2012, 9, 16, 0, 0))),
         ))
         db.send_create_signal('core', ['EpisodeContributor'])
 
@@ -103,8 +103,8 @@ class Migration(SchemaMigration):
             ('url', self.gf('django.db.models.fields.URLField')(max_length=200)),
             ('image_url', self.gf('django.db.models.fields.URLField')(max_length=200)),
             ('code', self.gf('django.db.models.fields.TextField')(blank=True)),
-            ('date_created', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime(2012, 9, 15, 0, 0))),
-            ('date_updated', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime(2012, 9, 15, 0, 0))),
+            ('date_created', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime(2012, 9, 16, 0, 0))),
+            ('date_updated', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime(2012, 9, 16, 0, 0))),
         ))
         db.send_create_signal('core', ['License'])
 
@@ -116,8 +116,8 @@ class Migration(SchemaMigration):
             ('identifier', self.gf('django.db.models.fields.CharField')(max_length=255, blank=True)),
             ('url', self.gf('django.db.models.fields.CharField')(max_length=255, blank=True)),
             ('deleted', self.gf('django.db.models.fields.BooleanField')(default=False)),
-            ('date_created', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime(2012, 9, 15, 0, 0))),
-            ('date_updated', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime(2012, 9, 15, 0, 0))),
+            ('date_created', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime(2012, 9, 16, 0, 0))),
+            ('date_updated', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime(2012, 9, 16, 0, 0))),
         ))
         db.send_create_signal('core', ['Media'])
 
@@ -128,8 +128,8 @@ class Migration(SchemaMigration):
             ('url', self.gf('django.db.models.fields.URLField')(max_length=200)),
             ('logo', self.gf('django.db.models.fields.files.ImageField')(max_length=100)),
             ('deleted', self.gf('django.db.models.fields.BooleanField')(default=False)),
-            ('date_created', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime(2012, 9, 15, 0, 0))),
-            ('date_updated', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime(2012, 9, 15, 0, 0))),
+            ('date_created', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime(2012, 9, 16, 0, 0))),
+            ('date_updated', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime(2012, 9, 16, 0, 0))),
         ))
         db.send_create_signal('core', ['Partner'])
 
@@ -140,8 +140,8 @@ class Migration(SchemaMigration):
             ('name', self.gf('django.db.models.fields.CharField')(max_length=255)),
             ('url', self.gf('django.db.models.fields.URLField')(max_length=200)),
             ('display_order', self.gf('django.db.models.fields.IntegerField')(default=1)),
-            ('date_created', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime(2012, 9, 15, 0, 0))),
-            ('date_updated', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime(2012, 9, 15, 0, 0))),
+            ('date_created', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime(2012, 9, 16, 0, 0))),
+            ('date_updated', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime(2012, 9, 16, 0, 0))),
         ))
         db.send_create_signal('core', ['Promo'])
 
@@ -149,7 +149,7 @@ class Migration(SchemaMigration):
         db.create_table('core_rating', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('last_rating_id', self.gf('django.db.models.fields.IntegerField')(default=0, db_index=True)),
-            ('date_created', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime(2012, 9, 15, 0, 0))),
+            ('date_created', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime(2012, 9, 16, 0, 0))),
         ))
         db.send_create_signal('core', ['Rating'])
 
@@ -161,8 +161,8 @@ class Migration(SchemaMigration):
             ('short_name', self.gf('django.db.models.fields.CharField')(max_length=255)),
             ('description', self.gf('django.db.models.fields.TextField')(blank=True)),
             ('deleted', self.gf('django.db.models.fields.BooleanField')(default=False)),
-            ('date_created', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime(2012, 9, 15, 0, 0))),
-            ('date_updated', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime(2012, 9, 15, 0, 0))),
+            ('date_created', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime(2012, 9, 16, 0, 0))),
+            ('date_updated', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime(2012, 9, 16, 0, 0))),
         ))
         db.send_create_signal('core', ['Series'])
 
@@ -196,8 +196,8 @@ class Migration(SchemaMigration):
             ('libsyn_show_id', self.gf('django.db.models.fields.CharField')(db_index=True, max_length=50, blank=True)),
             ('itunes_adam_id', self.gf('django.db.models.fields.IntegerField')(null=True, blank=True)),
             ('podiobooker_blog_url', self.gf('django.db.models.fields.URLField')(max_length=255, null=True, blank=True)),
-            ('date_created', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime(2012, 9, 15, 0, 0), db_index=True)),
-            ('date_updated', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime(2012, 9, 15, 0, 0), db_index=True)),
+            ('date_created', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime(2012, 9, 16, 0, 0), db_index=True)),
+            ('date_updated', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime(2012, 9, 16, 0, 0), db_index=True)),
         ))
         db.send_create_signal('core', ['Title'])
 
@@ -223,8 +223,8 @@ class Migration(SchemaMigration):
             ('title', self.gf('django.db.models.fields.related.ForeignKey')(related_name='titlecontributors', to=orm['core.Title'])),
             ('contributor', self.gf('django.db.models.fields.related.ForeignKey')(related_name='titlecontributors', to=orm['core.Contributor'])),
             ('contributor_type', self.gf('django.db.models.fields.related.ForeignKey')(related_name='titlecontributors', to=orm['core.ContributorType'])),
-            ('date_created', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime(2012, 9, 15, 0, 0))),
-            ('date_updated', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime(2012, 9, 15, 0, 0))),
+            ('date_created', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime(2012, 9, 16, 0, 0))),
+            ('date_updated', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime(2012, 9, 16, 0, 0))),
         ))
         db.send_create_signal('core', ['TitleContributor'])
 
@@ -235,8 +235,8 @@ class Migration(SchemaMigration):
             ('url', self.gf('django.db.models.fields.URLField')(max_length=200)),
             ('linktext', self.gf('django.db.models.fields.CharField')(max_length=255)),
             ('displayorder', self.gf('django.db.models.fields.IntegerField')(default=1)),
-            ('date_created', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime(2012, 9, 15, 0, 0))),
-            ('date_updated', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime(2012, 9, 15, 0, 0))),
+            ('date_created', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime(2012, 9, 16, 0, 0))),
+            ('date_updated', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime(2012, 9, 16, 0, 0))),
         ))
         db.send_create_signal('core', ['TitleUrl'])
 
@@ -336,8 +336,8 @@ class Migration(SchemaMigration):
         },
         'core.advisory': {
             'Meta': {'ordering': "['name']", 'object_name': 'Advisory'},
-            'date_created': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2012, 9, 15, 0, 0)'}),
-            'date_updated': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2012, 9, 15, 0, 0)'}),
+            'date_created': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2012, 9, 16, 0, 0)'}),
+            'date_updated': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2012, 9, 16, 0, 0)'}),
             'displaytext': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
             'hexcolor': ('django.db.models.fields.CharField', [], {'max_length': '6'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
@@ -346,8 +346,8 @@ class Migration(SchemaMigration):
         },
         'core.award': {
             'Meta': {'ordering': "['name']", 'object_name': 'Award'},
-            'date_created': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2012, 9, 15, 0, 0)'}),
-            'date_updated': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2012, 9, 15, 0, 0)'}),
+            'date_created': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2012, 9, 16, 0, 0)'}),
+            'date_updated': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2012, 9, 16, 0, 0)'}),
             'deleted': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'image': ('django.db.models.fields.files.ImageField', [], {'max_length': '255'}),
@@ -357,8 +357,8 @@ class Migration(SchemaMigration):
         },
         'core.category': {
             'Meta': {'ordering': "['name']", 'object_name': 'Category'},
-            'date_created': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2012, 9, 15, 0, 0)'}),
-            'date_updated': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2012, 9, 15, 0, 0)'}),
+            'date_created': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2012, 9, 16, 0, 0)'}),
+            'date_updated': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2012, 9, 16, 0, 0)'}),
             'deleted': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
@@ -366,8 +366,8 @@ class Migration(SchemaMigration):
         },
         'core.contributor': {
             'Meta': {'ordering': "['last_name', 'first_name']", 'object_name': 'Contributor'},
-            'date_created': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2012, 9, 15, 0, 0)'}),
-            'date_updated': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2012, 9, 15, 0, 0)'}),
+            'date_created': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2012, 9, 16, 0, 0)'}),
+            'date_updated': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2012, 9, 16, 0, 0)'}),
             'deleted': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             'display_name': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
             'first_name': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
@@ -387,8 +387,8 @@ class Migration(SchemaMigration):
         'core.episode': {
             'Meta': {'ordering': "['title__name', 'sequence']", 'object_name': 'Episode'},
             'contributors': ('django.db.models.fields.related.ManyToManyField', [], {'to': "orm['core.Contributor']", 'through': "orm['core.EpisodeContributor']", 'symmetrical': 'False'}),
-            'date_created': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2012, 9, 15, 0, 0)'}),
-            'date_updated': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2012, 9, 15, 0, 0)'}),
+            'date_created': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2012, 9, 16, 0, 0)'}),
+            'date_updated': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2012, 9, 16, 0, 0)'}),
             'deleted': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             'description': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
             'filesize': ('django.db.models.fields.IntegerField', [], {'default': '0'}),
@@ -404,15 +404,15 @@ class Migration(SchemaMigration):
             'Meta': {'object_name': 'EpisodeContributor'},
             'contributor': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'episodecontributors'", 'to': "orm['core.Contributor']"}),
             'contributor_type': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'episodecontributors'", 'to': "orm['core.ContributorType']"}),
-            'date_created': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2012, 9, 15, 0, 0)'}),
+            'date_created': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2012, 9, 16, 0, 0)'}),
             'episode': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'episodecontributors'", 'to': "orm['core.Episode']"}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'})
         },
         'core.license': {
             'Meta': {'ordering': "['slug']", 'object_name': 'License'},
             'code': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
-            'date_created': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2012, 9, 15, 0, 0)'}),
-            'date_updated': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2012, 9, 15, 0, 0)'}),
+            'date_created': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2012, 9, 16, 0, 0)'}),
+            'date_updated': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2012, 9, 16, 0, 0)'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'image_url': ('django.db.models.fields.URLField', [], {'max_length': '200'}),
             'slug': ('django.db.models.fields.SlugField', [], {'max_length': '50'}),
@@ -421,8 +421,8 @@ class Migration(SchemaMigration):
         },
         'core.media': {
             'Meta': {'ordering': "['name']", 'object_name': 'Media'},
-            'date_created': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2012, 9, 15, 0, 0)'}),
-            'date_updated': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2012, 9, 15, 0, 0)'}),
+            'date_created': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2012, 9, 16, 0, 0)'}),
+            'date_updated': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2012, 9, 16, 0, 0)'}),
             'deleted': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'identifier': ('django.db.models.fields.CharField', [], {'max_length': '255', 'blank': 'True'}),
@@ -432,8 +432,8 @@ class Migration(SchemaMigration):
         },
         'core.partner': {
             'Meta': {'ordering': "['name']", 'object_name': 'Partner'},
-            'date_created': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2012, 9, 15, 0, 0)'}),
-            'date_updated': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2012, 9, 15, 0, 0)'}),
+            'date_created': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2012, 9, 16, 0, 0)'}),
+            'date_updated': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2012, 9, 16, 0, 0)'}),
             'deleted': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'logo': ('django.db.models.fields.files.ImageField', [], {'max_length': '100'}),
@@ -442,8 +442,8 @@ class Migration(SchemaMigration):
         },
         'core.promo': {
             'Meta': {'ordering': "['name']", 'object_name': 'Promo'},
-            'date_created': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2012, 9, 15, 0, 0)'}),
-            'date_updated': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2012, 9, 15, 0, 0)'}),
+            'date_created': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2012, 9, 16, 0, 0)'}),
+            'date_updated': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2012, 9, 16, 0, 0)'}),
             'display_order': ('django.db.models.fields.IntegerField', [], {'default': '1'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
@@ -452,14 +452,14 @@ class Migration(SchemaMigration):
         },
         'core.rating': {
             'Meta': {'object_name': 'Rating'},
-            'date_created': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2012, 9, 15, 0, 0)'}),
+            'date_created': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2012, 9, 16, 0, 0)'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'last_rating_id': ('django.db.models.fields.IntegerField', [], {'default': '0', 'db_index': 'True'})
         },
         'core.series': {
             'Meta': {'ordering': "['name']", 'object_name': 'Series'},
-            'date_created': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2012, 9, 15, 0, 0)'}),
-            'date_updated': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2012, 9, 15, 0, 0)'}),
+            'date_created': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2012, 9, 16, 0, 0)'}),
+            'date_updated': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2012, 9, 16, 0, 0)'}),
             'deleted': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             'description': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
@@ -480,8 +480,8 @@ class Migration(SchemaMigration):
             'category_list': ('django.db.models.fields.CharField', [], {'max_length': '1024', 'blank': 'True'}),
             'contributors': ('django.db.models.fields.related.ManyToManyField', [], {'to': "orm['core.Contributor']", 'through': "orm['core.TitleContributor']", 'symmetrical': 'False'}),
             'cover': ('django.db.models.fields.files.ImageField', [], {'max_length': '100', 'null': 'True', 'blank': 'True'}),
-            'date_created': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2012, 9, 15, 0, 0)', 'db_index': 'True'}),
-            'date_updated': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2012, 9, 15, 0, 0)', 'db_index': 'True'}),
+            'date_created': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2012, 9, 16, 0, 0)', 'db_index': 'True'}),
+            'date_updated': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2012, 9, 16, 0, 0)', 'db_index': 'True'}),
             'deleted': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             'description': ('django.db.models.fields.TextField', [], {}),
             'detractor_count': ('django.db.models.fields.IntegerField', [], {'default': '0', 'db_index': 'True'}),
@@ -513,15 +513,15 @@ class Migration(SchemaMigration):
             'Meta': {'ordering': "['contributor_type__slug', 'date_created']", 'object_name': 'TitleContributor'},
             'contributor': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'titlecontributors'", 'to': "orm['core.Contributor']"}),
             'contributor_type': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'titlecontributors'", 'to': "orm['core.ContributorType']"}),
-            'date_created': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2012, 9, 15, 0, 0)'}),
-            'date_updated': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2012, 9, 15, 0, 0)'}),
+            'date_created': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2012, 9, 16, 0, 0)'}),
+            'date_updated': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2012, 9, 16, 0, 0)'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'title': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'titlecontributors'", 'to': "orm['core.Title']"})
         },
         'core.titleurl': {
             'Meta': {'object_name': 'TitleUrl'},
-            'date_created': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2012, 9, 15, 0, 0)'}),
-            'date_updated': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2012, 9, 15, 0, 0)'}),
+            'date_created': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2012, 9, 16, 0, 0)'}),
+            'date_updated': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime(2012, 9, 16, 0, 0)'}),
             'displayorder': ('django.db.models.fields.IntegerField', [], {'default': '1'}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'linktext': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
