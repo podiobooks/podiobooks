@@ -1,4 +1,5 @@
-<form action="{% url title_search %}" method="POST" class="search">
+<form action="{% url title_search %}" method="GET" class="search">
     <p><label for="id_keywords">Search</label>
-    {{ title_search_form.keywords }}<button class="search-submit" type="submit">Search</button></p>
+    	{{ title_search_form.keyword }}
+    <input value="Search" type="submit" class="search-submit" /></p>
 </form>
