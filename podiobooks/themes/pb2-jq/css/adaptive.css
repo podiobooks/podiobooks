@@ -99,6 +99,9 @@
 	.wide-skyscraper-ad-placeholder{
 		display:none;
 	}
+	.horizontal-large-ad{
+		display:none;
+	}
 }
 
 
@@ -417,9 +420,7 @@
 		width:auto;
 	}
 	.title-license{
-	
-		padding:0;
-		
+		padding:0;		
 	}
 	.title-license img{
 		position:static;
