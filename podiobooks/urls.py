@@ -10,7 +10,7 @@ from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf import settings
 from django.views.generic import RedirectView
-from podiobooks.core.views import TextTemplateView
+from .views import TextTemplateView, RobotsView
 
 admin.autodiscover()
 
@@ -39,9 +39,11 @@ urlpatterns = patterns('',
     # Feeds
     (r'^rss/', include('podiobooks.feeds.urls')),
 
-    # Robots and Favicon
-    (r'^robots\.txt$', TextTemplateView.as_view(template_name='robots.txt')),
+    # Robots, Favicon and Related
+    (r'^robots\.txt$', RobotsView.as_view()),
     (r'^favicon\.ico$', RedirectView.as_view(url=settings.STATIC_URL + 'images/favicon.ico')),
+    (r'^humans\.txt$', TextTemplateView.as_view(template_name='humans.txt')),
+    (r'^crossdomain\.xml', TextTemplateView.as_view(template_name='crossdomain.xml')),
 
     # Blog
     (r'^blog$', RedirectView.as_view(url='http://blog.podiobooks.com')),
