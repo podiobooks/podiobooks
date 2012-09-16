@@ -2,15 +2,17 @@
 
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-
-from podiobooks.core.models import Title, Contributor, Category
-from podiobooks.core.forms import CategoryChoiceForm, ContributorChoiceForm, TitleSearchForm, TitleSearchAdditionalFieldsForm
-
 from django.db.models import Q
 from django.core.urlresolvers import reverse
 from django.views.decorators.cache import cache_page
 from django.db.models import Count
 from django.views.generic import ListView, RedirectView
+from django.shortcuts import get_object_or_404
+from django.http import Http404
+
+from podiobooks.core.models import Title, Contributor, Category
+from podiobooks.core.forms import CategoryChoiceForm, ContributorChoiceForm, TitleSearchForm, TitleSearchAdditionalFieldsForm
+
 
 INITIAL_CATEGORY = 'science-fiction'
 INITIAL_CONTRIBUTOR = 'mur-lafferty'
@@ -200,7 +202,15 @@ def top_rated(request, author=None):
 class FeedRedirectView(RedirectView):
     """Redirect the PB1 Feed Path to the PB2 Feed Path"""
 
-    def get_redirect_url(self, slug):
+    def get_redirect_url(self, slug=None, title_id=None):
+        
+        if not slug and not title_id:
+            raise Http404
+        
+        if title_id:
+            title = get_object_or_404(Title, pk=title_id)
+            slug = title.slug
+        
         return reverse('title_episodes_feed', args=(slug,))
 
 
