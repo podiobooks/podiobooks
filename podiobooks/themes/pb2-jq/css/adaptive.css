@@ -447,7 +447,8 @@
 		font-size:17px;
 		line-height:1.5em;
 	}
-	.fdbk_tab_left{
+	.fdbk_tab_left,
+	.fdbk_tab_bottom{
 		display:none;
 	}
 	
