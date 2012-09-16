@@ -28,6 +28,11 @@ p {
     padding: 0 0 20px;
 }
 
+a.fdbk_tab_bottom{
+	right:0;
+	left:auto;
+}
+
 /*
 * Layout
 */
