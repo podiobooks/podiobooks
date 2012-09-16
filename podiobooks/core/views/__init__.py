@@ -177,13 +177,6 @@ def top_rated(request, author=None):
 
     return render_to_response("core/shelf/tags/show_shelf_pages.html", {"title_list": toprated_title_list}, context_instance=RequestContext(request))
 
-class TextTemplateView(TemplateView):
-    """Utility View to Render text/plain MIME Type"""
-    def render_to_response(self, context, **response_kwargs):
-        """Returns a Template as text/plain"""
-        response_kwargs['mimetype'] = 'text/plain'
-        return super(TemplateView, self).render_to_response(context, **response_kwargs)
-
 class FeedRedirectView(RedirectView):
     """Redirect the PB1 Feed Path to the PB2 Feed Path"""
 

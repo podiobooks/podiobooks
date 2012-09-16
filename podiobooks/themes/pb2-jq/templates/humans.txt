@@ -7,6 +7,10 @@
   Site: http://timlwhite.com
   Twitter: @timlwhite
 
+  Core Developer: Brant Steen
+  Site: http://brantsteen.com
+  Twitter: @brantsteen
+
 /* THANKS */
   Names (& URL): HTML5 Boilerplate (http://html5bp.com)
 
