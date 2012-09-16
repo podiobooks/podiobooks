@@ -49,7 +49,10 @@ urlpatterns = patterns('',
     (r'^blog(?P<url_remainder>[a-zA-Z0-9_.-/]+)', BlogRedirectView.as_view()),
 
     # PB1 Search Redirect
-    (r'podiobooks/search.php', RedirectView.as_view(url='/title/search/', query_string=True)),
+    (r'podiobooks/search\.php', RedirectView.as_view(url='/title/search/', query_string=True)),
+
+    # PB1 Authors Doc
+    (r'authors/PBAuthoringGuidev2\.0\.4\.pdf', RedirectView.as_view(url='http://blog.podiobooks.com/wp-content/uploads/2012/09/PBAuthoringGuidev2.0.4.pdf')),
 )
 
 #Only hook up the static and media to run through Django in a dev environment...in prod, needs to be handled by web server
