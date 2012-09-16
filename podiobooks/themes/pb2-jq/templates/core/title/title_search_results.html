@@ -1,18 +1,24 @@
 {% extends "base.html" %}
+
 {% load title_templatetags %}
 {% block headtitle %}Title Search Results - {{ SITE.name }}{% endblock %}
+
+{% block body_class %}search-results{% endblock %}
+
 {% block content %}
-    <div id="searchPageTopBlock">
-        <div class="advanced-search" id="searchForm">
-            <form action="{% url title_search %}" method="POST">
-                <div id="searchFields">
-                    {{ titleSearchForm.as_p }}
-                </div>
-                <div id="searchButton">
-                    <input type="submit" value="Search" class="formbutton"/>
-                </div>
-            </form>
-        </div>
+    
+    <div class="advanced-search" id="searchForm">
+        <form action="{% url title_search %}" method="GET">
+            <div id="searchFields">
+                {{ titleSearchForm.as_p }}
+            </div>
+            <div id="searchButton">
+                <input type="submit" value="Search" class="formbutton" />
+            </div>
+        </form>
+    </div>
+    
+    <aside class="block-ad">
         <script type="text/javascript">
             <!--
             google_ad_client = "ca-pub-1276519440300441";
@@ -24,10 +30,10 @@
         <script type="text/javascript"
                 src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
         </script>
-        <br style="clear:both;">
-    </div>
+   </aside>
+   
     {% if result_count %}
-		<h3>{{ result_count }} titles found whose name or description contained "{{ keywords }}"</h3>
+		<h1>{{ result_count }} titles found whose name or description contained "{{ keywords }}"</h1>
 	    
 	    <aside class="horizontal-large-ad">
 	        <script type="text/javascript">
