@@ -20,7 +20,7 @@
         {% endif %}
 
         <span class="current">
-            &nbsp; Page {{ page_obj.number }} of {{ page_obj.count }} &nbsp;
+            &nbsp; Page {{ page_obj.number }} of {{ paginator.num_pages }} &nbsp;
         </span>
 
         {% if page_obj.has_next %}
