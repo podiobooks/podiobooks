@@ -4,6 +4,11 @@
 {% load global_templatetags %}
 {% load title_templatetags %}
 
+{% block metatags %}
+    <meta name="Description"
+          content="{{ title.description|striptags|truncatewords:45 }}"/>
+{% endblock %}
+
 {% block headtitle %}{{ title.name }} {{ title.byline|striptags }} on Podiobooks.com{% endblock %}
 
 {% block head %}
