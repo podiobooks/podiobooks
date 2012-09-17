@@ -3,13 +3,11 @@
 {% block headtitle %}All Series - {{ SITE.name }}{% endblock %}
 
 {% block content %}
-<h1>
-	All Series
-</h1>
-<ul style="margin: 0 0 0 40px">
-  {% for series in series_list %}
-  <li class="series_{{series.slug}}"><a href="{{series.get_absolute_url}}">{{ series.name }}</a> - {{ series.titles.all.count }} title{{ series.titles.all.count|pluralize }}</li>
-  {% endfor %}
-</ul>
+	<h1>All Series</h1>
+	<ul>
+	  {% for series in series_list %}
+		<li class="long-running-list-item series_{{series.slug}}"><a href="{{series.get_absolute_url}}">{{ series.name }}</a> - {{ series.titles.all.count }} title{{ series.titles.all.count|pluralize }}</li>
+	  {% endfor %}
+	</ul>
 {% endblock %}
 
