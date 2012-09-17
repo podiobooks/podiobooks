@@ -7,16 +7,18 @@
  * 0.4: Shelf position indicator
  * 0.5: Support for shelves that don't need ajax calls
  * 0.6: Uses 'find' instead of 'children' for digging up relevant shelf peices
+ * 0.7: Allows for shelf creation based on static content (i.e. no need to ajax on first load)
  */
 (function( $ ){
 
 	$.fn.pbShelf = function( options ) {
   
 		var settings = {
-			"cookie"		: 		null,
-			"checkCookie"	: 		false,
-			"shelfItem"		: 		".shelf-item",
-			"shelfItemCover": 		".shelf-cover",
+			"cookie"		 : 		null,
+			"checkCookie"	 : 		false,
+			"shelfItem"		 : 		".shelf-item",
+			"shelfItemCover" : 		".shelf-cover",
+			"clearShelfFirst":		true
 		};
 		
 		/*
@@ -80,11 +82,10 @@
 				sel.unbind("change");
 				
 				sel.change(function(){
-					
 					if (settings.cookie){
 						shelf.pbShelf({
 							"url" : sel.parents("form").attr("action") + sel.val(), 
-							"cookie":settings.cookie
+							"cookie":settings.cookie							
 						});
 					}
 					else{
@@ -287,11 +288,9 @@
 			/*
 			 * Right/left shelf arrows
 			 * create, added/removed to/from shelf later
-			 */
-			
+			 */			
 			leftArrow = $("<a class='shelf-arrow shelf-arrow-left' href='#'></a>");
 			rightArrow = $("<a class='shelf-arrow shelf-arrow-right' href='#'></a>");
-			
 			
 			
 			
@@ -392,10 +391,13 @@
 								
 			};
 			
+			var progress = $("<p class='shelf-ajax-loader'><img src='" + siteVars("img") + "ajax-loader-bar.gif'/></p>");
+			progress.appendTo($("body"));
+			
 			/*
 			 * Ajax workhorse
 			 */
-			if (settings.url){
+			if (settings.url && settings.clearShelfFirst){
 				
 				/*
 				 * Remove all content from shelf,
@@ -420,8 +422,7 @@
 				 * Create it, append it to the body for caching, 
 				 * move it into the shelf and show
 				 */ 
-				var progress = $("<p class='shelf-ajax-loader'><img src='" + siteVars("img") + "ajax-loader-bar.gif'/></p>");
-				progress.appendTo($("body"));
+				
 				progress.appendTo(shelf).show();
 			
 				
@@ -443,6 +444,7 @@
 			else{				
 				makeShelf();
 			}
+			shelf.addClass("pbShelf");
 		});
 	};
 })( jQuery );
