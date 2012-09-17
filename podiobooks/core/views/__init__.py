@@ -36,36 +36,25 @@ def index(request):
     
     template : core/templates/index.html
     """
-
     homepage_title_list = Title.objects.filter(display_on_homepage=True).order_by('-date_created').all()
 
-    featured_title_list = homepage_title_list.filter(
-        categories__slug=INITIAL_CATEGORY).order_by('-date_created', 'name')[:4]
-
-    minimal_title_list = featured_title_list[:1]
-
-    toprated_title_list = homepage_title_list.filter(promoter_count__gte=20).order_by('-promoter_count').all()[:18]
-
-    nowreleasing_title_list = homepage_title_list.filter(is_complete=False).all()[:5]
-    recentlycomplete_title_list = homepage_title_list.filter(is_complete=True).all()[:5]
-
-    category_choice_form = CategoryChoiceForm(initial={'category': INITIAL_CATEGORY})
-    category_choice_form.submit_url = reverse(
-        "lazy_load_featured_title") # This placeholder slug is because the url command expects there to to be an argument, which won't be known till later
-
-    contributor_choice_form = ContributorChoiceForm(initial={'contributor': INITIAL_CONTRIBUTOR})
-    contributor_choice_form.submit_url = reverse("lazy_load_top_rated_title")
-
-    response_data = {'homepage_title_list': homepage_title_list,
-                     'featured_title_list': featured_title_list,
-                     'minimal_title_list': minimal_title_list,
-                     'toprated_title_list': toprated_title_list,
-                     'nowreleasing_title_list': nowreleasing_title_list,
-                     'recentlycomplete_title_list': recentlycomplete_title_list,
-                     'category_choice_form': category_choice_form,
-                     'contributor_choice_form': contributor_choice_form,
+    category_choice_form = CategoryChoiceForm(request)
+    initial_category_slug = category_choice_form.fields["category"].initial
+    
+    contributor_choice_form = ContributorChoiceForm(request)
+    initial_contributor_slug = contributor_choice_form.fields["contributor"].initial
+    
+    featured_title_list = homepage_title_list.filter(categories__slug=initial_category_slug).order_by('-date_created', 'name')[:16]
+    toprated_title_list = homepage_title_list.filter(promoter_count__gte=20, contributors__slug=initial_contributor_slug).order_by('-promoter_count').all()[:16]
+    
+    
+    response_data = {        
+        'featured_title_list': featured_title_list,
+        'toprated_title_list': toprated_title_list,
+        'category_choice_form': category_choice_form,
+        'contributor_choice_form': contributor_choice_form,
     }
-    #return HttpResponse(cache.get('category_dropdown_values').__str__())
+    
     return render_to_response('core/index.html', response_data, context_instance=RequestContext(request))
 
 
@@ -146,8 +135,7 @@ def title_search(request, keywords=None):
             'title_list': search_results, 
             'keywords': keywords, 
             'result_count': result_count, 
-            'titleSearchForm': form, 
-            'categoryChoiceForm': CategoryChoiceForm(),
+            'titleSearchForm': form,
             'search_metadata': search_metadata
         })
         
