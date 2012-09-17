@@ -39,17 +39,32 @@ def index(request):
     template : core/templates/index.html
     """
     homepage_title_list = Title.objects.filter(display_on_homepage=True).order_by('-date_created').all()
-
-    category_choice_form = CategoryChoiceForm(request)
+    
+    # Featured items, by category
+    featured_title_list = homepage_title_list
+    
+    category_choice_form = CategoryChoiceForm(request) 
     initial_category_slug = category_choice_form.fields["category"].initial
-
+        
+    if initial_category_slug:
+        featured_title_list = featured_title_list.filter(categories__slug=initial_category_slug)
+    
+    featured_title_list = featured_title_list.order_by('-date_created', 'name')[:16]
+    
+    
+    # Top rated items, by contributor
+    toprated_title_list = homepage_title_list.filter(promoter_count__gte=20)
+    
     contributor_choice_form = ContributorChoiceForm(request)
     initial_contributor_slug = contributor_choice_form.fields["contributor"].initial
-
-    featured_title_list = homepage_title_list.filter(categories__slug=initial_category_slug).order_by('-date_created', 'name')[:16]
-    toprated_title_list = homepage_title_list.filter(promoter_count__gte=20, contributors__slug=initial_contributor_slug).order_by('-promoter_count').all()[:16]
-
-    response_data = {
+    
+    if initial_contributor_slug:
+        toprated_title_list = toprated_title_list.filter(contributors__slug=initial_contributor_slug)
+    
+    toprated_title_list = toprated_title_list.order_by('-promoter_count').all()[:16]
+    
+    # Render template    
+    response_data = {        
         'featured_title_list': featured_title_list,
         'toprated_title_list': toprated_title_list,
         'category_choice_form': category_choice_form,
@@ -157,15 +172,14 @@ def homepage_featured(request, cat=None):
 
     """
 
-    homepage_title_list = Title.objects.filter(display_on_homepage=True).order_by('-date_created').all()
+    featured_title_list = Title.objects.filter(display_on_homepage=True).order_by('-date_created').all()
 
-    if not cat:
-        cat = INITIAL_CATEGORY
+    if cat:
+        featured_title_list = featured_title_list.filter(categories__slug=cat)
+    
+    featured_title_list = featured_title_list.order_by('-date_created', 'name')[:16]
 
-    featured_title_list = homepage_title_list.filter(categories__slug=cat).order_by('-date_created', 'name')[:16]
-
-    return render_to_response("core/shelf/tags/show_shelf_pages.html", {"title_list": featured_title_list},
-        context_instance=RequestContext(request))
+    return render_to_response("core/shelf/tags/show_shelf_pages.html", {"title_list": featured_title_list}, context_instance=RequestContext(request))
 
 
 @cache_page(1)
@@ -177,16 +191,14 @@ def top_rated(request, author=None):
 
     """
 
-    homepage_title_list = Title.objects.filter(display_on_homepage=True).order_by('-date_created').all()
+    toprated_title_list = Title.objects.filter(display_on_homepage=True, promoter_count__gte=20).order_by('-date_created')
 
-    if not author:
-        author = INITIAL_CONTRIBUTOR
+    if author:
+        toprated_title_list = toprated_title_list.filter(contributors__slug=author)
 
-    toprated_title_list = homepage_title_list.filter(promoter_count__gte=20).order_by('-promoter_count').all().filter(
-        contributors__slug=author)[:18]
+    toprated_title_list = toprated_title_list.order_by('-promoter_count')[:16]
 
-    return render_to_response("core/shelf/tags/show_shelf_pages.html", {"title_list": toprated_title_list},
-        context_instance=RequestContext(request))
+    return render_to_response("core/shelf/tags/show_shelf_pages.html", {"title_list": toprated_title_list}, context_instance=RequestContext(request))
 
 
 class FeedRedirectView(RedirectView):
