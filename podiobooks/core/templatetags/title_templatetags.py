@@ -62,7 +62,7 @@ def show_comments(podiobooker_url):
 
     socket.setdefaulttimeout(2) #2 second timeout for grabbing feed
 
-    feed_url = podiobooker_url + '/feed/'
+    feed_url = podiobooker_url.rstrip('/') + '/feed/'
 
     feed = feedparser.parse(feed_url)
     if feed.entries:
@@ -70,4 +70,4 @@ def show_comments(podiobooker_url):
     else:
         entries = []
 
-    return {'comments': entries}
+    return {'comments': entries, 'podiobooker_url': podiobooker_url}
