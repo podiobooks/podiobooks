@@ -23,6 +23,12 @@
     width: 100%;
     height: 177px;
     margin-bottom: 40px;
+    
+    overflow:hidden;
+}
+
+.pbShelf{
+	overflow:visible;
 }
 
 .shelf-heading {

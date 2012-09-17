@@ -1,9 +1,10 @@
 """ Forms """
-
-from podiobooks.core.models import Category, Contributor
+from django.core.urlresolvers import reverse
 from django.core.cache import cache
 from django import forms
 from django.db.models import Count, Q
+
+from podiobooks.core.models import Category, Contributor
 
 
 class BrowseByForm(forms.Form):
@@ -14,33 +15,50 @@ class BrowseByForm(forms.Form):
 
 class CategoryChoiceForm(forms.Form):
     """ Form used to select a category - used in header """
-    categories = cache.get('category_dropdown_values')
-    submit_url = None
-    form_name = 'category'
-    if not categories:
-        categories = Category.objects.filter(~Q(slug="erotica"), title__display_on_homepage=True).annotate(title_count=Count('title')).filter(title_count__gt=2).order_by('name').values_list('slug', 'name')
-        cache.set('category_dropdown_values', categories, 240)
-    category = forms.ChoiceField(choices=categories, widget=forms.Select(attrs={'class':'pb-category-choice'}))
+    
+    def __init__(self, request, *args, **kwargs):
+        """ Custom init to check for cookies """
+        super(CategoryChoiceForm, self).__init__(*args, **kwargs)
+        
+        categories = cache.get('category_dropdown_values')
+        
+        if not categories:
+            categories = Category.objects.filter(~Q(slug="erotica"), title__display_on_homepage=True).annotate(title_count=Count('title')).filter(title_count__gt=2).order_by('name').values_list('slug', 'name')
+            cache.set('category_dropdown_values', categories, 240)
+        
+        initial_category = request.COOKIES.get("featured_cat")
+        
+        if not initial_category:
+            initial_category = categories[0][0]      
+        
+        self.fields["category"] = forms.ChoiceField(choices=categories, widget=forms.Select(attrs={'class':'pb-category-choice'}), initial=initial_category)
+        self.submit_url = reverse("lazy_load_featured_title")
 
 
 class ContributorChoiceForm(forms.Form):
     """ Form used to select contributors on the Author Spotlight shelf """
-    contributors = cache.get('contributor_dropdown_values')
     
-    submit_url = None
-    form_name = 'contributor'
+    def __init__(self, request, *args, **kwargs):
+        """ Custom init to check for cookies """
+        super(ContributorChoiceForm, self).__init__(*args, **kwargs)
     
-    if not contributors:
-        top_contributors = Contributor.objects.annotate(title_count=Count('title')).filter(title__display_on_homepage=True, title__promoter_count__gte=20).order_by('-title_count').values_list('slug', 'display_name', 'title_count')[:10]
-         
-        contributors = []
-        for slug, name, titles in top_contributors:
-            contributors.append( (str(slug), str(name)), )  #strip off the count, which has to be in the values list because of the order_by
-          
-        cache.set('contributor_dropdown_values', contributors, 240)
+        contributors = cache.get('contributor_dropdown_values')
         
-    contributor = forms.ChoiceField(choices=[(slug, display) for slug, display in contributors], widget=forms.Select(attrs={'class':'pb-contributor-choice'}))
-    
+        if not contributors:
+            top_contributors = Contributor.objects.annotate(title_count=Count('title')).filter(title__display_on_homepage=True, title__promoter_count__gte=20).order_by('-title_count').values_list('slug', 'display_name', 'title_count')[:10]
+             
+            contributors = []
+            for slug, name, titles in top_contributors:
+                contributors.append( (str(slug), str(name)), )  #strip off the count, which has to be in the values list because of the order_by
+              
+            cache.set('contributor_dropdown_values', contributors, 240)
+            
+        initial_contributor = request.COOKIES.get("toprated_cat")
+        if not initial_contributor:
+            initial_contributor = contributors[0][0]
+        
+        self.fields["contributor"] = forms.ChoiceField(choices=[(slug, display) for slug, display in contributors], widget=forms.Select(attrs={'class':'pb-contributor-choice'}), initial=initial_contributor)
+        self.submit_url = reverse("lazy_load_top_rated_title")
 
 class TitleSearchAdditionalFieldsForm(forms.Form):
     """ Additional fields for search (beyond the search term """    
