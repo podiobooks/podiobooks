@@ -137,7 +137,7 @@ def title_search(request, keywords=None):
             completed_filter = Q()
 
         search_results = Title.objects.filter(
-            (Q(name__icontains=keywords) | Q(description__icontains=keywords)) & adult_filter & completed_filter)
+            (Q(name__icontains=keywords) | Q(description__icontains=keywords) | Q(byline__icontains=keywords)) & adult_filter & completed_filter)
         search_metadata = None
         result_count = len(search_results)
 
