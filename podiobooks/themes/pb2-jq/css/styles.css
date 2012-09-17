@@ -355,3 +355,7 @@ a.fdbk_tab_bottom{
 .site-menu {
     display: none;
 }
+
+.long-running-list-item  {
+	margin: 10px 20px 10px 20px;
+}
