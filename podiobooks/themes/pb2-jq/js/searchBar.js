@@ -1,24 +1,26 @@
 $(function(){
-	$(".nav-bar .search-keywords").bind("focus", function(ev){
-		$(".nav-bar").addClass("nav-bar-searching");
+	
+	var navBar = $(".nav-bar");
+	var keywords = navBar.find(".search-keywords");
+	
+	keywords.bind("focus", function(ev){
+		navBar.addClass("nav-bar-searching");
+	}).bind("blur", function(ev){
+		navBar.removeClass("nav-bar-searching");
 	});
-	$(".nav-bar .search-keywords").bind("blur", function(ev){
-		$(".nav-bar").removeClass("nav-bar-searching");
-	});
-	$(".nav-bar .search-submit").click(function(ev){
-		if ($(".nav-bar .search-keywords").val() == "" || (!($(".nav-bar").hasClass("nav-bar-searching")) && $(window).width() < 501)){
+	
+	navBar.find(".search-submit").click(function(ev){
+		if (keywords.val() == "" || (!(navBar.hasClass("nav-bar-searching")) && $(window).width() < 501)){
 			ev.preventDefault();
-			$(".nav-bar .search-keywords").trigger("focus");
+			keywords.trigger("focus");
 		}
 	});
 	
 	$(".search-additional-fields input").change(function(){
 		var form = $(this).parents("form");
-		var container = $(this).parents(".search-additional-fields");
-		
-		form.trigger("submit");
-		
-		container.addClass("search-additional-fields-thinking")
-		
+		var container = $(this).parents(".search-additional-fields");		
+		form.trigger("submit");		
+		container.addClass("search-additional-fields-thinking");		
 	});
+	
 });
