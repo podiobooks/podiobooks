@@ -8,7 +8,8 @@ from django.views.decorators.cache import cache_page
 from django.db.models import Count
 from django.views.generic import ListView, RedirectView
 from django.shortcuts import get_object_or_404, redirect
-from django.http import Http404
+from django.http import Http404, HttpResponseRedirect
+from django.core.exceptions import ObjectDoesNotExist
 
 from podiobooks.core.models import Title, Contributor, Category
 from podiobooks.core.forms import CategoryChoiceForm, ContributorChoiceForm, TitleSearchForm, TitleSearchAdditionalFieldsForm
@@ -156,10 +157,16 @@ def title_search(request, keywords=None):
 
         return render_to_response('core/title/title_search_results.html', response_data, context_instance=RequestContext(request))
 
-    if "category" in request.GET:
-        category_slug = Category.objects.get(pk=request.GET.get('category')).slug
-        return redirect('category_detail', category_slug, permanent=True)
-
+    if "category" in request.GET:        
+        try:
+            try:
+                category = Category.objects.get(pk=request.GET.get('category'))
+            except ValueError:
+                category = Category.objects.get(slug=request.GET.get('category'))
+            return redirect('category_detail', category.slug, permanent=True)        
+        except ObjectDoesNotExist:
+            return HttpResponseRedirect(reverse("category_list"))
+        
     return render_to_response('core/title/title_search_results.html', response_data, context_instance=RequestContext(request))
 
 
@@ -225,6 +232,6 @@ class CategoryTitleListView(ListView):
         return Title.objects.filter(categories__slug=self.kwargs.get('category_slug'))
 
     def get_context_data(self, **kwargs):
-        category = Category.objects.get(slug=self.kwargs.get('category_slug'))
+        category = get_object_or_404(Category, slug=self.kwargs.get('category_slug'))
         return super(CategoryTitleListView, self).get_context_data(category=category, object_list=self.object_list)
 
