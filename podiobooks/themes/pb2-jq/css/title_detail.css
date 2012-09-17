@@ -82,17 +82,15 @@
 }
 
 .episode-list-item {
-    margin: 15px 0 0 0;
+    padding: 20px 0 0 0;
+    margin:0;
 }
 
 .episode-list-title {
-    float:left;
-    width:160px;
+    
 }
 
 .episode-list-description {
-    float:left;
-    margin-left: 10px;
 }
 
 /*
