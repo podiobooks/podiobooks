@@ -1,4 +1,5 @@
 $(function(){
+	
 	var menu = $("<aside class='site-menu' id='site-menu' />").appendTo("body");
 	
 	$(".nav-bar>ul").each(function(){
