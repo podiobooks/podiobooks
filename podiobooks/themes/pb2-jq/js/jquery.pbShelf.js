@@ -250,7 +250,8 @@
 						swipeRight:function(event){
 							leftArrow.trigger("click");
 						},
-						allowPageScroll:"vertical"						
+						allowPageScroll:"vertical",
+						fallbackToMouseEvents: false					
 					});
 				}
 			};
