@@ -46,7 +46,7 @@ urlpatterns = patterns('',
     (r'^crossdomain\.xml', TextTemplateView.as_view(template_name='crossdomain.xml')),
 
     # Blog
-    (r'^blog(?P<url_remainder>[a-zA-Z0-9_.-/]+)', BlogRedirectView.as_view()),
+    (r'^blog(?P<url_remainder>.*)', BlogRedirectView.as_view()),
 
     # PB1 Search Redirect
     (r'podiobooks/search\.php', RedirectView.as_view(url='/title/search/', query_string=True)),
