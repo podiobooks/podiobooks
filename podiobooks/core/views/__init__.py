@@ -7,7 +7,7 @@ from django.core.urlresolvers import reverse
 from django.views.decorators.cache import cache_page
 from django.db.models import Count
 from django.views.generic import ListView, RedirectView
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, redirect
 from django.http import Http404
 
 from podiobooks.core.models import Title, Contributor, Category
@@ -42,21 +42,20 @@ def index(request):
 
     category_choice_form = CategoryChoiceForm(request)
     initial_category_slug = category_choice_form.fields["category"].initial
-    
+
     contributor_choice_form = ContributorChoiceForm(request)
     initial_contributor_slug = contributor_choice_form.fields["contributor"].initial
-    
+
     featured_title_list = homepage_title_list.filter(categories__slug=initial_category_slug).order_by('-date_created', 'name')[:16]
     toprated_title_list = homepage_title_list.filter(promoter_count__gte=20, contributors__slug=initial_contributor_slug).order_by('-promoter_count').all()[:16]
-    
-    
-    response_data = {        
+
+    response_data = {
         'featured_title_list': featured_title_list,
         'toprated_title_list': toprated_title_list,
         'category_choice_form': category_choice_form,
         'contributor_choice_form': contributor_choice_form,
     }
-    
+
     return render_to_response('core/index.html', response_data, context_instance=RequestContext(request))
 
 
@@ -107,22 +106,22 @@ def title_search(request, keywords=None):
         keywords = form.cleaned_data['keyword']
         include_adult = form.cleaned_data['include_adult']
         completed_only = form.cleaned_data['completed_only']
-        
+
     else:
         form = TitleSearchForm()
         keywords = False
         include_adult = False
         completed_only = False
-        
+
     response_data = {'titleSearchForm': form, "additionalFields": additional_fields}
-    
+
     if keywords:
-        if (not include_adult):
+        if not include_adult:
             adult_filter = Q(is_adult=False)
         else:
             adult_filter = Q()
 
-        if (completed_only):
+        if completed_only:
             completed_filter = Q(is_complete=True)
         else:
             completed_filter = Q()
@@ -132,20 +131,21 @@ def title_search(request, keywords=None):
         search_metadata = None
         result_count = len(search_results)
 
-        
         response_data.update({
-            'title_list': search_results, 
-            'keywords': keywords, 
-            'result_count': result_count, 
+            'title_list': search_results,
+            'keywords': keywords,
+            'result_count': result_count,
             'titleSearchForm': form,
             'search_metadata': search_metadata
         })
-        
-        return render_to_response('core/title/title_search_results.html', response_data, context_instance=RequestContext(request))
-    
-    
-    return render_to_response('core/title/title_search_results.html', response_data, context_instance=RequestContext(request))
 
+        return render_to_response('core/title/title_search_results.html', response_data, context_instance=RequestContext(request))
+
+    if "category" in request.GET:
+        category_slug = Category.objects.get(pk=request.GET.get('category')).slug
+        return redirect('category_detail', category_slug, permanent=True)
+
+    return render_to_response('core/title/title_search_results.html', response_data, context_instance=RequestContext(request))
 
 
 @cache_page(1)
@@ -193,14 +193,13 @@ class FeedRedirectView(RedirectView):
     """Redirect the PB1 Feed Path to the PB2 Feed Path"""
 
     def get_redirect_url(self, slug=None, title_id=None):
-        
         if not slug and not title_id:
             raise Http404
-        
+
         if title_id:
             title = get_object_or_404(Title, pk=title_id)
             slug = title.slug
-        
+
         return reverse('title_episodes_feed', args=(slug,))
 
 
