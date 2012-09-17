@@ -36,7 +36,7 @@ class Award(models.Model):
     slug = models.SlugField()
     name = models.CharField(blank=True, max_length=255)
     url = models.URLField(blank=True)
-    image = models.ImageField(upload_to=settings.MEDIA_ROOT, max_length=255)
+    image = models.ImageField(upload_to=settings.MEDIA_ROOT + '/images/awards', max_length=255)
     deleted = models.BooleanField(default=False)
     date_created = models.DateTimeField(default=datetime.datetime.now())
     date_updated = models.DateTimeField(default=datetime.datetime.now())
@@ -172,11 +172,15 @@ class License(models.Model):
         return self.slug
 
 
+MEDIA_NAME_CHOICES = (
+    ('Print Version', 'Print Version'),
+    )
+
 class Media(models.Model):
     """Media are links to other forms of the title. In the case of books, these
     would be dead tree editions, epub, etc."""
     title = models.ForeignKey('Title', related_name='media')
-    name = models.CharField(max_length=255, default="Book Version")
+    name = models.CharField(max_length=255, default='Print Version', choices=MEDIA_NAME_CHOICES)
     identifier = models.CharField(max_length=255, blank=True, help_text="ISBN or Product ID")
     url = models.CharField(max_length=255, blank=True)
     deleted = models.BooleanField(default=False)
@@ -389,4 +393,4 @@ class TitleUrl(models.Model):
     def __unicode__(self):
         return "TitleUrls"
 
-    #
+        #
