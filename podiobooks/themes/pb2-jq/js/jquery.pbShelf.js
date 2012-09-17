@@ -112,7 +112,6 @@
 					 */
 					$(shelf).find(settings.shelfItemCover).find("img:not(.shelf-cover-loading)").each(function(){
 						
-						
 						var img = $(this);
 						
 						/*
