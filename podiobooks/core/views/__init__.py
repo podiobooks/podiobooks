@@ -17,6 +17,7 @@ from podiobooks.core.forms import CategoryChoiceForm, ContributorChoiceForm, Tit
 INITIAL_CATEGORY = 'science-fiction'
 INITIAL_CONTRIBUTOR = 'mur-lafferty'
 
+
 def contributor_list(request):
     """
     List of all contributors, annotated with a title count
@@ -28,6 +29,7 @@ def contributor_list(request):
         context_instance=RequestContext(request))
 
 
+@cache_page(1)
 def index(request):
     """
     Main site page page.
