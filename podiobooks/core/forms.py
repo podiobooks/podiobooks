@@ -28,8 +28,12 @@ class CategoryChoiceForm(forms.Form):
         
         initial_category = request.COOKIES.get("featured_cat")
         
+      
         if not initial_category:
-            initial_category = categories[0][0]      
+            try:
+                initial_category = categories[0][0]      
+            except IndexError:
+                pass
         
         self.fields["category"] = forms.ChoiceField(choices=categories, widget=forms.Select(attrs={'class':'pb-category-choice'}), initial=initial_category)
         self.submit_url = reverse("lazy_load_featured_title")
@@ -54,8 +58,12 @@ class ContributorChoiceForm(forms.Form):
             cache.set('contributor_dropdown_values', contributors, 240)
             
         initial_contributor = request.COOKIES.get("toprated_cat")
+        
         if not initial_contributor:
-            initial_contributor = contributors[0][0]
+            try:
+                initial_contributor = contributors[0][0]
+            except IndexError:
+                pass
         
         self.fields["contributor"] = forms.ChoiceField(choices=[(slug, display) for slug, display in contributors], widget=forms.Select(attrs={'class':'pb-contributor-choice'}), initial=initial_contributor)
         self.submit_url = reverse("lazy_load_top_rated_title")
