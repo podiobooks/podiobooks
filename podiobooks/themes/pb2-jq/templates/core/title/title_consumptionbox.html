@@ -10,7 +10,7 @@
     
     <ul class='consume-list'>
         {% if title.itunes_adam_id %}
-            <li class='consume-itunes'><a href="itms://itunes.apple.com/podcast/id{{ title.itunes_adam_id }}">View in
+            <li class='consume-itunes'><a href="http://itunes.apple.com/podcast/id{{ title.itunes_adam_id }}">View in
                 iTunes</a></li>
         {% endif %}
         {% for item in title.media.all %}
