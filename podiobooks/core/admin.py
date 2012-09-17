@@ -6,27 +6,35 @@ from django.contrib import admin
 
 from podiobooks.core.models import *  #@UnusedWildImport # pylint: disable=W0401,W0614
 
-class TitleInline(admin.TabularInline):
-    model = Title
+### INLINES
+
+
+class EpisodeInline(admin.TabularInline):
+    model = Episode
     exclude = ("deleted", "date_created", "date_updated")
 
 
-class TitleContributorAdmin(admin.ModelAdmin):
-    list_display = ('title', 'contributor', 'contributor_type')
-    exclude = ("date_created", "date_updated")
+class TitleCategoryInline(admin.TabularInline):
+    model = TitleCategory
+
+
+class TitleInline(admin.TabularInline):
+    model = Title
+    exclude = ("deleted", "date_created", "date_updated")
 
 
 class TitleContributorInline(admin.TabularInline):
     model = TitleContributor
     exclude = ("date_created", "date_updated")
 
-class TitleCategoryInline(admin.TabularInline):
-    model = TitleCategory
 
-
-class EpisodeInline(admin.TabularInline):
-    model = Episode
+class TitleMediaInline(admin.TabularInline):
+    model = Media
+    extra = 0
     exclude = ("deleted", "date_created", "date_updated")
+
+
+### MAIN ADMIN CLASSES
 
 
 class AwardAdmin(admin.ModelAdmin):
@@ -42,7 +50,7 @@ class CategoryAdmin(admin.ModelAdmin):
 class ContributorAdmin(admin.ModelAdmin):
     inlines = [
         TitleContributorInline,
-        ]
+    ]
     exclude = ("deleted", "date_created", "date_updated")
 
 
@@ -52,6 +60,12 @@ class EpisodeAdmin(admin.ModelAdmin):
 
 class LicenseAdmin(admin.ModelAdmin):
     list_display = ('slug', 'text',)
+
+
+class MediaAdmin(admin.ModelAdmin):
+    list_display = ('title', 'name', 'identifier')
+    search_fields = ['title__name', 'title__byline']
+    list_filter = ('name', 'date_updated')
 
 
 class PartnerAdmin(admin.ModelAdmin):
@@ -76,12 +90,19 @@ class TitleAdmin(admin.ModelAdmin):
     inlines = [
         TitleCategoryInline,
         TitleContributorInline,
+        TitleMediaInline,
         EpisodeInline
     ]
     ordering = ['name']
     prepopulated_fields = {"slug": ("name",)}
     save_on_tap = True
-    search_fields = ["name"]
+    search_fields = ['name', 'byline']
+
+
+class TitleContributorAdmin(admin.ModelAdmin):
+    list_display = ('title', 'contributor', 'contributor_type')
+    exclude = ("date_created", "date_updated")
+
 
 admin.site.register(Award)
 admin.site.register(Advisory)
@@ -90,7 +111,7 @@ admin.site.register(Contributor, ContributorAdmin)
 admin.site.register(ContributorType)
 admin.site.register(License, LicenseAdmin)
 admin.site.register(Episode, EpisodeAdmin)
-admin.site.register(Media)
+admin.site.register(Media, MediaAdmin)
 admin.site.register(Partner, PartnerAdmin)
 admin.site.register(Series, SeriesAdmin)
 admin.site.register(Title, TitleAdmin)
