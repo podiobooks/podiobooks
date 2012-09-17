@@ -15,7 +15,7 @@
     </div>
     <div class="pb-shelf-item-text">
         <p class="pb-shelf-item-title">
-            <a href="{% url title_detail title.slug %}" style="text-decoration:none;">{{ title.name|striptags|truncatewords_afterchar:"25" }}</a>
+            <a href="{% url title_detail title.slug %}">{{ title.name|striptags|truncatewords_afterchar:"25" }}</a>
         </p>
         <p class="pb-shelf-item-contributors">
             {{ title.byline|safe }}
