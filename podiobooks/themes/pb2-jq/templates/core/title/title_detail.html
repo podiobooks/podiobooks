@@ -90,7 +90,7 @@
             </div>
 
             <div class="title-description" itemprop="description">
-                {% autoescape off %}{{ title.description_br|removetags:"img"|safe }}{% endautoescape %}
+                {% autoescape off %}{{ title.description|linebreaks|removetags:"img" }}{% endautoescape %}
             </div>
 
             {% with title.episodes.all|first as episode %}
