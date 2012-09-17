@@ -4,13 +4,11 @@
     
     <div class="shelf-item-text">
         <h3 class="shelf-item-heading">
-            <a href="{% url title_detail title.slug %}"
-               style="text-decoration:none;">{{ title.name|striptags|truncatewords_afterchar:"30" }}</a>
+            <a href="{% url title_detail title.slug %}">{{ title.name|striptags|truncatewords_afterchar:"30" }}</a>
         </h3>
 
-        <div class="shelf-item-contributors">
-            {{ title.byline|safe }}
-        </div>
+        <p class="shelf-item-contributors">{{ title.byline|safe }}</p>
+        
         <p>
             {% autoescape off %}{{ title.description|striptags|truncatewords_afterchar:"160" }}{% endautoescape %}
         </p>
