@@ -8,17 +8,11 @@
 {% endblock %}
 
 {% block content %}
-<style type="text/css">
-	.contributor_list_item {
-		margin: 10px 20px 10px 20px;
-	}
-</style>
-<h1>
-    All Contributors, Alphabetically by Last Name
-</h1>
+
+<h1>All Contributors, Alphabetically by Last Name</h1>
 <ul>
   {% for contributor in contributor_list %} 
-  <li class="contributor_list_item">
+  <li class="long-running-list-item contributor_list_item">
 	<a href="
 		{% ifequal contributor.contributes_to_count 1 %} 
 			{% url title_detail slug=contributor.title_set.all|first %} 
