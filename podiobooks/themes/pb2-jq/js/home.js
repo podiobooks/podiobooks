@@ -15,7 +15,7 @@ $(function(){
 			"clearShelfFirst": false
 		});
 		
-		$(".half-shelf>.shelf, .quarter-shelf>.shelf").pbShelf();
+		//$(".half-shelf>.shelf, .quarter-shelf>.shelf").pbShelf();
 				
 	}
 });
