@@ -28,6 +28,8 @@ class CategoryChoiceForm(forms.Form):
         
         initial_category = request.COOKIES.get("featured_cat")
         
+        categories = list(categories)
+        categories.insert(0, ("", "Any Category"))
       
         if not initial_category:
             try:
@@ -59,6 +61,9 @@ class ContributorChoiceForm(forms.Form):
             
         initial_contributor = request.COOKIES.get("toprated_cat")
         
+        contributors = list(contributors)
+        contributors.insert(0, ("", "All Authors"))
+        
         if not initial_contributor:
             try:
                 initial_contributor = contributors[0][0]
@@ -67,6 +72,7 @@ class ContributorChoiceForm(forms.Form):
         
         self.fields["contributor"] = forms.ChoiceField(choices=[(slug, display) for slug, display in contributors], widget=forms.Select(attrs={'class':'pb-contributor-choice'}), initial=initial_contributor)
         self.submit_url = reverse("lazy_load_top_rated_title")
+
 
 class TitleSearchAdditionalFieldsForm(forms.Form):
     """ Additional fields for search (beyond the search term """    
