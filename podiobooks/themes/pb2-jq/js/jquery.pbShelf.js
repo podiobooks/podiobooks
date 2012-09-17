@@ -1,4 +1,11 @@
 /*
+ * Podiobooks Shelf plugin
+ * Custom carousel bookshelves for Podiobooks
+ * 
+ * 
+ * Version: 0.8
+ * 
+ * 
  * History:
  * 
  * 0.1: Initial plugin creation
@@ -8,7 +15,10 @@
  * 0.5: Support for shelves that don't need ajax calls
  * 0.6: Uses 'find' instead of 'children' for digging up relevant shelf peices
  * 0.7: Allows for shelf creation based on static content (i.e. no need to ajax on first load)
+ * 0.8: Allows blank incoming cookies to delete the existing cookie
+ * 
  */
+
 (function( $ ){
 
 	$.fn.pbShelf = function( options ) {
@@ -280,7 +290,13 @@
 			 * based on the currently selected form>select
 			 */
 			if(settings.cookie){
-				$.cookie(settings.cookie,shelf.find("form select").val(),{expires:7});
+				var val = shelf.find("form select").val();
+				if (val != ""){
+					$.cookie(settings.cookie, val, {expires:7});
+				}
+				else{
+					$.cookie(settings.cookie, "None", {expires: -1});
+				}
 			}		
 			
 			
