@@ -34,14 +34,6 @@ class UrlTestCase(TestCase):
         response = self.client.post('/title/search/', {"keywords": "dollie", "include_adult": 1, "completed_only": 1})
         self.assertEquals(200, response.status_code)
         
-    def test_title_summary(self):
-        response = self.client.get('/title/summary/293/') # Double Share
-        self.assertEquals(200, response.status_code)
-        
-    def test_title_snippet(self):
-        response = self.client.get('/title/snippet/293/') # Double Share
-        self.assertEquals(200, response.status_code)
-        
     def test_title_detail(self):
         response = self.client.get('/title/trader-tales-4-double-share/')
         self.assertEquals(200, response.status_code)
@@ -61,7 +53,7 @@ class UrlTestCase(TestCase):
     def test_contributor_detail(self):
         response = self.client.get('/contributor/nathan-lowell/')
         self.assertEquals(200, response.status_code)
-        
+
     def test_episode_detail(self):
         response = self.client.get('/episode/68250/') # Double Share, Episode 1
         self.assertEquals(200, response.status_code)
