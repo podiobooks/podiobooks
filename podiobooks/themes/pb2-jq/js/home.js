@@ -1,4 +1,5 @@
 $(function(){
+	
 	if ($("body").hasClass("home")){
 		
 		$("#featured_shelfPageContainer").pbShelf({
