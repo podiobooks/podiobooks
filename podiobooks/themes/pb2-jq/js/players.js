@@ -11,7 +11,7 @@ $(function(){
 		$("<h2>Play First Chapter</h2><audio controls><source src='" + href + "' type='audio/mp3' codecs='mp3'></audio>").appendTo(ele);
 		var audioPlayer = ele.find("audio");
 		audioPlayer.bind("play", function(){
-			_gaq.push(['_trackEvent', 'Audio', 'DetailPageFirst-Play', slug]);
+			_gaq.push(['_trackEvent', 'Audio', 'DetailPage-First-Play', slug]);
 		});
 		_gaq.push(['_trackEvent', 'Audio', 'DetailPage-HTML5', slug]);
 		
