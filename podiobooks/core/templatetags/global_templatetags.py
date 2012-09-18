@@ -2,8 +2,6 @@
 
 from django import template
 from podiobooks.core.forms import TitleSearchForm, BrowseByForm
-from django.conf import settings
-from django.conf.global_settings import PROFANITIES_LIST
 import itertools
 
 register = template.Library()
@@ -18,19 +16,6 @@ def cover_media_url():
         cover_media_url.state = itertools.cycle(settings.COVER_MEDIA_URLS)
     return cover_media_url.state.next()
 
-@register.simple_tag
-def ssl_site_login_url():
-    """
-    Pulls the SSL Site Login URL from the settings.
-    """
-    login_url = None
-    try:
-        login_url = settings.SSL_SITE_LOGIN_URL
-    except:
-        login_url = "#"
-        
-    return login_url
-
 @register.inclusion_tag('core/tags/show_browsebox.html')
 def show_browsebox():
     """ Shows the browse by section of the header """
@@ -40,25 +25,6 @@ def show_browsebox():
 def show_searchbox():
     """ Shows the search section of the header """
     return { 'title_search_form': TitleSearchForm() }
-
-@register.filter("replace_bad_words")
-def replace_bad_words(value):
-    """ Replaces profanities in strings with safe words """
-    words_seen = [w for w in PROFANITIES_LIST if w in value]
-    if words_seen:
-        for word in words_seen:
-            value = value.replace(word, "%s%s%s" % (word[0], '-'*(len(word) - 2), word[-1]))
-    return value
-
-@register.inclusion_tag('core/tags/show_variable.html')
-def show_variable(variable): # pragma: nocover
-    """ Shows a variable dump of the header """
-    vardir = dir(variable)
-    result = dict()
-    for var in vardir:
-        result[var] = getattr(variable, var)
-        
-    return { 'result': result }
 
 @register.inclusion_tag('core/tags/show_plusone.html')
 def show_plusone():
