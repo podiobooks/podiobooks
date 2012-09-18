@@ -75,34 +75,6 @@ def index(request):
     return render_to_response('core/index.html', response_data, context_instance=RequestContext(request))
 
 
-def title_list_by_category(request, category_slug='science-fiction', template_name='core/title/title_list.html'):
-    """
-        Returns the most recent titles for a particular category filtered by show-on-homepage=true.
-    """
-    category_title_list = Title.objects.filter(categories__slug=category_slug).order_by('name').all()
-
-    response_data = {'title_list': category_title_list,
-                     'category_slug': category_slug,
-    }
-
-    return render_to_response(template_name, response_data, context_instance=RequestContext(request))
-
-
-def title_list_by_contributor(request, contributor_slug='mur-lafferty', template_name='core/title/title_list.html'):
-    """
-        Returns the most recent titles for a particular contributor filtered by show-on-homepage=true.
-    """
-    contributor_title_list = Title.objects.filter(display_on_homepage=True,
-        contributors__slug=contributor_slug).order_by('-date_created',
-        'name').all()[:20]
-
-    response_data = {'title_list': contributor_title_list,
-                     'contributor_slug': contributor_slug,
-    }
-
-    return render_to_response(template_name, response_data, context_instance=RequestContext(request))
-
-
 def title_search(request, keywords=None):
     """
     takes in a list of keywords to full-text search titles on
