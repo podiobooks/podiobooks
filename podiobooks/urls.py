@@ -33,9 +33,6 @@ urlpatterns = patterns('',
     # Django Comments
     (r'^comments/', include('django.contrib.comments.urls')),
     
-    # Profile
-    (r'^profile/', include('podiobooks.profile.urls')),
-    
     # Feeds
     (r'^rss/', include('podiobooks.feeds.urls')),
 
