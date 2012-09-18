@@ -45,6 +45,10 @@
 	.nav-bar{
 		padding: 15px 20px 15px 20px;
 	}
+	.first-chapter{
+		
+		width:397px;
+	}
 }
 
 
@@ -118,6 +122,10 @@
 	}
 	.search-results .pg{
 		padding-top:40px;
+	}
+	.first-chapter{
+		
+		width:357px;
 	}
 }
 
@@ -485,5 +493,9 @@
 	}
 	.search-additional-fields-thinking p{
 		display:none;
+	}
+	.first-chapter{
+		
+		float:none;
 	}
 }
