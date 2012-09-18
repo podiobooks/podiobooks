@@ -248,6 +248,12 @@
     background-size: 48px 48px;
 }
 
+.consume-smashwords {
+    background: url('../images/pb-smashwords-logo.png') left center no-repeat;
+    background-size: 48px 48px;
+}
+
+
 
 /*
  * Donate
