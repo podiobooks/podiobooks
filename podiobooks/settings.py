@@ -71,7 +71,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'podiobooks.core.context_processors.js_api_keys',
     'podiobooks.core.context_processors.current_site',
     'django.core.context_processors.request',
-    "mediabrute.context_processors.mini_media",
+    'mediabrute.context_processors.mini_media',
     )
 
 MIDDLEWARE_CLASSES = (
@@ -88,8 +88,6 @@ MIDDLEWARE_CLASSES = (
     )
 
 ROOT_URLCONF = 'podiobooks.urls'
-
-AUTH_PROFILE_MODULE = 'profile.UserProfile'
 
 #authopenid
 ugettext = lambda s: s # pylint: disable=C0103
@@ -113,7 +111,6 @@ INSTALLED_APPS = (
     'podiobooks',
     'podiobooks.core',
     'podiobooks.libsyn',
-    'podiobooks.profile',
     'podiobooks.feeds',
     'south',
     )
