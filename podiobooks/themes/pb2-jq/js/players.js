@@ -1,9 +1,20 @@
 $(function(){
 	
+	var episodes = $(".episode-audio-link:first");
+	var placement = $(".title-description p:first");
+	var htmlAudio = $("html").hasClass("audio");
+	var slug = $(episodes).parents("article").data("title-slug");
+	
+	
 	/* href is location of audio file, ele is where to put this thing */
-	var createHTML5Player = function(ele, href){
-		
+	var createHTML5Player = function(ele, href){		
 		$("<h2>Play First Chapter</h2><audio controls><source src='" + href + "' type='audio/mp3' codecs='mp3'></audio>").appendTo(ele);
+		var audioPlayer = ele.find("audio");
+		audioPlayer.bind("play", function(){
+			_gaq.push(['_trackEvent', 'Audio', 'DetailPageFirst-Play', slug]);
+		});
+		_gaq.push(['_trackEvent', 'Audio', 'DetailPage-HTML5', slug]);
+		
 	};
 	
 	/* href is location of audio file, ele is where to put this thing */
@@ -36,12 +47,12 @@ $(function(){
 			skip:"666666",
 			text:"6b6b6b", 
 			soundFile:href
-		});		
+		});	
+		
+		_gaq.push(['_trackEvent', 'Audio', 'DetailPage-Flash', slug]);
 	};
 	
-	var episodes = $(".episode-audio-link:first");
-	var placement = $(".title-description p:first");
-	var htmlAudio = $("html").hasClass("audio");
+	
 	
 	// check for HTML5 audio capabilities first
 	if (episodes.length > 0){
