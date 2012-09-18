@@ -225,7 +225,6 @@ CSS_BOTTOM_FILES = ["adaptive.css"]
 JS_SETTINGS_TEMPLATE = "mediabrute/js/config.txt"
 # This is a hack to get mediabrute to play nice with runserver + staticfiles app
 if DEBUG and STATIC_URL.startswith("/") and not STATIC_URL.startswith("//"):
-    MEDIABRUTE_CACHE_BASE_URL = "/"
     CSS_DIR = "pb2-jq/css"
     JS_DIR = "pb2-jq/js"
     MEDIABRUTE_CSS_URL_PATH = "css"
