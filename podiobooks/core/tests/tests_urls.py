@@ -33,6 +33,18 @@ class UrlTestCase(TestCase):
         
         response = self.client.post('/title/search/', {"keywords": "dollie", "include_adult": 1, "completed_only": 1})
         self.assertEquals(200, response.status_code)
+
+    def test_title_search_keywords_get(self):
+        response = self.client.get('/title/search/?keyword=sigler')
+        self.assertEquals(200, response.status_code)
+
+    def test_title_search_pb1(self):
+        response = self.client.get('/podiobooks/search.php?keyword=sigler')
+        self.assertRedirects(response, '/title/search/?keyword=sigler', status_code=301)
+
+    def test_title_category_search_pb1(self):
+        response = self.client.get('/podiobooks/search.php?category=1', follow=True)
+        self.assertRedirects(response, '/category/science-fiction/', status_code=301)
         
     def test_title_detail(self):
         response = self.client.get('/title/trader-tales-4-double-share/')
@@ -65,3 +77,19 @@ class UrlTestCase(TestCase):
     def test_series_detail(self):
         response = self.client.get('/series/a-traders-tale-from-the-golden-age-of-the-solar-clipper/')
         self.assertEquals(200, response.status_code)
+
+    def test_pb1_login_redirect(self):
+        response = self.client.get('/login.php')
+        self.assertEquals(301, response.status_code)
+
+    def test_pb1_xlogin_redirect(self):
+        response = self.client.get('/Xlogin.php')
+        self.assertEquals(301, response.status_code)
+
+    def test_pb1_charts_redirect(self):
+        response = self.client.get('/charts.php')
+        self.assertEquals(301, response.status_code)
+
+    def test_pb1_feed_redirect(self):
+        response = self.client.get('/title/trader-tales-4-double-share/feed/')
+        self.assertRedirects(response, '/rss/feeds/episodes/trader-tales-4-double-share/', status_code=301)
