@@ -44,12 +44,6 @@ def show_sharebox(name, url):
     return {'name': name, 'url': url}
 
 
-@register.inclusion_tag('core/title/tags/show_player.html')
-def show_player(name, url):
-    """ Show a box enabling playing of an audio file"""
-    return {'name': name, 'url': url}
-
-
 @register.inclusion_tag('core/title/tags/show_donation_button.html')
 def show_donation_button(title):
     """ Show button to enable people to donate to this title """
