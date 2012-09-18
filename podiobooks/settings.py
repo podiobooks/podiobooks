@@ -117,15 +117,6 @@ INSTALLED_APPS = (
 
 # Local DB settings. (Postgres)
 DATABASES = {
-    #    'default': {
-    #        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-    #        'NAME': 'pb2',
-    #        'USER': 'pb2',
-    #        'PASSWORD': '',
-    #        'HOST': '127.0.0.1',
-    #        'PORT': '', # Set to empty string for default.
-    #        'SUPPORTS_TRANSACTIONS': 'true',
-    #    },
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(PROJECT_ROOT , 'pb2.db'),
@@ -228,9 +219,6 @@ DATALOAD_DIR = PROJECT_ROOT + "/../../podiobooks-dataload/datafiles/"
 
 ### DONATIONS
 DONATION_BUSINESS_NAME = 'evo@podiobooks.com'
-
-### COVER URLS
-COVER_MEDIA_URLS = {'http://podiobooks.com/images',}
 
 CSS_TOP_FILES = ["clear.css", "styles.css", ]
 CSS_BOTTOM_FILES = ["adaptive.css"]
