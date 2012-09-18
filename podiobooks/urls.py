@@ -53,6 +53,10 @@ urlpatterns = patterns('',
 
     # PB1 Login Page
     (r'login\.php|Xlogin\.php', RedirectView.as_view(url='http://blog.podiobooks.com/what-happened-to-my-login/')),
+
+    # PB1 Charts Page
+    (r'charts\.php', RedirectView.as_view(url='http://blog.podiobooks.com/what-happened-to-the-charts/')),
+
 )
 
 #Only hook up the static and media to run through Django in a dev environment...in prod, needs to be handled by web server
