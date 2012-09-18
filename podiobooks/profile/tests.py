@@ -18,20 +18,6 @@ class ProfileTestCase(TestCase):
         response = self.client.get('/profile/', follow=True)
         self.assertRedirects(response, "http://testserver/contributor/")
 
-#    def testProfileManageRedirect(self):
-#        response = self.client.get('/profile/manage/', follow=True)
-#        self.assertRedirects(response, "http://testserver/account/signin/?next=/profile/manage/")
-
-    def testProfileManagePage(self):
-        self.client.login(username='testuser1', password='testuser1password')
-        response = self.client.get('/profile/manage/')
-        self.assertContains(response, 'testuser1@test.com')
-
-    def testProfileDetailPage(self):
-        self.client.login(username='testuser1', password='testuser1password')
-        response = self.client.get('/profile/nathan-lowell/')
-        self.assertContains(response, 'Nathan Lowell')
-    
     def testUserProfileObj(self):
         self.assertEqual(self.user1.get_profile().slug, 'testuser1')
      
