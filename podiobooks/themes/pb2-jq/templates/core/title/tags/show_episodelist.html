@@ -3,10 +3,9 @@
     <ul class="episode-list">
         {% for episode in episode_list %}
             <li class="episode-list-item">
-                <div class="episode-list-title">
-                    <a href="{{ episode.url }}">{{ episode.name }}</a>
-                    <div class="episode-list-fileinfo">({{ episode.filesize|filesizeformat }})</div>
-                </div>
+                <h3 class="episode-list-title">
+                    <a class="episode-audio-link" href="{{ episode.url }}">{{ episode.name }}</a>
+                </h3>
                 <div class="episode-list-description">
                     {{ episode.description }}
                 </div>
