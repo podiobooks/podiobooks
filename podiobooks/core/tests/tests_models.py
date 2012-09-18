@@ -18,25 +18,7 @@ class TitleTestCase(TestCase):
         self.user1 = User.objects.create_user('testuser1', 'testuser1@test.com', 'testuser1password')
         self.user2 = User.objects.create_user('testuser2', 'testuser2@test.com', 'testuser2password')
         self.user3 = User.objects.create_user('testuser3', 'testuser3@test.com', 'testuser3password')
-        
-        self.user1.first_name = "test1"
-        self.user1.last_name = "user1"
-        user1Profile = self.user1.get_profile()
-        user1Profile.slug = slugify(self.user1.get_full_name())
-        user1Profile.save()
-        
-        self.user2.first_name = "test2"
-        self.user2.last_name = "user2"
-        user2Profile = self.user2.get_profile()
-        user2Profile.slug = slugify(self.user2.get_full_name())
-        user2Profile.save()
-        
-        self.user3.first_name = "test3"
-        self.user3.last_name = "user3"
-        user3Profile = self.user3.get_profile()
-        user3Profile.slug = slugify(self.user3.get_full_name())
-        user3Profile.save()
-        
+
         # Create Some Series
         self.series1 = Series.objects.create (
             name="Podiobooks Series #1",
@@ -270,16 +252,6 @@ class TitleTestCase(TestCase):
                 )
         TitleContributor.objects.create(title=self.title3, contributor_type=self.contributortype1, contributor=self.contributor1)
         TitleContributor.objects.create(title=self.title3, contributor_type=self.contributortype1, contributor=self.contributor2) #Title 3 should belong to two contributors now
-
-    def test_users(self):
-        """Assert that we created users correctly."""
-        print '---Users---'
-        testUsers = User.objects.all().filter(username__startswith='test')
-        
-        for currentUser in testUsers:
-            print '\tUsername: %s\tSlug: %s' % (currentUser.username, currentUser.get_profile().slug)
-        # User Assertions
-        self.assertEquals(len(testUsers), 3)
 
     def test_series(self):
         """Assert that we creates series correctly, and can access titles from series."""
