@@ -1,8 +1,9 @@
 var AudioPlayer = function () {
+	
 	var instances = [];
 	var activePlayerID;
 	var playerURL = siteVars("swf") + "player.swf";
-	l(playerURL);
+	
 	var defaultOptions = {};
 	var currentVolume = -1;
 	var requiredFlashVersion = "9";
