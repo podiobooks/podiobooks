@@ -6,13 +6,14 @@ from django.contrib.syndication.views import Feed
 from django.utils.feedgenerator import Rss201rev2Feed
 from django.utils.html import strip_tags
 from django.conf import settings
+from django.core.urlresolvers import reverse
 
 from podiobooks.core.models import Title, Episode
 from podiobooks.feeds import feed_tools
 from podiobooks.feeds.protocols.itunes import ITunesFeed
 
 class TitleFeed(Feed):
-    """A simple feed that lists recent Titles"""
+    """A simple feed that lists all Titles"""
     feed_type = Rss201rev2Feed
 
     title = "Podiobooks Title Feed"
@@ -21,16 +22,23 @@ class TitleFeed(Feed):
 
     def items(self):
         """Returns the list of items for the feed"""
-        return Title.objects.order_by('-date_created')[:30]
+        return Title.objects.all()
 
     def item_description(self, obj):
         return strip_tags(obj.description).replace('&amp;', '&')
 
     def item_link(self, obj):
-        return feed_tools.add_current_domain(obj.get_absolute_url())
+        return feed_tools.add_current_domain(reverse('title_episodes_feed', args=[obj.slug]))
 
     def item_title(self, obj):
         return strip_tags(obj.name).replace('&amp;', '&')
+
+class RecentTitleFeed(TitleFeed):
+    """A simple feed that lists recent Titles"""
+
+    def items(self):
+        """Returns the list of items for the feed"""
+        return Title.objects.order_by('-date_created')[:30]
 
 
 class EpisodeFeed(Feed):
