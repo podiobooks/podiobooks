@@ -7,50 +7,55 @@
 
 {% block search_box %}
 
-	<form action="{% url title_search %}" method="GET" class="search">
-	    <p>
-	    	<label for="id_keywords">Search</label>
-	    	{{ titleSearchForm.keyword }}
-	    </p>
-	    
-	    <div class="search-additional-fields">
-	    	{{ additionalFields.as_p }}
-	    	
-	    		
-	    </div>
-	   	<input value="Search" type="submit" class="search-submit" />
-	   	
-	</form>
+<form action="{% url title_search %}" method="GET" class="search">
+    <p>
+        <label for="id_keywords">Search</label>
+        {{ titleSearchForm.keyword }}
+    </p>
 
-    
+    <div class="search-additional-fields">
+        {{ additionalFields.as_p }}
+
+
+    </div>
+    <input value="Search" type="submit" class="search-submit"/>
+
+</form>
+
+
 {% endblock %}
 
 {% block content %}
-    
-    
-    {% if result_count %}
-    	<h1>{{ result_count }} results for "{{ keywords }}"</h1>
-    {% else %}
-    	<h1>No results for "{{ keywords }}"</h1>
-    {% endif %}
-   
-    {% if result_count %}
-	    
-	     <aside class="block-ad">
-	        <script type="text/javascript">
-	            <!--
-	            google_ad_client = "ca-pub-1276519440300441";
-	            /* Search 1 */
-	            google_ad_slot = "6347144263";
-	            google_ad_width = 200;
-	            google_ad_height = 200; //-->
-	        </script>
-	        <script type="text/javascript"
-	                src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-	        </script>
-	   </aside>
-	    
-	    {% show_titlelist title_list "title_search_results" %}
-    
-	{% endif %}
+
+
+{% if result_count %}
+<h1>{{ result_count }} results for "{{ keywords }}"</h1>
+{% else %}
+{% if keywords %}
+<h1>No results for "{{ keywords }}"</h1>
+{% else %}
+<h1>Podiobooks Search!</h1>
+<h3>Enter Your Search Terms in the Box Above</h3>
+{% endif %}
+{% endif %}
+
+{% if result_count %}
+
+<aside class="block-ad">
+    <script type="text/javascript">
+        <!--
+        google_ad_client = "ca-pub-1276519440300441";
+        /* Search 1 */
+        google_ad_slot = "6347144263";
+        google_ad_width = 200;
+        google_ad_height = 200; //-->
+    </script>
+    <script type="text/javascript"
+            src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+    </script>
+</aside>
+
+{% show_titlelist title_list "title_search_results" %}
+
+{% endif %}
 {% endblock %}
