@@ -6,16 +6,20 @@ $(function(){
 	// check for HTML5 audio capabilities first
 	if (episodes.length > 0){
 		// check for MP3 capabilities
-		var browserAudio = new Audio();
+		
+		
+		
 		episodes.each(function(){
 			
 			var link = $(this);
 			var href = link.attr("href");
 			var audio = $("<aside id='title-first-chapter-player' class='first-chapter'></aside>").insertBefore(placement);
-			
-			if (htmlAudio && browserAudio && browserAudio.canPlayType("audio/mpeg")){
-				$("<h2>Play First Chapter</h2><audio controls><source src='" + href + "' type='audio/mp3' codecs='mp3'></audio>").appendTo(audio);
-				
+			if (htmlAudio){
+				var browserAudio = new Audio();
+				if(browserAudio && browserAudio.canPlayType("audio/mpeg")){
+					$("<h2>Play First Chapter</h2><audio controls><source src='" + href + "' type='audio/mp3' codecs='mp3'></audio>").appendTo(audio);
+					
+				}
 			}
 			else{
 				var replaceMe = $("<span id='replaceMeYo' />").appendTo(audio);
