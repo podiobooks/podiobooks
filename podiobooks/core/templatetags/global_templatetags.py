@@ -2,19 +2,8 @@
 
 from django import template
 from podiobooks.core.forms import TitleSearchForm, BrowseByForm
-import itertools
 
 register = template.Library()
-
-@register.simple_tag
-def cover_media_url():
-    """
-    Cycles through the values of COVER_MEDIA_URLS to enable increased parallel download speed.
-    """
-    # pylint: disable=E1101,W0612
-    if not hasattr(cover_media_url, 'state'):
-        cover_media_url.state = itertools.cycle(settings.COVER_MEDIA_URLS)
-    return cover_media_url.state.next()
 
 @register.inclusion_tag('core/tags/show_browsebox.html')
 def show_browsebox():
