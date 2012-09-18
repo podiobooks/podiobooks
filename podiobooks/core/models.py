@@ -174,6 +174,7 @@ class License(models.Model):
 
 MEDIA_NAME_CHOICES = (
     ('Print Version', 'Print Version'),
+    ('Smashwords Version', 'Smashwords Version'),
     )
 
 class Media(models.Model):
