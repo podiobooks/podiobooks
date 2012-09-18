@@ -17,7 +17,7 @@
 .title-details-titlebar{
     border-bottom: solid 1px #b2b2b2;
     padding:0 0 15px;
-    margin:0 0 30px;
+    margin:0 0 20px;
 }
 
 
@@ -275,7 +275,6 @@
     background: -ms-linear-gradient(top,  #dce5ef 0%,#74a7bf 100%); /* IE10+ */
     background: linear-gradient(to bottom,  #dce5ef 0%,#74a7bf 100%); /* W3C */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dce5ef', endColorstr='#74a7bf',GradientType=0 ); /* IE6-9 */
-
 }
 
 .donate-box input {
@@ -283,3 +282,35 @@
 }
 
 
+/*
+ * Player
+ */
+.first-chapter{
+	padding:0px 0 35px;
+	float:left;
+	width:467px;
+}
+.first-chapter h2{
+	padding:0px 0 10px;
+	color:#4b4b4b;
+	font-weight:normal;
+	font-size:19px;
+	font-style:italic;
+}
+.first-chapter audio{
+	max-width:90%;
+}
+/*
+ * Episode List
+ */
+.episode-list-item{
+	border-bottom:solid 1px #e2e5e7;
+	border-top:solid 1px #fff;
+	padding:20px 0;
+}
+.episode-list-item:first-of-type{
+	border-top:none;
+}
+.episode-list-item:last-of-type{
+	border-bottom:none;
+}
