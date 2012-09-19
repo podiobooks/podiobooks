@@ -185,41 +185,24 @@ if DEBUG:
 
 ##### Custom Variables Below Here #######
 
-# Google JavaScript API Key
-GOOGLE_JS_API_KEY = "ABQIAAAApKHrTPdMsrKnaI74fSfnhBQ1oE6XAUbmObyC_RwYQIb0R2PjHBRZWTF3zf-YwVXFv_qiaAb_sT04aA"
+# Google Analytics ID
+GOOGLE_ANALYTICS_ID = "UA-5071400-1"
 
-# Google Analytics Key
-GOOGLE_ANALYTICS_KEY = "UA-28536335-1"
-
-# Facebook Application Key
-FACEBOOK_APP_ID = "316069408433708"
+# Facebook Application ID
+FACEBOOK_APP_ID = "155134080235"
 
 # <meta name="descripton"> default value
 BASE_META_DESCRIPTION = "Free audio books delivered as podcasts. Subscribe for free to any book and start from chapter one. Podiobooks.com"
-
-### SECURE SITE
-# SSL_SITE_LOGIN_URL = '' # URL to HTTPS version of site for secure sign-in.
 
 ### FEEDS
 FEED_WEBMASTER = 'webmaster@podiobooks.com (Chris Miller)'
 FEED_MANAGING_EDITOR = 'editor@podiobooks.com (Evo Terra)'
 FEED_GLOBAL_CATEGORIES = ('podiobooks', 'audio books',)
 
-### SEARCH
-SEARCH_PROVIDER = 'DEFAULT'
-
-### LIBSYN
-LIBSYN_USER = 'evo@podiobooks.com'
-LIBSYN_KEY = '1158b2d59957871de21b4a2f4fe173b6'
-LIBSYN_NETWORK_SLUG = 'podiobooks'
-LIBSYN_API_SERVER_URL = 'http://api.libsyn.com/xmlrpc'
-
-### DATALOAD
-DATALOAD_DIR = PROJECT_ROOT + "/../../podiobooks-dataload/datafiles/"
-
 ### DONATIONS
 DONATION_BUSINESS_NAME = 'evo@podiobooks.com'
 
+### MEDIABRUTE
 CSS_TOP_FILES = ["clear.css", "styles.css", ]
 CSS_BOTTOM_FILES = ["adaptive.css"]
 JS_SETTINGS_TEMPLATE = "mediabrute/js/config.txt"
