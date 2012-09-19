@@ -7,7 +7,7 @@
 		    {{ contributor.display_name }}
 		</h1>
 		
-		{% show_titlelist contributor.title_set.all "contributor_title_list" %}
+		{% show_titlelist contributor.title_set.distinct "contributor_title_list" %}
 	
 	{% else %}
 		<h1>There are currently no titles available for {{ contributor.display_name }}</h1>
