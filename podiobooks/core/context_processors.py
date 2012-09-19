@@ -12,8 +12,7 @@ def js_api_keys(request):
     Adds JavaScript API Keys variables to the context.
     """
     return {
-        'GOOGLE_JS_API_KEY': settings.GOOGLE_JS_API_KEY,
-        'GOOGLE_ANALYTICS_KEY': settings.GOOGLE_ANALYTICS_KEY,
+        'GOOGLE_ANALYTICS_ID': settings.GOOGLE_ANALYTICS_ID,
         'FACEBOOK_APP_ID': settings.FACEBOOK_APP_ID
     }
 
