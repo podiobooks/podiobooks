@@ -123,8 +123,8 @@ class Episode(models.Model):
     contributors = models.ManyToManyField('Contributor', through='EpisodeContributor')
     status = models.IntegerField(default=1)
     deleted = models.BooleanField(default=False)
-    date_created = models.DateTimeField(default=datetime.datetime.now())
-    date_updated = models.DateTimeField(default=datetime.datetime.now())
+    date_created = models.DateTimeField(auto_now_add=True)
+    date_updated = models.DateTimeField(auto_now=True)
 
     class Meta:
         ordering = ['title__name', 'sequence']
