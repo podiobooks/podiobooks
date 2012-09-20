@@ -1,18 +1,5 @@
 [
     {
-        "pk":466,
-        "model":"core.media",
-        "fields":{
-            "name":"Smashwords Version",
-            "title":152,
-            "url":"",
-            "deleted":false,
-            "date_updated":"2012-09-19T22:40:58.352",
-            "date_created":"2012-09-19T22:40:58.352",
-            "identifier":"10415"
-        }
-    },
-    {
         "pk":485,
         "model":"core.media",
         "fields":{
@@ -75,19 +62,6 @@
             "date_updated":"2012-09-19T22:43:03.839",
             "date_created":"2012-09-19T22:43:03.839",
             "identifier":"4932"
-        }
-    },
-    {
-        "pk":576,
-        "model":"core.media",
-        "fields":{
-            "name":"Smashwords Version",
-            "title":152,
-            "url":"",
-            "deleted":false,
-            "date_updated":"2012-09-19T22:43:03.839",
-            "date_created":"2012-09-19T22:43:03.839",
-            "identifier":"10415"
         }
     },
     {
@@ -1063,19 +1037,6 @@
             "date_updated":"2012-09-19T22:44:15.849",
             "date_created":"2012-09-19T22:44:15.849",
             "identifier":"666"
-        }
-    },
-    {
-        "pk":686,
-        "model":"core.media",
-        "fields":{
-            "name":"Smashwords Version",
-            "title":152,
-            "url":"",
-            "deleted":false,
-            "date_updated":"2012-09-19T22:44:15.849",
-            "date_created":"2012-09-19T22:44:15.849",
-            "identifier":"10415"
         }
     },
     {
