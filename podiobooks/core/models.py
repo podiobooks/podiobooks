@@ -305,8 +305,8 @@ class Title(models.Model):
     # Note: episodes are available as episodes.all()
     # Note: media are available as media.all()
     # Note: promos are available as promos.all()
-    date_created = models.DateTimeField(default=datetime.datetime.now(), db_index=True)
-    date_updated = models.DateTimeField(default=datetime.datetime.now(), db_index=True)
+    date_created = models.DateTimeField(auto_now_add=True, db_index=True)
+    date_updated = models.DateTimeField(auto_now=True, db_index=True)
 
     class Meta:
         ordering = ['name']
