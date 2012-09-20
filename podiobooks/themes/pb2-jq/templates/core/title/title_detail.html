@@ -114,13 +114,13 @@
                         <a href="#comments-tab">Comments</a>
                     </li>
                     <li>
-                        <a href="#chapters-tab">Chapters</a>
+                        <a href="#episodes-tab">Episodes</a>
                     </li>
                 </ul>
                 <div title="Comments" id="comments-tab">
                     {% show_comments title.podiobooker_blog_url %}
                 </div>
-                <div title="Chapters" id="chapters-tab">
+                <div title="Episodes" id="episodes-tab">
                     {% if title.episodes.all %}
                         {% show_episodelist title %}
                     {% else %}
