@@ -8,22 +8,22 @@
         Book Now!
     </div>
     
-    <ul class='consume-list'>
+    <ul data-title-slug="{{ title.slug }}" class='consume-list'>
         {% if title.itunes_adam_id %}
-            <li class='consume-itunes'><a href="http://itunes.apple.com/podcast/id{{ title.itunes_adam_id }}">View in
+            <li id="consume-itunes" class='consume-itunes'><a href="http://itunes.apple.com/podcast/id{{ title.itunes_adam_id }}">View in
                 iTunes</a></li>
         {% endif %}
         {% for item in title.media.all %}
             {% if item.name == 'Print Version' %}
-                <li class='consume-amazon'><a
+                <li id="consume-amazon" class='consume-amazon'><a
                         href="http://www.amazon.com/dp/{{ item.identifier }}/?tag=podiobookscom-20">Buy Book</a></li>
             {% endif %}
             {% if item.name == 'Smashwords Version' %}
-                <li class='consume-smashwords'><a
+                <li id="consume-smashwords" class='consume-smashwords'><a
                         href="http://www.smashwords.com/books/view/{{ item.identifier }}?ref=evoterra">Buy eBook</a></li>
             {% endif %}
         {% endfor %}
-        <li class='consume-rss'><a href="{% url title_episodes_feed title.slug %}">RSS Feed</a></li>
+        <li id="consume-rss" class='consume-rss'><a href="{% url title_episodes_feed title.slug %}">RSS Feed</a></li>
     </ul>
     
     {% if not title.is_complete %}
