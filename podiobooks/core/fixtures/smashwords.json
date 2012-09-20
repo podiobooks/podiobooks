@@ -1,18 +1,5 @@
 [
     {
-        "pk":426,
-        "model":"core.media",
-        "fields":{
-            "name":"Smashwords Version",
-            "title":398,
-            "url":"",
-            "deleted":false,
-            "date_updated":"2012-09-19T22:40:58.352",
-            "date_created":"2012-09-19T22:40:58.352",
-            "identifier":"5538"
-        }
-    },
-    {
         "pk":452,
         "model":"core.media",
         "fields":{
@@ -101,19 +88,6 @@
             "date_updated":"2012-09-19T22:43:03.839",
             "date_created":"2012-09-19T22:43:03.839",
             "identifier":"4932"
-        }
-    },
-    {
-        "pk":536,
-        "model":"core.media",
-        "fields":{
-            "name":"Smashwords Version",
-            "title":398,
-            "url":"",
-            "deleted":false,
-            "date_updated":"2012-09-19T22:43:03.839",
-            "date_created":"2012-09-19T22:43:03.839",
-            "identifier":"5538"
         }
     },
     {
@@ -621,19 +595,6 @@
             "date_updated":"2012-09-19T22:44:15.849",
             "date_created":"2012-09-19T22:44:15.849",
             "identifier":"5662"
-        }
-    },
-    {
-        "pk":646,
-        "model":"core.media",
-        "fields":{
-            "name":"Smashwords Version",
-            "title":398,
-            "url":"",
-            "deleted":false,
-            "date_updated":"2012-09-19T22:44:15.849",
-            "date_created":"2012-09-19T22:44:15.849",
-            "identifier":"5538"
         }
     },
     {
@@ -2259,19 +2220,6 @@
             "date_updated":"2012-09-19T22:44:15.849",
             "date_created":"2012-09-19T22:44:15.849",
             "identifier":"135491"
-        }
-    },
-    {
-        "pk":265,
-        "model":"core.media",
-        "fields":{
-            "name":"eBook Version",
-            "title":398,
-            "url":"",
-            "deleted":false,
-            "date_updated":"2012-09-19T22:39:57.652",
-            "date_created":"2012-09-19T22:39:57.652",
-            "identifier":"5538"
         }
     },
     {
