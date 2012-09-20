@@ -498,4 +498,7 @@
 		width:auto;	
 		float:none;
 	}
+	.tab-trigger{
+		font-size:14px;
+	}
 }
