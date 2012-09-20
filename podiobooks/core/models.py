@@ -17,8 +17,8 @@ class Advisory(models.Model):
     name = models.CharField(max_length=100)
     displaytext = models.CharField(max_length=255)
     hexcolor = models.CharField(max_length=6)
-    date_created = models.DateTimeField(default=datetime.datetime.now())
-    date_updated = models.DateTimeField(default=datetime.datetime.now())
+    date_created = models.DateTimeField(auto_now_add=True)
+    date_updated = models.DateTimeField(auto_now=True)
     # rather than storing a hex-color, would it make more sense to
     # add a css class 'Advisory_{slug}' for flexibility??
 
@@ -37,8 +37,8 @@ class Award(models.Model):
     url = models.URLField(blank=True)
     image = models.ImageField(upload_to='images/awards', max_length=255)
     deleted = models.BooleanField(default=False)
-    date_created = models.DateTimeField(default=datetime.datetime.now())
-    date_updated = models.DateTimeField(default=datetime.datetime.now())
+    date_created = models.DateTimeField(auto_now_add=True))
+    date_updated = models.DateTimeField(auto_now=True)
 
     class Meta:
         ordering = ['name']
@@ -54,8 +54,8 @@ class Category(models.Model):
     # Note - titles are available as title_set.all()
     # Note - for SQL purposes, titles are 'title'
     deleted = models.BooleanField(default=False)
-    date_created = models.DateTimeField(default=datetime.datetime.now())
-    date_updated = models.DateTimeField(default=datetime.datetime.now())
+    date_created = models.DateTimeField(auto_now_add=True)
+    date_updated = models.DateTimeField(auto_now=True)
 
     class Meta:
         verbose_name_plural = "categories"
@@ -81,8 +81,8 @@ class Contributor(models.Model):
     deleted = models.BooleanField(default=False)
     # Note: Titles are available a title_set.all()
     # Note: TitleContributor Objects (intermediate table) are available as titlecontributors.all()
-    date_created = models.DateTimeField(default=datetime.datetime.now())
-    date_updated = models.DateTimeField(default=datetime.datetime.now())
+    date_created = models.DateTimeField(auto_now_add=True)
+    date_updated = models.DateTimeField(auto_now=True)
 
     class Meta:
         ordering = ['last_name', 'first_name']
@@ -147,7 +147,7 @@ class EpisodeContributor(models.Model):
     episode = models.ForeignKey('Episode', related_name='episodecontributors')
     contributor = models.ForeignKey('Contributor', related_name='episodecontributors')
     contributor_type = models.ForeignKey('ContributorType', related_name='episodecontributors')
-    date_created = models.DateTimeField(default=datetime.datetime.now())
+    date_created = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         verbose_name_plural = "Episode Contributors"
@@ -161,8 +161,8 @@ class License(models.Model):
     url = models.URLField()
     image_url = models.URLField()
     code = models.TextField(blank=True)
-    date_created = models.DateTimeField(default=datetime.datetime.now())
-    date_updated = models.DateTimeField(default=datetime.datetime.now())
+    date_created = models.DateTimeField(auto_now_add=True)
+    date_updated = models.DateTimeField(auto_now=True)
 
     class Meta:
         ordering = ['slug']
@@ -184,8 +184,8 @@ class Media(models.Model):
     identifier = models.CharField(max_length=255, blank=True, help_text="ISBN or Product ID")
     url = models.CharField(max_length=255, blank=True)
     deleted = models.BooleanField(default=False)
-    date_created = models.DateTimeField(default=datetime.datetime.now())
-    date_updated = models.DateTimeField(default=datetime.datetime.now())
+    date_created = models.DateTimeField(auto_now_add=True)
+    date_updated = models.DateTimeField(auto_now=True)
 
     class Meta:
         verbose_name_plural = "media"
@@ -203,8 +203,8 @@ class Partner(models.Model):
     url = models.URLField()
     logo = models.ImageField(upload_to="/dir/path")
     deleted = models.BooleanField(default=False)
-    date_created = models.DateTimeField(default=datetime.datetime.now())
-    date_updated = models.DateTimeField(default=datetime.datetime.now())
+    date_created = models.DateTimeField(auto_now_add=True)
+    date_updated = models.DateTimeField(auto_now=True)
 
     class Meta:
         ordering = ['name']
@@ -221,8 +221,8 @@ class Promo(models.Model):
     name = models.CharField(max_length=255)
     url = models.URLField()
     display_order = models.IntegerField(null=False, default=1)
-    date_created = models.DateTimeField(default=datetime.datetime.now())
-    date_updated = models.DateTimeField(default=datetime.datetime.now())
+    date_created = models.DateTimeField(auto_now_add=True)
+    date_updated = models.DateTimeField(auto_now=True)
 
     class Meta:
         ordering = ['name']
@@ -234,7 +234,7 @@ class Promo(models.Model):
 class Rating(models.Model):
     """The last rating that was loaded from the pb1 site"""
     last_rating_id = models.IntegerField(default=0, db_index=True)
-    date_created = models.DateTimeField(default=datetime.datetime.now())
+    date_created = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         get_latest_by = 'date_created'
@@ -250,8 +250,8 @@ class Series(models.Model):
     short_name = models.CharField(max_length=255)
     description = models.TextField(blank=True)
     deleted = models.BooleanField(default=False)
-    date_created = models.DateTimeField(default=datetime.datetime.now())
-    date_updated = models.DateTimeField(default=datetime.datetime.now())
+    date_created = models.DateTimeField(auto_now_add=True)
+    date_updated = models.DateTimeField(auto_now=True)
 
     class Meta:
         verbose_name_plural = "series"
@@ -360,8 +360,8 @@ class TitleContributor(models.Model):
     title = models.ForeignKey('Title', related_name='titlecontributors')
     contributor = models.ForeignKey('Contributor', related_name='titlecontributors')
     contributor_type = models.ForeignKey('ContributorType', related_name='titlecontributors')
-    date_created = models.DateTimeField(default=datetime.datetime.now())
-    date_updated = models.DateTimeField(default=datetime.datetime.now())
+    date_created = models.DateTimeField(auto_now_add=True)
+    date_updated = models.DateTimeField(auto_now=True)
 
     class Meta:
         verbose_name_plural = "Title Contributors"
@@ -387,8 +387,8 @@ class TitleUrl(models.Model):
     url = models.URLField()
     linktext = models.CharField(max_length=255)
     displayorder = models.IntegerField(null=False, default=1)
-    date_created = models.DateTimeField(default=datetime.datetime.now())
-    date_updated = models.DateTimeField(default=datetime.datetime.now())
+    date_created = models.DateTimeField(auto_now_add=True)
+    date_updated = models.DateTimeField(auto_now=True)
 
     def __unicode__(self):
         return "TitleUrls"
