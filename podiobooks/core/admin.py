@@ -11,7 +11,7 @@ from podiobooks.core.models import *  #@UnusedWildImport # pylint: disable=W0401
 
 class EpisodeInline(admin.TabularInline):
     model = Episode
-    exclude = ("deleted", "date_created", "date_updated")
+    exclude = ("deleted", )
 
 
 class TitleCategoryInline(admin.TabularInline):
@@ -20,18 +20,17 @@ class TitleCategoryInline(admin.TabularInline):
 
 class TitleInline(admin.TabularInline):
     model = Title
-    exclude = ("deleted", "date_created", "date_updated")
+    exclude = ("deleted", )
 
 
 class TitleContributorInline(admin.TabularInline):
     model = TitleContributor
-    exclude = ("date_created", "date_updated")
 
 
 class TitleMediaInline(admin.TabularInline):
     model = Media
     extra = 0
-    exclude = ("deleted", "date_created", "date_updated")
+    exclude = ("deleted", )
 
 
 ### MAIN ADMIN CLASSES
@@ -44,14 +43,13 @@ class AwardAdmin(admin.ModelAdmin):
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ('name',)
     prepopulated_fields = {'slug': ('name',)}
-    exclude = ('date_created', 'date_updated',)
 
 
 class ContributorAdmin(admin.ModelAdmin):
     inlines = [
         TitleContributorInline,
     ]
-    exclude = ("deleted", "date_created", "date_updated")
+    exclude = ("deleted", )
 
 
 class EpisodeAdmin(admin.ModelAdmin):
@@ -70,13 +68,11 @@ class MediaAdmin(admin.ModelAdmin):
 
 class PartnerAdmin(admin.ModelAdmin):
     list_display = ('name', 'url',)
-    exclude = ('date_created', 'date_updated',)
 
 
 class SeriesAdmin(admin.ModelAdmin):
     list_display = ('name',)
     prepopulated_fields = {'slug': ('name',)}
-    exclude = ("date_created", "date_updated",)
 
 
 class TitleAdmin(admin.ModelAdmin):
@@ -86,7 +82,7 @@ class TitleAdmin(admin.ModelAdmin):
     list_editable = ('display_on_homepage',)
     list_filter = (
         'license', 'advisory', 'display_on_homepage', 'is_complete', 'is_explicit', 'is_adult', 'deleted', 'status', 'date_updated')
-    exclude = ('byline', 'category_list', 'cover', 'date_updated', 'avg_overall', 'avg_audio_quality', 'avg_narration', 'avg_writing')
+    exclude = ('byline', 'category_list', 'cover', 'avg_overall', 'avg_audio_quality', 'avg_narration', 'avg_writing')
     inlines = [
         TitleCategoryInline,
         TitleContributorInline,
@@ -101,7 +97,6 @@ class TitleAdmin(admin.ModelAdmin):
 
 class TitleContributorAdmin(admin.ModelAdmin):
     list_display = ('title', 'contributor', 'contributor_type')
-    exclude = ("date_created", "date_updated")
 
 
 admin.site.register(Award)
