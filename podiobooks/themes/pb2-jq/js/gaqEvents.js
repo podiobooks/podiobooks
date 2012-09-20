@@ -1,5 +1,27 @@
 $(function(){
 	
+	$(".consume-list").each(function(){
+		var slug = $(this).data("title-slug");
+		
+		$("#consume-itunes>a").click(function(){
+			_gaq.push(['_trackEvent', 'Consume', 'DetailPage-ViewInITunes', slug]);
+		});
+		
+		$("#consume-amazon>a").click(function(){
+			_gaq.push(['_trackEvent', 'Consume', 'DetailPage-BuyFromAmazon', slug]);
+		});
+		
+		$("#consume-smashwords>a").click(function(){
+			_gaq.push(['_trackEvent', 'Consume', 'DetailPage-BuyFromSmashwords', slug]);
+		});
+		
+		$("#consume-rss>a").click(function(){
+			_gaq.push(['_trackEvent', 'Consume', 'DetailPage-RSSFeed', slug]);
+		});
+		
+	});
+	
+	
 	$(".shelf-item-heading a").each(function(){
 		var link = $(this);
 		link.click(function(ev){
