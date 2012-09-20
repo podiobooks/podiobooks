@@ -1,18 +1,5 @@
 [
     {
-        "pk":391,
-        "model":"core.media",
-        "fields":{
-            "name":"Smashwords Version",
-            "title":362,
-            "url":"",
-            "deleted":false,
-            "date_updated":"2012-09-19T22:40:58.352",
-            "date_created":"2012-09-19T22:40:58.352",
-            "identifier":"2966"
-        }
-    },
-    {
         "pk":424,
         "model":"core.media",
         "fields":{
@@ -117,19 +104,6 @@
         }
     },
     {
-        "pk":501,
-        "model":"core.media",
-        "fields":{
-            "name":"Smashwords Version",
-            "title":362,
-            "url":"",
-            "deleted":false,
-            "date_updated":"2012-09-19T22:43:03.839",
-            "date_created":"2012-09-19T22:43:03.839",
-            "identifier":"2966"
-        }
-    },
-    {
         "pk":534,
         "model":"core.media",
         "fields":{
@@ -231,19 +205,6 @@
             "date_updated":"2012-09-19T22:43:03.839",
             "date_created":"2012-09-19T22:43:03.839",
             "identifier":"24878"
-        }
-    },
-    {
-        "pk":611,
-        "model":"core.media",
-        "fields":{
-            "name":"Smashwords Version",
-            "title":362,
-            "url":"",
-            "deleted":false,
-            "date_updated":"2012-09-19T22:44:15.849",
-            "date_created":"2012-09-19T22:44:15.849",
-            "identifier":"2966"
         }
     },
     {
@@ -2324,19 +2285,6 @@
             "date_updated":"2012-09-19T22:44:15.849",
             "date_created":"2012-09-19T22:44:15.849",
             "identifier":"135491"
-        }
-    },
-    {
-        "pk":230,
-        "model":"core.media",
-        "fields":{
-            "name":"eBook Version",
-            "title":362,
-            "url":"",
-            "deleted":false,
-            "date_updated":"2012-09-19T22:39:57.652",
-            "date_created":"2012-09-19T22:39:57.652",
-            "identifier":"2966"
         }
     },
     {
