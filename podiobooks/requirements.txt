@@ -10,6 +10,7 @@ feedparser
 httplib2
 markdown
 pil
+pyga
 simplejson
 south
 git+git://github.com/Brant/django-mediabrute.git
