@@ -1,16 +1,9 @@
 django==1.4.1
-django-avatar
 django-debug-toolbar
 django-jenkins
-django-taggit
 django-tastypie
-django-markitup
-docutils
 feedparser
-httplib2
-markdown
 pil
 pyga
-simplejson
 south
 git+git://github.com/Brant/django-mediabrute.git
