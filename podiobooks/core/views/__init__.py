@@ -185,7 +185,7 @@ class FeedRedirectView(RedirectView):
 
     def get_redirect_url(self, **kwargs):
         """Uses PK of Title or Slug from URL to redirect to feed"""
-        pk = kwargs.get('pk', None)
+        pk = kwargs.get('pk', None) # pylint: disable=C0103
         slug = kwargs.get('slug', None)
 
         if not pk and not slug:
