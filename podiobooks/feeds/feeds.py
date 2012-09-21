@@ -12,16 +12,26 @@ from podiobooks.core.models import Title, Episode
 from podiobooks.feeds import feed_tools
 from podiobooks.feeds.protocols.itunes import ITunesFeed
 
+from pyga.requests import Tracker, Page, Session, Visitor
+
 class TitleFeed(Feed):
     """A simple feed that lists all Titles"""
     feed_type = Rss201rev2Feed
 
     title = "Podiobooks Title Feed"
-    link = "/title/"
-    description = "List of Titles from Podiobooks.com"
+    link = '/rss/feeds/titles'
+    description = "Titles from Podiobooks.com"
 
     def items(self):
         """Returns the list of items for the feed"""
+
+        ### Google Analytics for Feed
+        tracker = Tracker(settings.GOOGLE_ANALYTICS_ID, feed_tools.get_current_domain())
+        visitor = Visitor()
+        session = Session()
+        page = Page(self.link)
+        tracker.track_pageview(page, session, visitor)
+
         return Title.objects.all()
 
     def item_description(self, obj):
@@ -36,8 +46,20 @@ class TitleFeed(Feed):
 class RecentTitleFeed(TitleFeed):
     """A simple feed that lists recent Titles"""
 
+    title = "Podiobooks Recent Title Feed"
+    link = '/rss/feeds/titles/recent'
+    description = "Recent Titles from Podiobooks.com"
+
     def items(self):
         """Returns the list of items for the feed"""
+
+        ### Google Analytics for Feed
+        tracker = Tracker(settings.GOOGLE_ANALYTICS_ID, feed_tools.get_current_domain())
+        visitor = Visitor()
+        session = Session()
+        page = Page(self.link)
+        tracker.track_pageview(page, session, visitor)
+
         return Title.objects.order_by('-date_created')[:30]
 
 
@@ -81,7 +103,17 @@ class EpisodeFeed(Feed):
 
     # pylint: disable=W0221
     def get_object(self, request, title_slug):
-        return Title.objects.get(slug__exact=title_slug)
+
+        obj = Title.objects.get(slug__exact=title_slug)
+
+        ### Google Analytics for Feed
+        tracker = Tracker(settings.GOOGLE_ANALYTICS_ID, feed_tools.get_current_domain())
+        visitor = Visitor()
+        session = Session()
+        page = Page(obj.get_absolute_url())
+        tracker.track_pageview(page, session, visitor)
+
+        return obj
 
     def image(self, obj):
         return "http://asset-server.libsyn.com/show/{0}".format(obj.libsyn_show_id)
