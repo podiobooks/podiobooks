@@ -9,23 +9,25 @@ def create_title_from_libsyn_rss(rss_feed_url):
     title = {}
     
     feed = feedparser.parse(rss_feed_url)
-    if feed.feed:
-        feed = feed.feed
-    print feed
+    feed_info = feed.feed
     title['ID'] = ''
-    title['Subtitle'] = feed.summary_detail.base.replace('http://','').replace('.podiobooks.libsynpro.com/rss','')
-    title['Title'] = feed.title
-    title['license'] = feed.rights_detail.value
-    title['Description'] = feed.summary_detail.value
-    title['Coverimage'] = feed.image.href
+    title['Subtitle'] = feed_info.summary_detail.base.replace('http://','').replace('.podiobooks.libsynpro.com/rss','')
+    title['Title'] = feed_info.title
+    title['license'] = feed_info.rights_detail.value
+    title['Description'] = feed_info.summary_detail.value
+    title['Coverimage'] = feed_info.image.href
     title['DisplayOnHomepage'] = False
-    title['Explicit'] = feed.itunes_explicit
+    title['Explicit'] = feed_info.itunes_explicit
     title['Complete'] = False
     title['AvgAudioQuality'] = 0
     title['AvgNarration'] = 0
     title['AvgWriting'] = 0
     title['AvgOverall'] = 0
-    title['LibsynShowID'] = str(feed.image.href).replace('http://asset-server.libsyn.com/show/','').replace('/height/300/width/300.jpg','')
-    title['DateCreated'] = feed.updated
+    title['LibsynShowID'] = str(feed_info.image.href).replace('http://asset-server.libsyn.com/show/','').replace('/height/300/width/300.jpg','')
+    title['DateCreated'] = feed_info.updated
+
+    episodes = feed.entries
+    for episode in episodes:
+        print episode.link
 
     return title
