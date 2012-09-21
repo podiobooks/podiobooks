@@ -4,24 +4,52 @@ $(function(){
 	var placement = $(".title-description p:first");
 	var htmlAudio = $("html").hasClass("audio");
 	var slug = $(episodes).parents("article").data("title-slug");
+	var canPlayMp3 = false;
+	if (htmlAudio){
+		var browserAudio = new Audio();
+		if(browserAudio && browserAudio.canPlayType("audio/mpeg")){
+			canPlayMp3 = true;
+		}
+	}
 	
 	
-	/* href is location of audio file, ele is where to put this thing */
-	var createHTML5Player = function(ele, href){		
-		$("<h2>Play First Chapter</h2><audio controls><source src='" + href + "' type='audio/mp3' codecs='mp3'></audio>").appendTo(ele);
+	/* 
+	 * href is location of audio file, 
+	 * ele is where to put this thing, 
+	 * autoPlay is whether or not the player should start automatically  
+	 */
+	var createHTML5Player = function(ele, href, autoPlay){	
+		
+		var str = ""
+		
+		if (autoPlay){
+			str = " autoplay='autoplay' "
+		}
+		
+		$("<audio controls" + str + "><source src='" + href + "' type='audio/mp3' codecs='mp3'></audio>").appendTo(ele);
+		
 		var audioPlayer = ele.find("audio");
 		audioPlayer.bind("play", function(){
 			_gaq.push(['_trackEvent', 'Audio', 'DetailPage-First-Play', slug]);
 		});
+		
 		_gaq.push(['_trackEvent', 'Audio', 'DetailPage-HTML5', slug]);
 		
 	};
 	
-	/* href is location of audio file, ele is where to put this thing */
-	var createFlashPlayer = function(ele, href){
-		var replaceMe = $("<span id='replaceMeYo' />").appendTo(ele);
+	/* 
+	 * href is location of audio file, 
+	 * replaceMe is an element that will be replaced by the player
+	 * autoPlay is whether or not the player should start automatically
+	 *  
+	 */
+	var createFlashPlayer = function(replaceMe, href, autoPlay){
+		
+		if (autoPlay){ autoPlay = "yes"; }
+		else{ autoPlay = "no"; }
+		
 		AudioPlayer.embed(replaceMe.attr("id"), {
-			autostart:"no",
+			autostart:autoPlay,
 			loop:"no",
 			animation:"yes",
 			remaining:"no",
@@ -53,32 +81,42 @@ $(function(){
 	};
 	
 	
-	
-	// check for HTML5 audio capabilities first
 	if (episodes.length > 0){
-		
-		// check for MP3 capabilities
 		episodes.each(function(){
 			
 			var link = $(this);
 			var href = link.attr("href");
 			var audio = $("<aside id='title-first-chapter-player' class='first-chapter'></aside>").insertBefore(placement);
 			
-			if (htmlAudio){
-				var browserAudio = new Audio();
-				if(browserAudio && browserAudio.canPlayType("audio/mpeg")){					
-					createHTML5Player(audio, href);
-				}
-				else{
-					createFlashPlayer(audio, href);
-				}
+			if (canPlayMp3){					
+				createHTML5Player(audio, href);
 			}
 			else{
-				createFlashPlayer(audio, href);
-				$("<h2>Play First Chapter</h2>").prependTo(audio);
+				var flashReplaceMe = $("<span id='replaceMeYo' />").appendTo(audio);
+				createFlashPlayer(flashReplaceMe, href);
 			}
+			
+			$("<h2>Play First Chapter</h2>").prependTo(audio);
 			$(".title-details-infobar").insertAfter(audio);
+			
 		});
 	}
+	
+	/*
+	$(".episode-list-title>a").each(function(i){
+		$(this).click(function(ev){
+			ev.preventDefault();
+			var flashReplaceMe = $("<span id='play-ep-" + i + "' />").appendTo($(this).parents(".episode-list-item"));
+			if (canPlayMp3){
+				createHTML5Player(flashReplaceMe, $(this).attr("href"), true);
+			}
+			else{
+				createFlashPlayer(flashReplaceMe, $(this).attr("href"), true);
+			}
+			
+		});
+	});
+	
+	*/
 	
 });
