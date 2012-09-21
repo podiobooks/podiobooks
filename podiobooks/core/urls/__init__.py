@@ -43,7 +43,7 @@ urlpatterns = patterns('',
             context_object_name='title',
             template_name='core/title/title_detail.html'),
         name='title_detail'),
-    url(r'^title/(?P<title_id>\d+)/feed', 
+    url(r'^title/(?P<pk>\d+)/feed',
         FeedRedirectView.as_view()
     ),
     url(r'^title/(?P<slug>[^/]+)/feed',

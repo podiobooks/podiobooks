@@ -183,12 +183,16 @@ def top_rated(request, author=None):
 class FeedRedirectView(RedirectView):
     """Redirect the PB1 Feed Path to the PB2 Feed Path"""
 
-    def get_redirect_url(self, slug=None, title_id=None):
-        if not slug and not title_id:
+    def get_redirect_url(self, **kwargs):
+        """Uses PK of Title or Slug from URL to redirect to feed"""
+        pk = kwargs.get('pk', None)
+        slug = kwargs.get('slug', None)
+
+        if not pk and not slug:
             raise Http404
 
-        if title_id:
-            title = get_object_or_404(Title, pk=title_id)
+        if pk:
+            title = get_object_or_404(Title, pk=pk)
             slug = title.slug
 
         return reverse('title_episodes_feed', args=(slug,))
