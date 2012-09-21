@@ -28,7 +28,6 @@ CACHE_MIDDLEWARE_KEY_PREFIX = 'pb2'
 
 # List of Admin users to be emailed by error system
 MANAGERS = (
-# ('Tim White', 'tim@cyface.com'),
 )
 ADMINS = MANAGERS
 
