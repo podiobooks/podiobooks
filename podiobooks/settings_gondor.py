@@ -6,6 +6,12 @@ from .settings import *
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
+MANAGERS = (
+    ('Dev', 'podiobooksdev@gmail.com')
+)
+ADMINS = MANAGERS
+SEND_BROKEN_LINK_EMAILS = True
+
 if "GONDOR_DATABASE_URL" in os.environ:
     urlparse.uses_netloc.append("postgres")
     url = urlparse.urlparse(os.environ["GONDOR_DATABASE_URL"])
