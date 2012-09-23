@@ -44,7 +44,7 @@ urlpatterns = patterns('',
         name='title_search_keywords'),
     url(r'^title/(?P<slug>[^/]+)/$',
         DetailView.as_view
-            (queryset=Title.objects.all(),
+            (queryset=Title.objects.prefetch_related("series", "episodes", "media", "license").all(),
             context_object_name='title',
             template_name='core/title/title_detail.html'),
         name='title_detail'),
