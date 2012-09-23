@@ -17,6 +17,9 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # Home Page
     url(r'^$', 'podiobooks.core.views.index', name="home_page"),
+
+    # Recent Titles Feed Redirect
+    url(r'^index\.xml$', RedirectView.as_view(url='/rss/feeds/titles/recent/')),
                        
     # URLs from core package
     (r'^', include('podiobooks.core.urls')),
@@ -39,6 +42,7 @@ urlpatterns = patterns('',
     # Robots, Favicon and Related
     (r'^robots\.txt$', RobotsView.as_view()),
     (r'^favicon\.ico$', RedirectView.as_view(url=settings.STATIC_URL + 'images/favicon.ico')),
+    (r'^apple-touch-icon\.png$', RedirectView.as_view(url=settings.STATIC_URL + 'images/apple-touch-icon.png')),
     (r'^humans\.txt$', TextTemplateView.as_view(template_name='humans.txt')),
     (r'^crossdomain\.xml', TextTemplateView.as_view(template_name='crossdomain.xml')),
 
