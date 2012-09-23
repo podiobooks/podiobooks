@@ -44,7 +44,7 @@ def index(request):
     # Featured items, by category
     featured_title_list = homepage_title_list
     
-    category_choice_form = CategoryChoiceForm(request) 
+    category_choice_form = CategoryChoiceForm(request, cookie="featured_cat") 
     initial_category_slug = category_choice_form.fields["category"].initial
         
     if initial_category_slug:
@@ -56,7 +56,7 @@ def index(request):
     # Top rated items, by contributor
     toprated_title_list = homepage_title_list.filter(promoter_count__gte=20)
     
-    contributor_choice_form = ContributorChoiceForm(request)
+    contributor_choice_form = ContributorChoiceForm(request, cookie="toprated_author")
     initial_contributor_slug = contributor_choice_form.fields["contributor"].initial
     
     if initial_contributor_slug:
