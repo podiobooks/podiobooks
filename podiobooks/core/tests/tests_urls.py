@@ -98,6 +98,10 @@ class UrlTestCase(TestCase):
         response = self.client.get('/book.php', {'ID': 24})
         self.assertEquals(301, response.status_code)
 
+    def test_pb1_book2_redirect(self):
+        response = self.client.get('/podiobooks/book.php', {'ID': 24})
+        self.assertEquals(301, response.status_code)
+
     def test_pb1_xml_redirect(self):
         response = self.client.get('/index.xml')
         self.assertEquals(301, response.status_code)
