@@ -150,47 +150,6 @@ def title_search(request, keywords=None):
         context_instance=RequestContext(request))
 
 
-@cache_page(1)
-def homepage_featured(request, cat=None):
-    """
-    Gets a requested set of featured titles
-
-    for use with ajax
-
-    """
-
-    featured_title_list = Title.objects.filter(display_on_homepage=True).order_by('-date_created').all()
-
-    if cat:
-        featured_title_list = featured_title_list.filter(categories__slug=cat)
-
-    featured_title_list = featured_title_list.order_by('-date_created', 'name')[:16]
-
-    return render_to_response("core/shelf/tags/show_shelf_pages.html", {"title_list": featured_title_list},
-        context_instance=RequestContext(request))
-
-
-@cache_page(1)
-def top_rated(request, author=None):
-    """
-    Gets a requested set of top rated authors
-
-    for use with ajax
-
-    """
-
-    toprated_title_list = Title.objects.filter(display_on_homepage=True, promoter_count__gte=20).order_by(
-        '-date_created')
-
-    if author:
-        toprated_title_list = toprated_title_list.filter(contributors__slug=author)
-
-    toprated_title_list = toprated_title_list.order_by('-promoter_count')[:16]
-
-    return render_to_response("core/shelf/tags/show_shelf_pages.html", {"title_list": toprated_title_list},
-        context_instance=RequestContext(request))
-
-
 class FeedRedirectView(RedirectView):
     """Redirect the PB1 Feed Path to the PB2 Feed Path"""
 
