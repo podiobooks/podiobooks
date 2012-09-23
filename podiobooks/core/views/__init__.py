@@ -2,7 +2,7 @@
 
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from django.db.models import Q, Count, Min, Max
+from django.db.models import Q, Count, Max
 
 from django.core.urlresolvers import reverse
 from django.views.decorators.cache import cache_page
@@ -40,35 +40,36 @@ def index(request):
     template : core/templates/index.html
     """
     homepage_title_list = Title.objects.filter(display_on_homepage=True).order_by('-date_created').all()
-    
+
     # Featured items, by category
     featured_title_list = homepage_title_list
-    
-    category_choice_form = CategoryChoiceForm(request, cookie="featured_cat") 
+
+    category_choice_form = CategoryChoiceForm(request, cookie="featured_cat")
     initial_category_slug = category_choice_form.fields["category"].initial
-        
+
     if initial_category_slug:
         featured_title_list = featured_title_list.filter(categories__slug=initial_category_slug)
-    
+
     featured_title_list = featured_title_list.order_by('-date_created', 'name')[:16]
-    
-    
+
+
     # Top rated items, by contributor
     toprated_title_list = homepage_title_list.filter(promoter_count__gte=20)
-    
+
     contributor_choice_form = ContributorChoiceForm(request, cookie="toprated_author")
     initial_contributor_slug = contributor_choice_form.fields["contributor"].initial
-    
+
     if initial_contributor_slug:
         toprated_title_list = toprated_title_list.filter(contributors__slug=initial_contributor_slug)
-    
+
     toprated_title_list = toprated_title_list.order_by('-promoter_count').all()[:16]
-    
+
     # recently released
-    recently_released_list = Title.objects.filter(is_adult=False).annotate(Max("episodes__date_created")).order_by("-episodes__date_created__max")[:16]
-        
+    recently_released_list = Title.objects.filter(is_adult=False).annotate(Max("episodes__date_created")).order_by(
+        "-episodes__date_created__max")[:16]
+
     # Render template    
-    response_data = {        
+    response_data = {
         'featured_title_list': featured_title_list,
         'toprated_title_list': toprated_title_list,
         'recently_released_list': recently_released_list,
@@ -87,6 +88,16 @@ def title_search(request, keywords=None):
     
     template : N/A
     """
+    if "category" in request.GET:
+        try:
+            try:
+                category = Category.objects.get(pk=request.GET.get('category'))
+            except ValueError:
+                category = Category.objects.get(slug=request.GET.get('category'))
+            return redirect('category_detail', category.slug, permanent=True)
+        except ObjectDoesNotExist:
+            return HttpResponseRedirect(reverse("category_list"))
+
     if "keyword" in request.GET:
         form = TitleSearchForm(request.GET)
         additional_fields = TitleSearchAdditionalFieldsForm(request.GET)
@@ -119,7 +130,8 @@ def title_search(request, keywords=None):
             completed_filter = Q()
 
         search_results = Title.objects.filter(
-            (Q(name__icontains=keywords) | Q(description__icontains=keywords) | Q(byline__icontains=keywords)) & adult_filter & completed_filter)
+            (Q(name__icontains=keywords) | Q(description__icontains=keywords) | Q(
+                byline__icontains=keywords)) & adult_filter & completed_filter)
         search_metadata = None
         result_count = len(search_results)
 
@@ -131,19 +143,11 @@ def title_search(request, keywords=None):
             'search_metadata': search_metadata
         })
 
-        return render_to_response('core/title/title_search_results.html', response_data, context_instance=RequestContext(request))
+        return render_to_response('core/title/title_search_results.html', response_data,
+            context_instance=RequestContext(request))
 
-    if "category" in request.GET:        
-        try:
-            try:
-                category = Category.objects.get(pk=request.GET.get('category'))
-            except ValueError:
-                category = Category.objects.get(slug=request.GET.get('category'))
-            return redirect('category_detail', category.slug, permanent=True)        
-        except ObjectDoesNotExist:
-            return HttpResponseRedirect(reverse("category_list"))
-        
-    return render_to_response('core/title/title_search_results.html', response_data, context_instance=RequestContext(request))
+    return render_to_response('core/title/title_search_results.html', response_data,
+        context_instance=RequestContext(request))
 
 
 @cache_page(1)
@@ -159,10 +163,11 @@ def homepage_featured(request, cat=None):
 
     if cat:
         featured_title_list = featured_title_list.filter(categories__slug=cat)
-    
+
     featured_title_list = featured_title_list.order_by('-date_created', 'name')[:16]
 
-    return render_to_response("core/shelf/tags/show_shelf_pages.html", {"title_list": featured_title_list}, context_instance=RequestContext(request))
+    return render_to_response("core/shelf/tags/show_shelf_pages.html", {"title_list": featured_title_list},
+        context_instance=RequestContext(request))
 
 
 @cache_page(1)
@@ -174,14 +179,16 @@ def top_rated(request, author=None):
 
     """
 
-    toprated_title_list = Title.objects.filter(display_on_homepage=True, promoter_count__gte=20).order_by('-date_created')
+    toprated_title_list = Title.objects.filter(display_on_homepage=True, promoter_count__gte=20).order_by(
+        '-date_created')
 
     if author:
         toprated_title_list = toprated_title_list.filter(contributors__slug=author)
 
     toprated_title_list = toprated_title_list.order_by('-promoter_count')[:16]
 
-    return render_to_response("core/shelf/tags/show_shelf_pages.html", {"title_list": toprated_title_list}, context_instance=RequestContext(request))
+    return render_to_response("core/shelf/tags/show_shelf_pages.html", {"title_list": toprated_title_list},
+        context_instance=RequestContext(request))
 
 
 class FeedRedirectView(RedirectView):
@@ -200,6 +207,22 @@ class FeedRedirectView(RedirectView):
             slug = title.slug
 
         return reverse('title_episodes_feed', args=(slug,))
+
+
+class TitleRedirectView(RedirectView):
+    """Redirect the PB1 book.php Path to the PB2 Title Path"""
+
+    def get_redirect_url(self, **kwargs):
+        """Uses ID of Title from URL to redirect to Title"""
+        id = self.request.GET.get('ID', None) # pylint: disable=C0103
+
+        if id is not None:
+            title = get_object_or_404(Title, pk=id)
+            slug = title.slug
+
+            return reverse('title_detail', args=(slug,))
+        else:
+            raise Http404
 
 
 class CategoryTitleListView(ListView):

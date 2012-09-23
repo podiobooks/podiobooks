@@ -5,16 +5,11 @@
 from django.conf.urls import include, patterns, url
 from django.conf import settings
 from django.views.generic import DetailView, ListView
-
 from podiobooks.core.models import Category, Contributor, Episode, Series, Title
-from podiobooks.core.views import FeedRedirectView, CategoryTitleListView
+from podiobooks.core.views import CategoryTitleListView, FeedRedirectView, TitleRedirectView
 
 
 urlpatterns = patterns('',
-
-    (r'^favicon\.ico$', 'django.views.generic.simple.redirect_to', {'url': settings.STATIC_URL + 'images/favicon.ico'}),
-    (r'^apple-touch-icon\.png$', 'django.views.generic.simple.redirect_to', {'url': settings.STATIC_URL + 'images/apple-touch-icon.png'}),
-
     # series
     url(r'^series/$',
         ListView.as_view(
@@ -29,6 +24,14 @@ urlpatterns = patterns('',
             template_name='core/series/series_detail.html'),
         name='series_detail'),
 
+    # title search
+    url(r'^title/search/$',
+        'podiobooks.core.views.title_search',
+        name='title_search'),
+    url(r'^title/search/(?P<keywords>[^/]+)/$',
+        'podiobooks.core.views.title_search',
+        name='title_search_keywords'),
+
     # title
     url(r'^title/$',
         ListView.as_view(
@@ -36,23 +39,22 @@ urlpatterns = patterns('',
             context_object_name='title',
             template_name='core/title/title_list.html'),
         name='title_list'),
-    url(r'^title/search/$',
-        'podiobooks.core.views.title_search',
-        name='title_search'),
-    url(r'^title/search/(?P<keywords>[^/]+)/$',
-        'podiobooks.core.views.title_search',
-        name='title_search_keywords'),
     url(r'^title/(?P<slug>[^/]+)/$',
         DetailView.as_view
             (queryset=Title.objects.prefetch_related("series", "episodes", "media", "license").all(),
             context_object_name='title',
             template_name='core/title/title_detail.html'),
         name='title_detail'),
-    url(r'^title/(?P<pk>\d+)/feed',
-        FeedRedirectView.as_view()
+
+    # PB1 book.php redirect
+    url(r'^book\.php$',
+        TitleRedirectView.as_view()
     ),
     # PB1 Feed Redirect
     url(r'^title/(?P<slug>[^/]+)/feed',
+        FeedRedirectView.as_view()
+    ),
+    url(r'^title/(?P<pk>\d+)/feed',
         FeedRedirectView.as_view()
     ),
     # PB1 Custom Feed Redirect
@@ -63,7 +65,7 @@ urlpatterns = patterns('',
     url(r'^bookfeed/sampler/(?P<pk>\d+)/book\.xml',
         FeedRedirectView.as_view()
     ),
-    
+
 
     # category
     url(r'^category/$', ListView.as_view(
