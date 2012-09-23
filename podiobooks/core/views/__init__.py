@@ -2,10 +2,10 @@
 
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from django.db.models import Q
+from django.db.models import Q, Count, Min, Max
+
 from django.core.urlresolvers import reverse
 from django.views.decorators.cache import cache_page
-from django.db.models import Count
 from django.views.generic import ListView, RedirectView
 from django.shortcuts import get_object_or_404, redirect
 from django.http import Http404, HttpResponseRedirect
@@ -64,10 +64,14 @@ def index(request):
     
     toprated_title_list = toprated_title_list.order_by('-promoter_count').all()[:16]
     
+    # recently released
+    recently_released_list = Title.objects.filter(is_adult=False).annotate(Max("episodes__date_created")).order_by("-episodes__date_created__max")[:16]
+        
     # Render template    
     response_data = {        
         'featured_title_list': featured_title_list,
         'toprated_title_list': toprated_title_list,
+        'recently_released_list': recently_released_list,
         'category_choice_form': category_choice_form,
         'contributor_choice_form': contributor_choice_form,
     }
