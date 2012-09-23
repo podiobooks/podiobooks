@@ -51,7 +51,7 @@ DEFAULT_FROM_EMAIL = os.environ.get("DEFAULT_FROM_EMAIL", "")
 SERVER_EMAIL = os.environ.get("SERVER_EMAIL", "")
 MANAGERS = os.environ.get(eval("MANAGERS"), (('Podiobooks', 'podiobooksdev@gmail.com'),))
 ADMINS = os.environ.get(eval("ADMINS"), MANAGERS)
-SEND_BROKEN_LINK_EMAILS = os.environ.get("SEND_BROKEN_LINK_EMAILS", False)
+SEND_BROKEN_LINK_EMAILS = os.environ.get(eval("SEND_BROKEN_LINK_EMAILS"), False)
 
 INSTALLED_APPS += ()
 
