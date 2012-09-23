@@ -26,6 +26,10 @@ static_urls:
         root: site_media/staticroot/
     - /assets/media/:
         root: site_media/mediaroot/
+    - /images:
+        root: /dev/null
+    - /index.php:
+        root: /dev/null
 
 wsgi:
     # The WSGI entry point of your application in two parts separated by a
