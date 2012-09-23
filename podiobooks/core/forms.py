@@ -16,7 +16,7 @@ class BrowseByForm(forms.Form):
 class CategoryChoiceForm(forms.Form):
     """ Form used to select a category - used in header """
     
-    def __init__(self, request, *args, **kwargs):
+    def __init__(self, request, cookie, *args, **kwargs):
         """ Custom init to check for cookies """
         super(CategoryChoiceForm, self).__init__(*args, **kwargs)
         
@@ -26,7 +26,7 @@ class CategoryChoiceForm(forms.Form):
             categories = Category.objects.filter(~Q(slug="erotica"), title__display_on_homepage=True).annotate(title_count=Count('title')).filter(title_count__gt=2).order_by('name').values_list('slug', 'name')
             cache.set('category_dropdown_values', categories, 240)
         
-        initial_category = request.COOKIES.get("featured_cat")
+        initial_category = request.COOKIES.get(cookie)
         
         categories = list(categories)
         categories.insert(0, ("", "Any Category"))
@@ -44,7 +44,7 @@ class CategoryChoiceForm(forms.Form):
 class ContributorChoiceForm(forms.Form):
     """ Form used to select contributors on the Author Spotlight shelf """
     
-    def __init__(self, request, *args, **kwargs):
+    def __init__(self, request, cookie, *args, **kwargs):
         """ Custom init to check for cookies """
         super(ContributorChoiceForm, self).__init__(*args, **kwargs)
     
@@ -59,7 +59,7 @@ class ContributorChoiceForm(forms.Form):
               
             cache.set('contributor_dropdown_values', contributors, 240)
             
-        initial_contributor = request.COOKIES.get("toprated_author")
+        initial_contributor = request.COOKIES.get(cookie)
         
         contributors = list(contributors)
         contributors.insert(0, ("", "All Authors"))
