@@ -1,22 +1,11 @@
 {% load shelf_templatetags %}
+
 {% if title_list %}
-<div id="{{ shelf_id }}">
-	<ul>
-    {% for title in title_list %}
-	    {% if forloop.first %}
-		    <li id="{{ shelf_id }}_page_0" >
-		{% endif %}
-		
-        {% show_shelf_item shelf_id title %}
-		
-        {% if forloop.counter|divisibleby:shelf_title_width and not forloop.last %}
-    		</li>
-    		<li id="{{ shelf_id }}_page_{% widthratio forloop.counter shelf_title_width 1 %}">
-        {% endif %}
-        {% if forloop.last %}
-    		</li>
-		{% endif %}
-    {% endfor %}
-	</ul>
-</div>
+
+	<div id="{{ shelf_id }}">
+	    {% for title in title_list %}
+	        {% show_shelf_item shelf_id title %}
+	    {% endfor %}
+	</div>
+
 {% endif %}
