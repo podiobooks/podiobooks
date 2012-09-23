@@ -59,6 +59,10 @@ urlpatterns = patterns('',
     url(r'^bookfeed/(?P<user_id>\d+)/(?P<pk>\d+)/book\.xml',
         FeedRedirectView.as_view()
     ),
+    # PB1 Custom Sampler Feed Redirect
+    url(r'^bookfeed/sampler/(?P<pk>\d+)/book\.xml',
+        FeedRedirectView.as_view()
+    ),
     
 
     # category
