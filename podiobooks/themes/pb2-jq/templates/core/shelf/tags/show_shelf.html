@@ -4,7 +4,6 @@
 <!-- Begin {{ shelf_title }} Shelf -->
 <section class="shelf-wrapper clearfix" id="{{ shelf_id }}Container">
     <h2 class="shelf-heading shelf-heading-{{ base_css_class }}">{{ shelf_title }}</h2>
-
     
     <div class="shelf shelf-{{ base_css_class }}" id="{{ shelf_id }}PageContainer">
         {% if dropdown_form %}
@@ -12,8 +11,9 @@
                 {{ dropdown_form.as_p }}
             </form>
         {% endif %}
-        <div id="{{ shelf_id }}Controller" class="pb-shelf-controller"></div>
-        {% show_shelf_pages shelf_id shelf_title title_list shelf_title_width %}
+        
+        {% show_shelf_pages shelf_id shelf_title title_list %}
+        
     </div>
 </section>
 
