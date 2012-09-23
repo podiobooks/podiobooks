@@ -6,10 +6,6 @@ from .settings import *
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
-MANAGERS = (('Dev', 'podiobooksdev@gmail.com'),)
-ADMINS = MANAGERS
-SEND_BROKEN_LINK_EMAILS = True
-
 if "GONDOR_DATABASE_URL" in os.environ:
     urlparse.uses_netloc.append("postgres")
     url = urlparse.urlparse(os.environ["GONDOR_DATABASE_URL"])
@@ -51,6 +47,11 @@ EMAIL_PORT = os.environ.get("EMAIL_PORT", 587)
 EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER", "")
 EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD", "")
 EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = os.environ.get("DEFAULT_FROM_EMAIL", "")
+SERVER_EMAIL = os.environ.get("SERVER_EMAIL", "")
+MANAGERS = os.environ.get("MANAGERS", "")
+ADMINS = os.environ.get("ADMINS", MANAGERS)
+SEND_BROKEN_LINK_EMAILS = os.environ.get("SEND_BROKEN_LINK_EMAILS", False)
 
 INSTALLED_APPS += ()
 
