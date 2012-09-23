@@ -4,7 +4,7 @@
 
 from django.conf.urls import include, patterns, url
 from django.conf import settings
-from django.views.generic import DetailView, ListView, RedirectView
+from django.views.generic import DetailView, ListView
 
 from podiobooks.core.models import Category, Contributor, Episode, Series, Title
 from podiobooks.core.views import FeedRedirectView, CategoryTitleListView
@@ -51,7 +51,12 @@ urlpatterns = patterns('',
     url(r'^title/(?P<pk>\d+)/feed',
         FeedRedirectView.as_view()
     ),
+    # PB1 Feed Redirect
     url(r'^title/(?P<slug>[^/]+)/feed',
+        FeedRedirectView.as_view()
+    ),
+    # PB1 Custom Feed Redirect
+    url(r'^bookfeed/(?P<user_id>\d+)/(?P<pk>\d+)/book\.xml',
         FeedRedirectView.as_view()
     ),
     
