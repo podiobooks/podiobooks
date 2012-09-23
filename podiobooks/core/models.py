@@ -175,6 +175,7 @@ MEDIA_NAME_CHOICES = (
     ('Smashwords Version', 'Smashwords Version'),
     )
 
+
 class Media(models.Model):
     """Media are links to other forms of the title. In the case of books, these
     would be dead tree editions, epub, etc."""

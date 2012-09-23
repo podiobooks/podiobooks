@@ -280,7 +280,7 @@
 					}
 					else{
 						settings.url += select.val();
-					}					
+					}
 				}
 			}
 			

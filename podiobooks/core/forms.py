@@ -59,7 +59,7 @@ class ContributorChoiceForm(forms.Form):
               
             cache.set('contributor_dropdown_values', contributors, 240)
             
-        initial_contributor = request.COOKIES.get("toprated_cat")
+        initial_contributor = request.COOKIES.get("toprated_author")
         
         contributors = list(contributors)
         contributors.insert(0, ("", "All Authors"))
