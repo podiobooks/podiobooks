@@ -214,10 +214,10 @@ class TitleRedirectView(RedirectView):
 
     def get_redirect_url(self, **kwargs):
         """Uses ID of Title from URL to redirect to Title"""
-        id = self.request.GET.get('ID', None) # pylint: disable=C0103
+        pk = self.request.GET.get('ID', None) # pylint: disable=C0103
 
-        if id is not None:
-            title = get_object_or_404(Title, pk=id)
+        if pk:
+            title = get_object_or_404(Title, pk=pk)
             slug = title.slug
 
             return reverse('title_detail', args=(slug,))
