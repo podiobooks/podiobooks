@@ -90,6 +90,10 @@ class UrlTestCase(TestCase):
         response = self.client.get('/charts.php')
         self.assertEquals(301, response.status_code)
 
+    def test_pb1_authors_redirect(self):
+        response = self.client.get('/authors.php')
+        self.assertEquals(301, response.status_code)
+
     def test_pb1_book_redirect(self):
         response = self.client.get('/book.php', {'ID': 24})
         self.assertEquals(301, response.status_code)
