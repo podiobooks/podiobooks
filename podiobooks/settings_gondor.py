@@ -6,9 +6,7 @@ from .settings import *
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
-MANAGERS = (
-    ('Dev', 'podiobooksdev@gmail.com')
-)
+MANAGERS = (('Dev', 'podiobooksdev@gmail.com'),)
 ADMINS = MANAGERS
 SEND_BROKEN_LINK_EMAILS = True
 
