@@ -14,6 +14,12 @@ $(function(){
 			"clearShelfFirst": false
 		});
 		
+		$("#recent_titles_shelfPageContainer").pbShelf({
+			"cookie": "recent_by_category", 
+			"checkCookie": true,
+			"clearShelfFirst": false
+		});
+		
 		//$(".half-shelf>.shelf, .quarter-shelf>.shelf").pbShelf();
 				
 	}
