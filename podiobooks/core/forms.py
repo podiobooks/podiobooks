@@ -38,7 +38,7 @@ class CategoryChoiceForm(forms.Form):
                 pass
         
         self.fields["category"] = forms.ChoiceField(choices=categories, widget=forms.Select(attrs={'class':'pb-category-choice'}), initial=initial_category)
-        self.submit_url = reverse("shelf", kwargs={"shelf_type": "featured_by_category"})
+        self.submit_url = reverse("shelf", kwargs={"shelf_type": cookie})
 
 
 class ContributorChoiceForm(forms.Form):
@@ -71,7 +71,7 @@ class ContributorChoiceForm(forms.Form):
                 pass
         
         self.fields["contributor"] = forms.ChoiceField(choices=[(slug, display) for slug, display in contributors], widget=forms.Select(attrs={'class':'pb-contributor-choice'}), initial=initial_contributor)
-        self.submit_url = reverse("shelf", kwargs={"shelf_type": "top_rated_by_author"})
+        self.submit_url = reverse("shelf", kwargs={"shelf_type": cookie})
 
 
 class TitleSearchAdditionalFieldsForm(forms.Form):
