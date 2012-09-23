@@ -3,12 +3,17 @@
 # pylint: disable=W0401,W0614,C0103
 
 from django.conf.urls import include, patterns, url
+from django.conf import settings
+from django.views.generic import DetailView, ListView, RedirectView
 
 from podiobooks.core.models import Category, Contributor, Episode, Series, Title
-from django.views.generic import DetailView, ListView, RedirectView
 from podiobooks.core.views import FeedRedirectView, CategoryTitleListView
 
+
 urlpatterns = patterns('',
+
+    (r'^favicon\.ico$', 'django.views.generic.simple.redirect_to', {'url': settings.STATIC_URL + 'images/favicon.ico'}),
+    (r'^apple-touch-icon\.png$', 'django.views.generic.simple.redirect_to', {'url': settings.STATIC_URL + 'images/apple-touch-icon.png'}),
 
     # series
     url(r'^series/$',
