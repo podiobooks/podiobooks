@@ -42,6 +42,7 @@
 	</head>
 
 	<body class='{% block body_class %}{% endblock %}'>
+		<a href="#page-content" class="jump-to-content">Go to Page Content</a>
 		<header class="head width clearfix">
 		    <!-- Begin Header -->
 		    {% block header %}
@@ -74,7 +75,7 @@
 		    {% endblock %}
 		    <!-- End Header -->
 		</header>
-		<div class='pg clearfix width'>
+		<div id="page-content" class='pg clearfix width'>
 		
 		
 		    <!-- Begin Main Content -->
