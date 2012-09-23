@@ -4,6 +4,7 @@ Views for homepage shelves
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.http import Http404
+from django.db.models import Max
 from django.views.generic.base import View
 from django.core.urlresolvers import reverse
 
@@ -41,6 +42,17 @@ class FilteredShelf(View):
         toprated_title_list = toprated_title_list.order_by('-promoter_count')[:16]
     
         return render_to_response("core/shelf/tags/show_shelf_pages.html", {"title_list": toprated_title_list}, context_instance=RequestContext(self.request))    
+    
+    def recent_by_category(self, category=None):
+        # recently released
+        recently_released_list = Title.objects.filter(is_adult=False).annotate(Max("episodes__date_created"))
+        
+        if category:
+            recently_released_list = recently_released_list.filter(categories__slug=category)
+            
+        recently_released_list = recently_released_list.order_by("-episodes__date_created__max")[:16]
+    
+        return render_to_response("core/shelf/tags/show_shelf_pages.html", {"title_list": recently_released_list}, context_instance=RequestContext(self.request))
     
     def featured_by_category(self, category=None):
         """

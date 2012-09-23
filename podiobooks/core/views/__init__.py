@@ -64,9 +64,17 @@ def index(request):
 
     toprated_title_list = toprated_title_list.order_by('-promoter_count').all()[:16]
 
+
     # recently released
-    recently_released_list = Title.objects.filter(is_adult=False).annotate(Max("episodes__date_created")).order_by(
-        "-episodes__date_created__max")[:16]
+    recently_released_list = Title.objects.filter(is_adult=False).annotate(Max("episodes__date_created"))
+    
+    category_choice_form_recent = CategoryChoiceForm(request, cookie="recent_by_category")
+    initial_category_slug_recent = category_choice_form_recent.fields["category"].initial
+    
+    if initial_category_slug_recent:
+        recently_released_list = recently_released_list.filter(categories__slug=initial_category_slug_recent)
+        
+    recently_released_list = recently_released_list.order_by("-episodes__date_created__max")[:16]
 
     # Render template    
     response_data = {
@@ -75,6 +83,7 @@ def index(request):
         'recently_released_list': recently_released_list,
         'category_choice_form': category_choice_form,
         'contributor_choice_form': contributor_choice_form,
+        'category_choice_form_recent': category_choice_form_recent,
     }
 
     return render_to_response('core/index.html', response_data, context_instance=RequestContext(request))
