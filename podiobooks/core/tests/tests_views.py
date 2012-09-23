@@ -5,8 +5,11 @@ from django.test import TestCase
 from django.test.client import Client
 from django.core.urlresolvers import reverse
 
+
 class ShelfTestCase(TestCase):
-    """ Test homepage shelves """
+    """ 
+    Test homepage shelves 
+    """
     def setUp(self):
         self.client = Client()
         
@@ -26,5 +29,5 @@ class ShelfTestCase(TestCase):
         for shelf_type in shelf_types:
             resp = self.client.get(reverse("shelf", kwargs={"shelf_type": shelf_type}))
             self.assertEquals(resp.status_code, 200)
-            resp = self.client.get(reverse("shelf", kwargs={"shelf_type": "featured_by_category", "title_filter": "asdf"}))
+            resp = self.client.get(reverse("shelf", kwargs={"shelf_type": shelf_type, "title_filter": "asdf"}))
             self.assertEquals(resp.status_code, 200)
