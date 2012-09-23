@@ -352,11 +352,12 @@
 				 	
 				 	for (var i = 0; i < numSteps; i++){
 				 		var li;
+				 		var iPlus = i + 1;
 				 		if (i == curStep){
-				 			li = $("<li><a class='shelf-step-cur' href='#'></a></li>").appendTo(shelfSteps);
+				 			li = $("<li><a class='shelf-step-cur' href='#'><span class='visuallyhidden'>Page " + iPlus + "</span></a></li>").appendTo(shelfSteps);
 				 		}
 				 		else{
-				 			li = $("<li><a href='#'></a></li>").appendTo(shelfSteps);
+				 			li = $("<li><a href='#'><span class='visuallyhidden'>Page " + iPlus + "</span></a></li>").appendTo(shelfSteps);
 				 		}
 				 		
 				 		circ = li.find("a");
