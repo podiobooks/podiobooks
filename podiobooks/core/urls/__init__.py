@@ -3,10 +3,11 @@
 # pylint: disable=W0401,W0614,C0103
 
 from django.conf.urls import include, patterns, url
-from django.conf import settings
 from django.views.generic import DetailView, ListView
+from django.views.decorators.cache import cache_page
 from podiobooks.core.models import Category, Contributor, Episode, Series, Title
 from podiobooks.core.views import CategoryTitleListView, FeedRedirectView, TitleRedirectView
+from podiobooks.core.views.shelf import FilteredShelf
 
 
 urlpatterns = patterns('',
@@ -97,19 +98,13 @@ urlpatterns = patterns('',
         template_name='core/episode/episode_detail.html'),
         name='episode_detail'),
 
-    # Lazy Loaders
-    url(r'^featured/$',
-        'podiobooks.core.views.homepage_featured',
-        name="lazy_load_featured_title"),
-    url(r'^featured/(?P<cat>[\w\-]+)/$',
-        'podiobooks.core.views.homepage_featured',
-        name="lazy_load_featured_title_cat"),
-    url(r'^top-rated/$',
-        'podiobooks.core.views.top_rated',
-        name="lazy_load_top_rated_title"),
-    url(r'^top-rated/(?P<author>[\w\-]+)/$',
-        'podiobooks.core.views.top_rated',
-        name="lazy_load_top_rated_title_author"),
+    # Homepage shelf AJAX endpoints
+    url(r'^shelf/(?P<shelf_type>[\w\_]+)/$',
+        cache_page(FilteredShelf.as_view(), 1),
+        name="shelf"),
+    url(r'^shelf/(?P<shelf_type>[\w\_]+)/(?P<title_filter>[\w\-]+)/$',
+        cache_page(FilteredShelf.as_view(), 1),
+        name="shelf"),
 
     # API
     (r'^api/', include('podiobooks.core.urls.urls_api')),
