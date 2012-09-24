@@ -88,13 +88,12 @@ class SeriesAdmin(admin.ModelAdmin):
 class TitleAdmin(admin.ModelAdmin):
     date_hierarchy = 'date_created'
     list_display = (
-        'name', 'license', 'advisory', 'is_explicit', 'is_adult', 'is_complete', 'display_on_homepage', 'deleted',
-        'status', 'date_updated')
+        'name', 'license', 'advisory', 'is_explicit', 'is_adult', 'display_on_homepage', 'deleted', 'date_updated')
     list_editable = ('display_on_homepage',)
     list_filter = (
-        'license', 'advisory', 'display_on_homepage', 'is_complete', 'is_explicit', 'is_adult', 'deleted', 'status',
+        'license', 'advisory', 'display_on_homepage', 'is_explicit', 'is_adult', 'deleted',
         'date_updated')
-    exclude = ('byline', 'category_list', 'cover', 'avg_overall', 'avg_audio_quality', 'avg_narration', 'avg_writing')
+    exclude = ('byline', 'category_list', 'cover',)
     inlines = [
         TitleCategoryInline,
         TitleContributorInline,
@@ -119,7 +118,6 @@ admin.site.register(ContributorType)
 admin.site.register(License, LicenseAdmin)
 admin.site.register(Episode, EpisodeAdmin)
 admin.site.register(Media, MediaAdmin)
-admin.site.register(Partner, PartnerAdmin)
 admin.site.register(Series, SeriesAdmin)
 admin.site.register(Title, TitleAdmin)
 admin.site.register(TitleContributor, TitleContributorAdmin)
