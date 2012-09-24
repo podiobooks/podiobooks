@@ -12,28 +12,30 @@ from podiobooks.core.models import Title, Episode
 from podiobooks.feeds import feed_tools
 from podiobooks.feeds.protocols.itunes import ITunesFeed
 
-from pyga.requests import Tracker, Page, Session, Visitor
+from pyga.requests import Event, Session, Tracker, Visitor
 
 class TitleFeed(Feed):
     """A simple feed that lists all Titles"""
     feed_type = Rss201rev2Feed
 
-    title = "Podiobooks Title Feed"
+    title = "Podiobooks All Titles Feed"
     link = '/rss/feeds/titles'
     description = "Titles from Podiobooks.com"
 
     def items(self):
         """Returns the list of items for the feed"""
+        return Title.objects.all()
 
+    def get_feed(self, obj, request):
         ### Google Analytics for Feed
         tracker = Tracker(settings.GOOGLE_ANALYTICS_ID, feed_tools.get_current_domain())
         visitor = Visitor()
-        session = Session()
-        page = Page(self.link)
-        page.title = 'All Titles RSS Feed'
-        tracker.track_pageview(page, session, visitor)
+        visitor.ip_address = request.META.get('REMOTE_ADDR', '')
+        visitor.user_agent = request.META.get('HTTP_USER_AGENT', '')
+        event = Event(category='RSS', action=self.title, label=self.link, value=None, noninteraction=False)
+        tracker.track_event(event, Session(), visitor)
 
-        return Title.objects.all()
+        return super(TitleFeed, self).get_feed(obj, request)
 
     def item_description(self, obj):
         return strip_tags(obj.description).replace('&amp;', '&')
@@ -44,24 +46,16 @@ class TitleFeed(Feed):
     def item_title(self, obj):
         return strip_tags(obj.name).replace('&amp;', '&')
 
+
 class RecentTitleFeed(TitleFeed):
     """A simple feed that lists recent Titles"""
 
-    title = "Podiobooks Recent Title Feed"
+    title = "Podiobooks Recent Titles Feed"
     link = '/rss/feeds/titles/recent'
     description = "Recent Titles from Podiobooks.com"
 
     def items(self):
         """Returns the list of items for the feed"""
-
-        ### Google Analytics for Feed
-        tracker = Tracker(settings.GOOGLE_ANALYTICS_ID, feed_tools.get_current_domain())
-        visitor = Visitor()
-        session = Session()
-        page = Page(self.link)
-        page.title = 'Recent Titles RSS Feed'
-        tracker.track_pageview(page, session, visitor)
-
         return Title.objects.order_by('-date_created')[:30]
 
 
@@ -103,7 +97,6 @@ class EpisodeFeed(Feed):
 
     # pylint: disable=W0221
     def get_object(self, request, title_slug):
-
         obj = Title.objects.get(slug__exact=title_slug)
 
         ### Google Analytics for Feed
@@ -111,11 +104,8 @@ class EpisodeFeed(Feed):
         visitor = Visitor()
         visitor.ip_address = request.META.get('REMOTE_ADDR', '')
         visitor.user_agent = request.META.get('HTTP_USER_AGENT', '')
-        session = Session()
-        page = Page('/rss/feeds/episodes/{0}/'.format(title_slug))
-        page.title = '{0} RSS Feed'.format(title_slug)
-        page.referrer = request.META.get('HTTP_REFERER','')
-        tracker.track_pageview(page, session, visitor)
+        event = Event(category='RSS', action='Podiobooks Episodes Feed', label=title_slug, value=None, noninteraction=False)
+        tracker.track_event(event, Session(), visitor)
 
         return obj
 
