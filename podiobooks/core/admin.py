@@ -16,6 +16,7 @@ class EpisodeInline(admin.TabularInline):
 
 class TitleCategoryInline(admin.TabularInline):
     model = TitleCategory
+    extra = 0
 
 
 class TitleInline(admin.TabularInline):
@@ -25,6 +26,8 @@ class TitleInline(admin.TabularInline):
 
 class TitleContributorInline(admin.TabularInline):
     model = TitleContributor
+    ordering = ['contributor__last_name', 'contributor__first_name']
+    extra = 0
 
 
 class TitleMediaInline(admin.TabularInline):
@@ -50,6 +53,13 @@ class ContributorAdmin(admin.ModelAdmin):
         TitleContributorInline,
     ]
     exclude = ("deleted", )
+    search_fields = ['display_name', ]
+    ordering = ['last_name', 'first_name']
+    list_display = ['last_name', 'first_name', 'title_count']
+
+
+    def title_count(self, obj):
+        return obj.title_set.count()
 
 
 class EpisodeAdmin(admin.ModelAdmin):
@@ -78,10 +88,12 @@ class SeriesAdmin(admin.ModelAdmin):
 class TitleAdmin(admin.ModelAdmin):
     date_hierarchy = 'date_created'
     list_display = (
-        'name', 'license', 'advisory', 'is_explicit', 'is_adult', 'is_complete', 'display_on_homepage', 'deleted', 'status', 'date_updated')
+        'name', 'license', 'advisory', 'is_explicit', 'is_adult', 'is_complete', 'display_on_homepage', 'deleted',
+        'status', 'date_updated')
     list_editable = ('display_on_homepage',)
     list_filter = (
-        'license', 'advisory', 'display_on_homepage', 'is_complete', 'is_explicit', 'is_adult', 'deleted', 'status', 'date_updated')
+        'license', 'advisory', 'display_on_homepage', 'is_complete', 'is_explicit', 'is_adult', 'deleted', 'status',
+        'date_updated')
     exclude = ('byline', 'category_list', 'cover', 'avg_overall', 'avg_audio_quality', 'avg_narration', 'avg_writing')
     inlines = [
         TitleCategoryInline,
