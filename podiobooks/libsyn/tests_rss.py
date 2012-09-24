@@ -4,6 +4,8 @@
 
 from django.test import TestCase
 from podiobooks.libsyn import create_title_from_libsyn_rss
+from django.conf import settings
+import os
 
 class LibsynRSSTestCase(TestCase):
     # fixtures = []
@@ -12,11 +14,7 @@ class LibsynRSSTestCase(TestCase):
         pass
     
     def testParseRss(self):
-        titleData = create_title_from_libsyn_rss.create_title_from_libsyn_rss('http://infected.podiobooks.libsynpro.com/rss')
+        titleData = create_title_from_libsyn_rss.create_title_from_libsyn_rss(os.path.join(settings.PROJECT_ROOT,'libsyn','libsyn_example.rss'))
         print titleData
         self.assertEquals(titleData['Subtitle'], 'infected')
-        
-        titleData = create_title_from_libsyn_rss.create_title_from_libsyn_rss('http://shadowmagic2.podiobooks.libsynpro.com/rss')
-        print titleData
-        self.assertEquals(titleData['Subtitle'], 'shadowmagic2')
         
