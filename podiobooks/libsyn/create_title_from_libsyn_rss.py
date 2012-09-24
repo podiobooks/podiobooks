@@ -11,7 +11,6 @@ def create_title_from_libsyn_rss(rss_feed_url):
     feed = feedparser.parse(rss_feed_url)
     feed_info = feed.feed
     title['ID'] = ''
-    title['Subtitle'] = feed_info.summary_detail.base.replace('http://','').replace('.podiobooks.libsynpro.com/rss','')
     title['Title'] = feed_info.title
     title['license'] = feed_info.rights_detail.value
     title['Description'] = feed_info.summary_detail.value
