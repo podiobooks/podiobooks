@@ -63,8 +63,9 @@ class ContributorAdmin(admin.ModelAdmin):
 
 
 class EpisodeAdmin(admin.ModelAdmin):
-    list_display = ('sequence', 'name', 'description', 'url', 'filesize')
-
+    list_display = ('title', 'sequence', 'name', 'description', 'url', 'filesize', 'date_created', 'date_updated')
+    date_hierarchy = 'date_created'
+    search_fields = ['name', 'description']
 
 class LicenseAdmin(admin.ModelAdmin):
     list_display = ('slug', 'text',)
