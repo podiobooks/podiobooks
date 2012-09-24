@@ -23,10 +23,8 @@ Typically, you don't need to install all the python bits except on windows, but 
     -- We have an open-source license for PyCharm for this project - email the lead if you need it.
     -- Use whatever IDE or text editor you want, but the rest of the instructions assume PyCharm.
 
-3) Download GIT for Windows from http://code.google.com/p/msysgit/downloads/list
-    -- Usually the first one on the list of downloads is the one you want.
-    -- This is the source code control system you need to pull down the code from GitHub
-    -- You need to specify "force unix line endings", "modify path", and "update shell" options.
+3) Download GitHub for Windows from http://windows.github.com/
+    -- There is a mac version here: http://mac.github.com/
 		
 For all of those items, you should be able to basically follow the Installer prompts and get them installed with the default settings.
 
@@ -47,6 +45,7 @@ For all of those items, you should be able to basically follow the Installer pro
     -- You need to run this from the podiobooks dir (not podiobooks/podiobooks), so if you want to run from the command line, make sure you cd into there first.
     -- This will create a local virtual environment with all the needed Python packages for development.
     -- It will look like it's hung - and depending on your network connection, it can take up to an hour to run.
+    -- There is a .sh version for the Mac.
 
 -----------SETUP PYCHARM----------
 1) Open PyCharm
@@ -78,8 +77,10 @@ For all of those items, you should be able to basically follow the Installer pro
 1) In PyCharm, do Tools->Run manage.py task...
 2) Type loaddata
 3) Type shift-enter (enables you to add params)
-4) Type alldata.json.zip
+4) Type alldata
 5) Hit return
 6) It will take a while. :)
 
+----------BROWSE------------
+1) Browse to http://localhost:8000 in your favorite browser.
         
