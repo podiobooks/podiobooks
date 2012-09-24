@@ -2316,54 +2316,7 @@
                "slug": "by-sa"
           }
      }, 
-     {
-          "pk": 1, 
-          "model": "core.partner",
-          "fields": {
-               "name": "Librivox", 
-               "url": "http://www.librivox.org", 
-               "deleted": false, 
-               "date_updated": "2011-02-11 13:32:32", 
-               "date_created": "2006-01-27 00:00:00", 
-               "logo": "librivox.JPG"
-          }
-     }, 
-     {
-          "pk": 4, 
-          "model": "core.partner",
-          "fields": {
-               "name": "New Fiction", 
-               "url": "http://www.newfiction.com", 
-               "deleted": false, 
-               "date_updated": "2011-02-11 13:32:32", 
-               "date_created": "2008-10-27 00:00:00", 
-               "logo": "newfiction.jpg"
-          }
-     }, 
-     {
-          "pk": 2, 
-          "model": "core.partner",
-          "fields": {
-               "name": "Podshow", 
-               "url": "http://www.podshow.com", 
-               "deleted": false, 
-               "date_updated": "2011-02-11 13:32:32", 
-               "date_created": "2006-06-15 00:00:00", 
-               "logo": "podshow.jpg"
-          }
-     }, 
-     {
-          "pk": 3, 
-          "model": "core.partner",
-          "fields": {
-               "name": "Prometheus Radio Theatre", 
-               "url": "http://prometheus.libsyn.com", 
-               "deleted": false, 
-               "date_updated": "2011-02-11 13:32:32", 
-               "date_created": "2007-09-19 00:00:00", 
-               "logo": "prometheus.jpg"
-          }
-     }, 
+     
      {
           "pk": 1, 
           "model": "core.rating",
@@ -2430,27 +2383,19 @@
                "series": null, 
                "display_on_homepage": false, 
                "podiobooker_blog_url": "http://www.podiobooks.com/blog/2005/11/25/earthcore/", 
-               "is_adult": false, 
-               "partner": null, 
-               "is_hosted_at_pb": true, 
-               "avg_writing": 4.54851, 
-               "avg_narration": 4.62172, 
+               "is_adult": false,
                "byline": "<span class=\"contributor-attribution\">by </span>\n\t<span class=\"contributor\"><a href=\"/contributor/scott-sigler/\">Scott Sigler</a></span>", 
                "libsyn_show_id": "", 
                "promoter_count": 261, 
-               "detractor_count": 7,  
-               "status": 1, 
+               "detractor_count": 7,
                "awards": [], 
                "description": "Deep below a desolate Utah mountain lays the largest platinum deposit ever discovered. A billion-dollar find, it waits for any company that can drill a world's record, three-mile-deep mine shaft.\r\n\r\nEarthCore is the company with the technology, the resources and the guts to go after the mother lode. Young executive Connell Kirkland is the company's driving force, pushing himself and those around him to uncover the massive treasure.\r\n\r\nBut Kirkland and EarthCore are not the first to find this treasure. The mountain's history reveals two centuries of disappearances, murder, and insanity.\r\n\r\nThe discovery of ancient platinum knives, razor-sharp despite lying untouched for 1,000 years, reveals evidence of an ancient culture. If the artifacts are genuine, they show a pre-historic empire that once spanned from the Southern tip of South America all the way up through the American Southwest.\r\n\r\nWealth and fame lie under that Utah mountain, but at three miles below the surface, where the rocks are so hot they burn bare skin, something has been waiting for centuries. Waiting ... and guarding. Kirkland and EarthCore are about to find out first-hand why this treasure has never been unearthed.\r\n\r\n<a href=\"http://technorati.com/claim/4b4hrzqp6\" rel=\"me\">Technorati Profile</a>", 
                "deleted": false, 
-               "avg_audio_quality": 4.59328, 
-               "avg_overall": 4.63158, 
                "slug": "earthcore", 
                "name": "Earthcore", 
                "license": 1, 
                "cover": "Earthcore.jpg", 
-               "date_created": "2005-10-22 16:00:36", 
-               "is_complete": true
+               "date_created": "2005-10-22 16:00:36"
           }
      }, 
      {
@@ -2463,27 +2408,19 @@
                "series": null, 
                "display_on_homepage": true, 
                "podiobooker_blog_url": "http://www.podiobooks.com/blog/2006/07/16/shadowmagic-by-john-lenahan/", 
-               "is_adult": true, 
-               "partner": null, 
-               "is_hosted_at_pb": true, 
-               "avg_writing": 4.84581, 
-               "avg_narration": 4.90405, 
+               "is_adult": true,
                "byline": "<span class=\"contributor-attribution\">by </span>\n\t<span class=\"contributor\"><a href=\"/contributor/john-lenahan/\">John Lenahan</a></span>", 
                "libsyn_show_id": "k-794a08609b6b76b0", 
                "promoter_count": 664, 
-               "detractor_count": 6,  
-               "status": 1, 
+               "detractor_count": 6,
                "awards": [], 
                "description": "<strong>Part 1 of the <a href=\"http://www.podiobooks.com/podiobooks/search.php?keyword=shadowmagic\">Shadowmagic Series</a></strong>\r\n\r\n<a href=\"http://www.ourhistoryproject.com/OHPLiteraryAward.html\"><img src=\"http://www.podiobooks.com/blog/wp-content/uploads/OHPgold.jpg\" width=\"100\" align=\"right\" /></a>\"Hi, my name is Conor.  Other than my father being a bit of an eccentric lunatic, my life was pretty normal until I got attacked in my living room and whisked away to Tir na Nog, the mystical land of the ancient Celts, where it turns out Dad is the usurped heir to the throne and everybody wants me dead because of some prophecy.  Don't you just hate when that happens?\"\r\n\r\nShadowmagic is a rip roaring fun fantasy adventure novel by John Lenahan very loosely based on Irish mythology where every chapter ends on the edge of a cliff (or at least a high curb.)  Join Conor as he grapples with typical teenage problems like, how to deal with a father's high expectations, how to survive in the world on your own and how to woo a beautiful girl - that wants you dead.  Shadowmagic a podcast novel for young adults from 12 to 112.\r\n\r\n<b>Rated 10 out of 10 on <a href=\"http://www.thegeekbeat.com/home/shadowmagic/\">The Geek Beat</a>!</b>", 
-               "deleted": false, 
-               "avg_audio_quality": 4.88138, 
-               "avg_overall": 4.90135, 
+               "deleted": false,
                "slug": "shadowmagic", 
                "name": "Shadowmagic", 
                "license": 1, 
                "cover": "ShadowmagicNew.jpg", 
-               "date_created": "2006-07-15 10:16:07", 
-               "is_complete": true
+               "date_created": "2006-07-15 10:16:07"
           }
      }, 
      {
@@ -2496,27 +2433,19 @@
                "series": null, 
                "display_on_homepage": true, 
                "podiobooker_blog_url": "http://www.podiobooks.com/blog/2008/02/14/the-plump-buffet/", 
-               "is_adult": true, 
-               "partner": null, 
-               "is_hosted_at_pb": true, 
-               "avg_writing": 3.58333, 
-               "avg_narration": 4.41667, 
+               "is_adult": true,
                "byline": "<span class=\"contributor-attribution\">by </span>\n\t<span class=\"contributor\"><a href=\"/contributor/dollie-llama/\">Dollie Llama</a></span>\n\t\n\t<span class=\"contributor-attribution\"> and </span>\n\t<span class=\"contributor\"><a href=\"/contributor/thorndaddy/\">ThornDaddy</a></span>", 
                "libsyn_show_id": "k-0729c868d2d96145", 
                "promoter_count": 11, 
-               "detractor_count": 1,  
-               "status": 1, 
+               "detractor_count": 1,
                "awards": [], 
                "description": "THE PLUMP BUFFET - a romantic kinky curvy cat cult comedy.\r\n\r\nThe Plump Buffet is a cast-production BDSM radio play about a sex cult in the desert... and they're all cats.\r\n\r\nWARNING: \"The Plump Buffet\" is comedic literature with sexual motifs. If you are not of legal age, you should not listen. You should also not listen if literature with sexual motifs is not permitted in your community. You are also not to listen if you are easily offended by such material. But compared to network TV, it's a wholesome story... no one dies.\r\n\r\n-THE PLUMP BUFFET: it's not a love triangle, it's a love polygon.\r\n\r\n--THE PLUMP BUFFET is \"Fritz the Cat\" meets \"Showdown at Waco.\"\r\n\r\n--50 women aren't 50 times the fun, they're 50 times the hassle. And one of them always feels like killing you.\r\n\r\n<strong><a href=\"http://adultfriendfinder.com/go/page/search_results_landing?pid=g1288149-ppc.sub250&girls_show=3\">Don't wait! Meet luscious BBWs in your area RIGHT NOW!</a></strong>\r\n\r\nCREDITS FOR THE PLUMP BUFFET:\r\n\r\nStory by ThornDaddy and Dollie Llama.\r\n\r\nNarrator: George Earth. Voice actors: ThornDaddy, Dollie Llama, Estrus Goodspeed, penelope x.k. moi, George Earth. Audio production: ThornDaddy. Directed by ThornDaddy and Dollie Llama.\r\n\r\nMusic by ThornDaddy. Lyrics and vocals: Dollie Llama and ThornDaddy. Bass guitar: ThornDaddy. Guitars: Officer Hutsskew, Marky the Sod. Drums: London May. Music produced and mixed by ThornDaddy.\r\n\r\nCover art: F. Wertham. Name \"Plump Buffet\" suggested by L. Lamb (\"Baa Baa!\")\r\n\r\nThanks to marion (House Of Reason), Illicit Shane, and Erin for audio proofing help.\r\n\r\nABOUT THE AUTHORS:\r\nThornDaddy and Dollie Llama are an ecstatically married couple living in Southern California. They did the Podiobook <a href=\"http://www.podiobooks.com/title/sm-diary\">Diary of an S and M Romance</a>.\r\n \r\nThey produce a free weekly BDSM Podcast called <a href=\"http://www.askdollie.com\">Submission and Coffee</a>.", 
-               "deleted": false, 
-               "avg_audio_quality": 4.5, 
-               "avg_overall": 4.16667, 
+               "deleted": false,
                "slug": "the-plump-buffet", 
                "name": "The Plump Buffet", 
                "license": 1, 
                "cover": "ThePlumpBuffet.jpg", 
-               "date_created": "2008-02-13 23:00:51", 
-               "is_complete": true
+               "date_created": "2008-02-13 23:00:51"
           }
      }, 
      {
@@ -2529,29 +2458,21 @@
                "series": 33, 
                "display_on_homepage": true, 
                "podiobooker_blog_url": "http://www.podiobooks.com/blog/2008/07/04/double-share/", 
-               "is_adult": false, 
-               "partner": null, 
-               "is_hosted_at_pb": true, 
-               "avg_writing": 4.90385, 
-               "avg_narration": 4.95433, 
+               "is_adult": false,
                "byline": "<span class=\"contributor-attribution\">by </span>\n\t<span class=\"contributor\"><a href=\"/contributor/nathan-lowell/\">Nathan Lowell</a></span>", 
                "libsyn_show_id": "k-468bf077b22489b2", 
                "promoter_count": 414, 
-               "detractor_count": 2,  
-               "status": 1, 
+               "detractor_count": 2,
                "awards": [
                     8
                ], 
                "description": "<strong><a href=\"http://www.podiobooks.com/podiobooks/search.php?keyword=golden+age+of+the+solar+clipper\">Golden Age of the Solar Clipper</a> - <a href=\"http://www.podiobooks.com/podiobooks/search.php?keyword=trader+tales\">Trader Tales</a>: Book 4</strong>\r\n\r\n\r\nWhen he graduates from the Academy at Port Newmar, Ishmael Horatio Wang reports for duty in his first assignment as an officer. When he gets to his new ship, he finds things are not exactly the way he'd learned in school. The coffee tastes like used engine oil, the ship has no heart, and the nearest decent tailor is two quadrants away. What's a new Third Mate to do? Will he be able to trust Billy?\r\n\r\n<a href=\"http://www.podiobooks.com/blog/2008/12/30/2008-founders-choice-awards/\"><img src=\"http://farm5.static.flickr.com/4030/4285895645_98147f8aee_o.gif\" align=\"right\" hspace=\"10\" vspace=\"10\" /></a><a href=\"http://parsecawards.com/node/861\"><img src=\"http://farm4.static.flickr.com/3574/3773548318_0f024bb111_o.jpg\" align=\"right\" hspace=\"5\" border=\"0\" /></a>", 
-               "deleted": false, 
-               "avg_audio_quality": 4.92548, 
-               "avg_overall": 4.93269, 
+               "deleted": false,
                "slug": "trader-tales-4-double-share", 
                "name": "Trader Tales 4: Double Share", 
                "license": 1, 
                "cover": "DoubleShare.jpg", 
-               "date_created": "2008-07-04 11:31:17", 
-               "is_complete": true
+               "date_created": "2008-07-04 11:31:17"
           }
      }, 
      {
