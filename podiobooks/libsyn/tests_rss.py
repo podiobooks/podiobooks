@@ -16,5 +16,5 @@ class LibsynRSSTestCase(TestCase):
     def testParseRss(self):
         titleData = create_title_from_libsyn_rss.create_title_from_libsyn_rss(os.path.join(settings.PROJECT_ROOT,'libsyn','libsyn_example.rss'))
         print titleData
-        self.assertEquals(titleData['Subtitle'], 'infected')
+        self.assertEquals(titleData['Title'], 'Infected')
         
