@@ -32,7 +32,7 @@ static_urls:
         root: /dev/null
     - /jspb/:
         root: /dev/null
-    -/sample/:
+    - /sample/:
         root: /dev/null
 
 
