@@ -30,6 +30,7 @@ class TitleFeed(Feed):
         visitor = Visitor()
         session = Session()
         page = Page(self.link)
+        page.title = 'All Titles RSS Feed'
         tracker.track_pageview(page, session, visitor)
 
         return Title.objects.all()
@@ -58,6 +59,7 @@ class RecentTitleFeed(TitleFeed):
         visitor = Visitor()
         session = Session()
         page = Page(self.link)
+        page.title = 'Recent Titles RSS Feed'
         tracker.track_pageview(page, session, visitor)
 
         return Title.objects.order_by('-date_created')[:30]
@@ -95,8 +97,6 @@ class EpisodeFeed(Feed):
         extra_args = {
             'image': self.image(obj),
             'explicit': self.explicit(obj),
-            'web_master': settings.FEED_WEBMASTER,
-            'managing_editor': settings.FEED_MANAGING_EDITOR,
             'global_categories': settings.FEED_GLOBAL_CATEGORIES
         }
         return extra_args
@@ -109,8 +109,12 @@ class EpisodeFeed(Feed):
         ### Google Analytics for Feed
         tracker = Tracker(settings.GOOGLE_ANALYTICS_ID, feed_tools.get_current_domain())
         visitor = Visitor()
+        visitor.ip_address = request.META.get('REMOTE_ADDR', '')
+        visitor.user_agent = request.META.get('HTTP_USER_AGENT', '')
         session = Session()
-        page = Page(obj.get_absolute_url())
+        page = Page('/rss/feeds/episodes/{0}/'.format(title_slug))
+        page.title = '{0} RSS Feed'.format(title_slug)
+        page.referrer = request.META.get('HTTP_REFERER','')
         tracker.track_pageview(page, session, visitor)
 
         return obj
