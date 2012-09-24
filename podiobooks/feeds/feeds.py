@@ -91,6 +91,7 @@ class EpisodeFeed(Feed):
         extra_args = {
             'image': self.image(obj),
             'explicit': self.explicit(obj),
+            'complete': self.complete(obj),
             'global_categories': settings.FEED_GLOBAL_CATEGORIES
         }
         return extra_args
@@ -112,8 +113,11 @@ class EpisodeFeed(Feed):
     def image(self, obj):
         return "http://asset-server.libsyn.com/show/{0}".format(obj.libsyn_show_id)
 
+    def complete(self, obj):
+        return 'yes'
+
     def items(self, obj):
-        return Episode.objects.filter(title__id__exact=obj.id).order_by('-sequence')
+        return Episode.objects.filter(title__id__exact=obj.id).order_by('sequence')
 
     def item_comments(self, obj):
         return feed_tools.add_current_domain(obj.title.get_absolute_url())
@@ -137,6 +141,7 @@ class EpisodeFeed(Feed):
         extra_args = {
             'duration': self.item_duration(item),
             'keywords': self.item_keywords(item),
+            'order': self.item_order(item),
             'comments': self.item_comments(item)
         }
         return extra_args
@@ -175,3 +180,6 @@ class EpisodeFeed(Feed):
 
     def title(self, obj):
         return obj.name
+
+    def item_order(self, obj):
+        return str(obj.sequence)
