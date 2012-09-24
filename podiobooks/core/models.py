@@ -65,7 +65,7 @@ class Category(models.Model):
 
     @models.permalink
     def get_absolute_url(self):
-        return ('category_detail', [self.slug])
+        return 'category_detail', [self.slug]
 
 
 class Contributor(models.Model):
@@ -91,7 +91,7 @@ class Contributor(models.Model):
 
     @models.permalink
     def get_absolute_url(self):
-        return ('contributor_detail', [self.slug])
+        return 'contributor_detail', [self.slug]
 
 
 class ContributorType(models.Model):
@@ -194,43 +194,6 @@ class Media(models.Model):
     def __unicode__(self):
         return self.name
 
-
-class Partner(models.Model):
-    """Partners are sites or organizations which contribute works to the system
-    who wish to be recognized in some fashion (usually a graphic and link back
-    to their site)."""
-    name = models.CharField(max_length=255)
-    url = models.URLField()
-    logo = models.ImageField(upload_to="/dir/path")
-    deleted = models.BooleanField(default=False)
-    date_created = models.DateTimeField(auto_now_add=True)
-    date_updated = models.DateTimeField(auto_now=True)
-
-    class Meta:
-        ordering = ['name']
-
-    def __unicode__(self):
-        return "Modelname"
-
-
-class Promo(models.Model):
-    """Promotional materials for a title. Built to allow many types of
-    material per a single title for folks what want to add some serious
-    marketing mojo to their arsenal."""
-    title = models.ForeignKey('Title', related_name='promos')
-    name = models.CharField(max_length=255)
-    url = models.URLField()
-    display_order = models.IntegerField(null=False, default=1)
-    date_created = models.DateTimeField(auto_now_add=True)
-    date_updated = models.DateTimeField(auto_now=True)
-
-    class Meta:
-        ordering = ['name']
-
-    def __unicode__(self):
-        return self.name
-
-
 class Rating(models.Model):
     """The last rating that was loaded from the pb1 site"""
     last_rating_id = models.IntegerField(default=0, db_index=True)
@@ -262,7 +225,7 @@ class Series(models.Model):
 
     @models.permalink
     def get_absolute_url(self):
-        return ('series_detail', [self.slug])
+        return 'series_detail', [self.slug]
 
 
 class Title(models.Model):
@@ -276,18 +239,11 @@ class Title(models.Model):
     description = models.TextField()
     slug = models.SlugField(max_length=255, unique=True)
     cover = models.ImageField(upload_to='images/covers', blank=True, null=True)
-    status = models.IntegerField(default=1)
     license = models.ForeignKey('License', null=True, related_name='titles')
     display_on_homepage = models.BooleanField(default=False, db_index=True)
-    is_hosted_at_pb = models.BooleanField(default=True)
     advisory = models.ForeignKey('Advisory', null=True, blank=True, related_name='titles')
     is_adult = models.BooleanField(default=False, db_index=True)
     is_explicit = models.BooleanField(default=False, db_index=True)
-    is_complete = models.BooleanField(default=False, db_index=True)
-    avg_audio_quality = models.FloatField(default=0)
-    avg_narration = models.FloatField(default=0)
-    avg_writing = models.FloatField(default=0)
-    avg_overall = models.FloatField(default=0)
     promoter_count = models.IntegerField(default=0, db_index=True)
     detractor_count = models.IntegerField(default=0, db_index=True)
     deleted = models.BooleanField(default=False)
@@ -297,7 +253,6 @@ class Title(models.Model):
     categories = models.ManyToManyField('Category', through='TitleCategory') #related_name doesn't work with manual intermediary tables
     # Note: TitleCategory Objects (intermediate table) are available as titlecategories.all()
     category_list = models.CharField(max_length=1024, blank=True) # This is a formatted cache of the categories
-    partner = models.ForeignKey('partner', null=True, blank=True, related_name='titles')
     awards = models.ManyToManyField('Award', null=True, blank=True, related_name='titles')
     libsyn_show_id = models.CharField(max_length=50, db_index=True, blank=True)
     itunes_adam_id = models.IntegerField(null=True, blank=True)
