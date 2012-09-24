@@ -41,16 +41,9 @@ class TitleTestCase(TestCase):
                 series=self.series1,
                 description="A fantastic sample book of surpassing quality and scope, that truly redefines what it means to be a PodioBook.",
                 cover="PodioBook Cover",
-                status=1,
                 display_on_homepage=True,
-                is_hosted_at_pb=True,
                 is_adult=False,
                 is_explicit=True,
-                is_complete=False,
-                avg_audio_quality=4.5,
-                avg_narration=3.5,
-                avg_writing=2.5,
-                avg_overall=3.75,
                 promoter_count=211,
                 detractor_count=100,
                 )
@@ -61,16 +54,11 @@ class TitleTestCase(TestCase):
                 series=self.series1,
                 description="A second fantastic sample book of surpassing quality and scope, that truly redefines what it means to be a PodioBook.",
                 cover="PodioBook Cover 2",
-                status=1,
                 display_on_homepage=True,
-                is_hosted_at_pb=True,
                 is_adult=False,
                 is_explicit=False,
-                is_complete=False,
-                avg_audio_quality=3.5,
-                avg_narration=4.5,
-                avg_writing=5.5,
-                avg_overall=6.75,
+                promoter_count=123,
+                detractor_count=4,
                 )
         
         self.title3 = Title.objects.create (
@@ -79,25 +67,13 @@ class TitleTestCase(TestCase):
                 series=self.series2,
                 description="A third fantastic sample book of surpassing quality and scope, that truly redefines what it means to be a PodioBook.",
                 cover="PodioBook Cover 3",
-                status=1,
                 display_on_homepage=True,
-                is_hosted_at_pb=True,
                 is_adult=False,
                 is_explicit=False,
-                is_complete=False,
-                avg_audio_quality=1.5,
-                avg_narration=2.5,
-                avg_writing=3.5,
-                avg_overall=4.75,
+                promoter_count=4,
+                detractor_count=0,
                 )
-        
-        #Create a Partner Object
-        self.partner1 = Partner.objects.create (
-            name="Podiobooks Partner #1",
-            url="http://Podiobooks.com",
-            logo="http://Podiobooks.com",
-            )
-        
+
         #Create some Episodes
         self.episode1 = Episode.objects.create (
             title=self.title1,
@@ -200,23 +176,7 @@ class TitleTestCase(TestCase):
                 name='Print Version',
                 identifier='3838742922'
                 )
-        
-        # Partner
-        # @TODO: Add Partner-centric test
-        self.partner1 = Partner.objects.create(
-                name='Audible',
-                url="http://audible.com"
-        )
-        self.title1.partner = self.partner1
-        self.partner1.titles.add(self.title2)
-        
-        # Promo
-        self.promo1 = Promo.objects.create(
-                title=self.title1,
-                name='Promo 1',
-                url="http://podiobooks.com"
-        )
-        
+
         # URLs
         self.url1 = TitleUrl.objects.create(
                 title=self.title1,
@@ -299,14 +259,9 @@ class TitleTestCase(TestCase):
                 print '\tAdvisory: %s' % currentTitle.advisory
             if currentTitle.license:
                 print '\tLicense: %s' % currentTitle.license
-            if currentTitle.partner:
-                print '\tPartner: %s' % currentTitle.partner
             if currentTitle.media:
                 for currentMedia in currentTitle.media.all() :
                     print '\tMedia: %s' % currentMedia
-            if currentTitle.promos:
-                for currentPromo in currentTitle.promos.all() :
-                    print '\tPromo: %s' % currentPromo
             if currentTitle.urls:
                 for currentURL in currentTitle.urls.all() :
                     print '\tURL: %s' % currentURL
