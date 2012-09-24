@@ -3,7 +3,7 @@
 # pylint: disable=W0401,W0614,C0103
 
 from django.conf.urls import include, patterns, url
-from django.views.generic import DetailView, ListView
+from django.views.generic import DetailView, ListView, RedirectView
 from django.views.decorators.cache import cache_page
 from podiobooks.core.models import Category, Contributor, Episode, Series, Title
 from podiobooks.core.views import CategoryTitleListView, FeedRedirectView, TitleRedirectView
@@ -32,6 +32,15 @@ urlpatterns = patterns('',
     url(r'^title/search/(?P<keywords>[^/]+)/$',
         'podiobooks.core.views.title_search',
         name='title_search_keywords'),
+
+    # PB1 old slug redirects
+    url(r'^title/earthcore-by-scott-sigler/$',
+        RedirectView.as_view(url='/title/earthcore')
+    ),
+    # PB1 old slug redirects
+    url(r'^title/earthcore-by-scott-sigler/feed/$',
+        RedirectView.as_view(url='/rss/feed/episodes/earthcore/')
+    ),
 
     # title
     url(r'^title/$',
