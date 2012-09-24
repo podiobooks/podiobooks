@@ -1,8 +1,0 @@
-{% load shelf_templatetags %}
-
-{% for item in items %}
-	{% show_shelf_item 'current' item %}
-{% empty %}
-<li class='shelf-no-items'><p>None, sorry.</p></li>
-{% endfor %}
-
