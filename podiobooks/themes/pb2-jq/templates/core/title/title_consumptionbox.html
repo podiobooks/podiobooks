@@ -26,10 +26,6 @@
         <li id="consume-rss" class='consume-rss'><a href="{% url title_episodes_feed title.slug %}">RSS Feed (Free!)</a></li>
     </ul>
     
-    {% if not title.is_complete %}
-        <div class='title-release-status'>This title is <span class="incomplete">still releasing</span></div>
-    {% endif %}
-    
     {% show_donation_button title %}
     
 </div>

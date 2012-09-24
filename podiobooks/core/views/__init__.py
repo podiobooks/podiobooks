@@ -117,13 +117,11 @@ def title_search(request, keywords=None):
     if form.is_valid(): # All validation rules pass
         keywords = form.cleaned_data['keyword']
         include_adult = form.cleaned_data['include_adult']
-        completed_only = form.cleaned_data['completed_only']
 
     else:
         form = TitleSearchForm()
         keywords = False
         include_adult = False
-        completed_only = False
 
     response_data = {'titleSearchForm': form, "additionalFields": additional_fields}
 
@@ -133,14 +131,9 @@ def title_search(request, keywords=None):
         else:
             adult_filter = Q()
 
-        if completed_only:
-            completed_filter = Q(is_complete=True)
-        else:
-            completed_filter = Q()
-
         search_results = Title.objects.filter(
             (Q(name__icontains=keywords) | Q(description__icontains=keywords) | Q(
-                byline__icontains=keywords)) & adult_filter & completed_filter)
+                byline__icontains=keywords)) & adult_filter)
         search_metadata = None
         result_count = len(search_results)
 
