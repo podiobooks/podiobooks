@@ -72,7 +72,7 @@ class Contributor(models.Model):
     """A contributor is one who had done work on a title. For a book, it's an
     author or authors."""
     slug = models.SlugField(max_length=1000) # For multi-contributor books, can get long
-    user = models.ForeignKey(User, null=True, related_name='contributor_info') #User is an OOTB Django Auth Model
+    user = models.ForeignKey(User, null=True, blank=True, related_name='contributor_info') #User is an OOTB Django Auth Model
     first_name = models.CharField(max_length=255)
     middle_name = models.CharField(max_length=255, blank=True)
     last_name = models.CharField(max_length=255)

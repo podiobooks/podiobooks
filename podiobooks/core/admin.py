@@ -52,7 +52,7 @@ class ContributorAdmin(admin.ModelAdmin):
     inlines = [
         TitleContributorInline,
     ]
-    exclude = ("deleted", )
+    exclude = ('user', 'deleted', )
     search_fields = ['display_name', ]
     ordering = ['last_name', 'first_name']
     list_display = ['last_name', 'first_name', 'title_count']
