@@ -10,7 +10,7 @@
     
     <ul data-title-slug="{{ title.slug }}" class='consume-list'>
         {% if title.itunes_adam_id %}
-            <li id="consume-itunes" class='consume-itunes'><a href="http://itunes.apple.com/podcast/id{{ title.itunes_adam_id }}">View in
+            <li id="consume-itunes" class='consume-itunes'><a href="http://itunes.apple.com/podcast/id{{ title.itunes_adam_id }}">Listen in
                 iTunes</a></li>
         {% endif %}
         {% for item in title.media.all %}
@@ -23,7 +23,7 @@
                         href="http://www.smashwords.com/books/view/{{ item.identifier }}?ref=evoterra">Buy eBook</a></li>
             {% endif %}
         {% endfor %}
-        <li id="consume-rss" class='consume-rss'><a href="{% url title_episodes_feed title.slug %}">RSS Feed</a></li>
+        <li id="consume-rss" class='consume-rss'><a href="{% url title_episodes_feed title.slug %}">RSS Feed (Free!)</a></li>
     </ul>
     
     {% if not title.is_complete %}
