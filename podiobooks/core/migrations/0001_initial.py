@@ -48,7 +48,7 @@ class Migration(SchemaMigration):
         db.create_table('core_contributor', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('slug', self.gf('django.db.models.fields.SlugField')(max_length=1000)),
-            ('user', self.gf('django.db.models.fields.related.ForeignKey')(related_name='contributor_info', null=True, to=orm['auth.User'])),
+            ('user', self.gf('django.db.models.fields.related.ForeignKey')(blank=True, related_name='contributor_info', null=True, to=orm['auth.User'])),
             ('first_name', self.gf('django.db.models.fields.CharField')(max_length=255)),
             ('middle_name', self.gf('django.db.models.fields.CharField')(max_length=255, blank=True)),
             ('last_name', self.gf('django.db.models.fields.CharField')(max_length=255)),
@@ -375,7 +375,7 @@ class Migration(SchemaMigration):
             'last_name': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
             'middle_name': ('django.db.models.fields.CharField', [], {'max_length': '255', 'blank': 'True'}),
             'slug': ('django.db.models.fields.SlugField', [], {'max_length': '1000'}),
-            'user': ('django.db.models.fields.related.ForeignKey', [], {'related_name': "'contributor_info'", 'null': 'True', 'to': "orm['auth.User']"})
+            'user': ('django.db.models.fields.related.ForeignKey', [], {'blank': 'True', 'related_name': "'contributor_info'", 'null': 'True', 'to': "orm['auth.User']"})
         },
         'core.contributortype': {
             'Meta': {'object_name': 'ContributorType'},
