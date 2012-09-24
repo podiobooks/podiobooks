@@ -1,7 +1,5 @@
 PODIOBOOKS.COM 2.0
 ==================
-Last Updated: 20 Jan 2009
-
 Team Lead: Tim White (tim@cyface.com)
 Team Lead Emeritus: Chris Miller (chris@podiobooks.com)
 
