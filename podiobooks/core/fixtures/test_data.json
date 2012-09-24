@@ -733,7 +733,6 @@
           "pk": 388, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "Evil is buried deep beneath the Earth's surface.", 
                "sequence": 1, 
                "url": "http://www.podtrac.com/pts/redirect.mp3?media.blubrry.com/scottsigler/media.podiobooks.com/earthcore/PB-Earthcore-01.mp3", 
@@ -750,7 +749,6 @@
           "pk": 389, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "Platinum, Cutthroat, Saddlebags and The Whiner", 
                "sequence": 2, 
                "url": "http://www.podtrac.com/pts/redirect.mp3?media.blubrry.com/scottsigler/media.podiobooks.com/earthcore/PB-Earthcore-02.mp3", 
@@ -767,7 +765,6 @@
           "pk": 390, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "Herbert gets his", 
                "sequence": 3, 
                "url": "http://www.podtrac.com/pts/redirect.mp3?media.blubrry.com/scottsigler/media.podiobooks.com/earthcore/PB-Earthcore-03.mp3", 
@@ -784,7 +781,6 @@
           "pk": 391, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "The Mountain is Hungry", 
                "sequence": 4, 
                "url": "http://www.podtrac.com/pts/redirect.mp3?media.blubrry.com/scottsigler/media.podiobooks.com/earthcore/PB-Earthcore-04.mp3", 
@@ -801,7 +797,6 @@
           "pk": 392, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "Funeral Mountain", 
                "sequence": 5, 
                "url": "http://www.podtrac.com/pts/redirect.mp3?media.blubrry.com/scottsigler/media.podiobooks.com/earthcore/PB-Earthcore-05.mp3", 
@@ -818,7 +813,6 @@
           "pk": 393, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "A short episode", 
                "sequence": 6, 
                "url": "http://www.podtrac.com/pts/redirect.mp3?media.blubrry.com/scottsigler/media.podiobooks.com/earthcore/PB-Earthcore-06.mp3", 
@@ -835,7 +829,6 @@
           "pk": 394, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "Kayla Meyers is mean for a reason", 
                "sequence": 7, 
                "url": "http://www.podtrac.com/pts/redirect.mp3?media.blubrry.com/scottsigler/media.podiobooks.com/earthcore/PB-Earthcore-07.mp3", 
@@ -852,7 +845,6 @@
           "pk": 395, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "Busy Little Bees ...", 
                "sequence": 8, 
                "url": "http://www.podtrac.com/pts/redirect.mp3?media.blubrry.com/scottsigler/media.podiobooks.com/earthcore/PB-Earthcore-08.mp3", 
@@ -869,7 +861,6 @@
           "pk": 396, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "A line in the sand", 
                "sequence": 9, 
                "url": "http://www.podtrac.com/pts/redirect.mp3?media.blubrry.com/scottsigler/media.podiobooks.com/earthcore/PB-Earthcore-09.mp3", 
@@ -886,7 +877,6 @@
           "pk": 1824, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "Into the tunnels at last", 
                "sequence": 10, 
                "url": "http://www.podtrac.com/pts/redirect.mp3?media.blubrry.com/scottsigler/media.podiobooks.com/earthcore/PB-Earthcore-10.mp3", 
@@ -903,7 +893,6 @@
           "pk": 1825, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "Thumbs Up", 
                "sequence": 11, 
                "url": "http://www.podtrac.com/pts/redirect.mp3?media.blubrry.com/scottsigler/media.podiobooks.com/earthcore/PB-Earthcore-11.mp3", 
@@ -920,7 +909,6 @@
           "pk": 1826, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "If you want blood ... you got it.", 
                "sequence": 12, 
                "url": "http://www.podtrac.com/pts/redirect.mp3?media.blubrry.com/scottsigler/media.podiobooks.com/earthcore/PB-Earthcore-12.mp3", 
@@ -937,7 +925,6 @@
           "pk": 1827, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "Lost in the caves", 
                "sequence": 13, 
                "url": "http://www.podtrac.com/pts/redirect.mp3?media.blubrry.com/scottsigler/media.podiobooks.com/earthcore/PB-Earthcore-13.mp3", 
@@ -954,7 +941,6 @@
           "pk": 1828, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "The Old Soldier and The River", 
                "sequence": 14, 
                "url": "http://www.podtrac.com/pts/redirect.mp3?media.blubrry.com/scottsigler/media.podiobooks.com/earthcore/PB-Earthcore-14.mp3", 
@@ -971,7 +957,6 @@
           "pk": 1829, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "Tentacle Gods and Monsters", 
                "sequence": 15, 
                "url": "http://www.podtrac.com/pts/redirect.mp3?media.blubrry.com/scottsigler/media.podiobooks.com/earthcore/PB-Earthcore-15.mp3", 
@@ -988,7 +973,6 @@
           "pk": 1830, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "Attack of the Rocktopi", 
                "sequence": 16, 
                "url": "http://www.podtrac.com/pts/redirect.mp3?media.blubrry.com/scottsigler/media.podiobooks.com/earthcore/PB-Earthcore-16.mp3", 
@@ -1005,7 +989,6 @@
           "pk": 1831, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "Phalanx", 
                "sequence": 17, 
                "url": "http://www.podtrac.com/pts/redirect.mp3?media.blubrry.com/scottsigler/media.podiobooks.com/earthcore/PB-Earthcore-17.mp3", 
@@ -1022,7 +1005,6 @@
           "pk": 1833, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "Who dug the tunnels?", 
                "sequence": 18, 
                "url": "http://www.podtrac.com/pts/redirect.mp3?media.blubrry.com/scottsigler/media.podiobooks.com/earthcore/PB-Earthcore-18.mp3", 
@@ -1039,7 +1021,6 @@
           "pk": 1834, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "Rocktopi history revealed", 
                "sequence": 19, 
                "url": "http://www.podtrac.com/pts/redirect.mp3?media.blubrry.com/scottsigler/media.podiobooks.com/earthcore/PB-Earthcore-19.mp3", 
@@ -1056,7 +1037,6 @@
           "pk": 1835, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "The Good, The Bad, The Dead ....", 
                "sequence": 20, 
                "url": "http://www.podtrac.com/pts/redirect.mp3?media.blubrry.com/scottsigler/media.podiobooks.com/earthcore/PB-Earthcore-20.mp3", 
@@ -1073,7 +1053,6 @@
           "pk": 1836, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "The Finale, Part One", 
                "sequence": 21, 
                "url": "http://www.podtrac.com/pts/redirect.mp3?media.blubrry.com/scottsigler/media.podiobooks.com/earthcore/PB-Earthcore-21.mp3", 
@@ -1090,7 +1069,6 @@
           "pk": 1837, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "The Finale, Part Two", 
                "sequence": 22, 
                "url": "http://www.podtrac.com/pts/redirect.mp3?media.blubrry.com/scottsigler/media.podiobooks.com/earthcore/PB-Earthcore-22.mp3", 
@@ -1107,7 +1085,6 @@
           "pk": 1838, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "EarthCore Questions and Answers", 
                "sequence": 23, 
                "url": "http://www.podtrac.com/pts/redirect.mp3?media.blubrry.com/scottsigler/media.podiobooks.com/earthcore/PB-Earthcore-23.mp3", 
@@ -1124,7 +1101,6 @@
           "pk": 47573, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "Conor wakes up to find himself chained to a dungeon wall.  Don't you just hate when that happens?", 
                "sequence": 1, 
                "url": "http://media.podiobooks.com/shadowmagic/PB-Shadowmagic-01.mp3", 
@@ -1141,7 +1117,6 @@
           "pk": 47574, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "Conor and his Dad get to meet their 'host' and Conor almost gets a new nickname -- Lefty.", 
                "sequence": 2, 
                "url": "http://media.podiobooks.com/shadowmagic/PB-Shadowmagic-02.mp3", 
@@ -1158,7 +1133,6 @@
           "pk": 47575, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "Mom hugs, get-a-ways, horse rides, boats, dreams and apples -- oh my.", 
                "sequence": 3, 
                "url": "http://media.podiobooks.com/shadowmagic/PB-Shadowmagic-03.mp3", 
@@ -1175,7 +1149,6 @@
           "pk": 47576, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "Be verwey verwey quiet we are entering the Yewlands.", 
                "sequence": 4, 
                "url": "http://media.podiobooks.com/shadowmagic/PB-Shadowmagic-04.mp3", 
@@ -1192,7 +1165,6 @@
           "pk": 47577, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "Conor gets another lesson in how unpleasant it is to be in a land were everyone wants you dead.", 
                "sequence": 5, 
                "url": "http://media.podiobooks.com/shadowmagic/PB-Shadowmagic-05.mp3", 
@@ -1209,7 +1181,6 @@
           "pk": 47614, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "A mishap on the fields of Muhn.  It's amazing who you can meet when your lying face down in a ditch.", 
                "sequence": 6, 
                "url": "http://media.podiobooks.com/shadowmagic/PB-Shadowmagic-06.mp3", 
@@ -1226,7 +1197,6 @@
           "pk": 47709, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "A chat with a tree and a new character who looks like he lost his neck in a poker game.", 
                "sequence": 7, 
                "url": "http://media.podiobooks.com/shadowmagic/PB-Shadowmagic-07.mp3", 
@@ -1243,7 +1213,6 @@
           "pk": 47939, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "Wine, food, a girl and a fight -- sounds like a party at Castle Muhn.", 
                "sequence": 8, 
                "url": "http://media.podiobooks.com/shadowmagic/PB-Shadowmagic-08.mp3", 
@@ -1260,7 +1229,6 @@
           "pk": 47985, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "What do you say to an angry father with a sword at your throat?", 
                "sequence": 9, 
                "url": "http://media.podiobooks.com/shadowmagic/PB-Shadowmagic-09.mp3", 
@@ -1277,7 +1245,6 @@
           "pk": 48139, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "A hard elbow, a cold shoulder, a noseful of lettuce and another slap on the back.  Not everything is a party at Castle Muhn.", 
                "sequence": 10, 
                "url": "http://media.podiobooks.com/shadowmagic/PB-Shadowmagic-10.mp3", 
@@ -1294,7 +1261,6 @@
           "pk": 48288, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "Coner is back in the saddle, Fergal learns to \"Yahoo\" and Araf has a dance with a pig.", 
                "sequence": 11, 
                "url": "http://media.podiobooks.com/shadowmagic/PB-Shadowmagic-11.mp3", 
@@ -1311,7 +1277,6 @@
           "pk": 48393, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "Coner stabs, Esa thaws (a bit) and Araf doesn't say much.", 
                "sequence": 12, 
                "url": "http://media.podiobooks.com/shadowmagic/PB-Shadowmagic-12.mp3", 
@@ -1328,7 +1293,6 @@
           "pk": 48561, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "Araf speaks, Esa cries and the gang meet The Army of the Red Hand.", 
                "sequence": 13, 
                "url": "http://media.podiobooks.com/shadowmagic/PB-Shadowmagic-13.mp3", 
@@ -1345,7 +1309,6 @@
           "pk": 48602, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "Could anything be worse than the Hazellands?  Yep.", 
                "sequence": 14, 
                "url": "http://media.podiobooks.com/shadowmagic/PB-Shadowmagic-14.mp3", 
@@ -1362,7 +1325,6 @@
           "pk": 48721, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "When the going gets tough, the not-so-tough go to La-la Land.", 
                "sequence": 15, 
                "url": "http://media.podiobooks.com/shadowmagic/PB-Shadowmagic-15.mp3", 
@@ -1379,7 +1341,6 @@
           "pk": 48808, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "Let me tell you of things I have long wished to tell.", 
                "sequence": 16, 
                "url": "http://media.podiobooks.com/shadowmagic/PB-Shadowmagic-16.mp3", 
@@ -1396,7 +1357,6 @@
           "pk": 48852, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "The story of how Oisin lost his hand - finally.", 
                "sequence": 17, 
                "url": "http://media.podiobooks.com/shadowmagic/PB-Shadowmagic-17.mp3", 
@@ -1413,7 +1373,6 @@
           "pk": 48924, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "A bit of a blubberfest.", 
                "sequence": 18, 
                "url": "http://media.podiobooks.com/shadowmagic/PB-Shadowmagic-18.mp3", 
@@ -1430,7 +1389,6 @@
           "pk": 49052, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "Fergal, Deirdre and shadowfire.", 
                "sequence": 19, 
                "url": "http://media.podiobooks.com/shadowmagic/PB-Shadowmagic-19.mp3", 
@@ -1447,7 +1405,6 @@
           "pk": 49218, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "A busy night in the Fililands.", 
                "sequence": 20, 
                "url": "http://media.podiobooks.com/shadowmagic/PB-Shadowmagic-20.mp3", 
@@ -1464,7 +1421,6 @@
           "pk": 49236, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "The time has come.", 
                "sequence": 21, 
                "url": "http://media.podiobooks.com/shadowmagic/PB-Shadowmagic-21.mp3", 
@@ -1481,7 +1437,6 @@
           "pk": 49344, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "A familiar voice, a regal return and an amulet.", 
                "sequence": 22, 
                "url": "http://media.podiobooks.com/shadowmagic/PB-Shadowmagic-22.mp3", 
@@ -1498,7 +1453,6 @@
           "pk": 49384, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "A kiss, a new tree, and Araf just won't shut up.", 
                "sequence": 23, 
                "url": "http://media.podiobooks.com/shadowmagic/PB-Shadowmagic-23.mp3", 
@@ -1515,7 +1469,6 @@
           "pk": 49528, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "A hug of wood and leaves.", 
                "sequence": 24, 
                "url": "http://media.podiobooks.com/shadowmagic/PB-Shadowmagic-24.mp3", 
@@ -1532,7 +1485,6 @@
           "pk": 49625, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "A beginners guide to sneaking into a castle.", 
                "sequence": 25, 
                "url": "http://media.podiobooks.com/shadowmagic/PB-Shadowmagic-25.mp3", 
@@ -1549,7 +1501,6 @@
           "pk": 49868, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "Who says you can't get good help these days. ", 
                "sequence": 26, 
                "url": "http://media.podiobooks.com/shadowmagic/PB-Shadowmagic-26.mp3", 
@@ -1566,7 +1517,6 @@
           "pk": 49869, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "Oisin tries to get his hand back and Deirdre attempts the Land's first shadow-choosing as Conner and Nieve watch. ", 
                "sequence": 27, 
                "url": "http://media.podiobooks.com/shadowmagic/PB-Shadowmagic-27.mp3", 
@@ -1583,7 +1533,6 @@
           "pk": 50284, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "Just before all hell breaks out.", 
                "sequence": 28, 
                "url": "http://media.podiobooks.com/shadowmagic/PB-Shadowmagic-28.mp3", 
@@ -1600,7 +1549,6 @@
           "pk": 50285, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "All hell breaks loose. ", 
                "sequence": 29, 
                "url": "http://media.podiobooks.com/shadowmagic/PB-Shadowmagic-29.mp3", 
@@ -1617,7 +1565,6 @@
           "pk": 50286, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "Conner gets out of the castle and goes on a road trip. ", 
                "sequence": 30, 
                "url": "http://media.podiobooks.com/shadowmagic/PB-Shadowmagic-30.mp3", 
@@ -1634,7 +1581,6 @@
           "pk": 50287, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "The Last Chapter ", 
                "sequence": 31, 
                "url": "http://media.podiobooks.com/shadowmagic/PB-Shadowmagic-31.mp3", 
@@ -1651,7 +1597,6 @@
           "pk": 66766, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "Meet Dick Goodman, horny computer geek. A wise woman helps out. Watch Dick discover kink. Be a kitty in the corner as Dick finds females who live to serve. See him craft his \"tiny plan for world domination.\" Cheer as Dick gathers his team of luxurious subbies. Hear Dick telling off his boss. So... pull up a chair, open a cold beer, kick back, and watch and listen as Dick and his first three gals climb into bed and pet, love, lick and laugh.", 
                "sequence": 1, 
                "url": "http://media.podiobooks.com/theplumpbuffet/PB-PlumpBuffet-001.mp3", 
@@ -1668,7 +1613,6 @@
           "pk": 66767, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "Learn as Dick demonstrates how to make an obnoxious panhandler give YOU a dollar. Dick collars his first kitty. More girls join up. We meet Mother, the Fuckers, and Mother's \"little bitches.\" Mother teaches Dick that \"pussy begets pussy.\" Then someone gives Dick a piece of paper that changes his fucking life. Dick sees the first signs of unrest in the cattery, then someone threatens to cut off his balls. And Dick's about to find out just how crazy a crazy girl can be.", 
                "sequence": 2, 
                "url": "http://media.podiobooks.com/theplumpbuffet/PB-PlumpBuffet-02.mp3", 
@@ -1685,7 +1629,6 @@
           "pk": 66768, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "The kitties go out into the desert. The cult begins and many more girls show up. There's panty sniffing, kitty piles, tunnel holes, The Art of War, and some really pissed off rednecks. Dick can't keep track of the girls, so he renames them all \"Debbie.\" We find out the interesting truth about Dick's boss' sexual predilections. And a pack of peeping baby chicks try to wreck Dick's day.", 
                "sequence": 3, 
                "url": "http://media.podiobooks.com/theplumpbuffet/PB-PlumpBuffet-03.mp3", 
@@ -1702,7 +1645,6 @@
           "pk": 66814, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "White robes, babies being launched and desert bugs. Our happy little furverts run wild in the desert, and know that they're going to be taken care of in this life, and the next. Dick pulls out his oral BDSM contract with the girls and explains why no one's to be naked unless he says so. We meet some bible humpers who are somewhere to the right of Genghis Khan, and someone holds a gun to someone's head. We enjoy some satin and sleaze as the girls all strut their stuff for Daddy. We witness a portent of the final days, someone else draws a gun, then Dick gets a few new toys.\r\n\r\n(Bonus points: the first person to name their band \"The Stacy Contingent\" wins a prize.)", 
                "sequence": 4, 
                "url": "http://media.podiobooks.com/theplumpbuffet/PB-PlumpBuffet-04.mp3", 
@@ -1719,7 +1661,6 @@
           "pk": 66815, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "The three good girls show what their hearts feel by kneeling, as the world starts to collapse around them. Names are added to the \"Golden Floppy Disc of Redemption\" as the Sheriff reaches the end of his rope. We meet a bulldog from out of town, and a well-dressed mink crashes the party.\r\n\r\n(Tune in next week for the thrilling conclusion of \"The Plump Buffet\", then stay subscribed for the three bonus episodes after that!)", 
                "sequence": 5, 
                "url": "http://media.podiobooks.com/theplumpbuffet/PB-PlumpBuffet-005.mp3", 
@@ -1736,7 +1677,6 @@
           "pk": 66816, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "A man of God beseeches the almighty in prayer for the souls of Dick and all the girls. They stay the calm in the storm, as Dick teaches us what it really means to be a hero. The three bears of the apocalypse ride in, and now all the kitties are tamed.\r\n\r\n(Thus concludes, \"The Plump Buffet\" proper. But stay tuned and subscribed for three bonus episodes, two that are simply the bitchin' songs we wrote and recorded as \"MOTHER AND THE FUCKERS\", with no intro or outro on the files, for your dancing and dining pleasure, and one episode of hi-larious outtakes from the recording of our fabulous voice actors.)", 
                "sequence": 6, 
                "url": "http://media.podiobooks.com/theplumpbuffet/PB-PlumpBuffet-06.mp3", 
@@ -1753,7 +1693,6 @@
           "pk": 66817, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "Mother and the Fuckers performing \"I Love My Little Bitches\" Encoded at 320 K!", 
                "sequence": 7, 
                "url": "http://media.podiobooks.com/theplumpbuffet/PB-PlumpBuffet-07.mp3", 
@@ -1770,7 +1709,6 @@
           "pk": 66818, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "Mother and the Fuckers performing \"Dick and the Debbies\"\r\nEncoded at 320 K!", 
                "sequence": 8, 
                "url": "http://media.podiobooks.com/theplumpbuffet/PB-PlumpBuffet-08.mp3", 
@@ -1787,7 +1725,6 @@
           "pk": 66819, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "Fun flubs and behind-the-scenes audio footage from the voice actors recording their parts.\r\nTHIS THE FINAL EPISODE OF \"The Plump Buffet\". Thank you for listening. And be sure to tell two friends.", 
                "sequence": 9, 
                "url": "http://media.podiobooks.com/theplumpbuffet/PB-PlumpBuffet-09.mp3", 
@@ -1804,7 +1741,6 @@
           "pk": 68250, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "Ishmael Wang graduates from the Academy and heads out for the Diurnia Quadrant. (Chapters 1-2)", 
                "sequence": 1, 
                "url": "http://media.podiobooks.com/doubleshare/PB-DoubleShare-01.mp3", 
@@ -1821,7 +1757,6 @@
           "pk": 68251, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "Ishmael catches up on his reading and learns some self defense tricks on the way to Diurnia.(Chapters 3-4)", 
                "sequence": 2, 
                "url": "http://media.podiobooks.com/doubleshare/PB-DoubleShare-02.mp3", 
@@ -1838,7 +1773,6 @@
           "pk": 68252, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "Ishmael gets to Diurnia, signs his contract and learns that his ship is waiting. (Chapters 5-6)", 
                "sequence": 3, 
                "url": "http://media.podiobooks.com/doubleshare/PB-DoubleShare-03.mp3", 
@@ -1855,7 +1789,6 @@
           "pk": 68253, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "Ishmael reports for duty on the SC William Tinker and begins meeting the crew. (Chapters 7-8)", 
                "sequence": 4, 
                "url": "http://media.podiobooks.com/doubleshare/PB-DoubleShare-04.mp3", 
@@ -1872,7 +1805,6 @@
           "pk": 68254, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "As Ishmael settles into the shipboard routine, troubling issues start emerging. (Chapters 9-10)", 
                "sequence": 5, 
                "url": "http://media.podiobooks.com/doubleshare/PB-DoubleShare-05.mp3", 
@@ -1889,7 +1821,6 @@
           "pk": 68287, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "Ishmael stands his first watch and takes a tour of the ship. (Chapters 11-12)", 
                "sequence": 6, 
                "url": "http://media.podiobooks.com/doubleshare/PB-DoubleShare-06.mp3", 
@@ -1906,7 +1837,6 @@
           "pk": 68288, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "The SC William Tinker gets underway and Ishmael meets the Captain. (Chapters 13-14)", 
                "sequence": 7, 
                "url": "http://media.podiobooks.com/doubleshare/PB-DoubleShare-07.mp3", 
@@ -1923,7 +1853,6 @@
           "pk": 68289, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "Ishmael learns more about what happened to his predecessor and begins to make changes aboard. (Chapters 15-16) ", 
                "sequence": 8, 
                "url": "http://media.podiobooks.com/doubleshare/PB-DoubleShare-08.mp3", 
@@ -1940,7 +1869,6 @@
           "pk": 68290, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "Ishmael gets a reputation and learns something about the crew. (Chapters 17-18)", 
                "sequence": 9, 
                "url": "http://media.podiobooks.com/doubleshare/PB-DoubleShare-09.mp3", 
@@ -1957,7 +1885,6 @@
           "pk": 68291, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "Ishmael learns that no good deed goes unpunished and starts to clean up the ship. (Chapters 19-20)", 
                "sequence": 10, 
                "url": "http://media.podiobooks.com/doubleshare/PB-DoubleShare-10.mp3", 
@@ -1974,7 +1901,6 @@
           "pk": 68317, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "Ishmael has a run in with a couple of crew members and learns something important about the general outlook aboard. (Chapters 21-22)", 
                "sequence": 11, 
                "url": "http://media.podiobooks.com/doubleshare/PB-DoubleShare-11.mp3", 
@@ -1991,7 +1917,6 @@
           "pk": 68318, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "Ishmael learns that Mr. Burnside takes a very proprietary view of his watch. (Chapters 23-24)", 
                "sequence": 12, 
                "url": "http://media.podiobooks.com/doubleshare/PB-DoubleShare-12.mp3", 
@@ -2008,7 +1933,6 @@
           "pk": 68319, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "The crew has a field day and Ishmael discovers that he's volunteered to be a teacher. (Chapters 25-26)", 
                "sequence": 13, 
                "url": "http://media.podiobooks.com/doubleshare/PB-DoubleShare-13.mp3", 
@@ -2025,7 +1949,6 @@
           "pk": 68320, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "The crew learns how to study together and Ishmael gets called names. (Chapters 27-28)", 
                "sequence": 14, 
                "url": "http://media.podiobooks.com/doubleshare/PB-DoubleShare-14.mp3", 
@@ -2042,7 +1965,6 @@
           "pk": 68321, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "After consulting with Arletta and Mel, Ishmael begins taking steps to protect himself. He also learns just how detailed RumorNet can be. (Chapters 29-30)", 
                "sequence": 15, 
                "url": "http://media.podiobooks.com/doubleshare/PB-DoubleShare-15.mp3", 
@@ -2059,7 +1981,6 @@
           "pk": 68331, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "Ishmael pokes about and discovers some interesting facts about the Tinker's systems. (Chapters 31-32)", 
                "sequence": 16, 
                "url": "http://media.podiobooks.com/doubleshare/PB-DoubleShare-16.mp3", 
@@ -2076,7 +1997,6 @@
           "pk": 68332, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "Ishmael visits the Captain and gets a warning from Fredi. (Chapters 33-34) ", 
                "sequence": 17, 
                "url": "http://media.podiobooks.com/doubleshare/PB-DoubleShare-17.mp3", 
@@ -2093,7 +2013,6 @@
           "pk": 68333, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "Another crewman wants to join Ishmael's harem. Fredi offers a word of caution. (Chapters 35-36)", 
                "sequence": 18, 
                "url": "http://media.podiobooks.com/doubleshare/PB-DoubleShare-18.mp3", 
@@ -2110,7 +2029,6 @@
           "pk": 68334, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "Ishmael does a little more clean up and takes Mr. Vorhees shopping. (Chapters 37-38)", 
                "sequence": 19, 
                "url": "http://media.podiobooks.com/doubleshare/PB-DoubleShare-19.mp3", 
@@ -2127,7 +2045,6 @@
           "pk": 68335, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "Fredi reveals a secret and Ishmael stretches his legs on the Orbital. (Chapters 39-40)", 
                "sequence": 20, 
                "url": "http://media.podiobooks.com/doubleshare/PB-DoubleShare-20.mp3", 
@@ -2144,7 +2061,6 @@
           "pk": 68357, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "While Mel, Fredi, and Ishmael celebrate, tragedy is brewing. (Chapters 41-42)", 
                "sequence": 21, 
                "url": "http://media.podiobooks.com/doubleshare/PB-DoubleShare-21.mp3", 
@@ -2161,7 +2077,6 @@
           "pk": 68358, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "Burnside shows Ishmael how the ship does drills and half the crew takes ratings exams. (Chapters 43-44)", 
                "sequence": 22, 
                "url": "http://media.podiobooks.com/doubleshare/PB-DoubleShare-22.mp3", 
@@ -2178,7 +2093,6 @@
           "pk": 68359, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "Ishmael gets some late night callers and gets locks installed on the doors. (Chapters 45-46)", 
                "sequence": 23, 
                "url": "http://media.podiobooks.com/doubleshare/PB-DoubleShare-23.mp3", 
@@ -2195,7 +2109,6 @@
           "pk": 68360, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "The watch rotations change as the injured crew are deal with. Apones finally wears a clean shipsuit. (Chapters 47-48) ", 
                "sequence": 24, 
                "url": "http://media.podiobooks.com/doubleshare/PB-DoubleShare-24.mp3", 
@@ -2212,7 +2125,6 @@
           "pk": 68361, 
           "model": "core.episode",
           "fields": {
-               "status": 1, 
                "description": "The nightmare ends and Ishmael gives out another whelkie. (Chapters 49-50)", 
                "sequence": 25, 
                "url": "http://media.podiobooks.com/doubleshare/PB-DoubleShare-25.mp3", 

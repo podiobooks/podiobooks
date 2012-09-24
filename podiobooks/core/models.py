@@ -120,7 +120,6 @@ class Episode(models.Model):
     filesize = models.IntegerField(default=0) #Size of the media file
     length = models.FloatField(default=0) #Length of the media file (usually minutes (or pages))
     contributors = models.ManyToManyField('Contributor', through='EpisodeContributor')
-    status = models.IntegerField(default=1)
     deleted = models.BooleanField(default=False)
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
