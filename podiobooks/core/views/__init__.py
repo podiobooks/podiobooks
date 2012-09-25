@@ -10,6 +10,7 @@ from django.views.generic import ListView, RedirectView
 from django.shortcuts import get_object_or_404, redirect
 from django.http import Http404, HttpResponseRedirect
 from django.core.exceptions import ObjectDoesNotExist
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from podiobooks.core.models import Title, Contributor, Category
 from podiobooks.core.forms import CategoryChoiceForm, ContributorChoiceForm, TitleSearchForm, TitleSearchAdditionalFieldsForm
@@ -123,6 +124,7 @@ def title_search(request, keywords=None):
         form = TitleSearchForm()
         keywords = False
         include_adult = False
+        family_friendly = False
 
     response_data = {'titleSearchForm': form, "additionalFields": additional_fields}
 
@@ -140,15 +142,26 @@ def title_search(request, keywords=None):
         search_results = Title.objects.filter(
             (Q(name__icontains=keywords) | Q(description__icontains=keywords) | Q(
                 byline__icontains=keywords)) & adult_filter & family_filter)
-        search_metadata = None
         result_count = len(search_results)
 
+        ### Pagination
+        paginator = Paginator(search_results, 15)
+        page = request.GET.get('page')
+        try:
+            title_list = paginator.page(page)
+        except PageNotAnInteger:
+            # If page is not an integer, deliver first page.
+            title_list = paginator.page(1)
+        except EmptyPage:
+            # If page is out of range (e.g. 9999), deliver last page of results.
+            title_list = paginator.page(paginator.num_pages)
+
         response_data.update({
-            'title_list': search_results,
+            'title_list': title_list,
             'keywords': keywords,
             'result_count': result_count,
             'titleSearchForm': form,
-            'search_metadata': search_metadata
+            'paginator': paginator
         })
 
         return render_to_response('core/title/title_search_results.html', response_data,
