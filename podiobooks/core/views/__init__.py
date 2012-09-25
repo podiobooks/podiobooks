@@ -67,13 +67,13 @@ def index(request):
 
     # recently released
     recently_released_list = Title.objects.filter(is_adult=False).annotate(Max("episodes__date_created"))
-    
+
     category_choice_form_recent = CategoryChoiceForm(request, cookie="recent_by_category")
     initial_category_slug_recent = category_choice_form_recent.fields["category"].initial
-    
+
     if initial_category_slug_recent:
         recently_released_list = recently_released_list.filter(categories__slug=initial_category_slug_recent)
-        
+
     recently_released_list = recently_released_list.order_by("-episodes__date_created__max")[:16]
 
     # Render template    
@@ -117,6 +117,7 @@ def title_search(request, keywords=None):
     if form.is_valid(): # All validation rules pass
         keywords = form.cleaned_data['keyword']
         include_adult = form.cleaned_data['include_adult']
+        family_friendly = form.cleaned_data['family_friendly']
 
     else:
         form = TitleSearchForm()
@@ -131,9 +132,14 @@ def title_search(request, keywords=None):
         else:
             adult_filter = Q()
 
+        if family_friendly:
+            family_filter = Q(is_family_friendly=True) | Q(is_for_kids=True)
+        else:
+            family_filter = Q()
+
         search_results = Title.objects.filter(
             (Q(name__icontains=keywords) | Q(description__icontains=keywords) | Q(
-                byline__icontains=keywords)) & adult_filter)
+                byline__icontains=keywords)) & adult_filter & family_filter)
         search_metadata = None
         result_count = len(search_results)
 
