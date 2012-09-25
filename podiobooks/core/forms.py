@@ -77,7 +77,7 @@ class ContributorChoiceForm(forms.Form):
 class TitleSearchAdditionalFieldsForm(forms.Form):
     """ Additional fields for search (beyond the search term """    
     include_adult = forms.BooleanField(required=False, initial=False)
-    completed_only = forms.BooleanField(required=False, initial=False)
+    family_friendly = forms.BooleanField(required=False, initial=False)
 
 
 class TitleSearchForm(TitleSearchAdditionalFieldsForm):
@@ -86,7 +86,7 @@ class TitleSearchForm(TitleSearchAdditionalFieldsForm):
     def __init__(self, *args, **kwargs):
         """ Reorder fields """
         super(TitleSearchForm, self).__init__(*args, **kwargs)
-        self.fields.keyOrder =  ["keyword", "include_adult", "completed_only"]        
+        self.fields.keyOrder =  ["keyword", "include_adult", "family_friendly"]
     
     keyword = forms.CharField(label="Search for", widget=forms.TextInput(attrs={'class':'search-keywords', "autocapitalize": "off"}))
     
