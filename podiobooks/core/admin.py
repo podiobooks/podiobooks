@@ -90,11 +90,11 @@ class SeriesAdmin(admin.ModelAdmin):
 class TitleAdmin(admin.ModelAdmin):
     date_hierarchy = 'date_created'
     list_display = (
-        'name', 'license', 'advisory', 'is_explicit', 'is_adult', 'is_family_friendly', 'is_for_kids',
+        'name', 'license', 'is_explicit', 'is_adult', 'is_family_friendly', 'is_for_kids',
         'display_on_homepage', 'deleted', 'date_updated')
     list_editable = ('display_on_homepage',)
     list_filter = (
-        'license', 'advisory', 'display_on_homepage', 'is_explicit', 'is_adult', 'is_family_friendly', 'is_for_kids',
+        'license', 'display_on_homepage', 'is_explicit', 'is_adult', 'is_family_friendly', 'is_for_kids',
         'deleted', 'date_updated')
     exclude = ('byline', 'category_list', 'cover',)
     inlines = [
@@ -114,7 +114,6 @@ class TitleContributorAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Award)
-admin.site.register(Advisory)
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Contributor, ContributorAdmin)
 admin.site.register(ContributorType)

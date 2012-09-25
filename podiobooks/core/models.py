@@ -8,27 +8,6 @@ from django.template.loader import render_to_string
 
 # pylint: disable=C0111,R0201,W0232
 
-class Advisory(models.Model):
-    """Advisories are notifications about titles for the users. These could be
-    viewed as not unlike movie ratings, but they are more descriptive. PB1
-    has three, For Kids, Family Friendly, and Adult."""
-    slug = models.SlugField()
-    name = models.CharField(max_length=100)
-    displaytext = models.CharField(max_length=255)
-    hexcolor = models.CharField(max_length=6)
-    date_created = models.DateTimeField(auto_now_add=True)
-    date_updated = models.DateTimeField(auto_now=True)
-    # rather than storing a hex-color, would it make more sense to
-    # add a css class 'Advisory_{slug}' for flexibility??
-
-    class Meta:
-        verbose_name_plural = "advisories"
-        ordering = ['name']
-
-    def __unicode__(self):
-        return self.name
-
-
 class Award(models.Model):
     """Awards are just that: awards for a title, like winning a Parsec, etc."""
     slug = models.SlugField()
@@ -241,7 +220,6 @@ class Title(models.Model):
     cover = models.ImageField(upload_to='images/covers', blank=True, null=True)
     license = models.ForeignKey('License', null=True, related_name='titles')
     display_on_homepage = models.BooleanField(default=False, db_index=True, verbose_name='Disp. On Homepage')
-    advisory = models.ForeignKey('Advisory', null=True, blank=True, related_name='titles')
     is_adult = models.BooleanField(default=False, db_index=True, verbose_name='Is Adult')
     is_explicit = models.BooleanField(default=False, db_index=True, verbose_name='Is Explicit')
     is_family_friendly = models.BooleanField(default=False, db_index=True, verbose_name='Is Family Friendly')
