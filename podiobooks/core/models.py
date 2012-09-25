@@ -214,7 +214,7 @@ class Title(models.Model):
 
     name = models.CharField(max_length=255)
     series = models.ForeignKey('Series', null=True, blank=True, related_name='titles')
-    series_sequence = models.IntegerField(default=1)
+    series_sequence = models.IntegerField(default=1, verbose_name='Series Sequence')
     description = models.TextField()
     slug = models.SlugField(max_length=255, unique=True)
     cover = models.ImageField(upload_to='images/covers', blank=True, null=True)
@@ -226,7 +226,7 @@ class Title(models.Model):
     is_for_kids = models.BooleanField(default=False, db_index=True, verbose_name='Is For Kids')
     promoter_count = models.IntegerField(default=0, db_index=True)
     detractor_count = models.IntegerField(default=0, db_index=True)
-    deleted = models.BooleanField(default=False)
+    deleted = models.BooleanField(default=False, verbose_name='Deleted?')
     contributors = models.ManyToManyField('Contributor', through='TitleContributor') #related_name doesn't work with manual intermediary tables
     # Note: TitleContributor Objects (intermediate table) are available as titlecontributors.all()
     byline = models.CharField(max_length=1024, blank=True) # This is a formatted cache of the title contributors
@@ -240,8 +240,8 @@ class Title(models.Model):
     # Note: episodes are available as episodes.all()
     # Note: media are available as media.all()
     # Note: promos are available as promos.all()
-    date_created = models.DateTimeField(auto_now_add=True, db_index=True)
-    date_updated = models.DateTimeField(auto_now=True, db_index=True)
+    date_created = models.DateTimeField(auto_now_add=True, db_index=True, verbose_name='Date Created')
+    date_updated = models.DateTimeField(auto_now=True, db_index=True, verbose_name='Date Updated')
 
     class Meta:
         ordering = ['name']
