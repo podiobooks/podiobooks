@@ -2289,7 +2289,6 @@
           "pk": 24, 
           "model": "core.title",
           "fields": {
-               "advisory": null, 
                "category_list": "\n<span class=\"category-list\"><a href=\"/category/science-fiction/\">Science Fiction</a></span>\n", 
                "date_updated": "2011-02-11 13:32:32", 
                "series": null, 
@@ -2314,7 +2313,6 @@
           "pk": 92, 
           "model": "core.title",
           "fields": {
-               "advisory": null, 
                "category_list": "\n<span class=\"category-list\"><a href=\"/category/fantasy/\">Fantasy</a></span>\n", 
                "date_updated": "2011-02-11 13:32:32", 
                "series": null, 
@@ -2339,7 +2337,6 @@
           "pk": 250, 
           "model": "core.title",
           "fields": {
-               "advisory": null, 
                "category_list": "\n<span class=\"category-list\"><a href=\"/category/erotica/\">Erotica</a></span>\n", 
                "date_updated": "2011-02-11 13:32:32", 
                "series": null, 
@@ -2364,7 +2361,6 @@
           "pk": 293, 
           "model": "core.title",
           "fields": {
-               "advisory": null, 
                "category_list": "\n<span class=\"category-list\"><a href=\"/category/science-fiction/\">Science Fiction</a></span>\n", 
                "date_updated": "2011-02-11 13:32:32", 
                "series": 33, 
