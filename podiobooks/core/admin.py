@@ -107,6 +107,7 @@ class TitleAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("name",)}
     save_on_tap = True
     search_fields = ['name', 'byline']
+    filter_horizontal = ['awards']
 
 
 class TitleContributorAdmin(admin.ModelAdmin):
