@@ -146,21 +146,6 @@ class TitleTestCase(TestCase):
         self.award2.titles.add(self.title3)
         self.title3.awards.add(self.award1) #Title 3 should have two awards now
         
-        # Advisories
-        # @TODO: Add Advisory-centric test
-        self.advisory1 = Advisory.objects.create(
-                slug='advisory-test-1',
-                name='Advisory Test 1',
-                )
-        self.advisory1.titles.add(self.title1)
-        self.title2.advisory = self.advisory1
-        
-        self.advisory2 = Award.objects.create(
-                slug='advisory-test-2',
-                name='Advisory Test 2',
-                )
-        self.advisory2.titles.add(self.title3)
-        
         # License
         # @TODO: Add License-centric test
         self.license1 = License.objects.create(
@@ -255,8 +240,6 @@ class TitleTestCase(TestCase):
             print '\tContributors:'
             for currentTitleContributor in currentTitle.titlecontributors.all() :
                 print '\t\t%s (%s) - %s' % ( currentTitleContributor.contributor, currentTitleContributor.contributor_type, currentTitleContributor.contributor.get_absolute_url() )
-            if currentTitle.advisory:
-                print '\tAdvisory: %s' % currentTitle.advisory
             if currentTitle.license:
                 print '\tLicense: %s' % currentTitle.license
             if currentTitle.media:
