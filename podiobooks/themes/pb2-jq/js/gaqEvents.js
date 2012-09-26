@@ -1,26 +1,45 @@
 $(function(){
 	
 	$(".consume-list").each(function(){
+		var list = $(this);
+		
 		var slug = $(this).data("title-slug");
 		
-		$("#consume-itunes>a").click(function(){
-			_gaq.push(['_trackEvent', 'Consume', 'DetailPage-ViewInITunes', slug]);
+		list.find("#consume-itunes>a").each(function(){
+			$(this).click(function(){
+				_gaq.push(['_trackEvent', 'Consume', 'DetailPage-ViewInITunes', slug]);
+			});				
 		});
 		
-		$("#consume-amazon>a").click(function(){
-			_gaq.push(['_trackEvent', 'Consume', 'DetailPage-BuyFromAmazon', slug]);
+		
+		list.find("#consume-amazon>a").each(function(){
+			$(this).click(function(){
+				_gaq.push(['_trackEvent', 'Consume', 'DetailPage-BuyFromAmazon', slug]);
+			});
 		});
 		
-		$("#consume-smashwords>a").click(function(){
-			_gaq.push(['_trackEvent', 'Consume', 'DetailPage-BuyFromSmashwords', slug]);
+		list.find("#consume-smashwords>a").each(function(){
+			$(this).click(function(){
+				_gaq.push(['_trackEvent', 'Consume', 'DetailPage-BuyFromSmashwords', slug]);
+			});
 		});
 		
-		$("#consume-rss>a").click(function(){
-			_gaq.push(['_trackEvent', 'Consume', 'DetailPage-RSSFeed', slug]);
+		list.find("#consume-rss>a").each(function(){
+			$(this).click(function(){
+				_gaq.push(['_trackEvent', 'Consume', 'DetailPage-RSSFeed', slug]);
+			});
 		});
 		
-		$("#title-donate-submit").click(function(){
-			_gaq.push(['_trackEvent', 'Donate', 'DetailPage-Donate', 'title_slug', donation_amount]);
+		list.find("#consume-rss>a").each(function(){
+			$(this).bind("contextmenu", function(){
+				_gaq.push(['_trackEvent', 'Consume', 'DetailPage-RSSFeedRC', slug]);
+			});
+		});
+		
+		list.find("#title-donate-submit").each(function(){
+			$(this).click(function(){
+				_gaq.push(['_trackEvent', 'Donate', 'DetailPage-Donate', 'title_slug', donation_amount]);
+			});
 		});
 		
 	});
