@@ -1,5 +1,11 @@
 $(function(){
 	
+	/*
+	 * GA events for elements in the 'ways to consume this book' list
+	 * 
+	 * The .consume-list template is actually repeated in the markup
+	 * 		So, we're going to handle each iteration of the list separately. 
+	 */
 	$(".consume-list").each(function(){
 		var list = $(this);
 		
@@ -40,6 +46,12 @@ $(function(){
 		
 	});
 	
+	/*
+	 * GA events for elements in the 'Donate to this author' form
+	 * 
+	 * The .donate-box template is actually repeated in the markup
+	 * 		So, we're going to handle each iteration of the list separately. 
+	 */
 	$(".donate-box").each(function(){
 		var wrapper = $(this);
 		var slug = wrapper.data("title-slug");
@@ -59,6 +71,9 @@ $(function(){
 	});
 	
 	
+	/*
+	 * GA events for homepage shelves
+	 */
 	$(".shelf-item-heading a").each(function(){
 		var link = $(this);
 		link.click(function(ev){
