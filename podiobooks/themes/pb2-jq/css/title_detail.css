@@ -1,54 +1,58 @@
 /*
  * Title details
  */
-.title-details-extras{
-	float:left;
-	width:20%;
+.title-details-extras {
+    float: left;
+    width: 20%;
 }
-.title-details-extras-inline{
-	display:none;
+
+.title-details-extras-inline {
+    display: none;
 }
+
 .title-details {
     float: right;
     width: 78%;
 }
 
-
-.title-details-titlebar{
+.title-details-titlebar {
     border-bottom: solid 1px #b2b2b2;
-    padding:0 0 15px;
-    margin:0 0 20px;
+    padding: 0 0 15px;
+    margin: 0 0 20px;
 }
-
 
 .title-description {
     margin: 0;
     line-height: 1.4em;
     font-size: 16px;
 }
-.title-details-seriesbar{
-	padding:0 0 20px;
+
+.title-details-seriesbar {
+    padding: 0 0 20px;
 }
 
-.title-license{
-	
-	position:relative;
-	padding:0 0 0 100px
-	
+.title-license {
+
+    position: relative;
+    padding: 0 0 0 100px
+
 }
+
 .title-license a,
 .title-license a:visited,
 .title-license a:hover,
 .title-license a:link,
-.title-license a:active{
-	text-decoration:none;
+.title-license a:active {
+    text-decoration: none;
 }
-.title-license img{
-	
-	position:absolute;
-	left:0;
-	top:5px;
+
+.title-license img {
+
+    position: absolute;
+    left: 0;
+    top: 5px;
 }
+
 .title-comment-byline {
     margin: 10px 0 0 0;
     font-weight: bold;
@@ -68,26 +72,28 @@
     color: green;
 }
 
-.title-details-top{
-	padding:0 0 20px;
+.title-details-top {
+    padding: 0 0 20px;
 }
+
 /*
- * Tabs
- */
+* Tabs
+*/
 .title-tabs {
-	margin:0 0 40px;
+    margin: 0 0 40px;
 }
+
 .episode-list {
     list-style: none;
 }
 
 .episode-list-item {
     padding: 20px 0 0 0;
-    margin:0;
+    margin: 0;
 }
 
 .episode-list-title {
-    
+
 }
 
 .episode-list-description {
@@ -99,13 +105,13 @@
 .title-details-infobar {
     background-color: #D9E4F0;
     padding: 15px 15px 20px;
-    
+
     margin: -10px 0 30px 30px;
     float: right;
     width: 100px;
-    
-    box-shadow: 0 2px 6px rgba(0,0,0,.3);
-    
+
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .3);
+
     border-radius: 5px;
 }
 
@@ -139,7 +145,7 @@
  */
 .sharebox {
     padding: 10px 0 0;
-    overflow:hidden;
+    overflow: hidden;
 }
 
 .title-sharebox {
@@ -154,13 +160,14 @@
 .title-sharebox a:visited {
     text-decoration: none;
 }
+
 .title-sharebox a:hover {
     text-decoration: underline;
 }
+
 .title-sharebox ul {
     list-style: none;
 }
-
 
 .imagebox {
     float: left;
@@ -169,10 +176,9 @@
     margin: 0 25px 25px 0;
 }
 
-
 /*
- * awards
- */
+* awards
+*/
 .award-show {
     width: 80px;
     margin: 20px 0 0 10px;
@@ -183,21 +189,20 @@
     border: none;
 }
 
-
 /*
- * Consumption Box
- */
+* Consumption Box
+*/
 .consumption-box {
     margin: 0 0px 30px 0;
-    
+
     box-shadow: 0 3px 5px #aaa;
-    
+
     border-radius: 10px;
-    
+
     font-size: 12px;
     width: 173px;
     position: relative;
-    
+
     background: #d9e4f0; /* Old browsers */
     background: -moz-linear-gradient(top, #d9e4f0 0%, #a9d4f9 100%); /* FF3.6+ */
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #d9e4f0), color-stop(100%, #a9d4f9)); /* Chrome,Safari4+ */
@@ -216,10 +221,12 @@
     font-weight: bold;
     padding-top: 16px;
 }
+
 .consume-list {
     list-style: none;
     margin: 10px 0 10px 10px;
 }
+
 .consume-list a {
     text-decoration: none;
     display: block;
@@ -253,11 +260,9 @@
     background-size: 48px 48px;
 }
 
-
-
 /*
- * Donate
- */
+* Donate
+*/
 .donate-box {
     padding: 5px;
     width: 145px;
@@ -268,49 +273,57 @@
     -o-border-radius: 10px;
     border-radius: 10px;
     background: #dce5ef; /* Old browsers */
-    background: -moz-linear-gradient(top,  #dce5ef 0%, #74a7bf 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#dce5ef), color-stop(100%,#74a7bf)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top,  #dce5ef 0%,#74a7bf 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top,  #dce5ef 0%,#74a7bf 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top,  #dce5ef 0%,#74a7bf 100%); /* IE10+ */
-    background: linear-gradient(to bottom,  #dce5ef 0%,#74a7bf 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dce5ef', endColorstr='#74a7bf',GradientType=0 ); /* IE6-9 */
+    background: -moz-linear-gradient(top, #dce5ef 0%, #74a7bf 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #dce5ef), color-stop(100%, #74a7bf)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #dce5ef 0%, #74a7bf 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #dce5ef 0%, #74a7bf 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #dce5ef 0%, #74a7bf 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #dce5ef 0%, #74a7bf 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#dce5ef', endColorstr = '#74a7bf', GradientType = 0); /* IE6-9 */
 }
 
 .donate-box input {
     padding-left: 3px;
 }
 
+/*
+* Player
+*/
+.first-chapter {
+    padding: 0px 0 35px;
+    float: left;
+    width: 467px;
+}
+
+.first-chapter h2 {
+    padding: 0px 0 10px;
+    color: #4b4b4b;
+    font-weight: normal;
+    font-size: 19px;
+    font-style: italic;
+}
+
+.first-chapter audio {
+    max-width: 90%;
+}
 
 /*
- * Player
- */
-.first-chapter{
-	padding:0px 0 35px;
-	float:left;
-	width:467px;
+* Episode List
+*/
+.episode-list-item {
+    border-bottom: solid 1px #e2e5e7;
+    border-top: solid 1px #fff;
+    padding: 20px 0;
 }
-.first-chapter h2{
-	padding:0px 0 10px;
-	color:#4b4b4b;
-	font-weight:normal;
-	font-size:19px;
-	font-style:italic;
+
+.episode-list-item:first-of-type {
+    border-top: none;
 }
-.first-chapter audio{
-	max-width:90%;
+
+.episode-list-item:last-of-type {
+    border-bottom: none;
 }
-/*
- * Episode List
- */
-.episode-list-item{
-	border-bottom:solid 1px #e2e5e7;
-	border-top:solid 1px #fff;
-	padding:20px 0;
-}
-.episode-list-item:first-of-type{
-	border-top:none;
-}
-.episode-list-item:last-of-type{
-	border-bottom:none;
+
+.episode-audio-link:visited {
+    color:#0054A6;
 }
