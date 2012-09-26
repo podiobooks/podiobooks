@@ -19,6 +19,10 @@ $(function(){
 			_gaq.push(['_trackEvent', 'Consume', 'DetailPage-RSSFeed', slug]);
 		});
 		
+		$("#title-donate-submit").click(function(){
+			_gaq.push(['_trackEvent', 'Donate', 'DetailPage-Donate', 'title_slug', donation_amount]);
+		});
+		
 	});
 	
 	
