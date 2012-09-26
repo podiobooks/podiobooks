@@ -3,7 +3,7 @@ $(function(){
 	$(".consume-list").each(function(){
 		var list = $(this);
 		
-		var slug = $(this).data("title-slug");
+		var slug = list.data("title-slug");
 		
 		list.find("#consume-itunes>a").each(function(){
 			$(this).click(function(){
@@ -36,14 +36,26 @@ $(function(){
 			});
 		});
 		
-		list.find("#title-donate-submit").each(function(){
+		
+		
+	});
+	
+	$(".donate-box").each(function(){
+		var wrapper = $(this);
+		var slug = wrapper.data("title-slug");
+		
+		wrapper.find("#title-donate-submit").each(function(){
+			
 			var btn = $(this);
-			var amount = btn.parents("form").find('input[name="amount"]').val();
-			btn.click(function(){
+			var form = btn.parents("form");
+			
+			var amount = form.find('input[name="amount"]').val();
+			
+			form.bind("submit", function(){
 				_gaq.push(['_trackEvent', 'Donate', 'DetailPage-Donate', slug, amount]);
 			});
-		});
-		
+			
+		});	
 	});
 	
 	
