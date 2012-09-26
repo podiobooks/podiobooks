@@ -37,8 +37,10 @@ $(function(){
 		});
 		
 		list.find("#title-donate-submit").each(function(){
-			$(this).click(function(){
-				_gaq.push(['_trackEvent', 'Donate', 'DetailPage-Donate', 'title_slug', donation_amount]);
+			var btn = $(this);
+			var amount = btn.parents("form").find('input[name="amount"]').val();
+			btn.click(function(){
+				_gaq.push(['_trackEvent', 'Donate', 'DetailPage-Donate', slug, amount]);
 			});
 		});
 		
