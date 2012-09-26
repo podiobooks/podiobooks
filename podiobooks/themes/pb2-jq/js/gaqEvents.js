@@ -44,7 +44,8 @@ $(function () {
 
 
     });
-
+	
+	
     /*
      * GA events for elements in the 'Donate to this author' form
      *
@@ -52,13 +53,14 @@ $(function () {
      * 		So, we're going to handle each iteration of the list separately.
      */
     $(".donate-box").each(function(){
+    	
     	var box = $(this);
     	var slug = box.data("title-slug");
     	
     	box.find("#title-donate-submit").click(function(){
-    		var form = $(this).parents("form");
-	        var amount = form.find('input[name="amount"]').val();
-	        _gaq.push(['_trackEvent', 'Donate', 'DetailPage-Donate', slug, amount]);
+			var form = $(this).parents("form");
+			var amount = form.find('input[name="amount"]').val();
+			_gaq.push(['_trackEvent', 'Donate', 'DetailPage-Donate', slug, amount]);
     	});
     	
     });
