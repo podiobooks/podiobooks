@@ -11,6 +11,7 @@ from django.core.urlresolvers import reverse
 from podiobooks.core.models import Title, Episode
 from podiobooks.feeds import feed_tools
 from podiobooks.feeds.protocols.itunes import ITunesFeed
+from django.shortcuts import get_object_or_404
 
 from pyga.requests import Event, Session, Tracker, Visitor
 
@@ -97,8 +98,9 @@ class EpisodeFeed(Feed):
         return extra_args
 
     # pylint: disable=W0221
-    def get_object(self, request, title_slug):
-        obj = Title.objects.get(slug__exact=title_slug)
+    def get_object(self, request, *args, **kwargs):
+        title_slug = kwargs.get('title_slug', None)
+        obj = get_object_or_404(Title, slug__exact=title_slug)
 
         ### Google Analytics for Feed
         tracker = Tracker(settings.GOOGLE_ANALYTICS_ID, feed_tools.get_current_domain())
