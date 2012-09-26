@@ -63,7 +63,7 @@ $(function(){
 			
 			var amount = form.find('input[name="amount"]').val();
 			
-			form.bind("submit", function(){
+			btn.bind("click", function(){
 				_gaq.push(['_trackEvent', 'Donate', 'DetailPage-Donate', slug, amount]);
 			});
 			
