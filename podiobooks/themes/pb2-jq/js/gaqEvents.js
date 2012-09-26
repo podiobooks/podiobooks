@@ -51,13 +51,17 @@ $(function () {
      * The .donate-box template is actually repeated in the markup
      * 		So, we're going to handle each iteration of the list separately.
      */
-    $("#title-donate-submit").bind("click", function () {
-        var slug = $(".donate-box").data("title-slug");
-        var form = $(this).parents("form");
-        var amount = form.find('input[name="amount"]').val();
-        _gaq.push(['_trackEvent', 'Donate', 'DetailPage-Donate', slug, amount]);
+    $(".donate-box").each(function(){
+    	var box = $(this);
+    	var slug = box.data("title-slug");
+    	
+    	box.find("#title-donate-submit").click(function(){
+    		var form = $(this).parents("form");
+	        var amount = form.find('input[name="amount"]').val();
+	        _gaq.push(['_trackEvent', 'Donate', 'DetailPage-Donate', slug, amount]);
+    	});
+    	
     });
-
 
     /*
      * GA events for homepage shelves
