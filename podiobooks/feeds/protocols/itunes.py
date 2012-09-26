@@ -33,8 +33,6 @@ class ITunesFeed(Rss201rev2Feed):
             handler.addQuickElement(u'itunes:image', None, {u'href':self.feed['image']})
         if self.feed['description'] is not None:
             handler.addQuickElement(u'itunes:summary', strip_tags(self.feed['description']))
-        if self.feed['feed_url'] is not None:
-            handler.addQuickElement(u'itunes:new-feed-url', strip_tags(self.feed['feed_url']))
         if self.feed['complete'] is not None:
             handler.addQuickElement(u'itunes:complete', strip_tags(self.feed['complete']))
         
