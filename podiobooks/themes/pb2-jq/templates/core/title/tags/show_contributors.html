@@ -1,7 +1,11 @@
 {% if title %}
-	by
-	{% for contributor in title.contributors.all %}
+	{% for titlecontributor in title.titlecontributors.all %}
+		
+		{% if titlecontributor.contributor_type.slug == 'author' %}{% if forloop.first %}by{% endif %}{% else %}{{ titlecontributor.contributor_type.byline_text }}{% endif %}
+		
 		{% if forloop.last and not forloop.counter == 1 %} and {% endif %}
-		<a href="{{ contributor.get_absolute_url }}">{{ contributor }}</a>{% if not forloop.last %}, {% endif %}
+		
+		<a href="{{ titlecontributor.contributor.get_absolute_url }}">{{ titlecontributor.contributor }}</a>
+		
 	{% endfor %}
 {% endif %}
