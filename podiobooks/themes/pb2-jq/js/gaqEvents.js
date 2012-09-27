@@ -59,7 +59,7 @@ $(function () {
     	
     	box.find("#title-donate-submit").click(function(){
 			var form = $(this).parents("form");
-			var amount = form.find('input[name="amount"]').val();
+			var amount = parseInt(form.find('input[name="amount"]').val());
 			_gaq.push(['_trackEvent', 'Donate', 'DetailPage-Donate', slug, amount]);
     	});
     	
