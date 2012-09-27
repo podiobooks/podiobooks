@@ -32,11 +32,7 @@
 	                
 	                {% if page_name != 'contributor_title_list' %}
 	                    <p class="byline">
-	                    	by
-	                        {% for contributor in title.contributors.all %}
-	                        	{% if forloop.last and not forloop.counter == 1 %} and {% endif %}
-	                        	<a href="{{ contributor.get_absolute_url }}">{{ contributor }}</a>{% if not forloop.last %}, {% endif %}
-	                        {% endfor %}
+	                    	{% show_contributors title %}
 	                    </p>
 	                {% endif %}
 	                

@@ -350,16 +350,6 @@ class TitleTestCase(TestCase):
             print '\t\tContributor Name: %s' % currentContributor.display_name
         self.assertEquals(len(title3.contributors.all()), 2)
         
-    def test_bylines(self):
-        """Assert that the creation of bylines is working."""
-        print '\n---Bylines---'
-        title3titlecontributors = self.title3.titlecontributors.all().order_by('contributor_type__slug', 'date_created')
-        bylineFromTemplate = render_to_string('core/title/tags/show_contributors.html', {'titlecontributors': title3titlecontributors,})
-        
-        print "\t\tTemplate Byline: %s" % bylineFromTemplate
-        print "\t\tAuto Byline: %s" % self.title3.byline
-        self.assertEquals(bylineFromTemplate.strip(), self.title3.byline)
-    
     def test_max_rating(self):
         """Assert that we can capture the last loaded rating from the PB1 Site."""
         print '\n---Max Rating---'
