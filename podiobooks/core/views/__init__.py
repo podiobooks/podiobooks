@@ -139,9 +139,9 @@ def title_search(request, keywords=None):
         else:
             family_filter = Q()
 
-        search_results = Title.objects.filter(
+        search_results = Title.objects.prefetch_related("contributors").filter(
             (Q(name__icontains=keywords) | Q(description__icontains=keywords) | Q(
-                byline__icontains=keywords)) & adult_filter & family_filter)
+                contributors__slug__icontains=keywords)) & adult_filter & family_filter)
         result_count = len(search_results)
 
         ### Pagination
@@ -212,7 +212,7 @@ class CategoryTitleListView(ListView):
     paginate_by = 30
 
     def get_queryset(self):
-        return Title.objects.filter(categories__slug=self.kwargs.get('category_slug'))
+        return Title.objects.prefetch_related("contributors").filter(categories__slug=self.kwargs.get('category_slug'))
 
     def get_context_data(self, **kwargs):
         category = get_object_or_404(Category, slug=self.kwargs.get('category_slug'))
