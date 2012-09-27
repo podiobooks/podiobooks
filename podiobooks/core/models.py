@@ -96,8 +96,8 @@ class Episode(models.Model):
     sequence = models.IntegerField() #Order in the Story
     description = models.TextField(blank=True)
     url = models.URLField()
-    filesize = models.IntegerField(default=0) #Size of the media file
-    length = models.FloatField(default=0) #Length of the media file (usually minutes (or pages))
+    filesize = models.IntegerField(default=0, help_text="In bytes, corresponds to 'length' in RSS feed") #Size of the media file
+    duration = models.CharField(max_length=20, default='45:00', help_text='Duration of the media file in minutes:seconds') #Length of the media file (in minutes)
     contributors = models.ManyToManyField('Contributor', through='EpisodeContributor')
     deleted = models.BooleanField(default=False)
     date_created = models.DateTimeField(auto_now_add=True)
