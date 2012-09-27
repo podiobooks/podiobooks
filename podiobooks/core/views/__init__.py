@@ -40,7 +40,7 @@ def index(request):
     
     template : core/templates/index.html
     """
-    homepage_title_list = Title.objects.filter(display_on_homepage=True).order_by('-date_created').all()
+    homepage_title_list = Title.objects.prefetch_related("titlecontributors", "titlecontributors__contributor", "titlecontributors__contributor_type").filter(display_on_homepage=True).order_by('-date_created').all()
 
     # Featured items, by category
     featured_title_list = homepage_title_list
@@ -67,7 +67,7 @@ def index(request):
 
 
     # recently released
-    recently_released_list = Title.objects.filter(is_adult=False).annotate(Max("episodes__date_created"))
+    recently_released_list = Title.objects.prefetch_related("titlecontributors", "titlecontributors__contributor", "titlecontributors__contributor_type").filter(is_adult=False).annotate(Max("episodes__date_created"))
 
     category_choice_form_recent = CategoryChoiceForm(request, cookie="recent_by_category")
     initial_category_slug_recent = category_choice_form_recent.fields["category"].initial
@@ -139,7 +139,7 @@ def title_search(request, keywords=None):
         else:
             family_filter = Q()
 
-        search_results = Title.objects.prefetch_related("contributors").filter(
+        search_results = Title.objects.prefetch_related("titlecontributors", "titlecontributors__contributor", "titlecontributors__contributor_type").filter(
             (Q(name__icontains=keywords) | Q(description__icontains=keywords) | Q(
                 contributors__slug__icontains=keywords)) & adult_filter & family_filter).distinct()
         result_count = len(search_results)
@@ -210,9 +210,9 @@ class CategoryTitleListView(ListView):
     context_object_name = 'titles'
     template_name = 'core/category/category_detail.html'
     paginate_by = 30
-
+    
     def get_queryset(self):
-        return Title.objects.prefetch_related("contributors").filter(categories__slug=self.kwargs.get('category_slug'))
+        return Title.objects.prefetch_related("titlecontributors", "titlecontributors__contributor", "titlecontributors__contributor_type").filter(categories__slug=self.kwargs.get('category_slug'))
 
     def get_context_data(self, **kwargs):
         category = get_object_or_404(Category, slug=self.kwargs.get('category_slug'))
