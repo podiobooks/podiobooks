@@ -232,7 +232,8 @@
     display: block;
     height: 48px;
     line-height: 48px;
-    margin: 3px 0 0 55px;
+    margin: 8px 0 0 0px;
+    padding:0 0 0 55px;
     text-align: left;
 }
 
@@ -240,22 +241,22 @@
     text-decoration: underline;
 }
 
-.consume-itunes {
+.consume-itunes a{
     background: url('../images/pb-itunes-logo.png') left center no-repeat;
     background-size: 48px 48px;
 }
 
-.consume-rss {
+.consume-rss a{
     background: url('../images/pb-rss-icon.gif') 15px center no-repeat;
     font-size: smaller;
 }
 
-.consume-amazon {
+.consume-amazon a{
     background: url('../images/pb-amazon-logo.png') left center no-repeat;
     background-size: 48px 48px;
 }
 
-.consume-smashwords {
+.consume-smashwords a{
     background: url('../images/pb-smashwords-logo.png') left center no-repeat;
     background-size: 48px 48px;
 }
@@ -325,5 +326,11 @@
 }
 
 .episode-audio-link:visited {
+	color:#362B36;	
+}
+.episode-audio-link,
+.episode-audio-link:link,
+.episode-audio-link:active,
+.episode-audio-link:hover{
     color:#0054A6;
 }
