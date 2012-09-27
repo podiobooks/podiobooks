@@ -39,6 +39,9 @@ urlpatterns = patterns('',
     # Feeds
     (r'^rss/', include('podiobooks.feeds.urls')),
 
+    # Libsyn Utils
+    (r'^libsyn/', include('podiobooks.libsyn.urls')),
+
     # Robots, Favicon and Related
     (r'^robots\.txt$', RobotsView.as_view()),
     (r'^favicon\.ico$', RedirectView.as_view(url=settings.STATIC_URL + 'images/favicon.ico')),

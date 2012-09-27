@@ -1,0 +1,18 @@
+{% extends "admin/base.html" %}
+{% load admin_static %}{% load url from future %}
+
+{% block title %}Import Podiobooks Title from Libsyn{% endblock %}
+
+{% block branding %}
+    <h1 id="site-name">Podiobooks Administration - Import Title</h1>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}
+
+{% block content %}
+
+    <form action="{% url 'libsyn_import_view' %}" method="post">
+        {{ form.as_p }}
+    </form>
+
+{% endblock %}
