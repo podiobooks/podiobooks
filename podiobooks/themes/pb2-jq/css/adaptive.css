@@ -87,6 +87,9 @@
 		width:40%;
 		padding:0 5%;
 	}
+	.title-details-extras-inline .consume-list li a{
+		line-height:1.3em;
+	}
 	.title-details-extras-inline .donate-box{
 		float:left;
 		width:100%;
