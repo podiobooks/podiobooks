@@ -8,7 +8,7 @@
             <a data-title-slug="{{ title.slug }}" href="{% url title_detail title.slug %}">{{ title.name|striptags|truncatewords_afterchar:"30" }}</a>
         </h3>
 
-        <p class="shelf-item-contributors">{{ title.byline|safe }}</p>
+        <p class="shelf-item-contributors">{% show_contributors title %}</p>
         
         <p>
             {% autoescape off %}{{ title.description|striptags|truncatewords_afterchar:"160" }}{% endautoescape %}

@@ -266,7 +266,24 @@ class Title(models.Model):
     def computed_rating(self):
         nps = self.net_promoter_score() / 100
         return nps * 5
-
+    
+    def get_byline(self):
+        """ return a text-only byline (i.e. no HTML) """
+        ret = ""
+        for (i, title_contributor) in enumerate(self.titlecontributors.all()):
+            if title_contributor.contributor_type.slug == "author":
+                if i == 0:
+                    ret += "by "
+                else:
+                    ret += "and "
+            else:
+                ret += title_contributor.contributor_type.byline_text + " "
+            
+            ret += title_contributor.contributor.__unicode__()
+            ret += " "
+        ret = ret.replace("  ", " ")        
+        return ret
+            
 
 class TitleCategory(models.Model):
     """
@@ -279,6 +296,7 @@ class TitleCategory(models.Model):
     class Meta:
         verbose_name_plural = "Title Categories"
 
+
 # pylint: disable=W0613
 def update_category_list(sender, instance, **kwargs):
     """ Update category list cache on titles when a new title category is added...hooked to pre_save trigger for titlecategory below """
@@ -289,6 +307,7 @@ def update_category_list(sender, instance, **kwargs):
     instance.title.save()
 
 post_save.connect(update_category_list, sender=TitleCategory)
+
 
 class TitleContributor(models.Model):
     """Join table to associate contributors to titles."""
@@ -305,16 +324,6 @@ class TitleContributor(models.Model):
     def __unicode__(self):
         return self.contributor.display_name + ": " + self.contributor_type.name + " of " + self.title.name
 
-# pylint: disable=W0613     
-#def update_byline(sender, instance, **kwargs):
-#    """ Update byline cache on titles when a new title contributor is added...hooked to pre_save trigger for titlecontributor below """
-#    titlecontributors = instance.title.titlecontributors.all().order_by('contributor_type__slug', 'date_created')
-#    byline = render_to_string('core/title/tags/show_contributors.html', {'titlecontributors': titlecontributors, })
-#
-#    instance.title.byline = byline.strip()
-#    instance.title.save()
-#
-#post_save.connect(update_byline, sender=TitleContributor) # Fires update_byline when a TitleContributor is saved
 
 class TitleUrl(models.Model):
     """Allows us to have several links for a book, for display. For utility."""
@@ -328,4 +337,3 @@ class TitleUrl(models.Model):
     def __unicode__(self):
         return "TitleUrls"
 
-        #
