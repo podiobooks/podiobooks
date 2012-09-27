@@ -130,7 +130,7 @@ class EpisodeFeed(Feed):
     def item_enclosure_url(self, obj):
         return obj.url
 
-    def item_enclosure_length(self, obj):
+    def item_enclosure_duration(self, obj):
         return int(obj.filesize)
 
     def item_enclosure_mime_type(self):
@@ -149,10 +149,10 @@ class EpisodeFeed(Feed):
         return extra_args
 
     def item_duration(self, obj):
-        if obj.length == 0:
-            return '00:45:00'
+        if obj.duration == 0 or obj.duration == "0.0":
+            return '45:00'
         else:  # pragma no cover
-            return str(obj.length)
+            return obj.duration
 
     def item_keywords(self, obj):
         keywords = u'%s, %s, %s' % (
