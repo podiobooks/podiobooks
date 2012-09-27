@@ -51,7 +51,7 @@ urlpatterns = patterns('',
         name='title_list'),
     url(r'^title/(?P<slug>[^/]+)/$',
         DetailView.as_view
-            (queryset=Title.objects.prefetch_related("series", "episodes", "media", "license").all(),
+            (queryset=Title.objects.prefetch_related("series", "episodes", "media", "license", "contributors").all(),
             context_object_name='title',
             template_name='core/title/title_detail.html'),
         name='title_detail'),
