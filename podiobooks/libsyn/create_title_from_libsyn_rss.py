@@ -3,30 +3,46 @@ Create a PB2 Title Object by parsing a libsyn RSS feed.
 """
 
 import feedparser
+from podiobooks.core.models import Title, Episode
+from django.template.defaultfilters import slugify
+from datetime import datetime
 
 def create_title_from_libsyn_rss(rss_feed_url):
     """Parses a libsyn-generated RSS feed"""
-    title = {}
-    
-    feed = feedparser.parse(rss_feed_url)
-    feed_info = feed.feed
-    title['ID'] = ''
-    title['Title'] = feed_info.title
-    title['license'] = feed_info.rights_detail.value
-    title['Description'] = feed_info.summary_detail.value
-    title['Coverimage'] = feed_info.image.href
-    title['DisplayOnHomepage'] = False
-    title['Explicit'] = feed_info.itunes_explicit
-    title['Complete'] = False
-    title['AvgAudioQuality'] = 0
-    title['AvgNarration'] = 0
-    title['AvgWriting'] = 0
-    title['AvgOverall'] = 0
-    title['LibsynShowID'] = str(feed_info.image.href).replace('http://asset-server.libsyn.com/show/','').replace('/height/300/width/300.jpg','')
-    title['DateCreated'] = feed_info.updated
 
-    episodes = feed.entries
-    for episode in episodes:
-        print episode.link
+    feed = feedparser.parse(rss_feed_url)
+    feed_info = feed.get('feed', None)
+
+    if feed_info is None:
+        return None
+
+    title = Title()
+
+    title.name = feed_info.title
+    title.slug = slugify(feed_info.title) + "---CHANGEME--" + datetime.now().strftime('%f')
+    title.description = feed_info.summary_detail.value
+    if feed_info.itunes_explicit:
+        title.is_explicit = True
+    title.deleted = True
+
+    title.save()
+
+    sequence = 1
+
+    for entry in feed.entries:
+        episode = Episode()
+
+        episode.title = title
+        episode.name = entry.title
+        episode.sequence = sequence
+        episode.description = entry.summary_detail.value
+        episode.duration = entry.itunes_duration
+
+        file = entry.links[1]
+        episode.filesize = file.length
+        episode.url = file.href
+
+        sequence += 1
+        episode.save()
 
     return title
