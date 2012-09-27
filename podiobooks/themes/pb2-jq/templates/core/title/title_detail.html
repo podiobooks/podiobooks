@@ -9,7 +9,7 @@
           content="{{ title.description|striptags|truncatewords:45 }}"/>
 {% endblock %}
 
-{% block headtitle %}{{ title.name }} {{ title.byline|striptags }} on Podiobooks.com{% endblock %}
+{% block headtitle %}{{ title.name }} {{ title.get_byline }} on Podiobooks.com{% endblock %}
 
 {% block head %}
     <link rel="canonical" href="{{ request.build_absolute_uri }}"/>
