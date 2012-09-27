@@ -3,13 +3,21 @@
 # pylint: disable=C0111,E0602,F0401,R0904
 
 from django.contrib import admin
+from django.shortcuts import redirect
+from django.forms.widgets import Textarea, TextInput
+from django.db import models
 
-from podiobooks.core.models import *  #@UnusedWildImport # pylint: disable=W0401,W0614
+from podiobooks.core.models import Award, Category, Contributor, ContributorType, Episode, EpisodeContributor, License, Media, Series, Title, TitleCategory, TitleContributor
 
 ### INLINES
 
 
 class EpisodeInline(admin.TabularInline):
+    formfield_overrides = {models.TextField: {'widget': Textarea(attrs={'rows': '1', 'cols': '30'})}, }
+    def formfield_for_dbfield(self, db_field, **kwargs):
+        if db_field.name == 'duration':
+            kwargs['widget'] = TextInput(attrs={'width': '8',})
+        return super(EpisodeInline,self).formfield_for_dbfield(db_field,**kwargs)
     model = Episode
     exclude = ("deleted", )
 
@@ -38,7 +46,6 @@ class TitleMediaInline(admin.TabularInline):
 
 ### MAIN ADMIN CLASSES
 
-
 class AwardAdmin(admin.ModelAdmin):
     list_display = ('name',)
 
@@ -63,7 +70,7 @@ class ContributorAdmin(admin.ModelAdmin):
 
 
 class EpisodeAdmin(admin.ModelAdmin):
-    list_display = ('title', 'sequence', 'name', 'description', 'url', 'filesize', 'date_created', 'date_updated')
+    list_display = ('title', 'sequence', 'name', 'description', 'url', 'filesize', 'duration', 'date_created',)
     date_hierarchy = 'date_created'
     search_fields = ['name', 'description']
 
@@ -88,6 +95,7 @@ class SeriesAdmin(admin.ModelAdmin):
 
 
 class TitleAdmin(admin.ModelAdmin):
+    actions = ['add_from_libsyn']
     date_hierarchy = 'date_created'
     list_display = (
         'name', 'license', 'is_explicit', 'is_adult', 'is_family_friendly', 'is_for_kids',
@@ -107,6 +115,22 @@ class TitleAdmin(admin.ModelAdmin):
     prepopulated_fields = {"slug": ("name",)}
     save_on_tap = True
     search_fields = ['name', 'byline']
+    fieldsets = (
+        ('Title Information', {
+            'fields': ('libsyn_show_id', 'name', 'slug', 'description', 'license', 'itunes_adam_id', 'podiobooker_blog_url',)
+        }),
+        ('Flags (Explicitness, Disp. on Homepage)', {
+            'classes': ('collapse',),
+            'fields': ('display_on_homepage', 'is_adult', 'is_explicit', 'is_family_friendly', 'is_for_kids')
+        }),
+        ('Series', {
+            'classes': ('collapse',),
+            'fields': ('series', 'series_sequence',)
+        }),
+        ('Awards', {
+            'classes': ('collapse',),
+            'fields': ('awards',)
+        }))
     filter_horizontal = ['awards']
 
 
