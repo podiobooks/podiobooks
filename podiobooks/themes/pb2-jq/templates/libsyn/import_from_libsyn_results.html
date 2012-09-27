@@ -1,0 +1,24 @@
+{% extends "admin/base.html" %}
+{% load admin_static %}{% load url from future %}
+
+{% block title %}Import Podiobooks Title from Libsyn Results{% endblock %}
+
+{% block branding %}
+    <h1 id="site-name">Podiobooks Administration - Import Title Results</h1>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}
+
+{% block content %}
+
+    {% if title %}
+        <h3>Title Import Successful</h3>
+        <h4>{{ title.name }}</h4>
+        <p>{{ title.description }}</p>
+        <h2></h2><a href="/admin/core/title/{{ title.id }}/">Edit This Title</a></h2>
+        <p><em>This title is in deleted status, and you must uncheck 'Deleted' on the edit screen to activate it.</em></p>
+    {% else %}
+        <h3>An error occurred, and this title was not imported.</h3>
+    {% endif %}
+
+{% endblock %}
