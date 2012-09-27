@@ -117,7 +117,7 @@ class TitleAdmin(admin.ModelAdmin):
     search_fields = ['name', 'byline']
     fieldsets = (
         ('Title Information', {
-            'fields': ('libsyn_show_id', 'name', 'slug', 'description', 'license', 'itunes_adam_id', 'podiobooker_blog_url',)
+            'fields': ('libsyn_show_id', 'name', 'slug', 'description', 'license', 'itunes_adam_id', 'podiobooker_blog_url', 'deleted')
         }),
         ('Flags (Explicitness, Disp. on Homepage)', {
             'classes': ('collapse',),

@@ -4,13 +4,11 @@
 {% load admin_urls %}
 
 {% block object-tools-items %}
-    {% if False %}
     <li>
         <a href="/libsyn/import/" class="addlink">
             Import Title
         </a>
     </li>
-    {% endif %}
     <li>
         <a href="{% url cl.opts|admin_urlname:'add' %}{% if is_popup %}?_popup=1{% endif %}" class="addlink">
             {% blocktrans with cl.opts.verbose_name as name %}Add {{ name }}{% endblocktrans %}
