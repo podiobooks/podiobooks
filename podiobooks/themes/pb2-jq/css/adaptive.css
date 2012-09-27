@@ -68,21 +68,31 @@
 	}
 	.title-details-extras-inline .consumption-box{
 		width:auto;
-		position: relative;
-		min-height:185px;
+		float:none;
 	}
 	.title-details-extras-inline .headphone-title{
-		text-align:left;
-		background-position:left top;
-		padding:16px 0 0 40px
+		
+		width:auto;
+		float:none;
 	}
 	.title-details-extras-inline .consume-list{
 		float:left;
+		width:100%;
+		padding:0;
+		margin:15px 0 0;
+		
+	}
+	.title-details-extras-inline .consume-list li{
+		float:left;
+		width:40%;
+		padding:0 5%;
 	}
 	.title-details-extras-inline .donate-box{
-		position:absolute;
-		right:0;
-		top:15px;
+		float:left;
+		width:100%;
+		margin:20px 0 0;
+		padding:15px 0;
+		border-radius:0 0 10px 10px;
 	}
 	.title-details-top{
 	}
