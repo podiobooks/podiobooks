@@ -306,15 +306,15 @@ class TitleContributor(models.Model):
         return self.contributor.display_name + ": " + self.contributor_type.name + " of " + self.title.name
 
 # pylint: disable=W0613     
-def update_byline(sender, instance, **kwargs):
-    """ Update byline cache on titles when a new title contributor is added...hooked to pre_save trigger for titlecontributor below """
-    titlecontributors = instance.title.titlecontributors.all().order_by('contributor_type__slug', 'date_created')
-    byline = render_to_string('core/title/tags/show_contributors.html', {'titlecontributors': titlecontributors, })
-
-    instance.title.byline = byline.strip()
-    instance.title.save()
-
-post_save.connect(update_byline, sender=TitleContributor) # Fires update_byline when a TitleContributor is saved
+#def update_byline(sender, instance, **kwargs):
+#    """ Update byline cache on titles when a new title contributor is added...hooked to pre_save trigger for titlecontributor below """
+#    titlecontributors = instance.title.titlecontributors.all().order_by('contributor_type__slug', 'date_created')
+#    byline = render_to_string('core/title/tags/show_contributors.html', {'titlecontributors': titlecontributors, })
+#
+#    instance.title.byline = byline.strip()
+#    instance.title.save()
+#
+#post_save.connect(update_byline, sender=TitleContributor) # Fires update_byline when a TitleContributor is saved
 
 class TitleUrl(models.Model):
     """Allows us to have several links for a book, for display. For utility."""
