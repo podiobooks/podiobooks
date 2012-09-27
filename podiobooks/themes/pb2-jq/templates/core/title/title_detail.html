@@ -43,16 +43,12 @@
         <meta itemprop="bookFormat" content="AudioBook/Serialized">
         <header>
             <div class="title-details-titlebar">
-            	
                 <h1 class="title-details-title" itemprop="name">{{ title.name }}</h1>
 
                 <div class="byline" itemprop="author">
-                	
-	            	<p itemscope itemtype="http://schema.org/Person">
-	            		<span itemprop="name">
-	            			{{ title.byline|safe }}
-	            		</span>
-	            	</p>
+	            	<span itemscope itemtype="http://schema.org/Person">
+	            		<span itemprop="name">{% show_contributors title %}</span>
+	            	</span>
                 </div>
             </div>
             <div class='imagebox'>
@@ -67,10 +63,10 @@
             {% endif %}
         </header>
         <div class="title-details-top clearfix">
-			
-			<p class="category">{{ title.category_list|safe }}</p>
-            
+
             <div class="title-details-infobar">
+
+                <div class="category">{{ title.category_list|safe }}</div>
 
                 <div class="net-promoter-box">
 
