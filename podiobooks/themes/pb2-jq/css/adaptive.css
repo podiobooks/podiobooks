@@ -81,7 +81,8 @@
 		padding:0;
 		margin:15px 0 0;
 		padding:0 0 20px;
-		border-bottom:solid 1px #dbe4ed;
+		border-bottom:solid 1px #d1e5f6;
+		
 		
 		
 	}
@@ -96,7 +97,7 @@
 	.title-details-extras-inline .donate-box{
 		float:left;
 		width:100%;
-		border-top:solid 1px #adcded;
+		border-top:solid 1px #b2cfea;
 		margin:0px 0 0;
 		padding:15px 0;
 		border-radius:0 0 10px 10px;
