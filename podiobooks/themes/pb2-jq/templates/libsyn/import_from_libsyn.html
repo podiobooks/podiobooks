@@ -13,6 +13,7 @@
 
     <form action="{% url 'libsyn_import_view' %}" method="post">
         {{ form.as_p }}
+    <input type="submit" name="Import" value="Import">
     </form>
 
 {% endblock %}
