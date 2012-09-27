@@ -15,9 +15,8 @@ def show_awardshow(title):
 
 @register.inclusion_tag('core/title/tags/show_contributors.html')
 def show_contributors(title):
-    """ Pulls and formats a list of all the contributors for a Title """
-    titlecontributors = title.titlecontributors.all().order_by('contributor_type__slug', 'date_created')
-    return {'titlecontributors': titlecontributors}
+    """ standardize formatting for contributor list for a given title """
+    return {"title": title}
 
 
 @register.inclusion_tag('core/title/tags/show_titlecover.html')
