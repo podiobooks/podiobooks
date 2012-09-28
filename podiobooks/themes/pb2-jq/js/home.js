@@ -21,6 +21,6 @@ $(function(){
 		});
 		
 		//$(".half-shelf>.shelf, .quarter-shelf>.shelf").pbShelf();
-				
+		
 	}
 });
