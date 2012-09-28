@@ -267,7 +267,12 @@
 				*/
 				
 				if (wholeShelf && $("html").hasClass("touch")){
-					wholeShelf.bind("move", function(e){
+					wholeShelf.bind("movestart", function(e){
+						if ((e.distX > e.distY && e.distX < -e.distY) ||
+      						(e.distX < e.distY && e.distX > -e.distY)) {
+   								e.preventDefault();
+  						}
+					}).bind("move", function(e){
 						var startLeft = parseInt(wholeShelf.css("left").replace("px", ""));
 						wholeShelf.css({"left": startLeft + (e.deltaX)});
 					}).bind("moveend", function(e){
@@ -420,16 +425,16 @@
 			var handleArrows = function(){
 				
 				if (cur == 0){
-					leftArrow.hide();
+					leftArrow.addClass("hidden");
 				}
 				else{
-					leftArrow.show();
+					leftArrow.removeClass("hidden");
 				}
 				if (cur < maxWidth - shelf.width()){
-					rightArrow.show();
+					rightArrow.removeClass("hidden");
 				}
 				else{
-					rightArrow.hide();
+					rightArrow.addClass("hidden");
 				}
 				//status();
 				handleShelfPosition();
