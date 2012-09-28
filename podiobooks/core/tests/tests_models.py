@@ -16,7 +16,6 @@ class TitleTestCase(TestCase):
         
         #Create Some Test Users
         self.user1 = User.objects.create_user('testuser1', 'testuser1@test.com', 'testuser1password')
-        self.user2 = User.objects.create_user('testuser2', 'testuser2@test.com', 'testuser2password')
         self.user3 = User.objects.create_user('testuser3', 'testuser3@test.com', 'testuser3password')
 
         # Create Some Series
@@ -200,19 +199,19 @@ class TitleTestCase(TestCase):
 
     def test_series(self):
         """Assert that we creates series correctly, and can access titles from series."""
-        print '\n---Series---'
+#        print '\n---Series---'
         for currentSeries in Series.objects.all().filter(name__startswith='Podiobooks Series') :
-            print '\n\tName: %s' % currentSeries
-            print '\tSlug: %s' % currentSeries.slug
-            print '\tURL: %s' % currentSeries.get_absolute_url()
-            print '\tTitles:'
-            for currentTitle in currentSeries.titles.all() :
-                print '\t\tName: %s' % currentTitle.name
-                print '\t\tSlug: %s' % currentTitle.slug
-                print '\tURL: %s' % currentTitle.get_absolute_url()
-                print '\tNet Promoter Score: %s' % currentTitle.net_promoter_score()
-                print '\tDesc With <br>: %s' % currentTitle.description_br()
-            
+#            print '\n\tName: %s' % currentSeries
+#            print '\tSlug: %s' % currentSeries.slug
+#            print '\tURL: %s' % currentSeries.get_absolute_url()
+#            print '\tTitles:'
+#            for currentTitle in currentSeries.titles.all() :
+#                print '\t\tName: %s' % currentTitle.name
+#                print '\t\tSlug: %s' % currentTitle.slug
+#                print '\tURL: %s' % currentTitle.get_absolute_url()
+#                print '\tNet Promoter Score: %s' % currentTitle.net_promoter_score()
+#                print '\tDesc With <br>: %s' % currentTitle.description_br()
+
             # Series Assertions
             if currentSeries.name == "Podiobooks Series #1" :
                 self.assertEquals(len(currentSeries.titles.all()), 2)
@@ -222,32 +221,32 @@ class TitleTestCase(TestCase):
                 self.fail('Non-matching Series!' + currentSeries.name)
                 
     def test_titles(self):
-        """Assert that we created titles correctly, and can access everything from titles.""" 
-        print '\n---Titles---'
+        """Assert that we created titles correctly, and can access everything from titles."""
+#        print '\n---Titles---'
         for currentTitle in Title.objects.all().filter( name__startswith='Podiobooks Title' ) :
-            print '\n\tName: %s' % currentTitle
-            print '\tSlug: %s' % currentTitle.slug
-            print '\tSeries: %s' % currentTitle.series.name
-            print '\tEpisodes:'
-            for currentEpisode in currentTitle.episodes.all() :
-                print '\t\tName: %s - %s - %s' % ( currentEpisode, currentEpisode.get_absolute_url(), currentEpisode.filesize_mb )
-            print '\tCategories:'
-            for currentCategory in currentTitle.categories.all() :
-                print '\t\t%s - url: %s' % ( currentCategory, currentCategory.get_absolute_url() )
-            print '\tAwards:'
-            for currentAward in currentTitle.awards.all() :
-                print '\t\t%s' % ( currentAward )
-            print '\tContributors:'
-            for currentTitleContributor in currentTitle.titlecontributors.all() :
-                print '\t\t%s (%s) - %s' % ( currentTitleContributor.contributor, currentTitleContributor.contributor_type, currentTitleContributor.contributor.get_absolute_url() )
-            if currentTitle.license:
-                print '\tLicense: %s' % currentTitle.license
-            if currentTitle.media:
-                for currentMedia in currentTitle.media.all() :
-                    print '\tMedia: %s' % currentMedia
-            if currentTitle.urls:
-                for currentURL in currentTitle.urls.all() :
-                    print '\tURL: %s' % currentURL
+#            print '\n\tName: %s' % currentTitle
+#            print '\tSlug: %s' % currentTitle.slug
+#            print '\tSeries: %s' % currentTitle.series.name
+#            print '\tEpisodes:'
+#            for currentEpisode in currentTitle.episodes.all() :
+#                print '\t\tName: %s - %s - %s' % ( currentEpisode, currentEpisode.get_absolute_url(), currentEpisode.filesize_mb )
+#            print '\tCategories:'
+#            for currentCategory in currentTitle.categories.all() :
+#                print '\t\t%s - url: %s' % ( currentCategory, currentCategory.get_absolute_url() )
+#            print '\tAwards:'
+#            for currentAward in currentTitle.awards.all() :
+#                print '\t\t%s' % ( currentAward )
+#            print '\tContributors:'
+#            for currentTitleContributor in currentTitle.titlecontributors.all() :
+#                print '\t\t%s (%s) - %s' % ( currentTitleContributor.contributor, currentTitleContributor.contributor_type, currentTitleContributor.contributor.get_absolute_url() )
+#            if currentTitle.license:
+#                print '\tLicense: %s' % currentTitle.license
+#            if currentTitle.media:
+#                for currentMedia in currentTitle.media.all() :
+#                    print '\tMedia: %s' % currentMedia
+#            if currentTitle.urls:
+#                for currentURL in currentTitle.urls.all() :
+#                    print '\tURL: %s' % currentURL
             
             # Title Assertions
             if currentTitle.name == "Podiobooks Title #1" :
@@ -261,11 +260,11 @@ class TitleTestCase(TestCase):
                      
     def test_categories(self):
         """Assert that we created Categories correctly, and can access titles from categories."""
-        print '\n---Categories---'
+#        print '\n---Categories---'
         for currentCategory in Category.objects.all() :
-            print '\n\tSlug/Name: %s/%s' % (currentCategory.slug, currentCategory.name)
-            for currentTitle in currentCategory.title_set.all() :
-                print '\t\tName: %s' % currentTitle.name
+#            print '\n\tSlug/Name: %s/%s' % (currentCategory.slug, currentCategory.name)
+#            for currentTitle in currentCategory.title_set.all() :
+#                print '\t\tName: %s' % currentTitle.name
                 
             # Category Assertions
             if currentCategory.slug == "science-fiction" :
@@ -277,40 +276,40 @@ class TitleTestCase(TestCase):
                 
         # Count Titles By Category
         categoryTitleCount = Category.objects.aggregate(title_count=Count('title')) # Counts the main_title_category table
-        print '\n\tTitle/Category Count: ' + str(categoryTitleCount['title_count'])
+#        print '\n\tTitle/Category Count: ' + str(categoryTitleCount['title_count'])
         self.assertEquals(len(categoryTitleCount), 1)
         
         categoryTitleGroupCounts = Category.objects.annotate(title_count=Count('title'))
-        print  '\n\tTitle Counts by Category:\n',
-        for categoryTitleGroup in categoryTitleGroupCounts:
-            print  '\t\t%s: %d' % (categoryTitleGroup.name, categoryTitleGroup.title_count)
+#        print  '\n\tTitle Counts by Category:\n',
+#        for categoryTitleGroup in categoryTitleGroupCounts:
+#            print  '\t\t%s: %d' % (categoryTitleGroup.name, categoryTitleGroup.title_count)
         self.assertEquals(len(categoryTitleGroupCounts), 2)
             
         categoryTitleGroupCountsFiltered = categoryTitleGroupCounts.filter(title_count__gt=1)
-        print  '\n\tFiltered Title Counts by Category:\n',
-        for categoryTitleGroup in categoryTitleGroupCountsFiltered:
-            print  '\t\t%s: %d' % (categoryTitleGroup.name, categoryTitleGroup.title_count)
+#        print  '\n\tFiltered Title Counts by Category:\n',
+#        for categoryTitleGroup in categoryTitleGroupCountsFiltered:
+#            print  '\t\t%s: %d' % (categoryTitleGroup.name, categoryTitleGroup.title_count)
         self.assertEquals(len(categoryTitleGroupCountsFiltered), 1)
         
         categoryTitleGroupCountsFilteredSubset = categoryTitleGroupCounts.filter(title_count__gt=1).values_list('slug','name')
-        print  '\n\tField Subset of Filtered Categories:\n',
-        for categorySubset in categoryTitleGroupCountsFilteredSubset:
-            print  '\t\t%s/%s' % (categorySubset[0], categorySubset[1])
+#        print  '\n\tField Subset of Filtered Categories:\n',
+#        for categorySubset in categoryTitleGroupCountsFilteredSubset:
+#            print  '\t\t%s/%s' % (categorySubset[0], categorySubset[1])
         self.assertEquals(len(categoryTitleGroupCountsFilteredSubset), 1)
             
         title3 = Title.objects.get(name='Podiobooks Title #3')
-        print ('\n\t' + title3.name + ":")
-        for currentCategory in title3.categories.all() :
-            print '\t\tCategory Name: %s' % currentCategory.name
+#        print ('\n\t' + title3.name + ":")
+#        for currentCategory in title3.categories.all() :
+#            print '\t\tCategory Name: %s' % currentCategory.name
         self.assertEquals(len(title3.categories.all()), 2)
         
     def test_contributors(self):
         """Assert that we created Categories correctly, and can access titles from categories.""" 
-        print '\n---Contributors---'
+#        print '\n---Contributors---'
         for currentContributor in Contributor.objects.all() :
-            print '\n\tSlug/Name: %s/%s' % (currentContributor.slug, currentContributor.display_name)
-            for currentTitle in currentContributor.title_set.all() :
-                print '\t\tName: %s' % currentTitle.name
+#            print '\n\tSlug/Name: %s/%s' % (currentContributor.slug, currentContributor.display_name)
+#            for currentTitle in currentContributor.title_set.all() :
+#                print '\t\tName: %s' % currentTitle.name
                 
             # Contributor Assertions
             if currentContributor.slug == "mur-lafferty" :
@@ -322,38 +321,38 @@ class TitleTestCase(TestCase):
                 
         # Count Titles By Contributor
         contributorTitleCount = Contributor.objects.aggregate(title_count=Count('title')) # Counts the main_title_contributor table
-        print '\n\tTitle/Contributor Count: ' + str(contributorTitleCount['title_count'])
+#        print '\n\tTitle/Contributor Count: ' + str(contributorTitleCount['title_count'])
         self.assertEquals(len(contributorTitleCount), 1)
         
         contributorTitleGroupCounts = Contributor.objects.annotate(title_count=Count('title'))
-        print  '\n\tTitle Counts by Contributor:\n',
-        for contributorTitleGroup in contributorTitleGroupCounts:
-            print  '\t\t%s: %d' % (contributorTitleGroup.display_name, contributorTitleGroup.title_count)
+#        print  '\n\tTitle Counts by Contributor:\n',
+#        for contributorTitleGroup in contributorTitleGroupCounts:
+#            print  '\t\t%s: %d' % (contributorTitleGroup.display_name, contributorTitleGroup.title_count)
         self.assertEquals(len(contributorTitleGroupCounts), 2)
             
         contributorTitleGroupCountsFiltered = contributorTitleGroupCounts.filter(title_count__gt=1)
-        print  '\n\tFiltered Title Counts by Contributor:\n',
-        for contributorTitleGroup in contributorTitleGroupCountsFiltered:
-            print  '\t\t%s: %d' % (contributorTitleGroup.display_name, contributorTitleGroup.title_count)
+#        print  '\n\tFiltered Title Counts by Contributor:\n',
+#        for contributorTitleGroup in contributorTitleGroupCountsFiltered:
+#            print  '\t\t%s: %d' % (contributorTitleGroup.display_name, contributorTitleGroup.title_count)
         self.assertEquals(len(contributorTitleGroupCountsFiltered), 1)
         
         contributorTitleGroupCountsFilteredSubset = contributorTitleGroupCounts.filter(title_count__gt=1).values_list('slug','display_name')
-        print  '\n\tField Subset of Filtered Contributors:\n',
-        for contributorSubset in contributorTitleGroupCountsFilteredSubset:
-            print  '\t\t%s/%s' % (contributorSubset[0], contributorSubset[1])
+#        print  '\n\tField Subset of Filtered Contributors:\n',
+#        for contributorSubset in contributorTitleGroupCountsFilteredSubset:
+#            print  '\t\t%s/%s' % (contributorSubset[0], contributorSubset[1])
         self.assertEquals(len(contributorTitleGroupCountsFilteredSubset), 1)
         
         title3 = Title.objects.get(name='Podiobooks Title #3')
-        print ('\n\t' + title3.name + ":")
-        title3contributors = title3.contributors.all() 
-        for currentContributor in title3contributors:
-            print '\t\tContributor Name: %s' % currentContributor.display_name
+#        print ('\n\t' + title3.name + ":")
+#        title3contributors = title3.contributors.all()
+#        for currentContributor in title3contributors:
+#            print '\t\tContributor Name: %s' % currentContributor.display_name
         self.assertEquals(len(title3.contributors.all()), 2)
         
-    def test_max_rating(self):
-        """Assert that we can capture the last loaded rating from the PB1 Site."""
-        print '\n---Max Rating---'
-        print "\t\tLast Rating Loaded: %s" % self.rating
+#    def test_max_rating(self):
+#        """Assert that we can capture the last loaded rating from the PB1 Site."""
+#        print '\n---Max Rating---'
+#        print "\t\tLast Rating Loaded: %s" % self.rating
 
     def test_media(self):
         """Test pulling Particular Media Items"""
