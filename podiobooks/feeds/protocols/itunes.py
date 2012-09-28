@@ -57,7 +57,7 @@ class ITunesFeed(Rss201rev2Feed):
         if self.feed['author_name'] is not None:
             handler.addQuickElement(u'itunes:author', self.feed['author_name'])
         if self.feed['subtitle'] is not None:
-            handler.addQuickElement(u'itunes:subtitle', item['description'])
+            handler.addQuickElement(u'itunes:subtitle', item['description'][:255])
         if item['description'] is not None:
             handler.addQuickElement(u'itunes:summary', item['description'])
         if item['duration'] is not None:
