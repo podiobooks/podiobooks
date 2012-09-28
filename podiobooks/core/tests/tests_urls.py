@@ -15,6 +15,14 @@ class UrlTestCase(TestCase):
         response = self.client.get('/')
         self.assertEquals(200, response.status_code)
 
+    def test_award_list(self):
+        response = self.client.get('/award/')
+        self.assertEquals(200, response.status_code)
+
+    def test_award_detail(self):
+        response = self.client.get('/award/dead-letter-award-2008-winner/')
+        self.assertEquals(200, response.status_code)
+
     def test_title_list(self):
         response = self.client.get('/title/')
         self.assertEquals(200, response.status_code)
