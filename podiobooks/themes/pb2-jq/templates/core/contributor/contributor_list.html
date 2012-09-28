@@ -9,20 +9,25 @@
 {% endblock %}
 
 {% block content %}
-<h1>All Contributors, Alphabetically by Last Name</h1>
-<ul class="browse-list">
-  {% for contributor in contributor_list %} 
-  <li class="long-running-list-item contributor_list_item">
-	<a href="
+    <h1>All Contributors, Alphabetically by Last Name</h1>
+    {% if page_obj.number > 1 %}
+        <span class="current">
+            <em>Page {{ page_obj.number }} of {{ paginator.num_pages }}</em>
+        </span>
+    {% endif %}
+    <ul class="browse-list">
+        {% for contributor in contributor_list %}
+            <li class="long-running-list-item contributor_list_item">
+                <a href="
 		{% ifequal contributor.title_set.all.count 1 %}
 			{% url title_detail slug=contributor.title_set.all|first %} 
 		{% else %} 
 			{{ contributor.get_absolute_url }} 
 		{% endifequal %}">{{ contributor.display_name }}</a>
-      - {{ contributor.title_set.all.count }} title{{ contributor.title_set.all.count|pluralize }}</li>
-  {% endfor %}
-</ul>
-<br>
-{% show_pagination_links paginator page_obj %}
+                - {{ contributor.title_set.all.count }} title{{ contributor.title_set.all.count|pluralize }}</li>
+        {% endfor %}
+    </ul>
+    <br>
+    {% show_pagination_links paginator page_obj %}
 {% endblock %}
 
