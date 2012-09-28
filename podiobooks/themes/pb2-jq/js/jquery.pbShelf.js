@@ -266,7 +266,7 @@
 				}
 				*/
 				
-				if (wholeShelf){
+				if (wholeShelf && $("html").hasClass("touch")){
 					wholeShelf.bind("move", function(e){
 						var startLeft = parseInt(wholeShelf.css("left").replace("px", ""));
 						wholeShelf.css({"left": startLeft + (e.deltaX)});
