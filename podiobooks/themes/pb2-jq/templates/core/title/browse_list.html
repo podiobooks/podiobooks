@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% load global_templatetags %}
+{% load title_templatetags %}
+
+{% block headtitle %}Browse Titles on {{ SITE.name }}{% endblock %}
+
+{% block content %}
+    <h1>
+        Browse Titles By:
+    </h1>
+
+    <ul class="browse-list">
+        <li><a href="{% url title_list %}">All Titles, Alphabetically</a></li>
+        <li><a href="{% url title_browse_awards %}">Awards/Nominations</a></li>
+        <li><a href="{% url series_list %}">Series</a></li>
+        <li><a href="{% url category_list %}">Category/Genre</a></li>
+        <li><a href="{% url contributor_list %}">Author/Contributor</a></li>
+    </ul>
+
+{% endblock %}

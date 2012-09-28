@@ -1,10 +1,11 @@
 {% extends "base.html" %}
 {% load title_templatetags %}
+{% load global_templatetags %}
 
 {% block headtitle %}All Titles - {{ SITE.name }}{% endblock %}
 
-
-
 {% block content %}
 	{% show_titlelist title_list "title_list" %}
+    <br>
+    {% show_pagination_links paginator page_obj %}
 {% endblock %}
