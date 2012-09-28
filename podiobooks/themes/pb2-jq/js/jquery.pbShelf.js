@@ -165,6 +165,7 @@
 					});
 					maxWidth = w;
 					
+					
 					/*
 					 * Wrap all the shelf items,
 					 * create a "field of vision"
@@ -235,6 +236,8 @@
 						handleArrows();
 					});
 				}
+				
+				
 				/*
 				 * Add arrow/positioner to window resize
 				 * 
@@ -242,52 +245,40 @@
 				 * performance implications here...
 				 * 
 				 */
-				$(window).unbind("resize",handleArrows);
-				$(window).bind("resize",handleArrows);
+				$(window).unbind("resize", handleArrows);
+				$(window).bind("resize", handleArrows);
 				
 				
 				/*
-				 * Use the jquery.touchSwipe plugin
-				 * to have swipes trigger click events 
-				 * on the arrows
+				 * User jquery.event.move plugin
+				 * to animate shelf movement 
+				 * on touch devices
 				 */
-				/*
-				if (wholeShelf){
-					wholeShelf.swipe({
-						swipeLeft:function(event){
-							rightArrow.trigger("click");	
-						},
-						swipeRight:function(event){
-							leftArrow.trigger("click");
-						},
-						allowPageScroll:"vertical",
-						fallbackToMouseEvents: false					
-					});
-				}
-				*/
-				
 				if (wholeShelf && $("html").hasClass("touch")){
 					wholeShelf.bind("movestart", function(e){
-						if ((e.distX > e.distY && e.distX < -e.distY) ||
-      						(e.distX < e.distY && e.distX > -e.distY)) {
-   								e.preventDefault();
+						/*
+						 * Check if hte move event is actually vertical scrolling
+						 * If it is, don't start trying to drag the shelves around
+						 */
+						if ((e.distX > e.distY && e.distX < -e.distY) || (e.distX < e.distY && e.distX > -e.distY)) {
+							e.preventDefault();
   						}
 					}).bind("move", function(e){
 						var startLeft = parseInt(wholeShelf.css("left").replace("px", ""));
 						wholeShelf.css({"left": startLeft + (e.deltaX)});
 					}).bind("moveend", function(e){
-						var startLeft = parseInt(wholeShelf.css("left").replace("px", ""));
-						var shelfWidth = shelf.find(".shelf-view").width();
 						
-						if (startLeft > 0){
+						var endLeft = parseInt(wholeShelf.css("left").replace("px", ""));
+						var shelfWidth = shelf.width();
+						
+						if (endLeft > 0){
 							wholeShelf.animate({"left": 0}, 400, "easeOutExpo");
 						}
-						else if (startLeft < -(itemWidth * numItems - shelfWidth)){
-							
+						else if (endLeft < -(itemWidth * numItems - shelfWidth)){
 							wholeShelf.animate({"left": -(itemWidth * numItems - shelfWidth)}, 400, "easeOutExpo")
 						}
 						else{
-							var whereToGo = parseInt(startLeft / itemWidth);
+							var whereToGo = parseInt(endLeft / itemWidth);
 							if (e.deltaX < 0){
 								whereToGo -= 1;
 							}
