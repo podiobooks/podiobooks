@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load title_templatetags %}
+{% load global_templatetags %}
 
 {% block headtitle %}{{ category.name }} Category - {{ SITE.name }}{% endblock %}
 
@@ -19,19 +20,5 @@
     {% endif %}
 
     <br>
-    {% if paginator.num_pages > 1 %}
-    <div class="pagination">
-        {% if page_obj.has_previous %}
-            <a href="?page={{ page_obj.previous_page_number }}">Previous Page</a>
-        {% endif %}
-
-        <span class="current">
-            &nbsp; Page {{ page_obj.number }} of {{ paginator.num_pages }} &nbsp;
-        </span>
-
-        {% if page_obj.has_next %}
-            <a href="?page={{ page_obj.next_page_number }}">Next Page</a>
-        {% endif %}
-    </div>
-    {% endif %}
+    {% show_pagination_links paginator page_obj %}
 {% endblock %}
