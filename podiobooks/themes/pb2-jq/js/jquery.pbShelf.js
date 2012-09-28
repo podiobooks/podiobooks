@@ -251,6 +251,7 @@
 				 * to have swipes trigger click events 
 				 * on the arrows
 				 */
+				/*
 				if (wholeShelf){
 					wholeShelf.swipe({
 						swipeLeft:function(event){
@@ -261,6 +262,33 @@
 						},
 						allowPageScroll:"vertical",
 						fallbackToMouseEvents: false					
+					});
+				}
+				*/
+				
+				if (wholeShelf){
+					wholeShelf.bind("move", function(e){
+						var startLeft = parseInt(wholeShelf.css("left").replace("px", ""));
+						wholeShelf.css({"left": startLeft + (e.deltaX)});
+					}).bind("moveend", function(e){
+						var startLeft = parseInt(wholeShelf.css("left").replace("px", ""));
+						var shelfWidth = shelf.find(".shelf-view").width();
+						
+						if (startLeft > 0){
+							wholeShelf.animate({"left": 0}, 400, "easeOutExpo");
+						}
+						else if (startLeft < -(itemWidth * numItems - shelfWidth)){
+							
+							wholeShelf.animate({"left": -(itemWidth * numItems - shelfWidth)}, 400, "easeOutExpo")
+						}
+						else{
+							var whereToGo = parseInt(startLeft / itemWidth);
+							if (e.deltaX < 0){
+								whereToGo -= 1;
+							}
+							whereToGo = whereToGo * itemWidth;
+							wholeShelf.animate({"left": whereToGo}, 400, "easeOutExpo");
+						}
 					});
 				}
 			};
