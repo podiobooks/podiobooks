@@ -14,6 +14,7 @@ class Award(models.Model):
     name = models.CharField(blank=True, max_length=255)
     url = models.URLField(blank=True)
     image = models.ImageField(upload_to='images/awards', max_length=255)
+    # Note - titles are available as title_set.all()
     deleted = models.BooleanField(default=False)
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
@@ -23,6 +24,10 @@ class Award(models.Model):
 
     def __unicode__(self):
         return self.name
+
+    @models.permalink
+    def get_absolute_url(self):
+        return 'award_detail', [self.slug]
 
 
 class Category(models.Model):

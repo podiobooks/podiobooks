@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% load global_templatetags %}
+{% load title_templatetags %}
+
+{% block headtitle %}Browse Titles by Award - {{ SITE.name }}{% endblock %}
+
+{% block content %}
+    <h1>
+        Browse Titles By Award:
+    </h1>
+
+    <ul class="browse-list">
+        {% for award in award_list %}
+            <li class="long-running-list-item series_{{ award.slug }}"><a
+                    href="{{ award.get_absolute_url }}">{{ award.name }}</a> - {{ award.titles.all.count }} title{{ award.titles.all.count|pluralize }}</li>
+        {% endfor %}
+    </ul>
+
+    <br>
+    {% show_pagination_links paginator page_obj %}
+
+{% endblock %}

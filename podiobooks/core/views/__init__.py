@@ -19,18 +19,6 @@ from podiobooks.core.forms import CategoryChoiceForm, ContributorChoiceForm, Tit
 INITIAL_CATEGORY = 'science-fiction'
 INITIAL_CONTRIBUTOR = 'mur-lafferty'
 
-
-def contributor_list(request):
-    """
-    List of all contributors, annotated with a title count
-    """
-    contributors = Contributor.objects.annotate(contributes_to_count=Count("titlecontributors")).prefetch_related(
-        "title_set")
-    response_data = {"contributor_list": contributors}
-    return render_to_response("core/contributor/contributor_list.html", response_data,
-        context_instance=RequestContext(request))
-
-
 @cache_page(1)
 def index(request):
     """
@@ -141,7 +129,7 @@ def title_search(request, keywords=None):
 
         search_results = Title.objects.prefetch_related("titlecontributors", "titlecontributors__contributor", "titlecontributors__contributor_type").filter(
             (Q(name__icontains=keywords) | Q(description__icontains=keywords) | Q(
-                contributors__slug__icontains=keywords)) & adult_filter & family_filter).distinct()
+                contributors__slug__icontains=keywords)) & adult_filter & family_filter & Q(deleted=False)).distinct()
         result_count = len(search_results)
 
         ### Pagination
