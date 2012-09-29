@@ -62,7 +62,7 @@ urlpatterns = patterns('',
         template_name='core/episode/episode_detail.html'),
         name='episode_detail'),
 
-    # title browse
+    # title browse options
     url(r'^title/browse/$',
         TemplateView.as_view(template_name="core/title/browse_list.html"),
         name='title_browse'
