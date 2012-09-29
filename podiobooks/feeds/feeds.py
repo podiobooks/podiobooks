@@ -25,7 +25,7 @@ class TitleFeed(Feed):
 
     def items(self):
         """Returns the list of items for the feed"""
-        return Title.objects.all()
+        return Title.objects.all().filter(deleted=False)
 
     def get_feed(self, obj, request):
         ### Google Analytics for Feed
@@ -57,7 +57,7 @@ class RecentTitleFeed(TitleFeed):
 
     def items(self):
         """Returns the list of items for the feed"""
-        return Title.objects.order_by('-date_created')[:30]
+        return Title.objects.filter(deleted=False).order_by('-date_created')[:30]
 
 
 class EpisodeFeed(Feed):
