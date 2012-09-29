@@ -104,7 +104,7 @@ class Episode(models.Model):
     filesize = models.IntegerField(default=0, help_text="In bytes, corresponds to 'length' in RSS feed") #Size of the media file
     duration = models.CharField(max_length=20, default='45:00', help_text='Duration of the media file in minutes:seconds') #Length of the media file (in minutes)
     contributors = models.ManyToManyField('Contributor', through='EpisodeContributor')
-    deleted = models.BooleanField(default=False)
+    deleted = models.BooleanField(default=False, db_index=True)
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
 
@@ -231,7 +231,7 @@ class Title(models.Model):
     is_for_kids = models.BooleanField(default=False, db_index=True, verbose_name='Is For Kids')
     promoter_count = models.IntegerField(default=0, db_index=True)
     detractor_count = models.IntegerField(default=0, db_index=True)
-    deleted = models.BooleanField(default=False, verbose_name='Deleted?')
+    deleted = models.BooleanField(default=False, verbose_name='Deleted?', db_index=True)
     contributors = models.ManyToManyField('Contributor', through='TitleContributor') #related_name doesn't work with manual intermediary tables
     # Note: TitleContributor Objects (intermediate table) are available as titlecontributors.all()
     byline = models.CharField(max_length=1024, blank=True) # This is a formatted cache of the title contributors

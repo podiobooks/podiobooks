@@ -23,7 +23,7 @@ class CategoryChoiceForm(forms.Form):
         categories = cache.get('category_dropdown_values')
         
         if not categories:
-            categories = Category.objects.filter(~Q(slug="erotica"), title__display_on_homepage=True).annotate(title_count=Count('title')).filter(title_count__gt=2).order_by('name').values_list('slug', 'name')
+            categories = Category.objects.filter(~Q(slug="erotica"), title__display_on_homepage=True, title__deleted=False).annotate(title_count=Count('title')).filter(title_count__gt=2).order_by('name').values_list('slug', 'name')
             cache.set('category_dropdown_values', categories, 240)
         
         initial_category = request.COOKIES.get(cookie)
@@ -51,7 +51,7 @@ class ContributorChoiceForm(forms.Form):
         contributors = cache.get('contributor_dropdown_values')
         
         if not contributors:
-            top_contributors = Contributor.objects.annotate(title_count=Count('title')).filter(title__display_on_homepage=True, title__promoter_count__gte=20).order_by('-title_count').values_list('slug', 'display_name', 'title_count')[:10]
+            top_contributors = Contributor.objects.annotate(title_count=Count('title')).filter(title__display_on_homepage=True, title__deleted=False, title__promoter_count__gte=20).order_by('-title_count').values_list('slug', 'display_name', 'title_count')[:10]
              
             contributors = []
             for slug, name, titles in top_contributors: # pylint: disable=W0612
