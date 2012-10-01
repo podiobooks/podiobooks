@@ -21,7 +21,17 @@
         {% include "core/title/title_consumptionbox.html" %}
         {% if 'Erotica' not in title.category_list %}
             <div id="wide-skyscraper-ad" class="wide-skyscraper-ad">
-                
+                <script type="text/javascript">
+		            <!--
+		            google_ad_client = "ca-pub-1276519440300441";
+		            /* 160x600, created 8/8/10 */
+		            google_ad_slot = "1145406808";
+		            google_ad_width = 160;
+		            google_ad_height = 600; //-->
+		        </script>
+		        <script type="text/javascript"
+		                src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+		        </script>
             </div>
         {% endif %}
     </aside>
@@ -133,21 +143,5 @@
         </footer>
     </article>
 
-{% endblock %}
-
-{% block extra_foot %}
-	<div data-move-ad="wide-skyscraper-ad">
-		<script type="text/javascript">
-            <!--
-            google_ad_client = "ca-pub-1276519440300441";
-            /* 160x600, created 8/8/10 */
-            google_ad_slot = "1145406808";
-            google_ad_width = 160;
-            google_ad_height = 600; //-->
-        </script>
-        <script type="text/javascript"
-                src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-        </script>
-	</div>
 {% endblock %}
 
