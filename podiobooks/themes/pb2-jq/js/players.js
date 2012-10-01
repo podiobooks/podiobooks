@@ -23,7 +23,7 @@ $(function(){
 		var str = ""
 		
 		if (autoPlay){
-			str = " autoplay='autoplay' "
+			str = " autoplay='autoplay' ";
 		}
 		
 		$("<audio controls" + str + "><source src='" + href + "' type='audio/mp3' codecs='mp3'></audio>").appendTo(ele);
