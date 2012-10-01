@@ -9,50 +9,40 @@
 
 {% block body_class %}home{% endblock %}
 
-
-
 {% block content %}
 
-    <aside id="first-horizontal-ad" class="horizontal-large-ad"></aside>
+    <aside class="horizontal-large-ad">
+    	<script type="text/javascript"><!--
+	        google_ad_client = "ca-pub-1276519440300441";
+	        /* Home Link\ Bar 1 */
+	        google_ad_slot = "5544547262";
+	        google_ad_width = 728;
+	        google_ad_height = 15;
+	        //-->
+        </script>
+        <script type="text/javascript"
+                src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+        </script>
+    </aside>
 
     {% show_shelf "featured_shelf" "Featured Titles" featured_title_list category_choice_form "dark" %}
 
-    <aside id="second-horizontal-ad" class="horizontal-large-ad"></aside>
+    <aside class="horizontal-large-ad">
+    	<script type="text/javascript"><!--
+	        google_ad_client = "ca-pub-1276519440300441";
+	        /* Link Bar 2 */
+	        google_ad_slot = "1973645061";
+	        google_ad_width = 728;
+	        google_ad_height = 15;
+	        //-->
+        </script>
+        <script type="text/javascript"
+                src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+        </script>
+    </aside>
 
     {% show_shelf "top_titles_shelf" "Top Rated Titles" toprated_title_list contributor_choice_form "light" %}
     
     {% show_shelf "recent_titles_shelf" "Recently Released" recently_released_list category_choice_form_recent "light" %}
-
-{% endblock %}
-
-{% block extra_foot %}
-	<div data-move-ad="first-horizontal-ad">
-		 <script type="text/javascript"><!--
-        google_ad_client = "ca-pub-1276519440300441";
-        /* Home Link\ Bar 1 */
-        google_ad_slot = "5544547262";
-        google_ad_width = 728;
-        google_ad_height = 15;
-        //-->
-        </script>
-        <script type="text/javascript"
-                src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-        </script>
-	</div>
-	
-	<div data-move-ad="second-horizontal-ad">
-		<script type="text/javascript"><!--
-        google_ad_client = "ca-pub-1276519440300441";
-        /* Link Bar 2 */
-        google_ad_slot = "1973645061";
-        google_ad_width = 728;
-        google_ad_height = 15;
-        //-->
-        </script>
-        <script type="text/javascript"
-                src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-        </script>
-	</div>
-	
 
 {% endblock %}
