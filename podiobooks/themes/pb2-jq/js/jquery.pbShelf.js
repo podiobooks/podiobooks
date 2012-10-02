@@ -16,6 +16,7 @@
  * 0.6: Uses 'find' instead of 'children' for digging up relevant shelf peices
  * 0.7: Allows for shelf creation based on static content (i.e. no need to ajax on first load)
  * 0.8: Allows blank incoming cookies to delete the existing cookie
+ * 0.9 Dynamic touch-sliding for adjustable-width shelves; Shelf width no longer needs to be a full item width
  * 
  */
 
@@ -34,15 +35,7 @@
 		/*
 		 * Debugging function for logging the current shelf status
 		 */
-		var status = function(){
-			l("cur: " + cur);
-			l("where: " + where);
-			l("maxWidth: "  + maxWidth);
-			l("itemWidth: " + itemWidth);
-			l("numItems: " + numItems);
-			l("numSteps : " + numSteps);
-			l("curStep : " + curStep);
-		};
+		
 		
 		return this.each(function(){
 			
@@ -50,6 +43,17 @@
 				$.extend(settings,options);
 			}
 			
+			var status = function(){
+				l("cur: " + cur);
+				l("where: " + where);
+				l("maxWidth: "  + maxWidth);
+				l("itemWidth: " + itemWidth);
+				l("numItems: " + numItems);
+				l("numSteps : " + numSteps);
+				l("curStep : " + curStep);
+				l("maxLeft : " + maxLeft);
+				l("==================");
+			};
 			
 			/*
 			 * Shelf status variables
@@ -61,6 +65,7 @@
 			var numItems = 0;
 			var numSteps = 0;
 			var curStep = 0;
+			var maxLeft = 0;
 			
 			/*
 			 * Some shelf element localization
@@ -199,38 +204,62 @@
 				 */
 				if (rightArrow){
 					rightArrow.click(function(e){
+						
 						e.preventDefault();
+						
 						if (cur < maxWidth - shelf.width()){
-							where += shelf.width() / itemWidth;
-							if (where * itemWidth > maxWidth - shelf.width()){
-								where = (maxWidth - shelf.width()) / itemWidth;
+							
+							var shelfWidth = shelf.width();
+							var targ = cur + parseInt(shelfWidth / itemWidth) * itemWidth;
+														
+							if (targ < maxLeft){
+								cur = targ;
 							}
-							var targ = "-" + (where * itemWidth) + "px";
-							
-							
-							cur = where * itemWidth;
+							else{
+								cur = maxLeft;
+								targ = maxLeft;
+							}
+							where = cur / itemWidth;
+							if (where > numSteps){
+								where = numSteps;
+							}
 							
 							wholeShelf.animate({
-								left:targ
+								left: -targ
 							},600,"easeOutCirc");
-						}
-						handleArrows();
+						}						
+						handleArrows();						
 					});
 				}
 				
 				if (leftArrow){
 					leftArrow.click(function(e){
+						
 						e.preventDefault();
 						
-						if (cur > 0){							
-							where -= shelf.width() / itemWidth;
+						if (cur > 0){
+							
+							var shelfWidth = shelf.width();
+							
+							// accomidates for the far-right being offset at the left of the shelf
+							var targ = parseInt(cur / itemWidth) * itemWidth - parseInt(shelfWidth / itemWidth) * itemWidth;
+							
+							if (targ <= 0){
+								cur = 0;
+								targ = 0;
+							}
+							else{
+								cur = targ
+							}
+							
+							where = cur / itemWidth;
 							if (where < 0){
 								where = 0;
 							}
-							var targ = "-" + (where * itemWidth) + "px";
-							cur = where * itemWidth;							
+							
+														
 							wholeShelf.animate({
-								left:targ
+								left: -targ
 							},600,"easeOutCirc");
 						}
 						handleArrows();
@@ -272,10 +301,19 @@
 						var shelfWidth = shelf.width();
 						
 						if (endLeft > 0){
-							wholeShelf.animate({"left": 0}, 400, "easeOutExpo");
+							wholeShelf.animate({"left": 0}, 600, "easeOutCirc", function(){
+								cur = 0;
+								where = cur / itemWidth;
+								handleArrows();
+							});
+							
 						}
-						else if (endLeft < -(itemWidth * numItems - shelfWidth)){
-							wholeShelf.animate({"left": -(itemWidth * numItems - shelfWidth)}, 400, "easeOutExpo")
+						else if (endLeft < -(maxLeft)){
+							wholeShelf.animate({"left": -(itemWidth * numItems - shelfWidth)}, 600, "easeOutCirc", function(){
+								cur = maxLeft;
+								where = cur / itemWidth;
+								handleArrows();
+							});
 						}
 						else{
 							var whereToGo = parseInt(endLeft / itemWidth);
@@ -283,7 +321,11 @@
 								whereToGo -= 1;
 							}
 							whereToGo = whereToGo * itemWidth;
-							wholeShelf.animate({"left": whereToGo}, 400, "easeOutExpo");
+							wholeShelf.animate({"left": whereToGo}, 600, "easeOutCirc", function(){
+								cur = -(parseInt(wholeShelf.css("left").replace("px", "")));
+								where = cur / itemWidth;
+								handleArrows();
+							});
 						}
 					});
 				}
@@ -338,19 +380,29 @@
 			 * Swift step: 
 			 * Moving via position dots
 			 */
-			var bindSwiftStep = function(a,i,per){
+			var bindSwiftStep = function(a, i, per){
 				a.unbind("click");
 				a.click(function(e){
 					e.preventDefault();
-										
-					var px = i * per * itemWidth;
-					if (px > maxWidth - shelf.width()){
-						px = maxWidth - shelf.width();
+					var targ;
+					
+					if ( i >= 0 ){
+						var px = i * per * itemWidth;
+						if (px > maxWidth - shelf.width()){
+							px = maxWidth - shelf.width();
+						}
+						
+						targ = "-" + (px) + "px";
+						where = px / itemWidth;
+						cur = px;
+						
+					}
+					else{
+						targ = -(maxLeft);
+						cur = maxLeft;
+						where = cur / itemWidth;
 					}
 					
-					var targ = "-" + (px) + "px";
-					where = px / itemWidth;
-					cur = px;
 					
 					wholeShelf.animate({
 						left:targ
@@ -364,19 +416,36 @@
 			 * Current shelf position
 			 */
 			 var handleShelfPosition = function(){
+			 	
 			 	shelfSteps.children().remove();
 			 	
 			 	if (shelf.find(settings.shelfItem).length){
 			 		
-				 	// make sure we always round up
-				 	numSteps = Math.ceil(maxWidth / shelf.width());	
-				 	var perSlide = Math.floor(shelf.width() / itemWidth);
+			 		// Set a bunch of "global" variables
+			 		maxLeft = itemWidth * numItems - shelf.width();
+				 	numSteps = Math.ceil(maxWidth / shelf.width());
 				 	
-				 	curStep = Math.ceil((cur / itemWidth) / perSlide);
+				 	var perSlide = Math.floor(shelf.width() / itemWidth);	
+				 		
+				 	if (cur >= maxLeft){
+				 		curStep = Math.ceil((cur / itemWidth) / perSlide);
+				 	}	
+				 	else{
+				 		curStep = Math.floor((cur / itemWidth) / perSlide);	
+				 	}
+				 	
+				 	if (cur > 0 && cur < Math.floor(shelf.width() / itemWidth) * itemWidth){
+				 		curStep += 1;
+				 	}
+				 	
+				 	if (cur < maxLeft && cur + parseInt(shelf.width() / itemWidth) * itemWidth >= maxLeft){
+				 		curStep = numSteps - 2;
+				 	}
 				 	
 				 	for (var i = 0; i < numSteps; i++){
 				 		var li;
 				 		var iPlus = i + 1;
+				 		
 				 		if (i == curStep){
 				 			li = $("<li><a class='shelf-step-cur' href='#'><span class='visuallyhidden'>Page " + iPlus + "</span></a></li>").appendTo(shelfSteps);
 				 		}
@@ -386,7 +455,13 @@
 				 		
 				 		circ = li.find("a");
 				 		
-				 		bindSwiftStep(circ,i,perSlide);
+				 		if (i < numSteps - 1){
+				 			bindSwiftStep(circ, i, perSlide);
+				 		}
+				 		else{
+				 			bindSwiftStep(circ);	
+				 		}
+				 		
 				 	}
 				 	
 				 	
@@ -402,8 +477,7 @@
 				 	 * hide the shelf progress indicator
 				 	 */
 				 	if (numSteps < 2 && shelf.find(settings.shelfItem).length < perSlide){
-				 		shelfSteps.children().remove();
-				 		
+				 		shelfSteps.children().remove();				 		
 				 	}
 			 	}
 			 };
@@ -414,7 +488,6 @@
 			 * based on shelf position
 			 */
 			var handleArrows = function(){
-				
 				if (cur == 0){
 					leftArrow.addClass("hidden");
 				}
@@ -427,9 +500,7 @@
 				else{
 					rightArrow.addClass("hidden");
 				}
-				//status();
 				handleShelfPosition();
-								
 			};
 			
 			var progress = $("<p class='shelf-ajax-loader'><img src='" + siteVars("img") + "ajax-loader-bar.gif'/></p>");
