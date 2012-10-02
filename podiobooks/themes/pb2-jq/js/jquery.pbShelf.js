@@ -283,7 +283,7 @@
 				 * to animate shelf movement 
 				 * on touch devices
 				 */
-				if (wholeShelf && $("html").hasClass("touch")){
+				if (wholeShelf){
 					wholeShelf.bind("movestart", function(e){
 						/*
 						 * Check if hte move event is actually vertical scrolling
@@ -300,16 +300,17 @@
 						var endLeft = parseInt(wholeShelf.css("left").replace("px", ""));
 						var shelfWidth = shelf.width();
 						
-						if (endLeft > 0){
-							wholeShelf.animate({"left": 0}, 600, "easeOutCirc", function(){
+						
+						if (endLeft > 0){	// Far left
+							wholeShelf.animate({"left": 0}, 400, "easeOutCirc", function(){
 								cur = 0;
 								where = cur / itemWidth;
 								handleArrows();
 							});
-							
 						}
-						else if (endLeft < -(maxLeft)){
-							wholeShelf.animate({"left": -(itemWidth * numItems - shelfWidth)}, 600, "easeOutCirc", function(){
+						else if (-(endLeft) > maxLeft){	// Far Right
+							
+							wholeShelf.animate({"left": -(maxLeft)}, 400, "easeOutCirc", function(){
 								cur = maxLeft;
 								where = cur / itemWidth;
 								handleArrows();
@@ -321,11 +322,19 @@
 								whereToGo -= 1;
 							}
 							whereToGo = whereToGo * itemWidth;
-							wholeShelf.animate({"left": whereToGo}, 600, "easeOutCirc", function(){
+							
+							if (-(whereToGo) > maxLeft){
+								whereToGo = -(maxLeft);
+							}
+							
+							wholeShelf.animate({"left": whereToGo}, 400, "easeOutCirc", function(){
 								cur = -(parseInt(wholeShelf.css("left").replace("px", "")));
 								where = cur / itemWidth;
 								handleArrows();
 							});
+							
+							
+							
 						}
 					});
 				}
@@ -423,6 +432,7 @@
 			 		
 			 		// Set a bunch of "global" variables
 			 		maxLeft = itemWidth * numItems - shelf.width();
+			 		
 				 	numSteps = Math.ceil(maxWidth / shelf.width());
 				 	
 				 	var perSlide = Math.floor(shelf.width() / itemWidth);	
