@@ -519,12 +519,12 @@
 		border-radius:0;	
 		margin:0;
 		box-shadow:none;	
-		padding: 0 0 10px 0;
+		padding: 0 0 5px 0;
 	}
 	.shelf-heading{
 		border-radius:0;	
 		margin:0;
-		padding:20px 10px 40px 20px; 
+		padding:15px 10px 40px 20px; 
 	}
 	.shelf-wrapper{
 		margin:0;
@@ -541,5 +541,8 @@
 	}
 	.touch .shelf-arrow{
 		display:none;
+	}
+	.home .pg-foot{
+		border-top: none;
 	}
 }
