@@ -166,7 +166,7 @@
 	.shelf-select-form{
 		position:absolute;
 		top:-35px;
-		left:15px;
+		left:10px;
 		right:auto;
 		width:80%;
 		z-index:99;
@@ -180,6 +180,7 @@
 	.shelf-heading{
 		margin:0px auto;
 		padding-bottom:33px;
+		
 	}
 	.shelf-wrapper{
 		padding:0px 0 30px;
@@ -530,7 +531,7 @@
 	.shelf-heading{
 		border-radius:0;	
 		margin:0;
-		padding:15px 10px 40px 20px; 
+		padding:15px 10px 40px 10px; 
 	}
 	.shelf-wrapper{
 		margin:0;
