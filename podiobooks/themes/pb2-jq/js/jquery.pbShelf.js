@@ -283,7 +283,7 @@
 				 * to animate shelf movement 
 				 * on touch devices
 				 */
-				if (wholeShelf){
+				if (wholeShelf && $("html").hasClass("touch")){
 					wholeShelf.bind("movestart", function(e){
 						/*
 						 * Check if hte move event is actually vertical scrolling
