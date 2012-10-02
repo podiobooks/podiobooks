@@ -3,7 +3,7 @@
  */
 @media all and (max-width:985px){	
 	.width{
-		width:726px;
+		width:90%;
 	}
 		
 	.browse-by,
@@ -46,7 +46,6 @@
 		padding: 15px 20px 15px 20px;
 	}
 	.first-chapter{
-		
 		width:397px;
 	}
 }
@@ -109,7 +108,7 @@
 	}
 
 	.width{
-		width:484px;
+		width:95%;
 	}
 	.hide-on-mobile{
 		display:none;
@@ -164,14 +163,9 @@
 	body{
 		background:#fff;
 	}
-	.shelf,
-	.half-shelf{
-		width:242px;
-		margin:0 auto;
-	}
 	.shelf-select-form{
 		position:absolute;
-		top:-28px;
+		top:-32px;
 		left:15px;
 		right:auto;
 		width:80%;
@@ -185,7 +179,6 @@
 	}
 	
 	.shelf-heading{
-		width:212px;
 		margin:0px auto;
 		padding-bottom:33px;
 	}
@@ -322,6 +315,9 @@
 		padding:30px 10px 70px;
 		background:#fff url(img/pb-background.jpg) left top repeat-x;
 		position: relative;
+	}
+	.home .pg{
+		padding:0;
 	}
 	.site-menu-active{
 		background:#b1cded;
@@ -518,5 +514,32 @@
 	}
 	.tab-trigger{
 		font-size:14px;
+	}
+	.shelf{
+		border-radius:0;	
+		margin:0;
+		box-shadow:none;	
+		padding: 0 0 10px 0;
+	}
+	.shelf-heading{
+		border-radius:0;	
+		margin:0;
+		padding:20px 10px 40px 20px; 
+	}
+	.shelf-wrapper{
+		margin:0;
+		padding:0;	
+	}
+	.shelf-arrow-right{
+		right:10px;
+		top:-53px;
+	}
+	.shelf-arrow-left{
+		left:auto;
+		right:35%;
+		top:-53px;
+	}
+	.touch .shelf-arrow{
+		display:none;
 	}
 }
