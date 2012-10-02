@@ -332,9 +332,6 @@
 								where = cur / itemWidth;
 								handleArrows();
 							});
-							
-							
-							
 						}
 					});
 				}
