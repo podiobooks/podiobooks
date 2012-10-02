@@ -518,6 +518,15 @@
 		box-shadow:none;	
 		padding: 0 0 5px 0;
 	}
+	.shelf-dark{
+		border-bottom:solid 1px #0875df;
+	}
+	.shelf-heading-light{
+		border-top:solid 1px #b7e2f5;
+	}
+	.shelf-light{
+		border-bottom:solid 1px #83c4df;
+	}
 	.shelf-heading{
 		border-radius:0;	
 		margin:0;
@@ -540,6 +549,6 @@
 		display:none;
 	}
 	.home .pg-foot{
-		border-top: none;
+		border:none;
 	}
 }
