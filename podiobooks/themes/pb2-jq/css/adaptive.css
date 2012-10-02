@@ -3,9 +3,10 @@
  */
 @media all and (max-width:985px){	
 	.width{
-		width:90%;
+		max-width:726px;
+		width:auto;
 	}
-		
+	
 	.browse-by,
 	.search-results .browse-by{
 		float:none;
@@ -15,7 +16,6 @@
 		float:left;
 		width:100%;
 	}
-	
 	
 	.nav{
 		margin:0;
