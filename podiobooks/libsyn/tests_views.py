@@ -6,6 +6,7 @@ from django.test import TestCase
 from podiobooks.libsyn import create_title_from_libsyn_rss
 from django.conf import settings
 from django.contrib.admin.models import User
+from podiobooks.core.models import License
 import os
 
 class LibsynImportViewsTestCase(TestCase):
@@ -13,6 +14,7 @@ class LibsynImportViewsTestCase(TestCase):
     
     def setUp(self):
         self.admin_user = User.objects.create_superuser('admin', 'admin@admin.com', 'pass')
+        License.objects.create(slug='by-nc-nd', text='by-nc-nd', url='by-nc-nd')
 
     def test_slug_entry_view_redirect(self):
         response = self.client.get('/libsyn/import/')
@@ -31,5 +33,5 @@ class LibsynImportViewsTestCase(TestCase):
     def test_libsyn_results_view_no_slug(self):
         self.client.login(username='admin', password='pass')
         response = self.client.post('/libsyn/import/')
-        self.assertRedirects(response, '/libsyn/import/slug/')
+        self.assertEquals(200, response.status_code)
         
