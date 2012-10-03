@@ -19,7 +19,7 @@ class EpisodeInline(admin.TabularInline):
             kwargs['widget'] = TextInput(attrs={'width': '8',})
         return super(EpisodeInline,self).formfield_for_dbfield(db_field,**kwargs)
     model = Episode
-    exclude = ("deleted", )
+    exclude = ("deleted", 'media_date_created' )
 
 
 class TitleCategoryInline(admin.TabularInline):
