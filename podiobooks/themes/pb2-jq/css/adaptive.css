@@ -543,12 +543,12 @@
 	}
 	.shelf-arrow-right{
 		right:10px;
-		top:-53px;
+		top:-70px;
 	}
 	.shelf-arrow-left{
 		left:auto;
 		right:35%;
-		top:-68px;
+		top:-70px;
 	}
 	.touch .shelf-arrow{
 		display:none;
