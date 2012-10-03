@@ -3,7 +3,7 @@
 
 <!-- Begin {{ shelf_title }} Shelf -->
 <section class="shelf-wrapper clearfix" id="{{ shelf_id }}Container">
-    <h2 class="shelf-heading shelf-heading-{{ base_css_class }}">{{ shelf_title }}</h2>
+    <h2 class="shelf-heading shelf-heading-{{ base_css_class }}">{{ shelf_title|safe }}</h2>
     
     <div class="shelf shelf-{{ base_css_class }}" id="{{ shelf_id }}PageContainer">
         {% if dropdown_form %}
