@@ -5,13 +5,14 @@
 from django.test import TestCase
 from podiobooks.libsyn import create_title_from_libsyn_rss
 from django.conf import settings
+from podiobooks.core.models import License
 import os
 
 class LibsynRSSTestCase(TestCase):
     # fixtures = []
     
     def setUp(self):
-        pass
+        License.objects.create(slug='by-nc-nd', text='by-nc-nd', url='by-nc-nd')
     
     def testParseRss(self):
         title = create_title_from_libsyn_rss.create_title_from_libsyn_rss(os.path.join(settings.PROJECT_ROOT,'libsyn','libsyn_example.rss'))

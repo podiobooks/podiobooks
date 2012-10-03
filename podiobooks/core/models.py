@@ -105,6 +105,7 @@ class Episode(models.Model):
     duration = models.CharField(max_length=20, default='45:00', help_text='Duration of the media file in minutes:seconds') #Length of the media file (in minutes)
     contributors = models.ManyToManyField('Contributor', through='EpisodeContributor')
     deleted = models.BooleanField(default=False, db_index=True)
+    media_date_created = models.DateTimeField(blank=True, null=True, help_text='Date the media file was added (e.g. to Libsyn)')
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
 
