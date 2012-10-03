@@ -165,7 +165,7 @@
 	}
 	.shelf-select-form{
 		position:absolute;
-		top:-35px;
+		top:-50px;
 		left:10px;
 		right:auto;
 		width:80%;
@@ -548,7 +548,7 @@
 	.shelf-arrow-left{
 		left:auto;
 		right:35%;
-		top:-53px;
+		top:-68px;
 	}
 	.touch .shelf-arrow{
 		display:none;
@@ -556,4 +556,35 @@
 	.home .pg-foot{
 		border:none;
 	}
+	.shelf{
+		border-top:solid 15px;
+	}
+	.shelf:after,
+	.shelf:before{
+		content:" ";
+		display:block;
+		position:absolute;
+		width:0;
+		height:0;
+		left:10px;
+		top:-15px;
+		border:solid 15px transparent;
+
+	}
+	.shelf-dark{
+		border-top-color: #06539e;
+	}
+	.shelf-dark:after{
+		border-top-color:#4280bd;
+	}
+	.shelf-light{
+		border-top-color: #d0deee;
+	}
+	.shelf-light:after{
+		border-top-color:#90b4dd;
+	}
+	.shelf{
+		padding-bottom:10px;
+	}
+	
 }
