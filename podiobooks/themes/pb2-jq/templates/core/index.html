@@ -25,7 +25,7 @@
         </script>
     </aside>
 
-    {% show_shelf "featured_shelf" "Featured Titles" featured_title_list category_choice_form "dark" %}
+    {% show_shelf "featured_shelf" "Featured <span class='hide-on-touch'>Titles</span>" featured_title_list category_choice_form "dark" %}
 
     <aside class="horizontal-large-ad">
     	<script type="text/javascript"><!--
@@ -41,8 +41,8 @@
         </script>
     </aside>
 
-    {% show_shelf "top_titles_shelf" "Top Rated Titles" toprated_title_list contributor_choice_form "light" %}
+    {% show_shelf "top_titles_shelf" "Top Rated <span class='hide-on-touch'>Titles</span>" toprated_title_list contributor_choice_form "light" %}
     
-    {% show_shelf "recent_titles_shelf" "Recently Released" recently_released_list category_choice_form_recent "light" %}
+    {% show_shelf "recent_titles_shelf" "Latest <span class='hide-on-touch'>Releases</span>" recently_released_list category_choice_form_recent "dark" %}
 
 {% endblock %}
