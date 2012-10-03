@@ -24,7 +24,7 @@ class ShelfTestCase(TestCase):
         """
         Test existing shelves
         """
-        shelf_types = ["featured_by_category", "top_rated_by_author", ]
+        shelf_types = ["featured_by_category", "top_rated_by_author", "recent_by_category"]
         
         for shelf_type in shelf_types:
             resp = self.client.get(reverse("shelf", kwargs={"shelf_type": shelf_type}))
