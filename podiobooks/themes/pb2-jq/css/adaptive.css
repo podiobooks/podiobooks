@@ -524,18 +524,25 @@
 	}
 	.shelf-dark{
 		border-bottom:solid 1px #032a51;
+		
 	}
 	.shelf-heading-light{
 		border-top:solid 1px #b7e2f5;
 	}
 	.shelf-light{
-		border-bottom:solid 1px #adc5e1;
+		border-bottom:solid 1px #3992b9;
 	}
 	.shelf-heading{
 		border-radius:0;	
 		margin:0;
 		padding:15px 10px 40px 10px; 
 		box-shadow:none;
+	}
+	.shelf-heading-dark{
+		border-top: solid 1px #87c6e2;
+	}
+	.shelf-wrapper:first-of-type .shelf-heading-dark{
+		border-top: solid 1px #3992b9;
 	}
 	.shelf-wrapper{
 		margin:0;
@@ -566,14 +573,16 @@
 		position:absolute;
 		width:0;
 		height:0;
-		left:10px;
+		left:15px;
 		top:-15px;
 		border:solid 15px transparent;
 
 	}
+	
 	.shelf-dark{
 		border-top-color: #06539e;
 	}
+	
 	.shelf-dark:after{
 		border-top-color:#4280bd;
 	}
@@ -586,5 +595,13 @@
 	.shelf{
 		padding-bottom:10px;
 	}
-	
+	.touch .shelf-select-form{
+		left:auto;
+		right:10px;
+		width:55%;
+		
+	}
+	.touch .shelf-heading{
+		padding-bottom:12px;
+	}
 }
