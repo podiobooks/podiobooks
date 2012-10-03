@@ -15,7 +15,7 @@ class ImportFromLibsynFormView(FormView):
     template_name = "libsyn/import_from_libsyn.html"
     form_class = LibsynImportForm
 
-    @method_decorator(login_required)
+    @method_decorator(login_required(login_url='/admin/'))
     def dispatch(self, *args, **kwargs):
         return super(ImportFromLibsynFormView, self).dispatch(*args, **kwargs)
 
