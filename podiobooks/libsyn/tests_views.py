@@ -27,4 +27,9 @@ class LibsynImportViewsTestCase(TestCase):
         self.client.login(username='admin', password='pass')
         response = self.client.post('/libsyn/import/', data={'libsyn_slug': 'earthcore'})
         self.assertRedirects(response, '/libsyn/import/slug/earthcore/')
+
+    def test_libsyn_results_view_no_slug(self):
+        self.client.login(username='admin', password='pass')
+        response = self.client.post('/libsyn/import/')
+        self.assertRedirects(response, '/libsyn/import/slug/')
         
