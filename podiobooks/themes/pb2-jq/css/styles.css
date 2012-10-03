@@ -55,6 +55,10 @@ a.fdbk_tab_bottom {
     padding: 0 0 25px;
 }
 
+.touch .hide-on-touch{
+	display:none;
+}
+
 .nav-bar {
     padding: 15px 20px 8px 20px;
     -webkit-border-radius: 10px;
