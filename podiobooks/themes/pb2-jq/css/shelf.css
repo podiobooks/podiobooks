@@ -106,10 +106,10 @@
     height: 140px;
     overflow: hidden;
     position:relative;
-    box-shadow:inset 0 0 5px rgba(0,0,0,.3);
+    box-shadow:inset 0 0 5px rgba(0,0,0,.2);
 }
 .shelf-light .shelf-item{
-	box-shadow:inset 0 0 3px rgba(0,0,0,.2);
+	box-shadow:inset 0 0 3px rgba(0,0,0,.1);
 }
 .shelf-cover {
 	position:absolute;
@@ -118,7 +118,7 @@
     padding: 0;
     margin: 0;
     width: 67px;    
-    box-shadow:-1px 1px 5px rgba(0,0,0,.3);
+    box-shadow:-1px 1px 5px rgba(0,0,0,.2);
 }
 
 .shelf-item .shelf-cover .shelf-cover-loading {
