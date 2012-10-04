@@ -32,6 +32,8 @@ static_urls:
         root: /dev/null
     - /jspb/:
         root: /dev/null
+    - /sample/:
+        root: /dev/null
 
 
 wsgi:

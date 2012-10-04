@@ -66,10 +66,6 @@ urlpatterns = patterns('',
 
     # PB1 Authors Page
     (r'authors\.php', RedirectView.as_view(url='http://blog.podiobooks.com/how-to-get-your-books-listed-on-podiobooks-com/')),
-
-    # PB1 Media Dir - need to 500 to stop crawler traffic
-    (r'sample', 'django.views.defaults.server_error'),
-
 )
 
 #Only hook up the static and media to run through Django in a dev environment...in prod, needs to be handled by web server
