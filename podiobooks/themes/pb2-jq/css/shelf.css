@@ -89,7 +89,7 @@
 
 .whole-shelf {
     overflow: hidden;
-    width: 5000px;
+    width: auto;
     height: 100%;
     position: absolute;
     top: 0;
