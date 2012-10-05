@@ -15,8 +15,9 @@
         </p>
     </div>
     
-    <a href="{% url title_detail title.slug %}">
-        <img data-title-slug="{{ title.slug }}" class="shelf-cover" src="http://asset-server.libsyn.com/show/{{ title.libsyn_show_id }}/height/99/width/67" alt="Cover for {{ title.name }}"/>
+    <a data-image-src="http://asset-server.libsyn.com/show/{{ title.libsyn_show_id }}/height/99/width/67" href="{% url title_detail title.slug %}" data-title-slug="{{ title.slug }}" data-title-name="{{ title.name }}">
+    	<span class="visuallyhidden">Cover for {{ title.name }}</span>
+        <!--<img data-title-slug="{{ title.slug }}" class="shelf-cover" src="http://asset-server.libsyn.com/show/{{ title.libsyn_show_id }}/height/99/width/67" alt="Cover for {{ title.name }}"/>-->
     </a>
 
     <aside class="shelf-item-rating">
