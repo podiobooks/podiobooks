@@ -35,22 +35,14 @@ class FilteredShelf(View):
         """
         Top rated titles, filtered by a contributor
         """
-        toprated_title_list = get_toprated_shelf_titles()
-
-        if author:
-            toprated_title_list = toprated_title_list.filter(contributors__slug=author)
-
+        toprated_title_list = get_toprated_shelf_titles(author)
         toprated_title_list = toprated_title_list[:24]
     
         return render_to_response("core/shelf/tags/show_shelf_pages.html", {"title_list": toprated_title_list}, context_instance=RequestContext(self.request))    
     
     def recent_by_category(self, category=None):
         # recently released
-        recently_released_list = get_recently_released_shelf_titles()
-        
-        if category:
-            recently_released_list = recently_released_list.filter(categories__slug=category)
-
+        recently_released_list = get_recently_released_shelf_titles(category)
         recently_released_list = recently_released_list[:24]
     
         return render_to_response("core/shelf/tags/show_shelf_pages.html", {"title_list": recently_released_list}, context_instance=RequestContext(self.request))
