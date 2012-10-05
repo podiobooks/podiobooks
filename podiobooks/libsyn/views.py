@@ -28,6 +28,7 @@ class ImportFromLibsynFormView(FormView):
         self.success_url = "/libsyn/import/slug/{0}/".format(libsyn_slug)
         return super(ImportFromLibsynFormView, self).form_valid(form)
 
+
 class ImportFromLibsynResultsView(TemplateView):
     template_name = "libsyn/import_from_libsyn_results.html"
 
@@ -38,11 +39,8 @@ class ImportFromLibsynResultsView(TemplateView):
     def get_context_data(self, **kwargs):
         kwargs.update({'title': 'Libsyn Title Import Results'})
         libsyn_slug = kwargs.get('libsyn_slug', None)
-        if libsyn_slug:
-            libsyn_feed_url = "http://{0}.podiobooks.libsynpro.com/rss".format(libsyn_slug)
-            title = create_title_from_libsyn_rss(libsyn_feed_url)
-            kwargs.update({'title': title})
-        else:
-            kwargs.update({'results': "No Slug Found"})
+        libsyn_feed_url = "http://{0}.podiobooks.libsynpro.com/rss".format(libsyn_slug)
+        title = create_title_from_libsyn_rss(libsyn_feed_url)
+        kwargs.update({'title': title})
 
         return kwargs
