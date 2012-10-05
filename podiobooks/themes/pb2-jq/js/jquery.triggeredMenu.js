@@ -48,7 +48,7 @@
 			
 			callback(trigger, menu);
 		},
-		openMenu: function(trigger, menu, additionalActiveClass, callback){
+		openMenu: function(trigger, menu, additionalActiveClass, callback, fromSide){
 			
 			trigger.addClass("menu-trigger-active");
 			
@@ -60,15 +60,23 @@
 				top += 2;	
 			}
 			
-			if (left < 0){
+			if (fromSide == "right"){
 				left = 0;
-				menu.addClass("left-edge-triggered-menu")
+				menu.addClass("right-edge-triggered-menu");
+				menu.css({"top": top, "right": left});
 			}
 			else{
-				menu.removeClass("left-edge-triggered-menu");
+								
+				if (left < 0){
+					left = 0;
+					menu.addClass("left-edge-triggered-menu");
+				}
+				else{
+					menu.removeClass("left-edge-triggered-menu");
+				}
+				menu.css({"top": top, "left": left});
 			}
 			
-			menu.css({"top": top, "left": left});
 			menu.addClass(additionalActiveClass).addClass("menu-active");
 			
 			callback(trigger, menu);
@@ -84,7 +92,7 @@
 			"activeMenuClass": "menu-active",	// A CSS class to add to active menus. Active menus will automatically be given a 'menu-active' class
 			"activateCallback": function(){},	// callback funciton to execute after the activation of a triggered menu
 			"deactivateCallback": function(){},	// callback funciton to execute after the deactivation of a triggered menu
-			"addClass": null
+			"fromSide": null
 		};
 		
 		return this.each(function() {        
@@ -127,7 +135,7 @@
 					}
 					
 					else{
-						methods.openMenu.apply(this, Array(trigger, menu, settings.activeMenuClass, settings.activateCallback));
+						methods.openMenu.apply(this, Array(trigger, menu, settings.activeMenuClass, settings.activateCallback, settings.fromSide));
 					}
 				});
 				
