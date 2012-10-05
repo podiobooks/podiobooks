@@ -4,7 +4,7 @@ from django.core.cache import cache
 from podiobooks.core.models import Title, Contributor, Category
 from django.db.models import Q, Count, Max
 
-def get_featured_shelf_titles(category=None):
+def get_featured_shelf_titles():
     """Returns a randomized list of non-deleted titles with display_on_homepage == True"""
     titles = cache.get('featured_shelf_titles')
 
@@ -17,15 +17,11 @@ def get_featured_shelf_titles(category=None):
             display_on_homepage=True,
             deleted=False
         ).order_by('?')
-        
-        if category:
-            titles = titles.filter(categories__slug=category)
-        
         cache.set('featured_shelf_titles', titles, 604800)
 
     return titles
 
-def get_toprated_shelf_titles(author=None):
+def get_toprated_shelf_titles():
     """Returns a list of non-deleted titles in descending rating order"""
     titles = cache.get('toprated_shelf_titles')
 
@@ -39,15 +35,11 @@ def get_toprated_shelf_titles(author=None):
             deleted=False,
             promoter_count__gte=20
         ).order_by('-promoter_count')
-        
-        if author:
-            titles = titles.filter(contributors__slug=author)
-        
         cache.set('toprated_shelf_titles', titles, 240)
 
     return titles
 
-def get_recently_released_shelf_titles(category=None):
+def get_recently_released_shelf_titles():
     """Returns a list of non-deleted titles in descending rating order"""
     titles = cache.get('recently_released_shelf_titles')
 
@@ -60,10 +52,6 @@ def get_recently_released_shelf_titles(category=None):
             is_adult=False,
             deleted=False
         ).annotate(Max("episodes__date_created")).order_by('-episodes__date_created__max')
-        
-        if category:
-            category = category.filter(categories__slug=category)
-        
         cache.set('recently_released_shelf_titles', titles, 240)
 
     return titles
