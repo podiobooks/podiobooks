@@ -38,15 +38,15 @@ def create_title_from_libsyn_rss(rss_feed_url):
         title.is_explicit = True
     title.deleted = True
 
+    default_license = License.objects.get(slug='by-nc-nd')
+    title.license = default_license
+
     title.save()
     items = feed_tree.findall('item')
 
     for item in items:
         episode = Episode()
-        default_license = License.objects.get(slug='by-nc-nd')
-
         episode.title = title
-        episode.license = default_license
         episode.name = item.find('title').text
         episode.description = strip_tags(item.find('description').text)
         episode.filesize = item.find('enclosure').get('length')
