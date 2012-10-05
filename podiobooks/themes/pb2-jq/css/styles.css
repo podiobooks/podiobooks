@@ -100,11 +100,13 @@ a.fdbk_tab_bottom {
     margin: 0 0 20px 0;
 }
 
-.loading img {
+.loading img,
+.loading{
     display: inline-block;
     background: url('../images/loading.gif') no-repeat center center;
     min-height: 50px;
     min-width: 50px;
+    box-shadow:none;
 }
 
 /*
