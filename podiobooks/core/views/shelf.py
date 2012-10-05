@@ -59,11 +59,7 @@ class FilteredShelf(View):
         """
         Featured titles, filtered by category (genre)
         """
-        featured_title_list = get_featured_shelf_titles()
-
-        if category:
-            featured_title_list = featured_title_list.filter(categories__slug=category)
-
+        featured_title_list = get_featured_shelf_titles(category)
         featured_title_list = featured_title_list[:24]
     
         return render_to_response("core/shelf/tags/show_shelf_pages.html", {"title_list": featured_title_list}, context_instance=RequestContext(self.request))
