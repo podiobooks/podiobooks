@@ -31,14 +31,12 @@ def index(request):
     template : core/templates/index.html
     """
     # Featured Shelf
-    featured_title_list = get_featured_shelf_titles()
+    
 
     category_choice_form = CategoryChoiceForm(request, cookie="featured_by_category")
     initial_category_slug = category_choice_form.fields["category"].initial
-
-    if initial_category_slug:
-        featured_title_list = featured_title_list.filter(categories__slug=initial_category_slug)
-
+    
+    featured_title_list = get_featured_shelf_titles(initial_category_slug)
     featured_title_list = featured_title_list[:24]
 
     # Top Rated Shelf
