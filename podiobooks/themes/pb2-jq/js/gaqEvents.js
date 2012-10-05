@@ -68,7 +68,7 @@ $(function () {
     /*
      * GA events for homepage shelves
      */
-    $(".shelf-item-heading a").each(function () {
+    $(".shelf").delegate(".shelf-item-heading a", "click", function(){
         var link = $(this);
         link.click(function (ev) {
             var slug = link.data("title-slug");
@@ -77,8 +77,8 @@ $(function () {
             }
         });
     });
-
-    $(".shelf-cover").each(function () {
+    
+	$(".shelf").delegate(".shelf-cover", "click", function(){
         var img = $(this);
         var link = img.parent();
         link.click(function (ev) {
