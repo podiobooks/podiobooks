@@ -16,8 +16,15 @@ import os
 # Set the root path of the project so it's not hard coded
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 
-DEBUG = True
-TEMPLATE_DEBUG = DEBUG
+try:
+    DEBUG
+except NameError:
+    DEBUG = True
+
+try:
+    TEMPLATE_DEBUG
+except NameError:
+    TEMPLATE_DEBUG = DEBUG
 
 # Cache Settings
 # CACHE_BACKEND = 'memcached://127.0.0.1:11211/'
