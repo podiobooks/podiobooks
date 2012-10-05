@@ -4,7 +4,7 @@ from django.core.cache import cache
 from podiobooks.core.models import Title, Contributor, Category
 from django.db.models import Q, Count, Max
 
-def get_featured_shelf_titles():
+def get_featured_shelf_titles(category=None):
     """Returns a randomized list of non-deleted titles with display_on_homepage == True"""
     titles = cache.get('featured_shelf_titles')
 
@@ -17,6 +17,10 @@ def get_featured_shelf_titles():
             display_on_homepage=True,
             deleted=False
         ).order_by('?')
+        
+        if category:
+            titles = titles.filter(categories__slug=category)
+        
         cache.set('featured_shelf_titles', titles, 604800)
 
     return titles
