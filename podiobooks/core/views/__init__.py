@@ -40,25 +40,19 @@ def index(request):
     featured_title_list = featured_title_list[:24]
 
     # Top Rated Shelf
-    toprated_title_list = get_toprated_shelf_titles()
-
     contributor_choice_form = ContributorChoiceForm(request, cookie="top_rated_by_author")
     initial_contributor_slug = contributor_choice_form.fields["contributor"].initial
-
-    if initial_contributor_slug:
-        toprated_title_list = toprated_title_list.filter(contributors__slug=initial_contributor_slug)
-
+    
+    toprated_title_list = get_toprated_shelf_titles(initial_contributor_slug)
     toprated_title_list = toprated_title_list[:24]
 
     # Recently Released Shelf
-    recently_released_list = get_recently_released_shelf_titles()
+    
 
     category_choice_form_recent = CategoryChoiceForm(request, cookie="recent_by_category")
     initial_category_slug_recent = category_choice_form_recent.fields["category"].initial
 
-    if initial_category_slug_recent:
-        recently_released_list = recently_released_list.filter(categories__slug=initial_category_slug_recent)
-
+    recently_released_list = get_recently_released_shelf_titles(initial_category_slug_recent)
     recently_released_list = recently_released_list[:24]
 
     # Render template    
