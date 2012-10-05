@@ -178,6 +178,7 @@
 					shelf.find(settings.shelfItem).wrapAll("<div class='whole-shelf'/>");
 					wholeShelf = shelf.find(".whole-shelf");
 					wholeShelf.wrap("<div class='shelf-view'/>");
+					wholeShelf.width(maxWidth + 100);
 					
 					
 					/*
