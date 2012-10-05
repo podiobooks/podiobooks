@@ -40,7 +40,7 @@ class FilteredShelf(View):
         if author:
             toprated_title_list = toprated_title_list.filter(contributors__slug=author)
 
-            toprated_title_list = toprated_title_list[:24]
+        toprated_title_list = toprated_title_list[:24]
     
         return render_to_response("core/shelf/tags/show_shelf_pages.html", {"title_list": toprated_title_list}, context_instance=RequestContext(self.request))    
     
