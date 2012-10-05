@@ -12,10 +12,7 @@
     -moz-border-radius-bottomright: 10px;
     -o-border-radius: 0px 0px 10px 10px;
     border-radius: 0px 0px 10px 10px;
-
-    -webkit-box-shadow: 0 3px 5px rgba(150, 150, 150, .8);
-    -moz-box-shadow: 0 3px 5px rgba(150, 150, 150, .8);
-    -o-box-shadow: 0 3px 5px rgba(150, 150, 150, .8);
+    
     box-shadow: 0 3px 5px rgba(150, 150, 150, .8);
     padding: 0 0px 0px 0px;
     position: relative;
@@ -119,6 +116,9 @@
     margin: 0;
     width: 67px;    
     box-shadow:-1px 1px 5px rgba(0,0,0,.2);
+}
+.loading{
+	box-shadow:none;
 }
 
 .shelf-item .shelf-cover .shelf-cover-loading {

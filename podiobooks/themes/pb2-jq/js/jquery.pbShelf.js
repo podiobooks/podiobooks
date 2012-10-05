@@ -109,7 +109,39 @@
 				});				
 			}
 			
-			
+			var loadImages = function(){
+				var perSlide = Math.floor(shelf.width() / itemWidth);	
+				var items = shelf.find(".shelf-item");
+				
+				var start = where;
+				var end = start + (perSlide * 2);
+				
+				if (end-start < 3){
+					end++; // force it to load at least 2 at a time
+				}
+				
+				if (end > items.length){
+					end = items.length;
+				}
+				
+				for (var i = start-1; i < end; i++){
+					
+					$(items[i]).find('[data-image-src]').each(function(){
+						
+						var a = $(this);
+						var src = a.data("image-src");
+						
+						var img = $("<img data-title-slug='" + a.data("title-slug") + "' class='loading shelf-cover' alt='Cover for " + a.data("title-name") + "' src='" + src + "' />");						
+						
+						a.html(img);
+						a.removeAttr("data-image-src");
+						
+						img.load(function(){
+							$(this).removeClass("loading");
+						});						
+					});					
+				}				
+			};
 	
 			var makeShelf = function(){
 				
@@ -220,10 +252,8 @@
 								cur = maxLeft;
 								targ = maxLeft;
 							}
+							
 							where = cur / itemWidth;
-							if (where > numSteps){
-								where = numSteps;
-							}
 							
 							wholeShelf.animate({
 								left: -targ
@@ -508,7 +538,9 @@
 				else{
 					rightArrow.addClass("hidden");
 				}
+				
 				handleShelfPosition();
+				loadImages();
 			};
 			
 			var progress = $("<p class='shelf-ajax-loader'><img src='" + siteVars("img") + "ajax-loader-bar.gif'/></p>");
