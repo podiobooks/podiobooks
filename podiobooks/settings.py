@@ -202,7 +202,7 @@ DONATION_BUSINESS_NAME = 'evo@podiobooks.com'
 
 ### MEDIABRUTE
 CSS_TOP_FILES = ["clear.css", "styles.css", ]
-CSS_BOTTOM_FILES = ["adaptive.css"]
+CSS_BOTTOM_FILES = ["adaptive.css", "small-screen.css"]
 JS_SETTINGS_TEMPLATE = "mediabrute/js/config.txt"
 # This is a hack to get mediabrute to play nice with runserver + staticfiles app
 if DEBUG and STATIC_URL.startswith("/") and not STATIC_URL.startswith("//"):
