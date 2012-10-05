@@ -1,10 +1,10 @@
 import os
 import urlparse
 
+from .settings import *
+
 DEBUG = eval(os.environ.get("DEBUG", "False"))
 TEMPLATE_DEBUG = DEBUG
-
-from .settings import *
 
 if "GONDOR_DATABASE_URL" in os.environ:
     urlparse.uses_netloc.append("postgres")
@@ -71,6 +71,27 @@ STATIC_URL = "/assets/static/" # make sure this maps inside of a static_urls URL
 FILE_UPLOAD_PERMISSIONS = 0640
 
 MEDIABRUTE_REMOVE_OLD = False
+
+### DEBUG TOOLBAR
+### Replicated Here to Enable Picking Up Environment Setting from Gondor
+if DEBUG:
+    MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
+    INSTALLED_APPS += ('debug_toolbar',)
+
+    DEBUG_TOOLBAR_PANELS = (
+        'debug_toolbar.panels.timer.TimerDebugPanel',
+        'debug_toolbar.panels.headers.HeaderDebugPanel',
+        'debug_toolbar.panels.request_vars.RequestVarsDebugPanel',
+        'debug_toolbar.panels.template.TemplateDebugPanel',
+        'debug_toolbar.panels.sql.SQLDebugPanel',
+        'debug_toolbar.panels.signals.SignalDebugPanel',
+        'debug_toolbar.panels.logger.LoggingPanel',
+        )
+
+    DEBUG_TOOLBAR_CONFIG = {
+        'INTERCEPT_REDIRECTS': False
+    }
+
 
 LOGGING = {
     "version": 1,
