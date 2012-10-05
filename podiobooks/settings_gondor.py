@@ -1,10 +1,10 @@
 import os
 import urlparse
 
-from .settings import *
-
 DEBUG = eval(os.environ.get("DEBUG", "False"))
 TEMPLATE_DEBUG = DEBUG
+
+from .settings import *
 
 if "GONDOR_DATABASE_URL" in os.environ:
     urlparse.uses_netloc.append("postgres")
