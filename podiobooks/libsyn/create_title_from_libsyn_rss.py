@@ -50,7 +50,7 @@ def create_title_from_libsyn_rss(rss_feed_url):
         episode.name = item.find('title').text
         episode.description = strip_tags(item.find('description').text)
         episode.filesize = item.find('enclosure').get('length')
-        episode.url = item.find('enclosure').get('url')
+        episode.url = item.find('enclosure').get('url').replace('traffic\.libsyn\.com', 'media.podiobooks.com')
         episode.duration = item.find('{http://www.itunes.com/dtds/podcast-1.0.dtd}duration').text
         episode.media_date_created = datetime.fromtimestamp(mktime_tz(parsedate_tz(item.find('pubDate').text)))
         episode.sequence = 0
