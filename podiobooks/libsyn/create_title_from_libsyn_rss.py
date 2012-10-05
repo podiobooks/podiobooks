@@ -7,7 +7,8 @@ import urllib
 from podiobooks.core.models import Episode, License, Title
 from django.template.defaultfilters import slugify
 from email.utils import mktime_tz, parsedate_tz
-from datetime import datetime
+from datetime import datetime, time
+from django.utils.html import strip_tags
 
 def create_title_from_libsyn_rss(rss_feed_url):
     """Parses a libsyn-generated RSS feed"""
@@ -26,7 +27,12 @@ def create_title_from_libsyn_rss(rss_feed_url):
     title = Title()
 
     title.name = feed_tree.find('title').text
-    title.slug = slugify(title.name) + "---CHANGEME--" + datetime.now().strftime('%f')
+
+    title.slug = slugify(title.name)
+    existing_slug_count = Title.objects.all().filter(slug=title.slug).count()
+    if existing_slug_count > 0:
+        title.slug += "---CHANGEME--" + time.time()
+
     title.description = feed_tree.find('description').text
     if feed_tree.find('{http://www.itunes.com/dtds/podcast-1.0.dtd}explicit').text == 'yes':
         title.is_explicit = True
@@ -42,7 +48,7 @@ def create_title_from_libsyn_rss(rss_feed_url):
         episode.title = title
         episode.license = default_license
         episode.name = item.find('title').text
-        episode.description = item.find('description').text
+        episode.description = strip_tags(item.find('description').text)
         episode.filesize = item.find('enclosure').get('length')
         episode.url = item.find('enclosure').get('url')
         episode.duration = item.find('{http://www.itunes.com/dtds/podcast-1.0.dtd}duration').text
