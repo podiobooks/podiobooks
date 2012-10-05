@@ -15,6 +15,8 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from podiobooks.core.models import Title, Contributor, Category
 from podiobooks.core.forms import CategoryChoiceForm, ContributorChoiceForm, TitleSearchForm, TitleSearchAdditionalFieldsForm
 
+from podiobooks.core.queries import get_featured_shelf_titles, get_recently_released_shelf_titles, get_toprated_shelf_titles
+
 
 INITIAL_CATEGORY = 'science-fiction'
 INITIAL_CONTRIBUTOR = 'mur-lafferty'
@@ -28,10 +30,8 @@ def index(request):
     
     template : core/templates/index.html
     """
-    homepage_title_list = Title.objects.prefetch_related("titlecontributors", "titlecontributors__contributor", "titlecontributors__contributor_type").filter(display_on_homepage=True, deleted=False).order_by('-date_created').all()
-
-    # Featured items, by category
-    featured_title_list = homepage_title_list
+    # Featured Shelf
+    featured_title_list = get_featured_shelf_titles()
 
     category_choice_form = CategoryChoiceForm(request, cookie="featured_by_category")
     initial_category_slug = category_choice_form.fields["category"].initial
@@ -39,11 +39,10 @@ def index(request):
     if initial_category_slug:
         featured_title_list = featured_title_list.filter(categories__slug=initial_category_slug)
 
-    featured_title_list = featured_title_list.order_by('-date_created', 'name')[:16]
+    featured_title_list = featured_title_list[:24]
 
-
-    # Top rated items, by contributor
-    toprated_title_list = homepage_title_list.filter(promoter_count__gte=20)
+    # Top Rated Shelf
+    toprated_title_list = get_toprated_shelf_titles()
 
     contributor_choice_form = ContributorChoiceForm(request, cookie="top_rated_by_author")
     initial_contributor_slug = contributor_choice_form.fields["contributor"].initial
@@ -51,11 +50,10 @@ def index(request):
     if initial_contributor_slug:
         toprated_title_list = toprated_title_list.filter(contributors__slug=initial_contributor_slug)
 
-    toprated_title_list = toprated_title_list.order_by('-promoter_count').all()[:16]
+    toprated_title_list = toprated_title_list[:24]
 
-
-    # recently released
-    recently_released_list = Title.objects.prefetch_related("titlecontributors", "titlecontributors__contributor", "titlecontributors__contributor_type").filter(is_adult=False, deleted=False).annotate(Max("episodes__date_created"))
+    # Recently Released Shelf
+    recently_released_list = get_recently_released_shelf_titles()
 
     category_choice_form_recent = CategoryChoiceForm(request, cookie="recent_by_category")
     initial_category_slug_recent = category_choice_form_recent.fields["category"].initial
@@ -63,7 +61,7 @@ def index(request):
     if initial_category_slug_recent:
         recently_released_list = recently_released_list.filter(categories__slug=initial_category_slug_recent)
 
-    recently_released_list = recently_released_list.order_by("-episodes__date_created__max")[:16]
+    recently_released_list = recently_released_list[:24]
 
     # Render template    
     response_data = {
