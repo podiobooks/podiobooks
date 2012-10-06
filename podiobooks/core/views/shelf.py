@@ -23,7 +23,10 @@ class FilteredShelf(View):
         'shelf_type' should be a method of this class; 404 if not
         'title_filter' is passed along to 'shelf_type' as an optional filter to apply to the shelf
         """
-#        reverse("shelf", kwargs={"shelf_type": "featured_by_category", "title_filter": "all"})
+
+        if not title_filter:
+            title_filter='all'
+
         try:
             method = getattr(self, shelf_type)
         except AttributeError:
