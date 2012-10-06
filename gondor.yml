@@ -18,6 +18,7 @@ on_deploy:
     - manage.py collectstatic --noinput --clear
     - manage.py collectmedia
     - manage.py mediabrute_cache
+    - manage.py clear_cache
 
 # URLs which should be served by Gondor mapping to a filesystem location
 # relative to your writable storage area.
