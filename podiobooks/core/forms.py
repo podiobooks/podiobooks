@@ -29,7 +29,7 @@ class CategoryChoiceForm(forms.Form):
         initial_category = request.COOKIES.get(cookie)
         
         categories = list(categories)
-        categories.insert(0, ("", "Any Category"))
+        categories.insert(0, ("all", "Any Category"))
       
         if not initial_category:
             try:
@@ -62,7 +62,7 @@ class ContributorChoiceForm(forms.Form):
         initial_contributor = request.COOKIES.get(cookie)
         
         contributors = list(contributors)
-        contributors.insert(0, ("", "All Authors"))
+        contributors.insert(0, ("all", "All Authors"))
         
         if not initial_contributor:
             try:
