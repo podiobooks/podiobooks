@@ -18,6 +18,10 @@
                 <li id="consume-amazon" class='consume-amazon'><a
                         href="http://www.amazon.com/dp/{{ item.identifier }}/?tag=podiobookscom-20">Buy Book</a></li>
             {% endif %}
+            {% if item.name == 'Kindle Version' %}
+                <li id="consume-amazon" class='consume-kindle'><a
+                        href="http://www.amazon.com/dp/{{ item.identifier }}/?tag=podiobookscom-20">Buy on Kindle</a></li>
+            {% endif %}
             {% if item.name == 'Smashwords Version' %}
                 <li id="consume-smashwords" class='consume-smashwords'><a
                         href="http://www.smashwords.com/books/view/{{ item.identifier }}?ref=evoterra">Buy eBook</a></li>
