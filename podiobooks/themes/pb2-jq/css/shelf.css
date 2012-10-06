@@ -168,8 +168,8 @@
 .shelf-arrow {
     display: block;
     position: absolute;
-    width: 14px;
-    height: 14px;
+    width: 20px;
+    height: 20px;
     font-size: 0;
     color: transparent;
     top: 70px;
@@ -178,13 +178,13 @@
 .shelf-arrow-right {
     background: url('img/arrow-right.png') top left no-repeat;
     z-index: 5;
-    right: -7px;
+    right: -6px;
 }
 
 .shelf-arrow-left {
     background: url('img/arrow-left.png') top left no-repeat;
     z-index: 5;
-    left: -7px;
+    left: -6px;
 }
 
 .shelf-select-form {
