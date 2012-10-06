@@ -20,15 +20,17 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 # Cache Settings
-# CACHE_BACKEND = 'memcached://127.0.0.1:11211/'
-CACHE_BACKEND = 'dummy:///'
-CACHE_MIDDLEWARE_SECONDS = 30
-CACHE_MIDDLEWARE_ANONYMOUS_ONLY = True
-CACHE_MIDDLEWARE_KEY_PREFIX = 'pb2'
+CACHES = {
+#    'default': {
+#        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache'
+#    },
+    'default': {
+        'BACKEND': 'django.core.cache.backends.dummy.DummyCache'
+    }
+}
 
 # List of Admin users to be emailed by error system
-MANAGERS = (
-)
+MANAGERS = ()
 ADMINS = MANAGERS
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a

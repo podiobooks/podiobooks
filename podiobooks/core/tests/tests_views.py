@@ -13,7 +13,7 @@ class ShelfTestCase(TestCase):
     def setUp(self):
         self.client = Client()
         
-    def test_non_existant(self):
+    def test_non_existent(self):
         """
         When a shelf type doesn't exist, we should 404
         """
@@ -29,5 +29,5 @@ class ShelfTestCase(TestCase):
         for shelf_type in shelf_types:
             resp = self.client.get(reverse("shelf", kwargs={"shelf_type": shelf_type}))
             self.assertEquals(resp.status_code, 200)
-            resp = self.client.get(reverse("shelf", kwargs={"shelf_type": shelf_type, "title_filter": "asdf"}))
+            resp = self.client.get(reverse("shelf", kwargs={"shelf_type": shelf_type, "title_filter": "all"}))
             self.assertEquals(resp.status_code, 200)
