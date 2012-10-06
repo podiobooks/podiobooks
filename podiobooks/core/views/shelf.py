@@ -24,9 +24,6 @@ class FilteredShelf(View):
         'title_filter' is passed along to 'shelf_type' as an optional filter to apply to the shelf
         """
 
-        if not title_filter:
-            title_filter='all'
-
         try:
             method = getattr(self, shelf_type)
         except AttributeError:
