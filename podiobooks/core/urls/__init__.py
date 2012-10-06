@@ -129,12 +129,9 @@ urlpatterns = patterns('',
     url(r'^shelf/(?P<shelf_type>[\w_]+)/$',
         cache_page(FilteredShelf.as_view(), 1),
         name="shelf"),
-    url(r'^shelf/(?P<shelf_type>[\w_]+)//$',
-        cache_page(FilteredShelf.as_view(), 1),
-        name="shelf"),
     url(r'^shelf/(?P<shelf_type>[\w_]+)/(?P<title_filter>[\w\-]+)/$',
         cache_page(FilteredShelf.as_view(), 1),
-        name="shelf"),
+        name="shelf_filtered"),
 
     # PB1 book.php redirect
     url(r'^book\.php$',
