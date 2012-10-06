@@ -5,7 +5,6 @@
 from django.test import TestCase
 from django.contrib.admin.models import User
 from podiobooks.core.models import License
-import os
 
 class LibsynImportViewsTestCase(TestCase):
     # fixtures = []
