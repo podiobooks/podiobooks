@@ -99,12 +99,12 @@
 				sel.change(function(){
 					if (settings.cookie){
 						shelf.pbShelf({
-							"url" : sel.parents("form").attr("action") + sel.val(), 
+							"url" : sel.parents("form").attr("action") + sel.val() + '/',
 							"cookie":settings.cookie							
 						});
 					}
 					else{
-						shelf.pbShelf({"url" : sel.parents("form").attr("action") + sel.val()});
+						shelf.pbShelf({"url" : sel.parents("form").attr("action") + sel.val() + '/'});
 					}
 				});				
 			}
