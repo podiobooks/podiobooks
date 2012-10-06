@@ -23,7 +23,7 @@ def get_featured_shelf_titles(category='all'):
             Q(deleted=False) &
             category_filter
         ).order_by('?')[:16]
-        cache.set('featured_shelf_titles_' + category, titles, 90)
+        cache.set('featured_shelf_titles_' + category, titles, 604800)
 
     return titles
 
@@ -48,7 +48,7 @@ def get_toprated_shelf_titles(contributor='all'):
             Q(promoter_count__gte=20) &
             contributor_filter
         ).order_by('-promoter_count')[:16]
-        cache.set('toprated_shelf_titles_' + contributor, titles, 90)
+        cache.set('toprated_shelf_titles_' + contributor, titles, 240)
 
     return titles
 
@@ -73,6 +73,6 @@ def get_recently_released_shelf_titles(category='all'):
             category_filter
         ).annotate(Max("episodes__date_created")
         ).order_by('-episodes__date_created__max')[:16]
-        cache.set('recently_released_shelf_titles_' + category, titles, 90)
+        cache.set('recently_released_shelf_titles_' + category, titles, 240)
 
     return titles
