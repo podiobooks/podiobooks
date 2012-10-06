@@ -3,21 +3,21 @@
 # pylint: disable=C0111,E0602,F0401,R0904
 
 from django.contrib import admin
-from django.shortcuts import redirect
 from django.forms.widgets import Textarea, TextInput
 from django.db import models
 
-from podiobooks.core.models import Award, Category, Contributor, ContributorType, Episode, EpisodeContributor, License, Media, Series, Title, TitleCategory, TitleContributor
+from podiobooks.core.models import Award, Category, Contributor, ContributorType, Episode, License, Media, Series, Title, TitleCategory, TitleContributor
 
 ### INLINES
 
-
 class EpisodeInline(admin.TabularInline):
     formfield_overrides = {models.TextField: {'widget': Textarea(attrs={'rows': '1', 'cols': '30'})}, }
+
     def formfield_for_dbfield(self, db_field, **kwargs):
         if db_field.name == 'duration':
-            kwargs['widget'] = TextInput(attrs={'width': '8',})
-        return super(EpisodeInline,self).formfield_for_dbfield(db_field,**kwargs)
+            kwargs['widget'] = TextInput(attrs={'width': '8', })
+        return super(EpisodeInline, self).formfield_for_dbfield(db_field, **kwargs)
+
     model = Episode
     exclude = ("deleted", 'media_date_created' )
 
@@ -117,7 +117,9 @@ class TitleAdmin(admin.ModelAdmin):
     search_fields = ['name', 'byline']
     fieldsets = (
         ('Title Information', {
-            'fields': ('libsyn_show_id', 'name', 'slug', 'description', 'license', 'itunes_adam_id', 'podiobooker_blog_url', 'deleted')
+            'fields': (
+            'libsyn_show_id', 'name', 'slug', 'description', 'license', 'itunes_adam_id', 'podiobooker_blog_url',
+            'deleted')
         }),
         ('Flags (Explicitness, Disp. on Homepage)', {
             'classes': ('collapse',),
