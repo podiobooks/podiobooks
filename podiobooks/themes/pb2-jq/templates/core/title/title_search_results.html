@@ -10,11 +10,11 @@
     <form action="{% url title_search %}" method="GET" class="search">
         <p>
             <label for="id_keywords">Search</label>
-            {{ titleSearchForm.keyword }}
+            {{ title_search_form.keyword }}
         </p>
 
         <div class="search-additional-fields">
-            {{ additionalFields.as_p }}
+            {{ additional_fields.as_p }}
 
 
         </div>
