@@ -126,10 +126,13 @@ urlpatterns = patterns('',
     ),
 
     # Homepage shelf AJAX endpoints
-    url(r'^shelf/(?P<shelf_type>[\w\_]+)/$',
+    url(r'^shelf/(?P<shelf_type>[\w_]+)/$',
         cache_page(FilteredShelf.as_view(), 1),
         name="shelf"),
-    url(r'^shelf/(?P<shelf_type>[\w\_]+)/(?P<title_filter>[\w\-]+)/$',
+    url(r'^shelf/(?P<shelf_type>[\w_]+)//$',
+        cache_page(FilteredShelf.as_view(), 1),
+        name="shelf"),
+    url(r'^shelf/(?P<shelf_type>[\w_]+)/(?P<title_filter>[\w\-]+)/$',
         cache_page(FilteredShelf.as_view(), 1),
         name="shelf"),
 
