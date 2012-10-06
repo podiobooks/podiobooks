@@ -4,18 +4,17 @@ Views for homepage shelves
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.http import Http404
-from django.db.models import Max
 from django.views.generic.base import View
-from django.core.urlresolvers import reverse
 from podiobooks.core.queries import get_featured_shelf_titles, get_recently_released_shelf_titles, get_toprated_shelf_titles
 
-from podiobooks.core.models import Title
-
+# pylint: disable=W0613
 
 class FilteredShelf(View):
     """
     A 'shelf' of titled, filtered in some way(s)
     """
+
+    http_method_names = ('get',)
 
     def get(self, request, shelf_type, title_filter='all'):
         """
@@ -24,7 +23,7 @@ class FilteredShelf(View):
         'shelf_type' should be a method of this class; 404 if not
         'title_filter' is passed along to 'shelf_type' as an optional filter to apply to the shelf
         """
-        reverse("shelf", kwargs={"shelf_type": "featured_by_category", "title_filter": "all"})
+#        reverse("shelf", kwargs={"shelf_type": "featured_by_category", "title_filter": "all"})
         try:
             method = getattr(self, shelf_type)
         except AttributeError:

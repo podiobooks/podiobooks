@@ -56,7 +56,8 @@ class Contributor(models.Model):
     """A contributor is one who had done work on a title. For a book, it's an
     author or authors."""
     slug = models.SlugField(max_length=1000) # For multi-contributor books, can get long
-    user = models.ForeignKey(User, null=True, blank=True, related_name='contributor_info') #User is an OOTB Django Auth Model
+    user = models.ForeignKey(User, null=True, blank=True,
+        related_name='contributor_info') #User is an OOTB Django Auth Model
     first_name = models.CharField(max_length=255)
     middle_name = models.CharField(max_length=255, blank=True)
     last_name = models.CharField(max_length=255)
@@ -101,11 +102,14 @@ class Episode(models.Model):
     sequence = models.IntegerField() #Order in the Story
     description = models.TextField(blank=True)
     url = models.URLField()
-    filesize = models.IntegerField(default=0, help_text="In bytes, corresponds to 'length' in RSS feed") #Size of the media file
-    duration = models.CharField(max_length=20, default='45:00', help_text='Duration of the media file in minutes:seconds') #Length of the media file (in minutes)
+    filesize = models.IntegerField(default=0,
+        help_text="In bytes, corresponds to 'length' in RSS feed") #Size of the media file
+    duration = models.CharField(max_length=20, default='45:00',
+        help_text='Duration of the media file in minutes:seconds') #Length of the media file (in minutes)
     contributors = models.ManyToManyField('Contributor', through='EpisodeContributor')
     deleted = models.BooleanField(default=False, db_index=True)
-    media_date_created = models.DateTimeField(blank=True, null=True, help_text='Date the media file was added (e.g. to Libsyn)')
+    media_date_created = models.DateTimeField(blank=True, null=True,
+        help_text='Date the media file was added (e.g. to Libsyn)')
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
 
@@ -179,6 +183,7 @@ class Media(models.Model):
     def __unicode__(self):
         return self.name
 
+
 class Rating(models.Model):
     """The last rating that was loaded from the pb1 site"""
     last_rating_id = models.IntegerField(default=0, db_index=True)
@@ -233,16 +238,21 @@ class Title(models.Model):
     promoter_count = models.IntegerField(default=0, db_index=True)
     detractor_count = models.IntegerField(default=0, db_index=True)
     deleted = models.BooleanField(default=False, verbose_name='Deleted?', db_index=True)
-    contributors = models.ManyToManyField('Contributor', through='TitleContributor') #related_name doesn't work with manual intermediary tables
+    contributors = models.ManyToManyField('Contributor',
+        through='TitleContributor') #related_name doesn't work with manual intermediary tables
     # Note: TitleContributor Objects (intermediate table) are available as titlecontributors.all()
     byline = models.CharField(max_length=1024, blank=True) # This is a formatted cache of the title contributors
-    categories = models.ManyToManyField('Category', through='TitleCategory') #related_name doesn't work with manual intermediary tables
+    categories = models.ManyToManyField('Category',
+        through='TitleCategory') #related_name doesn't work with manual intermediary tables
     # Note: TitleCategory Objects (intermediate table) are available as titlecategories.all()
     category_list = models.CharField(max_length=1024, blank=True) # This is a formatted cache of the categories
     awards = models.ManyToManyField('Award', null=True, blank=True, related_name='titles')
-    libsyn_show_id = models.CharField(max_length=50, db_index=True, blank=True, verbose_name='LibSyn Show ID', help_text='Starts with k-')
-    itunes_adam_id = models.IntegerField(null=True, blank=True, verbose_name='iTunes ADAM Id', help_text='From iTunes Page URL for Podcast')
-    podiobooker_blog_url = models.URLField(max_length=255, null=True, blank=True,verbose_name='Blog URL', help_text='Full URL to Blog Post Announcing Book')
+    libsyn_show_id = models.CharField(max_length=50, db_index=True, blank=True, verbose_name='LibSyn Show ID',
+        help_text='Starts with k-')
+    itunes_adam_id = models.IntegerField(null=True, blank=True, verbose_name='iTunes ADAM Id',
+        help_text='From iTunes Page URL for Podcast')
+    podiobooker_blog_url = models.URLField(max_length=255, null=True, blank=True, verbose_name='Blog URL',
+        help_text='Full URL to Blog Post Announcing Book')
     # Note: episodes are available as episodes.all()
     # Note: media are available as media.all()
     # Note: promos are available as promos.all()
@@ -272,7 +282,7 @@ class Title(models.Model):
     def computed_rating(self):
         nps = self.net_promoter_score() / 100
         return nps * 5
-    
+
     def get_byline(self):
         """ return a text-only byline (i.e. no HTML) """
         ret = ""
@@ -284,12 +294,12 @@ class Title(models.Model):
                     ret += "and "
             else:
                 ret += title_contributor.contributor_type.byline_text + " "
-            
+
             ret += title_contributor.contributor.__unicode__()
             ret += " "
-        ret = ret.replace("  ", " ")        
+        ret = ret.replace("  ", " ")
         return ret
-            
+
 
 class TitleCategory(models.Model):
     """

@@ -4,6 +4,8 @@ from django.core.cache import cache
 from podiobooks.core.models import Title
 from django.db.models import Max, Q
 
+# pylint: disable=C0103
+
 def get_featured_shelf_titles(category='all'):
     """Returns a randomized list of non-deleted titles with display_on_homepage == True"""
     titles = cache.get('featured_shelf_titles_' + category)

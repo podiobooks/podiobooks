@@ -3,8 +3,6 @@
 # pylint: disable=C0103,C0111,R0904
 
 from django.test import TestCase
-from podiobooks.libsyn import create_title_from_libsyn_rss
-from django.conf import settings
 from django.contrib.admin.models import User
 from podiobooks.core.models import License
 import os
