@@ -17,6 +17,7 @@ from podiobooks.core.forms import CategoryChoiceForm, ContributorChoiceForm, Tit
 
 from podiobooks.core.queries import get_featured_shelf_titles, get_recently_released_shelf_titles, get_toprated_shelf_titles
 
+# pylint: disable=R0912
 
 INITIAL_CATEGORY = 'science-fiction'
 INITIAL_CONTRIBUTOR = 'mur-lafferty'
@@ -66,6 +67,8 @@ def title_search(request, keywords=None):
     
     template : N/A
     """
+
+    # Handle PB1-Style Searches on a Category
     if "category" in request.GET:
         try:
             try:
@@ -76,6 +79,7 @@ def title_search(request, keywords=None):
         except ObjectDoesNotExist:
             return HttpResponseRedirect(reverse("category_list"))
 
+    # Convert PB1-style 'keyword' arg into keywords
     if "keyword" in request.GET:
         form = TitleSearchForm(request.GET)
         additional_fields = TitleSearchAdditionalFieldsForm(request.GET)
@@ -83,18 +87,18 @@ def title_search(request, keywords=None):
         form = TitleSearchForm({'keyword': keywords})
         additional_fields = TitleSearchAdditionalFieldsForm()
 
+    # Validate Search Form
     if form.is_valid(): # All validation rules pass
         keywords = form.cleaned_data['keyword']
         include_adult = form.cleaned_data['include_adult']
         family_friendly = form.cleaned_data['family_friendly']
-
     else:
         form = TitleSearchForm()
         keywords = False
         include_adult = False
         family_friendly = False
 
-    response_data = {'titleSearchForm': form, "additionalFields": additional_fields}
+    response_data = {'title_search_form': form, "additional_fields": additional_fields}
 
     if keywords:
         if not include_adult:
@@ -128,7 +132,7 @@ def title_search(request, keywords=None):
             'title_list': title_list,
             'keywords': keywords,
             'result_count': result_count,
-            'titleSearchForm': form,
+            'title_search_form': form,
             'paginator': paginator
         })
 

@@ -1,17 +1,13 @@
 """Libsyn Views"""
 
-from django.shortcuts import render_to_response
-from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
-
-from django.core.urlresolvers import reverse
 from django.views.generic import FormView, TemplateView
-
 from .forms import LibsynImportForm
 from .create_title_from_libsyn_rss import create_title_from_libsyn_rss
 
 class ImportFromLibsynFormView(FormView):
+    """Displays and Validates Form to Collect Libsyn Slug for Title to be Imported"""
     template_name = "libsyn/import_from_libsyn.html"
     form_class = LibsynImportForm
 
@@ -30,6 +26,7 @@ class ImportFromLibsynFormView(FormView):
 
 
 class ImportFromLibsynResultsView(TemplateView):
+    """Inovkes Title Import and Displays Results"""
     template_name = "libsyn/import_from_libsyn_results.html"
 
     @method_decorator(login_required)
