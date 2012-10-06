@@ -93,7 +93,7 @@ class EpisodeFeed(Feed):
             'image': self.image(obj),
             'explicit': self.explicit(obj),
             'complete': self.complete(obj),
-            'global_categories': settings.FEED_GLOBAL_CATEGORIES
+            'global_categories': ('podiobooks', 'audio books',)
         }
         return extra_args
 
