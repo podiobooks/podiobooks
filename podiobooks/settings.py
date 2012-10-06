@@ -19,16 +19,6 @@ PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
-# Cache Settings
-CACHES = {
-#    'default': {
-#        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache'
-#    },
-    'default': {
-        'BACKEND': 'django.core.cache.backends.dummy.DummyCache'
-    }
-}
-
 # List of Admin users to be emailed by error system
 MANAGERS = ()
 ADMINS = MANAGERS
@@ -44,18 +34,11 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'mediaroot')
 
 # Staticfiles Config
-#STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticroot')
 STATIC_ROOT = PROJECT_ROOT +  "/themes/pb2-jq/"
 STATIC_URL = '/static/'
-#STATICFILES_DIRS = [os.path.join(PROJECT_ROOT, 'themes', 'pb2-jq'), os.path.join(PROJECT_ROOT, 'static')]
 STATICFILES_DIRS = []
 TEMPLATE_DIRS = [os.path.join(PROJECT_ROOT, 'themes', 'pb2-jq', 'templates')]
 
-
-# URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
-# trailing slash.
-# Examples: "http://foo.com/media/", "/media/".
-#ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -89,15 +72,6 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'podiobooks.urls'
 
-#authopenid
-ugettext = lambda s: s # pylint: disable=C0103
-LOGIN_URL = '/%s%s' % (ugettext('account/'), ugettext('signin/'))
-
-LOGIN_REDIRECT_URL = '/'
-OPENID_SREG = {
-    "required": ['fullname', 'country']
-}
-
 INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.admindocs',
@@ -115,7 +89,7 @@ INSTALLED_APPS = (
     'south',
     )
 
-# Local DB settings. (Postgres)
+### DATABASE SETTINGS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -125,6 +99,16 @@ DATABASES = {
         #        'HOST': '127.0.0.1',
         #        'PORT': '', # Set to empty string for default.
         #        'SUPPORTS_TRANSACTIONS': 'true',
+    }
+}
+
+### CACHE SETTINGS
+CACHES = {
+    #    'default': {
+    #        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache'
+    #    },
+    'default': {
+        'BACKEND': 'django.core.cache.backends.dummy.DummyCache'
     }
 }
 
@@ -147,22 +131,6 @@ USE_I18N = False
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'zv$+w7juz@(g!^53o0ai1u082)=jkz9my_r=3)fglrj5t8l$2#'
-
-# IP Addresses that should be treated as internal/debug users
-INTERNAL_IPS = ('127.0.0.1',)
-
-# Email Settings
-EMAIL_HOST = 'a real smtp server'
-EMAIL_HOST_USER = 'your_mailbox_username'
-EMAIL_HOST_PASSWORD = 'your_mailbox_password'
-DEFAULT_FROM_EMAIL = 'a real email address'
-SERVER_EMAIL = 'a real email address'
-
-### django-registration Settings
-ACCOUNT_ACTIVATION_DAYS = 14
-
-### Local add-ons to core inclusion variables
-# TEMPLATE_CONTEXT_PROCESSORS +=
 
 ### DEBUG TOOLBAR
 if DEBUG:
@@ -193,11 +161,6 @@ FACEBOOK_APP_ID = "155134080235"
 
 # <meta name="descripton"> default value
 BASE_META_DESCRIPTION = "Free audio books delivered as podcasts. Subscribe for free to any book and start from chapter one. Podiobooks.com"
-
-### FEEDS
-FEED_WEBMASTER = 'webmaster@podiobooks.com (Chris Miller)'
-FEED_MANAGING_EDITOR = 'editor@podiobooks.com (Evo Terra)'
-FEED_GLOBAL_CATEGORIES = ('podiobooks', 'audio books',)
 
 ### DONATIONS
 DONATION_BUSINESS_NAME = 'evo@podiobooks.com'
