@@ -21,7 +21,7 @@ from podiobooks.core.queries import get_featured_shelf_titles, get_recently_rele
 INITIAL_CATEGORY = 'science-fiction'
 INITIAL_CONTRIBUTOR = 'mur-lafferty'
 
-@cache_page(1, key_prefix="home")
+@cache_page(1)
 def index(request):
     """
     Main site page page.
