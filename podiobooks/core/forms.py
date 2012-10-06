@@ -20,7 +20,7 @@ class CategoryChoiceForm(forms.Form):
         """ Custom init to check for cookies """
         super(CategoryChoiceForm, self).__init__(*args, **kwargs)
         
-        categories = cache.get('category_dropdown_values')
+        categories = cache.get('category_dropdown_values_1')
         
         if not categories:
             categories = Category.objects.filter(~Q(slug="erotica"), title__display_on_homepage=True, title__deleted=False).annotate(title_count=Count('title')).filter(title_count__gt=2).order_by('name').values_list('slug', 'name')
@@ -48,7 +48,7 @@ class ContributorChoiceForm(forms.Form):
         """ Custom init to check for cookies """
         super(ContributorChoiceForm, self).__init__(*args, **kwargs)
     
-        contributors = cache.get('contributor_dropdown_values')
+        contributors = cache.get('contributor_dropdown_values_1')
         
         if not contributors:
             top_contributors = Contributor.objects.annotate(title_count=Count('title')).filter(title__display_on_homepage=True, title__deleted=False, title__promoter_count__gte=20).order_by('-title_count').values_list('slug', 'display_name', 'title_count')[:10]
