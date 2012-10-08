@@ -10,13 +10,14 @@ from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf import settings
 from django.views.generic import RedirectView
+from podiobooks.core.views import IndexView
 from .views import BlogRedirectView, TextTemplateView, RobotsView
 
 admin.autodiscover()
 
 urlpatterns = patterns('',
     # Home Page
-    url(r'^$', 'podiobooks.core.views.index', name="home_page"),
+    url(r'^$', IndexView.as_view(), name="home_page"),
 
     # Recent Titles Feed Redirect
     url(r'^index\.xml$', RedirectView.as_view(url='/rss/feeds/titles/recent/')),

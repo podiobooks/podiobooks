@@ -6,7 +6,8 @@ from django.db.models import Q, Count, Max
 
 from django.core.urlresolvers import reverse
 from django.views.decorators.vary import vary_on_cookie
-from django.views.generic import ListView, RedirectView
+from django.utils.decorators import method_decorator
+from django.views.generic import ListView, RedirectView, TemplateView
 from django.shortcuts import get_object_or_404, redirect
 from django.http import Http404, HttpResponseRedirect
 from django.core.exceptions import ObjectDoesNotExist
@@ -22,41 +23,43 @@ from podiobooks.core.queries import get_featured_shelf_titles, get_recently_rele
 INITIAL_CATEGORY = 'science-fiction'
 INITIAL_CONTRIBUTOR = 'mur-lafferty'
 
-@vary_on_cookie
-def index(request):
-    """
-    Main site page page.
+class IndexView(TemplateView):
+    """Home Page"""
 
-    url: /
-    
-    template : core/templates/index.html
-    """
-    # Featured Shelf
-    category_choice_form = CategoryChoiceForm(request, cookie="featured_by_category")
-    initial_category_slug = category_choice_form.fields["category"].initial
-    featured_title_list = get_featured_shelf_titles(initial_category_slug)
+    template_name = "core/index.html"
 
-    # Top Rated Shelf
-    contributor_choice_form = ContributorChoiceForm(request, cookie="top_rated_by_author")
-    initial_contributor_slug = contributor_choice_form.fields["contributor"].initial
-    toprated_title_list = get_toprated_shelf_titles(initial_contributor_slug)
+    # Make sure cache looks at cookie values
+    @method_decorator(vary_on_cookie)
+    def dispatch(self, *args, **kwargs):
+        return super(IndexView, self).dispatch(*args, **kwargs)
 
-    # Recently Released Shelf
-    category_choice_form_recent = CategoryChoiceForm(request, cookie="recent_by_category")
-    initial_category_slug_recent = category_choice_form_recent.fields["category"].initial
-    recently_released_list = get_recently_released_shelf_titles(initial_category_slug_recent)
+    def get_context_data(self, **kwargs):
+        # Featured Shelf
+        category_choice_form = CategoryChoiceForm(self.request, cookie="featured_by_category")
+        initial_category_slug = category_choice_form.fields["category"].initial
+        featured_title_list = get_featured_shelf_titles(initial_category_slug)
 
-    # Render template    
-    response_data = {
-        'featured_title_list': featured_title_list,
-        'toprated_title_list': toprated_title_list,
-        'recently_released_list': recently_released_list,
-        'category_choice_form': category_choice_form,
-        'contributor_choice_form': contributor_choice_form,
-        'category_choice_form_recent': category_choice_form_recent,
-    }
+        # Top Rated Shelf
+        contributor_choice_form = ContributorChoiceForm(self.request, cookie="top_rated_by_author")
+        initial_contributor_slug = contributor_choice_form.fields["contributor"].initial
+        toprated_title_list = get_toprated_shelf_titles(initial_contributor_slug)
 
-    return render_to_response('core/index.html', response_data, context_instance=RequestContext(request))
+        # Recently Released Shelf
+        category_choice_form_recent = CategoryChoiceForm(self.request, cookie="recent_by_category")
+        initial_category_slug_recent = category_choice_form_recent.fields["category"].initial
+        recently_released_list = get_recently_released_shelf_titles(initial_category_slug_recent)
+
+        # Render Template
+        response_data = {
+            'featured_title_list': featured_title_list,
+            'toprated_title_list': toprated_title_list,
+            'recently_released_list': recently_released_list,
+            'category_choice_form': category_choice_form,
+            'contributor_choice_form': contributor_choice_form,
+            'category_choice_form_recent': category_choice_form_recent,
+        }
+
+        return response_data
 
 
 def title_search(request, keywords=None):
