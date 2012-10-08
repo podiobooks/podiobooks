@@ -235,6 +235,7 @@ class Title(models.Model):
     is_explicit = models.BooleanField(default=False, db_index=True, verbose_name='Is Explicit')
     is_family_friendly = models.BooleanField(default=False, db_index=True, verbose_name='Is Family Friendly')
     is_for_kids = models.BooleanField(default=False, db_index=True, verbose_name='Is For Kids')
+    language = models.CharField(max_length=10, default='en-us', db_index=True, help_text='Language Code for Title')
     promoter_count = models.IntegerField(default=0, db_index=True)
     detractor_count = models.IntegerField(default=0, db_index=True)
     deleted = models.BooleanField(default=False, verbose_name='Deleted?', db_index=True)
