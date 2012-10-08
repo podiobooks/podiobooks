@@ -153,33 +153,6 @@
 				 */
 				if(shelf.find(settings.shelfItem).length){
 					
-					
-					/*
-					 * Find all shelf items that arent marked as covers being loaded
-					 */
-					$(shelf).find(settings.shelfItemCover).find("img:not(.shelf-cover-loading)").each(function(){
-						
-						var img = $(this);
-						
-						/*
-						 * Hide the image, replace it with a progress loader graphic
-						 */
-						img.hide();
-						var loader = $("<img class='shelf-cover-loading' src='" + siteVars("img") + "loading.gif' />").appendTo(img.parents(".shelf-cover"));
-						
-						/*
-						 * Once the real cover has loaded,
-						 * remove the loader graphic, fade in the cover
-						 */
-						img.imagesLoaded(function(){
-							img.unbind("load");
-							loader.remove();
-							img.fadeIn();
-							
-						});
-					});
-					
-					
 					/*
 					 * while the covers are loading, hide the progress bar
 					 */
