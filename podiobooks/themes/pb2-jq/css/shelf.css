@@ -96,7 +96,7 @@
 .shelf-item {
     background: #fff;
     float: left;
-    width: 206px;
+    width: 186px;
     margin: 8px 8px;
     border-radius: 10px;
     padding: 10px;
@@ -165,26 +165,44 @@
 /*
 * Next/Prev Arrows
 */
-.shelf-arrow {
-    display: block;
+.shelf-arrow{
+	display: block;
     position: absolute;
-    width: 20px;
-    height: 20px;
-    font-size: 0;
-    color: transparent;
-    top: 70px;
-}
-
-.shelf-arrow-right {
-    background: url('img/arrow-right.png') top left no-repeat;
+    top: 25px;
     z-index: 5;
-    right: -6px;
+    font-size:45px;
+    opacity:.8;
+    height:80px;
+    padding:37px 8px 0 6px;
+    box-shadow:0 0 7px rgba(0,0,0,.1);
+}
+.shelf-dark .shelf-arrow{
+    background:#06539e;   
+    
+}
+.shelf-light .shelf-arrow{
+	background:#d0deee;
+}
+.shelf-arrow:visited,
+.shelf-arrow:hover,
+.shelf-arrow:link,
+.shelf-arrow:active,
+.shelf-arrow:hover {
+    text-decoration:none;
+    color:#fff;
+    
+}	
+.shelf-arrow-right {
+    right: -35px;
+	border-radius:0 300px 300px 0;
 }
 
 .shelf-arrow-left {
-    background: url('img/arrow-left.png') top left no-repeat;
-    z-index: 5;
-    left: -6px;
+    border-radius:300px 0 0 300px;
+    left: -35px;
+}
+.shelf-arrow:hover{
+	opacity:1;
 }
 
 .shelf-select-form {
