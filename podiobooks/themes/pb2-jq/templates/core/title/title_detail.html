@@ -79,6 +79,7 @@
                     <span itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
                     	<meta itemprop="ratingValue" content="{{ title.computed_rating }}"/>
                     	<meta itemprop="bestRating" content="5"/>
+                        <meta itemprop="ratingCount" content="{{ title.promoter_count|add:title.detractor_count }}"/>
                     </span>
 
                 </div>
