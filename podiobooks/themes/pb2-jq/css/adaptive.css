@@ -3,7 +3,7 @@
  */
 @media all and (max-width:985px){	
 	.width{
-		max-width:726px;
+		max-width:666px;
 		width:auto;
 	}
 	
@@ -48,6 +48,13 @@
 	.first-chapter{
 		width:397px;
 	}
+	.shelf-arrow-right {
+	    right: -29px;
+	}
+	.shelf-arrow-left {
+	    left: -29px;
+	}
+	
 }
 
 
@@ -55,8 +62,20 @@
 /* 
  * 2 panes per shelf
  */
-@media all and (max-width:743px){
-	
+@media all and (max-width:753px){
+	.shelf-arrow-right {
+	    right: -6px;
+	}
+	.shelf-arrow-left {
+	    left: -6px;
+	}
+	.shelf-arrow:visited,
+	.shelf-arrow:hover,
+	.shelf-arrow:link,
+	.shelf-arrow:active{
+	    text-decoration:none;
+	    
+	}
 	.title-details-extras{
 		display:none;
 	}
@@ -148,3 +167,9 @@
 
 
 
+@media all and (min-width:1200px){
+	.width{
+		width:1111px;
+		max-width:auto;
+	}
+}
