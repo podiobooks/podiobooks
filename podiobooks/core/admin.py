@@ -121,9 +121,9 @@ class TitleAdmin(admin.ModelAdmin):
             'libsyn_show_id', 'name', 'slug', 'description', 'license', 'itunes_adam_id', 'podiobooker_blog_url',
             'deleted')
         }),
-        ('Flags (Explicitness, Disp. on Homepage)', {
+        ('Flags (Explicitness, Disp. on Homepage, Lang.)', {
             'classes': ('collapse',),
-            'fields': ('display_on_homepage', 'is_adult', 'is_explicit', 'is_family_friendly', 'is_for_kids')
+            'fields': ('display_on_homepage', 'is_adult', 'is_explicit', 'is_family_friendly', 'is_for_kids', 'language')
         }),
         ('Series', {
             'classes': ('collapse',),
