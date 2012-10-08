@@ -196,6 +196,7 @@
 		border-top:solid 1px #c7d9ed;
 		border-bottom:solid 1px #a5c6ed;
 		background:url(img/arrow-right.png) 95% center no-repeat;
+		background-size:13px;
 	}
 	.site-menu a:active,
 	.site-menu a:hover,
@@ -401,11 +402,13 @@
 	.shelf-arrow-right{
 		right:10px;
 		top:-70px;
+		background-size:13px;
 	}
 	.shelf-arrow-left{
 		left:auto;
 		right:35%;
 		top:-70px;
+		background-size:13px;
 	}
 	.touch .shelf-arrow{
 		display:none;
