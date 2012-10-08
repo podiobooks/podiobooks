@@ -1,11 +1,11 @@
-""" Django Views for the Podiobooks Main Module"""
+""" Django Views for the Podiobooks Core Module"""
 
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.db.models import Q, Count, Max
 
 from django.core.urlresolvers import reverse
-from django.views.decorators.cache import cache_page
+from django.views.decorators.vary import vary_on_cookie
 from django.views.generic import ListView, RedirectView
 from django.shortcuts import get_object_or_404, redirect
 from django.http import Http404, HttpResponseRedirect
@@ -22,7 +22,7 @@ from podiobooks.core.queries import get_featured_shelf_titles, get_recently_rele
 INITIAL_CATEGORY = 'science-fiction'
 INITIAL_CONTRIBUTOR = 'mur-lafferty'
 
-@cache_page(1)
+@vary_on_cookie
 def index(request):
     """
     Main site page page.
@@ -175,18 +175,3 @@ class TitleRedirectView(RedirectView):
             return reverse('title_detail', args=(slug,))
         else:
             raise Http404
-
-
-class CategoryTitleListView(ListView):
-    """Paginated List of Titles By Category"""
-    context_object_name = 'titles'
-    template_name = 'core/category/category_detail.html'
-    paginate_by = 30
-    
-    def get_queryset(self):
-        return Title.objects.prefetch_related("titlecontributors", "titlecontributors__contributor", "titlecontributors__contributor_type").filter(categories__slug=self.kwargs.get('category_slug'), deleted=False)
-
-    def get_context_data(self, **kwargs):
-        category = get_object_or_404(Category, slug=self.kwargs.get('category_slug'))
-        return super(CategoryTitleListView, self).get_context_data(category=category, object_list=self.object_list)
-

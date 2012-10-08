@@ -10,11 +10,16 @@
 {% endblock %}
 
 {% block content %}
-    {% if award.titles.all.count %}
+    {% if title_list.count %}
         <h1>
             {{ award.name }}
         </h1>
-        {% show_titlelist award.titles.all "award_title_list" %}
+        {% if page_obj.number > 1 %}
+            <span class="current">
+                <em>Page {{ page_obj.number }} of {{ paginator.num_pages }}</em>
+            </span>
+        {% endif %}
+        {% show_titlelist title_list "award_title_list" %}
     {% else %}
         <h1>There are currently no titles for {{ award.name }}</h1>
     {% endif %}
