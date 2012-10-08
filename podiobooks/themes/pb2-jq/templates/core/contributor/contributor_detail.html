@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 {% load title_templatetags %}
-{% block headtitle %}{{ category.name }} {{ contributor.display_name }} Profile - {{ SITE.name }}{% endblock %}
+{% block headtitle %}{{ contributor.display_name }} Profile - {{ SITE.name }}{% endblock %}
 {% block content %}
-	{% if contributor.title_set.all.count %}
+	{% if title_list.count %}
 		<h1>
 		    {{ contributor.display_name }}
 		</h1>
 		
-		{% show_titlelist contributor.title_set.distinct "contributor_title_list" %}
+		{% show_titlelist title_list "contributor_title_list" %}
 	
 	{% else %}
 		<h1>There are currently no titles available for {{ contributor.display_name }}</h1>

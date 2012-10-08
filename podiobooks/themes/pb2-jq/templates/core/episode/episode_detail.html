@@ -1,7 +1,7 @@
 {% extends "base.html" %}
-{% block headtitle %}{{ episode.display_name }} - {{ SITE.name }}{% endblock %}
+{% block headtitle %}{{ episode.title.name }} - {{ episode.name }} - {{ SITE.name }}{% endblock %}
 {% block content %}
-<h2>{{ episode.name }}</h2>
-<p>{{ episode.description }}</p>
-<p>{{episode.url|urlize}}</p>
+    <h2>{{ episode.name }}</h2>
+    <p>{{ episode.description }}</p>
+    <p>{{ episode.url|urlize }}</p>
 {% endblock %}
