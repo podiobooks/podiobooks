@@ -1,10 +1,10 @@
 {% load global_templatetags %}
 {% if title %}
-<span class="loading">
+
         
-            <img itemprop="image" class="cover-image" alt="Cover for '{{ title.name }}'"
+            <img itemprop="image" class="cover-image loading" alt="Cover for '{{ title.name }}'"
                  src="http://asset-server.libsyn.com/show/{{ title.libsyn_show_id }}/height/167/width/100"
-                    >
-    </span>
+                    />
+
 
 {% endif %}
