@@ -130,8 +130,11 @@ class EpisodeFeed(Feed):
     def item_enclosure_url(self, obj):
         return obj.url
 
-    def item_enclosure_duration(self, obj):
-        return int(obj.filesize)
+    def item_enclosure_length(self, obj):
+        if obj.filesize:
+            return int(obj.filesize)
+        else:
+            return 8727310
 
     def item_enclosure_mime_type(self):
         return 'audio/mpeg'
