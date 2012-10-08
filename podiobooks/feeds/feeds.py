@@ -3,6 +3,7 @@
 # pylint: disable=R0201, C0111, R0904, R0801, F0401, W0613
 
 from django.contrib.syndication.views import Feed
+from django.contrib.sites.models import get_current_site
 from django.utils.feedgenerator import Rss201rev2Feed
 from django.utils.html import strip_tags
 from django.conf import settings
@@ -29,7 +30,7 @@ class TitleFeed(Feed):
 
     def get_feed(self, obj, request):
         ### Google Analytics for Feed
-        tracker = Tracker(settings.GOOGLE_ANALYTICS_ID, feed_tools.get_current_domain())
+        tracker = Tracker(settings.GOOGLE_ANALYTICS_ID, get_current_site(request).domain)
         visitor = Visitor()
         visitor.ip_address = request.META.get('REMOTE_ADDR', '')
         visitor.user_agent = request.META.get('HTTP_USER_AGENT', '')
@@ -42,7 +43,7 @@ class TitleFeed(Feed):
         return strip_tags(obj.description).replace('&amp;', '&')
 
     def item_link(self, obj):
-        return feed_tools.add_current_domain(reverse('title_episodes_feed', args=[obj.slug]))
+        return reverse('title_episodes_feed', args=[obj.slug])
 
     def item_title(self, obj):
         return strip_tags(obj.name).replace('&amp;', '&')
@@ -79,6 +80,13 @@ class EpisodeFeed(Feed):
         else:
             return 'no'
 
+    def language(self, obj):
+        """Setup the language for the feed based on the title language. Note that this does not work in Django 1.4.1, but is on the list for future."""
+        if obj.language:
+            return obj.language
+        else:
+           return 'en-us'
+
     def feed_copyright(self, obj):
         if obj.license:
             return obj.license.slug
@@ -103,7 +111,7 @@ class EpisodeFeed(Feed):
         obj = get_object_or_404(Title, slug__exact=title_slug)
 
         ### Google Analytics for Feed
-        tracker = Tracker(settings.GOOGLE_ANALYTICS_ID, feed_tools.get_current_domain())
+        tracker = Tracker(settings.GOOGLE_ANALYTICS_ID, get_current_site(request).domain)
         visitor = Visitor()
         visitor.ip_address = request.META.get('REMOTE_ADDR', '')
         visitor.user_agent = request.META.get('HTTP_USER_AGENT', '')
@@ -122,7 +130,7 @@ class EpisodeFeed(Feed):
         return Episode.objects.filter(title__id__exact=obj.id).order_by('sequence')
 
     def item_comments(self, obj):
-        return feed_tools.add_current_domain(obj.title.get_absolute_url())
+        return obj.title.get_absolute_url()
 
     def item_description(self, obj):
         return strip_tags(obj.description).replace('&amp;', '&')
@@ -169,7 +177,7 @@ class EpisodeFeed(Feed):
         return keywords
 
     def item_link(self, obj):
-        return feed_tools.add_current_domain(obj.get_absolute_url())
+        return obj.get_absolute_url()
 
     def item_pubdate(self, obj):
         return obj.date_created
@@ -178,7 +186,7 @@ class EpisodeFeed(Feed):
         return strip_tags(obj.name).replace('&amp;', '&')
 
     def link(self, obj):
-        return feed_tools.add_current_domain(obj.get_absolute_url())
+        return obj.get_absolute_url()
 
     def subtitle(self, obj):
         return u'A free audiobook by %s' % self.author_name(obj)
