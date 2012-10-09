@@ -92,5 +92,56 @@ $(function () {
     $(".shelf-wrapper").delegate(".shelf-select-form select", "change", function (ev) {
         _gaq.push(['_trackEvent', 'Widgets', 'HomePage-ShelfDropDown', $(this).val()]);
     });
+    
+    
+    /*
+     * Shelf 'next' button
+     */
+    $(".shelf-wrapper").delegate(".shelf-arrow-left", "click", function(){
+    	
+    	var arrow = $(this);
+    	var rightArrow = arrow.siblings(".shelf-arrow-right");
+    	var numClicks = parseInt(rightArrow.data("num-clicks"));
+    	
+    	if (!numClicks){
+			numClicks = 0;						
+		}
+		else{
+			numClicks -= 1;
+		}
+		
+		rightArrow.data("num-clicks", numClicks);
+    });
+    $(".shelf-wrapper").delegate(".shelf-arrow-right", "click", function(){
+    	
+		var arrow = $(this);
+		var numClicks = parseInt(arrow.data("num-clicks"));
+		
+		var shelf = arrow.parents(".shelf").find(".shelf-pages");
+		var threshold = parseInt(shelf.data("threshold"));
+		
+		if (!threshold){
+			threshold = 0;
+			shelf.data("threshold", threshold);
+		}		
+		
+		
+		if (!numClicks){			
+			numClicks = 1;
+			arrow.data("num-clicks", numClicks);			
+		}    	
+		else{			
+			numClicks++;			
+			arrow.data("num-clicks", numClicks);
+		}
+		
+		if (numClicks > threshold){
+			threshold += 1;
+			shelf.data("threshold", threshold);
+			_gaq.push(['_trackEvent', 'Widgets', 'HomePage-ShelfNextButton', shelf.attr("id"), (numClicks+1)]);
+			l("pushing " + numClicks + " " + shelf.attr("id"));			
+		}
+		
+    });
 
 });
