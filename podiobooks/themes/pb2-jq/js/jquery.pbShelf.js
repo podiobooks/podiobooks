@@ -26,10 +26,11 @@
   
 		var settings = {
 			"cookie"		 : 		null,
-			"checkCookie"	 : 		false,
 			"shelfItem"		 : 		".shelf-item",
 			"shelfItemCover" : 		".shelf-cover",
-			"clearShelfFirst":		true
+			"clearShelfFirst":		false,
+			"afterMoveEnd"	 : 		function(titlesDeep, perSlide){},
+			"url"			 : 		null
 		};
 		
 		/*
@@ -40,7 +41,7 @@
 		return this.each(function(){
 			
 			if (options){
-				$.extend(settings,options);
+				$.extend(settings, options);
 			}
 			
 			var status = function(){
@@ -97,15 +98,10 @@
 				sel.unbind("change");
 				
 				sel.change(function(){
-					if (settings.cookie){
-						shelf.pbShelf({
-							"url" : sel.parents("form").attr("action") + sel.val() + '/',
-							"cookie":settings.cookie							
-						});
-					}
-					else{
-						shelf.pbShelf({"url" : sel.parents("form").attr("action") + sel.val() + '/'});
-					}
+					var modSettings = settings;					
+					modSettings.url = sel.parents("form").attr("action") + sel.val() + '/';
+					modSettings.clearShelfFirst = true;
+					shelf.pbShelf(modSettings);
 				});				
 			}
 			
@@ -131,7 +127,7 @@
 						var a = $(this);
 						var src = a.data("image-src");
 						
-						var img = $("<img data-title-slug='" + a.data("title-slug") + "' class='loading shelf-cover' alt='Cover for " + a.data("title-name") + "' src='" + src + "' />");						
+						var img = $("<img data-title-slug='" + a.data("title-slug") + "' class='loading shelf-cover' alt='Cover for " + a.data("title-name") + "' src='" + src + "' />");
 						
 						a.html(img);
 						a.removeAttr("data-image-src");
@@ -309,7 +305,6 @@
 						var endLeft = parseInt(wholeShelf.css("left").replace("px", ""));
 						var shelfWidth = shelf.width();
 						
-						
 						if (endLeft > 0){	// Far left
 							wholeShelf.animate({"left": 0}, 400, "easeOutCirc", function(){
 								cur = 0;
@@ -345,25 +340,6 @@
 					});
 				}
 			};
-			
-			
-			/*
-			 * If we should be checking the cookie,
-			 * check it, then set the inital select box value
-			 */
-			var select = shelf.find("form select");
-			
-			if (settings.checkCookie){
-				if (select.length > 0){
-					if($.cookie(settings.cookie)){
-						select.val($.cookie(settings.cookie));
-						settings.url += $.cookie(settings.cookie);
-					}
-					else{
-						settings.url += select.val();
-					}
-				}
-			}
 			
 			
 			/*
@@ -503,6 +479,8 @@
 				 		shelfSteps.children().remove();				 		
 				 	}
 			 	}
+			 	
+			 	settings.afterMoveEnd((Math.round(where) + perSlide), perSlide);
 			 };
 			 
 			 
@@ -528,9 +506,11 @@
 				loadImages();
 			};
 			
-			var progress = $("<p class='shelf-ajax-loader'><img src='" + siteVars("img") + "ajax-loader-bar.gif'/></p>");
-			progress.appendTo($("body"));
-			
+			var progress = $(".shelf-ajax-loader");
+			if (progress.length < 1){
+				progress = $("<p class='shelf-ajax-loader'><img src='" + siteVars("img") + "ajax-loader-bar.gif'/></p>");
+				progress.appendTo($("body"));
+			}
 			/*
 			 * Ajax workhorse
 			 */
@@ -561,7 +541,6 @@
 				 */ 
 				
 				progress.appendTo(shelf).show();
-			
 				
 				$.ajax({
 					method:"get",
