@@ -13,6 +13,7 @@ $(function(){
 		if (titlesDeep > threshold){
 			threshold = titlesDeep;
 			shelfPages.data("swipe-threshold", threshold);
+			_gaq.push(['_trackEvent', 'Widgets', 'HomePage-ShelfTitlesDeep', shelf.find(".shelf-pages").attr("id"), (titlesDeep+1)]);
 		}
 	};
 	
