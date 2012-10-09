@@ -2,7 +2,9 @@
  * Smallest screen sizes
  */
 @media all and (max-width:501px){
-	
+	.horizontal-large-ad{
+		display:none;
+	}
 	.block-ad{
 		display:none;
 	}

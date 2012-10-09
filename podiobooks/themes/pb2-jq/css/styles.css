@@ -346,9 +346,11 @@ a.fdbk_tab_bottom {
 }
 
 .horizontal-large-ad {
-    width: 728px;
+    width:auto;
+    overflow:hidden;
+    text-align:center;
     height: 15px;
-    margin: 0 auto 0 auto;
+    
 }
 
 .menu-triggers {
