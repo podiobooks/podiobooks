@@ -2,7 +2,7 @@
 
 {% if title_list %}
 
-	<div id="{{ shelf_id }}">
+	<div class="shelf-pages" id="{{ shelf_id }}">
 	    {% for title in title_list %}
 	        {% show_shelf_item shelf_id title %}
 	    {% endfor %}
