@@ -6,7 +6,6 @@
 		max-width:666px;
 		width:auto;
 	}
-	
 	.browse-by,
 	.search-results .browse-by{
 		float:none;
@@ -15,8 +14,7 @@
 		text-align: left;
 		float:left;
 		width:100%;
-	}
-	
+	}	
 	.nav{
 		margin:0;
 		float:left;
@@ -37,7 +35,6 @@
 		width:72%;
 		float:left;
 	}
-	
 	.search-additional-fields{
 		left:-200px;
 		top:-27px;
@@ -53,8 +50,7 @@
 	}
 	.shelf-arrow-left {
 	    left: -29px;
-	}
-	
+	}	
 }
 
 
@@ -149,9 +145,7 @@
 	.wide-skyscraper-ad-placeholder{
 		display:none;
 	}
-	.horizontal-large-ad{
-		display:none;
-	}
+	
 	.search-additional-fields{
 		left:10px;
 		top:25px;
@@ -159,8 +153,7 @@
 	.search-results .pg{
 		padding-top:40px;
 	}
-	.first-chapter{
-		
+	.first-chapter{		
 		width:357px;
 	}
 }
@@ -169,7 +162,7 @@
 
 @media all and (min-width:1200px){
 	.width{
-		width:1111px;
+		width:1110px;
 		max-width:auto;
 	}
 }
