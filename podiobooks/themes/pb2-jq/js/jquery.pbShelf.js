@@ -441,22 +441,31 @@
 				 	numSteps = Math.ceil(maxWidth / shelf.width());
 				 	
 				 	var perSlide = Math.floor(shelf.width() / itemWidth);	
-				 		
+				 	
+				 	// Figure out where we are on the shelf before the latest movement
 				 	if (cur >= maxLeft){
 				 		curStep = Math.ceil((cur / itemWidth) / perSlide);
 				 	}	
 				 	else{
-				 		curStep = Math.floor((cur / itemWidth) / perSlide);	
+				 		curStep = Math.floor((cur / itemWidth) / perSlide);				 			
 				 	}
 				 	
+				 	// If we are into the shelf but not yet at the end, increment the current step
 				 	if (cur > 0 && cur < Math.floor(shelf.width() / itemWidth) * itemWidth){
 				 		curStep += 1;
 				 	}
 				 	
+				 	// if we aren't yet at the end of the shelf, but we will be next time, adjust it so it doesn't show the 'last' dot
 				 	if (cur < maxLeft && cur + parseInt(shelf.width() / itemWidth) * itemWidth >= maxLeft){
 				 		curStep = numSteps - 2;
 				 	}
 				 	
+				 	// Adjust for shelves with only 2 pages
+				 	if (curStep >= numSteps){
+				 		curStep = numSteps - 1;
+				 	}
+				 	
+				 	// build shelf step dots, fill in the correct one
 				 	for (var i = 0; i < numSteps; i++){
 				 		var li;
 				 		var iPlus = i + 1;
@@ -475,8 +484,7 @@
 				 		}
 				 		else{
 				 			bindSwiftStep(circ);	
-				 		}
-				 		
+				 		}				 		
 				 	}
 				 	
 				 	

@@ -139,7 +139,6 @@ $(function () {
 			threshold += 1;
 			shelf.data("threshold", threshold);
 			_gaq.push(['_trackEvent', 'Widgets', 'HomePage-ShelfNextButton', shelf.attr("id"), (numClicks+1)]);
-			l("pushing " + numClicks + " " + shelf.attr("id"));			
 		}
 		
     });
