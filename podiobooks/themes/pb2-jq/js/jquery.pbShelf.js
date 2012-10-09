@@ -248,6 +248,11 @@
 							// accomidates for the far-right being offset at the left of the shelf
 							var targ = parseInt(cur / itemWidth) * itemWidth - parseInt(shelfWidth / itemWidth) * itemWidth;
 							
+							if (cur % itemWidth != 0){
+								targ += itemWidth;
+							}
+							
+							
 							if (targ <= 0){
 								cur = 0;
 								targ = 0;
@@ -412,7 +417,6 @@
 						cur = maxLeft;
 						where = cur / itemWidth;
 					}
-					
 					
 					wholeShelf.animate({
 						left:targ
