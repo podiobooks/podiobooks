@@ -11,7 +11,7 @@
         <p class="shelf-item-contributors">{% show_contributors title %}</p>
         
         <p>
-            {% autoescape off %}{{ title.description|striptags|truncatewords_afterchar:"140" }}{% endautoescape %}
+            {% autoescape off %}{{ title.description|striptags|truncatewords_afterchar:"125" }}{% endautoescape %}
         </p>
     </div>
     
