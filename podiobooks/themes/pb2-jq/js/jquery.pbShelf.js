@@ -3,7 +3,7 @@
  * Custom carousel bookshelves for Podiobooks
  * 
  * 
- * Version: 0.8
+ * Version: 0.9
  * 
  * 
  * History:
@@ -16,7 +16,7 @@
  * 0.6: Uses 'find' instead of 'children' for digging up relevant shelf peices
  * 0.7: Allows for shelf creation based on static content (i.e. no need to ajax on first load)
  * 0.8: Allows blank incoming cookies to delete the existing cookie
- * 0.9 Dynamic touch-sliding for adjustable-width shelves; Shelf width no longer needs to be a full item width
+ * 0.9 Dynamic touch-sliding for adjustable-width shelves; Shelf width no longer needs to be a full item width; Callback hooks for "after movement" of shelves
  * 
  */
 
