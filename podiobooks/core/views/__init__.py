@@ -5,7 +5,7 @@ from django.template import RequestContext
 from django.db.models import Q, Count, Max
 
 from django.core.urlresolvers import reverse
-from django.views.decorators.vary import vary_on_cookie
+
 from django.utils.decorators import method_decorator
 from django.views.generic import ListView, RedirectView, TemplateView
 from django.shortcuts import get_object_or_404, redirect
@@ -27,11 +27,6 @@ class IndexView(TemplateView):
     """Home Page"""
 
     template_name = "core/index.html"
-
-    # Make sure cache looks at cookie values
-    @method_decorator(vary_on_cookie)
-    def dispatch(self, *args, **kwargs):
-        return super(IndexView, self).dispatch(*args, **kwargs)
 
     def get_context_data(self, **kwargs):
         # Featured Shelf
