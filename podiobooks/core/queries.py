@@ -27,8 +27,7 @@ def get_featured_shelf_titles(category='all'):
             category_filter
         ).order_by('?')[:20]
         cache.set('featured_shelf_titles_' + category, titles, 604800)
-    for title in titles:
-        print title
+    
     return titles
 
 
