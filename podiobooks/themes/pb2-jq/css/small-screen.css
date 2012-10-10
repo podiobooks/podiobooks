@@ -163,7 +163,7 @@
 	}
 	.pg{
 		padding:30px 10px 70px;
-		background:#fff url(img/pb-background.jpg) left top repeat-x;
+		background:#fff url(img/pb-background.jpg) left -350px repeat-x;
 		position: relative;
 	}
 	.home .pg{
