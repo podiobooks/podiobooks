@@ -1,5 +1,6 @@
 -r requirements.txt
 django-redis==2.2
+newrelic==1.5.0.103
 eventlet==0.9.17
 gunicorn==0.14.6
 hiredis==0.1.1
