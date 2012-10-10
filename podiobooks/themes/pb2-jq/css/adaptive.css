@@ -51,6 +51,10 @@
 	.shelf-arrow-left {
 	    left: -29px;
 	}	
+	.browse-choices li{
+		width:35%;
+		text-align:center;
+	}
 }
 
 
@@ -59,6 +63,7 @@
  * 2 panes per shelf
  */
 @media all and (max-width:753px){
+	
 	.shelf-arrow-right {
 	    right: -6px;
 	}
