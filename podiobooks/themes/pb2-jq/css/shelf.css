@@ -177,8 +177,7 @@
     font-family: 'WebSymbolsRegular';
     font-size: 20px;
     font-weight:bold;
-    
-    
+    overflow:hidden;
 }
 .shelf-dark .shelf-arrow{
     background:#06539e;   
