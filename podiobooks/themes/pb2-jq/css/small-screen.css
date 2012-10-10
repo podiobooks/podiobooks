@@ -8,11 +8,7 @@
 	.browse-choices{
 		text-align:center;
 	}
-	.browse-choices li{
-		width:40%;
-		margin:0 20px 20px 0;
-		text-align:center;
-	}
+	
 	.browse-choices a{
 		padding:15px 10px 10px;
 		height:auto;
