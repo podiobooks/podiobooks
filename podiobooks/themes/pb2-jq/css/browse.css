@@ -4,10 +4,12 @@
 .browe-choices-page h1{
 	text-align:center;
 }
-.browse-choices [data-icon]:before{
+[data-icon]:before{
 	font-family: "WebSymbolsRegular";
 	content: attr(data-icon);
 	speak:none;
+}
+.browse-choices [data-icon]:before{
 	display:block;
 	font-size:4em;
 	text-decoration:none;
