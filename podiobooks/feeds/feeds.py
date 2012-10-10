@@ -108,7 +108,7 @@ class EpisodeFeed(Feed):
     # pylint: disable=W0221
     def get_object(self, request, *args, **kwargs):
         title_slug = kwargs.get('title_slug', None)
-        obj = get_object_or_404(Title, slug__exact=title_slug)
+        obj = get_object_or_404(Title.objects.prefetch_related('episodes', 'categories', 'contributors'), slug__exact=title_slug)
 
         ### Google Analytics for Feed
         tracker = Tracker(settings.GOOGLE_ANALYTICS_ID, get_current_site(request).domain)
