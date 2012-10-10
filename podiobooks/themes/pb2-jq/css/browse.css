@@ -56,8 +56,9 @@
 .browse-choices a:active,
 .browse-choices a:visited{
 	text-decoration:none;
+	color:#0054A6;
 }
-.browse-choices a:hover [data-icon]:before{
+.no-touch .browse-choices a:hover [data-icon]:before{
 	color:#B2472C;
 }
 .no-touch .browse-choices a:hover{
