@@ -408,12 +408,3 @@ a.fdbk_tab_bottom {
     top: 20px;
     margin: 0 auto;
 }
-
-.browse-list {
-    margin-left: 50px;
-    list-style: none;
-}
-
-.browse-list li {
-    margin-top: 15px;
-}
