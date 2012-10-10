@@ -5,17 +5,17 @@
 
 {% block headtitle %}Browse Titles on {{ SITE.name }}{% endblock %}
 
-{% block content %}
-    <h1>
-        Browse Titles By:
-    </h1>
+{% block body_class %}browe-choices-page{% endblock %}
 
-    <ul class="browse-list">
-        <li><a href="{% url title_list %}">All Titles, Alphabetically</a></li>
-        <li><a href="{% url title_browse_awards %}">Awards/Nominations</a></li>
-        <li><a href="{% url series_list %}">Series</a></li>
-        <li><a href="{% url category_list %}">Category/Genre</a></li>
-        <li><a href="{% url contributor_list %}">Author/Contributor</a></li>
+{% block content %}
+    <h1>Browse Titles By</h1>
+
+    <ul class="browse-choices">
+    	<li><a href="{% url contributor_list %}"><span area-hidden="true" data-icon="U"></span><span class="browse-choices-item">Author<span class="hide-on-small-screen">, Contributor</span></span></a></li>
+        <li><a href="{% url series_list %}"><span area-hidden="true" data-icon="²"></span><span class="browse-choices-item">Series</span></a></li>
+        <li><a href="{% url title_browse_awards %}"><span area-hidden="true" data-icon="R"></span><span class="browse-choices-item">Awards<span class="hide-on-small-screen"> and Nominations</span></span></a></li>
+        <li><a href="{% url category_list %}"><span area-hidden="true" data-icon="M"></span><span class="browse-choices-item"><span class="hide-on-small-screen">Category, </span>Genre</span></a></li>
+        <li><a href="{% url title_list %}"><span area-hidden="true" data-icon="T"></span><span class="browse-choices-item"><span class="hide-on-small-screen">All </span>Titles<span class="hide-on-small-screen">, Alphabetical</span></a></li>
     </ul>
 
 {% endblock %}
