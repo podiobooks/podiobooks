@@ -170,11 +170,14 @@
     position: absolute;
     top: 25px;
     z-index: 5;
-    font-size:45px;
     opacity:.8;
-    height:80px;
-    padding:37px 8px 0 6px;
+    height:72px;
+    padding:45px 8px 0 6px;
     box-shadow:0 0 7px rgba(0,0,0,.1);
+    font-family: 'WebSymbolsRegular';
+    font-size: 21px;
+    
+    
 }
 .shelf-dark .shelf-arrow{
     background:#06539e;   
