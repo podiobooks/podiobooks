@@ -2,6 +2,22 @@
  * Smallest screen sizes
  */
 @media all and (max-width:501px){
+	.hide-on-small-screen{
+		display:none;
+	}
+	.browse-choices li{
+		width:35%;
+		margin:0 20px 20px 0;
+		text-align:center;
+		padding:15px 10px 10px;
+		height:auto;
+	}
+	.browe-choices-page h1{
+		text-align:left;
+	}
+	.browse-choices{
+		text-align:left;
+	}
 	.horizontal-large-ad{
 		display:none;
 	}
