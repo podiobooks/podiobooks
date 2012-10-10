@@ -291,8 +291,10 @@ class Title(models.Model):
             if title_contributor.contributor_type.slug == "author":
                 if i == 0:
                     ret += "by "
+                elif i != len(self.titlecontributors.all()):
+                    ret += ", "
                 else:
-                    ret += "and "
+                    ret = ""
             else:
                 ret += title_contributor.contributor_type.byline_text + " "
 
