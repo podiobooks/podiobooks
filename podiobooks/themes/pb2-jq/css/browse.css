@@ -17,10 +17,17 @@
 }
 .browse-choices li{
 	display:inline-block;
+	margin:0;
+	padding:0;
+	list-style:none;
 	width:23%;
 	margin:20px;
+	vertical-align:middle;
+}
+.browse-choices a{
+	display:block;		
 	max-width:205px;
-	
+		
 	border-top:solid 1px #f3f3f3;
 	border-left:solid 1px #f3f3f3;
 	border-right:solid 1px #bbb;
@@ -31,7 +38,7 @@
 	padding:15px;
 	border-radius:10px;
 	height:150px;
-	vertical-align:middle;
+	
 	
 	background: #eeeeee; /* Old browsers */
 	background: -moz-radial-gradient(center, ellipse cover,  #eeeeee 43%, #dddddd 100%); /* FF3.6+ */
@@ -41,16 +48,22 @@
 	background: -ms-radial-gradient(center, ellipse cover,  #eeeeee 43%,#dddddd 100%); /* IE10+ */
 	background: radial-gradient(ellipse at center,  #eeeeee 43%,#dddddd 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#dddddd',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+	font-size:18px;
+	
+}
+.browse-choices a,
+.browse-choices a:hover,
+.browse-choices a:link,
+.browse-choices a:active,
+.browse-choices a:visited{
+	text-decoration:none;
 	
 	
 }
-.browse-choices li:hover [data-icon]:before{
+.browse-choices a:hover [data-icon]:before{
 	color:#B2472C;
 }
-.browse-choices li:hover a{
-	color:#fff;
-}
-.browse-choices li:hover{
+.browse-choices a:hover{
 	background: #ed633d; /* Old browsers */
 	background: -moz-linear-gradient(top,  #ed633d 0%, #cc5433 100%); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ed633d), color-stop(100%,#cc5433)); /* Chrome,Safari4+ */
@@ -60,20 +73,10 @@
 	background: linear-gradient(to bottom,  #ed633d 0%,#cc5433 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ed633d', endColorstr='#cc5433',GradientType=0 ); /* IE6-9 */
 	border-color:#E25A38;
+	color:#fff;
 
 }
-.browse-choices a,
-.browse-choices a:hover,
-.browse-choices a:link,
-.browse-choices a:active,
-.browse-choices a:visited{
-	text-decoration:none;
-	display:block;
-	margin:0;
-	padding:0;
-	font-size:18px;
-	
-}
+
 .browse-choices{
 	text-align:center;
 	display:block;

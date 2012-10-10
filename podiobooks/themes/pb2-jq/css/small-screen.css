@@ -5,19 +5,23 @@
 	.hide-on-small-screen{
 		display:none;
 	}
+	.browse-choices{
+		text-align:center;
+	}
 	.browse-choices li{
-		width:35%;
+		width:40%;
 		margin:0 20px 20px 0;
 		text-align:center;
+	}
+	.browse-choices a{
 		padding:15px 10px 10px;
 		height:auto;
 	}
 	.browe-choices-page h1{
-		text-align:left;
+		text-align:center;
 	}
-	.browse-choices{
-		text-align:left;
-	}
+	
+	
 	.horizontal-large-ad{
 		display:none;
 	}
