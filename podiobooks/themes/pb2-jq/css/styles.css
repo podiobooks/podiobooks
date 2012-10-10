@@ -126,22 +126,20 @@ a.fdbk_tab_bottom {
 */
 .browse-by {
     list-style: none;
-    display: inline;
-    margin-left: 200px;
+    display: block;
+    width:200px;
+    text-align:center;
+    margin:0 auto;
 }
 
 .search-results .browse-by {
-    margin-left: 110px;
+    text-align:left;
 }
 
 .browse-by li {
     display: inline;
 }
 
-.browse-by ul {
-    display: inline;
-    list-style: none;
-}
 
 /*
 *
