@@ -15,7 +15,7 @@ framework.
 """
 import os
 import newrelic.agent
-newrelic.agent.initialize('newrelic.ini', os.environ.get('INSTANCE_TYPE', 'development'))
+newrelic.agent.initialize('podiobooks/newrelic.ini', os.environ.get('INSTANCE_TYPE', 'development'))
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "podiobooks.settings")
 
