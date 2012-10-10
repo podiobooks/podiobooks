@@ -362,8 +362,8 @@
 			 * Right/left shelf arrows
 			 * create, added/removed to/from shelf later
 			 */			
-			leftArrow = $("<a class='shelf-arrow shelf-arrow-left' href='#'><</a>");
-			rightArrow = $("<a class='shelf-arrow shelf-arrow-right' href='#'>=</a>");
+			leftArrow = $("<a class='shelf-arrow shelf-arrow-left' href='#'><span data-icon='<' aria-hidden='true'></span><span class='visuallyhidden'>Next Page</span></a>");
+			rightArrow = $("<a class='shelf-arrow shelf-arrow-right' href='#'><span data-icon='>' aria-hidden='true'></span><span class='visuallyhidden'>Previous Page</span></a>");
 			
 			
 			
