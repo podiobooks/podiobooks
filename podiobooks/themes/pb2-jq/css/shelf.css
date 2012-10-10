@@ -171,11 +171,12 @@
     top: 25px;
     z-index: 5;
     opacity:.8;
-    height:72px;
-    padding:45px 8px 0 6px;
+    height:70px;
+    padding:47px 7px 0 7px;
     box-shadow:0 0 7px rgba(0,0,0,.1);
     font-family: 'WebSymbolsRegular';
-    font-size: 21px;
+    font-size: 20px;
+    font-weight:bold;
     
     
 }
