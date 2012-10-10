@@ -27,7 +27,7 @@
 	border-radius:10px;
 	height:150px;
 	vertical-align:middle;
-	background:#ddd;
+	
 	background: #eeeeee; /* Old browsers */
 	background: -moz-radial-gradient(center, ellipse cover,  #eeeeee 43%, #dddddd 100%); /* FF3.6+ */
 	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(43%,#eeeeee), color-stop(100%,#dddddd)); /* Chrome,Safari4+ */
@@ -43,9 +43,7 @@
 	color:#B2472C;
 }
 .browse-choices li:hover a{
-	
 	color:#fff;
-	
 }
 .browse-choices li:hover{
 	background: #ed633d; /* Old browsers */
