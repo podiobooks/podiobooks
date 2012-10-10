@@ -4,7 +4,7 @@
 @media all and (max-width:985px){	
 	.width{
 		max-width:666px;
-		width:auto;
+		width:none;
 	}
 	.browse-by,
 	.search-results .browse-by{

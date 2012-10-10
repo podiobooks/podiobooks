@@ -1,8 +1,9 @@
 """Common Queries Used By Shelves and Such"""
 
 from django.core.cache import cache
-from podiobooks.core.models import Title
 from django.db.models import Max, Q
+
+from podiobooks.core.models import Title
 
 # pylint: disable=C0103
 
@@ -26,7 +27,7 @@ def get_featured_shelf_titles(category='all'):
             category_filter
         ).order_by('?')[:20]
         cache.set('featured_shelf_titles_' + category, titles, 604800)
-
+    
     return titles
 
 
