@@ -43,7 +43,7 @@
 		padding: 15px 20px 15px 20px;
 	}
 	.first-chapter{
-		width:397px;
+		width:350px;
 	}
 	.shelf-arrow-right {
 	    right: -29px;
@@ -158,8 +158,19 @@
 	.search-results .pg{
 		padding-top:40px;
 	}
+	.imagebox{
+		width:20%;
+		margin:0 5% 5% 0;
+	}
+	.imagebox img{
+		max-width:100%;
+	}
 	.first-chapter{		
-		width:357px;
+		width:45%;
+	}
+	.title-details-infobar{
+		width:17%;
+		margin-left:5%;
 	}
 }
 
@@ -169,5 +180,11 @@
 	.width{
 		width:1110px;
 		max-width:auto;
+	}
+	.first-chapter {
+	    width: 525px;
+	}
+	.title-details-infobar{
+		width:130px;
 	}
 }

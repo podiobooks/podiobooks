@@ -525,4 +525,9 @@
 	.touch .shelf-heading{
 		padding-bottom:12px;
 	}
+	
+	.title-details-infobar{
+		width:100px;
+		margin-left:20px;
+	}
 }
