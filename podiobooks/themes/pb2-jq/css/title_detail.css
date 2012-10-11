@@ -38,6 +38,10 @@
 
 }
 
+.title-footer{
+	overflow:none;
+}
+
 .title-license a,
 .title-license a:visited,
 .title-license a:hover,
