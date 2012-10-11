@@ -133,7 +133,7 @@
 }
 
 .detractor-count {
-    display: inline;
+    display: block;
 }
 
 .promoter-count {
