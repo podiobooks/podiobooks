@@ -39,10 +39,12 @@
 	                        {{ title.category_list|safe }}
 	                    </div>
 	                {% endif %}
-	                
-	                {% autoescape off %}
-	                	{{ title.description|striptags|truncatewords:65 }}
-	                {% endautoescape %} 
+					
+					<p class="title-list-item-desc">	                
+		                {% autoescape off %}
+		                	{{ title.description|striptags|truncatewords:65 }}
+		                {% endautoescape %} 
+	                </p>
 	                
 	            
             </article>

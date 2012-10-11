@@ -2,6 +2,10 @@
  * Smallest screen sizes
  */
 @media all and (max-width:501px){
+	h1{
+		font-size:19px;
+	}
+	
 	/*
 	 * Browse Choices
 	 */
@@ -529,5 +533,27 @@
 	.title-details-infobar{
 		width:100px;
 		margin-left:20px;
+	}
+	
+	
+	/*
+	 * Title list
+	 */
+	.title-list-title{
+		font-size:16px;
+	}
+	.title-list-item{
+		padding:15px 0;
+		position:relative;
+		
+		border-bottom:solid 1px #e7e7e7;
+	}
+	.title-list-item-desc{
+		display:none;
+	}
+	.title-list-item .cover-image{
+		margin:0;
+		float:right;
+		margin:0 0 10px 20px;
 	}
 }
