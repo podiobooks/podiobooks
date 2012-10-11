@@ -67,15 +67,15 @@
                 <div class="category">{{ title.category_list|safe }}</div>
 
                 <div class="net-promoter-box">
-
-                    <div class="promoter-count">
+					<ul>
+                    <li class="promoter-count">
                         Likes: {{ title.promoter_count }}
-                    </div>
+                    </li>
 
-                    <div class="detractor-count">
+                    <li class="detractor-count">
                         Dislikes: {{ title.detractor_count }}
-                    </div>
-                    
+                    </li>
+                    </ul>
                     <span itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
                     	<meta itemprop="ratingValue" content="{{ title.computed_rating }}"/>
                     	<meta itemprop="bestRating" content="5"/>
