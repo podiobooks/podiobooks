@@ -2,10 +2,13 @@
  * Smallest screen sizes
  */
 @media all and (max-width:501px){
+	/*
+	 * Browse Choices
+	 */
 	.browse-choices li{
-		width:40%;
+		width:45%;
 		text-align:center;
-		margin:10px;
+		margin:5px 5px;
 		padding:0;
 	}
 	.browse-choices a{
@@ -17,9 +20,8 @@
 	.browse-choices{
 		text-align:center;
 	}
-	
 	.browse-choices a{
-		padding:15px 10px 10px;
+		padding:15px 10px 5px;
 		height:auto;
 	}
 	.browe-choices-page h1{
@@ -27,15 +29,25 @@
 	}
 	
 	
+	/*
+	 * ads
+	 */
 	.horizontal-large-ad{
 		display:none;
 	}
 	.block-ad{
 		display:none;
 	}
+	
+	
+	/*
+	 * width-specific classes
+	 */
 	.hide-lowest-width{
 		display:none;
 	}
+	
+	
 	
 	body{
 		background:#fff;
