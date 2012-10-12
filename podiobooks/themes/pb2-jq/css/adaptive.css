@@ -55,6 +55,12 @@
 		width:35%;
 		text-align:center;
 	}
+	.browse-list{
+		-webkit-column-count: 2;
+		-moz-column-count: 2;
+		-o-column-count: 2;
+		column-count: 2;
+	}
 }
 
 
@@ -172,6 +178,12 @@
 		width:17%;
 		margin-left:5%;
 	}
+	.browse-list{
+		-webkit-column-count: 1;
+		-moz-column-count: 1;
+		-o-column-count: 1;
+		column-count: 1;
+	}
 }
 
 
@@ -186,5 +198,11 @@
 	}
 	.title-details-infobar{
 		width:130px;
+	}
+	.browse-list{
+		-webkit-column-count: 4;
+		-moz-column-count: 4;
+		-o-column-count: 4;
+		column-count: 4;
 	}
 }
