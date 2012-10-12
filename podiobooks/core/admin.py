@@ -8,6 +8,11 @@ from django.db import models
 
 from podiobooks.core.models import Award, Category, Contributor, ContributorType, Episode, License, Media, Series, Title, TitleCategory, TitleContributor
 
+import adminactions.actions as actions
+from django.contrib.admin import site
+
+site.add_action(actions.export_as_csv)
+
 ### INLINES
 
 class EpisodeInline(admin.TabularInline):
