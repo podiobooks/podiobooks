@@ -70,6 +70,12 @@ urlpatterns = patterns('',
 
     # PB1 Authors Page
     (r'authors\.php', RedirectView.as_view(url='http://blog.podiobooks.com/how-to-get-your-books-listed-on-podiobooks-com/')),
+
+    # PB1 Staff Page
+    (r'staff\.php', RedirectView.as_view(url='http://blog.podiobooks.com/podiobooks-staff/')),
+
+    # PB1 Donate Page
+    (r'donate/', RedirectView.as_view(url='http://blog.podiobooks.com/why-you-should-donate/')),
 )
 
 #Only hook up the static and media to run through Django in a dev environment...in prod, needs to be handled by web server
