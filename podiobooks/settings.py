@@ -73,6 +73,7 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'podiobooks.urls'
 
 INSTALLED_APPS = (
+    'adminactions',
     'django.contrib.admin',
     'django.contrib.admindocs',
     'django.contrib.auth',
