@@ -11,12 +11,14 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf import settings
 from django.views.generic import RedirectView
 from django.views.decorators.vary import vary_on_cookie
+from podiobooks.core.sitemaps import AwardDetailSitemap, CategoryDetailSitemap, ContributorDetailSitemap, TitleDetailSitemap
 
 from podiobooks.core.views import IndexView
 from .views import BlogRedirectView, TextTemplateView, RobotsView
 
-
 admin.autodiscover()
+
+sitemaps = {'AwardDetail': AwardDetailSitemap, 'CategoryDetail': CategoryDetailSitemap, 'ContributorDetail': ContributorDetailSitemap, 'TitleDetail': TitleDetailSitemap,}
 
 urlpatterns = patterns('',
     # Home Page
@@ -55,6 +57,9 @@ urlpatterns = patterns('',
 
     # Blog
     (r'^blog(?P<url_remainder>.*)', BlogRedirectView.as_view()),
+
+    # Sitemap
+    (r'^sitemap\.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': sitemaps}),
 
     # PB1 Search Redirect
     (r'podiobooks/search\.php', RedirectView.as_view(url='/title/search/', query_string=True)),
