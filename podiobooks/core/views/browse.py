@@ -1,21 +1,14 @@
 """ Django Views to Browse Titles"""
 
-from django.shortcuts import render_to_response
-from django.template import RequestContext
-from django.db.models import Q, Count, Max
+from django.db.models import Count
 
 from django.core.urlresolvers import reverse
-from django.views.decorators.cache import cache_page
 from django.views.generic import DetailView, ListView, RedirectView, TemplateView
-from django.shortcuts import get_object_or_404, redirect
+from django.shortcuts import get_object_or_404
 from django.http import Http404, HttpResponsePermanentRedirect
 from django.core.exceptions import ObjectDoesNotExist
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from podiobooks.core.models import Award, Contributor, Category, Episode, Title, Series
-from podiobooks.core.forms import CategoryChoiceForm, ContributorChoiceForm, TitleSearchForm, TitleSearchAdditionalFieldsForm
-
-from podiobooks.core.queries import get_featured_shelf_titles, get_recently_released_shelf_titles, get_toprated_shelf_titles
 
 # pylint: disable=R0912
 
