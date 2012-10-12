@@ -127,11 +127,18 @@ class SeriesDetailView(ListView):
 
 
 class TitleListView(ListView):
-    """List of all titles on the site"""
+    """List of all titles on the site alphabetically"""
     queryset = Title.objects.filter(deleted=False).order_by('name')
     context_object_name = 'title_list'
     paginate_by = 25
     template_name = 'core/title/title_list.html'
+
+class TitleRecentListView(ListView):
+    """List of all titles on the site in release order"""
+    queryset = Title.objects.filter(deleted=False).order_by('-date_created')
+    context_object_name = 'title_list'
+    paginate_by = 25
+    template_name = 'core/title/title_recent_list.html'
 
 
 class TitleDetailView(DetailView):
