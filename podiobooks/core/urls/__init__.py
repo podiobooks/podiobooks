@@ -37,10 +37,6 @@ urlpatterns = patterns('',
     url(r'^title/search/$', 'podiobooks.core.views.title_search', name='title_search'),
     url(r'^title/search/(?P<keywords>[^/]+)/$', 'podiobooks.core.views.title_search', name='title_search_keywords'),
 
-    # Title Slug Redirects (has to appear before title detail so slug doesn't get swallowed)
-    url(r'^title/earthcore-by-scott-sigler/$', RedirectView.as_view(url='/title/earthcore')),
-    url(r'^title/earthcore-by-scott-sigler/feed/$', RedirectView.as_view(url='/rss/feed/episodes/earthcore/')),
-
     # Title
     url(r'^title/$', TitleListView.as_view(), name='title_list'),
     url(r'^title/(?P<slug>[^/]+)/$', TitleDetailView.as_view(), name='title_detail'),
