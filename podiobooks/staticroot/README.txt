@@ -1,1 +1,0 @@
-The static directory is a placeholder for djanog.contrib.staticfiles to gather static content into before production deployment. It is usually empty in dev/test.
