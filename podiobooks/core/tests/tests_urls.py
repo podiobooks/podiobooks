@@ -27,9 +27,14 @@ class UrlTestCase(TestCase):
         response = self.client.get('/title/')
         self.assertEquals(200, response.status_code)
 
+    def test_title_recent_list(self):
+        response = self.client.get('/title/recent/')
+        self.assertEquals(200, response.status_code)
+
     def test_title_search_page(self):
         response = self.client.get('/title/search/')
         self.assertEquals(200, response.status_code)
+        self.assertNotContains(response, 'Deleted')
 
     def test_title_search_keywords(self):
         response = self.client.get('/title/search/science%20fiction/')
@@ -57,6 +62,18 @@ class UrlTestCase(TestCase):
     def test_title_detail(self):
         response = self.client.get('/title/trader-tales-4-double-share/')
         self.assertEquals(200, response.status_code)
+
+    def test_title_detail_old_slug(self):
+        response = self.client.get('/title/double-share/')
+        self.assertEquals(301, response.status_code)
+
+    def test_title_detail_404(self):
+        response = self.client.get('/title/zzMonkey44/')
+        self.assertEquals(404, response.status_code)
+
+    def test_title_detail_deleted(self):
+        response = self.client.get('/title/deleted-title/')
+        self.assertEquals(404, response.status_code)
 
     def test_category_list(self):
         response = self.client.get('/category/')
@@ -102,7 +119,27 @@ class UrlTestCase(TestCase):
         response = self.client.get('/authors.php')
         self.assertEquals(301, response.status_code)
 
-    def test_pb1_book2_redirect(self):
+    def test_pb1_pbpro_redirect(self):
+        response = self.client.get('/authors/pbpro.php')
+        self.assertEquals(301, response.status_code)
+
+    def test_pb1_staff_redirect(self):
+        response = self.client.get('/staff.php')
+        self.assertEquals(301, response.status_code)
+
+    def test_pb1_donate_redirect(self):
+        response = self.client.get('/donate.php')
+        self.assertEquals(301, response.status_code)
+
+    def test_pb1_donate_redirect_2(self):
+        response = self.client.get('/donate')
+        self.assertEquals(301, response.status_code)
+
+    def test_pb1_legal_redirect(self):
+        response = self.client.get('/legal.php')
+        self.assertEquals(301, response.status_code)
+
+    def test_pb1_book_redirect(self):
         response = self.client.get('/podiobooks/book.php', {'ID': 24})
         self.assertEquals(301, response.status_code)
 
