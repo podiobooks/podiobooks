@@ -103,6 +103,10 @@ class UrlTestCase(TestCase):
         response = self.client.get('/series/a-traders-tale-from-the-golden-age-of-the-solar-clipper/')
         self.assertEquals(200, response.status_code)
 
+    def test_sitemap(self):
+        response = self.client.get('/sitemap.xml')
+        self.assertEquals(200, response.status_code)
+
     def test_pb1_login_redirect(self):
         response = self.client.get('/login.php')
         self.assertEquals(301, response.status_code)
