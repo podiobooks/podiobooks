@@ -24,7 +24,7 @@ class AwardListView(ListView):
     template_name = "core/award/award_list.html"
     queryset = Award.objects.annotate(title_count=Count('titles')).filter(title_count__gt=0, deleted=False).order_by('name').prefetch_related("titles")
     context_object_name = 'award_list'
-    paginate_by = 25
+    paginate_by = 40
 
 
 class AwardDetailView(ListView):
@@ -59,7 +59,7 @@ class CategoryDetailView(ListView):
     """Paginated List of Titles For A Category"""
     template_name = 'core/category/category_detail.html'
     context_object_name = 'title_list'
-    paginate_by = 30
+    paginate_by = 40
 
     def get_queryset(self):
         return Title.objects.prefetch_related("titlecontributors", "titlecontributors__contributor",
@@ -76,7 +76,7 @@ class ContributorListView(ListView):
     template_name = 'core/contributor/contributor_list.html'
     queryset = Contributor.objects.annotate(title_count=Count('title')).filter(title_count__gt=0, deleted=False).order_by('last_name').prefetch_related("title_set")
     context_object_name = 'contributor_list'
-    paginate_by = 25
+    paginate_by = 40
 
 
 class ContributorDetailView(ListView):
@@ -107,7 +107,7 @@ class SeriesListView(ListView):
     template_name = 'core/series/series_list.html'
     queryset = Series.objects.filter(deleted=False).order_by('name')
     context_object_name = 'series_list'
-    paginate_by = 25
+    paginate_by = 40
 
 
 class SeriesDetailView(ListView):
