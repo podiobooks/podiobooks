@@ -63,19 +63,24 @@ urlpatterns = patterns('',
     (r'authors/PBAuthoringGuidev2\.0\.4\.pdf', RedirectView.as_view(url='http://blog.podiobooks.com/wp-content/uploads/2012/09/PBAuthoringGuidev2.0.4.pdf')),
 
     # PB1 Login Page
-    (r'login\.php|Xlogin\.php', RedirectView.as_view(url='http://blog.podiobooks.com/what-happened-to-my-login/')),
+    (r'login\.php|Xlogin\.php|register\.php', RedirectView.as_view(url='http://blog.podiobooks.com/what-happened-to-my-login/')),
 
     # PB1 Charts Page
     (r'charts\.php', RedirectView.as_view(url='http://blog.podiobooks.com/what-happened-to-the-charts/')),
 
     # PB1 Authors Page
-    (r'authors\.php', RedirectView.as_view(url='http://blog.podiobooks.com/how-to-get-your-books-listed-on-podiobooks-com/')),
+    (r'authors\.php|authors/pbpro\.php', RedirectView.as_view(url='http://blog.podiobooks.com/how-to-get-your-books-listed-on-podiobooks-com/')),
 
     # PB1 Staff Page
     (r'staff\.php', RedirectView.as_view(url='http://blog.podiobooks.com/podiobooks-staff/')),
 
     # PB1 Donate Page
-    (r'donate/', RedirectView.as_view(url='http://blog.podiobooks.com/why-you-should-donate/')),
+    (r'donate/|donate\.php', RedirectView.as_view(url='http://blog.podiobooks.com/why-you-should-donate/')),
+
+    # PB1 Legal Page
+    (r'legal\.php', RedirectView.as_view(url='http://blog.podiobooks.com/privacy-and-legal-speak-in-plain-if-not-ill-formed-english/')),
+
+
 )
 
 #Only hook up the static and media to run through Django in a dev environment...in prod, needs to be handled by web server
