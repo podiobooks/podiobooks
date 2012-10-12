@@ -137,9 +137,33 @@ class TitleListView(ListView):
 class TitleDetailView(DetailView):
     """Detail for a particular title"""
     template_name = 'core/title/title_detail.html'
-    queryset = Title.objects.prefetch_related(
-        "series", "episodes", "media", "license",
-        "titlecontributors", "titlecontributors__contributor",
-        "titlecontributors__contributor_type"
-    ).filter(deleted=False)
     context_object_name = 'title'
+    redirect = False
+
+    def get_object(self, queryset=None):
+        try:
+            title = Title.objects.prefetch_related(
+                "series", "episodes", "media", "license",
+                "titlecontributors", "titlecontributors__contributor",
+                "titlecontributors__contributor_type"
+            ).filter(slug=self.kwargs.get('slug', None), deleted=False).get()
+            return title
+        except ObjectDoesNotExist:
+            try:
+                title = Title.objects.prefetch_related(
+                    "series", "episodes", "media", "license",
+                    "titlecontributors", "titlecontributors__contributor",
+                    "titlecontributors__contributor_type"
+                ).filter(old_slug=self.kwargs.get('slug', None), deleted=False).get()
+                self.redirect = True
+                return title
+            except ObjectDoesNotExist:
+                raise Http404(_(u"Speficied Title Was Not Found"))
+
+    def get(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        if self.redirect:
+            return HttpResponsePermanentRedirect(reverse('title_detail', args={self.object.slug}))
+        else:
+            context = self.get_context_data(object=self.object)
+            return self.render_to_response(context)

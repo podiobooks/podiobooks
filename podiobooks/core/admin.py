@@ -118,7 +118,7 @@ class TitleAdmin(admin.ModelAdmin):
     fieldsets = (
         ('Title Information', {
             'fields': (
-                'libsyn_show_id', 'name', 'slug', 'description', 'license', 'itunes_adam_id', 'podiobooker_blog_url',
+                'libsyn_show_id', 'name', 'slug', 'old_slug', 'description', 'license', 'itunes_adam_id', 'podiobooker_blog_url',
                 'deleted')
         }),
         ('Flags (Explicitness, Disp. on Homepage, Lang.)', {
