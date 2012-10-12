@@ -79,6 +79,9 @@ urlpatterns = patterns('',
     # PB1 Staff Page
     (r'staff\.php', RedirectView.as_view(url='http://blog.podiobooks.com/podiobooks-staff/')),
 
+    # PB1 About Page
+    (r'about\.php', RedirectView.as_view(url='http://blog.podiobooks.com/frequently-asked-questions/')),
+
     # PB1 Donate Page
     (r'donate/|donate\.php', RedirectView.as_view(url='http://blog.podiobooks.com/why-you-should-donate/')),
 
