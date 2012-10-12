@@ -158,7 +158,7 @@ class TitleDetailView(DetailView):
                 self.redirect = True
                 return title
             except ObjectDoesNotExist:
-                raise Http404(_(u"Speficied Title Was Not Found"))
+                raise Http404(u"Specified Title Was Not Found")
 
     def get(self, request, *args, **kwargs):
         self.object = self.get_object()
