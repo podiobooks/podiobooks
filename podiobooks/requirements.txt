@@ -1,4 +1,5 @@
 django==1.4.1
+django-adminactions
 django-debug-toolbar
 django-jenkins
 django-tastypie
