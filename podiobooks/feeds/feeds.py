@@ -2,7 +2,7 @@
 
 # pylint: disable=R0201, C0111, R0904, R0801, F0401, W0613
 
-from django.contrib.syndication.views import Feed
+from django.contrib.syndication.views import Feed, add_domain
 from django.contrib.sites.models import get_current_site
 from django.utils.feedgenerator import Rss201rev2Feed
 from django.utils.html import strip_tags
@@ -130,7 +130,7 @@ class EpisodeFeed(Feed):
         return Episode.objects.filter(title__id__exact=obj.id).order_by('sequence')
 
     def item_comments(self, obj):
-        return obj.title.get_absolute_url()
+        return add_domain(get_current_site(None).domain, obj.title.get_absolute_url())
 
     def item_description(self, obj):
         return strip_tags(obj.description).replace('&amp;', '&')
