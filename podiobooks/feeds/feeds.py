@@ -10,7 +10,6 @@ from django.conf import settings
 from django.core.urlresolvers import reverse
 
 from podiobooks.core.models import Title, Episode
-from podiobooks.feeds import feed_tools
 from podiobooks.feeds.protocols.itunes import ITunesFeed
 from django.shortcuts import get_object_or_404
 
