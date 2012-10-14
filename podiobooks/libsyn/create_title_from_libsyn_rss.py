@@ -34,6 +34,8 @@ def create_title_from_libsyn_rss(rss_feed_url):
     if existing_slug_count > 0:
         title.slug += "---CHANGEME--" + str(time.time())
 
+    title.old_slug = title.slug
+
     title.description = feed_tree.find('description').text
     if feed_tree.find('{http://www.itunes.com/dtds/podcast-1.0.dtd}explicit').text == 'yes':
         title.is_explicit = True
