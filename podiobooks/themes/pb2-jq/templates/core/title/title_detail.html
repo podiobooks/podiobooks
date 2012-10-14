@@ -55,8 +55,8 @@
             </div>
             {% if title.series %}
                 <div class="title-details-seriesbar">
-                    <a href="{{ title.series.get_absolute_url }}">{{ title.series.name }}</a>:
-                    Book {{ title.series_sequence }}
+                    <a href="{{ title.series.get_absolute_url }}">{{ title.series.name }}</a>{% if title.series_sequence > 0  %}:
+                    Book {{ title.series_sequence }}{% endif %}
                 </div>
             {% endif %}
         </header>
