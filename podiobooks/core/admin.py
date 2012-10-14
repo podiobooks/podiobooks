@@ -117,7 +117,7 @@ class TitleAdmin(admin.ModelAdmin):
         EpisodeInline
     ]
     ordering = ['name']
-    prepopulated_fields = {"slug": ("name",)}
+    prepopulated_fields = {"slug": ("name",), "old_slug": ("name",)}
     save_on_tap = True
     search_fields = ['name', 'byline']
     fieldsets = (
