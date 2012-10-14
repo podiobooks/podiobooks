@@ -88,6 +88,9 @@ urlpatterns = patterns('',
     # PB1 Legal Page
     (r'legal\.php', RedirectView.as_view(url='http://blog.podiobooks.com/privacy-and-legal-speak-in-plain-if-not-ill-formed-english/')),
 
+    # Hack Redirect
+    (r'submit', RedirectView.as_view(url='/')),
+
 
 )
 
