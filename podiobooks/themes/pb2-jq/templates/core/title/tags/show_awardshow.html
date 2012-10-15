@@ -5,24 +5,4 @@
             <a href="{{ award.url }}"><img src="{{ award.image.url }}" alt="{{ award.name }}"/></a>
         {% endfor %}
     </div>
-    {% if award_list|length_is:"1" %}
-    {% else %}
-        <script type="text/javascript" src="{% get_static_prefix %}js/jquery.cycle.lite.js">
-        </script>
-        <script type="text/javascript">
-            $.fn.cycle.defaults = {
-                timeout:4000, // milliseconds between slide transitions (0 to disable auto advance)
-                speed:1000, // speed of the transition (any valid fx speed value)
-                height:'auto', // container height
-                sync:1, // true if in/out transitions should occur simultaneously
-                fit:1, // force slides to fit container
-                pause:1, // true to enable "pause on hover"
-                delay:0 // additional delay (in ms) for first transition (hint: can be negative)
-            };
-            $(function () {
-                $('#award-show').cycle();
-                $('#award-show').fadeIn();
-            });
-        </script>
-    {% endif %}
 {% endif %}
