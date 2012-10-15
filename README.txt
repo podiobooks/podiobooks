@@ -3,13 +3,13 @@ PODIOBOOKS.COM 2.0
 Team Lead: Tim White (tim@cyface.com)
 Team Lead Emeritus: Chris Miller (chris@podiobooks.com)
 
-License
--------
-This software is licensed under a GPL v3.0 license. Please visit http://www.gnu.org/licenses/gpl-3.0-standalone.html for a full reading of the license. A full copy has also been included in this package, in LICENSE.txt.
-
 Contributors
 ------------
 Brant Steen (brant@brantsteen.com)
+
+License
+-------
+This software is licensed under a GPL v3.0 license. Please visit http://www.gnu.org/licenses/gpl-3.0-standalone.html for a full reading of the license. A full copy has also been included in this package, in LICENSE.txt.
 
 Purpose
 -------
