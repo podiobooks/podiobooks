@@ -3,7 +3,7 @@
 # pylint: disable=R0201, C0111, R0904, R0801, F0401, W0613
 
 from django.contrib.syndication.views import Feed, add_domain
-from django.contrib.sites.models import get_current_site
+from django.contrib.sites.models import Site
 from django.utils.feedgenerator import Rss201rev2Feed
 from django.utils.html import strip_tags
 from django.conf import settings
@@ -29,7 +29,7 @@ class TitleFeed(Feed):
 
     def get_feed(self, obj, request):
         ### Google Analytics for Feed
-        tracker = Tracker(settings.GOOGLE_ANALYTICS_ID, get_current_site(request).domain)
+        tracker = Tracker(settings.GOOGLE_ANALYTICS_ID, Site.objects.get_current().domain)
         visitor = Visitor()
         visitor.ip_address = request.META.get('REMOTE_ADDR', '')
         visitor.user_agent = request.META.get('HTTP_USER_AGENT', '')
@@ -110,7 +110,7 @@ class EpisodeFeed(Feed):
         obj = get_object_or_404(Title.objects.prefetch_related('episodes', 'categories', 'contributors'), slug__exact=title_slug)
 
         ### Google Analytics for Feed
-        tracker = Tracker(settings.GOOGLE_ANALYTICS_ID, get_current_site(request).domain)
+        tracker = Tracker(settings.GOOGLE_ANALYTICS_ID, Site.objects.get_current().domain)
         visitor = Visitor()
         visitor.ip_address = request.META.get('REMOTE_ADDR', '')
         visitor.user_agent = request.META.get('HTTP_USER_AGENT', '')
@@ -129,7 +129,7 @@ class EpisodeFeed(Feed):
         return Episode.objects.filter(title__id__exact=obj.id).order_by('sequence')
 
     def item_comments(self, obj):
-        return add_domain(get_current_site(None).domain, obj.title.get_absolute_url())
+        return add_domain(Site.objects.get_current().domain, obj.title.get_absolute_url())
 
     def item_description(self, obj):
         return strip_tags(obj.description).replace('&amp;', '&')
