@@ -8,7 +8,7 @@ class ITunesFeed(Rss201rev2Feed):
     """This feed adds the extra attributes needed by iTunes"""
 
     def rss_attributes(self):
-        return {u"version": self._version, u'xmlns:itunes': u'http://www.itunes.com/dtds/podcast-1.0.dtd'}
+        return {u"version": self._version, u'xmlns:atom': u'http://www.w3.org/2005/Atom', u'xmlns:itunes': u'http://www.itunes.com/dtds/podcast-1.0.dtd'}
 
     def add_root_elements(self, handler):
         """Adds elements at the root of the feed"""
