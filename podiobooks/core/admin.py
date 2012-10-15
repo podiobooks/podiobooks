@@ -15,6 +15,11 @@ site.add_action(actions.export_as_csv)
 
 ### INLINES
 
+class AwardTitlesInline(admin.TabularInline):
+    model = Title.awards.through
+    extra = 0
+
+
 class EpisodeInline(admin.TabularInline):
     formfield_overrides = {models.TextField: {'widget': Textarea(attrs={'rows': '1', 'cols': '30'})}, }
 
@@ -53,6 +58,7 @@ class TitleMediaInline(admin.TabularInline):
 
 class AwardAdmin(admin.ModelAdmin):
     list_display = ('name',)
+    inlines = [AwardTitlesInline, ]
 
 
 class CategoryAdmin(admin.ModelAdmin):
@@ -129,7 +135,7 @@ class TitleAdmin(admin.ModelAdmin):
         ('Flags (Explicitness, Disp. on Homepage, Lang.)', {
             'classes': ('collapse',),
             'fields': (
-            'display_on_homepage', 'is_adult', 'is_explicit', 'is_family_friendly', 'is_for_kids', 'language')
+                'display_on_homepage', 'is_adult', 'is_explicit', 'is_family_friendly', 'is_for_kids', 'language')
         }),
         ('Series', {
             'classes': ('collapse',),
