@@ -5,6 +5,7 @@ $(function(){
 	var htmlAudio = $("html").hasClass("audio");
 	var slug = $(episodes).parents("article").data("title-slug");
 	var canPlayMp3 = false;
+	
 	if (htmlAudio){
 		var browserAudio = new Audio();
 		if(browserAudio && browserAudio.canPlayType("audio/mpeg")){
@@ -102,21 +103,6 @@ $(function(){
 		});
 	}
 	
-	/*
-	$(".episode-list-title>a").each(function(i){
-		$(this).click(function(ev){
-			ev.preventDefault();
-			var flashReplaceMe = $("<span id='play-ep-" + i + "' />").appendTo($(this).parents(".episode-list-item"));
-			if (canPlayMp3){
-				createHTML5Player(flashReplaceMe, $(this).attr("href"), true);
-			}
-			else{
-				createFlashPlayer(flashReplaceMe, $(this).attr("href"), true);
-			}
-			
-		});
-	});
 	
-	*/
 	
 });
