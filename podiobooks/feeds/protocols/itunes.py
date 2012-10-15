@@ -8,14 +8,12 @@ class ITunesFeed(Rss201rev2Feed):
     """This feed adds the extra attributes needed by iTunes"""
 
     def rss_attributes(self):
-        return {u"version": self._version, u"xmlns:atom": u"http://www.w3.org/2005/Atom", u'xmlns:itunes': u'http://www.itunes.com/dtds/podcast-1.0.dtd'}
+        return {u"version": self._version, u'xmlns:itunes': u'http://www.itunes.com/dtds/podcast-1.0.dtd'}
 
     def add_root_elements(self, handler):
         """Adds elements at the root of the feed"""
         super(ITunesFeed, self).add_root_elements(handler)
-        # Atom Item to Prevent Feed from Not Validating
-        handler.addQuickElement(u'atom:link', None, {u'href':self.feed['feed_url'], u'rel':u'self', u'type':u'application/rss+xml'})
-        
+
         #Basic Attributes
         for category in self.feed['global_categories']:
             handler.addQuickElement(u'category', category)
