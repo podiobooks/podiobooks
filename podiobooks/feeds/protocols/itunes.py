@@ -6,13 +6,9 @@ from django.utils.html import strip_tags
 
 class ITunesFeed(Rss201rev2Feed):
     """This feed adds the extra attributes needed by iTunes"""
-    def root_attributes(self):
-        """Adds attributes at the root of the feed"""
-        attrs = super(ITunesFeed, self).root_attributes()
-        attrs[u'xmlns:itunes'] = u'http://www.itunes.com/dtds/podcast-1.0.dtd'
-        attrs[u'xmlns:atom'] = u'http://www.w3.org/2005/Atom'
-        attrs[u'xmlns:content'] = u'http://purl.org/rss/1.0/modules/content/'
-        return attrs
+
+    def rss_attributes(self):
+        return {u"version": self._version, u"xmlns:atom": u"http://www.w3.org/2005/Atom", u'xmlns:itunes': u'http://www.itunes.com/dtds/podcast-1.0.dtd'}
 
     def add_root_elements(self, handler):
         """Adds elements at the root of the feed"""
@@ -24,18 +20,13 @@ class ITunesFeed(Rss201rev2Feed):
         for category in self.feed['global_categories']:
             handler.addQuickElement(u'category', category)
         
-        #iTunes Elements
-        if self.feed['explicit'] is not None:
-            handler.addQuickElement(u'itunes:explicit', self.feed['explicit'])
-        if self.feed['author_name'] is not None:
-            handler.addQuickElement(u'itunes:author', self.feed['author_name'])
-        if self.feed['image'] is not None:
-            handler.addQuickElement(u'itunes:image', None, {u'href':self.feed['image']})
-        if self.feed['description'] is not None:
-            handler.addQuickElement(u'itunes:summary', strip_tags(self.feed['description']))
-        if self.feed['complete'] is not None:
-            handler.addQuickElement(u'itunes:complete', strip_tags(self.feed['complete']))
-        
+        #iTunes Base Elements
+        handler.addQuickElement(u'itunes:explicit', self.feed['explicit'])
+        handler.addQuickElement(u'itunes:author', self.feed['author_name'])
+        handler.addQuickElement(u'itunes:image', None, {u'href':self.feed['image']})
+        handler.addQuickElement(u'itunes:summary', strip_tags(self.feed['description']))
+        handler.addQuickElement(u'itunes:subtitle', self.feed['description'][:255])
+        handler.addQuickElement(u'itunes:complete', strip_tags(self.feed['complete']))
         
         #iTunes Category
         handler.startElement(u'itunes:category', {u'text':u'Arts'})
@@ -52,18 +43,11 @@ class ITunesFeed(Rss201rev2Feed):
         """Adds new elements to each item in the feed"""
         super(ITunesFeed, self).add_item_elements(handler, item)
         #iTunes Elements
-        if self.feed['explicit'] is not None:
-            handler.addQuickElement(u'itunes:explicit', self.feed['explicit'])
-        if self.feed['author_name'] is not None:
-            handler.addQuickElement(u'itunes:author', self.feed['author_name'])
-        if self.feed['subtitle'] is not None:
-            handler.addQuickElement(u'itunes:subtitle', item['description'][:255])
-        if item['description'] is not None:
-            handler.addQuickElement(u'itunes:summary', item['description'])
-        if item['duration'] is not None:
-            handler.addQuickElement(u'itunes:duration', item['duration'])
-        if item['keywords'] is not None:
-            handler.addQuickElement(u'itunes:keywords', item['keywords'])
-        if item['order'] is not None:
-            handler.addQuickElement(u'itunes:order', item['order'])
+        handler.addQuickElement(u'itunes:explicit', self.feed['explicit'])
+        handler.addQuickElement(u'itunes:author', self.feed['author_name'])
+        handler.addQuickElement(u'itunes:subtitle', item['description'][:255])
+        handler.addQuickElement(u'itunes:summary', item['description'])
+        handler.addQuickElement(u'itunes:duration', item['duration'])
+        handler.addQuickElement(u'itunes:keywords', item['keywords'])
+        handler.addQuickElement(u'itunes:order', item['order'])
             
