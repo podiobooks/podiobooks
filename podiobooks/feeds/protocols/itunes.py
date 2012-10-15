@@ -40,6 +40,7 @@ class ITunesFeed(Rss201rev2Feed):
     def add_item_elements(self, handler, item):
         """Adds new elements to each item in the feed"""
         super(ITunesFeed, self).add_item_elements(handler, item)
+
         #iTunes Elements
         handler.addQuickElement(u'itunes:explicit', self.feed['explicit'])
         handler.addQuickElement(u'itunes:author', self.feed['author_name'])
