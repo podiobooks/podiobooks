@@ -45,6 +45,9 @@ urlpatterns = patterns('',
     # Feeds
     (r'^rss/', include('podiobooks.feeds.urls')),
 
+    # Search
+    (r'^search/', include('podiobooks.search.urls')),
+
     # Libsyn Utils
     (r'^libsyn/', include('podiobooks.libsyn.urls')),
 
