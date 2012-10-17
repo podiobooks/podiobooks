@@ -2,9 +2,11 @@ django==1.4.1
 django-adminactions
 django-debug-toolbar
 django-jenkins
+git+git://github.com/Brant/django-mediabrute.git
 django-tastypie
 feedparser
+git+git://github.com/toastdriven/django-haystack.git
 pil
 pyga
 south
-git+git://github.com/Brant/django-mediabrute.git
+whoosh
