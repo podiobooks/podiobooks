@@ -1,0 +1,4 @@
+{{ object.name }}
+{{ object.byline }}
+{{ object.category_list }}
+{{ object.description }}
