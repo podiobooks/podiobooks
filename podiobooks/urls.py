@@ -18,7 +18,7 @@ from .views import BlogRedirectView, TextTemplateView, RobotsView
 
 admin.autodiscover()
 
-sitemaps = {'AwardDetail': AwardDetailSitemap, 'CategoryDetail': CategoryDetailSitemap, 'ContributorDetail': ContributorDetailSitemap, 'TitleDetail': TitleDetailSitemap,}
+sitemaps = {'AwardDetail': AwardDetailSitemap, 'CategoryDetail': CategoryDetailSitemap, 'ContributorDetail': ContributorDetailSitemap, 'TitleDetail': TitleDetailSitemap, }
 
 urlpatterns = patterns('',
     # Home Page
@@ -26,7 +26,7 @@ urlpatterns = patterns('',
 
     # Recent Titles Feed Redirect
     url(r'^index\.xml$', RedirectView.as_view(url='/rss/feeds/titles/recent/')),
-                       
+
     # URLs from core package
     (r'^', include('podiobooks.core.urls')),
 
@@ -35,18 +35,24 @@ urlpatterns = patterns('',
 
     # Admin Site
     (r'^admin/', include(admin.site.urls)),
-    
+
     # Auth / Login
     (r'^account/signin/$', 'django.contrib.auth.views.login'),
 
     # Django Comments
     (r'^comments/', include('django.contrib.comments.urls')),
-    
+
     # Feeds
     (r'^rss/', include('podiobooks.feeds.urls')),
 
+    # Search
+    (r'^search/', include('podiobooks.search.urls')),
+
     # Libsyn Utils
     (r'^libsyn/', include('podiobooks.libsyn.urls')),
+
+    # Search
+    (r'^search/', include('podiobooks.search.urls')),
 
     # Robots, Favicon and Related
     (r'^robots\.txt$', RobotsView.as_view()),
@@ -99,5 +105,5 @@ if settings.DEBUG:
     urlpatterns += patterns('',
         url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {
             'document_root': settings.MEDIA_ROOT
-            }),
+        }),
     )

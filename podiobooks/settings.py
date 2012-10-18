@@ -34,7 +34,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'mediaroot')
 
 # Staticfiles Config
-STATIC_ROOT = PROJECT_ROOT +  "/themes/pb2-jq/"
+STATIC_ROOT = PROJECT_ROOT + "/themes/pb2-jq/"
 STATIC_URL = '/static/'
 STATICFILES_DIRS = []
 TEMPLATE_DIRS = [os.path.join(PROJECT_ROOT, 'themes', 'pb2-jq', 'templates')]
@@ -88,6 +88,7 @@ INSTALLED_APPS = (
     'podiobooks.core',
     'podiobooks.libsyn',
     'podiobooks.feeds',
+    'podiobooks.search',
     'south',
     )
 
@@ -95,7 +96,7 @@ INSTALLED_APPS = (
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(PROJECT_ROOT , 'pb2.db'),
+        'NAME': os.path.join(PROJECT_ROOT, 'pb2.db'),
         'USER': 'pb2',
         'PASSWORD': '',
         #        'HOST': '127.0.0.1',
@@ -177,12 +178,12 @@ if DEBUG and STATIC_URL.startswith("/") and not STATIC_URL.startswith("//"):
     JS_DIR = "pb2-jq/js"
     MEDIABRUTE_CSS_URL_PATH = "css"
     MEDIABRUTE_JS_URL_PATH = "js"
-    
+
     STATICFILES_DIRS = (
         # Put strings here, like "/home/html/static" or "C:/www/django/static".
         # Always use forward slashes, even on Windows.
         # Don't forget to use absolute paths, not relative paths.
         PROJECT_ROOT + "/themes/pb2-jq/",
-    )
-    
+        )
+
     STATIC_ROOT = PROJECT_ROOT + "/themes/"
