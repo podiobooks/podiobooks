@@ -165,6 +165,7 @@ class TitleRedirectView(RedirectView):
     def get_redirect_url(self, **kwargs):
         """Uses ID of Title from URL to redirect to Title"""
         pk = self.request.GET.get('ID', None) # pylint: disable=C0103
+        pk = filter(type(pk).isdigit, pk)
 
         if pk:
             title = get_object_or_404(Title, pk=pk)
