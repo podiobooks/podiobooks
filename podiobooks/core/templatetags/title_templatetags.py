@@ -2,8 +2,10 @@
 
 from django import template
 from django.conf import settings
+from django.core.cache import cache
 import feedparser
 import socket
+import urllib
 
 register = template.Library()
 
@@ -22,7 +24,24 @@ def show_contributors(title):
 @register.inclusion_tag('core/title/tags/show_titlecover.html')
 def show_titlecover(title):
     """ Pulls and formats the cover for a Title """
-    return {'title': title}
+    scale_url = "http://asset-server.libsyn.com/show/{0}/height/167/width/100".format(title.libsyn_show_id)
+    redirected_url = cache.get(scale_url)
+    if not redirected_url:
+        socket.setdefaulttimeout(2) #2 second timeout for grabbing image url
+        redirected_url = urllib.urlopen(scale_url).url
+        cache.set(scale_url, redirected_url, 1000)
+    return {'title': title, 'url': redirected_url}
+
+@register.simple_tag()
+def get_shelf_cover_url(title):
+    """ Gets the Final, Real Image URL for a Title from Libsyn """
+    scale_url = "http://asset-server.libsyn.com/show/{0}/height/99/width/67".format(title.libsyn_show_id)
+    redirected_url = cache.get(scale_url)
+    if not redirected_url:
+        socket.setdefaulttimeout(2) #2 second timeout for grabbing image url
+        redirected_url = urllib.urlopen(scale_url).url
+        cache.set(scale_url, redirected_url, 1000)
+    return redirected_url
 
 
 @register.inclusion_tag('core/title/tags/show_titlelist.html')
