@@ -115,15 +115,6 @@ CACHES = {
     }
 }
 
-### SITE SEARCH
-HAYSTACK_CONNECTIONS = {
-    'default': {
-        'ENGINE': 'haystack.backends.whoosh_backend.WhooshEngine',
-        'PATH': os.path.join(os.path.dirname(__file__), 'search', 'whoosh_index'),
-        'INCLUDE_SPELLING': True,
-    },
-}
-
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
 # although not all choices may be available on all operating systems.
