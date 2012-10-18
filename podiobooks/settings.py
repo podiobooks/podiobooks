@@ -83,7 +83,6 @@ INSTALLED_APPS = (
     'django.contrib.sitemaps',
     'django.contrib.staticfiles',
     'django_jenkins',
-    'haystack',
     'mediabrute',
     'podiobooks',
     'podiobooks.core',
