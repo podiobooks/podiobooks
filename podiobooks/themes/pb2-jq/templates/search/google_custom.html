@@ -1,15 +1,27 @@
-{% extends "base.html" %}<!-- Put the following javascript before the closing </head> tag. -->
-{% block content %}
-<script>
-    (function() {
-        var cx = '010914689440209038869:giz6dgkgspe';
-        var gcse = document.createElement('script'); gcse.type = 'text/javascript'; gcse.async = true;
-        gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
-                '//www.google.com/cse/cse.js?cx=' + cx;
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(gcse, s);
-    })();
-</script>
+{% extends "base.html" %}
+{% block search_box %}{% endblock %}
+{% block head %}
+    <script>
+        (function () {
+            var cx = '010914689440209038869:giz6dgkgspe';
+            var gcse = document.createElement('script');
+            gcse.type = 'text/javascript';
+            gcse.async = true;
+            gcse.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') +
+                    '//www.google.com/cse/cse.js?cx=' + cx;
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(gcse, s);
+        })();
+    </script>
+{% endblock %}
 
-<!-- Place this tag where you want both of the search box and the search results to render -->
-<gcse:search></gcse:search>
+{% block content %}
+    <gcse:search></gcse:search>
+
+    <style>
+        .gsc-control-cse {
+            background: transparent;
+            border: none;
+        }
+    </style>
 {% endblock %}
