@@ -3,4 +3,3 @@
 
 User-agent: *
 Disallow: /admin/
-Disallow: /title/search
