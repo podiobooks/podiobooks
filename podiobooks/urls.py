@@ -71,7 +71,7 @@ urlpatterns = patterns('',
     (r'podiobooks/search\.php', RedirectView.as_view(url='/title/search/', query_string=True)),
 
     # PB1 Authors Doc
-    (r'authors/PBAuthoringGuidev2\.0\.4\.pdf', RedirectView.as_view(url='http://blog.podiobooks.com/wp-content/uploads/2012/09/PBAuthoringGuidev2.0.4.pdf')),
+    (r'authors/PBAuthoringGuide+', RedirectView.as_view(url='http://blog.podiobooks.com/wp-content/uploads/2012/09/PBAuthoringGuidev2.0.4.pdf')),
 
     # PB1 Login Page
     (r'login\.php|Xlogin\.php|register\.php', RedirectView.as_view(url='http://blog.podiobooks.com/what-happened-to-my-login/')),
