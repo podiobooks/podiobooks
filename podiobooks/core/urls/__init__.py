@@ -42,21 +42,17 @@ urlpatterns = patterns('',
     url(r'^title/recent/$', TitleRecentListView.as_view(), name='title_recent_list'),
     url(r'^title/(?P<slug>[^/]+)/$', TitleDetailView.as_view(), name='title_detail'),
 
-    # Title Feed Redirect (PB1)
-    url(r'^title/(?P<slug>[^/]+)/feed', FeedRedirectView.as_view()),
-    url(r'^title/(?P<pk>\d+)/feed', FeedRedirectView.as_view()),
-
     # Homepage Shelf AJAX Endpoints
     url(r'^shelf/(?P<shelf_type>[\w_]+)/$', FilteredShelf.as_view(), name="shelf"),
-    url(r'^shelf/(?P<shelf_type>[\w_]+)/(?P<title_filter>[\w\-]+)/$',FilteredShelf.as_view(), name="shelf_filtered"),
+    url(r'^shelf/(?P<shelf_type>[\w_]+)/(?P<title_filter>[\w\-]+)/$', FilteredShelf.as_view(), name="shelf_filtered"),
 
     # PB1 book.php Redirect
     url(r'^podiobooks/book\.php$', TitleRedirectView.as_view()),
 
-    # PB1 Custom Feed Redirect
+    # PB1 Title Feed Redirects
+    url(r'^title/(?P<slug>[^/]+)/feed', FeedRedirectView.as_view()),
+    url(r'^title/(?P<pk>\d+)/feed', FeedRedirectView.as_view()),
     url(r'^bookfeed/(?P<user_id>\d+)/(?P<pk>\d+)/book\.xml', FeedRedirectView.as_view()),
-
-    # PB1 Custom Sampler Feed Redirect
     url(r'^bookfeed/sampler/(?P<pk>\d+)/book\.xml', FeedRedirectView.as_view()),
 
     # API
