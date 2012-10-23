@@ -126,6 +126,7 @@ class TitleListView(ListView):
     paginate_by = 25
     template_name = 'core/title/title_list.html'
 
+
 class TitleRecentListView(ListView):
     """List of all titles on the site in release order"""
     queryset = Title.objects.filter(deleted=False).order_by('-date_created')
@@ -141,24 +142,17 @@ class TitleDetailView(DetailView):
     redirect = False
 
     def get_object(self, queryset=None):
+        slug = self.kwargs.get('slug', None)
         try:
             title = Title.objects.prefetch_related(
                 "series", "episodes", "media", "license",
                 "titlecontributors", "titlecontributors__contributor",
                 "titlecontributors__contributor_type"
-            ).filter(slug=self.kwargs.get('slug', None), deleted=False).get()
+            ).filter(slug=slug, deleted=False).get()
             return title
         except ObjectDoesNotExist:
-            try:
-                title = Title.objects.prefetch_related(
-                    "series", "episodes", "media", "license",
-                    "titlecontributors", "titlecontributors__contributor",
-                    "titlecontributors__contributor_type"
-                ).filter(old_slug=self.kwargs.get('slug', None), deleted=False).get()
-                self.redirect = True
-                return title
-            except ObjectDoesNotExist:
-                raise Http404(u"Specified Title Was Not Found")
+            self.redirect = True
+            return get_object_or_404(Title, old_slug=slug)
 
     def get(self, request, *args, **kwargs):
         self.object = self.get_object()
