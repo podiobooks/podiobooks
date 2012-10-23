@@ -27,7 +27,7 @@ def show_titlecover(title):
     scale_url = "http://asset-server.libsyn.com/show/{0}/height/167/width/100".format(title.libsyn_show_id)
     redirected_url = cache.get(scale_url)
     if not redirected_url:
-        socket.setdefaulttimeout(2) #2 second timeout for grabbing image url
+        socket.setdefaulttimeout(5) #2 second timeout for grabbing image url
         redirected_url = urllib.urlopen(scale_url).url
         cache.set(scale_url, redirected_url, 1000)
     return {'title': title, 'url': redirected_url}
@@ -38,7 +38,7 @@ def get_shelf_cover_url(title):
     scale_url = "http://asset-server.libsyn.com/show/{0}/height/99/width/67".format(title.libsyn_show_id)
     redirected_url = cache.get(scale_url)
     if not redirected_url:
-        socket.setdefaulttimeout(2) #2 second timeout for grabbing image url
+        socket.setdefaulttimeout(5) #2 second timeout for grabbing image url
         redirected_url = urllib.urlopen(scale_url).url
         cache.set(scale_url, redirected_url, 1000)
     return redirected_url
