@@ -5,7 +5,7 @@ from django.conf import settings
 from django.core.cache import cache
 import feedparser
 import socket
-import urllib
+import urllib2
 
 register = template.Library()
 
@@ -27,8 +27,7 @@ def show_titlecover(title):
     scale_url = "http://asset-server.libsyn.com/show/{0}/height/167/width/100".format(title.libsyn_show_id)
     redirected_url = cache.get(scale_url)
     if not redirected_url:
-        socket.setdefaulttimeout(5) #2 second timeout for grabbing image url
-        redirected_url = urllib.urlopen(scale_url).url
+        redirected_url = urllib2.urlopen(scale_url, None, 10).url
         cache.set(scale_url, redirected_url, 1000)
     return {'title': title, 'url': redirected_url}
 
@@ -38,8 +37,7 @@ def get_shelf_cover_url(title):
     scale_url = "http://asset-server.libsyn.com/show/{0}/height/99/width/67".format(title.libsyn_show_id)
     redirected_url = cache.get(scale_url)
     if not redirected_url:
-        socket.setdefaulttimeout(5) #2 second timeout for grabbing image url
-        redirected_url = urllib.urlopen(scale_url).url
+        redirected_url = urllib2.urlopen(scale_url, None, 10).url
         cache.set(scale_url, redirected_url, 1000)
     return redirected_url
 
