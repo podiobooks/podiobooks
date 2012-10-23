@@ -65,6 +65,12 @@ def show_sharebox(name, url):
     return {'name': name, 'url': url}
 
 
+@register.inclusion_tag('core/title/tags/show_rating_icon.html')
+def show_rating_icon(title):
+    """ Show an icon indicating the rating of this title"""
+    return {'title': title}
+
+
 @register.inclusion_tag('core/title/tags/show_donation_button.html')
 def show_donation_button(title):
     """ Show button to enable people to donate to this title """
