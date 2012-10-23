@@ -68,7 +68,7 @@ urlpatterns = patterns('',
     (r'^sitemap\.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': sitemaps}),
 
     # PB1 Index Page
-    (r'index\.php', RedirectView.as_view(url='/')),
+    (r'index\.php|index\.html', RedirectView.as_view(url='/')),
 
     # PB1 Search Redirect
     (r'podiobooks/search\.php', RedirectView.as_view(url='/title/search/', query_string=True)),
