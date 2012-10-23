@@ -156,7 +156,12 @@ class FeedRedirectView(RedirectView):
             title = get_object_or_404(Title, pk=pk)
             slug = title.slug
 
-        return reverse('title_episodes_feed', args=(slug,))
+        try:
+            title = Title.objects.get(slug=slug)
+        except ObjectDoesNotExist:
+            title = get_object_or_404(Title, old_slug=slug)
+
+        return reverse('title_episodes_feed', args=(title.slug,))
 
 
 class TitleRedirectView(RedirectView):
@@ -165,9 +170,9 @@ class TitleRedirectView(RedirectView):
     def get_redirect_url(self, **kwargs):
         """Uses ID of Title from URL to redirect to Title"""
         pk = self.request.GET.get('ID', None) # pylint: disable=C0103
-        pk = filter(type(pk).isdigit, pk)
 
         if pk:
+            pk = filter(type(pk).isdigit, pk)
             title = get_object_or_404(Title, pk=pk)
             slug = title.slug
 
