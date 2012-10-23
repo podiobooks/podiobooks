@@ -22,16 +22,16 @@
         {% if 'Erotica' not in title.category_list %}
             <div id="wide-skyscraper-ad" class="wide-skyscraper-ad">
                 <script type="text/javascript">
-		            <!--
-		            google_ad_client = "ca-pub-1276519440300441";
-		            /* 160x600, created 8/8/10 */
-		            google_ad_slot = "1145406808";
-		            google_ad_width = 160;
-		            google_ad_height = 600; //-->
-		        </script>
-		        <script type="text/javascript"
-		                src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-		        </script>
+                    <!--
+                    google_ad_client = "ca-pub-1276519440300441";
+                    /* 160x600, created 8/8/10 */
+                    google_ad_slot = "1145406808";
+                    google_ad_width = 160;
+                    google_ad_height = 600; //-->
+                </script>
+                <script type="text/javascript"
+                        src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+                </script>
             </div>
         {% endif %}
     </aside>
@@ -41,7 +41,7 @@
         <meta itemprop="bookFormat" content="AudioBook/Serialized">
         <header>
             <div class="title-details-titlebar">
-                <h1 class="title-details-title" itemprop="name">{{ title.name }}</h1>
+                <h1 class="title-details-title" itemprop="name">{{ title.name }} {% show_rating_icon title %}</h1>
 
                 <div class="byline" itemprop="author">
 	            	<span itemscope itemtype="http://schema.org/Person">
@@ -55,7 +55,7 @@
             </div>
             {% if title.series %}
                 <div class="title-details-seriesbar">
-                    <a href="{{ title.series.get_absolute_url }}">{{ title.series.name }}</a>{% if title.series_sequence > 0  %}:
+                    <a href="{{ title.series.get_absolute_url }}">{{ title.series.name }}</a>{% if title.series_sequence > 0 %}:
                     Book {{ title.series_sequence }}{% endif %}
                 </div>
             {% endif %}
@@ -67,14 +67,14 @@
                 <div class="category">{{ title.category_list|safe }}</div>
 
                 <div class="net-promoter-box">
-					<ul>
-                    <li class="promoter-count">
-                        Likes: {{ title.promoter_count }}
-                    </li>
+                    <ul>
+                        <li class="promoter-count">
+                            Likes: {{ title.promoter_count }}
+                        </li>
 
-                    <li class="detractor-count">
-                        Dislikes: {{ title.detractor_count }}
-                    </li>
+                        <li class="detractor-count">
+                            Dislikes: {{ title.detractor_count }}
+                        </li>
                     </ul>
                     <span itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
                     	<meta itemprop="ratingValue" content="{{ title.computed_rating }}"/>
