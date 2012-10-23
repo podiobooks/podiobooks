@@ -21,24 +21,29 @@ def show_contributors(title):
     return {"title": title}
 
 
+def get_libsyn_cover_url(title, height, width):
+    scale_url = "http://asset-server.libsyn.com/show/{0}/height/{1}/width/{2}".format(title.libsyn_show_id, height, width)
+    redirected_url = cache.get(scale_url)
+    if not redirected_url:
+        try:
+            redirected_url = urllib2.urlopen(scale_url, None, 20).url
+            cache.set(scale_url, redirected_url, 1000)
+        except IOError:
+            redirected_url = scale_url
+    return redirected_url
+
+
 @register.inclusion_tag('core/title/tags/show_titlecover.html')
 def show_titlecover(title):
     """ Pulls and formats the cover for a Title """
-    scale_url = "http://asset-server.libsyn.com/show/{0}/height/167/width/100".format(title.libsyn_show_id)
-    redirected_url = cache.get(scale_url)
-    if not redirected_url:
-        redirected_url = urllib2.urlopen(scale_url, None, 10).url
-        cache.set(scale_url, redirected_url, 1000)
+    redirected_url = get_libsyn_cover_url(title, 167, 100)
     return {'title': title, 'url': redirected_url}
+
 
 @register.simple_tag()
 def get_shelf_cover_url(title):
     """ Gets the Final, Real Image URL for a Title from Libsyn """
-    scale_url = "http://asset-server.libsyn.com/show/{0}/height/99/width/67".format(title.libsyn_show_id)
-    redirected_url = cache.get(scale_url)
-    if not redirected_url:
-        redirected_url = urllib2.urlopen(scale_url, None, 10).url
-        cache.set(scale_url, redirected_url, 1000)
+    redirected_url = get_libsyn_cover_url(title, 99, 67)
     return redirected_url
 
 
