@@ -1,24 +1,49 @@
 {% extends "base.html" %}
 {% block search_box %}{% endblock %}
-{% block head %}
-    <script type='text/javascript'>
-        (function () {
-            var gcse = document.createElement('script');
-            gcse.type = 'text/javascript';
-            gcse.async = true;
-            gcse.src = 'http://www.google.com/cse/cse.js?cx=014749959765467686078:giz6dgkgspe';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(gcse, s);
-        })();
-    </script>
-{% endblock %}
-
 {% block content %}
     <gcse:search webSearchSafesearch="active" webSearchResultSetSize="20" resultsUrl="/search/snip/"></gcse:search>
     <style>
-        .gsc-control-cse {
+        .gsc-control-cse, .gsc-wrapper, .gsc-results, .gsc-result, .gsc-webResult, .gsc-imageResult, .gsc-webResult.gsc-result, .gsc-results .gsc-imageResult {
             background: transparent;
             border: none;
         }
+
+        .cse .gsc-webResult.gsc-result:hover,
+        .gsc-webResult.gsc-result:hover,
+        .gsc-webResult.gsc-result.gsc-promotion:hover,
+        .gsc-results .gsc-imageResult-classic:hover,
+        .gsc-results .gsc-imageResult-column:hover {
+            border: none;
+        }
+
     </style>
+    <div style="display:none">
+        <div id="pb_thumbnail">
+            <div class="gs-image-box gs-web-image-box gs-web-image-box-portrait">
+                <td data-if="Vars.book" class="gsc-table-cell-thumbnail gsc-thumbnail">
+                    <a class="gs-image"
+                       data-attr="{href:url, target:target}">
+                        <img class="gs-image"
+                             onload="if (this.parentNode && this.parentNode.parentNode && this.parentNode.parentNode.parentNode) { this.parentNode.parentNode.parentNode.style.display = ''; this.parentNode.parentNode.className = 'gs-image-box gs-web-image-box gs-web-image-box-portrait'; } "
+                             data-attr="{src:book.image}"
+                                >
+                    </a>
+                </td>
+            </div>
+        </div>
+    </div>
+
+    <!-- Div container for the search box.-->
+    <div id="cse"></div>
+{% endblock %}
+
+{% block extra_foot %}
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script src="http://www.google.com/cse/cse.js?cx=014749959765467686078:giz6dgkgspe" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        google.setOnLoadCallback(function () {
+            google.search.Csedr.addOverride("pb_");
+        });
+    </script>
 {% endblock %}
