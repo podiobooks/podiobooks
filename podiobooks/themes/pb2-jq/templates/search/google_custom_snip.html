@@ -19,13 +19,13 @@
     </style>
     <div style="display:none">
         <div id="pb_thumbnail">
-            <div class="gs-image-box gs-web-image-box gs-web-image-box-portrait">
-                <td data-if="Vars.book" class="gsc-table-cell-thumbnail gsc-thumbnail">
+            <div class="gs-image-box gs-web-image-box gs-web-image-box-portrait" data-vars="{thumbUrl:function() { return Vars.book ? book.image : cseThumbnail.src; }}">
+                <td class="gsc-table-cell-thumbnail gsc-thumbnail">
                     <a class="gs-image"
                        data-attr="{href:url, target:target}">
                         <img class="gs-image"
                              onload="if (this.parentNode && this.parentNode.parentNode && this.parentNode.parentNode.parentNode) { this.parentNode.parentNode.parentNode.style.display = ''; this.parentNode.parentNode.className = 'gs-image-box gs-web-image-box gs-web-image-box-portrait'; } "
-                             data-attr="{src:book.image}"
+                             data-attr="{src:thumbUrl()}"
                                 >
                     </a>
                 </td>
