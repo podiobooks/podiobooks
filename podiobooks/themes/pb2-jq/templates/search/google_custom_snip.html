@@ -31,6 +31,26 @@
                 </td>
             </div>
         </div>
+
+        <div id="pb_webResult">
+            <div class="gs-webResult gs-result"
+                 data-vars="{longUrl:function() {
+        var i = unescapedUrl.indexOf(visibleUrl);
+        return i < 1 ? visibleUrl : unescapedUrl.substring(i);}}">
+                <div data-if="Vars.richSnippet" data-attr="0"
+                     data-body="render('thumbnail',richSnippet,{url:unescapedUrl,target:target})"></div>
+                <div class="gs-title">
+                    <a class="gs-title" data-attr="{href:unescapedUrl,target:target}"
+                       data-body="html(title)"></a>
+                </div>
+                <div class="gs-snippet" data-body="html(content)"></div>
+
+                <div class="gs-visibleUrl gs-visibleUrl-short" data-body="visibleUrl"></div>
+                <div class="gs-visibleUrl gs-visibleUrl-long" data-body="longUrl()"></div>
+                <div data-if="Vars.richSnippet && Vars.richSnippet.action" class="gs-actions"
+                     data-body="render('action',richSnippet,{url:unescapedUrl,target:target})"></div>
+            </div>
+        </div>
     </div>
 
     <!-- Div container for the search box.-->
