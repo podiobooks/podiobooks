@@ -1,4 +1,4 @@
-django==1.4.1
+django==1.4.2
 django-adminactions
 django-debug-toolbar
 django-jenkins
