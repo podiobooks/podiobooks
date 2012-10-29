@@ -111,7 +111,7 @@ def title_search(request, keywords=None):
 
         search_results = Title.objects.prefetch_related("titlecontributors", "titlecontributors__contributor", "titlecontributors__contributor_type").filter(
             (Q(name__icontains=keywords) | Q(description__icontains=keywords) | Q(
-                contributors__slug__icontains=keywords)) & adult_filter & family_filter & Q(deleted=False)).distinct()
+                contributors__display_name__icontains=keywords)) & adult_filter & family_filter & Q(deleted=False)).distinct()
         result_count = len(search_results)
 
         ### Pagination
