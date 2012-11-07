@@ -1,21 +1,6 @@
 {% extends "base.html" %}
 {% block body_class %}search-results{% endblock %}
 {% block content %}
-    <style>
-        .gsc-control-cse, .gsc-wrapper, .gsc-results, .gsc-result, .gsc-webResult, .gsc-imageResult, .gsc-webResult.gsc-result, .gsc-results .gsc-imageResult {
-            background: transparent;
-            border: none;
-        }
-
-        .cse .gsc-webResult.gsc-result:hover,
-        .gsc-webResult.gsc-result:hover,
-        .gsc-webResult.gsc-result.gsc-promotion:hover,
-        .gsc-results .gsc-imageResult-classic:hover,
-        .gsc-results .gsc-imageResult-column:hover {
-            border: none;
-        }
-
-    </style>
 
     <div style="display:none">
         <div id="pb_thumbnail">
@@ -55,36 +40,5 @@
 
     <!-- Div container for the search box.-->
     <div class="cse-container" id="cse"></div>
-    
-{% endblock %}
-
-{% block extra_foot %}
-    <!-- 
-        Use V2 of searach API 
-        https://developers.google.com/custom-search/docs/element#cse-element
-        https://developers.google.com/custom-search/docs/element#supported_attributes
-    -->
-    <script type="text/javascript">
-        $(function(){
-            google.setOnLoadCallback(function () {     
-                google.search.Csedr.addOverride("pb_");
-                google.search.cse.element.render({
-                    div: "cse",
-                    tag: 'search',
-                    attributes: {
-                        resultsUrl: '/search/snip/',
-                        webSearchResultSetSize: 20,
-                        webSearchSafesearch: "active",
-                        enableHistory: true,
-                        newWindow: false,
-                        linkTarget: null
-                    }
-                    
-                });
-            });
-        });
-    </script>
-
-    
     
 {% endblock %}
