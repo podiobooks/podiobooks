@@ -94,6 +94,9 @@
 		
 		<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
 		
+		<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    	<script src="http://www.google.com/cse/cse.js?cx=014749959765467686078:giz6dgkgspe" type="text/javascript"></script>
+
 		{% for SCRIPT in MINI_JS %}
 		    <script type="text/javascript" src="{{ SCRIPT }}"></script>
 		{% endfor %}
@@ -114,9 +117,6 @@
 		    feedback_widget_options.style = "problem";
 		    var feedback_widget = new GSFN.feedback_widget(feedback_widget_options);
 		</script>
-
-		<script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    	<script src="http://www.google.com/cse/cse.js?cx=014749959765467686078:giz6dgkgspe" type="text/javascript"></script>
 
 		{% block extra_foot %}{% endblock %}
 	</body>
