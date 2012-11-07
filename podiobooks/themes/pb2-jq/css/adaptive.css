@@ -6,15 +6,7 @@
 		max-width:666px;
 		width:none;
 	}
-	.browse-by,
-	.search-results .browse-by{
-		float:none;
-		display:block;
-		margin:10px 0 0 0;
-		text-align: left;
-		float:left;
-		width:100%;
-	}	
+	
 	.nav{
 		margin:0;
 		float:left;
@@ -160,9 +152,6 @@
 	.search-additional-fields{
 		left:10px;
 		top:25px;
-	}
-	.search-results .pg{
-		padding-top:40px;
 	}
 	.imagebox{
 		width:20%;
