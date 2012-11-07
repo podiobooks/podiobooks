@@ -1,10 +1,6 @@
 {% extends "base.html" %}
-{% block search_box %}{% endblock %}
+{% block body_class %}search-results{% endblock %}
 {% block content %}
-    <!--
-https://developers.google.com/custom-search/docs/element
-    <gcse:search webSearchSafesearch="active" webSearchResultSetSize="20" resultsUrl="/search/snip/" queryParameterName="q"></gcse:search>
--->
     <style>
         .gsc-control-cse, .gsc-wrapper, .gsc-results, .gsc-result, .gsc-webResult, .gsc-imageResult, .gsc-webResult.gsc-result, .gsc-results .gsc-imageResult {
             background: transparent;
@@ -20,6 +16,7 @@ https://developers.google.com/custom-search/docs/element
         }
 
     </style>
+
     <div style="display:none">
         <div id="pb_thumbnail">
             <div class="gs-image-box gs-web-image-box gs-web-image-box-portrait" data-vars="{thumbUrl:function() { return Vars.book ? book.image : cseThumbnail.src; }}">
@@ -55,16 +52,13 @@ https://developers.google.com/custom-search/docs/element
             </div>
         </div>
     </div>
+
     <!-- Div container for the search box.-->
-    <div id="cse"></div>
+    <div class="cse-container" id="cse"></div>
     
 {% endblock %}
 
 {% block extra_foot %}
-   
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <script src="http://www.google.com/cse/cse.js?cx=014749959765467686078:giz6dgkgspe" type="text/javascript"></script>
-
     <!-- 
         Use V2 of searach API 
         https://developers.google.com/custom-search/docs/element#cse-element
@@ -83,5 +77,7 @@ https://developers.google.com/custom-search/docs/element
             });
         });
     </script>
+
+    
     
 {% endblock %}
