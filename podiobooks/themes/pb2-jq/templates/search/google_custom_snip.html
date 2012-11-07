@@ -58,12 +58,20 @@
 {% endblock %}
 
 {% block extra_foot %}
+   
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <script src="http://www.google.com/cse/cse.js?cx=014749959765467686078:giz6dgkgspe" type="text/javascript"></script>
+    <script src="http://www.google.com/cse/cse.js?cx=014749959765467686078:giz6dgkgspe" type="text/javascript"></script>    
 
     <script type="text/javascript">
+    
+        $(function(){                
+            google.search.Csedr.addOverride("pb_");
+        });
+
         google.setOnLoadCallback(function () {
             google.search.Csedr.addOverride("pb_");
         });
+        
     </script>
+    
 {% endblock %}
