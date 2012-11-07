@@ -65,15 +65,17 @@
         https://developers.google.com/custom-search/docs/element#supported_attributes
     -->
     <script type="text/javascript">
-        google.setOnLoadCallback(function () {     
-            google.search.Csedr.addOverride("pb_");
-            google.search.cse.element.render({
-                div: "cse",
-                tag: 'search',
-                resultsUrl: '/search/snip/',
-                webSearchResultSetSize: 20,
-                webSearchSafesearch: "active"
+        $(function(){
+            google.setOnLoadCallback(function () {     
+                google.search.Csedr.addOverride("pb_");
+                google.search.cse.element.render({
+                    div: "cse",
+                    tag: 'search',
+                    resultsUrl: '/search/snip/',
+                    webSearchResultSetSize: 20,
+                    webSearchSafesearch: "active"
 
+                });
             });
         });
     </script>
