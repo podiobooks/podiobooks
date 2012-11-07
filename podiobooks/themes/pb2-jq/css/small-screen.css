@@ -271,7 +271,7 @@
 	.podiobooks-nav-text a,
 	.podiobooks-nav-text a:link,
 	.podiobooks-nav-text a:active,
-	.podiobooks-nav-text a:visited,
+	.podiobooks-nav-text a:visited,search
 	.podiobooks-nav-text a:hover{
 		display:block;
 		float:left;
@@ -288,6 +288,40 @@
 	/*
 	 * Search
 	 */
+	.search{
+	 	width:auto;
+	 	display:block;
+	 	margin:0 0 2px;
+	 	padding:5px 0;
+	 	float:none;
+	 	box-shadow:0 1px 1px #b2ceee, 0 2px 1px #e2e8ee;
+	 	display:none;
+	}
+	.search-bar-trigger{
+		display:block;
+	}
+	.search-bar-trigger:link,
+	.search-bar-trigger:active,
+	.search-bar-trigger:visited,
+	.search-bar-trigger:hover{
+		color:transparent;
+		width:40px;
+		height:40px;
+		float:right;
+		overflow: hidden;
+		
+		text-align: right;
+		color:#fff;
+	}
+	.search-bar-trigger:before{
+		width:100%
+		height:100%
+		color:#fff;
+		display:block;
+		float:right;
+		font-size:22px;
+		margin:10px 10px 0 0;
+	}
 	.search-results .gsc-orderby-container{
 		text-align: left;
 	}
@@ -296,7 +330,7 @@
 	.search-results .gsc-tabsArea{
 		display:none;
 	}
-	body form.gsc-search-box{
+	.pg form.gsc-search-box{
 	    margin:0 10px 10px;
 	    
 	}
