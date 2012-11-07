@@ -176,7 +176,10 @@ body form.gsc-search-box{
 .search-results .nav-bar .search{
     display:none;
 }
-
+.search-results .search-bar-trigger,
+.search-bar-trigger{
+    display:none;
+}
 
 
 
