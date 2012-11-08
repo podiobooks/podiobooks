@@ -327,7 +327,9 @@
 	.pg .gsc-search-box{
 	    margin:0 10px 10px;
 	}
-
+	.pg .gsc-search-box table{
+		margin:0;
+	}
 	/*
 	 * Title Details
 	 */
