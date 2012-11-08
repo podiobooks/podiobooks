@@ -181,9 +181,14 @@ body form.gsc-search-box{
 .search-bar-trigger{
     display:none;
 }
+.search-results table.gsc-search-box{
+    width:auto;
+}
 
 
-
+/*
+ * Facebook widget
+ */
 #fb-root,
 .fb-reset {
     width: 0;
