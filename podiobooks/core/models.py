@@ -55,13 +55,14 @@ class Category(models.Model):
 class Contributor(models.Model):
     """A contributor is one who had done work on a title. For a book, it's an
     author or authors."""
-    slug = models.SlugField(max_length=1000) # For multi-contributor books, can get long
+    slug = models.SlugField(max_length=1000, db_index=True)
     user = models.ForeignKey(User, null=True, blank=True,
         related_name='contributor_info') #User is an OOTB Django Auth Model
     first_name = models.CharField(max_length=255)
     middle_name = models.CharField(max_length=255, blank=True)
     last_name = models.CharField(max_length=255)
     display_name = models.CharField(max_length=255)
+    community_handle = models.CharField(max_length=255, blank=True)
     deleted = models.BooleanField(default=False)
     # Note: Titles are available a title_set.all()
     # Note: TitleContributor Objects (intermediate table) are available as titlecontributors.all()
@@ -80,7 +81,7 @@ class Contributor(models.Model):
 
 
 class ContributorType(models.Model):
-    """Types of contributors: author, key grid, best boy, director, etc."""
+    """Types of contributors: author, narrator, key grip, best boy, director, etc."""
     slug = models.SlugField()
     name = models.CharField(max_length=255)
     byline_text = models.CharField(max_length=255)
@@ -94,9 +95,11 @@ class ContributorType(models.Model):
 
 
 class Episode(models.Model):
-    """Titles are composed of Episodes. For a book, these are chapters or
+    """
+    Titles are composed of Episodes. For a book, these are chapters or
     divisions of the book into smaller parts. For a comic book, it would be each
-    issue of the comic."""
+    issue of the comic.
+    """
     title = models.ForeignKey('Title', related_name='episodes')
     name = models.CharField(max_length=255)
     sequence = models.IntegerField() #Order in the Story
