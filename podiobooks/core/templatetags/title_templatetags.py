@@ -3,6 +3,7 @@
 from django import template
 from django.conf import settings
 from django.core.cache import cache
+from django.contrib.sites.models import Site
 import feedparser
 import socket
 import urllib2
@@ -18,7 +19,7 @@ def show_awardshow(title):
 @register.inclusion_tag('core/title/tags/show_contributors.html')
 def show_contributors(title):
     """ standardize formatting for contributor list for a given title """
-    return {"title": title}
+    return {"title": title, "SITE": Site.objects.get_current()}
 
 
 def get_libsyn_cover_url(title, height, width):
