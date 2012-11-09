@@ -153,6 +153,7 @@ class FeedRedirectView(RedirectView):
             raise Http404
 
         if pk:
+            pk = filter(type(pk).isdigit, pk)
             title = get_object_or_404(Title, pk=pk)
             slug = title.slug
 
