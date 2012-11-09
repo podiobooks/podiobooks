@@ -2,7 +2,7 @@
     {% for titlecontributor in title.titlecontributors.all %}
         {% if titlecontributor.contributor_type.slug == 'author' and forloop.first %}by{% else %}titlecontributor.contributor.get_absolute_url
             {{ titlecontributor.contributor_type.byline_text }}{% endif %}
-        <a href="{{ titlecontributor.contributor.get_absolute_url }}"><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ titlecontributor.contributor }}</span><span itemprop="url" style="display:none">{{ SITE.url }}{{ titlecontributor.contributor.get_absolute_url }}</span></span></a>
+        <a href="{{ titlecontributor.contributor.get_absolute_url }}"><span itemprop="author" itemscope itemtype="http://schema.org/Person"><span itemprop="name">{{ titlecontributor.contributor }}</span><span itemprop="url" style="display:none">{{ SITE.domain }}{{ titlecontributor.contributor.get_absolute_url }}</span></span></a>
         {% if not forloop.last %},{% endif %}
     {% endfor %}
 {% endif %}
