@@ -2,7 +2,7 @@
     {% for titlecontributor in title.titlecontributors.all %}
         {% if titlecontributor.contributor_type.slug == 'author' and forloop.first %}by{% else %}titlecontributor.contributor.get_absolute_url
             {{ titlecontributor.contributor_type.byline_text }}{% endif %}
-        <a href="{{ titlecontributor.contributor.get_absolute_url }}"><span itemprop="author-fn">{{ titlecontributor.contributor }}</span></a><span itemprop="author-url" style="display:none">{{ titlecontributor.contributor.get_absolute_url }}</span>
+        <a href="{{ titlecontributor.contributor.get_absolute_url }}"><span itemprop="author">{{ titlecontributor.contributor }}</span></a><span itemprop="author-url" style="display:none">{{ SITE.url }}{{ titlecontributor.contributor.get_absolute_url }}</span>
         {% if not forloop.last %},{% endif %}
     {% endfor %}
 {% endif %}
