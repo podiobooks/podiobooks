@@ -44,9 +44,7 @@
                 <h1 class="title-details-title" itemprop="name">{{ title.name }} {% show_rating_icon title %}</h1>
 
                 <div class="byline" itemprop="author">
-	            	<span itemscope itemtype="http://schema.org/Person">
-	            		<span itemprop="name">{% show_contributors title %}</span>
-	            	</span>
+                    {% show_contributors title %}
                 </div>
             </div>
             <div class='imagebox'>
