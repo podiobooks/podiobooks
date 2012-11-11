@@ -4,7 +4,9 @@
 
     <div style="display:none">
         <div id="pb_thumbnail">
-            <div class="gs-image-box gs-web-image-box gs-web-image-box-portrait" data-vars="{thumbUrl:function() { return Vars.book ? book.image : cseThumbnail.src; }}">
+
+            <div class="gs-image-box gs-web-image-box gs-web-image-box-portrait"
+                 data-vars="{thumbUrl:function() { return Vars.book ? book.image : cseThumbnail.src; }}">
                 <td class="gsc-table-cell-thumbnail gsc-thumbnail">
                     <a class="gs-image"
                        data-attr="{href:url, target:target}">
@@ -19,26 +21,26 @@
 
         <div id="pb_webResult">
             <div class="gs-webResult gs-result"
-                 data-vars="{longUrl:function() {
-        var i = unescapedUrl.indexOf(visibleUrl);
-        return i < 1 ? visibleUrl : unescapedUrl.substring(i);}}">
-                <div data-if="Vars.richSnippet" data-attr="0"
+                 data-vars="{longUrl:function() {var i = unescapedUrl.indexOf(visibleUrl);return i < 1 ? visibleUrl : unescapedUrl.substring(i);},
+                 cleanTitle:function() {return title.replace('on Podiobooks.com','').replace('| Podiobooker', ' - Podiobooker Blog');}}">
+                <div data-if="Vars.richSnippet && (Vars.richSnippet.cseThumbnail || Vars.richSnippet.book)" data-attr="0"
                      data-body="render('thumbnail',richSnippet,{url:unescapedUrl,target:target})"></div>
-                <div class="gs-title">
-                    <a class="gs-title" data-attr="{href:unescapedUrl,target:target}"
-                       data-body="html(title)"></a>
-                </div>
+                <div class="gs-title"><a class="gs-title" data-attr="{href:unescapedUrl,target:target}"
+                                         data-body="html(cleanTitle())"></a></div>
                 <div class="gs-snippet" data-body="html(content)"></div>
-
+                <div class="gs-snippet gs-pb-meta"
+                     data-if="Vars.richSnippet && Vars.richSnippet.book && Vars.richSnippet.book.genre"
+                     data-body="Vars.richSnippet.book.genre + ' - ' + richSnippet.aggregaterating.ratingcount + ' ratings'"></div>
+                <div class="gs-snippet gs-pb-meta"
+                     data-if="Vars.richSnippet && Vars.richSnippet.book && Vars.richSnippet.book.award"
+                     data-body="Vars.richSnippet.book.award"></div>
                 <div class="gs-visibleUrl gs-visibleUrl-short" data-body="visibleUrl"></div>
                 <div class="gs-visibleUrl gs-visibleUrl-long" data-body="longUrl()"></div>
-                <div data-if="Vars.richSnippet && Vars.richSnippet.action" class="gs-actions"
-                     data-body="render('action',richSnippet,{url:unescapedUrl,target:target})"></div>
             </div>
         </div>
     </div>
 
     <!-- Div container for the search box.-->
     <div class="cse-container" id="cse"></div>
-    
+
 {% endblock %}
