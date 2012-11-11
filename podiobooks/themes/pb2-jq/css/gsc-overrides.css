@@ -24,3 +24,8 @@ body .gsc-results .gsc-imageResult-classic:hover,
 body .gsc-results .gsc-imageResult-column:hover {
 	border: none;
 }
+
+.gs-pb-meta {
+    font-size: smaller;
+    font-style: italic;
+}
