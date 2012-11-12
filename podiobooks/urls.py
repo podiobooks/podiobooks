@@ -45,11 +45,14 @@ urlpatterns = patterns('',
     # Feeds
     (r'^rss/', include('podiobooks.feeds.urls')),
 
-    # Search
-    (r'^search/', include('podiobooks.search.urls')),
-
     # Libsyn Utils
     (r'^libsyn/', include('podiobooks.libsyn.urls')),
+
+    # Ratings
+    (r'^rate/', include('podiobooks.ratings.urls')),
+
+    # Search
+    (r'^search/', include('podiobooks.search.urls')),
 
     # Robots, Favicon and Related
     (r'^robots\.txt$', RobotsView.as_view()),
