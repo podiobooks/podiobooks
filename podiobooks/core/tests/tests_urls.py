@@ -33,27 +33,19 @@ class UrlTestCase(TestCase):
 
     def test_title_search_page(self):
         response = self.client.get('/title/search/')
-        self.assertEquals(200, response.status_code)
-        self.assertNotContains(response, 'Deleted')
+        self.assertRedirects(response, '/search/', status_code=301)
 
     def test_title_search_keywords(self):
         response = self.client.get('/title/search/science%20fiction/')
-        self.assertEquals(200, response.status_code)
-
-    def test_title_search_keywords_post(self):
-        response = self.client.post('/title/search/', {"keywords": "science%20fiction"})
-        self.assertEquals(200, response.status_code)
-
-        response = self.client.post('/title/search/', {"keywords": "dollie", "include_adult": 1, "completed_only": 1})
-        self.assertEquals(200, response.status_code)
+        self.assertRedirects(response, '/search/?q=science%20fiction', status_code=301)
 
     def test_title_search_keywords_get(self):
         response = self.client.get('/title/search/', {'keyword': 'sigler'})
-        self.assertEquals(200, response.status_code)
+        self.assertRedirects (response, '/search/?q=sigler', status_code=301)
 
     def test_title_search_pb1(self):
-        response = self.client.get('/podiobooks/search.php', {'keyword': 'sigler'})
-        self.assertRedirects(response, '/title/search/?keyword=sigler', status_code=301)
+        response = self.client.get('/podiobooks/search.php', {'keyword': 'sigler'}, follow=True)
+        self.assertRedirects(response, '/search/?q=sigler', status_code=301)
 
     def test_title_category_search_pb1(self):
         response = self.client.get('/podiobooks/search.php', {'category': 1}, follow=True)
