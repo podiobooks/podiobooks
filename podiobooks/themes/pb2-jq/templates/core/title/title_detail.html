@@ -95,6 +95,12 @@
                 {% autoescape off %}{{ title.description|linebreaks|removetags:"img" }}{% endautoescape %}
             </div>
 
+            {% if 'Erotica' in title.category_list %}
+                <!--JuicyAds v2.0-->
+                <iframe border=0 frameborder=0 marginheight=0 marginwidth=0 width=476 height=81 scrolling=no allowtransparency=true src=http://adserver.juicyads.com/adshow.php?adzone=170624></iframe>
+                <!--JuicyAds END-->
+            {% endif %}
+
             {% with title.episodes.all|first as episode %}
             {% endwith %}
 
