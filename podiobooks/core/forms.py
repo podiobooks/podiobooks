@@ -74,20 +74,9 @@ class ContributorChoiceForm(forms.Form):
         self.submit_url = reverse("shelf", kwargs={"shelf_type": cookie})
 
 
-class TitleSearchAdditionalFieldsForm(forms.Form):
-    """ Additional fields for search (beyond the search term """    
-    include_adult = forms.BooleanField(required=False, initial=False)
-    family_friendly = forms.BooleanField(required=False, initial=False)
-
-
-class TitleSearchForm(TitleSearchAdditionalFieldsForm):
+class TitleSearchForm(forms.Form):
     """ Form used to search for titles, used in header and on search page. """
-        
-    def __init__(self, *args, **kwargs):
-        """ Reorder fields """
-        super(TitleSearchForm, self).__init__(*args, **kwargs)
-        self.fields.keyOrder =  ["keyword", "include_adult", "family_friendly"]
-    
+
     keyword = forms.CharField(label="Search for", widget=forms.TextInput(attrs={'class':'search-keywords', "autocapitalize": "off"}))
     
     

@@ -5,5 +5,5 @@ from .views import GoogleSearchView
 
 urlpatterns = patterns('',
     # Google Custom Search
-    url(r'^$', GoogleSearchView.as_view(), name='google_site_search'),
+    url(r'^$', GoogleSearchView.as_view(), name='site_search'),
 )

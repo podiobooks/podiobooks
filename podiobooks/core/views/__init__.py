@@ -1,20 +1,15 @@
 """ Django Views for the Podiobooks Core Module"""
 
-from django.shortcuts import render_to_response
-from django.template import RequestContext
-from django.db.models import Q, Count, Max
-
 from django.core.urlresolvers import reverse
 
-from django.utils.decorators import method_decorator
-from django.views.generic import ListView, RedirectView, TemplateView
+from django.utils.http import urlquote
+from django.views.generic import RedirectView, TemplateView
 from django.shortcuts import get_object_or_404, redirect
-from django.http import Http404, HttpResponseRedirect
+from django.http import Http404, HttpResponsePermanentRedirect
 from django.core.exceptions import ObjectDoesNotExist
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
-from podiobooks.core.models import Title, Contributor, Category
-from podiobooks.core.forms import CategoryChoiceForm, ContributorChoiceForm, TitleSearchForm, TitleSearchAdditionalFieldsForm
+from podiobooks.core.models import Title, Category
+from podiobooks.core.forms import CategoryChoiceForm, ContributorChoiceForm, TitleSearchForm
 
 from podiobooks.core.queries import get_featured_shelf_titles, get_recently_released_shelf_titles, get_toprated_shelf_titles
 
@@ -63,7 +58,7 @@ def title_search(request, keywords=None):
 
     url: /content/title/search/<keywords>
     
-    template : N/A
+    template : Redirects to Google Search
     """
 
     # Handle PB1-Style Searches on a Category
@@ -75,70 +70,22 @@ def title_search(request, keywords=None):
                 category = Category.objects.get(slug=request.GET.get('category'))
             return redirect('category_detail', category.slug, permanent=True)
         except ObjectDoesNotExist:
-            return HttpResponseRedirect(reverse("category_list"))
+            return HttpResponsePermanentRedirect(reverse('category_list'))
 
     # Convert PB1-style 'keyword' arg into keywords
     if "keyword" in request.GET:
         form = TitleSearchForm(request.GET)
-        additional_fields = TitleSearchAdditionalFieldsForm(request.GET)
     else:
         form = TitleSearchForm({'keyword': keywords})
-        additional_fields = TitleSearchAdditionalFieldsForm()
 
     # Validate Search Form
     if form.is_valid(): # All validation rules pass
         keywords = form.cleaned_data['keyword']
-        include_adult = form.cleaned_data['include_adult']
-        family_friendly = form.cleaned_data['family_friendly']
-    else:
-        form = TitleSearchForm()
-        keywords = False
-        include_adult = False
-        family_friendly = False
-
-    response_data = {'title_search_form': form, "additional_fields": additional_fields}
 
     if keywords:
-        if not include_adult:
-            adult_filter = Q(is_adult=False)
-        else:
-            adult_filter = Q()
+        return HttpResponsePermanentRedirect(redirect_to=reverse('site_search') + '?q=' + urlquote(keywords))
 
-        if family_friendly:
-            family_filter = Q(is_family_friendly=True) | Q(is_for_kids=True)
-        else:
-            family_filter = Q()
-
-        search_results = Title.objects.prefetch_related("titlecontributors", "titlecontributors__contributor", "titlecontributors__contributor_type").filter(
-            (Q(name__icontains=keywords) | Q(description__icontains=keywords) | Q(
-                contributors__display_name__icontains=keywords)) & adult_filter & family_filter & Q(deleted=False)).distinct()
-        result_count = len(search_results)
-
-        ### Pagination
-        paginator = Paginator(search_results, 15)
-        page = request.GET.get('page')
-        try:
-            title_list = paginator.page(page)
-        except PageNotAnInteger:
-            # If page is not an integer, deliver first page.
-            title_list = paginator.page(1)
-        except EmptyPage:
-            # If page is out of range (e.g. 9999), deliver last page of results.
-            title_list = paginator.page(paginator.num_pages)
-
-        response_data.update({
-            'title_list': title_list,
-            'keywords': keywords,
-            'result_count': result_count,
-            'title_search_form': form,
-            'paginator': paginator
-        })
-
-        return render_to_response('core/title/title_search_results.html', response_data,
-            context_instance=RequestContext(request))
-
-    return render_to_response('core/title/title_search_results.html', response_data,
-        context_instance=RequestContext(request))
+    return HttpResponsePermanentRedirect(redirect_to=reverse('site_search'))
 
 
 class FeedRedirectView(RedirectView):
