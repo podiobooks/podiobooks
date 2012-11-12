@@ -51,9 +51,6 @@ urlpatterns = patterns('',
     # Libsyn Utils
     (r'^libsyn/', include('podiobooks.libsyn.urls')),
 
-    # Search
-    (r'^search/', include('podiobooks.search.urls')),
-
     # Robots, Favicon and Related
     (r'^robots\.txt$', RobotsView.as_view()),
     (r'^favicon\.ico$', RedirectView.as_view(url=settings.STATIC_URL + 'images/favicon.ico')),
@@ -93,6 +90,9 @@ urlpatterns = patterns('',
 
     # PB1 Donate Page
     (r'donate/|donate\.php', RedirectView.as_view(url='http://blog.podiobooks.com/why-you-should-donate/')),
+
+    # PB1 Spread The Word Page
+    (r'spreadtheword\.php', RedirectView.as_view(url='http://blog.podiobooks.com/why-you-should-donate/')),
 
     # PB1 Legal Page
     (r'legal\.php', RedirectView.as_view(url='http://blog.podiobooks.com/privacy-and-legal-speak-in-plain-if-not-ill-formed-english/')),
