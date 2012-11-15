@@ -10,7 +10,6 @@ from django.core.exceptions import ObjectDoesNotExist
 
 from podiobooks.core.models import Title, Category
 from podiobooks.core.forms import CategoryChoiceForm, ContributorChoiceForm, TitleSearchForm
-
 from podiobooks.core.queries import get_featured_shelf_titles, get_recently_released_shelf_titles, get_toprated_shelf_titles
 
 # pylint: disable=R0912
@@ -88,6 +87,14 @@ def title_search(request, keywords=None):
     return HttpResponsePermanentRedirect(redirect_to=reverse('site_search'))
 
 
+def clean_id(id=None):
+    id = filter(type(id).isdigit, id)
+    try:
+        id = int(id)
+    except ValueError:
+        raise Http404
+    return id
+
 class FeedRedirectView(RedirectView):
     """Redirect the PB1 Feed Path to the PB2 Feed Path"""
 
@@ -100,7 +107,7 @@ class FeedRedirectView(RedirectView):
             raise Http404
 
         if pk:
-            pk = filter(type(pk).isdigit, pk)
+            pk = clean_id(pk)
             title = get_object_or_404(Title, pk=pk)
             slug = title.slug
 
@@ -120,7 +127,7 @@ class TitleRedirectView(RedirectView):
         pk = self.request.GET.get('ID', None) # pylint: disable=C0103
 
         if pk:
-            pk = filter(type(pk).isdigit, pk)
+            pk = clean_id(pk)
             title = get_object_or_404(Title, pk=pk)
             slug = title.slug
 
