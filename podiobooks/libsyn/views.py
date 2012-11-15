@@ -26,7 +26,7 @@ class ImportFromLibsynFormView(FormView):
 
 
 class ImportFromLibsynResultsView(TemplateView):
-    """Inovkes Title Import and Displays Results"""
+    """Invokes Title Import and Displays Results"""
     template_name = "libsyn/import_from_libsyn_results.html"
 
     @method_decorator(login_required)
