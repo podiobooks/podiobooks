@@ -7,7 +7,6 @@
 
 from django.conf.urls import patterns, url, include
 from django.contrib import admin
-from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from django.conf import settings
 from django.views.generic import RedirectView
 from django.views.decorators.vary import vary_on_cookie
@@ -102,8 +101,6 @@ urlpatterns = patterns('',
 
     # Hack Redirect
     (r'submit', RedirectView.as_view(url='/')),
-
-
 )
 
 #Only hook up the static and media to run through Django in a dev environment...in prod, needs to be handled by web server
