@@ -6,6 +6,6 @@ pypm --non-interactive distribute
 pypm --non-interactive install pip
 pypm --non-interactive install virtualenv
 pypm --non-interactive install pil
-virtualenv --system-site-packages --distribute podiobooks-env
-call podiobooks-env\Scripts\activate.bat
+virtualenv --system-site-packages --distribute .env
+call .env\Scripts\activate.bat
 pip install -r podiobooks\requirements_dev.txt
