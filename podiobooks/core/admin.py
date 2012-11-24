@@ -29,7 +29,7 @@ class EpisodeInline(admin.TabularInline):
         return super(EpisodeInline, self).formfield_for_dbfield(db_field, **kwargs)
 
     model = Episode
-    exclude = ("deleted", 'media_date_created' )
+    exclude = ('deleted',)
 
 
 class TitleCategoryInline(admin.TabularInline):
@@ -39,7 +39,7 @@ class TitleCategoryInline(admin.TabularInline):
 
 class TitleInline(admin.TabularInline):
     model = Title
-    exclude = ("deleted", )
+    exclude = ('deleted', )
 
 
 class TitleContributorInline(admin.TabularInline):
@@ -51,7 +51,7 @@ class TitleContributorInline(admin.TabularInline):
 class TitleMediaInline(admin.TabularInline):
     model = Media
     extra = 0
-    exclude = ("deleted", )
+    exclude = ('deleted', )
 
 
 ### MAIN ADMIN CLASSES
@@ -123,7 +123,7 @@ class TitleAdmin(admin.ModelAdmin):
         EpisodeInline
     ]
     ordering = ['name']
-    prepopulated_fields = {"slug": ("name",), "old_slug": ("name",)}
+    prepopulated_fields = {'slug': ('name',), 'old_slug': ('name',)}
     save_on_tap = True
     search_fields = ['name', 'byline']
     fieldsets = (
