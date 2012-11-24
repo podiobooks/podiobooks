@@ -52,7 +52,7 @@ For all of those items, you should be able to basically follow the Installer pro
 2) File->Settings...
 3) Python Interpreters
 4) Add (button on top of screen)
-5) Browse to [YOUR PROJECT PATH]\podiobooks-env\Scripts\python.exe and click "Add".
+5) Browse to [YOUR PROJECT PATH]\.env\Scripts\python.exe and click "Add". (Project path is likely c:\users\<yourname>\PyCharmProjects\podiobooks)
 6) In Settings, under "Project Interpreter", select the new Interpreter you just created.
 7) In Settings, under "Django Support", select the project directory to be the podiobooks/podiobooks dir, it should auto-pop settings.py and manage.py.
 8) Save the settings
