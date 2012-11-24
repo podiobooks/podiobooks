@@ -22,11 +22,11 @@ class Command(NoArgsCommand):
             url = add_domain(Site.objects.get_current().domain, reverse('title_episodes_feed', args={title.slug}))
             result = feedparser.parse(url)
             if result.get('bozo', 0) == 1:
-                print result
-                bad_titles.append(title)
+                bad_titles.append({title: result.get('bozo')})
 
         if len(bad_titles) > 0:
             print "BAD TITLES FOUND"
+            print bad_titles
         else:
             print "ALL TITLES HAVE VALID FEEDS"
 
