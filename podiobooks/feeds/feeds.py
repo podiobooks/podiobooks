@@ -179,7 +179,7 @@ class EpisodeFeed(Feed):
         return obj.get_absolute_url()
 
     def item_pubdate(self, obj):
-        return obj.date_created
+        return obj.media_date_created if obj.media_date_created is not None else obj.date_created
 
     def item_title(self, obj):
         return strip_tags(obj.name).replace('&amp;', '&')
