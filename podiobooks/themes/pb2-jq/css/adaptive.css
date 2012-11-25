@@ -173,6 +173,11 @@
 		-o-column-count: 1;
 		column-count: 1;
 	}
+	.browse-by{
+		float:left;
+		width:100%;
+		text-align:left;
+	}
 }
 
 
