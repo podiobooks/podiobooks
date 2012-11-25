@@ -101,3 +101,26 @@
 	-o-column-count: 3;
 	column-count: 3;
 }
+
+/*
+ * Subscribale
+ */
+.subscribable-heading{
+	
+}
+.subscribable-heading a,
+.subscribable-heading a:link,
+.subscribable-heading a:active
+.subscribable-heading a:visited,
+.subscribable-heading a:hover{
+	text-decoration:none;
+}
+
+.subscribable-heading h1{
+	float:left;
+}
+.subscribable-heading h2{
+	float:right;
+	font-weight:normal;
+	margin-top:4px;
+}
