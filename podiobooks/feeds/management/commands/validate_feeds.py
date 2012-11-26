@@ -1,6 +1,5 @@
 """Validates The Feeds"""
 
-from django.core.cache import cache
 from django.core.management.base import NoArgsCommand
 from podiobooks.core.models import Title
 from django.contrib.sites.models import Site
