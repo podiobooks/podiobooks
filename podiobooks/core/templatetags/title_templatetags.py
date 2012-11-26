@@ -23,6 +23,7 @@ def show_contributors(title):
 
 
 def get_libsyn_cover_url(title, height, width):
+    """Pulls the final libsyn URL for a title from libsyn"""
     scale_url = "http://asset-server.libsyn.com/show/{0}/height/{1}/width/{2}".format(title.libsyn_show_id, height, width)
     if not settings.DEBUG:
         redirected_url = cache.get(scale_url)

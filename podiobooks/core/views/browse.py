@@ -3,9 +3,9 @@
 from django.db.models import Count
 
 from django.core.urlresolvers import reverse
-from django.views.generic import DetailView, ListView, RedirectView, TemplateView
+from django.views.generic import DetailView, ListView, TemplateView
 from django.shortcuts import get_object_or_404
-from django.http import Http404, HttpResponsePermanentRedirect
+from django.http import HttpResponsePermanentRedirect
 from django.core.exceptions import ObjectDoesNotExist
 
 from podiobooks.core.models import Award, Contributor, Category, Episode, Title, Series
@@ -15,7 +15,8 @@ from podiobooks.core.models import Award, Contributor, Category, Episode, Title,
 class AwardListView(ListView):
     """Shows list of awards with a count of how many titles are in each."""
     template_name = "core/award/award_list.html"
-    queryset = Award.objects.annotate(title_count=Count('titles')).filter(title_count__gt=0, deleted=False).order_by('name').prefetch_related("titles")
+    queryset = Award.objects.annotate(title_count=Count('titles')).filter(title_count__gt=0, deleted=False).order_by(
+        'name').prefetch_related("titles")
     context_object_name = 'award_list'
     paginate_by = 40
 
@@ -44,7 +45,8 @@ class BrowseOptionsView(TemplateView):
 class CategoryListView(ListView):
     """List of Categories with Count of Titles for Each"""
     template_name = 'core/category/category_list.html'
-    queryset = Category.objects.annotate(title_count=Count('title')).filter(title_count__gt=0, deleted=False).order_by('name').prefetch_related("title_set")
+    queryset = Category.objects.annotate(title_count=Count('title')).filter(title_count__gt=0, deleted=False).order_by(
+        'name').prefetch_related("title_set")
     context_object_name = 'category_list'
 
 
@@ -67,7 +69,8 @@ class CategoryDetailView(ListView):
 class ContributorListView(ListView):
     """List of all Contributors on the Site, with title count for each"""
     template_name = 'core/contributor/contributor_list.html'
-    queryset = Contributor.objects.annotate(title_count=Count('title')).filter(title_count__gt=0, deleted=False).order_by('last_name').prefetch_related("title_set")
+    queryset = Contributor.objects.annotate(title_count=Count('title')).filter(title_count__gt=0,
+        deleted=False).order_by('last_name').prefetch_related("title_set")
     context_object_name = 'contributor_list'
     paginate_by = 40
 
