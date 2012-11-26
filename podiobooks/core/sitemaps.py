@@ -1,3 +1,5 @@
+"""Django Sitemaps Module Configuration"""
+
 from django.contrib.sitemaps import Sitemap
 from podiobooks.core.models import Award, Category, Contributor, Title
 
