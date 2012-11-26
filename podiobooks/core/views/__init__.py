@@ -12,7 +12,7 @@ from podiobooks.core.models import Title, Category
 from podiobooks.core.forms import CategoryChoiceForm, ContributorChoiceForm, TitleSearchForm
 from podiobooks.core.queries import get_featured_shelf_titles, get_recently_released_shelf_titles, get_toprated_shelf_titles
 
-# pylint: disable=R0912
+# pylint: disable=R0912,C0103
 
 INITIAL_CATEGORY = 'science-fiction'
 INITIAL_CONTRIBUTOR = 'mur-lafferty'
@@ -88,6 +88,7 @@ def title_search(request, keywords=None):
 
 
 def clean_id(id=None):
+    """Utility function to clean an ID to make sure it's only numbers"""
     id = filter(type(id).isdigit, id)
     try:
         id = int(id)
