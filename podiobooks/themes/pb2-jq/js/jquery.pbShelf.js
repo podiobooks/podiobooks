@@ -111,6 +111,7 @@
 				
 				var start = where;
 				var end = start + (perSlide * 2);
+				end = items.length;
 				
 				if (end-start < 3){
 					end++; // force it to load at least 2 at a time
