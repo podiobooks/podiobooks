@@ -128,17 +128,17 @@
 						var a = $(this);
 						var src = a.data("image-src");
 						
-						//var img = $("<img data-title-slug='" + a.data("title-slug") + "' class='loading shelf-cover' alt='Cover for " + a.data("title-name") + "' src='" + src + "' />");
+						var img = $("<img data-title-slug='" + a.data("title-slug") + "' class='shelf-cover' alt='Cover for " + a.data("title-name") + "' src='" + src + "' />");
 						
-						//a.html(img);
-						//a.removeAttr("data-image-src");
+						a.html(img);
+						a.removeAttr("data-image-src");
 						/*
 						img.load(function(){
 							$(this).removeClass("loading");
 						});
 						*/
 						
-						a.css({"background": "url(" + src + ") left top no-repeat", "display": "block", "height":"100%", "width:":"100%"});						
+						//a.css({"background": "url(" + src + ") left top no-repeat", "display": "block", "height":"100%", "width:":"100%"});						
 					});					
 				}				
 			};
