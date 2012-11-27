@@ -484,9 +484,9 @@
 				 		shelfSteps.children().remove();				 		
 				 	}
 			 	}
-			 	var t = setTimeout(function(){
-			 		settings.afterMoveEnd((Math.round(where) + perSlide), perSlide);	
-			 	}, 50);
+			 	//var t = setTimeout(function(){
+			 	settings.afterMoveEnd((Math.round(where) + perSlide), perSlide);	
+			 	//}, 50);
 			 };
 			 
 			 
