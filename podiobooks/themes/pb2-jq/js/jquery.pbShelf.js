@@ -362,14 +362,12 @@
 			}		
 			
 			
-			
 			/*
 			 * Right/left shelf arrows
 			 * create, added/removed to/from shelf later
 			 */			
 			leftArrow = $("<a class='shelf-arrow shelf-arrow-left' href='#'><span data-icon='<' aria-hidden='true'></span><span class='visuallyhidden'>Next Page</span></a>");
 			rightArrow = $("<a class='shelf-arrow shelf-arrow-right' href='#'><span data-icon='>' aria-hidden='true'></span><span class='visuallyhidden'>Previous Page</span></a>");
-			
 			
 			
 			/*
@@ -484,9 +482,7 @@
 				 		shelfSteps.children().remove();				 		
 				 	}
 			 	}
-			 	//var t = setTimeout(function(){
-			 	settings.afterMoveEnd((Math.round(where) + perSlide), perSlide);	
-			 	//}, 50);
+			 	settings.afterMoveEnd((Math.round(where) + perSlide), perSlide);
 			 };
 			 
 			 
