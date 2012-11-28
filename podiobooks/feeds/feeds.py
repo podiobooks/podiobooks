@@ -8,6 +8,7 @@ from django.utils.feedgenerator import Rss201rev2Feed
 from django.utils.html import strip_tags
 from django.conf import settings
 from django.core.urlresolvers import reverse
+from django.core.exceptions import ObjectDoesNotExist
 
 from podiobooks.core.models import Title, Episode
 from podiobooks.feeds.protocols.itunes import ITunesFeed
@@ -107,7 +108,11 @@ class EpisodeFeed(Feed):
     # pylint: disable=W0221
     def get_object(self, request, *args, **kwargs):
         title_slug = kwargs.get('title_slug', None)
-        obj = get_object_or_404(Title.objects.prefetch_related('episodes', 'categories', 'contributors'), slug__exact=title_slug)
+        title_set = Title.objects.prefetch_related('episodes', 'categories', 'contributors')
+        try:
+            obj = title_set.get(slug__exact=title_slug)
+        except ObjectDoesNotExist:
+            obj = get_object_or_404(title_set, old_slug__exact=title_slug)
 
         ### Google Analytics for Feed
         tracker = Tracker(settings.GOOGLE_ANALYTICS_ID, Site.objects.get_current().domain)
