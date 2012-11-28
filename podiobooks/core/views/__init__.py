@@ -110,12 +110,11 @@ class FeedRedirectView(RedirectView):
         if pk:
             pk = clean_id(pk)
             title = get_object_or_404(Title, pk=pk)
-            slug = title.slug
-
-        try:
-            title = Title.objects.get(slug=slug)
-        except ObjectDoesNotExist:
-            title = get_object_or_404(Title, old_slug=slug)
+        else:
+            try:
+                title = Title.objects.get(slug=slug)
+            except ObjectDoesNotExist:
+                get_object_or_404(Title, old_slug=slug)
 
         return reverse('title_episodes_feed', args=(title.slug,))
 
