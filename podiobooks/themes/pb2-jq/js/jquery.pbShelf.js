@@ -106,11 +106,12 @@
 			}
 			
 			var loadImages = function(){
+				var perLoad = 5;
 				var perSlide = Math.floor(shelf.width() / itemWidth);	
 				var items = shelf.find(".shelf-item");
 				
 				var start = where;
-				var end = start + (perSlide * 2) + 1;
+				var end = start + (perSlide * perLoad);
 				
 				if (end > items.length){
 					end = items.length;
@@ -120,15 +121,14 @@
 				var set = [];
 				for (var i = start-1; i < end; i++){
 					if (set.length < 1){
-						set = $(items[i]).find('[data-image-src]');
-						
+						set = $(items[i]).find('[data-image-src]');						
 					}
 					else{						
 						set = set.add($(items[i]).find('[data-image-src]'));
 					}
 				}
 				
-				if (set.length <= perSlide * 2){
+				if (set.length + 1 < perSlide * perLoad){
 					loadMore = false;
 				}
 				if (end === items.length){
