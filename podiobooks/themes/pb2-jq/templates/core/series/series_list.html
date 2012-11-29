@@ -8,7 +8,7 @@
     <h1>All Series</h1>
     <ul class="browse-list">
         {% for series in series_list %}
-            <li class="long-running-list-item series_{{ series.slug }}"><a
+            <li class="series_{{ series.slug }}"><a
                     href="{{ series.get_absolute_url }}">{{ series.name }}</a> - {{ series.titles.all.count }} title{{ series.titles.all.count|pluralize }}</li>
         {% endfor %}
     </ul>

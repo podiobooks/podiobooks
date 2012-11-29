@@ -17,7 +17,7 @@
     {% endif %}
     <ul class="browse-list">
         {% for contributor in contributor_list %}
-            <li class="long-running-list-item contributor_list_item">
+            <li class="contributor_list_item">
                 <a href="
 		{% ifequal contributor.title_set.all.count 1 %}
 			{% url title_detail slug=contributor.title_set.all|first %} 
