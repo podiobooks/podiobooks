@@ -110,37 +110,61 @@
 				var items = shelf.find(".shelf-item");
 				
 				var start = where;
-				var end = start + (perSlide * 2);
-				end = items.length;
-				
-				if (end-start < 3){
-					end++; // force it to load at least 2 at a time
-				}
+				var end = start + (perSlide * 3) + 1;
 				
 				if (end > items.length){
 					end = items.length;
 				}
 				
+				var loadMore = true;
+				var set = [];
 				for (var i = start-1; i < end; i++){
+					if (set.length < 1){
+						set = $(items[i]).find('[data-image-src]');
+						
+					}
+					else{						
+						set = set.add($(items[i]).find('[data-image-src]'));
+					}
+				}
+				
+				if (set.length <= perSlide){
+					loadMore = false;
+				}
+				if (end === items.length){
+					loadMore = true;
+				}
 					
-					$(items[i]).find('[data-image-src]').each(function(){
+				if (loadMore){
+					for (var i = start-1; i < end; i++){					
+						$(items[i]).find('[data-image-src]').each(function(){
+							
+							var a = $(this);
+							var src = a.data("image-src");
+							
+							//var img = $("<img data-title-slug='" + a.data("title-slug") + "' class='shelf-cover' alt='Cover for " + a.data("title-name") + "' src='" + src + "' />");
+							
+							//a.html(img);
+							a.removeAttr("data-image-src");
+							
+							/*
+							img.load(function(){
+								$(this).removeClass("loading");
+							});
+							*/
+							a.css({"display": "block", "height":"100%", "width:":"100%", "background": "url(" + src + ") left top no-repeat"});
+							/*
+							if ($("html").hasClass("multiplebgs")){
+								a.css({"background": "url(" + src + ") left top no-repeat, url(/static/css/img/loading.gif) left top no-repeat"});
+							}
+							else{
+								a.css({"background": "url(" + src + ") left top no-repeat"});
+							}
+							*/							 						
+						});					
+					}		
+				}
 						
-						var a = $(this);
-						var src = a.data("image-src");
-						
-						var img = $("<img data-title-slug='" + a.data("title-slug") + "' class='shelf-cover' alt='Cover for " + a.data("title-name") + "' src='" + src + "' />");
-						
-						a.html(img);
-						a.removeAttr("data-image-src");
-						/*
-						img.load(function(){
-							$(this).removeClass("loading");
-						});
-						*/
-						
-						//a.css({"background": "url(" + src + ") left top no-repeat", "display": "block", "height":"100%", "width:":"100%"});						
-					});					
-				}				
 			};
 	
 			var makeShelf = function(){
@@ -482,6 +506,7 @@
 				 		shelfSteps.children().remove();				 		
 				 	}
 			 	}
+			 	loadImages();
 			 	settings.afterMoveEnd((Math.round(where) + perSlide), perSlide);
 			 };
 			 
@@ -505,7 +530,7 @@
 				}
 				
 				handleShelfPosition();
-				//loadImages();
+				
 			};
 			
 			var progress = $(".shelf-ajax-loader");
