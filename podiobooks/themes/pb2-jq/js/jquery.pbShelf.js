@@ -139,6 +139,7 @@
 					if (end === items.length){
 						loadMore = true;
 					}
+					loadImages(true);
 				}	
 				
 				
@@ -596,7 +597,7 @@
 			}			
 			shelf.addClass("pbShelf");
 			loadImages();
-			loadImages(true);
+			
 		});
 	};
 })( jQuery );
