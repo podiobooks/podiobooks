@@ -173,6 +173,9 @@
 		-o-column-count: 1;
 		column-count: 1;
 	}
+	.browse-list li{
+		display:list-item;
+	}
 	.browse-by{
 		float:left;
 		width:100%;
