@@ -152,7 +152,7 @@
 								$(this).removeClass("loading");
 							});
 							*/
-							a.css({"display": "block", "height":"100%", "width:":"100%", "background": "url(" + src + ") left top no-repeat"});
+							a.css({"display": "block", "height":"100%", "width:":"100%"});
 							
 							if ($("html").hasClass("multiplebgs")){
 								a.css({"background": "url(" + src + ") left top no-repeat, url(/static/css/img/loading.gif) left top no-repeat"});
