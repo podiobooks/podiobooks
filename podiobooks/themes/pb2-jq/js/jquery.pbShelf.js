@@ -128,7 +128,7 @@
 					}
 				}
 				
-				if (set.length <= perSlide){
+				if (set.length <= perSlide * 2){
 					loadMore = false;
 				}
 				if (end === items.length){
