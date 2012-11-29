@@ -105,42 +105,35 @@
 				});				
 			}
 			
-			var loadImages = function(all){
+			var loadImages = function(){
 				var perSlide = Math.floor(shelf.width() / itemWidth);	
 				var items = shelf.find(".shelf-item");
 				
 				var start = where;
-				var end = start + (perSlide * 3) + 1;
+				var end = start + (perSlide * 2) + 1;
 				
 				if (end > items.length){
 					end = items.length;
 				}
 				
-				if (all){
-					end = items.length;
+				var loadMore = true;
+				var set = [];
+				for (var i = start-1; i < end; i++){
+					if (set.length < 1){
+						set = $(items[i]).find('[data-image-src]');
+						
+					}
+					else{						
+						set = set.add($(items[i]).find('[data-image-src]'));
+					}
+				}
+				
+				if (set.length <= perSlide * 2){
+					loadMore = false;
+				}
+				if (end === items.length){
 					loadMore = true;
 				}
-				else{
-					var loadMore = true;
-					var set = [];
-					for (var i = start-1; i < end; i++){
-						if (set.length < 1){
-							set = $(items[i]).find('[data-image-src]');
-							
-						}
-						else{						
-							set = set.add($(items[i]).find('[data-image-src]'));
-						}
-					}
-					
-					if (set.length <= perSlide * 2){
-						loadMore = false;
-					}
-					if (end === items.length){
-						loadMore = true;
-					}
-					loadImages(true);
-				}	
 				
 				
 				if (loadMore){
@@ -514,7 +507,7 @@
 				 		shelfSteps.children().remove();				 		
 				 	}
 			 	}
-			 	//loadImages();
+			 	loadImages();
 			 	settings.afterMoveEnd((Math.round(where) + perSlide), perSlide);
 			 };
 			 
@@ -596,8 +589,7 @@
 				makeShelf();
 			}			
 			shelf.addClass("pbShelf");
-			loadImages();
-			
+			loadImages();			
 		});
 	};
 })( jQuery );
