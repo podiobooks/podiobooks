@@ -153,14 +153,14 @@
 							});
 							*/
 							a.css({"display": "block", "height":"100%", "width:":"100%", "background": "url(" + src + ") left top no-repeat"});
-							/*
+							
 							if ($("html").hasClass("multiplebgs")){
 								a.css({"background": "url(" + src + ") left top no-repeat, url(/static/css/img/loading.gif) left top no-repeat"});
 							}
 							else{
 								a.css({"background": "url(" + src + ") left top no-repeat"});
 							}
-							*/							 						
+														 						
 						});					
 					}		
 				}
