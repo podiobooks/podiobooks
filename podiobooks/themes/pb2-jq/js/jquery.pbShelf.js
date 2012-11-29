@@ -142,9 +142,9 @@
 							var a = $(this);
 							var src = a.data("image-src");
 							
-							//var img = $("<img data-title-slug='" + a.data("title-slug") + "' class='shelf-cover' alt='Cover for " + a.data("title-name") + "' src='" + src + "' />");
+							var img = $("<img data-title-slug='" + a.data("title-slug") + "' class='shelf-cover' alt='Cover for " + a.data("title-name") + "' src='" + src + "' />");
 							
-							//a.html(img);
+							a.html(img);
 							a.removeAttr("data-image-src");
 							
 							/*
@@ -152,7 +152,7 @@
 								$(this).removeClass("loading");
 							});
 							*/
-							a.css({"display": "block", "height":"100%", "width:":"100%", "background": "url(" + src + ") left top no-repeat"});
+							//a.css({"display": "block", "height":"100%", "width:":"100%", "background": "url(" + src + ") left top no-repeat"});
 							/*
 							if ($("html").hasClass("multiplebgs")){
 								a.css({"background": "url(" + src + ") left top no-repeat, url(" + siteVars("img") + "loading.gif) left top no-repeat"});
