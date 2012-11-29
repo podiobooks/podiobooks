@@ -291,7 +291,15 @@
 	 	padding:5px 0;
 	 	float:none;
 	 	box-shadow:0 1px 1px #b2ceee, 0 2px 1px #e2e8ee;
-	 	display:none;
+		
+		position:absolute !important;
+		clip: rect(1px 1px 1px 1px);
+		/* IE6, IE7 */
+		clip: rect(1px, 1px, 1px, 1px);		
+	}
+	.search-active{
+		position:static !important;
+		clip:auto;
 	}
 	.search-bar-trigger{
 		display:block;
