@@ -19,10 +19,12 @@ a:visited,
 a:link,
 a:active {
     color: #0054A6;
+    text-decoration:none;
 }
 
 a:hover {
     color: #c35230;
+    text-decoration:underline;
 }
 
 p {
