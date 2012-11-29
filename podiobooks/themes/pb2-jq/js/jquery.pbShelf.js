@@ -343,7 +343,7 @@
 						}
 					});
 				}
-				loadImages();
+				
 			};
 			
 			
@@ -561,8 +561,9 @@
 			}
 			else{				
 				makeShelf();
-			}
+			}			
 			shelf.addClass("pbShelf");
+			loadImages();
 		});
 	};
 })( jQuery );
