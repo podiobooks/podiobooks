@@ -106,17 +106,25 @@
 			}
 			
 			var loadImages = function(){
+				
+				// How many images in-advance we want to load (it'll actually be this number, minus 1')
 				var perLoad = 5;
-				var perSlide = Math.floor(shelf.width() / itemWidth);	
-				var items = shelf.find(".shelf-item");
 				
-				var start = where;
-				var end = start + (perSlide * perLoad);
+				// calculate how many items per shelf we have
+				var perSlide = Math.floor(shelf.width() / itemWidth);
 				
+				var items = shelf.find(".shelf-item");				
+				
+				// calculate a 'start' and 'end' range for how many shelf items to check
+				// we are going to check whether or not there are enough images pre-loaded
+				// for the next set of shelf items to display on-slide
+				var start = where;				
+				var end = start + (perSlide * perLoad);				
 				if (end > items.length){
 					end = items.length;
 				}
 				
+				// Build a 'set' of unloaded images
 				var loadMore = true;
 				var set = [];
 				for (var i = start-1; i < end; i++){
@@ -128,44 +136,29 @@
 					}
 				}
 				
+				// If we aren' running into an issue, don't load any more images yet
 				if (set.length + 1 < perSlide * perLoad){
 					loadMore = false;
 				}
+				
+				// If we are running up against the end of the shelf, finish out the image loads
 				if (end === items.length){
 					loadMore = true;
-				}
+				}				
 				
-				
+				// If we have decided to load a set images
+				// Load them now				
 				if (loadMore){
 					for (var i = start-1; i < end; i++){					
-						$(items[i]).find('[data-image-src]').each(function(){
-							
+						$(items[i]).find('[data-image-src]').each(function(){							
 							var a = $(this);
-							var src = a.data("image-src");
-							
-							var img = $("<img data-title-slug='" + a.data("title-slug") + "' class='shelf-cover' alt='Cover for " + a.data("title-name") + "' src='" + src + "' />");
-							
+							var src = a.data("image-src");							
+							var img = $("<img data-title-slug='" + a.data("title-slug") + "' class='shelf-cover' alt='Cover for " + a.data("title-name") + "' src='" + src + "' />");							
 							a.html(img);
 							a.removeAttr("data-image-src");
-							
-							/*
-							img.load(function(){
-								$(this).removeClass("loading");
-							});
-							*/
-							//a.css({"display": "block", "height":"100%", "width:":"100%", "background": "url(" + src + ") left top no-repeat"});
-							/*
-							if ($("html").hasClass("multiplebgs")){
-								a.css({"background": "url(" + src + ") left top no-repeat, url(" + siteVars("img") + "loading.gif) left top no-repeat"});
-							}
-							else{
-								a.css({"background": "url(" + src + ") left top no-repeat"});
-							}					
-							*/									 						
 						});					
 					}		
-				}
-						
+				}						
 			};
 	
 			var makeShelf = function(){
