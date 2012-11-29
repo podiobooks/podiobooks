@@ -90,6 +90,7 @@ INSTALLED_APPS = (
     'podiobooks.feeds',
     'podiobooks.search',
     'south',
+    "debug_toolbar",
     )
 
 ### DATABASE SETTINGS
@@ -167,7 +168,9 @@ BASE_META_DESCRIPTION = "Free audio books delivered as podcasts. Subscribe for f
 
 ### DONATIONS
 DONATION_BUSINESS_NAME = 'evo@podiobooks.com'
-
+#INTERNAL_IPS = ('127.0.0.1',)
+#INSTALLED_APPS += ( "debug_toolbar", )
+#MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware', )
 ### MEDIABRUTE
 CSS_TOP_FILES = ["clear.css", "styles.css", ]
 CSS_BOTTOM_FILES = ["gsc-overrides.css", "adaptive.css", "small-screen.css"]
