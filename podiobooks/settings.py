@@ -90,7 +90,6 @@ INSTALLED_APPS = (
     'podiobooks.feeds',
     'podiobooks.search',
     'south',
-    "debug_toolbar",
     )
 
 ### DATABASE SETTINGS
