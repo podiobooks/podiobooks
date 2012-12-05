@@ -56,7 +56,7 @@
 				{% endif %}
 				
 				<p class='hidden'>Free Downloadable Audiobooks</p>
-				<p class='logo'><a href='/'><img alt='Podiobooks Logo' src='{{ STATIC_URL }}images/pb-logo.jpg'/></a></p>
+				<p class='logo'><a href='{{ HOME_URL }}'><img alt='Podiobooks Logo' src='{{ STATIC_URL }}images/pb-logo.jpg'/></a></p>
 				
 				<div class='nav-bar clearfix'>
 					{% block search_box %}
@@ -67,7 +67,7 @@
 				        <li><a href='http://community.podiobooks.com/'>Community</a></li>
                         <li><a href='http://blog.podiobooks.com/what-happened-to-my-login/'>Account</a></li>
 				    </ul>
-				    <p class="podiobooks-nav-text"><a href="{% url home_page %}">Podiobooks.com</a></p>
+				    <p class="podiobooks-nav-text"><a href="{{ HOME_URL }}">Podiobooks.com</a></p>
 				    
 				    
 				    
