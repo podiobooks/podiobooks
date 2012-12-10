@@ -66,7 +66,9 @@ class EpisodeFeed(Feed):
     feed_type = ITunesFeed
 
     def author_name(self, obj):
-        return obj.contributors.all()[0].display_name
+        authors = obj.titlecontributors.filter(contributor_type=1).values_list('contributor__display_name', flat=True)
+        author_string = ', '.join(authors)
+        return author_string
 
     def categories(self, obj):
         return obj.categories.all()
