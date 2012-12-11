@@ -256,6 +256,8 @@ class Title(models.Model):
         help_text='Starts with k-')
     itunes_adam_id = models.IntegerField(null=True, blank=True, verbose_name='iTunes ADAM Id',
         help_text='From iTunes Page URL for Podcast')
+    itunes_new_feed_url = models.BooleanField(default=False, verbose_name='iTunes New Feed Url Tag',
+        help_text='Include <itunes:new_feed_url> tag in feed (Required if you are changing the slug)')
     podiobooker_blog_url = models.URLField(max_length=255, null=True, blank=True, verbose_name='Blog URL',
         help_text='Full URL to Blog Post Announcing Book')
     # Note: episodes are available as episodes.all()
