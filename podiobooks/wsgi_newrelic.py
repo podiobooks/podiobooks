@@ -1,5 +1,5 @@
 """
-WSGI config for stepweaver_weave project.
+WSGI config for the project, including NewRelic Wrapper.
 
 This module contains the WSGI application used by Django's development server
 and any production WSGI deployments. It should expose a module-level variable
