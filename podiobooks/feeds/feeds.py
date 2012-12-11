@@ -89,6 +89,10 @@ class EpisodeFeed(Feed):
         else:
             return 'en-us'
 
+    def itunes_new_feed_url(self, obj):
+        """Return boolean as to whether to include the '<itunes:new_feed_url>' tag in the feed"""
+        return obj.itunes_new_feed_url
+
     def feed_copyright(self, obj):
         if obj.license:
             return obj.license.slug
@@ -103,7 +107,8 @@ class EpisodeFeed(Feed):
             'image': self.image(obj),
             'explicit': self.explicit(obj),
             'complete': self.complete(obj),
-            'global_categories': ('podiobooks', 'audio books',)
+            'global_categories': ('podiobooks', 'audio books',),
+            'itunes_new_feed_url': self.itunes_new_feed_url(obj),
         }
         return extra_args
 
