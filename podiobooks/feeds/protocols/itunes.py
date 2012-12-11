@@ -36,6 +36,10 @@ class ITunesFeed(Rss201rev2Feed):
         handler.addQuickElement(u'itunes:name', u'Evo Terra')
         handler.addQuickElement(u'itunes:email', u'evo@podiobooks.com')
         handler.endElement(u'itunes:owner')
+
+        #iTunes New Feed URL
+        if self.feed['itunes_new_feed_url']:
+            handler.addQuickElement(u'itunes:new-feed-url', strip_tags(self.feed['feed_url']))
     
     def add_item_elements(self, handler, item):
         """Adds new elements to each item in the feed"""
