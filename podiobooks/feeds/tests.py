@@ -18,6 +18,8 @@ class FeedUrlTestCase(TestCase):
         
         self.title1 = Title.objects.get(slug='trader-tales-4-double-share')
         self.title2 = Title.objects.get(slug='the-plump-buffet')
+        self.title1.itunes_new_feed_url = True
+        self.title1.save()
     
     def testEpisodeFeed(self):
         response = self.client.get('/rss/feeds/episodes/trader-tales-4-double-share/')
@@ -33,3 +35,10 @@ class FeedUrlTestCase(TestCase):
         response = self.client.get('/rss/feeds/titles/')
         self.assertContains(response, 'Plump Buffet')
         self.assertContains(response, 'Double Share')
+
+    def testItunesNewFeedUrl(self):
+        response = self.client.get('/rss/feeds/episodes/trader-tales-4-double-share/')
+        self.assertContains(response, '<itunes:new-feed-url>http://example.com/rss/feeds/episodes/trader-tales-4-double-share/</itunes:new-feed-url>')
+
+        response = self.client.get('/rss/feeds/episodes/the-plump-buffet/')
+        self.assertNotContains(response, '<itunes:new-feed-url>')
