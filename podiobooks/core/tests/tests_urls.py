@@ -32,20 +32,20 @@ class UrlTestCase(TestCase):
         self.assertEquals(200, response.status_code)
 
     def test_title_search_page(self):
-        response = self.client.get('/title/search/')
-        self.assertRedirects(response, '/search/', status_code=301)
+        response = self.client.get('/title/search/', follow=True)
+        self.assertRedirects(response, '/search/interstitial/', status_code=301)
 
     def test_title_search_keywords(self):
-        response = self.client.get('/title/search/science%20fiction/')
-        self.assertRedirects(response, '/search/?q=science%20fiction', status_code=301)
+        response = self.client.get('/title/search/science%20fiction/', follow=True)
+        self.assertRedirects(response, '/search/interstitial/', status_code=301)
 
     def test_title_search_keywords_get(self):
-        response = self.client.get('/title/search/', {'keyword': 'sigler'})
-        self.assertRedirects (response, '/search/?q=sigler', status_code=301)
+        response = self.client.get('/title/search/', {'keyword': 'sigler'}, follow=True)
+        self.assertRedirects (response, '/search/interstitial/', status_code=301)
 
     def test_title_search_pb1(self):
         response = self.client.get('/podiobooks/search.php', {'keyword': 'sigler'}, follow=True)
-        self.assertRedirects(response, '/search/?q=sigler', status_code=301)
+        self.assertRedirects(response, '/search/interstitial/', status_code=301)
 
     def test_title_category_search_pb1(self):
         response = self.client.get('/podiobooks/search.php', {'category': 1}, follow=True)
