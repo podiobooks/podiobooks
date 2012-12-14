@@ -13,20 +13,6 @@ class GoogleSearchView(TemplateView):
     template_name = 'search/google_custom_search.html'
 
     def get(self, request, *args, **kwargs):
-        referrer = request.META.get('HTTP_REFERER')
-        if referrer:
-            referrer_ok = False
-            if 'podiobooks' in referrer:
-                referrer_ok = True
-            if 'localhost' in referrer:
-                referrer_ok = True
-            if'127.0.0.1' in referrer:
-                referrer_ok = True
-
-            if not referrer_ok:
-                return HttpResponseRedirect(reverse('site_search_interstitial'))
-        else:
-            return HttpResponseRedirect(reverse('site_search_interstitial'))
-
+        """ Process get requests """
         context = self.get_context_data(**kwargs)
         return self.render_to_response(context)

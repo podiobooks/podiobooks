@@ -68,6 +68,8 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.middleware.cache.FetchFromCacheMiddleware',
     'django.middleware.http.ConditionalGetMiddleware',
+    
+    'podiobooks.middleware.redirect_middleware.GoogleSearchFilter',
     )
 
 ROOT_URLCONF = 'podiobooks.urls'
