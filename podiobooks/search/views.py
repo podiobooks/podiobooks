@@ -11,8 +11,3 @@ class GoogleSearchInterstitialView(TemplateView):
 class GoogleSearchView(TemplateView):
     """Google Custom Search"""
     template_name = 'search/google_custom_search.html'
-
-    def get(self, request, *args, **kwargs):
-        """ Process get requests """
-        context = self.get_context_data(**kwargs)
-        return self.render_to_response(context)
