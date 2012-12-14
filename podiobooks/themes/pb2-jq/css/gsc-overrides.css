@@ -29,3 +29,6 @@ body .gsc-results .gsc-imageResult-column:hover {
     font-size: smaller;
     font-style: italic;
 }
+body .gsc-thinWrapper{
+	width:67%;
+}
