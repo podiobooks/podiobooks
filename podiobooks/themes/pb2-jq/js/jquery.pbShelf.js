@@ -1,3 +1,4 @@
+
 /*
  * Podiobooks Shelf plugin
  * Custom carousel bookshelves for Podiobooks
@@ -365,12 +366,13 @@
 					var startLeft;
 					var movingThisShelf = false;
 					
+					
 					document.addEventListener('touchstart', function(event){
 						movingThisShelf = false;
 						var touch = event.touches[0];
 						startLeft = parseInt(wholeShelf.css("left").replace("px", ""));
 						xxx = touch.pageX;
-						yyy = touch.pageY;
+						var yyy = touch.pageY;
 						
 						if (xxx > shelfViewBoundaries[0][0] && yyy > shelfViewBoundaries[0][1]){
 							if (xxx < shelfViewBoundaries[0][0] + shelfViewBoundaries[1] && yyy < shelfViewBoundaries[0][1] + shelfViewBoundaries[2]){
@@ -380,29 +382,42 @@
 					});
 					
 					document.addEventListener('touchmove', function(event){
+						
 						if (movingThisShelf){
-							event.preventDefault();
+							
 							var touch = event.touches[0];
 							var x = touch.pageX
 							var diff = xxx - x;
+							
+							if (diff > 10 || diff < -10){
+								event.preventDefault();	
+							}							
+							
+							
 							wholeShelf.css({"left": startLeft - (diff)});
 						}
 					}, false);
 					
 					document.addEventListener('touchend', function(event){
+						
 						if (movingThisShelf){
+							
 							var endLeft = parseInt(wholeShelf.css("left").replace("px", ""));
 							var shelfWidth = shelf.width();
+							
 							var touch = event.changedTouches[0];
 							var x = touch.pageX
 							var diff = xxx - x;
 							
+							
 							if (endLeft > 0){	// Far left
+								
 								wholeShelf.animate({"left": 0}, 400, "easeOutCirc", function(){
 									cur = 0;
 									where = cur / itemWidth;
 									handleArrows();
 								});
+								
 							}
 							else if (-(endLeft) > maxLeft){	// Far Right
 								
