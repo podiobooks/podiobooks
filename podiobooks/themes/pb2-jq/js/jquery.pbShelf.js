@@ -365,14 +365,14 @@
 					var xxx;
 					var startLeft;
 					var movingThisShelf = false;
-					
+					var yyy;
 					
 					document.addEventListener('touchstart', function(event){
 						movingThisShelf = false;
 						var touch = event.touches[0];
 						startLeft = parseInt(wholeShelf.css("left").replace("px", ""));
 						xxx = touch.pageX;
-						var yyy = touch.pageY;
+						yyy = touch.pageY;
 						
 						if (xxx > shelfViewBoundaries[0][0] && yyy > shelfViewBoundaries[0][1]){
 							if (xxx < shelfViewBoundaries[0][0] + shelfViewBoundaries[1] && yyy < shelfViewBoundaries[0][1] + shelfViewBoundaries[2]){
@@ -389,7 +389,7 @@
 							var x = touch.pageX
 							var diff = xxx - x;
 							
-							if (diff > 10 || diff < -10){
+							if (Math.abs(diff > 10)){
 								event.preventDefault();	
 							}							
 							
@@ -406,8 +406,9 @@
 							var shelfWidth = shelf.width();
 							
 							var touch = event.changedTouches[0];
-							var x = touch.pageX
+							var x = touch.pageX;
 							var diff = xxx - x;
+							var diffY = yyy - touch.pageY;
 							
 							
 							if (endLeft > 0){	// Far left
@@ -430,7 +431,7 @@
 							else{
 								var whereToGo = parseInt(endLeft / itemWidth);
 								
-								if (diff > 0){
+								if (diff > 0 && Math.abs(diffY) < Math.abs(diff)){
 									whereToGo -= 1;
 								}
 								whereToGo = whereToGo * itemWidth;
@@ -444,6 +445,7 @@
 									where = cur / itemWidth;
 									handleArrows();
 								});
+								
 							}
 						}
 						movingThisShelf = false;
