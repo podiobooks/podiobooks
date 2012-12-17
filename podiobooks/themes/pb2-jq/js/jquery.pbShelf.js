@@ -322,12 +322,14 @@
 					var movingThisShelf = false;
 					
 					var slidingShelf = false;
+					var scrollingInstead = false;
 					var xxx = 0;
 					var yyy = 0;
 
 					document.addEventListener('touchstart', function(event){
 						movingThisShelf = false;
 						slidingShelf = false;
+						scrollingInstead = false;
 						xxx = 0;
 						yyy = 0;
 						
@@ -368,12 +370,15 @@
 								deltaY = -(y - startY);
 							}
 							
-							if (!slidingShelf){
+							if (!slidingShelf && !scrollingInstead){
 								var xxx = Math.abs(deltaX);
 								var yyy = Math.abs(deltaY);
 
 								if (xxx > 10 && xxx > yyy){
 									slidingShelf = true;
+								}
+								else if (yyy > 10 & !scrollingInstead){
+									scrollingInstead = true;
 								}
 							}
 
@@ -431,17 +436,16 @@
 									where = cur / itemWidth;
 									handleArrows();
 								});
-								
 							}
 						}
 						movingThisShelf = false;
 						slidingShelf = false;
+						scrollingInstead = false;
 						xxx = 0;
 						yyy = 0;
-						
+
 					}, false);
 				}
-				
 			};
 			
 			
