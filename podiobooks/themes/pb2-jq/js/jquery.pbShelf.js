@@ -67,6 +67,7 @@
 			var numSteps = 0;
 			var curStep = 0;
 			var maxLeft = 0;
+			var shelfViewBoundaries = [];
 			
 			/*
 			 * Some shelf element localization
@@ -311,7 +312,7 @@
 				 * on touch devices
 				 */
 				if (wholeShelf && $("html").hasClass("touch")){
-					
+					/*
 					wholeShelf.bind("movestart", function(e){
 						
 						if ((e.distX > e.distY && e.distX < -e.distY) || (e.distX < e.distY && e.distX > -e.distY)) {
@@ -358,68 +359,79 @@
 							});
 						}
 					});
+					*/
 					
-					/*
 					var xxx;
 					var startLeft;
+					var movingThisShelf = false;
 					
 					document.addEventListener('touchstart', function(event){
+						movingThisShelf = false;
 						var touch = event.touches[0];
 						startLeft = parseInt(wholeShelf.css("left").replace("px", ""));
 						xxx = touch.pageX;
+						yyy = touch.pageY;
+						
+						if (xxx > shelfViewBoundaries[0][0] && yyy > shelfViewBoundaries[0][1]){
+							if (xxx < shelfViewBoundaries[0][0] + shelfViewBoundaries[1] && yyy < shelfViewBoundaries[0][1] + shelfViewBoundaries[2]){
+								movingThisShelf = true;
+							}
+						}
 					});
 					
 					document.addEventListener('touchmove', function(event){
-						var touch = event.touches[0];
-						var x = touch.pageX
-						var diff = xxx - x;
-						wholeShelf.css({"left": startLeft - (diff)});
-						
+						if (movingThisShelf){
+							var touch = event.touches[0];
+							var x = touch.pageX
+							var diff = xxx - x;
+							wholeShelf.css({"left": startLeft - (diff)});
+						}
 					}, false);
 					
 					document.addEventListener('touchend', function(event){
-						var endLeft = parseInt(wholeShelf.css("left").replace("px", ""));
-						var shelfWidth = shelf.width();
-						var touch = event.changedTouches[0];
-						var x = touch.pageX
-						var diff = xxx - x;
-						
-						if (endLeft > 0){	// Far left
-							wholeShelf.animate({"left": 0}, 400, "easeOutCirc", function(){
-								cur = 0;
-								where = cur / itemWidth;
-								handleArrows();
-							});
-						}
-						else if (-(endLeft) > maxLeft){	// Far Right
+						if (movingThisShelf){
+							var endLeft = parseInt(wholeShelf.css("left").replace("px", ""));
+							var shelfWidth = shelf.width();
+							var touch = event.changedTouches[0];
+							var x = touch.pageX
+							var diff = xxx - x;
 							
-							wholeShelf.animate({"left": -(maxLeft)}, 400, "easeOutCirc", function(){
-								cur = maxLeft;
-								where = cur / itemWidth;
-								handleArrows();
-							});
-						}
-						else{
-							var whereToGo = parseInt(endLeft / itemWidth);
-							
-							if (diff > 0){
-								whereToGo -= 1;
+							if (endLeft > 0){	// Far left
+								wholeShelf.animate({"left": 0}, 400, "easeOutCirc", function(){
+									cur = 0;
+									where = cur / itemWidth;
+									handleArrows();
+								});
 							}
-							whereToGo = whereToGo * itemWidth;
-							
-							if (-(whereToGo) > maxLeft){
-								whereToGo = -(maxLeft);
+							else if (-(endLeft) > maxLeft){	// Far Right
+								
+								wholeShelf.animate({"left": -(maxLeft)}, 400, "easeOutCirc", function(){
+									cur = maxLeft;
+									where = cur / itemWidth;
+									handleArrows();
+								});
 							}
-							
-							wholeShelf.animate({"left": whereToGo}, 400, "easeOutCirc", function(){
-								cur = -(parseInt(wholeShelf.css("left").replace("px", "")));
-								where = cur / itemWidth;
-								handleArrows();
-							});
+							else{
+								var whereToGo = parseInt(endLeft / itemWidth);
+								
+								if (diff > 0){
+									whereToGo -= 1;
+								}
+								whereToGo = whereToGo * itemWidth;
+								
+								if (-(whereToGo) > maxLeft){
+									whereToGo = -(maxLeft);
+								}
+								
+								wholeShelf.animate({"left": whereToGo}, 400, "easeOutCirc", function(){
+									cur = -(parseInt(wholeShelf.css("left").replace("px", "")));
+									where = cur / itemWidth;
+									handleArrows();
+								});
+							}
 						}
+						movingThisShelf = false;
 					});
-					*/
-					
 				}
 				
 			};
@@ -561,9 +573,22 @@
 				 	}
 			 	}
 			 	loadImages();
+			 	drawShelfBoundaries();
 			 	settings.afterMoveEnd((Math.round(where) + perSlide), perSlide);
 			 };
 			 
+			 
+			var drawShelfBoundaries = function(){
+				var view = shelf.find(".shelf-view");
+				var offset = view.offset();
+				var topLeft = [offset.left, offset.top];
+				var w = view.width();
+				var h = view.height();
+				
+				//$("<div style='background:#f00' />").css({"position": "absolute", "left": offset.left, "top": offset.top, "width": w, "height": h, "z-index": "99"}).appendTo("body");
+				shelfViewBoundaries = [topLeft, w, h];
+				//l(shelfViewBoundaries);
+			};
 			 
 			/*
 			 * Hiding/showing arrows 
