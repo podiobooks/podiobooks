@@ -321,8 +321,15 @@
 					var startLeft;
 					var movingThisShelf = false;
 					
+					var slidingShelf = false;
+					var xxx = 0;
+					var yyy = 0;
+
 					document.addEventListener('touchstart', function(event){
 						movingThisShelf = false;
+						slidingShelf = false;
+						xxx = 0;
+						yyy = 0;
 						
 						var touch = event.touches[0];
 						
@@ -361,7 +368,16 @@
 								deltaY = -(y - startY);
 							}
 							
-							if (Math.abs(deltaX) > 20){
+							if (!slidingShelf){
+								var xxx = Math.abs(deltaX);
+								var yyy = Math.abs(deltaY);
+
+								if (xxx > 10 && xxx > yyy){
+									slidingShelf = true;
+								}
+							}
+
+							if (slidingShelf){
 								event.preventDefault();
 							}
 							
@@ -419,6 +435,10 @@
 							}
 						}
 						movingThisShelf = false;
+						slidingShelf = false;
+						xxx = 0;
+						yyy = 0;
+						
 					}, false);
 				}
 				
