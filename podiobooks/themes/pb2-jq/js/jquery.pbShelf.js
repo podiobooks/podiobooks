@@ -390,10 +390,8 @@
 							var diff = xxx - x;
 							
 							if (Math.abs(diff > 20)){
-								l("preventing");
 								event.preventDefault();	
-							}							
-							
+							}
 							
 							wholeShelf.css({"left": startLeft - (diff)});
 						}
