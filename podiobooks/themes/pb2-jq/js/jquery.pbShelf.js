@@ -54,6 +54,7 @@
 				l("numSteps : " + numSteps);
 				l("curStep : " + curStep);
 				l("maxLeft : " + maxLeft);
+				l("shelfViewBoundaries" + shelfViewBoundaries);
 				l("==================");
 			};
 			
@@ -68,7 +69,7 @@
 			var numSteps = 0;
 			var curStep = 0;
 			var maxLeft = 0;
-			var shelfViewBoundaries = [];
+			var shelfViewBoundaries = []; // [[<offset left>, <offset top>], <shelf width>, <shelf height>]
 			
 			/*
 			 * Some shelf element localization
@@ -315,9 +316,10 @@
 				if (wholeShelf && $("html").hasClass("touch")){
 					
 					var xxx;
+					var yyy;
+					
 					var startLeft;
 					var movingThisShelf = false;
-					var yyy;
 					
 					document.addEventListener('touchstart', function(event){
 						movingThisShelf = false;
@@ -340,14 +342,30 @@
 						if (movingThisShelf){
 							
 							var touch = event.touches[0];
-							var x = touch.pageX
-							var diff = xxx - x;
+							var x = touch.pageX;
+							var y = touch.pageY;
+							var deltaX;
+							var deltaY;
 							
-							if (Math.abs(diff > 20)){
+							if (xxx > x){	// sliding finger left
+								deltaX = xxx - x; 
+							}
+							else{
+								deltaX = -(x - xxx);
+							}
+							
+							if (yyy > y){
+								deltaY = yyy - y;
+							}
+							else{
+								deltaY = -(y - yyy);
+							}
+							
+							if (Math.abs(deltaX) > 20){
 								event.preventDefault();	
 							}
 							
-							wholeShelf.css({"left": startLeft - (diff)});
+							wholeShelf.css({"left": startLeft - (deltaX)});
 						}
 					}, false);
 					
@@ -361,9 +379,8 @@
 							var touch = event.changedTouches[0];
 							var x = touch.pageX;
 							var diff = xxx - x;
-							var diffY = yyy - touch.pageY;
-							
-							
+							var diffY = Math.abs(Math.abs(touch.pageY) - Math.abs(yyy));
+														
 							if (endLeft > 0){	// Far left
 								
 								wholeShelf.animate({"left": 0}, 400, "easeOutCirc", function(){
@@ -384,7 +401,7 @@
 							else{
 								var whereToGo = parseInt(endLeft / itemWidth);
 								
-								if (Math.abs(diff) > 0 && Math.abs(diffY) < Math.abs(diff)){
+								if (diff > 0 && Math.abs(diffY) < Math.abs(diff)){
 									whereToGo -= 1;
 								}
 								whereToGo = whereToGo * itemWidth;
@@ -556,9 +573,7 @@
 				var w = view.width();
 				var h = view.height();
 				
-				//$("<div style='background:#f00' />").css({"position": "absolute", "left": offset.left, "top": offset.top, "width": w, "height": h, "z-index": "99"}).appendTo("body");
 				shelfViewBoundaries = [topLeft, w, h];
-				//l(shelfViewBoundaries);
 			};
 			 
 			/*
