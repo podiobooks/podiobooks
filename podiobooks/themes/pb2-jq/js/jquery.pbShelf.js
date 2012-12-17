@@ -309,7 +309,7 @@
 				
 				
 				/*
-				 * User jquery.event.move plugin
+				 * Native touch events
 				 * to animate shelf movement
 				 * on touch devices
 				 */
@@ -370,6 +370,8 @@
 								deltaY = -(y - startY);
 							}
 							
+							// If we havent yet decided whether we are sliding a shelf or scrolling,
+							// Make that decision now
 							if (!slidingShelf && !scrollingInstead){
 								var xxx = Math.abs(deltaX);
 								var yyy = Math.abs(deltaY);
@@ -382,10 +384,13 @@
 								}
 							}
 
+							// If we're sliding, prevent scrolling
 							if (slidingShelf){
 								event.preventDefault();
 							}
 							
+							// As long as we haven't decided that we are scrolling,
+							// move the shelf
 							if (!scrollingInstead){
 								wholeShelf.css({"left": startLeft - (deltaX)});
 							}
