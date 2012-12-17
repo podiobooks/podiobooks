@@ -333,7 +333,7 @@
 								movingThisShelf = true;
 							}
 						}
-					});
+					}, false);
 					
 					document.addEventListener('touchmove', function(event){
 						
@@ -402,7 +402,7 @@
 							}
 						}
 						movingThisShelf = false;
-					});
+					}, false);
 				}
 				
 			};
