@@ -2,13 +2,13 @@
 /*
  * Podiobooks Shelf plugin
  * Custom carousel bookshelves for Podiobooks
- * 
- * 
+ *
+ *
  * Version: 0.9
- * 
- * 
+ *
+ *
  * History:
- * 
+ *
  * 0.1: Initial plugin creation
  * 0.2: Internalized checking for change form, adding binding for onChange
  * 0.3: Added some more settings for custom classes
@@ -18,7 +18,7 @@
  * 0.7: Allows for shelf creation based on static content (i.e. no need to ajax on first load)
  * 0.8: Allows blank incoming cookies to delete the existing cookie
  * 0.9 Dynamic touch-sliding for adjustable-width shelves; Shelf width no longer needs to be a full item width; Callback hooks for "after movement" of shelves
- * 
+ *
  */
 
 (function( $ ){
@@ -26,12 +26,12 @@
 	$.fn.pbShelf = function( options ) {
   
 		var settings = {
-			"cookie"		 : 		null,
-			"shelfItem"		 : 		".shelf-item",
-			"shelfItemCover" : 		".shelf-cover",
-			"clearShelfFirst":		false,
-			"afterMoveEnd"	 : 		function(titlesDeep, perSlide){},
-			"url"			 : 		null
+			"cookie"			:		null,
+			"shelfItem"			:		".shelf-item",
+			"shelfItemCover"	:		".shelf-cover",
+			"clearShelfFirst"	:		false,
+			"afterMoveEnd"		:		function(titlesDeep, perSlide){},
+			"url"				:		null
 		};
 		
 		/*
@@ -85,8 +85,8 @@
 						
 			/*
 			 * Store the shelf as local variable,
-			 * Set shelf height 
-			 * 
+			 * Set shelf height
+			 *
 			 * (otherwise it compresses when elements are removed)
 			 */
 			
@@ -101,11 +101,11 @@
 				sel.unbind("change");
 				
 				sel.change(function(){
-					var modSettings = settings;					
+					var modSettings = settings;
 					modSettings.url = sel.parents("form").attr("action") + sel.val() + '/';
 					modSettings.clearShelfFirst = true;
 					shelf.pbShelf(modSettings);
-				});				
+				});
 			}
 			
 			var loadImages = function(){
@@ -116,13 +116,13 @@
 				// calculate how many items per shelf we have
 				var perSlide = Math.floor(shelf.width() / itemWidth);
 				
-				var items = shelf.find(".shelf-item");				
+				var items = shelf.find(".shelf-item");
 				
 				// calculate a 'start' and 'end' range for how many shelf items to check
 				// we are going to check whether or not there are enough images pre-loaded
 				// for the next set of shelf items to display on-slide
-				var start = where;				
-				var end = start + (perSlide * perLoad);				
+				var start = where;
+				var end = start + (perSlide * perLoad);
 				if (end > items.length){
 					end = items.length;
 				}
@@ -132,9 +132,9 @@
 				var set = [];
 				for (var i = start-1; i < end; i++){
 					if (set.length < 1){
-						set = $(items[i]).find('[data-image-src]');						
+						set = $(items[i]).find('[data-image-src]');
 					}
-					else{						
+					else{
 						set = set.add($(items[i]).find('[data-image-src]'));
 					}
 				}
@@ -147,21 +147,21 @@
 				// If we are running up against the end of the shelf, finish out the image loads
 				if (end === items.length){
 					loadMore = true;
-				}				
+				}
 				
 				// If we have decided to load a set images
-				// Load them now				
+				// Load them now
 				if (loadMore){
-					for (var i = start-1; i < end; i++){					
-						$(items[i]).find('[data-image-src]').each(function(){							
+					for (var i = start-1; i < end; i++){
+						$(items[i]).find('[data-image-src]').each(function(){
 							var a = $(this);
-							var src = a.data("image-src");							
-							var img = $("<img data-title-slug='" + a.data("title-slug") + "' class='shelf-cover' alt='Cover for " + a.data("title-name") + "' src='" + src + "' />");							
+							var src = a.data("image-src");
+							var img = $("<img data-title-slug='" + a.data("title-slug") + "' class='shelf-cover' alt='Cover for " + a.data("title-name") + "' src='" + src + "' />");
 							a.html(img);
 							a.removeAttr("data-image-src");
-						});					
-					}		
-				}						
+						});
+					}
+				}
 			};
 	
 			var makeShelf = function(){
@@ -190,8 +190,8 @@
 					var w = 0;
 					shelfItems.each(function(){
 						var item = $(this);
-						numItems++;						
-						itemWidth = parseInt(item.width()) + parseInt(item.css("padding-left")) + parseInt(item.css("padding-right")) + parseInt(item.css("margin-left")) + parseInt(item.css("margin-right"));
+						numItems++;
+						itemWidth = parseInt(item.width(), 10) + parseInt(item.css("padding-left"), 10) + parseInt(item.css("padding-right"), 10) + parseInt(item.css("margin-left"), 10) + parseInt(item.css("margin-right"), 10);
 						w += itemWidth;
 					});
 					maxWidth = w;
@@ -237,7 +237,7 @@
 						if (cur < maxWidth - shelf.width()){
 							
 							var shelfWidth = shelf.width();
-							var targ = cur + parseInt(shelfWidth / itemWidth) * itemWidth;
+							var targ = cur + parseInt(shelfWidth / itemWidth, 10) * itemWidth;
 														
 							if (targ < maxLeft){
 								cur = targ;
@@ -252,8 +252,8 @@
 							wholeShelf.animate({
 								left: -targ
 							},600,"easeOutCirc");
-						}						
-						handleArrows();						
+						}
+						handleArrows();
 					});
 				}
 				
@@ -267,9 +267,9 @@
 							var shelfWidth = shelf.width();
 							
 							// accomidates for the far-right being offset at the left of the shelf
-							var targ = parseInt(cur / itemWidth) * itemWidth - parseInt(shelfWidth / itemWidth) * itemWidth;
+							var targ = parseInt(cur / itemWidth, 10) * itemWidth - parseInt(shelfWidth / itemWidth, 10) * itemWidth;
 							
-							if (cur % itemWidth != 0){
+							if (cur % itemWidth !== 0){
 								targ += itemWidth;
 							}
 							
@@ -279,7 +279,7 @@
 								targ = 0;
 							}
 							else{
-								cur = targ
+								cur = targ;
 							}
 							
 							where = cur / itemWidth;
@@ -299,10 +299,10 @@
 				
 				/*
 				 * Add arrow/positioner to window resize
-				 * 
-				 * I don't know if there are serious 
+				 *
+				 * I don't know if there are serious
 				 * performance implications here...
-				 * 
+				 *
 				 */
 				$(window).unbind("resize", handleArrows);
 				$(window).bind("resize", handleArrows);
@@ -310,13 +310,13 @@
 				
 				/*
 				 * User jquery.event.move plugin
-				 * to animate shelf movement 
+				 * to animate shelf movement
 				 * on touch devices
 				 */
 				if (wholeShelf && $("html").hasClass("touch")){
 					
-					var xxx;
-					var yyy;
+					var startX;
+					var startY;
 					
 					var startLeft;
 					var movingThisShelf = false;
@@ -326,12 +326,12 @@
 						
 						var touch = event.touches[0];
 						
-						startLeft = parseInt(wholeShelf.css("left").replace("px", ""));
-						xxx = touch.pageX;
-						yyy = touch.pageY;
+						startLeft = parseInt(wholeShelf.css("left").replace("px", ""), 10);
+						startX = touch.pageX;
+						startY = touch.pageY;
 						
-						if (xxx > shelfViewBoundaries[0][0] && yyy > shelfViewBoundaries[0][1]){
-							if (xxx < shelfViewBoundaries[0][0] + shelfViewBoundaries[1] && yyy < shelfViewBoundaries[0][1] + shelfViewBoundaries[2]){
+						if (startX > shelfViewBoundaries[0][0] && startY > shelfViewBoundaries[0][1]){
+							if (startX < shelfViewBoundaries[0][0] + shelfViewBoundaries[1] && startY < shelfViewBoundaries[0][1] + shelfViewBoundaries[2]){
 								movingThisShelf = true;
 							}
 						}
@@ -347,22 +347,22 @@
 							var deltaX;
 							var deltaY;
 							
-							if (xxx > x){	// sliding finger left
-								deltaX = xxx - x; 
+							if (startX > x){	// sliding finger left
+								deltaX = startX - x;
 							}
 							else{
-								deltaX = -(x - xxx);
+								deltaX = -(x - startX);
 							}
 							
-							if (yyy > y){
-								deltaY = yyy - y;
+							if (startY > y){
+								deltaY = startY - y;
 							}
 							else{
-								deltaY = -(y - yyy);
+								deltaY = -(y - startY);
 							}
 							
 							if (Math.abs(deltaX) > 20){
-								event.preventDefault();	
+								event.preventDefault();
 							}
 							
 							wholeShelf.css({"left": startLeft - (deltaX)});
@@ -373,13 +373,13 @@
 						
 						if (movingThisShelf){
 							
-							var endLeft = parseInt(wholeShelf.css("left").replace("px", ""));
+							var endLeft = parseInt(wholeShelf.css("left").replace("px", ""), 10);
 							var shelfWidth = shelf.width();
 							
 							var touch = event.changedTouches[0];
 							var x = touch.pageX;
-							var diff = xxx - x;
-							var diffY = Math.abs(Math.abs(touch.pageY) - Math.abs(yyy));
+							var diff = startX - x;
+							var diffY = Math.abs(Math.abs(touch.pageY) - Math.abs(startY));
 														
 							if (endLeft > 0){	// Far left
 								
@@ -399,7 +399,7 @@
 								});
 							}
 							else{
-								var whereToGo = parseInt(endLeft / itemWidth);
+								var whereToGo = parseInt(endLeft / itemWidth, 10);
 								
 								if (diff > 0 && Math.abs(diffY) < Math.abs(diff)){
 									whereToGo -= 1;
@@ -411,7 +411,7 @@
 								}
 								
 								wholeShelf.animate({"left": whereToGo}, 400, "easeOutCirc", function(){
-									cur = -(parseInt(wholeShelf.css("left").replace("px", "")));
+									cur = -(parseInt(wholeShelf.css("left").replace("px", ""), 10));
 									where = cur / itemWidth;
 									handleArrows();
 								});
@@ -426,30 +426,30 @@
 			
 			
 			/*
-			 * If we have a cookie name to set, set it 
+			 * If we have a cookie name to set, set it
 			 * based on the currently selected form>select
 			 */
 			if(settings.cookie){
 				var val = shelf.find("form select").val();
-				if (val != ""){
+				if (val !== ""){
 					$.cookie(settings.cookie, val, {expires:7});
 				}
 				else{
 					$.cookie(settings.cookie, "None", {expires: -1});
 				}
-			}		
+			}
 			
 			
 			/*
 			 * Right/left shelf arrows
 			 * create, added/removed to/from shelf later
-			 */			
+			 */
 			leftArrow = $("<a class='shelf-arrow shelf-arrow-left' href='#'><span data-icon='<' aria-hidden='true'></span><span class='visuallyhidden'>Next Page</span></a>");
 			rightArrow = $("<a class='shelf-arrow shelf-arrow-right' href='#'><span data-icon='>' aria-hidden='true'></span><span class='visuallyhidden'>Previous Page</span></a>");
 			
 			
 			/*
-			 * Swift step: 
+			 * Swift step:
 			 * Moving via position dots
 			 */
 			var bindSwiftStep = function(a, i, per){
@@ -486,84 +486,84 @@
 			/*
 			 * Current shelf position
 			 */
-			 var handleShelfPosition = function(){
-			 	
-			 	shelfSteps.children().remove();
-			 	
-			 	if (shelf.find(settings.shelfItem).length){
-			 		
-			 		// Set a bunch of "global" variables
-			 		maxLeft = itemWidth * numItems - shelf.width();
-			 		
-				 	numSteps = Math.ceil(maxWidth / shelf.width());
-				 	
-				 	var perSlide = Math.floor(shelf.width() / itemWidth);	
-				 	
-				 	// Figure out where we are on the shelf before the latest movement
-				 	if (cur >= maxLeft){
-				 		curStep = Math.ceil((cur / itemWidth) / perSlide);
-				 	}	
-				 	else{
-				 		curStep = Math.floor((cur / itemWidth) / perSlide);				 			
-				 	}
-				 	
-				 	// If we are into the shelf but not yet at the end, increment the current step
-				 	if (cur > 0 && cur < Math.floor(shelf.width() / itemWidth) * itemWidth){
-				 		curStep += 1;
-				 	}
-				 	
-				 	// if we aren't yet at the end of the shelf, but we will be next time, adjust it so it doesn't show the 'last' dot
-				 	if (cur < maxLeft && cur + parseInt(shelf.width() / itemWidth) * itemWidth >= maxLeft){
-				 		curStep = numSteps - 2;
-				 	}
-				 	
-				 	// Adjust for shelves with only 2 pages
-				 	if (curStep >= numSteps){
-				 		curStep = numSteps - 1;
-				 	}
-				 	
-				 	// build shelf step dots, fill in the correct one
-				 	for (var i = 0; i < numSteps; i++){
-				 		var li;
-				 		var iPlus = i + 1;
-				 		
-				 		if (i == curStep){
-				 			li = $("<li><a class='shelf-step-cur' href='#'><span class='visuallyhidden'>Page " + iPlus + "</span></a></li>").appendTo(shelfSteps);
-				 		}
-				 		else{
-				 			li = $("<li><a href='#'><span class='visuallyhidden'>Page " + iPlus + "</span></a></li>").appendTo(shelfSteps);
-				 		}
-				 		
-				 		circ = li.find("a");
-				 		
-				 		if (i < numSteps - 1){
-				 			bindSwiftStep(circ, i, perSlide);
-				 		}
-				 		else{
-				 			bindSwiftStep(circ);	
-				 		}				 		
-				 	}
-				 	
-				 	
-				 	/*
-				 	 * Center the step indicator based on percentage
-				 	 */
-				 	shelfSteps.css({'left':(shelf.width() / 2 - shelfSteps.width() / 2) / shelf.width() * 100 + "%"});
-				 	
-				 	
-				 	/*
-				 	 * If there is only 1 step and there 
-				 	 * are less shelf items than shelf spaces,
-				 	 * hide the shelf progress indicator
-				 	 */
-				 	if (numSteps < 2 && shelf.find(settings.shelfItem).length < perSlide){
-				 		shelfSteps.children().remove();				 		
-				 	}
-			 	}
-			 	loadImages();
-			 	drawShelfBoundaries();
-			 	settings.afterMoveEnd((Math.round(where) + perSlide), perSlide);
-			 };
+			var handleShelfPosition = function(){
+
+				shelfSteps.children().remove();
+
+				if (shelf.find(settings.shelfItem).length){
+
+					// Set a bunch of "global" variables
+					maxLeft = itemWidth * numItems - shelf.width();
+
+					numSteps = Math.ceil(maxWidth / shelf.width());
+
+					var perSlide = Math.floor(shelf.width() / itemWidth);
+
+					// Figure out where we are on the shelf before the latest movement
+					if (cur >= maxLeft){
+						curStep = Math.ceil((cur / itemWidth) / perSlide);
+					}
+					else{
+						curStep = Math.floor((cur / itemWidth) / perSlide);
+					}
+
+					// If we are into the shelf but not yet at the end, increment the current step
+					if (cur > 0 && cur < Math.floor(shelf.width() / itemWidth) * itemWidth){
+						curStep += 1;
+					}
+
+					// if we aren't yet at the end of the shelf, but we will be next time, adjust it so it doesn't show the 'last' dot
+					if (cur < maxLeft && cur + parseInt(shelf.width() / itemWidth, 10) * itemWidth >= maxLeft){
+						curStep = numSteps - 2;
+					}
+
+					// Adjust for shelves with only 2 pages
+					if (curStep >= numSteps){
+						curStep = numSteps - 1;
+					}
+
+					// build shelf step dots, fill in the correct one
+					for (var i = 0; i < numSteps; i++){
+						var li;
+						var iPlus = i + 1;
+
+						if (i == curStep){
+							li = $("<li><a class='shelf-step-cur' href='#'><span class='visuallyhidden'>Page " + iPlus + "</span></a></li>").appendTo(shelfSteps);
+						}
+						else{
+							li = $("<li><a href='#'><span class='visuallyhidden'>Page " + iPlus + "</span></a></li>").appendTo(shelfSteps);
+						}
+
+						circ = li.find("a");
+
+						if (i < numSteps - 1){
+							bindSwiftStep(circ, i, perSlide);
+						}
+						else{
+							bindSwiftStep(circ);
+						}
+					}
+
+
+					/*
+					 * Center the step indicator based on percentage
+					 */
+					shelfSteps.css({'left':(shelf.width() / 2 - shelfSteps.width() / 2) / shelf.width() * 100 + "%"});
+
+
+					/*
+					* If there is only 1 step and there
+					* are less shelf items than shelf spaces,
+					* hide the shelf progress indicator
+					*/
+					if (numSteps < 2 && shelf.find(settings.shelfItem).length < perSlide){
+						shelfSteps.children().remove();
+					}
+					loadImages();
+					drawShelfBoundaries();
+					settings.afterMoveEnd((Math.round(where) + perSlide), perSlide);
+				}
+			};
 			 
 			 
 			var drawShelfBoundaries = function(){
@@ -577,11 +577,11 @@
 			};
 			 
 			/*
-			 * Hiding/showing arrows 
+			 * Hiding/showing arrows
 			 * based on shelf position
 			 */
 			var handleArrows = function(){
-				if (cur == 0){
+				if (cur === 0){
 					leftArrow.addClass("hidden");
 				}
 				else{
@@ -611,7 +611,7 @@
 				/*
 				 * Remove all content from shelf,
 				 * except for the select box
-				 * 
+				 *
 				 * This allows the plugin to call itself,
 				 * instead of the calling script needing to declare
 				 * an on-change event for the select box
@@ -625,12 +625,12 @@
 				});
 				
 				/*
-				 * Ajax Progress element image, 
+				 * Ajax Progress element image,
 				 * appears in middle of shelf during onchange ajax call
-				 * 
-				 * Create it, append it to the body for caching, 
+				 *
+				 * Create it, append it to the body for caching,
 				 * move it into the shelf and show
-				 */ 
+				 */
 				
 				progress.appendTo(shelf).show();
 				
@@ -641,19 +641,19 @@
 						
 						/*
 						 * Ajax request should return HTML
-						 * 
+						 *
 						 * Append all data to the shelf
 						 */
 						$(data).appendTo(shelf);
-						makeShelf();			
+						makeShelf();
 					}
 				});
 			}
-			else{				
+			else{
 				makeShelf();
-			}			
+			}
 			shelf.addClass("pbShelf");
-			loadImages();			
+			loadImages();
 		});
 	};
 })( jQuery );
