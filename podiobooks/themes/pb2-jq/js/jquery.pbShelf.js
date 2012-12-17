@@ -313,54 +313,6 @@
 				 * on touch devices
 				 */
 				if (wholeShelf && $("html").hasClass("touch")){
-					/*
-					wholeShelf.bind("movestart", function(e){
-						
-						if ((e.distX > e.distY && e.distX < -e.distY) || (e.distX < e.distY && e.distX > -e.distY)) {
-							e.preventDefault();
-  						}
-					}).bind("move", function(e){
-						var startLeft = parseInt(wholeShelf.css("left").replace("px", ""));
-						wholeShelf.css({"left": startLeft + (e.deltaX)});
-					}).bind("moveend", function(e){
-						
-						var endLeft = parseInt(wholeShelf.css("left").replace("px", ""));
-						var shelfWidth = shelf.width();
-						
-						if (endLeft > 0){	// Far left
-							wholeShelf.animate({"left": 0}, 400, "easeOutCirc", function(){
-								cur = 0;
-								where = cur / itemWidth;
-								handleArrows();
-							});
-						}
-						else if (-(endLeft) > maxLeft){	// Far Right
-							
-							wholeShelf.animate({"left": -(maxLeft)}, 400, "easeOutCirc", function(){
-								cur = maxLeft;
-								where = cur / itemWidth;
-								handleArrows();
-							});
-						}
-						else{
-							var whereToGo = parseInt(endLeft / itemWidth);
-							if (e.deltaX < 0){
-								whereToGo -= 1;
-							}
-							whereToGo = whereToGo * itemWidth;
-							
-							if (-(whereToGo) > maxLeft){
-								whereToGo = -(maxLeft);
-							}
-							
-							wholeShelf.animate({"left": whereToGo}, 400, "easeOutCirc", function(){
-								cur = -(parseInt(wholeShelf.css("left").replace("px", "")));
-								where = cur / itemWidth;
-								handleArrows();
-							});
-						}
-					});
-					*/
 					
 					var xxx;
 					var startLeft;
@@ -369,7 +321,9 @@
 					
 					document.addEventListener('touchstart', function(event){
 						movingThisShelf = false;
+						
 						var touch = event.touches[0];
+						
 						startLeft = parseInt(wholeShelf.css("left").replace("px", ""));
 						xxx = touch.pageX;
 						yyy = touch.pageY;
