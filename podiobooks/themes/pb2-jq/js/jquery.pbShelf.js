@@ -386,7 +386,9 @@
 								event.preventDefault();
 							}
 							
-							wholeShelf.css({"left": startLeft - (deltaX)});
+							if (!scrollingInstead){
+								wholeShelf.css({"left": startLeft - (deltaX)});
+							}
 						}
 					}, false);
 					
@@ -422,7 +424,7 @@
 							else{
 								var whereToGo = parseInt(endLeft / itemWidth, 10);
 								
-								if (diff > 0 && Math.abs(diffY) < Math.abs(diff)){
+								if (diff > 0 && Math.abs(diffY) < Math.abs(diff) && !scrollingInstead){
 									whereToGo -= 1;
 								}
 								whereToGo = whereToGo * itemWidth;
