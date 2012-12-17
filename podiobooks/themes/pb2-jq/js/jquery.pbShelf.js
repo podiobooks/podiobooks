@@ -311,7 +311,7 @@
 				 * on touch devices
 				 */
 				if (wholeShelf && $("html").hasClass("touch")){
-					/*
+					
 					wholeShelf.bind("movestart", function(e){
 						
 						if ((e.distX > e.distY && e.distX < -e.distY) || (e.distX < e.distY && e.distX > -e.distY)) {
@@ -358,7 +358,8 @@
 							});
 						}
 					});
-					*/
+					
+					/*
 					var xxx;
 					var startLeft;
 					
@@ -417,6 +418,7 @@
 							});
 						}
 					});
+					*/
 					
 				}
 				
