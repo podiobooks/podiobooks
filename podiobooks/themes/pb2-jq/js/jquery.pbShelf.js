@@ -389,7 +389,8 @@
 							var x = touch.pageX
 							var diff = xxx - x;
 							
-							if (Math.abs(diff > 10)){
+							if (Math.abs(diff > 20)){
+								l("preventing");
 								event.preventDefault();	
 							}							
 							
@@ -431,7 +432,7 @@
 							else{
 								var whereToGo = parseInt(endLeft / itemWidth);
 								
-								if (diff > 0 && Math.abs(diffY) < Math.abs(diff)){
+								if (Math.abs(diff) > 0 && Math.abs(diffY) < Math.abs(diff)){
 									whereToGo -= 1;
 								}
 								whereToGo = whereToGo * itemWidth;
