@@ -311,11 +311,9 @@
 				 * on touch devices
 				 */
 				if (wholeShelf && $("html").hasClass("touch")){
+					/*
 					wholeShelf.bind("movestart", function(e){
-						/*
-						 * Check if hte move event is actually vertical scrolling
-						 * If it is, don't start trying to drag the shelves around
-						 */
+						
 						if ((e.distX > e.distY && e.distX < -e.distY) || (e.distX < e.distY && e.distX > -e.distY)) {
 							e.preventDefault();
   						}
@@ -360,6 +358,66 @@
 							});
 						}
 					});
+					*/
+					var xxx;
+					var startLeft;
+					
+					document.addEventListener('touchstart', function(event){
+						var touch = event.touches[0];
+						startLeft = parseInt(wholeShelf.css("left").replace("px", ""));
+						xxx = touch.pageX;
+					});
+					
+					document.addEventListener('touchmove', function(event){
+						var touch = event.touches[0];
+						var x = touch.pageX
+						var diff = xxx - x;
+						wholeShelf.css({"left": startLeft - (diff)});
+						
+					}, false);
+					
+					document.addEventListener('touchend', function(event){
+						var endLeft = parseInt(wholeShelf.css("left").replace("px", ""));
+						var shelfWidth = shelf.width();
+						var touch = event.changedTouches[0];
+						var x = touch.pageX
+						var diff = xxx - x;
+						
+						if (endLeft > 0){	// Far left
+							wholeShelf.animate({"left": 0}, 400, "easeOutCirc", function(){
+								cur = 0;
+								where = cur / itemWidth;
+								handleArrows();
+							});
+						}
+						else if (-(endLeft) > maxLeft){	// Far Right
+							
+							wholeShelf.animate({"left": -(maxLeft)}, 400, "easeOutCirc", function(){
+								cur = maxLeft;
+								where = cur / itemWidth;
+								handleArrows();
+							});
+						}
+						else{
+							var whereToGo = parseInt(endLeft / itemWidth);
+							
+							if (diff > 0){
+								whereToGo -= 1;
+							}
+							whereToGo = whereToGo * itemWidth;
+							
+							if (-(whereToGo) > maxLeft){
+								whereToGo = -(maxLeft);
+							}
+							
+							wholeShelf.animate({"left": whereToGo}, 400, "easeOutCirc", function(){
+								cur = -(parseInt(wholeShelf.css("left").replace("px", "")));
+								where = cur / itemWidth;
+								handleArrows();
+							});
+						}
+					});
+					
 				}
 				
 			};
