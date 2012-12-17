@@ -381,6 +381,7 @@
 					
 					document.addEventListener('touchmove', function(event){
 						if (movingThisShelf){
+							event.preventDefault();
 							var touch = event.touches[0];
 							var x = touch.pageX
 							var diff = xxx - x;
