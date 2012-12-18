@@ -1,23 +1,26 @@
-
 /*
  * Podiobooks Shelf plugin
  * Custom carousel bookshelves for Podiobooks
  *
  *
- * Version: 0.9
+ * Version: 0.9.1
  *
  *
  * History:
  *
- * 0.1: Initial plugin creation
- * 0.2: Internalized checking for change form, adding binding for onChange
- * 0.3: Added some more settings for custom classes
- * 0.4: Shelf position indicator
- * 0.5: Support for shelves that don't need ajax calls
- * 0.6: Uses 'find' instead of 'children' for digging up relevant shelf peices
- * 0.7: Allows for shelf creation based on static content (i.e. no need to ajax on first load)
- * 0.8: Allows blank incoming cookies to delete the existing cookie
- * 0.9 Dynamic touch-sliding for adjustable-width shelves; Shelf width no longer needs to be a full item width; Callback hooks for "after movement" of shelves
+ * 0.1: 	Initial plugin creation
+ * 0.2: 	Internalized checking for change form, adding binding for onChange
+ * 0.3: 	Added some more settings for custom classes
+ * 0.4: 	Shelf position indicator
+ * 0.5: 	Support for shelves that don't need ajax calls
+ * 0.6: 	Uses 'find' instead of 'children' for digging up relevant shelf peices
+ * 0.7: 	Allows for shelf creation based on static content (i.e. no need to ajax on first load)
+ * 0.8: 	Allows blank incoming cookies to delete the existing cookie
+ * 0.9: 	Dynamic touch-sliding for adjustable-width shelves
+ *			Shelf width no longer needs to be a full item width
+ *			Callback hooks for "after movement" of shelves;
+ *			Adding option for turning off positioning of shelf steps
+ * 0.9.1:	Native touch events
  *
  */
 
@@ -26,18 +29,15 @@
 	$.fn.pbShelf = function( options ) {
   
 		var settings = {
-			"cookie"			:		null,
-			"shelfItem"			:		".shelf-item",
-			"shelfItemCover"	:		".shelf-cover",
-			"clearShelfFirst"	:		false,
-			"afterMoveEnd"		:		function(titlesDeep, perSlide){},
-			"url"				:		null
+			"cookie"				:		null,
+			"shelfItem"				:		".shelf-item",
+			"shelfItemCover"		:		".shelf-cover",
+			"clearShelfFirst"		:		false,
+			"afterMoveEnd"			:		function(titlesDeep, perSlide){},
+			"url"					:		null,
+			"positionShelfSteps"	:		true,
+			"ajaxLoaderImage"		:		"img/ajax-loading.gif"
 		};
-		
-		/*
-		 * Debugging function for logging the current shelf status
-		 */
-		
 		
 		return this.each(function(){
 			
@@ -45,6 +45,9 @@
 				$.extend(settings, options);
 			}
 			
+			/*
+			 * Debugging function for logging the current shelf status
+			 */
 			var status = function(){
 				l("cur: " + cur);
 				l("where: " + where);
@@ -77,7 +80,6 @@
 			var wholeShelf;
 			
 			var shelf = $(this);
-			shelf.height(shelf.height());
 			
 			var shelfSteps;
 			var leftArrow;
@@ -89,6 +91,7 @@
 			 *
 			 * (otherwise it compresses when elements are removed)
 			 */
+			shelf.height(shelf.height());
 			
 			
 			/*
@@ -251,7 +254,7 @@
 							
 							wholeShelf.animate({
 								left: -targ
-							},600,"easeOutCirc");
+							}, 600, "easeOutCirc");
 						}
 						handleArrows();
 					});
@@ -290,7 +293,7 @@
 														
 							wholeShelf.animate({
 								left: -targ
-							},600,"easeOutCirc");
+							}, 600,"easeOutCirc");
 						}
 						handleArrows();
 					});
@@ -508,7 +511,7 @@
 					
 					wholeShelf.animate({
 						left:targ
-					},600,"easeOutCirc");
+					}, 600, "easeOutCirc");
 					
 					handleArrows();
 				});
@@ -579,7 +582,9 @@
 					/*
 					 * Center the step indicator based on percentage
 					 */
-					shelfSteps.css({'left':(shelf.width() / 2 - shelfSteps.width() / 2) / shelf.width() * 100 + "%"});
+					if (settings.positionShelfSteps){
+						shelfSteps.css({'left':(shelf.width() / 2 - shelfSteps.width() / 2) / shelf.width() * 100 + "%"});
+					}
 
 
 					/*
@@ -596,17 +601,20 @@
 				}
 			};
 			 
-			 
+			
+			/*
+			 * Figure out where the boundaries of each shelf are
+			 */
 			var drawShelfBoundaries = function(){
 				var view = shelf.find(".shelf-view");
 				var offset = view.offset();
 				var topLeft = [offset.left, offset.top];
 				var w = view.width();
 				var h = view.height();
-				
 				shelfViewBoundaries = [topLeft, w, h];
 			};
-			 
+			
+			
 			/*
 			 * Hiding/showing arrows
 			 * based on shelf position
@@ -631,9 +639,10 @@
 			
 			var progress = $(".shelf-ajax-loader");
 			if (progress.length < 1){
-				progress = $("<p class='shelf-ajax-loader'><img src='" + siteVars("img") + "ajax-loader-bar.gif'/></p>");
+				progress = $("<p class='shelf-ajax-loader'><img src='" + settings.ajaxLoaderImage + "' /></p>");
 				progress.appendTo($("body"));
 			}
+			
 			/*
 			 * Ajax workhorse
 			 */
