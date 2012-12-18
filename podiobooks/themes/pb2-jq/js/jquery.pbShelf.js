@@ -370,14 +370,14 @@
 							if (startX > x){	// sliding finger left
 								deltaX = startX - x;
 							}
-							else{
+							else{				// sliding finger right
 								deltaX = -(x - startX);
 							}
 							
-							if (startY > y){
+							if (startY > y){	// sliding finger up
 								deltaY = startY - y;
 							}
-							else{
+							else{				// sliding finger down
 								deltaY = -(y - startY);
 							}
 							
@@ -403,11 +403,15 @@
 							// As long as we haven't decided that we are scrolling,
 							// move the shelf
 							if (!scrollingInstead){								
-								var whereTo = startLeft - (deltaX);								
-								if ((startLeft === 0 || -(startLeft) >= maxLeft) && (whereTo > 0 || -(whereTo) > maxLeft)){
-									deltaX /= settings.rubberBandStrength;
+								var whereTo = startLeft - (deltaX);
+								
+								if (whereTo > 0){
+									whereTo /= settings.rubberBandStrength;
 								}
-								whereTo = startLeft - (deltaX);
+								else if (-(whereTo) > maxLeft){
+									whereTo = -(maxLeft) + ((whereTo + maxLeft) / settings.rubberBandStrength);									
+								}
+								
 								wholeShelf.css({"left": whereTo});
 							}
 						}
