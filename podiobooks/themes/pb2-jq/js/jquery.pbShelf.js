@@ -179,19 +179,15 @@
 				
 				shelfSteps = $("<ul class='shelf-step'/>").prependTo(shelf);
 				
+				if (progress.length > 0){
+					progress.appendTo("body").hide();
+				}
+				
 				/*
 				 * If the appended data has shelf items,
 				 * proceed with building shelf functionality
 				 */
 				if(shelf.find(settings.shelfItem).length){
-					
-					/*
-					 * while the covers are loading, hide the progress bar
-					 */
-					if (progress){
-						progress.hide();
-					}
-					
 					
 					/*
 					 * Find all the shelf items,
@@ -233,7 +229,7 @@
 					 * Just hide the progress bar
 					 */
 					handleArrows();
-					progress.hide();
+					
 				}
 				
 				
@@ -655,10 +651,14 @@
 				
 			};
 			
+			/*
+			 * Create a progress bar, 
+			 * if there isn't one already created by another shelf
+			 */
 			var progress = $(".shelf-ajax-loader");
 			if (progress.length < 1){
-				progress = $("<p class='shelf-ajax-loader'><img src='" + settings.ajaxLoaderImage + "' /></p>");
-				progress.appendTo($("body"));
+				$("<p class='shelf-ajax-loader'><img src='" + settings.ajaxLoaderImage + "' /></p>").appendTo($("body"));
+				progress = $(".shelf-ajax-loader");
 			}
 			
 			/*
@@ -688,9 +688,11 @@
 				 *
 				 * Create it, append it to the body for caching,
 				 * move it into the shelf and show
-				 */
-				
-				progress.appendTo(shelf).show();
+				 */				
+				if ($(shelf).find(".shelf-ajax-loader").length < 1){
+					progress.appendTo(shelf);
+				}
+				progress.show();
 				
 				$.ajax({
 					method:"get",
