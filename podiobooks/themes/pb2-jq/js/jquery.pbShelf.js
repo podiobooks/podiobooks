@@ -401,7 +401,12 @@
 							// As long as we haven't decided that we are scrolling,
 							// move the shelf
 							if (!scrollingInstead){
-								wholeShelf.css({"left": startLeft - (deltaX)});
+								var whereTo = startLeft - (deltaX);								
+								if (whereTo > 0 || -(whereTo) > maxLeft){
+									deltaX /= 3;
+								}
+								whereTo = startLeft - (deltaX);
+								wholeShelf.css({"left": whereTo});
 							}
 						}
 					}, false);
