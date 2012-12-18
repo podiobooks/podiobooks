@@ -40,7 +40,7 @@
 			"positionShelfSteps"	:		true,
 			"ajaxLoaderImage"		:		"img/ajax-loading.gif",
 			"easeFunction"			:		"easeOutCirc",
-			"rubberBandStrength"	:		3.5
+			"rubberBandStrength"	:		2
 		};
 		
 		return this.each(function(){
