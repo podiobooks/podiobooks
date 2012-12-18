@@ -338,6 +338,7 @@
 					var yyy = 0;
 
 					document.addEventListener('touchstart', function(event){
+						
 						movingThisShelf = false;
 						slidingShelf = false;
 						scrollingInstead = false;
@@ -659,7 +660,7 @@
 				progress = $("<p class='shelf-ajax-loader'><img src='" + settings.ajaxLoaderImage + "' /></p>");
 				progress.appendTo($("body"));
 			}
-			
+			status();
 			/*
 			 * Ajax workhorse
 			 */
