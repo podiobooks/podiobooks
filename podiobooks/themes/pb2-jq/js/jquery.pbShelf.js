@@ -22,6 +22,7 @@
  *			Adding option for turning off positioning of shelf steps
  * 0.9.1:	Native touch events
  * 			Easing to settings
+ *			Rubber Band Strength to settings
  *
  */
 
@@ -38,7 +39,8 @@
 			"url"					:		null,
 			"positionShelfSteps"	:		true,
 			"ajaxLoaderImage"		:		"img/ajax-loading.gif",
-			"easeFunction"			:		"easeOutCirc"
+			"easeFunction"			:		"easeOutCirc",
+			"rubberBandStrength"	:		4
 		};
 		
 		return this.each(function(){
@@ -403,7 +405,7 @@
 							if (!scrollingInstead){
 								var whereTo = startLeft - (deltaX);								
 								if (whereTo > 0 || -(whereTo) > maxLeft){
-									deltaX /= 5;
+									deltaX /= settings.rubberBandStrength;
 								}
 								whereTo = startLeft - (deltaX);
 								wholeShelf.css({"left": whereTo});
