@@ -403,7 +403,7 @@
 							if (!scrollingInstead){
 								var whereTo = startLeft - (deltaX);								
 								if (whereTo > 0 || -(whereTo) > maxLeft){
-									deltaX /= 3;
+									deltaX /= 5;
 								}
 								whereTo = startLeft - (deltaX);
 								wholeShelf.css({"left": whereTo});
