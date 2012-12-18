@@ -660,7 +660,7 @@
 				progress = $("<p class='shelf-ajax-loader'><img src='" + settings.ajaxLoaderImage + "' /></p>");
 				progress.appendTo($("body"));
 			}
-			status();
+			
 			/*
 			 * Ajax workhorse
 			 */
