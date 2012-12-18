@@ -21,6 +21,7 @@
  *			Callback hooks for "after movement" of shelves;
  *			Adding option for turning off positioning of shelf steps
  * 0.9.1:	Native touch events
+ * 			Easing to settings
  *
  */
 
@@ -36,13 +37,18 @@
 			"afterMoveEnd"			:		function(titlesDeep, perSlide){},
 			"url"					:		null,
 			"positionShelfSteps"	:		true,
-			"ajaxLoaderImage"		:		"img/ajax-loading.gif"
+			"ajaxLoaderImage"		:		"img/ajax-loading.gif",
+			"easeFunction"			:		"easeOutCirc"
 		};
 		
 		return this.each(function(){
 			
 			if (options){
 				$.extend(settings, options);
+			}
+			
+			if (!($.easing)){
+				settings.easeFunction = null;
 			}
 			
 			/*
@@ -254,7 +260,7 @@
 							
 							wholeShelf.animate({
 								left: -targ
-							}, 600, "easeOutCirc");
+							}, 600, settings.easeFunction);
 						}
 						handleArrows();
 					});
@@ -293,7 +299,7 @@
 														
 							wholeShelf.animate({
 								left: -targ
-							}, 600,"easeOutCirc");
+							}, 600, settings.easeFunction);
 						}
 						handleArrows();
 					});
@@ -414,7 +420,7 @@
 														
 							if (endLeft > 0){	// Far left
 								
-								wholeShelf.animate({"left": 0}, 400, "easeOutCirc", function(){
+								wholeShelf.animate({"left": 0}, 400, settings.easeFunction, function(){
 									cur = 0;
 									where = cur / itemWidth;
 									handleArrows();
@@ -423,7 +429,7 @@
 							}
 							else if (-(endLeft) > maxLeft){	// Far Right
 								
-								wholeShelf.animate({"left": -(maxLeft)}, 400, "easeOutCirc", function(){
+								wholeShelf.animate({"left": -(maxLeft)}, 400, settings.easeFunction, function(){
 									cur = maxLeft;
 									where = cur / itemWidth;
 									handleArrows();
@@ -441,7 +447,7 @@
 									whereToGo = -(maxLeft);
 								}
 								
-								wholeShelf.animate({"left": whereToGo}, 400, "easeOutCirc", function(){
+								wholeShelf.animate({"left": whereToGo}, 400, settings.easeFunction, function(){
 									cur = -(parseInt(wholeShelf.css("left").replace("px", ""), 10));
 									where = cur / itemWidth;
 									handleArrows();
@@ -511,7 +517,7 @@
 					
 					wholeShelf.animate({
 						left:targ
-					}, 600, "easeOutCirc");
+					}, 600, settings.easeFunction);
 					
 					handleArrows();
 				});
@@ -697,6 +703,3 @@
 		});
 	};
 })( jQuery );
-
-
-						
