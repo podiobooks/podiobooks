@@ -402,9 +402,9 @@
 							
 							// As long as we haven't decided that we are scrolling,
 							// move the shelf
-							if (!scrollingInstead){
+							if (!scrollingInstead){								
 								var whereTo = startLeft - (deltaX);								
-								if (whereTo > 0 || -(whereTo) > maxLeft){
+								if ((startLeft === 0 || -(startLeft) >= maxLeft) && (whereTo > 0 || -(whereTo) > maxLeft)){
 									deltaX /= settings.rubberBandStrength;
 								}
 								whereTo = startLeft - (deltaX);
