@@ -92,7 +92,7 @@ INSTALLED_APPS = (
     'podiobooks.feeds',
     'podiobooks.search',
     'south',
-    'pbshelf',
+#    'pbshelf',
     )
 
 ### DATABASE SETTINGS
@@ -186,8 +186,8 @@ if DEBUG and STATIC_URL.startswith("/") and not STATIC_URL.startswith("//"):
     MEDIABRUTE_CSS_URL_PATH = "css"
     MEDIABRUTE_JS_URL_PATH = "js"
     
-    APP_JS = "static/js"
-    APP_CSS = "static/css"
+#    APP_JS = "static/js"
+#    APP_CSS = "static/css"
 
     STATICFILES_DIRS = (
         # Put strings here, like "/home/html/static" or "C:/www/django/static".
