@@ -8,4 +8,4 @@ feedparser
 pil
 pyga
 south
-git+git://github.com/Brant/django-pbShelf.git
+#git+git://github.com/Brant/django-pbShelf.git
