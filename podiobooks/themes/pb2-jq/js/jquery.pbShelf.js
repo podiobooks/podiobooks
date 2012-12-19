@@ -484,14 +484,12 @@
 						scrollingInstead = false;
 						xxx = 0;
 						yyy = 0;
-						shelf.find("a").each(function(){
+						shelf.find("[data-old-href]").each(function(){
 							var item = $(this);
 							var t = setTimeout(function(){
 								item.unbind(".safeGuard");	
 								var possibleHref = item.attr("data-old-href");
-								if (possibleHref){
-									item.attr("href", possibleHref).removeAttr("data-old-href");
-								}
+								item.attr("href", possibleHref).removeAttr("data-old-href");
 							}, 100);
 						});
 					}, false);
