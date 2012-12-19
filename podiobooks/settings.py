@@ -92,6 +92,7 @@ INSTALLED_APPS = (
     'podiobooks.feeds',
     'podiobooks.search',
     'south',
+    'pbshelf',
     )
 
 ### DATABASE SETTINGS
@@ -174,15 +175,19 @@ DONATION_BUSINESS_NAME = 'evo@podiobooks.com'
 #INSTALLED_APPS += ( "debug_toolbar", )
 #MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware', )
 ### MEDIABRUTE
-CSS_TOP_FILES = ["clear.css", "styles.css", ]
+CSS_TOP_FILES = ["jquery.pbshelf.css", "clear.css", "styles.css", ]
 CSS_BOTTOM_FILES = ["gsc-overrides.css", "adaptive.css", "small-screen.css"]
 JS_SETTINGS_TEMPLATE = "mediabrute/js/config.txt"
+
 # This is a hack to get mediabrute to play nice with runserver + staticfiles app
 if DEBUG and STATIC_URL.startswith("/") and not STATIC_URL.startswith("//"):
     CSS_DIR = "pb2-jq/css"
     JS_DIR = "pb2-jq/js"
     MEDIABRUTE_CSS_URL_PATH = "css"
     MEDIABRUTE_JS_URL_PATH = "js"
+    
+    APP_JS = "static/js"
+    APP_CSS = "static/css"
 
     STATICFILES_DIRS = (
         # Put strings here, like "/home/html/static" or "C:/www/django/static".
