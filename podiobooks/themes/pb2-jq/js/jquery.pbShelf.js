@@ -43,6 +43,8 @@
 			"rubberBandStrength"	:		3
 		};
 		
+		
+		
 		return this.each(function(){
 			
 			if (options){
@@ -100,6 +102,7 @@
 			 * (otherwise it compresses when elements are removed)
 			 */
 			shelf.height(shelf.height());
+			
 			
 			
 			/*
@@ -350,6 +353,9 @@
 						if (startX > shelfViewBoundaries[0][0] && startY > shelfViewBoundaries[0][1]){
 							if (startX < shelfViewBoundaries[0][0] + shelfViewBoundaries[1] && startY < shelfViewBoundaries[0][1] + shelfViewBoundaries[2]){
 								movingThisShelf = true;
+								
+								
+								
 							}
 						}
 					}, false);
@@ -395,6 +401,17 @@
 							// If we're sliding, prevent scrolling
 							if (slidingShelf){
 								event.preventDefault();
+								
+								shelf.find("a").each(function(){
+									var item = $(this);
+									var href = item.attr("href");
+									if (href !== "#"){
+										item.attr("href", "#").attr("data-old-href", href);
+										item.bind("click.safeGuard", function(accident){
+											accident.preventDefault();
+										});
+									}
+								});
 							}
 							
 							// As long as we haven't decided that we are scrolling,
@@ -467,7 +484,16 @@
 						scrollingInstead = false;
 						xxx = 0;
 						yyy = 0;
-
+						shelf.find("a").each(function(){
+							var item = $(this);
+							var t = setTimeout(function(){
+								item.unbind(".safeGuard");	
+								var possibleHref = item.attr("data-old-href");
+								if (possibleHref){
+									item.attr("href", possibleHref).removeAttr("data-old-href");
+								}
+							}, 100);
+						});
 					}, false);
 				}
 			};
