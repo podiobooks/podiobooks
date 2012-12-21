@@ -4,21 +4,22 @@
  * https://developers.google.com/custom-search/docs/element#supported_attributes
  */
 
-    
-google.setOnLoadCallback(function () {
-    if ($("body").hasClass("search-results")){
-        google.search.Csedr.addOverride("pb_");
-        google.search.cse.element.render({
-            div: "cse",
-            tag: 'search',
-            attributes: {
-                resultsUrl: '/search/snip/',
-                webSearchResultSetSize: 20,
-                webSearchSafesearch: "active",
-                enableHistory: true,
-                newWindow: false,
-                linkTarget: null
-            }
-        });
-    }
-});
+if (google){
+	google.setOnLoadCallback(function () {
+	    if ($("body").hasClass("search-results")){
+	        google.search.Csedr.addOverride("pb_");
+	        google.search.cse.element.render({
+	            div: "cse",
+	            tag: 'search',
+	            attributes: {
+	                resultsUrl: '/search/snip/',
+	                webSearchResultSetSize: 20,
+	                webSearchSafesearch: "active",
+	                enableHistory: true,
+	                newWindow: false,
+	                linkTarget: null
+	            }
+	        });
+	    }
+	});
+}
