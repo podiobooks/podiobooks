@@ -82,7 +82,7 @@
 			var numSteps = 0;
 			var curStep = 0;
 			var maxLeft = 0;
-			var shelfViewBoundaries = []; // [[<offset left>, <offset top>], <shelf width>, <shelf height>]
+			var shelfViewBoundaries = [[0, 0], 0, 0]; // [[<offset left>, <offset top>], <shelf width>, <shelf height>]
 			
 			/*
 			 * Some shelf element localization
@@ -645,11 +645,17 @@
 			 */
 			var drawShelfBoundaries = function(){
 				var view = shelf.find(".shelf-view");
-				var offset = view.offset();
-				var topLeft = [offset.left, offset.top];
-				var w = view.width();
-				var h = view.height();
-				shelfViewBoundaries = [topLeft, w, h];
+				if (view.length > 0){
+					var offset = view.offset();
+					var topLeft = [offset.left, offset.top];
+					var w = view.width();
+					var h = view.height();
+					shelfViewBoundaries = [topLeft, w, h];	
+				}
+				else{
+					shelfViewBoundaries = [[0, 0], 0, 0];
+				}
+				
 			};
 			
 			
