@@ -20,7 +20,8 @@
                 var id, cb = args[0], repeat = (set === orgSetInterval);
 
                 function callback() {
-                        if (cb) {
+                        if (cb && typeof(cb) == "function") {
+                        	
                                 cb.apply(window, arguments);
 
                                 if (!repeat) {
