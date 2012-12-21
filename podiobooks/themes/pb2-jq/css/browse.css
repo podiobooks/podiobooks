@@ -101,8 +101,10 @@
 	-o-column-count: 3;
 	column-count: 3;
 }
-.browse-list li{
+.csscolumns .browse-list li{
 	display:inline-block;
+}
+.browse-list li{
 	margin:0 0 8px;
 }
 
