@@ -4,7 +4,8 @@
  * https://developers.google.com/custom-search/docs/element#supported_attributes
  */
 
-if (google){
+
+if (google && google.setOnLoadCallback){
 	google.setOnLoadCallback(function () {
 	    if ($("body").hasClass("search-results")){
 	        google.search.Csedr.addOverride("pb_");
@@ -23,3 +24,4 @@ if (google){
 	    }
 	});
 }
+
