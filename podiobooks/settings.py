@@ -34,10 +34,11 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'mediaroot')
 
 # Staticfiles Config
-STATIC_ROOT = PROJECT_ROOT + "/themes/pb2-jq/"
+THE_THEME = "unui"
+STATIC_ROOT = PROJECT_ROOT + "/themes/" + THE_THEME + "/"
 STATIC_URL = '/static/'
 STATICFILES_DIRS = []
-TEMPLATE_DIRS = [os.path.join(PROJECT_ROOT, 'themes', 'pb2-jq', 'templates')]
+TEMPLATE_DIRS = [os.path.join(PROJECT_ROOT, "themes", THE_THEME, 'templates')]
 
 
 # List of callables that know how to import templates from various sources.
@@ -181,8 +182,8 @@ JS_SETTINGS_TEMPLATE = "mediabrute/js/config.txt"
 
 # This is a hack to get mediabrute to play nice with runserver + staticfiles app
 if DEBUG and STATIC_URL.startswith("/") and not STATIC_URL.startswith("//"):
-    CSS_DIR = "pb2-jq/css"
-    JS_DIR = "pb2-jq/js"
+    CSS_DIR = THE_THEME + "/css"
+    JS_DIR = THE_THEME + "/js"
     MEDIABRUTE_CSS_URL_PATH = "css"
     MEDIABRUTE_JS_URL_PATH = "js"
     
@@ -193,7 +194,7 @@ if DEBUG and STATIC_URL.startswith("/") and not STATIC_URL.startswith("//"):
         # Put strings here, like "/home/html/static" or "C:/www/django/static".
         # Always use forward slashes, even on Windows.
         # Don't forget to use absolute paths, not relative paths.
-        PROJECT_ROOT + "/themes/pb2-jq/",
+        PROJECT_ROOT + "/themes/" + THE_THEME + "/",
         )
 
     STATIC_ROOT = PROJECT_ROOT + "/themes/"
