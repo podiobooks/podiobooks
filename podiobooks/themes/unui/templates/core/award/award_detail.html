@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load title_templatetags %}
+{% load global_templatetags %}
+
+{% block headtitle %}{{ award.name }} Category - {{ SITE.name }}{% endblock %}
+
+{% block metatags %}
+    <meta name="Description"
+          content="Many Podiobooks are award-winners...browse the winners and nominees for awards like the Parsec Awards!"/>
+{% endblock %}
+
+{% block content %}
+    {% if title_list.count %}
+        <h1>
+            {{ award.name }}
+        </h1>
+        {% if page_obj.number > 1 %}
+            <span class="current">
+                <em>Page {{ page_obj.number }} of {{ paginator.num_pages }}</em>
+            </span>
+        {% endif %}
+        {% show_titlelist title_list "award_title_list" %}
+    {% else %}
+        <h1>There are currently no titles for {{ award.name }}</h1>
+    {% endif %}
+
+    <br>
+    {% show_pagination_links paginator page_obj %}
+{% endblock %}

@@ -1,0 +1,20 @@
+{% load global_templatetags %}
+{% load shelf_templatetags %}
+
+<!-- Begin {{ shelf_title }} Shelf -->
+<section class="shelf-wrapper clearfix" id="{{ shelf_id }}Container">
+    <h2 class="shelf-heading shelf-heading-{{ base_css_class }}">{{ shelf_title|safe }}</h2>
+    
+    <div class="shelf shelf-{{ base_css_class }}" id="{{ shelf_id }}PageContainer">
+        {% if dropdown_form %}
+            <form class="shelf-select-form" action="{{ dropdown_form.submit_url }}" name="{{ shelf_id }}" id="{{ shelf_id }}Dropdown">
+                {{ dropdown_form.as_p }}
+            </form>
+        {% endif %}
+        
+        {% show_shelf_pages shelf_id shelf_title title_list %}
+        
+    </div>
+</section>
+
+<!-- End {{ shelf_title }} Shelf -->
