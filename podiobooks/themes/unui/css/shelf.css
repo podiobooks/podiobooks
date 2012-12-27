@@ -1,0 +1,295 @@
+/*
+ * Basic Shelf Styling
+ */
+.shelf {
+    -webkit-border-top-left-radius: 0px;
+    -webkit-border-top-right-radius: 0px;
+    -webkit-border-bottom-left-radius: 10px;
+    -webkit-border-bottom-right-radius: 10px;
+    -moz-border-radius-topleft: 0px;
+    -moz-border-radius-topright: 0px;
+    -moz-border-radius-bottomleft: 10px;
+    -moz-border-radius-bottomright: 10px;
+    -o-border-radius: 0px 0px 10px 10px;
+    border-radius: 0px 0px 10px 10px;
+    
+    box-shadow: 0 3px 5px rgba(150, 150, 150, .8);
+    padding: 0 0px 0px 0px;
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    height: 177px;
+    margin-bottom: 40px;
+    
+    overflow:hidden;
+}
+
+.pbShelf{
+	overflow:visible;
+}
+
+.shelf-heading {
+    padding: 8px 10px 7px 20px;
+    border-radius: 10px 10px 0 0;
+    box-shadow: 0 3px 5px rgba(150, 150, 150, .8);
+}
+
+
+
+/*
+* Shelf Themes
+*/
+
+.shelf-dark {
+    background: #06539e;
+}
+
+.shelf-heading-dark {
+    color: #fff;
+    background: #40a8d1; /* Old browsers */
+	background: -moz-linear-gradient(top,  #40a8d1 0%, #4280bd 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#40a8d1), color-stop(100%,#4280bd)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #40a8d1 0%,#4280bd 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #40a8d1 0%,#4280bd 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #40a8d1 0%,#4280bd 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #40a8d1 0%,#4280bd 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#40a8d1', endColorstr='#4280bd',GradientType=0 ); /* IE6-9 */
+}
+
+.shelf-light {
+    background: #d0deee;
+}
+
+.shelf-heading-light {
+    color: #fff;
+    background: #a7cfdf; /* Old browsers */
+    background: -moz-linear-gradient(top, #a7cfdf 0%, #90b3dd 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #a7cfdf), color-stop(100%, #90b3dd)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #a7cfdf 0%, #90b3dd 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #a7cfdf 0%, #90b3dd 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #a7cfdf 0%, #90b3dd 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #a7cfdf 0%, #90b3dd 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#a7cfdf', endColorstr = '#90b3dd', GradientType = 0); /* IE6-9 */
+}
+
+/*
+* Shelf slider (js driven)
+*/
+.shelf-view {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+}
+
+.whole-shelf {
+    overflow: hidden;
+    width: auto;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.shelf-item {
+    background: #fff;
+    float: left;
+    width: 186px;
+    margin: 8px 8px;
+    border-radius: 10px;
+    padding: 10px;
+    height: 140px;
+    overflow: hidden;
+    position:relative;
+    box-shadow:inset 0 0 5px rgba(0,0,0,.2);
+}
+.shelf-light .shelf-item{
+	box-shadow:inset 0 0 3px rgba(0,0,0,.1);
+}
+.shelf-cover {
+	position:absolute;
+	left:10px;
+	top:10px;
+    padding: 0;
+    margin: 0;
+    width: 67px;    
+    box-shadow:-1px 1px 5px rgba(0,0,0,.2);
+}
+.loading{
+	box-shadow:none;
+}
+
+.shelf-item .shelf-cover .shelf-cover-loading {
+    width: auto;
+    height: auto;
+    float: none;
+    margin: 30px auto;
+}
+
+.shelf-item-text {
+    float: left;
+    margin: -3px 0 0 76px;
+    font-size: 10px;
+    height:98%;
+    overflow:hidden;
+}
+
+.shelf-item-heading {
+    font-size: 12px;
+}
+
+.shelf-item h3 a {
+    color: #0054a6;
+    text-decoration: none;
+}
+
+.shelf-item-contributors {
+    font-size: 10px;
+    display: block;
+    padding:3px 0 5px;
+}
+
+.shelf-item-rating {
+    position: absolute;
+    top: 128px;
+    height: 30px;
+    width: 63px;
+    background: url("../images/pb-thumbs-up-bar.jpg") no-repeat;
+    text-align: right;
+    padding-top: 2px;
+    padding-right: 5px;
+}
+
+/*
+* Next/Prev Arrows
+*/
+.shelf-arrow{
+	display: block;
+    position: absolute;
+    top: 25px;
+    z-index: 5;
+    opacity:.8;
+    height:70px;
+    padding:47px 7px 0 7px;
+    box-shadow:0 0 7px rgba(0,0,0,.1);
+    font-family: 'WebSymbolsRegular';
+    font-size: 20px;
+    font-weight:bold;
+    overflow:hidden;
+}
+.shelf-dark .shelf-arrow{
+    background:#06539e;   
+    
+}
+.shelf-light .shelf-arrow{
+	background:#d0deee;
+}
+.shelf-arrow:visited,
+.shelf-arrow:hover,
+.shelf-arrow:link,
+.shelf-arrow:active,
+.shelf-arrow:hover {
+    text-decoration:none;
+    color:#fff;
+    
+}	
+.shelf-arrow-right {
+    right: -35px;
+	border-radius:0 300px 300px 0;
+}
+
+.shelf-arrow-left {
+    border-radius:300px 0 0 300px;
+    left: -35px;
+}
+.shelf-arrow:hover{
+	opacity:1;
+}
+
+.shelf-select-form {
+    position: absolute;
+    right: 10px;
+    top: -30px;
+}
+
+.shelf-select-form label {
+    display: none;
+}
+.shelf-select-form p{
+	padding:0;
+}
+.shelf-ajax-loader {
+    padding-top: 70px;
+    height: 160px;
+    text-align: center;
+}
+
+.shelf-no-items {
+    text-align: center;
+    padding-top: 70px;
+}
+
+.shelf ul{
+	list-style:none;
+}
+/*
+* Steps
+*/
+.shelf-step {
+    float: left;
+    list-style: none;
+    position: absolute;
+    top: -22px;
+    left: 45%;
+}
+/*
+.touch .shelf-step,
+.touch .shelf-arrow{
+	display:none;
+}*/
+.shelf-step li {
+    float: left;
+}
+
+.shelf-step a {
+    float: left;
+    width: 10px;
+    height: 10px;
+    background: #fff;
+    margin-right: 3px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    -o-border-radius: 6px;
+    border-radius: 6px;
+
+}
+
+.half-shelf .shelf,
+.half-shelf .shelf-heading {
+    -webkit-box-shadow: none;
+}
+
+
+.shelf-dark .shelf-step-cur {
+    background: #c59e76;
+}
+
+.shelf-light .shelf-step-cur {
+    background: #f0beb9;
+}
+
+/*
+* Half Shelf
+*/
+.half-shelf {
+    width: 484px;
+
+}
+
+.half-shelf-wrap {
+    width: 484px;
+    float: left;
+}
+
