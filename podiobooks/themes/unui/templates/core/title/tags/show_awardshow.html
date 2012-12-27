@@ -1,0 +1,8 @@
+{% load static %}
+{% if award_list %}
+    <div class="award-show">
+        {% for award in award_list %}
+            <a href="{{ award.url }}"><img src="{{ award.image.url }}" alt="{{ award.name }}"/><span itemprop="award" style="display:none">{{ award.name }}</span></a>
+        {% endfor %}
+    </div>
+{% endif %}

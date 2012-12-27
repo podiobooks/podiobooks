@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load title_templatetags %}
+{% block headtitle %}{{ contributor.display_name }} Profile - {{ SITE.name }}{% endblock %}
+{% block content %}
+	{% if title_list.count %}
+		<h1>
+		    {{ contributor.display_name }}
+		</h1>
+        {% if contributor.community_handle %}
+            Find out <a href="http://community.podiobooks.com/profile/{{ contributor.community_handle }}">more about {{ contributor.display_name }}</a>!
+        {% endif %}
+		
+		{% show_titlelist title_list "contributor_title_list" %}
+	
+	{% else %}
+		<h1>There are currently no titles available for {{ contributor.display_name }}</h1>
+	
+	{% endif %}
+{% endblock %}
