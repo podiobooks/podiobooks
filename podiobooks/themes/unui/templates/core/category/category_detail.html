@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load title_templatetags %}
+{% load global_templatetags %}
+
+{% block headtitle %}{{ category.name }} Category - {{ SITE.name }}{% endblock %}
+
+{% block metatags %}
+    <meta name="Description"
+          content="We offer hundreds of free audio books in many categories and genres. Fiction & non-fiction, science fiction & fantasy, comedy & business… and a whole lot more!"/>
+{% endblock %}
+
+{% block content %}
+    {% if title_list.count %}
+        <h1>
+            {{ category.name }} Titles
+        </h1>
+        {% if page_obj.number > 1 %}
+            <span class="current">
+                <em>Page {{ page_obj.number }} of {{ paginator.num_pages }}</em>
+            </span>
+        {% endif %}
+        {% show_titlelist title_list "category_title_list" %}
+    {% else %}
+        <h1>There are currently no titles available in {{ category.name }}</h1>
+    {% endif %}
+
+    <br>
+    {% show_pagination_links paginator page_obj %}
+{% endblock %}
