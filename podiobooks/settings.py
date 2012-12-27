@@ -34,7 +34,7 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'mediaroot')
 
 # Staticfiles Config
-THE_THEME = "unui"
+THE_THEME = "pb2-jq"
 STATIC_ROOT = PROJECT_ROOT + "/themes/" + THE_THEME + "/"
 STATIC_URL = '/static/'
 STATICFILES_DIRS = []
