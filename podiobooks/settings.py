@@ -11,7 +11,7 @@ local_settings.py, once created, should never be checked into source control
 It is ignored by default by .gitignore, so if you don't mess with that, you should be fine.
 """
 # pylint: disable=R0801, W0611
-import os
+import os, socket
 
 # Set the root path of the project so it's not hard coded
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
@@ -126,6 +126,9 @@ CACHES = {
 # system time zone.
 TIME_ZONE = 'America/Denver'
 
+# If you set this to False, Django will not use timezone-aware datetimes.
+USE_TZ = True
+
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
 LANGUAGE_CODE = 'en-us'
@@ -136,8 +139,15 @@ SITE_ID = 1
 # to load the internationalization machinery.
 USE_I18N = False
 
+# If you set this to False, Django will not format dates, numbers and
+# calendars according to the current locale.
+USE_L10N = True
+
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'zv$+w7juz@(g!^53o0ai1u082)=jkz9my_r=3)fglrj5t8l$2#'
+
+# Set a default timeout for external URL grabs, such as for the comments and for Google Analytics from Feeds
+socket.setdefaulttimeout(2) #2 second timeout for grabbing feed
 
 ### DEBUG TOOLBAR
 if DEBUG:
