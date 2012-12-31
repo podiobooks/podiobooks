@@ -2,11 +2,8 @@
 
 from django import template
 from django.conf import settings
-from django.core.cache import cache
 from django.contrib.sites.models import Site
 import feedparser
-import socket
-import urllib2
 
 register = template.Library()
 
@@ -77,8 +74,6 @@ def show_donation_button(title):
 @register.inclusion_tag('core/title/tags/show_comments.html')
 def show_comments(podiobooker_url):
     """Pulls in a template to show a list of comments"""
-
-    socket.setdefaulttimeout(2) #2 second timeout for grabbing feed
 
     feed_url = podiobooker_url.rstrip('/') + '/feed/'
 
