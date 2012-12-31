@@ -2,6 +2,11 @@
 
 # pylint: disable=R0201, C0111, R0904, R0801, F0401, W0613
 
+import logging
+
+from urllib2 import URLError
+from socket import timeout
+
 from django.contrib.syndication.views import Feed, add_domain
 from django.contrib.sites.models import Site
 from django.utils.feedgenerator import Rss201rev2Feed
@@ -9,12 +14,14 @@ from django.utils.html import strip_tags
 from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.core.exceptions import ObjectDoesNotExist
+from django.shortcuts import get_object_or_404
 
 from podiobooks.core.models import Title, Episode
 from podiobooks.feeds.protocols.itunes import ITunesFeed
-from django.shortcuts import get_object_or_404
 
 from pyga.requests import Event, Session, Tracker, Visitor
+
+LOGGER = logging.getLogger(name='podiobooks.feeds')
 
 class TitleFeed(Feed):
     """A simple feed that lists all Titles"""
@@ -35,7 +42,10 @@ class TitleFeed(Feed):
         visitor.ip_address = request.META.get('REMOTE_ADDR', '')
         visitor.user_agent = request.META.get('HTTP_USER_AGENT', '')
         event = Event(category='RSS', action=self.title, label=self.link, value=None, noninteraction=False)
-        tracker.track_event(event, Session(), visitor)
+        try:
+            tracker.track_event(event, Session(), visitor)
+        except (URLError, timeout):
+            LOGGER.info("GA Feed Ping Timeout")
 
         return super(TitleFeed, self).get_feed(obj, request)
 
@@ -126,8 +136,12 @@ class EpisodeFeed(Feed):
         visitor = Visitor()
         visitor.ip_address = request.META.get('REMOTE_ADDR', '')
         visitor.user_agent = request.META.get('HTTP_USER_AGENT', '')
-        event = Event(category='RSS', action='Podiobooks Episodes Feed', label=title_slug, value=None, noninteraction=False)
-        tracker.track_event(event, Session(), visitor)
+        event = Event(category='RSS', action='Podiobooks Episodes Feed', label=title_slug, value=None,
+            noninteraction=False)
+        try:
+            tracker.track_event(event, Session(), visitor)
+        except (URLError, timeout):
+            LOGGER.info("GA Feed Ping Timeout")
 
         return obj
 
