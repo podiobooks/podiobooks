@@ -106,10 +106,19 @@
 		
 	}
 	.net-promoter-box{
-		margin:10px 0 0 0;
+		margin:0 25px 0 0;
 		padding:0;
-		float:none;
+		float:left;
 		height:auto;
+		width:auto;	
+		max-width:30%;
+	}
+	.sharebox{
+		float:right;
+		padding:0;
+		margin:-5px 0 0 0;
+		max-width:55%;
+		width:auto;
 	}
 	.loading{
 		float:none;
@@ -343,7 +352,7 @@
 	 */
 	.title-details-titlebar{
 		min-height:92px;
-		padding:0 90px 20px 0;
+		padding:0 90px 0px 0;
 	}
 	.title-details{
 		position:relative;
@@ -397,6 +406,8 @@
 	.first-chapter{
 		width:auto;	
 		float:none;
+		margin:0;
+		padding:10px 0;
 	}
 	.tab-trigger{
 		font-size:14px;
@@ -510,8 +521,11 @@
 	}
 	
 	.title-details-infobar{
-		width:100px;
-		margin-left:20px;
+		width:90%;
+		float:left;
+		margin:15px 0;
+		padding:3% 5%;
+		
 	}
 	
 	

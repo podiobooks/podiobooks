@@ -1,7 +1,7 @@
 $(function(){
 	
 	var episodes = $(".episode-audio-link:first");
-	var placement = $(".title-description p:first");
+	var placement = $(".title-details-infobar");
 	var htmlAudio = $("html").hasClass("audio");
 	var slug = $(episodes).parents("article").data("title-slug");
 	var canPlayMp3 = false;
