@@ -63,17 +63,20 @@
     <article data-title-slug="{{ title.slug }}" class="title-details" itemscope itemtype="http://schema.org/Book">
 
         <meta itemprop="bookFormat" content="AudioBook/Serialized">
+        
         <header>
             <div class="title-details-titlebar">
                 <h1 class="title-details-title" itemprop="name">{{ title.name }} {% show_rating_icon title %}</h1>
 
-                <div class="byline">
+                <p class="byline">
                     {% show_contributors title "True" %}
-                </div>
+                </p>
+                <p>{{ title.category_list|safe }}</p>
             </div>
             <div class='imagebox'>
                 {% show_titlecover title %}
                 {% show_awardshow title %}
+                 
             </div>
             {% if title.series %}
                 <div class="title-details-seriesbar">
@@ -83,39 +86,40 @@
                 </div>
             {% endif %}
         </header>
+        
         <div class="title-details-top clearfix">
-
-            <div class="title-details-infobar">
-
-                <div class="category">{{ title.category_list|safe }}</div>
-
-                <div class="net-promoter-box">
-                    <ul>
-                        <li class="promoter-count">
-                            Likes: {{ title.promoter_count }}
-                        </li>
-
-                        <li class="detractor-count">
-                            Dislikes: {{ title.detractor_count }}
-                        </li>
-                    </ul>
-                    <span itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
-                    	<meta itemprop="ratingValue" content="{{ title.computed_rating }}"/>
-                    	<meta itemprop="bestRating" content="5"/>
-                        <meta itemprop="ratingCount" content="{{ title.promoter_count|add:title.detractor_count }}"/>
-                    </span>
-
-                </div>
-
-                <div class="sharebox">
-
-                    {% show_tweet %}
-                    {% show_plusone %}
-                    {% show_like %}
-
-                </div>
-            </div>
-
+			<div class="clearfix">
+	            <div class="title-details-infobar">
+	
+	               
+	
+	                <div class="net-promoter-box">
+	                    <ul>
+	                        <li class="promoter-count">
+	                            Likes: {{ title.promoter_count }}
+	                        </li>
+	
+	                        <li class="detractor-count">
+	                            Dislikes: {{ title.detractor_count }}
+	                        </li>
+	                    </ul>
+	                    <span itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+	                    	<meta itemprop="ratingValue" content="{{ title.computed_rating }}"/>
+	                    	<meta itemprop="bestRating" content="5"/>
+	                        <meta itemprop="ratingCount" content="{{ title.promoter_count|add:title.detractor_count }}"/>
+	                    </span>
+	
+	                </div>
+	
+	                <div class="sharebox">
+	
+	                    {% show_tweet %}
+	                    {% show_plusone %}
+	                    {% show_like %}
+	
+	                </div>
+	            </div>
+			</div>
             <div class="title-description" itemprop="description">
                 {% autoescape off %}{{ title.description|linebreaks|removetags:"img" }}{% endautoescape %}
             </div>
@@ -139,9 +143,6 @@
                     </aside>
                 {% endif %}
             </aside>
-
-            {% with title.episodes.all|first as episode %}
-            {% endwith %}
 
         </div>
 
@@ -175,9 +176,7 @@
 
             {% if title.license %}
                 <p class="title-license">
-                    <a rel="license" href="{{ title.license.url }}"><img class="title-license-img"
-                                                                         alt="{{ title.license.text }} Logo"
-                                                                         src="{{ title.license.image_url }}"/></a>
+                    <a rel="license" href="{{ title.license.url }}"><img class="title-license-img" alt="{{ title.license.text }} Logo" src="{{ title.license.image_url }}"/></a>
 
                     This work is licensed under a
                     <a href="{{ title.license.url }}">{{ title.license.text }}</a> license.
