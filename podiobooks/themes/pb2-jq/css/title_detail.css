@@ -16,9 +16,8 @@
 }
 
 .title-details-titlebar {
-    border-bottom: solid 1px #b2b2b2;
-    padding: 0 0 15px;
-    margin: 0 0 20px;
+    border-bottom: solid 1px #b2b2b2;  
+    margin: 0 0 15px;
 }
 
 .title-description {
@@ -302,7 +301,6 @@
 .first-chapter {
     padding: 0px 0 35px;
     float: left;
-    width: 400px;
 }
 
 .first-chapter h2 {

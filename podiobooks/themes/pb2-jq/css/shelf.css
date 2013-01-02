@@ -18,7 +18,7 @@
     position: relative;
     z-index: 3;
     width: 100%;
-    height: 177px;
+    height: 217px;
     margin-bottom: 40px;
     
     overflow:hidden;
@@ -96,14 +96,20 @@
 .shelf-item {
     background: #fff;
     float: left;
-    width: 186px;
+    width: 180px;
     margin: 8px 8px;
     border-radius: 10px;
     padding: 10px;
-    height: 140px;
+    height: 180px;
     overflow: hidden;
     position:relative;
     box-shadow:inset 0 0 5px rgba(0,0,0,.2);
+}
+.shelf-item-ad{
+	padding:0;
+	border-radius:0;
+	width:200px;
+	height:200px;
 }
 .shelf-light .shelf-item{
 	box-shadow:inset 0 0 3px rgba(0,0,0,.1);
@@ -131,13 +137,16 @@
 .shelf-item-text {
     float: left;
     margin: -3px 0 0 76px;
-    font-size: 10px;
+    font-size: 12px;
     height:98%;
+    color:#373737;
     overflow:hidden;
+    line-height:1.4em;
 }
 
 .shelf-item-heading {
-    font-size: 12px;
+    font-size: 14px;
+    line-height:1.4em;
 }
 
 .shelf-item h3 a {
@@ -146,14 +155,14 @@
 }
 
 .shelf-item-contributors {
-    font-size: 10px;
+    font-size: 12px;
     display: block;
     padding:3px 0 5px;
 }
 
 .shelf-item-rating {
     position: absolute;
-    top: 128px;
+    bottom:10px;
     height: 30px;
     width: 63px;
     background: url("../images/pb-thumbs-up-bar.jpg") no-repeat;
@@ -168,11 +177,11 @@
 .shelf-arrow{
 	display: block;
     position: absolute;
-    top: 25px;
+    top: 35px;
     z-index: 5;
     opacity:.8;
-    height:70px;
-    padding:47px 7px 0 7px;
+    height:80px;
+    padding:60px 7px 0 7px;
     box-shadow:0 0 7px rgba(0,0,0,.1);
     font-family: 'WebSymbolsRegular';
     font-size: 20px;
