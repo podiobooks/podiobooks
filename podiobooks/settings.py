@@ -186,7 +186,7 @@ DONATION_BUSINESS_NAME = 'evo@podiobooks.com'
 #INSTALLED_APPS += ( "debug_toolbar", )
 #MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware', )
 ### MEDIABRUTE
-CSS_TOP_FILES = ["jquery.pbshelf.css", "clear.css", "styles.css", ]
+CSS_TOP_FILES = ["jquery.pbshelf.css", "clear.css", "styles.css", "base-shelf.css", ]
 CSS_BOTTOM_FILES = ["gsc-overrides.css", "adaptive.css", "small-screen.css"]
 JS_SETTINGS_TEMPLATE = "mediabrute/js/config.txt"
 
