@@ -36,7 +36,7 @@ class FilteredShelf(View):
         Top rated titles, filtered by a contributor
         """
         toprated_title_list = get_toprated_shelf_titles(author)
-        return render_to_response("core/shelf/tags/show_shelf_pages.html", {"title_list": toprated_title_list},
+        return render_to_response("core/shelf/tags/show_shelf_pages.html", {"title_list": toprated_title_list, "no_ads": True},
             context_instance=RequestContext(self.request))
 
     def recent_by_category(self, category='all'):
@@ -44,7 +44,7 @@ class FilteredShelf(View):
         Display Recently Released Titles by Category
         """
         recently_released_list = get_recently_released_shelf_titles(category)
-        return render_to_response("core/shelf/tags/show_shelf_pages.html", {"title_list": recently_released_list},
+        return render_to_response("core/shelf/tags/show_shelf_pages.html", {"title_list": recently_released_list, "no_ads": True},
             context_instance=RequestContext(self.request))
 
     def featured_by_category(self, category='all'):
@@ -52,6 +52,6 @@ class FilteredShelf(View):
         Featured titles, filtered by category (genre)
         """
         featured_title_list = get_featured_shelf_titles(category)
-        return render_to_response("core/shelf/tags/show_shelf_pages.html", {"title_list": featured_title_list},
+        return render_to_response("core/shelf/tags/show_shelf_pages.html", {"title_list": featured_title_list, "no_ads": True},
             context_instance=RequestContext(self.request))
     

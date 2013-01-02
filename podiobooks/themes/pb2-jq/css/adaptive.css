@@ -1,7 +1,7 @@
 /*
  * 3 panes per shelf
  */
-@media all and (max-width:985px){	
+@media all and (max-width:950px){	
 	.width{
 		max-width:666px;
 		width:none;
@@ -187,11 +187,8 @@
 
 @media all and (min-width:1200px){
 	.width{
-		width:1110px;
+		width:1080px;
 		max-width:auto;
-	}
-	.first-chapter {
-	    width: 545px;
 	}
 	.title-details-infobar{
 		width:130px;
