@@ -3,7 +3,7 @@
  */
 body {
     background: #fff url('../images/pb-background.jpg') left top repeat-x;
-    font-family: "ff-dax-wide-web-pro-1", "ff-dax-wide-web-pro-2", "Verdana", sans-serif;
+    font-family: "Verdana", sans-serif;
     color: #111;
 }
 
@@ -11,8 +11,11 @@ h1 {
     font-size: 24px;
     font-weight: bold;
     padding: 0 0 15px;
+    
 }
-
+h1, h2, h3, h4{
+	font-family: Tahoma, Geneva, sans-serif
+}
 
 a,
 a:visited,
@@ -40,7 +43,7 @@ a.fdbk_tab_bottom {
 * Layout
 */
 .width {
-    width: 888px;
+    width: 864px;
     margin: 0 auto;
 }
 
@@ -255,13 +258,6 @@ body form.gsc-search-box{
     height: 40px;
 }
 
-.byline a {
-    text-decoration: none;
-}
-
-.byline a:hover {
-    text-decoration: underline;
-}
 
 .category {
     font-size: smaller;

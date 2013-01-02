@@ -3,9 +3,30 @@
 {% if title_list %}
 
 	<div class="shelf-pages" id="{{ shelf_id }}">
-	    {% for title in title_list %}
-	        {% show_shelf_item shelf_id title %}
-	    {% endfor %}
+	    {% with title_list|possible_ad_placements|random as PUT_HERE %}
+		    {% for title in title_list %}
+		    	{% if forloop.counter == PUT_HERE and not no_ads %}
+		    		<aside class="shelf-item shelf-item-ad">
+		    			
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-1276519440300441";
+/* Title - 200x200 */
+google_ad_slot = "3412422993";
+google_ad_width = 200;
+google_ad_height = 200;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+					</aside>
+		    	{% endif %}
+		    	
+		        {% show_shelf_item shelf_id title %}
+		        
+		    {% endfor %}
+	    {% endwith %}
 	</div>
 
 {% endif %}
