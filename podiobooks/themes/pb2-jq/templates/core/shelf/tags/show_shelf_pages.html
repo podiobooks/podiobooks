@@ -1,11 +1,11 @@
 {% load shelf_templatetags %}
 
 {% if title_list %}
-
 	<div class="shelf-pages" id="{{ shelf_id }}">
+		
 	    {% with title_list|possible_ad_placements|random as PUT_HERE %}
 		    {% for title in title_list %}
-		    	{% if forloop.counter == PUT_HERE and not no_ads %}
+		    	{% if not no_ads and forloop.counter == PUT_HERE  %}
 		    		<aside class="shelf-item shelf-item-ad">
 		    			
 <script type="text/javascript"><!--
