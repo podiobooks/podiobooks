@@ -5,20 +5,10 @@
 		
 	    {% with title_list|possible_ad_placements|random as PUT_HERE %}
 		    {% for title in title_list %}
-		    	{% if not no_ads and forloop.counter == PUT_HERE  %}
+		    	{% if not no_ads and forloop.counter == PUT_HERE and ad_template  %}
 		    		<aside class="shelf-item shelf-item-ad">
 		    			
-<script type="text/javascript"><!--
-google_ad_client = "ca-pub-1276519440300441";
-/* Title - 200x200 */
-google_ad_slot = "3412422993";
-google_ad_width = 200;
-google_ad_height = 200;
-//-->
-</script>
-<script type="text/javascript"
-src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-</script>
+						{% include ad_template %}
 
 					</aside>
 		    	{% endif %}
