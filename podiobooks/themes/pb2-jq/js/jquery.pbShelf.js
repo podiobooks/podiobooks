@@ -337,7 +337,6 @@
 					var yyy = 0;
 
 					document.addEventListener('touchstart', function(event){
-						
 						movingThisShelf = false;
 						slidingShelf = false;
 						scrollingInstead = false;
@@ -352,10 +351,7 @@
 						
 						if (startX > shelfViewBoundaries[0][0] && startY > shelfViewBoundaries[0][1]){
 							if (startX < shelfViewBoundaries[0][0] + shelfViewBoundaries[1] && startY < shelfViewBoundaries[0][1] + shelfViewBoundaries[2]){
-								movingThisShelf = true;
-								
-								
-								
+								movingThisShelf = true;								
 							}
 						}
 					}, false);
