@@ -24,7 +24,8 @@ $(function(){
 			"afterMoveEnd": function(titlesDeep, perSlide){
 				gaqPush($("#featured_shelfPageContainer"), titlesDeep, perSlide);
 			},
-			"ajaxLoaderImage": siteVars("img") + "ajax-loader-bar.gif"
+			"ajaxLoaderImage": siteVars("img") + "ajax-loader-bar.gif",
+			"alreadyWrapped": true
 			
 		});
 		
@@ -33,7 +34,8 @@ $(function(){
 			"afterMoveEnd": function(titlesDeep, perSlide){
 				gaqPush($("#top_titles_shelfPageContainer"), titlesDeep, perSlide);
 			},
-			"ajaxLoaderImage": siteVars("img") + "ajax-loader-bar.gif"
+			"ajaxLoaderImage": siteVars("img") + "ajax-loader-bar.gif",
+			"alreadyWrapped": true
 		});
 		
 		$("#recent_titles_shelfPageContainer").pbShelf({
@@ -41,7 +43,8 @@ $(function(){
 			"afterMoveEnd": function(titlesDeep, perSlide){
 				gaqPush($("#recent_titles_shelfPageContainer"), titlesDeep, perSlide);
 			},
-			"ajaxLoaderImage": siteVars("img") + "ajax-loader-bar.gif"
+			"ajaxLoaderImage": siteVars("img") + "ajax-loader-bar.gif",
+			"alreadyWrapped": true
 		});
 		
 	}
