@@ -1,19 +1,23 @@
 {% load shelf_templatetags %}
 
 {% if title_list %}
-	<div class="shelf-pages" id="{{ shelf_id }}">		
-	    {% with title_list|possible_ad_placements|random as PUT_HERE %}
-		    {% for title in title_list %}
-		    	
-		    	{% if not no_ads and forloop.counter == PUT_HERE and ad_template  %}
-		    		<div class="shelf-item shelf-item-ad">		    			
-						{% include ad_template %}
-					</div>
-		    	{% endif %}
-		    			    	
-		        {% show_shelf_item shelf_id title %}
-		        
-		    {% endfor %}
-	    {% endwith %}
+	<div class="shelf-pages" id="{{ shelf_id }}">
+		<div class="shelf-view">
+			<div class="whole-shelf">
+			    {% with title_list|possible_ad_placements|random as PUT_HERE %}
+				    {% for title in title_list %}
+				    	
+				    	{% if not no_ads and forloop.counter == PUT_HERE and ad_template  %}
+				    		<aside class="shelf-item shelf-item-ad">		    			
+								{% include ad_template %}
+							</aside>
+				    	{% endif %}
+				    			    	
+				        {% show_shelf_item shelf_id title %}
+				        
+				    {% endfor %}
+			    {% endwith %}
+		    </div>
+	    </div>
 	</div>
 {% endif %}
