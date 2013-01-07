@@ -19,7 +19,7 @@
         <span class="visuallyhidden">Cover for {{ title.name }}</span>
     </a>
 
-    <aside class="shelf-item-rating">
+    <aside data-promote="{% url promote_title pk=title.pk %}" class="shelf-item-rating">
         {{ title.promoter_count }} <span class="visuallyhidden">thumbs up</span>
     </aside>
 
