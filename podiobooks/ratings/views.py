@@ -1,23 +1,28 @@
 """ Django Views for Ratings"""
+import pickle
 
 from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
 from django.core.cache import cache
 from django.http import HttpResponse
 from django.views.generic import View
-from podiobooks.core.views import Title
 from django.db.models import F
-import pickle
+from django.conf import settings
+
+from podiobooks.core.views import Title
+
+
 
 class RateTitleView(View):
     """Rate Title"""
 
     up = True
 
-    def get(self, request, pk=None, up=True):
+    def post(self, request, pk=None, up=True):
         """Add an upvote/downvote for a specific title"""
 
-        # Add Request.is_ajax() check
-
+        if not request.is_ajax():
+            return HttpResponse("['status':'ok']", mimetype='application/json')
+        
         # Use cache to hold IP
         ip_title_list = cache.get(request.META['REMOTE_ADDR'])
         if not ip_title_list:
@@ -41,7 +46,7 @@ class RateTitleView(View):
                 vote_cookie = ','.join(vote_cookie_list)
         else:
             vote_cookie = str(pk)
-
+            
         try:
             title = Title.objects.get(pk=pk)
 
@@ -61,4 +66,5 @@ class RateTitleView(View):
 
         except ObjectDoesNotExist or MultipleObjectsReturned:
             return HttpResponse("['error':'Title Not Found.']", mimetype='application/json')
+        
 
