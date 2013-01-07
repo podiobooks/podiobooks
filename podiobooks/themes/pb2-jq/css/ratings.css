@@ -1,0 +1,9 @@
+.promote-menu{
+	position:absolute;
+	z-index:9999;
+	background:#f00;
+	display:none;
+}
+.menu-active{
+	display:block;
+}
