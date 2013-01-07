@@ -23,6 +23,7 @@
 	}
 	.browse-choices{
 		text-align:center;
+		margin:10px 0 30px;
 	}
 	.browse-choices a{
 		padding:15px 10px 5px;
@@ -30,6 +31,9 @@
 	}
 	.browe-choices-page h1{
 		text-align:center;
+	}
+	.browse-choices-ad{
+		margin:-10px 0 20px 0;
 	}
 	
 	
@@ -194,7 +198,7 @@
 	.menu-active{
 		display:block;
 		position:absolute;
-		z-index:99;
+		z-index:9999;
 		background:#b1cded;
 	}
 	

@@ -53,6 +53,22 @@
 		-o-column-count: 2;
 		column-count: 2;
 	}
+	.browse-choices{
+		width:auto;
+		float:none;
+	}
+	.browse-choices li{
+		width:40%;
+	}
+	.browse-choices-ad{
+		margin:100px 50px 0 0;
+	}
+	.browse-choices-ad-2{
+		margin:0;
+		text-align:center;
+		float:none;	
+	}
+	
 }
 
 
@@ -181,6 +197,20 @@
 		width:100%;
 		text-align:left;
 	}
+	.browse-choices{
+		text-align:center;
+	}
+	.browse-choices-ad{
+		margin:0 0 10px;
+		float:none;
+		width:auto;
+		text-align:center;
+	}
+	.browe-choices-page h1{
+		text-align:center;
+		padding-left:0;	
+	}
+	
 }
 
 
@@ -198,5 +228,14 @@
 		-moz-column-count: 4;
 		-o-column-count: 4;
 		column-count: 4;
+	}
+	.browse-choices{
+		width:76%;
+	}
+	.browse-choices li{
+		width:25%;
+	}
+	.browse-choices-ad{
+		margin:10px 0 0 ;
 	}
 }
