@@ -183,15 +183,7 @@
 		width:17%;
 		margin-left:5%;
 	}
-	.browse-list{
-		-webkit-column-count: 1;
-		-moz-column-count: 1;
-		-o-column-count: 1;
-		column-count: 1;
-	}
-	.browse-list li{
-		display:list-item;
-	}
+	
 	.browse-by{
 		float:left;
 		width:100%;
