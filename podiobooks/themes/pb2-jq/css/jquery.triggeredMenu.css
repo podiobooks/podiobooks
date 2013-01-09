@@ -7,6 +7,8 @@
 	bottom:0;
 	display:none;
 	z-index:998;
+}
+.triggered-menu-close-screen:link{
 	-webkit-tap-highlight-color: transparent;
 }
 .triggered-menu-close-screen-active{
@@ -20,17 +22,4 @@
 .menu-active{
 	display:block;
 	z-index:999;
-}
-
-
-.triggered-menu-close-screen::-moz-selection {
-	background:none;
-	;
-	color:inherit;
-	text-shadow: none;
-}
-.triggered-menu-close-screen::selection {
-	background:none;
-	color:inherit;
-	text-shadow: none;
 }
