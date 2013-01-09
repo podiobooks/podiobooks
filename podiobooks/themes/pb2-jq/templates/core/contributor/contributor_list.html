@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load global_templatetags %}
+{% load url from future %}
 
 {% block headtitle %}Audio book authors, producers and narrators on {{ SITE.name }}{% endblock %}
 
@@ -20,7 +21,7 @@
             <li class="contributor_list_item">
                 <a href="
 		{% ifequal contributor.title_set.all.count 1 %}
-			{% url title_detail slug=contributor.title_set.all|first %} 
+			{% url 'title_detail' slug=contributor.title_set.all|first %}
 		{% else %} 
 			{{ contributor.get_absolute_url }} 
 		{% endifequal %}">{{ contributor.display_name }}</a>
