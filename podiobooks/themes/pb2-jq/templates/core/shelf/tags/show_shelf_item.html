@@ -1,11 +1,12 @@
 {% load global_templatetags %}
 {% load title_templatetags %}
+{% load url from future %}
 
 <article class="shelf-item" id="{{ shelf_id }}_title_{{ title.id }}">
 
     <div class="shelf-item-text">
         <h3 class="shelf-item-heading">
-            <a data-title-slug="{{ title.slug }}" href="{% url title_detail title.slug %}">{{ title.name|striptags|truncatewords_afterchar:"30" }}</a>
+            <a data-title-slug="{{ title.slug }}" href="{% url 'title_detail' title.slug %}">{{ title.name|striptags|truncatewords_afterchar:"30" }}</a>
         </h3>
 
         <p class="shelf-item-contributors">{% show_contributors title %}</p>
@@ -15,11 +16,11 @@
         </p>
     </div>
 
-    <a data-image-src="{% get_shelf_cover_url title %}" href="{% url title_detail title.slug %}" data-title-slug="{{ title.slug }}" data-title-name="{{ title.name }}">
+    <a data-image-src="{% get_shelf_cover_url title %}" href="{% url 'title_detail' title.slug %}" data-title-slug="{{ title.slug }}" data-title-name="{{ title.name }}">
         <span class="visuallyhidden">Cover for {{ title.name }}</span>
     </a>
 
-    <aside data-promote="{% url promote_title pk=title.pk %}" class="shelf-item-rating">
+    <aside data-promote="{% url 'promote_title' pk=title.pk %}" class="shelf-item-rating">
         {{ title.promoter_count }} <span class="visuallyhidden">thumbs up</span>
     </aside>
 
