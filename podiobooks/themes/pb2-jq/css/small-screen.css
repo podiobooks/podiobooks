@@ -165,8 +165,9 @@
 		position:relative;
 		z-index:9;
 		min-height:43px;
+		border-right:solid 1px #E2E8EE;
 	}
-	.nav, .browse-by{
+	.nav{
 		display:none;
 	}
 	.menu-triggers{
@@ -181,6 +182,8 @@
 	.site-menu .browse-by{
 		display:block;
 		text-align:left;
+		border-right:none;
+		border-left:none;
 	}
 	.nav-bar li{
 		margin:0;
@@ -300,13 +303,19 @@
 		float:left;
 		font-size:18px;
 		font-weight:Bold;
-		padding:0;	
 		color:#fff;
 		margin:0;
 	}
+	.podiobooks-nav-text a{
+		padding:11px 0 0 55px;
+		background:url(img/pb-logo-icon.png) 10px bottom no-repeat;
+		background-size:auto 85%;
+	}
 	.podiobooks-nav-text{
-		padding:11px 0 0 10px;
+		padding:0;
+		displaY:none;
 		
+				
 	}
 	/*
 	 * Search
@@ -329,14 +338,14 @@
 	}
 	.search-bar-trigger{
 		display:block;
+		float:right;
 	}
 	.search-bar-trigger:link,
 	.search-bar-trigger:active,
 	.search-bar-trigger:visited,
 	.search-bar-trigger:hover{
 		width:40px;
-		height:40px;
-		float:right;
+		height:44px;
 		overflow: hidden;
 		text-align: right;
 		color:#fff;
@@ -577,4 +586,27 @@
 	.subscribable-heading-text{
 		display:none;
 	}
+	
+	/*
+	 * Browse Link
+	 */
+	.browse-by{
+		float:left;
+		height:44px;
+		border-right:solid 1px #E2E8EE;
+	}
+	.browse-by li{
+		display:block;
+		border-right:solid 1px #B2CEEE;
+		height:100%;
+	}
+	.browse-by a{
+		color:#fff;
+		font-size:18px;
+		font-weight:bold;
+		display:block;
+		height:33px;
+		padding:11px 15px 0;
+	}
+	
 }
