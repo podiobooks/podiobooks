@@ -177,6 +177,7 @@
 		display:none;
 		position:absolute;
 		z-index:100;
+		border-bottom:solid 1px #C7D9ED;
 	}
 	.site-menu .nav,
 	.site-menu .browse-by{
