@@ -1,3 +1,4 @@
+{% load url from future %}
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -49,7 +50,7 @@
 	</head>
 
 	<body class='{% block body_class %}{% endblock %}'>
-		{% url home_page as HOME_URL %}
+		{% url 'home_page' as HOME_URL %}
 		<a href="#page-content" class="jump-to-content">Go to Page Content</a>
 		<header class="head width clearfix">
 			
