@@ -73,6 +73,8 @@
 		margin:0 10px 10px 0;
 	}
 	.title-details-infobar{
+		position:static;
+		
 		width:90%;
 		float:left;
 		margin:15px 0 25px;
