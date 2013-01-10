@@ -68,7 +68,32 @@
 		text-align:center;
 		float:none;	
 	}
-	
+	.ad-float-right{
+		float:left;
+		margin:0 10px 10px 0;
+	}
+	.title-details-infobar{
+		width:90%;
+		float:left;
+		margin:15px 0 25px;
+		padding:3% 5%;
+		
+	}
+	.sharebox{
+		float:right;
+		padding:0;
+		margin:-5px 0 0 0;
+		max-width:55%;
+		width:auto;
+	}
+	.net-promoter-box{
+		margin:0 25px 0 0;
+		padding:0;
+		float:left;
+		height:auto;
+		width:auto;	
+		max-width:30%;
+	}
 }
 
 
@@ -171,7 +196,7 @@
 	}
 	.imagebox{
 		width:20%;
-		margin:0 5% 5% 0;
+		margin:0 5% 0 0;
 	}
 	.imagebox img{
 		max-width:100%;
@@ -179,11 +204,6 @@
 	.first-chapter{		
 		width:47%;
 	}
-	.title-details-infobar{
-		width:17%;
-		margin-left:5%;
-	}
-	
 	.browse-by{
 		float:left;
 		width:100%;
@@ -202,6 +222,7 @@
 		text-align:center;
 		padding-left:0;	
 	}
+	
 	
 }
 

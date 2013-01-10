@@ -56,6 +56,12 @@
 	.horizontal-large-ad{
 		display:none;
 	}
+	.ad-float-right{
+		float:none;
+		text-align:center;
+		display:block;
+		
+	}
 	.block-ad{
 		display:none;
 	}
@@ -122,21 +128,8 @@
 		border-top:solid 1px #b2b2b2;
 		
 	}
-	.net-promoter-box{
-		margin:0 25px 0 0;
-		padding:0;
-		float:left;
-		height:auto;
-		width:auto;	
-		max-width:30%;
-	}
-	.sharebox{
-		float:right;
-		padding:0;
-		margin:-5px 0 0 0;
-		max-width:55%;
-		width:auto;
-	}
+	
+	
 	.loading{
 		float:none;
 		margin-right:0;
@@ -547,13 +540,7 @@
 		padding-bottom:12px;
 	}
 	
-	.title-details-infobar{
-		width:90%;
-		float:left;
-		margin:15px 0;
-		padding:3% 5%;
-		
-	}
+	
 	
 	
 	/*
