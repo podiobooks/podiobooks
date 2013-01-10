@@ -7,6 +7,7 @@
 	bottom:0;
 	display:none;
 	z-index:998;
+	cursor:default;
 }
 .triggered-menu-close-screen:link{
 	-webkit-tap-highlight-color: transparent;
