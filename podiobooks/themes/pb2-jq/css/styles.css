@@ -296,8 +296,10 @@ body form.gsc-search-box{
     width: auto;
     overflow: hidden;
     text-align: center;
-    height: 15px;
-
+}
+.ad-float-right{
+	float:right;
+	margin:0 0 10px 10px;
 }
 
 .menu-triggers {
