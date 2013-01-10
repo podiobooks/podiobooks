@@ -81,6 +81,7 @@
 }
 .title-details-top-top{
 	margin:0 0 30px;
+	position:relative;
 }
 
 /*
@@ -113,13 +114,15 @@
     background-color: #D9E4F0;
     padding: 15px 15px 20px;
 
-    margin: -40px 0 0px 30px;
     float: right;
     width: 100px;
 
     box-shadow: 0 2px 6px rgba(0, 0, 0, .3);
 
     border-radius: 5px;
+    position:absolute;
+    top:0;
+    right:0;
 }
 
 .category a,
