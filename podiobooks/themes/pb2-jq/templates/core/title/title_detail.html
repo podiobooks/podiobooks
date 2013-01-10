@@ -76,13 +76,14 @@
             <div class='imagebox'>
                 {% show_titlecover title %}
                 {% show_awardshow title %}
-                 
             </div>
+            
             {% if title.series %}
                 <div class="title-details-seriesbar">
                     <a href="{{ title.series.get_absolute_url }}">{{ title.series.name }}</a>
                     {% if title.series_sequence > 0 %}:
-                        Book {{ title.series_sequence }}{% endif %}
+                        Book {{ title.series_sequence }}
+                    {% endif %}
                 </div>
             {% endif %}
         </header>
@@ -90,8 +91,6 @@
         <div class="title-details-top clearfix">
 			<div class="clearfix">
 	            <div class="title-details-infobar">
-	
-	               
 	
 	                <div class="net-promoter-box">
 	                    <ul>
@@ -121,29 +120,45 @@
 	            </div>
 			</div>
             <div class="title-description" itemprop="description">
+            	<aside class="ad-float-right">
+            		<script type="text/javascript"><!--
+						google_ad_client = "ca-pub-1276519440300441";
+						/* Title - Small Square */
+						google_ad_slot = "9174264996";
+						google_ad_width = 200;
+						google_ad_height = 200;
+						
+						//-->
+						</script>
+						<script type="text/javascript"
+						src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+						</script>
+            	</aside>
                 {% autoescape off %}{{ title.description|linebreaks|removetags:"img" }}{% endautoescape %}
             </div>
 
-            <aside>
+            
                 {% if 'Erotica' in title.category_list %}
-                    <a href="http://click.linksynergy.com/fs-bin/click?id=y8AvMVrRK4c&offerid=264221.20&subid=0&type=4"><IMG border="0"   alt="Plus Size Lingerie Boutique" src="http://ad.linksynergy.com/fs-bin/show?id=y8AvMVrRK4c&bids=264221.20&subid=0&type=4&gridnum=1"></a>
+                    <aside class="horizontal-large-ad">
+                    	<a href="http://click.linksynergy.com/fs-bin/click?id=y8AvMVrRK4c&offerid=264221.20&subid=0&type=4">
+                    		<IMG border="0" alt="Plus Size Lingerie Boutique" src="http://ad.linksynergy.com/fs-bin/show?id=y8AvMVrRK4c&bids=264221.20&subid=0&type=4&gridnum=1">
+                		</a>
+                	</aside>
                 {% else %}
                     <aside class="horizontal-large-ad" style="margin: 10px 0 0 5px;">
-                        <script type="text/javascript"><!--
-                        google_ad_client = "ca-pub-1276519440300441";
-                        /* Title - Bottom of page */
-                        google_ad_slot = "7520979117";
-                        google_ad_width = 468;
-                        google_ad_height = 15;
-                        //-->
-                        </script>
-                        <script type="text/javascript"
-                                src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-                        </script>
-                    </aside>
+                       <script type="text/javascript"><!--
+							google_ad_client = "ca-pub-1276519440300441";
+							/* Title - Leaderboard */
+							google_ad_slot = "6360399399";
+							google_ad_width = 728;
+							google_ad_height = 90;
+							//-->
+							</script>
+							<script type="text/javascript"
+							src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+						</script>
+					</aside>
                 {% endif %}
-            </aside>
-
         </div>
 
         <aside class="title-details-extras title-details-extras-inline">
