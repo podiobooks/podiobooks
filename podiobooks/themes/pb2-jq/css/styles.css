@@ -270,13 +270,11 @@ body form.gsc-search-box{
     margin-left: 8px;
     float: left;
     background: url('http://www.google.com/help/hc/images/adsense/adsense_185665_adformat-text_160x600_en.png');
+    
 }
 
 .wide-skyscraper-ad {
-    width: 160px;
-    height: 600px;
-    margin-left: 8px;
-    float: left;
+    text-align:center;
 }
 
 .leaderboard-ad-placeholder {
@@ -295,11 +293,11 @@ body form.gsc-search-box{
 .horizontal-large-ad {
     width: auto;
     overflow: hidden;
-    text-align: center;
+    text-align:center;
 }
 .ad-float-right{
 	float:right;
-	margin:0 0 10px 10px;
+	margin:0 0 15px 15px;
 }
 
 .menu-triggers {
