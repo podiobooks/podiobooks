@@ -96,6 +96,9 @@
 		width:auto;	
 		max-width:30%;
 	}
+	.title-details-top-top{
+		min-height:0;
+	}
 }
 
 
@@ -162,8 +165,7 @@
 		padding:15px 0;
 		border-radius:0 0 10px 10px;
 	}
-	.title-details-top{
-	}
+	
 	#djDebug{
 		display:none;
 	}
