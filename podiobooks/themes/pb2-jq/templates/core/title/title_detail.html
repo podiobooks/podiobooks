@@ -36,8 +36,10 @@
             <!--JuicyAds END-->
     </aside>
     {% endif %}
+    
     <aside class="title-details-extras">
         {% include "core/title/title_consumptionbox.html" %}
+        {% show_awardshow title %}
         <div id="wide-skyscraper-ad" class="wide-skyscraper-ad">
             {% if 'Erotica' in title.category_list %}
                 <!--JuicyAds v2.0-->
@@ -75,7 +77,6 @@
             </div>
             <div class='imagebox'>
                 {% show_titlecover title %}
-                {% show_awardshow title %}
             </div>
             
             {% if title.series %}
@@ -86,10 +87,13 @@
                     {% endif %}
                 </div>
             {% endif %}
+            
+                
         </header>
         
         <div class="title-details-top clearfix">
-			<div class="clearfix">
+			<div class="clearfix title-details-top-top">
+				
 	            <div class="title-details-infobar">
 	
 	                <div class="net-promoter-box">
@@ -109,7 +113,7 @@
 	                    </span>
 	
 	                </div>
-	
+				
 	                <div class="sharebox">
 	
 	                    {% show_tweet %}
@@ -119,7 +123,9 @@
 	                </div>
 	            </div>
 			</div>
-            <div class="title-description" itemprop="description">
+			
+			
+            <div class="title-description clearfix" itemprop="description">
             	<aside class="ad-float-right">
             		<script type="text/javascript"><!--
 						google_ad_client = "ca-pub-1276519440300441";
