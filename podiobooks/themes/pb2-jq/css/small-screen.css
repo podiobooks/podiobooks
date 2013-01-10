@@ -390,19 +390,7 @@
 	.cover-image{
 		width:60px;	
 	}
-	.award-show{
-		padding:0;
-		width:auto;
-		float:none;
-		position:absolute;
-		top:0;
-		right:70px;
-		margin:0;
-	}
-	.award-show img{
-		height:30px;
-		width:auto;
-	}
+	
 	.title-license{
 		padding:0;		
 	}
