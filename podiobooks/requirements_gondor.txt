@@ -1,8 +1,8 @@
 -r requirements.txt
-django-redis==3.1.2
-newrelic==1.7.0.31
-eventlet==0.9.17
-gunicorn==0.15.0
+django-redis==3.1.5
+newrelic==1.9.0.21
+eventlet==0.11.0
+gunicorn==0.17.2
 hiredis==0.1.1
-psycopg2==2.4.5
-redis==2.7.1
+psycopg2==2.4.6
+redis==2.7.2
