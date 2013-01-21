@@ -88,6 +88,7 @@ INSTALLED_APPS = (
     'django_jenkins',
     'mediabrute',
     'podiobooks',
+    'podiobooks.ads',
     'podiobooks.core',
     'podiobooks.libsyn',
     'podiobooks.feeds',
