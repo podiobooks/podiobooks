@@ -4,8 +4,8 @@ key: CUZ4WGBG6BX
 # Version control system used locally for your project.
 vcs: git
 
-# Framework to use on Gondor.
-framework: django
+# Runtime Environment
+runtime: python-2.7.3
 
 # This path is relative to your project root (the directory gondor.yml lives in.)
 requirements_file: podiobooks/requirements_gondor.txt
