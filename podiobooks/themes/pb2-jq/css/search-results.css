@@ -21,7 +21,7 @@
 	list-style:none;
 }
 .title-list-item{
-	padding:10px 0 40px 0;
+	margin:10px 0 30px 0;
 }
 .title-list-item a,
 .title-list-item a:active,
@@ -34,4 +34,7 @@
 	float:left;
 	margin:10px 30px 15px 0;
 }
-
+.title-list-250-ad{
+	float:right;
+	margin:0 0 10px 20px;
+}

@@ -294,10 +294,16 @@ body form.gsc-search-box{
     width: auto;
     overflow: hidden;
     text-align:center;
+    margin:20px 0;
 }
 .ad-float-right{
 	float:right;
 	margin:0 0 15px 15px;
+}
+.browse-list-120-ad{
+	float:right;
+	margin:0 0 10px 10px;
+	width:120px;
 }
 
 .menu-triggers {
@@ -311,7 +317,9 @@ body form.gsc-search-box{
 .site-menu {
     display: none;
 }
-
+.pagination{
+	margin:15px 0;
+}
 
 /*
  * Jump to content link
