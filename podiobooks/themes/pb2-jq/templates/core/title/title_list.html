@@ -5,12 +5,16 @@
 {% block headtitle %}All Titles - {{ SITE.name }}{% endblock %}
 
 {% block content %}
+	<h1>All Titles, Alphabetical</h1>
     {% if page_obj.number > 1 %}
         <span class="current">
                 <em>Page {{ page_obj.number }} of {{ paginator.num_pages }}</em>
             </span>
     {% endif %}
+    
     {% show_titlelist title_list "title_list" %}
-    <br>
+    
+    <br />
+    
     {% show_pagination_links paginator page_obj %}
 {% endblock %}

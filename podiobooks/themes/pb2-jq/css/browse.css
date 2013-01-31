@@ -102,13 +102,13 @@
 .browse-list{
 	margin:0;
 	padding:0;
-	-webkit-column-count: 3;
-	-moz-column-count: 3;
-	-o-column-count: 3;
-	column-count: 3;
+	-webkit-column-count: 2;
+	-moz-column-count: 2;
+	-o-column-count: 2;
+	column-count: 2;
 }
 .csscolumns .browse-list li{
-	display:inline-block;
+	
 }
 .browse-list li{
 	margin:0 0 8px;
