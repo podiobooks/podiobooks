@@ -556,6 +556,10 @@
 		border-top:solid 1px #e7e7e7;
 		margin-top:20px;	
 	}
+	.title-list>li:nth-of-type(4)>.title-list-item{
+		border-top:solid 1px #e7e7e7;
+		
+	}
 	.title-list-item-desc{
 		display:none;
 	}
