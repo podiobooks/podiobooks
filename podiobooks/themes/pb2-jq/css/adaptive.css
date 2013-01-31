@@ -2,9 +2,13 @@
  * 3 panes per shelf
  */
 @media all and (max-width:950px){	
-	.width{
-		max-width:666px;
-		width:none;
+	.width{		
+		width:auto;
+		padding:0 18px;
+	}
+	
+	.home .width{
+		padding:0 40px;
 	}
 	
 	.nav{
@@ -171,8 +175,10 @@
 		display:none;
 	}
 
-	.width{
+	.width,
+	.home .width{
 		width:95%;
+		padding:0;
 	}
 	.hide-on-mobile{
 		display:none;
@@ -242,10 +248,10 @@
 		width:130px;
 	}
 	.browse-list{
-		-webkit-column-count: 4;
-		-moz-column-count: 4;
-		-o-column-count: 4;
-		column-count: 4;
+		-webkit-column-count: 3;
+		-moz-column-count: 3;
+		-o-column-count: 3;
+		column-count: 3;
 	}
 	.browse-choices{
 		width:76%;

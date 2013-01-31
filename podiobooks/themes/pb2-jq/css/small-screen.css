@@ -46,7 +46,6 @@
 		column-count: 1;
 	}
 	.csscolumns .browse-list li{
-		display:list-item
 	}
 	
 	
@@ -64,6 +63,12 @@
 	}
 	.block-ad{
 		display:none;
+	}
+	.title-list-250-ad{
+		float:none;
+		display:block;
+		margin:15px auto;
+		width:250px;
 	}
 	
 	
@@ -98,6 +103,7 @@
 	.shelf-wrapper{
 		padding:0 0 30px;
 	}
+	.home .width,
 	.width{
 		width:auto;
 	}
@@ -542,9 +548,13 @@
 	}
 	.title-list-item{
 		padding:15px 0;
-		position:relative;
-		
+		margin:0;
+		position:relative;		
 		border-bottom:solid 1px #e7e7e7;
+	}
+	.title-list>li:first-of-type>.title-list-item{
+		border-top:solid 1px #e7e7e7;
+		margin-top:20px;	
 	}
 	.title-list-item-desc{
 		display:none;
