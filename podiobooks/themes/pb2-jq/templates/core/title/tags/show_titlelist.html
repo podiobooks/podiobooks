@@ -1,17 +1,7 @@
 {% load title_templatetags %}
 
 <aside class="horizontal-large-ad">
-    <script type="text/javascript"><!--
-		google_ad_client = "ca-pub-1276519440300441";
-		/* Search - Title Results List Leaderboard */
-		google_ad_slot = "6954534995";
-		google_ad_width = 728;
-		google_ad_height = 90;
-		//-->
-	</script>
-	<script type="text/javascript"
-		src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-	</script>
+    {% include "core/ad/browse_results_list_ad_1.html" %}
 </aside>
 
 <ul class="title-list">
@@ -19,17 +9,7 @@
     	{% if forloop.counter == 3 %}
     		<li>
 		    	<aside class="title-list-250-ad">
-		    		<script type="text/javascript"><!--
-						google_ad_client = "ca-pub-1276519440300441";
-						/* Search - Title Results List Square */
-						google_ad_slot = "3861467791";
-						google_ad_width = 250;
-						google_ad_height = 250;
-						//-->
-					</script>
-					<script type="text/javascript"
-						src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-					</script>
+		    		{% include "core/ad/browse_results_list_ad_2.html" %}
 				</aside>
 		    </li>
     	{% endif %}
