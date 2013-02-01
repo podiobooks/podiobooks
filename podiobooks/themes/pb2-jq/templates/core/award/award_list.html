@@ -28,7 +28,7 @@
     <ul class="browse-list">
         {% for award in award_list %}
             <li class="series_{{ award.slug }}"><a
-                    href="{{ award.get_absolute_url }}">{{ award.name }}</a> ({{ award|count_titles }})</li>
+                    href="{{ award.get_absolute_url }}">{{ award.name }}</a> ({{ award|count_titles }}<span class="hide-on-small-screen"> title{{ award|count_titles|pluralize }}</span>)</li>
         {% endfor %}
     </ul>
 
