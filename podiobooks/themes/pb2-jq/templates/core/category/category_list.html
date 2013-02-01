@@ -25,7 +25,7 @@
 
 	<ul class="browse-list">
 		{% for category in category_list %} 
-			<li class="category_list_item category_{{category.slug}}"><a href="{{category.get_absolute_url}}">{{ category.name }}</a> - {{ category.title_set.all.count }} title{{ category.title_set.all.count|pluralize }}</li>
+			<li class="category_list_item category_{{ category.slug }}"><a href="{{ category.get_absolute_url }}">{{ category.name }}</a> - {{ category.title_count }} title{{ category.title_count|pluralize }}</li>
 		{% endfor %}
 	</ul>
 {% endblock %}

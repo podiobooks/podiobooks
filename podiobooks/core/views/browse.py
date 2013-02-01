@@ -111,9 +111,11 @@ class EpisodeDetailView(DetailView):
 class SeriesListView(ListView):
     """List of all the Series on the site"""
     template_name = 'core/series/series_list.html'
-    queryset = Series.objects.filter(deleted=False).order_by('name')
     context_object_name = 'series_list'
     paginate_by = 40
+    
+    def get_queryset(self):
+        return Series.objects.annotate(title_count=Count('titles')).filter(deleted=False).order_by('name')
 
 
 class SeriesDetailView(ListView):
@@ -134,7 +136,7 @@ class SeriesDetailView(ListView):
 
 class TitleListView(ListView):
     """List of all titles on the site alphabetically"""
-    queryset = Title.objects.filter(deleted=False).order_by('name')
+    queryset = Title.objects.prefetch_related("titlecontributors", "titlecontributors__contributor_type", "titlecontributors__contributor").filter(deleted=False).order_by('name')
     context_object_name = 'title_list'
     paginate_by = 25
     template_name = 'core/title/title_list.html'
@@ -142,7 +144,7 @@ class TitleListView(ListView):
 
 class TitleRecentListView(ListView):
     """List of all titles on the site in release order"""
-    queryset = Title.objects.filter(deleted=False).order_by('-date_created')
+    queryset = Title.objects.prefetch_related("titlecontributors", "titlecontributors__contributor_type", "titlecontributors__contributor").filter(deleted=False).order_by('-date_created')
     context_object_name = 'title_list'
     paginate_by = 25
     template_name = 'core/title/title_recent_list.html'
