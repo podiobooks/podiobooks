@@ -42,7 +42,7 @@
 		{% else %} 
 			{{ contributor.get_absolute_url }} 
 		{% endifequal %}">{{ contributor.display_name }}</a>
-                ({{ contributor|count_titles }})</li>
+                ({{ contributor|count_titles }}<span class="hide-on-small-screen"> title{{ contributor|count_titles|pluralize }}</span>)</li>
         {% endfor %}
     </ul>
     <br>
