@@ -79,7 +79,7 @@ class CategoryDetailView(ListView):
 class ContributorListView(ListView):
     """List of all Contributors on the Site, with title count for each"""
     template_name = 'core/contributor/contributor_list.html'
-    queryset = Contributor.objects.prefetch_related("title_set").filter(deleted=False).annotate(title_count=Count('title')).filter(title_count__gt=0).order_by('last_name')
+    queryset = Contributor.objects.prefetch_related("title_set").filter(deleted=False, title__deleted=False).annotate(title_count=Count('title')).filter(title_count__gt=0).order_by('last_name')
     context_object_name = 'contributor_list'
     paginate_by = 40
 
