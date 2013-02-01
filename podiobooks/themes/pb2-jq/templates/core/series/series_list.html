@@ -23,7 +23,7 @@
     <ul class="browse-list">
         {% for series in series_list %}
             <li class="series_{{ series.slug }}"><a
-                    href="{{ series.get_absolute_url }}">{{ series.name }}</a> - {{ series.titles.all.count }} title{{ series.titles.all.count|pluralize }}</li>
+                    href="{{ series.get_absolute_url }}">{{ series.name }}</a> - {{ series.title_count }} title{{ series.title_count|pluralize }}</li>
         {% endfor %}
     </ul>
     <br>
