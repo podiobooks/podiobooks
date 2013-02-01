@@ -5,6 +5,7 @@ from podiobooks.core.forms import TitleSearchForm, BrowseByForm
 
 register = template.Library()
 
+
 @register.inclusion_tag('core/tags/show_browsebox.html')
 def show_browsebox():
     """ Shows the browse by section of the header """
