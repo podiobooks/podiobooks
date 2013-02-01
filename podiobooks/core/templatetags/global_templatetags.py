@@ -6,6 +6,21 @@ from podiobooks.core.forms import TitleSearchForm, BrowseByForm
 register = template.Library()
 
 
+@register.filter
+def count_titles(something):
+    """ 
+    Count how many undeleted titles exist for a given something 
+    
+    Handles both 1-M relations and M-M relations    
+    """
+    some_titles = []
+    try:
+        some_titles += [title for title in something.title_set.all() if not title.deleted]
+    except AttributeError:
+        some_titles += [title for title in something.titles.all() if not title.deleted]
+    return len(some_titles)
+
+
 @register.inclusion_tag('core/tags/show_browsebox.html')
 def show_browsebox():
     """ Shows the browse by section of the header """
