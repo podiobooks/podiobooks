@@ -94,7 +94,6 @@ INSTALLED_APPS = (
     'podiobooks.feeds',
     'podiobooks.search',
     'south',
-#    'pbshelf',
     )
 
 ### DATABASE SETTINGS
