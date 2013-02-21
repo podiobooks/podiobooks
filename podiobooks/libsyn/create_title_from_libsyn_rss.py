@@ -10,6 +10,7 @@ from email.utils import mktime_tz, parsedate_tz
 from datetime import datetime
 import time
 from django.utils.html import strip_tags
+from django.utils import timezone
 
 def create_title_from_libsyn_rss(rss_feed_url):
     """Parses a libsyn-generated RSS feed"""
@@ -55,7 +56,7 @@ def create_title_from_libsyn_rss(rss_feed_url):
         episode.filesize = item.find('enclosure').get('length')
         episode.url = item.find('enclosure').get('url').replace('traffic.libsyn.com', 'media.podiobooks.com')
         episode.duration = item.find('{http://www.itunes.com/dtds/podcast-1.0.dtd}duration').text
-        episode.media_date_created = datetime.fromtimestamp(mktime_tz(parsedate_tz(item.find('pubDate').text)))
+        episode.media_date_created = datetime.fromtimestamp(mktime_tz(parsedate_tz(item.find('pubDate').text)), timezone.utc)
         episode.sequence = 0
         episode.save()
 
