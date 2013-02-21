@@ -69,6 +69,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.middleware.cache.FetchFromCacheMiddleware',
     'django.middleware.http.ConditionalGetMiddleware',
+    'podiobooks.core.middleware.PermanentRedirectMiddleware',
     )
 
 ROOT_URLCONF = 'podiobooks.urls'
@@ -187,6 +188,9 @@ DONATION_BUSINESS_NAME = 'evo@podiobooks.com'
 CSS_TOP_FILES = ["jquery.pbshelf.css", "clear.css", "styles.css", "base-shelf.css", ]
 CSS_BOTTOM_FILES = ["gsc-overrides.css", "adaptive.css", "small-screen.css"]
 JS_SETTINGS_TEMPLATE = "mediabrute/js/config.txt"
+
+# This is to catch special domain names and redirect them to the main
+REDIRECT_DOMAINS = []
 
 # This is a hack to get mediabrute to play nice with runserver + staticfiles app
 if DEBUG and STATIC_URL.startswith("/") and not STATIC_URL.startswith("//"):
