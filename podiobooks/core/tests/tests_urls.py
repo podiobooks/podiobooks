@@ -5,6 +5,7 @@
 from django.test import TestCase
 from django.test.client import Client
 
+
 class UrlTestCase(TestCase):
     fixtures = ['test_data.json', ]
 
@@ -41,7 +42,7 @@ class UrlTestCase(TestCase):
 
     def test_title_search_keywords_get(self):
         response = self.client.get('/title/search/', {'keyword': 'sigler'}, follow=True)
-        self.assertRedirects (response, '/search/?q=sigler', status_code=301)
+        self.assertRedirects(response, '/search/?q=sigler', status_code=301)
 
     def test_title_search_pb1(self):
         response = self.client.get('/podiobooks/search.php', {'keyword': 'sigler'}, follow=True)
