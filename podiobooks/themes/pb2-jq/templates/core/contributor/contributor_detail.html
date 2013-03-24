@@ -7,9 +7,6 @@
 		<h1>
 		    {{ contributor.display_name }}
 		</h1>
-        {% if contributor.community_handle %}
-            Find out <a href="http://community.podiobooks.com/profile/{{ contributor.community_handle }}">more about {{ contributor.display_name }}</a>!
-        {% endif %}
 		
 		{% show_titlelist title_list "contributor_title_list" %}
 	
