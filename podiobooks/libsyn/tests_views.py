@@ -3,7 +3,7 @@
 # pylint: disable=C0103,C0111,R0904
 
 from django.test import TestCase
-from django.contrib.admin.models import User
+from django.contrib.auth.models import User
 from podiobooks.core.models import License
 
 class LibsynImportViewsTestCase(TestCase):
