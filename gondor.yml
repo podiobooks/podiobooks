@@ -43,7 +43,7 @@ wsgi:
     #
     # wsgi = the Python module which should be importable
     # application = the callable in the Python module
-    entry_point: podiobooks.wsgi_newrelic:application
+    entry_point: podiobooks.wsgi:application
     
     # Options for gunicorn which runs your WSGI project.
     gunicorn:
@@ -52,7 +52,7 @@ wsgi:
         worker_class: eventlet
 
     # Suspends full rebuild of packages on deploy. Use --fresh to force rebuild.
-    use_environment_cache: true
+    # use_environment_cache: true
 
 django:
     # The location of your manage.py. Gondor uses this as an entry point for
