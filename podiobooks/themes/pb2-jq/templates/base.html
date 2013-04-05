@@ -58,7 +58,7 @@
 		    {% block header %}
 		    	{% load global_templatetags %}<!-- Header - Logo and Navigation Bar -->
 		
-				{% url podiobooks.main.views.index as home_url %}
+				{% url 'podiobooks.main.views.index' as 'home_url' %}
 				
 				{% if request.path == home_url %}
 				    <h1 class='hidden'><a href='{{ HOME_URL }}'>Podiobooks</a></h1>
