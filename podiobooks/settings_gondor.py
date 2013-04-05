@@ -12,8 +12,8 @@ if "GONDOR_DATABASE_URL" in os.environ:
     DATABASES = {
         "default": {
             "ENGINE": {
-                          "postgres": "django.db.backends.postgresql_psycopg2"
-                      }[url.scheme],
+                "postgres": "django.db.backends.postgresql_psycopg2"
+            }[url.scheme],
             "NAME": url.path[1:],
             "USER": url.username,
             "PASSWORD": url.password,
@@ -51,8 +51,10 @@ SERVER_EMAIL = os.environ.get("SERVER_EMAIL", "")
 MANAGERS = eval(os.environ.get("MANAGERS", "(('Podiobooks DEV', 'podiobooksdev@gmail.com'),)"))
 ADMINS = eval(os.environ.get("ADMINS", "(('Podiobooks DEV', 'podiobooksdev@gmail.com'),)"))
 SEND_BROKEN_LINK_EMAILS = eval(os.environ.get("SEND_BROKEN_LINK_EMAILS", "False"))
-ALLOWED_HOSTS = ['.podiobooks.com', 'lt832.o1.gondor.io', 'lt832.o1.gondor.co', 'il086.o1.gondor.io', 'il086.o1.gondor.co', 'sf602.o1.gondor.io', 'sf602.o1.gondor.co']
-REDIRECT_DOMAINS = ['lt832.o1.gondor.io', 'lt832.o1.gondor.co', 'il086.o1.gondor.io', 'il086.o1.gondor.co', 'sf602.o1.gondor.io', 'sf602.o1.gondor.co']
+ALLOWED_HOSTS = ['.podiobooks.com', 'lt832.o1.gondor.io', 'lt832.o1.gondor.co', 'il086.o1.gondor.io',
+                 'il086.o1.gondor.co', 'sf602.o1.gondor.io', 'sf602.o1.gondor.co']
+REDIRECT_DOMAINS = ['lt832.o1.gondor.io', 'lt832.o1.gondor.co', 'il086.o1.gondor.io', 'il086.o1.gondor.co',
+                    'sf602.o1.gondor.io', 'sf602.o1.gondor.co']
 
 GOOGLE_ANALYTICS_ID = os.environ.get("GOOGLE_ANALYTICS_ID", GOOGLE_ANALYTICS_ID)
 
@@ -68,8 +70,8 @@ STATIC_ROOT = os.path.join(os.environ["GONDOR_DATA_DIR"], "site_media", "staticr
 CSS_DIR = "css"
 JS_DIR = "js"
 
-MEDIA_URL = "/assets/media/" # make sure this maps inside of a static_urls URL in gondor.yml
-STATIC_URL = "/assets/static/" # make sure this maps inside of a static_urls URL in gondor.yml
+MEDIA_URL = "/assets/media/"  # make sure this maps inside of a static_urls URL in gondor.yml
+STATIC_URL = "/assets/static/"  # make sure this maps inside of a static_urls URL in gondor.yml
 
 FILE_UPLOAD_PERMISSIONS = 0640
 
@@ -89,8 +91,47 @@ if DEBUG:
         'debug_toolbar.panels.sql.SQLDebugPanel',
         'debug_toolbar.panels.signals.SignalDebugPanel',
         'debug_toolbar.panels.logger.LoggingPanel',
-        )
+    )
 
     DEBUG_TOOLBAR_CONFIG = {
         'INTERCEPT_REDIRECTS': False
     }
+
+LOGGING = {
+    'version': 1,
+    'formatters': {
+        'verbose': {
+            'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
+        },
+        'simple': {
+            'format': '%(levelname)s %(message)s'
+        },
+    },
+    'handlers': {
+        'null': {
+            'level': 'DEBUG',
+            'class': 'django.utils.log.NullHandler',
+        },
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple'
+        },
+        'mail_admins': {
+            'level': 'ERROR',
+            'class': 'django.utils.log.AdminEmailHandler'
+        }
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'propagate': True,
+            'level': 'INFO',
+        },
+        'django.request': {
+            'handlers': ['mail_admins'],
+            'level': 'ERROR',
+            'propagate': False,
+        },
+    }
+}

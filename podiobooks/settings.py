@@ -11,7 +11,8 @@ local_settings.py, once created, should never be checked into source control
 It is ignored by default by .gitignore, so if you don't mess with that, you should be fine.
 """
 # pylint: disable=R0801, W0611
-import os, socket
+import os
+import socket
 
 # Set the root path of the project so it's not hard coded
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
@@ -45,7 +46,7 @@ TEMPLATE_DIRS = [os.path.join(PROJECT_ROOT, "themes", THE_THEME, 'templates')]
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
-    )
+)
 
 #List of callables that add their data to each template
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -57,7 +58,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'podiobooks.core.context_processors.current_site',
     'django.core.context_processors.request',
     'mediabrute.context_processors.mini_media',
-    )
+)
 
 MIDDLEWARE_CLASSES = (
     'django.middleware.gzip.GZipMiddleware',
@@ -70,7 +71,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.cache.FetchFromCacheMiddleware',
     'django.middleware.http.ConditionalGetMiddleware',
     'podiobooks.core.middleware.PermanentRedirectMiddleware',
-    )
+)
 
 ROOT_URLCONF = 'podiobooks.urls'
 
@@ -93,7 +94,7 @@ INSTALLED_APPS = (
     'podiobooks.feeds',
     'podiobooks.search',
     'south',
-    )
+)
 
 ### DATABASE SETTINGS
 DATABASES = {
@@ -162,7 +163,7 @@ if DEBUG:
         'debug_toolbar.panels.sql.SQLDebugPanel',
         'debug_toolbar.panels.signals.SignalDebugPanel',
         'debug_toolbar.panels.logger.LoggingPanel',
-        )
+    )
 
     DEBUG_TOOLBAR_CONFIG = {
         'INTERCEPT_REDIRECTS': False
@@ -198,15 +199,15 @@ if DEBUG and STATIC_URL.startswith("/") and not STATIC_URL.startswith("//"):
     JS_DIR = THE_THEME + "/js"
     MEDIABRUTE_CSS_URL_PATH = "css"
     MEDIABRUTE_JS_URL_PATH = "js"
-    
-#    APP_JS = "static/js"
-#    APP_CSS = "static/css"
+
+    #    APP_JS = "static/js"
+    #    APP_CSS = "static/css"
 
     STATICFILES_DIRS = (
         # Put strings here, like "/home/html/static" or "C:/www/django/static".
         # Always use forward slashes, even on Windows.
         # Don't forget to use absolute paths, not relative paths.
         PROJECT_ROOT + "/themes/" + THE_THEME + "/",
-        )
+    )
 
     STATIC_ROOT = PROJECT_ROOT + "/themes/"
