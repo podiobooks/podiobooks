@@ -51,6 +51,9 @@ wsgi:
         # sync, eventlet and gevent)
         worker_class: eventlet
 
+    # Suspends full rebuild of packages on deploy. Use --fresh to force rebuild.
+    use_environment_cache: true
+
 django:
     # The location of your manage.py. Gondor uses this as an entry point for
     # management commands. This path is relative to your project root (the
