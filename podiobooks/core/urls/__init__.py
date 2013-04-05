@@ -3,8 +3,6 @@
 # pylint: disable=W0401,W0614,C0103
 
 from django.conf.urls import include, patterns, url
-from django.views.generic import RedirectView
-from django.views.decorators.cache import cache_page
 from podiobooks.core.views import FeedRedirectView, TitleRedirectView
 from podiobooks.core.views.browse import AwardDetailView, AwardListView, BrowseOptionsView, CategoryDetailView, CategoryListView, ContributorDetailView, ContributorListView, EpisodeDetailView, SeriesDetailView, SeriesListView, TitleListView, TitleRecentListView, TitleDetailView
 from podiobooks.core.views.shelf import FilteredShelf
