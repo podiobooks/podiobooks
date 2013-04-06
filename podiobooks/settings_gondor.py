@@ -123,6 +123,10 @@ LOGGING = {
         }
     },
     'loggers': {
+        "gunicorn": {
+            "propagate": True,
+            'level': 'INFO',
+        },
         'django': {
             'handlers': ['console'],
             'propagate': True,
