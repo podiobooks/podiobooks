@@ -52,7 +52,7 @@ MANAGERS = eval(os.environ.get("MANAGERS", "(('Podiobooks DEV', 'podiobooksdev@g
 ADMINS = eval(os.environ.get("ADMINS", "(('Podiobooks DEV', 'podiobooksdev@gmail.com'),)"))
 SEND_BROKEN_LINK_EMAILS = eval(os.environ.get("SEND_BROKEN_LINK_EMAILS", "False"))
 ALLOWED_HOSTS = ['.podiobooks.com', 'lt832.o1.gondor.io', 'lt832.o1.gondor.co', 'il086.o1.gondor.io',
-                 'il086.o1.gondor.co', 'sf602.o1.gondor.io', 'sf602.o1.gondor.co']
+                 'il086.o1.gondor.co', 'sf602.gondor.io', 'sf602.gondor.co']
 REDIRECT_DOMAINS = ['lt832.o1.gondor.io', 'lt832.o1.gondor.co', 'il086.o1.gondor.io', 'il086.o1.gondor.co',
                     'sf602.o1.gondor.io', 'sf602.o1.gondor.co']
 
@@ -98,30 +98,51 @@ if DEBUG:
     }
 
 LOGGING = {
-    "version": 1,
-    "disable_existing_loggers": True,
-    "formatters": {
-        "simple": {
-            "format": "%(levelname)s %(message)s"
+    'version': 1,
+    "disable_existing_loggers": False,
+    'formatters': {
+        'verbose': {
+            'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
+        },
+        'simple': {
+            'format': '%(levelname)s %(message)s'
         },
     },
-    "handlers": {
-        "console": {
-            "level": "DEBUG",
-            "class": "logging.StreamHandler",
-            "formatter": "simple"
+    'handlers': {
+        'null': {
+            'level': 'DEBUG',
+            'class': 'django.utils.log.NullHandler',
+        },
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple'
+        },
+        'mail_admins': {
+            'level': 'ERROR',
+            'class': 'django.utils.log.AdminEmailHandler'
         }
     },
-    "root": {
-        "handlers": ["console"],
-        "level": "INFO",
-    },
-    "loggers": {
-        "gunicorn": {
-            "propagate": True,
+    'loggers': {
+        "root": {
+            "handlers": ["console"],
+            'propagate': True,
+            "level": "INFO",
         },
-        "django": {
-            "propagate": True,
+        'gunicorn': {
+            'handlers': ['console'],
+            'propagate': True,
+            'level': 'INFO',
+        },
+        'django': {
+            'handlers': ['console'],
+            'propagate': True,
+            'level': 'INFO',
+        },
+        'django.request': {
+            'handlers': ['mail_admins'],
+            'level': 'ERROR',
+            'propagate': False,
         },
     }
 }
