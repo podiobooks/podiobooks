@@ -6,6 +6,7 @@ from django.db.models import Count, Q
 
 from podiobooks.core.models import Category, Contributor
 
+# pylint: disable=R0924
 
 class BrowseByForm(forms.Form):
     """ Form used to choose a way to browse - used in header """
