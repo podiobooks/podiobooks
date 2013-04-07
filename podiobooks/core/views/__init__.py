@@ -17,6 +17,7 @@ from podiobooks.core.queries import get_featured_shelf_titles, get_recently_rele
 INITIAL_CATEGORY = 'science-fiction'
 INITIAL_CONTRIBUTOR = 'mur-lafferty'
 
+
 class IndexView(TemplateView):
     """Home Page"""
 
@@ -78,7 +79,7 @@ def title_search(request, keywords=None):
         form = TitleSearchForm({'keyword': keywords})
 
     # Validate Search Form
-    if form.is_valid(): # All validation rules pass
+    if form.is_valid():  # All validation rules pass
         keywords = form.cleaned_data['keyword']
 
     if keywords:
@@ -87,21 +88,22 @@ def title_search(request, keywords=None):
     return HttpResponsePermanentRedirect(redirect_to=reverse('site_search'))
 
 
-def clean_id(id=None):
+def clean_id(id_num=None):
     """Utility function to clean an ID to make sure it's only numbers"""
-    id = filter(type(id).isdigit, id)
+    id_num = filter(type(id_num).isdigit, id_num)  # pylint: disable=W0141
     try:
-        id = int(id)
+        id_num = int(id_num)
     except ValueError:
         raise Http404
-    return id
+    return id_num
+
 
 class FeedRedirectView(RedirectView):
     """Redirect the PB1 Feed Path to the PB2 Feed Path"""
 
     def get_redirect_url(self, **kwargs):
         """Uses PK of Title or Slug from URL to redirect to feed"""
-        pk = kwargs.get('pk', None) # pylint: disable=C0103
+        pk = kwargs.get('pk', None)  # pylint: disable=C0103
         slug = kwargs.get('slug', None)
 
         if not pk and not slug:
@@ -124,7 +126,7 @@ class TitleRedirectView(RedirectView):
 
     def get_redirect_url(self, **kwargs):
         """Uses ID of Title from URL to redirect to Title"""
-        pk = self.request.GET.get('ID', None) # pylint: disable=C0103
+        pk = self.request.GET.get('ID', None)  # pylint: disable=C0103
 
         if pk:
             pk = clean_id(pk)
