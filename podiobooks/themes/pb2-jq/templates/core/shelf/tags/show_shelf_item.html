@@ -19,11 +19,5 @@
     <a data-image-src="{% get_shelf_cover_url title %}" href="{% url 'title_detail' title.slug %}" data-title-slug="{{ title.slug }}" data-title-name="{{ title.name }}">
         <span class="visuallyhidden">Cover for {{ title.name }}</span>
     </a>
-
-    <aside data-promote="{% url 'promote_title' pk=title.pk %}" class="shelf-item-rating">
-        {{ title.promoter_count }} <span class="visuallyhidden">thumbs up</span>
-    </aside>
-
-
 </article>
 
