@@ -98,24 +98,6 @@
 			<div class="clearfix title-details-top-top">
 				
 	            <div class="title-details-infobar">
-	
-	                <div class="net-promoter-box">
-	                    <ul>
-	                        <li class="promoter-count">
-	                            Likes: {{ title.promoter_count }}
-	                        </li>
-	
-	                        <li class="detractor-count">
-	                            Dislikes: {{ title.detractor_count }}
-	                        </li>
-	                    </ul>
-	                    <span itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
-	                    	<meta itemprop="ratingValue" content="{{ title.computed_rating }}"/>
-	                    	<meta itemprop="bestRating" content="5"/>
-	                        <meta itemprop="ratingCount" content="{{ title.promoter_count|add:title.detractor_count }}"/>
-	                    </span>
-	
-	                </div>
 				
 	                <div class="sharebox">
 	
