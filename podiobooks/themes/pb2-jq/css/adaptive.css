@@ -10,6 +10,10 @@
 	.home .width{
 		padding:0 40px;
 	}
+	.pg-foot,
+	.home .pg-foot{
+		padding:30px 40px 10px;
+	}
 	
 	.nav{
 		margin:0;
@@ -179,6 +183,10 @@
 	.home .width{
 		width:95%;
 		padding:0;
+	}
+	.pg-foot,
+	.home .pg-foot{
+		padding: 20px 0 10px;
 	}
 	.hide-on-mobile{
 		display:none;
