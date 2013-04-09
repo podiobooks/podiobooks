@@ -5,7 +5,9 @@
 	h1{
 		font-size:19px;
 	}
-	
+	.float-return{
+		float:none;
+	}
 	/*
 	 * Browse Choices
 	 */
@@ -131,8 +133,8 @@
 	}	
 	
 	.pg-foot{
-		border-top:solid 1px #b2b2b2;
-		
+		border-top:solid 1px #b2b2b2;	
+		text-align:center;	
 	}
 	
 	
