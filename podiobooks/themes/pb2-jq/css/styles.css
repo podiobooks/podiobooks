@@ -39,6 +39,14 @@ a.fdbk_tab_bottom {
     left: 0;
 }
 
+.float-left{
+	float:left;
+	
+}
+
+.float-right{
+	float:right;
+}
 /*
 * Layout
 */
@@ -214,7 +222,6 @@ body form.gsc-search-box{
 * Foot
 */
 .pg-foot {
-    text-align: center;
     border-top: solid 1px #c7c7c7;
     padding: 30px 0 10px;
 
@@ -226,16 +233,18 @@ body form.gsc-search-box{
 
 .pg-foot ul {
     list-style: none;
-    margin: 5px 0 0 0;
 }
 
 .pg-foot li {
     display: inline;
     margin: 0 4px;
 }
-
+.pg-foot li:first-of-type{
+	margin:0 4px 0 0;
+}
 .foot-nav {
     font-size: 12px;
+    margin:0 0 15px;
 }
 
 .pg-foot .foot-nav-extra {
