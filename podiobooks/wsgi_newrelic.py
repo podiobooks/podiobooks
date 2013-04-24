@@ -14,19 +14,21 @@ framework.
 
 """
 import os
+import django.core.management
 import newrelic.agent
 newrelic.agent.initialize('podiobooks/newrelic.ini', os.environ.get('INSTANCE_TYPE', 'development'))
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "podiobooks.settings")
+
+# Hack to force preload of everything at WSGI init
+utility = django.core.management.ManagementUtility()
+command = utility.fetch_command('runserver')
+command.validate()
 
 # This application object is used by any WSGI server configured to use this
 # file. This includes Django's development server, if the WSGI_APPLICATION
 # setting points here.
 from django.core.wsgi import get_wsgi_application
 application = get_wsgi_application()
-
-# Apply WSGI middleware here.
-# from helloworld.wsgi import HelloWorldApplication
-# application = HelloWorldApplication(application)
 
 application = newrelic.agent.wsgi_application()(application)
