@@ -9,6 +9,7 @@ from django.conf.urls import patterns, url, include
 from django.contrib import admin
 from django.contrib.auth.views import login as login_view
 from django.contrib.admindocs import urls as admindocs_urls
+from django.contrib.sitemaps.views import sitemap as sitemap_urls
 from podiobooks.feeds import urls as feeds_urls
 from podiobooks.libsyn import urls as libsyn_urls
 from podiobooks.core import urls as core_urls
@@ -72,7 +73,7 @@ urlpatterns = \
              (r'^blog(?P<url_remainder>.*)', BlogRedirectView.as_view()),
 
              # Sitemap
-             (r'^sitemap\.xml$', 'django.contrib.sitemaps.views.sitemap', {'sitemaps': sitemaps}),
+             (r'^sitemap\.xml$', sitemap_urls, {'sitemaps': sitemaps}),
 
              # PB1 Index Page
              (r'index\.php|index\.html', RedirectView.as_view(url='/')),
