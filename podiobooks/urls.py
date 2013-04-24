@@ -10,19 +10,22 @@ from django.contrib import admin
 from django.contrib.auth.views import login as login_view
 from django.contrib.admindocs import urls as admindocs_urls
 from django.contrib.sitemaps.views import sitemap as sitemap_urls
+from django.views.static import serve as dev_static_views
+from django.conf import settings
+from django.views.generic import RedirectView
+from django.views.decorators.vary import vary_on_cookie
+
+from podiobooks.core.sitemaps import AwardDetailSitemap, CategoryDetailSitemap, ContributorDetailSitemap, TitleDetailSitemap
 from podiobooks.feeds import urls as feeds_urls
 from podiobooks.libsyn import urls as libsyn_urls
 from podiobooks.core import urls as core_urls
 from podiobooks.ratings import urls as ratings_urls
 from podiobooks.search import urls as search_urls
-from django.views.static import serve as dev_static_views
-from django.conf import settings
-from django.views.generic import RedirectView
-from django.views.decorators.vary import vary_on_cookie
-from podiobooks.core.sitemaps import AwardDetailSitemap, CategoryDetailSitemap, ContributorDetailSitemap, TitleDetailSitemap
-
 from podiobooks.core.views import IndexView
+
+
 from .views import BlogRedirectView, TextTemplateView, RobotsView
+
 
 admin.autodiscover()
 
