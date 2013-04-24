@@ -6,6 +6,7 @@ from django.conf.urls import include, patterns, url
 from podiobooks.core.views import FeedRedirectView, TitleRedirectView
 from podiobooks.core.views.browse import AwardDetailView, AwardListView, BrowseOptionsView, CategoryDetailView, CategoryListView, ContributorDetailView, ContributorListView, EpisodeDetailView, SeriesDetailView, SeriesListView, TitleListView, TitleRecentListView, TitleDetailView
 from podiobooks.core.views.shelf import FilteredShelf
+from podiobooks.core.urls import urls_api
 
 
 urlpatterns = patterns('',
@@ -31,10 +32,6 @@ urlpatterns = patterns('',
     # Title Browse Options (has to appear before title detail so 'search' doesn't get swallowed as a slug)
     url(r'^title/browse/$', BrowseOptionsView.as_view(), name='title_browse'),
 
-    # Title Search (has to appear before title detail so 'search' doesn't get swallowed as a slug)
-    url(r'^title/search/$', 'podiobooks.core.views.title_search', name='title_search'),
-    url(r'^title/search/(?P<keywords>[^/]+)/$', 'podiobooks.core.views.title_search', name='title_search_keywords'),
-
     # Title
     url(r'^title/$', TitleListView.as_view(), name='title_list'),
     url(r'^title/recent/$', TitleRecentListView.as_view(), name='title_recent_list'),
@@ -54,5 +51,5 @@ urlpatterns = patterns('',
     url(r'^bookfeed/sampler/(?P<pk>\d+)/book\.xml', FeedRedirectView.as_view()),
 
     # API
-    (r'^api/', include('podiobooks.core.urls.urls_api')),
+    (r'^api/', include(urls_api)),
 )
