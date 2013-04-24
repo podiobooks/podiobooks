@@ -51,10 +51,8 @@ SERVER_EMAIL = os.environ.get("SERVER_EMAIL", "")
 MANAGERS = eval(os.environ.get("MANAGERS", "(('Podiobooks DEV', 'podiobooksdev@gmail.com'),)"))
 ADMINS = eval(os.environ.get("ADMINS", "(('Podiobooks DEV', 'podiobooksdev@gmail.com'),)"))
 SEND_BROKEN_LINK_EMAILS = eval(os.environ.get("SEND_BROKEN_LINK_EMAILS", "False"))
-ALLOWED_HOSTS = ['.podiobooks.com', 'lt832.o1.gondor.io', 'lt832.o1.gondor.co', 'il086.o1.gondor.io',
-                 'il086.o1.gondor.co', 'sf602.gondor.io', 'sf602.gondor.co', 'sf602.o1.gondor.io']
-REDIRECT_DOMAINS = ['lt832.o1.gondor.io', 'lt832.o1.gondor.co', 'il086.o1.gondor.io', 'il086.o1.gondor.co',
-                    'sf602.o1.gondor.io', 'sf602.o1.gondor.co']
+ALLOWED_HOSTS = ['.podiobooks.com', 'il086.gondor.co', 'lt832.gondor.co', 'sf602.gondor.co']
+REDIRECT_DOMAINS = ['il086.gondor.co', 'lt832.gondor.co', 'sf602.gondor.co']
 
 GOOGLE_ANALYTICS_ID = os.environ.get("GOOGLE_ANALYTICS_ID", GOOGLE_ANALYTICS_ID)
 
