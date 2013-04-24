@@ -14,6 +14,7 @@ from podiobooks.libsyn import urls as libsyn_urls
 from podiobooks.core import urls as core_urls
 from podiobooks.ratings import urls as ratings_urls
 from podiobooks.search import urls as search_urls
+from django.views.static import serve as dev_static_views
 from django.conf import settings
 from django.views.generic import RedirectView
 from django.views.decorators.vary import vary_on_cookie
@@ -121,7 +122,7 @@ urlpatterns = \
 #Only hook up the static and media to run through Django in a dev environment...in prod, handle with web server
 if settings.DEBUG:
     urlpatterns += patterns('',
-                            url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {
+                            url(r'^media/(?P<path>.*)$', dev_static_views, {
                                 'document_root': settings.MEDIA_ROOT
                             }),
     )
