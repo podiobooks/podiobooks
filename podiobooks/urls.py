@@ -16,11 +16,11 @@ from django.views.generic import RedirectView
 from django.views.decorators.vary import vary_on_cookie
 
 from podiobooks.core.sitemaps import AwardDetailSitemap, CategoryDetailSitemap, ContributorDetailSitemap, TitleDetailSitemap
-from podiobooks.feeds import urls as feeds_urls
-from podiobooks.libsyn import urls as libsyn_urls
-from podiobooks.core import urls as core_urls
-from podiobooks.ratings import urls as ratings_urls
-from podiobooks.search import urls as search_urls
+# from podiobooks.feeds import urls as feeds_urls
+# from podiobooks.libsyn import urls as libsyn_urls
+# from podiobooks.core import urls as core_urls
+# from podiobooks.ratings import urls as ratings_urls
+# from podiobooks.search import urls as search_urls
 from podiobooks.core.views import IndexView
 
 
@@ -41,7 +41,7 @@ urlpatterns = \
              url(r'^index\.xml$', RedirectView.as_view(url='/rss/feeds/titles/recent/')),
 
              # URLs from core package
-             (r'^', include(core_urls)),
+             (r'^', include('podiobooks.core.urls')),
 
              # Admin documentation
              (r'^admin/doc/', include(admindocs_urls)),
@@ -53,16 +53,16 @@ urlpatterns = \
              (r'^account/signin/$', login_view),
 
              # Feeds
-             (r'^rss/', include(feeds_urls)),
+             (r'^rss/', include('podiobooks.feeds.urls')),
 
              # Libsyn Utils
-             (r'^libsyn/', include(libsyn_urls)),
+             (r'^libsyn/', include('podiobooks.libsyn.urls')),
 
              # Ratings
-             (r'^rate/', include(ratings_urls)),
+             (r'^rate/', include('podiobooks.ratings.urls')),
 
              # Search
-             (r'^search/', include(search_urls)),
+             (r'^search/', include('podiobooks.search.urls')),
 
              # Robots, Favicon and Related
              (r'^robots\.txt$', RobotsView.as_view()),
