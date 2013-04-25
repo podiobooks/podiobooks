@@ -1,6 +1,7 @@
 """ Django Views for the Podiobooks Core Module"""
 
 from django.core.urlresolvers import reverse
+from django.core.urlresolvers import reverse_lazy
 
 from django.utils.http import urlquote
 from django.views.generic import RedirectView, TemplateView
@@ -118,7 +119,7 @@ class FeedRedirectView(RedirectView):
             except ObjectDoesNotExist:
                 title = get_object_or_404(Title, old_slug=slug)
 
-        return reverse('title_episodes_feed', args=(title.slug,))
+        return reverse_lazy('title_episodes_feed', args=(title.slug,))
 
 
 class TitleRedirectView(RedirectView):
@@ -133,6 +134,6 @@ class TitleRedirectView(RedirectView):
             title = get_object_or_404(Title, pk=pk)
             slug = title.slug
 
-            return reverse('title_detail', args=(slug,))
+            return reverse_lazy('title_detail', args=(slug,))
         else:
             raise Http404
