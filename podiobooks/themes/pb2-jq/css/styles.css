@@ -67,7 +67,6 @@ a.fdbk_tab_bottom {
 
 .pg {
     padding: 0 0 5px;
-    border-bottom:solid 1px #d7d7d7;
 }
 
 .touch .hide-on-touch {
@@ -224,8 +223,8 @@ body form.gsc-search-box{
 */
 .pg-foot {
     padding: 25px 0 10px;
-    border-top:solid 1px #fff;
-
+    
+    border-top:solid 1px #d7d7d7;
 }
 
 .site-menu-active .pg-foot {
