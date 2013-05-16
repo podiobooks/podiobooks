@@ -1,0 +1,404 @@
+/*
+ * Elements
+ */
+body {
+    background: #fff url('../images/pb-background.jpg') left top repeat-x;
+    font-family: "Verdana", sans-serif;
+    color: #111;
+}
+
+h1 {
+    font-size: 24px;
+    font-weight: bold;
+    padding: 0 0 15px;
+    
+}
+h1, h2, h3, h4{
+	font-family: Tahoma, Geneva, sans-serif
+}
+
+a,
+a:visited,
+a:link,
+a:active {
+    color: #0054A6;
+    text-decoration:none;
+}
+
+a:hover {
+    color: #c35230;
+    text-decoration:underline;
+}
+
+p {
+    padding: 0 0 20px;
+}
+
+a.fdbk_tab_bottom {
+    right: 0;
+    left: 0;
+}
+
+.float-left{
+	float:left;
+	
+}
+
+.float-right{
+	float:right;
+}
+/*
+* Layout
+*/
+.width {
+    width: 864px;
+    margin: 0 auto;
+}
+
+.logo {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.logo, .logo img {
+    max-width: 100%;
+}
+
+.pg {
+    padding: 0 0 5px;
+}
+
+.touch .hide-on-touch {
+    display: none;
+}
+
+.nav-bar {
+    padding: 15px 20px 5px 20px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -o-border-radius: 10px;
+    border-radius: 10px;
+    -webkit-box-shadow: 0 3px 5px #aaa;
+    -moz-box-shadow: 0 3px 5px #aaa;
+    -o-box-shadow: 0 3px 5px #aaa;
+    box-shadow: 0 3px 5px #aaa;
+    margin: 0 0 35px 0;
+    font-size: 15px;
+    position: relative;
+    background: #d0deee; /* Old browsers */
+    min-height:27px;
+
+}
+
+.nav-bar h2 {
+    display: inline;
+    margin: 0 8px 0 60px;
+    color: #464646;
+    font-weight: normal;
+}
+
+.nav-bar a {
+    text-decoration: none;
+}
+
+.nav-bar li {
+    margin: 0 10px 0 0;
+}
+
+.nav-bar .cur {
+    text-decoration: underline;
+}
+
+.headerbar {
+    padding: 15px 20px 8px 20px;
+    margin: 0 0 20px 0;
+}
+
+.loading img,
+.loading {
+    display: inline-block;
+    background: url('../images/loading.gif') no-repeat center center;
+    min-height: 50px;
+    min-width: 50px;
+    box-shadow: none;
+}
+
+/*
+* Navigation
+*/
+.nav {
+    list-style: none;
+    float: left;
+}
+
+.nav li {
+    float: left;
+}
+
+/*
+* Browse
+*/
+.browse-by {
+    list-style: none;
+    display: block;
+    width: 200px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.browse-by li {
+    display: inline;
+}
+
+/*
+*
+* Search
+*/
+.search {
+    float: right;
+    width:250px;
+    margin-top:-5px;
+}
+.nav-bar input.gsc-search-button-v2{
+    padding:6px 18px;
+    height:14px;
+    
+}
+.nav-bar .gsc-search-box-tools .gsc-search-box .gsc-input{
+    padding-right:0;
+}
+.nav-bar input.gsc-search-button{
+    margin:0;
+}
+@media all and (min-width:502px) {
+    
+}
+.cse-container{
+    margin:0 -10px;
+}
+body .gsc-control-cse{
+    padding:0;
+}
+.gsc-wrapper{
+    padding:0 10px;
+}
+body form.gsc-search-box{
+    margin:0 10px 0px;
+    width:auto;
+}
+.search-results .nav-bar .search{
+    display:none;
+}
+.search-results .search-bar-trigger,
+.search-bar-trigger{
+    display:none;
+}
+.search-results table.gsc-search-box{
+    width:auto;
+}
+
+
+/*
+ * Facebook widget
+ */
+#fb-root,
+.fb-reset {
+    width: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    display: none;
+}
+
+.fb-like {
+    width: 100px;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+/*
+* Foot
+*/
+.pg-foot {
+    padding: 25px 0 10px;
+    
+    border-top:solid 1px #d7d7d7;
+}
+
+.site-menu-active .pg-foot {
+    background: #fff;
+}
+
+.pg-foot ul {
+    list-style: none;
+}
+
+.pg-foot li {
+    display: inline;
+    margin: 0 4px;
+}
+.pg-foot li:first-of-type{
+	margin:0 4px 0 0;
+}
+.foot-nav {
+    font-size: 12px;
+    margin:0 0 15px;
+}
+
+.pg-foot .foot-nav-extra {
+    margin-bottom: 30px;
+}
+
+.pg-foot p {
+    
+    font-size: 14px;
+    color: #464646;
+}
+
+.cover-image {
+    width: 100px;
+    border: none;
+    box-shadow: 0 3px 5px #aaa;
+}
+
+.title-titlebar {
+    height: 40px;
+}
+
+
+.category {
+    font-size: smaller;
+    margin: 0px 0 7px 0;
+}
+
+.wide-skyscraper-ad-placeholder {
+    width: 160px;
+    height: 600px;
+    margin-left: 8px;
+    float: left;
+    background: url('http://www.google.com/help/hc/images/adsense/adsense_185665_adformat-text_160x600_en.png');
+    
+}
+
+.wide-skyscraper-ad {
+    text-align:center;
+}
+
+.leaderboard-ad-placeholder {
+    width: 728px;
+    height: 90px;
+    margin-left: 8px;
+    background: url('http://www.google.com/help/hc/images/adsense/adsense_185665_adformat-text_728x90_en.png');
+}
+
+.leaderboard-ad {
+    width: 728px;
+    height: 90px;
+    margin: 0 auto 0 auto;
+}
+
+.horizontal-large-ad {
+    width: auto;
+    overflow: hidden;
+    margin:20px 0;
+}
+.ad-float-right{
+	float:right;
+	margin:0 0 15px 15px;
+}
+.browse-list-120-ad{
+	float:right;
+	margin:0 0 10px 10px;
+	width:120px;
+}
+
+.menu-triggers {
+    display: none;
+}
+
+.podiobooks-nav-text {
+    display: none;
+}
+
+.site-menu {
+    display: none;
+}
+.pagination{
+	margin:15px 0;
+}
+
+/*
+ * Jump to content link
+ */
+.jump-to-content,
+.jump-to-content:link,
+.jump-to-content:visited,
+.jump-to-content:hover,
+.jump-to-content:active {
+    position: absolute;
+    top: -1000px;
+    left: 20px;
+    -webkit-transition: top .3s ease-in-out;
+    -moz-transition: top .3s ease-in-out;
+    -o-transition: top .3s ease-in-out;
+    transition: top .3s ease-in-out;
+    background: #06539e;
+    display: block;
+    width: 160px;
+    height: 50px;
+    padding-top: 30px;
+    border-radius: 15px;
+    color: #fff;
+    z-index: 9999;
+    padding: 30px 20px 0;
+    text-decoration: none;
+
+    background: #40a8d1; /* Old browsers */
+    background: -moz-linear-gradient(top, #40a8d1 0%, #4280bd 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #40a8d1), color-stop(100%, #4280bd)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #40a8d1 0%, #4280bd 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #40a8d1 0%, #4280bd 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #40a8d1 0%, #4280bd 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #40a8d1 0%, #4280bd 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#40a8d1', endColorstr = '#4280bd', GradientType = 0); /* IE6-9 */
+
+}
+
+.jump-to-content:focus {
+    top: 20px;
+    margin: 0 auto;
+}
+
+.rating-adult {
+    background: url('../images/pb-rating-adult.png');
+    display: inline-block;
+    height: 11px;
+    width: 37px;
+    margin: 5px 0 3px 0;
+}
+
+.rating-explicit {
+    background: url('../images/pb-rating-explicit.png');
+    display: inline-block;
+    height: 11px;
+    width: 37px;
+    margin: 5px 0 3px 0;
+}
+
+.rating-family {
+    background: url('../images/pb-rating-family.png');
+    display: inline-block;
+    height: 11px;
+    width: 37px;
+    margin: 5px 0 3px 0;
+}
+
+.rating-kids {
+    background: url('../images/pb-rating-kids.png');
+    display: inline-block;
+    height: 11px;
+    width: 37px;
+    margin: 5px 0 3px 0;
+}

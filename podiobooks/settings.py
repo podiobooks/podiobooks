@@ -36,10 +36,10 @@ MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'mediaroot')
 
 # Staticfiles Config
 THE_THEME = "pb2-jq"
-STATIC_ROOT = PROJECT_ROOT + "/themes/" + THE_THEME + "/"
+STATIC_ROOT = PROJECT_ROOT + "/staticroot/"
 STATIC_URL = '/static/'
-STATICFILES_DIRS = []
-TEMPLATE_DIRS = [os.path.join(PROJECT_ROOT, "themes", THE_THEME, 'templates')]
+STATICFILES_DIRS = [os.path.join(PROJECT_ROOT, "themes", THE_THEME, "static"), ]
+TEMPLATE_DIRS = [os.path.join(PROJECT_ROOT, "themes", THE_THEME, 'templates'), ]
 
 
 # List of callables that know how to import templates from various sources.
@@ -57,7 +57,6 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'podiobooks.core.context_processors.js_api_keys',
     'podiobooks.core.context_processors.current_site',
     'django.core.context_processors.request',
-    'mediabrute.context_processors.mini_media',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -86,7 +85,7 @@ INSTALLED_APPS = (
     'django.contrib.sitemaps',
     'django.contrib.staticfiles',
     'django_jenkins',
-    'mediabrute',
+    'mub',
     'podiobooks',
     'podiobooks.ads',
     'podiobooks.core',
@@ -186,28 +185,10 @@ DONATION_BUSINESS_NAME = 'evo@podiobooks.com'
 #INSTALLED_APPS += ( "debug_toolbar", )
 #MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware', )
 ### MEDIABRUTE
-CSS_TOP_FILES = ["jquery.pbshelf.css", "clear.css", "styles.css", "base-shelf.css", ]
-CSS_BOTTOM_FILES = ["gsc-overrides.css", "adaptive.css", "small-screen.css"]
-JS_SETTINGS_TEMPLATE = "mediabrute/js/config.txt"
+MUB_CSS_ORDER = (
+    ("jquery.pbshelf.css", "clear.css", "styles.css", "base-shelf.css"),
+    ("gsc-overrides.css", "adaptive.css", "small-screen.css")
+)
 
 # This is to catch special domain names and redirect them to the main
 REDIRECT_DOMAINS = []
-
-# This is a hack to get mediabrute to play nice with runserver + staticfiles app
-if DEBUG and STATIC_URL.startswith("/") and not STATIC_URL.startswith("//"):
-    CSS_DIR = THE_THEME + "/css"
-    JS_DIR = THE_THEME + "/js"
-    MEDIABRUTE_CSS_URL_PATH = "css"
-    MEDIABRUTE_JS_URL_PATH = "js"
-
-    #    APP_JS = "static/js"
-    #    APP_CSS = "static/css"
-
-    STATICFILES_DIRS = (
-        # Put strings here, like "/home/html/static" or "C:/www/django/static".
-        # Always use forward slashes, even on Windows.
-        # Don't forget to use absolute paths, not relative paths.
-        PROJECT_ROOT + "/themes/" + THE_THEME + "/",
-    )
-
-    STATIC_ROOT = PROJECT_ROOT + "/themes/"
