@@ -1,16 +1,8 @@
-{% load url from future %}
-<!DOCTYPE html>
+<!DOCTYPE html>{% load static from staticfiles %}{% load mub_tags %}{% load url from future %}
 <html lang="en">
 	<head>
 	    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-	    <script>
-		    var _errs=["50d379b81eebec265400003c"];(function(a,b){a.onerror=function(){_errs.push(arguments)};
-		    var d=function(){var a=b.createElement("script"),c=b.getElementsByTagName("script")[0];
-		    a.src="//d15qhc0lu1ghnk.cloudfront.net/beacon.js";a.async=!0;
-		    c.parentNode.insertBefore(a,c)};a.addEventListener?a.addEventListener("load",d,!1):
-		    a.attachEvent("onload",d)})(window,document);
-		</script>
-
+	    
 	    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0">
 		
@@ -23,9 +15,7 @@
 	        <meta name="Description" content="Find your new favorite author today! Hundreds of free audio books, many narrated by the author. No DRM! Made available under a Creative Commons license."/>
 	    {% endblock %}
 		
-	    {% for sheet in MINI_CSS %}
-	        <link rel="stylesheet" type="text/css" href="{{ sheet }}"/>
-	    {% endfor %}
+	    {% add_static "css" %}
 	
 	    <script type="text/javascript" src="{{ STATIC_URL }}js/no-cache/modernizr.js?v=1"></script>
 	    
@@ -108,9 +98,7 @@
 		<script type="text/javascript" src="https://www.google.com/jsapi"></script>
     	<script src="http://www.google.com/cse/cse.js?cx=014749959765467686078:giz6dgkgspe" type="text/javascript"></script>
 
-		{% for SCRIPT in MINI_JS %}
-		    <script type="text/javascript" src="{{ SCRIPT }}"></script>
-		{% endfor %}
+		{% add_static "js" %}
 		
 		<!-- Get Satisfaction Widget -->
 		<script type="text/javascript" charset="utf-8">
