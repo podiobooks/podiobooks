@@ -1,0 +1,26 @@
+.triggered-menu-close-screen{
+	position:absolute;
+	width:100%;
+	height:100%;
+	top:0;
+	left:0;
+	bottom:0;
+	display:none;
+	z-index:998;
+	cursor:default;
+}
+.triggered-menu-close-screen:link{
+	-webkit-tap-highlight-color: transparent;
+}
+.triggered-menu-close-screen-active{
+	display:block;
+}
+.triggered-menu{
+	position:absolute;
+	display:none;
+	z-index:-1;
+}
+.menu-active{
+	display:block;
+	z-index:999;
+}

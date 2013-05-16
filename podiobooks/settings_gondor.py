@@ -65,9 +65,6 @@ INSTALLED_APPS += ()
 MEDIA_ROOT = os.path.join(os.environ["GONDOR_DATA_DIR"], "site_media", "mediaroot", )
 STATIC_ROOT = os.path.join(os.environ["GONDOR_DATA_DIR"], "site_media", "staticroot") + "/"
 
-CSS_DIR = "css"
-JS_DIR = "js"
-
 MEDIA_URL = "/assets/media/"  # make sure this maps inside of a static_urls URL in gondor.yml
 STATIC_URL = "/assets/static/"  # make sure this maps inside of a static_urls URL in gondor.yml
 

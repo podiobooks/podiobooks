@@ -4,7 +4,7 @@ function siteVars(opt){
 			return '/';
 			break;
 		case 'theme':
-			return '{{ settings.STATIC_URL }}';
+			return '/static/';
 			break;
 		case 'img':
 			return siteVars('theme') + 'images/';
