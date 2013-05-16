@@ -1,0 +1,353 @@
+/*
+ * Title details
+ */
+.title-details-extras {
+    float: left;
+    width: 18%;
+}
+
+.title-details-extras-inline {
+    display: none;
+}
+
+.title-details {
+    float: right;
+    width: 78%;
+}
+
+.title-details-titlebar {
+    border-bottom: solid 1px #b2b2b2;  
+    margin: 0 0 15px;
+}
+
+.title-description {
+    margin: 0;
+    line-height: 1.4em;
+    font-size: 16px;
+    margin:0 0 10px 0;
+}
+
+.title-details-seriesbar {
+    padding: 0 0 20px;
+}
+
+.title-license {
+
+    position: relative;
+    padding-left:100px
+
+}
+
+.title-footer{
+	overflow:none;
+}
+
+.title-license a,
+.title-license a:visited,
+.title-license a:hover,
+.title-license a:link,
+.title-license a:active {
+    text-decoration: none;
+}
+
+.title-license img {
+
+    position: absolute;
+    left: 0;
+    top: 5px;
+}
+
+.title-comment-byline {
+    margin: 10px 0 0 0;
+    font-weight: bold;
+}
+
+.title-comment-text {
+    margin: 2px 0 2px 0;
+}
+
+.title-comment-readmore {
+    margin: 15px 0 0 0;
+    font-weight: bold;
+}
+
+.complete {
+    font-weight: bold;
+    color: green;
+}
+
+.title-details-top {
+    padding: 0 0 0px;
+}
+.title-details-top-top{
+	margin:0 0 30px;
+	position:relative;
+	min-height:150px;
+}
+
+/*
+* Tabs
+*/
+.title-tabs {
+    margin: 0 0 40px;
+}
+
+.episode-list {
+    list-style: none;
+}
+
+.episode-list-item {
+    padding: 20px 0 0 0;
+    margin: 0;
+}
+
+.episode-list-title {
+
+}
+
+.episode-list-description {
+	
+}
+
+/*
+ * Infobox
+ */
+.title-details-infobar {
+    background-color: #D9E4F0;
+    padding: 15px 15px 20px;
+
+    float: right;
+    width: 100px;
+
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .3);
+
+    border-radius: 5px;
+    position:absolute;
+    top:0;
+    right:0;
+}
+
+.category a,
+.category a:active,
+.category a:visited,
+.category a:link,
+.category a:hover {
+    text-decoration: none;
+}
+
+.category a:hover {
+    text-decoration: underline;
+}
+
+.net-promoter-box {
+    font-size: smaller;
+    margin-top: 10px;
+}
+
+.detractor-count {
+    display: block;
+}
+
+.promoter-count {
+    display: inline;
+}
+
+/*
+ * Sharing
+ */
+.sharebox {
+    padding: 10px 0 0;
+    overflow: hidden;
+}
+
+.title-sharebox {
+    margin-top: 6px;
+    font-size: smaller;
+}
+
+.title-sharebox a,
+.title-sharebox a:active,
+.title-sharebox a:link,
+.title-sharebox a:hover,
+.title-sharebox a:visited {
+    text-decoration: none;
+}
+
+.title-sharebox a:hover {
+    text-decoration: underline;
+}
+
+.title-sharebox ul {
+    list-style: none;
+}
+
+.imagebox {
+    float: left;
+    text-align: center;
+    font-size: 10px;
+    margin: 0 25px 25px 0;
+}
+
+/*
+* awards
+*/
+.award-show {
+	list-style: none;
+	margin:10px 0;
+	padding:0;
+	
+}
+.award-show li{
+	margin:10px 0px;
+	text-align:center;
+}
+
+.award-show img {
+    width: 80px;
+    
+}
+
+/*
+* Consumption Box
+*/
+.consumption-box {
+    margin: 0 0px 30px 0;
+
+    box-shadow: 0 3px 5px #aaa;
+
+    border-radius: 10px;
+
+    font-size: 12px;
+    position: relative;
+
+    background: #d9e4f0; /* Old browsers */
+    background: -moz-linear-gradient(top, #d9e4f0 0%, #a9d4f9 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #d9e4f0), color-stop(100%, #a9d4f9)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #d9e4f0 0%, #a9d4f9 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #d9e4f0 0%, #a9d4f9 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #d9e4f0 0%, #a9d4f9 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #d9e4f0 0%, #a9d4f9 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#d9e4f0', endColorstr = '#a9d4f9', GradientType = 0); /* IE6-9 */
+}
+
+.headphone-title {
+    background: url('../images/pb-headphones.png') center center no-repeat;
+    height: 46px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    padding-top: 16px;
+}
+
+.consume-list {
+    list-style: none;
+    margin: 10px 0 10px 10px;
+}
+
+.consume-list a {
+    text-decoration: none;
+    display: block;
+    height: 48px;
+    margin: 8px 0 0 0px;
+    padding: 0 0 0 55px;
+    text-align: left;
+}
+
+.consume-list a:hover {
+    text-decoration: underline;
+}
+
+.consume-itunes a {
+    background: url('../images/pb-itunes-logo.png') left center no-repeat;
+    background-size: 48px 48px;
+}
+
+.consume-rss a {
+    background: url('../images/pb-rss-icon.gif') 15px center no-repeat;
+    font-size: smaller;
+}
+
+.consume-amazon a {
+    background: url('../images/pb-amazon-logo.png') left center no-repeat;
+    background-size: 48px 48px;
+}
+
+.consume-kindle a {
+    background: url('../images/pb-kindle-logo.png') left center no-repeat;
+    background-size: 48px 48px;
+}
+
+.consume-smashwords a {
+    background: url('../images/pb-smashwords-logo.png') left center no-repeat;
+    background-size: 48px 48px;
+}
+
+/*
+* Donate
+*/
+.donate-box {
+    padding: 5px;
+    margin: 9px;
+    text-align: center;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -o-border-radius: 10px;
+    border-radius: 10px;
+    background: #dce5ef; /* Old browsers */
+    background: -moz-linear-gradient(top, #dce5ef 0%, #74a7bf 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #dce5ef), color-stop(100%, #74a7bf)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, #dce5ef 0%, #74a7bf 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, #dce5ef 0%, #74a7bf 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, #dce5ef 0%, #74a7bf 100%); /* IE10+ */
+    background: linear-gradient(to bottom, #dce5ef 0%, #74a7bf 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#dce5ef', endColorstr = '#74a7bf', GradientType = 0); /* IE6-9 */
+}
+
+.donate-box input {
+    padding-left: 3px;
+}
+
+/*
+* Player
+*/
+.first-chapter {
+    padding: 0px 0 35px;
+    float: left;
+}
+
+.first-chapter h2 {
+    padding: 0px 0 10px;
+    color: #4b4b4b;
+    font-weight: normal;
+    font-size: 19px;
+    font-style: italic;
+}
+
+/*
+* Episode List
+*/
+.episode-list-item {
+    border-bottom: solid 1px #e2e5e7;
+    border-top: solid 1px #fff;
+    padding: 20px 0;
+}
+
+.episode-list-item:first-of-type {
+    border-top: none;
+}
+
+.episode-list-item:last-of-type {
+    border-bottom: none;
+}
+
+.episode-audio-link:visited {
+    color: #362B36;
+}
+
+.episode-audio-link,
+.episode-audio-link:link,
+.episode-audio-link:active,
+.episode-audio-link:hover {
+    color: #0054A6;
+}
+
