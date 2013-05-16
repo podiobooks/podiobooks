@@ -4,7 +4,7 @@ function siteVars(opt){
 			return '/';
 			break;
 		case 'theme':
-			return '/static/';
+			return '/assets/static/';
 			break;
 		case 'img':
 			return siteVars('theme') + 'images/';
