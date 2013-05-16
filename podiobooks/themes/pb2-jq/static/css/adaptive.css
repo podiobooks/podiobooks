@@ -90,10 +90,8 @@
 		
 	}
 	.sharebox{
-		float:right;
 		padding:0;
 		margin:-5px 0 0 0;
-		max-width:55%;
 		width:auto;
 	}
 	.net-promoter-box{
