@@ -53,12 +53,6 @@ def show_episodelist(title):
     return {'episode_list': title.episodes.order_by('sequence').all()}
 
 
-@register.inclusion_tag('core/title/tags/show_sharebox.html')
-def show_sharebox(name, url):
-    """ Show a box enabling sharing this title via social media"""
-    return {'name': name, 'url': url}
-
-
 @register.inclusion_tag('core/title/tags/show_rating_icon.html')
 def show_rating_icon(title):
     """ Show an icon indicating the rating of this title"""
