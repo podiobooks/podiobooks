@@ -31,11 +31,10 @@ def show_like():
     return {}
 
 
-@register.inclusion_tag('core/tags/show_tweet.html')
-def show_tweet():
+@register.inclusion_tag('core/tags/show_tweet.html', takes_context=True)
+def show_tweet(context):
     """ Display Tweet Button """
-
-    return {}
+    return {"title": context["object"], "SITE": context["SITE"], }
 
 
 @register.inclusion_tag('core/tags/show_pagination_links.html')
