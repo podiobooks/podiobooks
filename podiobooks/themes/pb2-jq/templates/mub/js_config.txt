@@ -1,0 +1,19 @@
+function siteVars(opt){
+	switch (opt){
+		case 'home':
+			return '/';
+			break;
+		case 'static':
+			return '{{ STATIC_URL }}';
+			break;
+		case 'img':
+			return siteVars('static') + 'images/';
+			break; 
+		case 'css':
+			return siteVars('static') + 'css/';
+			break;
+		default:
+			return null;
+			break;
+	}
+}
