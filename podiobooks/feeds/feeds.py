@@ -3,6 +3,7 @@
 # pylint: disable=R0201, C0111, R0904, R0801, F0401, W0613
 
 import logging
+from django.db import connection
 
 from urllib2 import URLError
 from socket import timeout
@@ -15,6 +16,8 @@ from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import get_object_or_404
+from django.db.models import Q
+from django.http import Http404
 
 from podiobooks.core.models import Title, Episode
 from podiobooks.feeds.protocols.itunes import ITunesFeed
@@ -75,6 +78,15 @@ class EpisodeFeed(Feed):
     """Main feed used to generate the list of episodes for an individual Title"""
     feed_type = ITunesFeed
 
+    def __call__(self, request, *args, **kwargs):
+        asdf = super(EpisodeFeed, self).__call__(request, *args, **kwargs)
+        #for query in connection.queries:
+          #  print query
+        return asdf
+        
+    def __init__(self, *args, **kwargs):    
+        super(EpisodeFeed, self).__init__(*args, **kwargs)
+    
     def author_name(self, obj):
         authors = obj.titlecontributors.filter(contributor_type=1).values_list('contributor__display_name', flat=True)
         author_string = ', '.join(authors)
@@ -124,13 +136,16 @@ class EpisodeFeed(Feed):
 
     # pylint: disable=W0221
     def get_object(self, request, *args, **kwargs):
+        
         title_slug = kwargs.get('title_slug', None)
+        
         title_set = Title.objects.prefetch_related('episodes', 'categories', 'contributors')
+        
         try:
-            obj = title_set.get(slug__exact=title_slug)
-        except ObjectDoesNotExist:
-            obj = get_object_or_404(title_set, old_slug__exact=title_slug)
-
+            obj = title_set.filter(Q(slug__exact=title_slug) | Q(old_slug__exact=title_slug)).distinct()[0]
+        except IndexError:
+            raise ObjectDoesNotExist
+        
         ### Google Analytics for Feed
         tracker = Tracker(settings.GOOGLE_ANALYTICS_ID, Site.objects.get_current().domain)
         visitor = Visitor()
@@ -152,7 +167,11 @@ class EpisodeFeed(Feed):
         return 'yes'
 
     def items(self, obj):
-        return Episode.objects.filter(title__id__exact=obj.id).order_by('sequence')
+        return Episode.objects.prefetch_related(
+            "title",
+            "contributors",
+            "title__categories",
+            "title__awards").filter(title__id__exact=obj.id).order_by('sequence')
 
     def item_comments(self, obj):
         return add_domain(Site.objects.get_current().domain, obj.title.get_absolute_url())
