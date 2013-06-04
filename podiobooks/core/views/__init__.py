@@ -8,6 +8,8 @@ from django.views.generic import RedirectView, TemplateView
 from django.shortcuts import get_object_or_404, redirect
 from django.http import Http404, HttpResponsePermanentRedirect
 from django.core.exceptions import ObjectDoesNotExist
+from django.db.models import Q
+
 
 from podiobooks.core.models import Title, Category
 from podiobooks.core.forms import CategoryChoiceForm, ContributorChoiceForm, TitleSearchForm
@@ -115,9 +117,9 @@ class FeedRedirectView(RedirectView):
             title = get_object_or_404(Title, pk=pk)
         else:
             try:
-                title = Title.objects.get(slug=slug)
-            except ObjectDoesNotExist:
-                title = get_object_or_404(Title, old_slug=slug)
+                title = Title.objects.filter(Q(slug=slug) | Q(old_slug=slug)).distinct()[0]
+            except IndexError:
+                raise Http404
 
         return reverse_lazy('title_episodes_feed', args=(title.slug,))
 
