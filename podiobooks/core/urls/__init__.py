@@ -50,8 +50,8 @@ urlpatterns = patterns('',
     url(r'^podiobooks/book\.php$', TitleRedirectView.as_view()),
 
     # PB1 Title Feed Redirects
-    url(r'^title/(?P<slug>[^/]+)/feed', FeedRedirectView.as_view()),
     url(r'^title/(?P<pk>\d+)/feed', FeedRedirectView.as_view()),
+    url(r'^title/(?P<slug>[^/]+)/feed', FeedRedirectView.as_view()),
     url(r'^bookfeed/(?P<user_id>\d+)/(?P<pk>\d+)/book\.xml', FeedRedirectView.as_view()),
     url(r'^bookfeed/sampler/(?P<pk>\d+)/book\.xml', FeedRedirectView.as_view()),
 
