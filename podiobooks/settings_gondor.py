@@ -12,14 +12,22 @@ if "GONDOR_DATABASE_URL" in os.environ:
     DATABASES = {
         "default": {
             "ENGINE": {
-                "postgres": "django.db.backends.postgresql_psycopg2"
-            }[url.scheme],
+                'ENGINE': 'django_postgrespool'
+            },
             "NAME": url.path[1:],
             "USER": url.username,
             "PASSWORD": url.password,
             "HOST": url.hostname,
             "PORT": url.port
         }
+    }
+    DATABASE_POOL_ARGS = {
+        'max_overflow': 30,
+        'pool_size': 10,
+        'recycle': 300
+    }
+    SOUTH_DATABASE_ADAPTERS = {
+        'default': 'south.db.postgresql_psycopg2'
     }
 
 if "GONDOR_REDIS_URL" in os.environ:
