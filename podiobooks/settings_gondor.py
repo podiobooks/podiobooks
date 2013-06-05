@@ -20,8 +20,8 @@ if "GONDOR_DATABASE_URL" in os.environ:
         }
     }
     DATABASE_POOL_ARGS = {
-        'max_overflow': 40,
-        'pool_size': 5,
+        'max_overflow': 60,
+        'pool_size': 10,
         'recycle': 500
     }
     SOUTH_DATABASE_ADAPTERS = {
