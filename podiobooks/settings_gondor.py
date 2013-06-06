@@ -20,9 +20,8 @@ if "GONDOR_DATABASE_URL" in os.environ:
         }
     }
     DATABASE_POOL_ARGS = {
-        'max_overflow': 60,
-        'pool_size': 10,
-        'recycle': 500
+        'max_overflow': 75,
+        'pool_size': 10
     }
     SOUTH_DATABASE_ADAPTERS = {
         'default': 'south.db.postgresql_psycopg2'
