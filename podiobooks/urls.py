@@ -13,7 +13,6 @@ from django.contrib.sitemaps.views import sitemap as sitemap_urls
 from django.views.static import serve as dev_static_views
 from django.conf import settings
 from django.views.generic import RedirectView
-from django.views.decorators.vary import vary_on_cookie
 
 from podiobooks.core.sitemaps import AwardDetailSitemap, CategoryDetailSitemap, ContributorDetailSitemap, TitleDetailSitemap
 # from podiobooks.feeds import urls as feeds_urls
@@ -35,7 +34,7 @@ sitemaps = {'AwardDetail': AwardDetailSitemap, 'CategoryDetail': CategoryDetailS
 urlpatterns = \
     patterns('',
              # Home Page
-             url(r'^$', vary_on_cookie(IndexView.as_view()), name="home_page"),
+             url(r'^$', IndexView.as_view(), name="home_page"),
 
              # Recent Titles Feed Redirect
              url(r'^index\.xml$', RedirectView.as_view(url='/rss/feeds/titles/recent/')),
