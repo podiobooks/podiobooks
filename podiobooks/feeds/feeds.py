@@ -3,7 +3,6 @@
 # pylint: disable=R0201, C0111, R0904, R0801, F0401, W0613
 
 import logging
-from django.db import connection
 
 from urllib2 import URLError
 from socket import timeout
