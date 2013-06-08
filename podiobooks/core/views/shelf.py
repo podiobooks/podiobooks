@@ -13,8 +13,7 @@ class FilteredShelf(View):
     """
     A 'shelf' of titled, filtered in some way(s)
     """
-
-    http_method_names = ('get',)
+    http_method_names = ('get', )
 
     def get(self, request, shelf_type, title_filter='all'):
         """
@@ -23,7 +22,6 @@ class FilteredShelf(View):
         'shelf_type' should be a method of this class; 404 if not
         'title_filter' is passed along to 'shelf_type' as an optional filter to apply to the shelf
         """
-
         try:
             method = getattr(self, shelf_type)
         except AttributeError:
@@ -54,4 +52,3 @@ class FilteredShelf(View):
         featured_title_list = get_featured_shelf_titles(category)
         return render_to_response("core/shelf/tags/show_shelf_pages.html", {"title_list": featured_title_list, "no_ads": True},
             context_instance=RequestContext(self.request))
-    
