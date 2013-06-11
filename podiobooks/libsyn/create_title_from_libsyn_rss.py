@@ -12,6 +12,7 @@ import time
 from django.utils.html import strip_tags
 from django.utils import timezone
 
+
 def create_title_from_libsyn_rss(rss_feed_url):
     """Parses a libsyn-generated RSS feed"""
 
@@ -52,20 +53,22 @@ def create_title_from_libsyn_rss(rss_feed_url):
         episode = Episode()
         episode.title = title
         episode.name = item.find('title').text
-        episode.description = strip_tags(item.find('description').text)
+        episode.description = strip_tags(item.find('description').text).replace(
+            '&nbsp;', '').replace(
+            '&quot;', '').replace(
+            'rt&quot;', '').replace(
+            '&emdash;', '')
         episode.filesize = item.find('enclosure').get('length')
         episode.url = item.find('enclosure').get('url').replace('traffic.libsyn.com', 'media.podiobooks.com')
         episode.duration = item.find('{http://www.itunes.com/dtds/podcast-1.0.dtd}duration').text
-        episode.media_date_created = datetime.fromtimestamp(mktime_tz(parsedate_tz(item.find('pubDate').text)), timezone.utc)
-        episode.sequence = 0
-        episode.save()
-
-    # Re-order episodes by date created
-    episodes = title.episodes.all().order_by('media_date_created')
-    sequence = 1
-    for episode in episodes:
-        episode.sequence = sequence
-        sequence += 1
+        episode.media_date_created = datetime.fromtimestamp(mktime_tz(parsedate_tz(item.find('pubDate').text)),
+                                                            timezone.utc)
+        try:
+            episode.sequence = int(
+                episode.url[episode.url.rfind('.') - 2:episode.url.rfind('.')])  # Use URL File Name to Calc Seq
+        except ValueError:
+            print episode.url
+            episode.sequence = 0
         episode.save()
 
     return title
