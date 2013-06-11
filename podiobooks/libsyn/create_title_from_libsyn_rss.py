@@ -7,7 +7,7 @@ import urllib
 from podiobooks.core.models import Episode, License, Title
 from django.template.defaultfilters import slugify
 from email.utils import mktime_tz, parsedate_tz
-from datetime import datetime
+import datetime
 import time
 from django.utils.html import strip_tags
 from django.utils import timezone
@@ -49,6 +49,8 @@ def create_title_from_libsyn_rss(rss_feed_url):
     title.save()
     items = feed_tree.findall('item')
 
+    start_date = datetime.datetime.now()
+
     for item in items:
         episode = Episode()
         episode.title = title
@@ -61,11 +63,12 @@ def create_title_from_libsyn_rss(rss_feed_url):
         episode.filesize = item.find('enclosure').get('length')
         episode.url = item.find('enclosure').get('url').replace('traffic.libsyn.com', 'media.podiobooks.com')
         episode.duration = item.find('{http://www.itunes.com/dtds/podcast-1.0.dtd}duration').text
-        episode.media_date_created = datetime.fromtimestamp(mktime_tz(parsedate_tz(item.find('pubDate').text)),
+        episode.media_date_created = datetime.datetime.fromtimestamp(mktime_tz(parsedate_tz(item.find('pubDate').text)),
                                                             timezone.utc)
         try:
             episode.sequence = int(
                 episode.url[episode.url.rfind('.') - 2:episode.url.rfind('.')])  # Use URL File Name to Calc Seq
+            episode.media_date_created = start_date + datetime.timedelta(0, episode.sequence)
         except ValueError:
             print episode.url
             episode.sequence = 0
