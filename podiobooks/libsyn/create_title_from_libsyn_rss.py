@@ -49,7 +49,7 @@ def create_title_from_libsyn_rss(rss_feed_url):
     title.save()
     items = feed_tree.findall('item')
 
-    start_date = datetime.datetime.now()
+    start_date = datetime.datetime.now(timezone.utc)
 
     for item in items:
         episode = Episode()
