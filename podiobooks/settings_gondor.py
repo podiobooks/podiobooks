@@ -33,7 +33,7 @@ if "GONDOR_REDIS_URL" in os.environ:
     GONDOR_REDIS_HOST = url.hostname
     GONDOR_REDIS_PORT = url.port
     GONDOR_REDIS_PASSWORD = url.password
-    CACHE_MIDDLEWARE_SECONDS = 1200
+    CACHE_MIDDLEWARE_SECONDS = 3600
 
     # Cache Settings
     CACHES = {
