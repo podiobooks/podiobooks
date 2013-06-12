@@ -1,0 +1,114 @@
+{% if already_rated != 'Off' %}
+    <style>
+        #rate-modal-content {
+            display: none;
+        }
+
+        #simplemodal-overlay {
+            background-color: #000;
+        }
+
+        #simplemodal-container {
+            height: 160px;
+            width: 400px;
+            color: #bbb;
+            background-color: #333;
+            border: 4px solid #444;
+            padding: 12px;
+        }
+
+        #rate-modal-container .simplemodal-data {
+            padding: 8px;
+        }
+
+        #simplemodal-container code {
+            background: #141414;
+            border-left: 3px solid #65B43D;
+            color: #bbb;
+            display: block;
+            font-size: 12px;
+            margin-bottom: 12px;
+            padding: 4px 6px 6px;
+        }
+
+        #simplemodal-container a {
+            color: #ddd;
+        }
+
+        #simplemodal-container a.modalCloseImg {
+            background: url('/static/images/x.png') no-repeat;
+            width: 25px;
+            height: 29px;
+            display: inline;
+            z-index: 3200;
+            position: absolute;
+            top: -15px;
+            right: -16px;
+            cursor: pointer;
+        }
+
+        #simplemodal-container h3 {
+            color: #84b8d9;
+        }
+    </style>
+    <div class="net-promoter-box">
+        <p>{% if not already_rated %}<a href="#" id="rate-link">Rate Now!</a>{% else %}Already Rated{% endif %}</p>
+
+        <ul>
+            <li class="promoter-count">
+                Likes: {{ title.promoter_count }}
+            </li>
+
+            <li class="detractor-count">
+                Dislikes: {{ title.detractor_count }}
+            </li>
+        </ul>
+    <span itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating">
+        <meta itemprop="ratingValue" content="{{ title.computed_rating }}"/>
+        <meta itemprop="bestRating" content="5"/>
+        <meta itemprop="ratingCount"
+              content="{{ title.promoter_count|add:title.detractor_count }}"/>
+    </span>
+
+    </div>
+    <!-- modal content -->
+    <div id="rate-modal-content">
+        {% if already_rated %}
+            <h3>Thank you!</h3>
+            <p>You have already rated this title!</p>
+        {% else %}
+            <h3>Rate This Title</h3>
+
+            <p>&nbsp;</p>
+
+            <p>
+
+            <form id='rate-promote' class="simplemodal-close" method="POST"><a href="#">Up
+                Thumb</a></form>
+            </p>
+            <p>
+
+            <form id='rate-detract' class="simplemodal-close" method="POST"><a href="#">Down
+                Thumb</a></form>
+            </p>
+        {% endif %}
+    </div>
+    {% block extra_foot %}
+        <script>
+            $(function () {
+                // Load dialog on click
+                $('#rate-link').click(function (e) {
+                    $('#rate-modal-content').modal();
+                    return false;
+                });
+                $('#rate-promote').click(function (e) {
+                    $.post('/rate/promote/{{ title.pk }}/', $('#rate-promote').serialize());
+                })
+                $('#rate-detract').click(function (e) {
+                    $.post('/rate/detract/{{ title.pk }}/', $('#rate-detract').serialize());
+                })
+            });
+
+        </script>
+    {% endblock %}
+{% endif %}

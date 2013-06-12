@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <style>
+        #rate-modal-content {
+            display: none;
+        }
+
+        #simplemodal-overlay {
+            background-color: #000;
+        }
+
+        #simplemodal-container {
+            height: 160px;
+            width: 400px;
+            color: #bbb;
+            background-color: #333;
+            border: 4px solid #444;
+            padding: 12px;
+        }
+
+        #rate-modal-container .simplemodal-data {
+            padding: 8px;
+        }
+
+        #simplemodal-container code {
+            background: #141414;
+            border-left: 3px solid #65B43D;
+            color: #bbb;
+            display: block;
+            font-size: 12px;
+            margin-bottom: 12px;
+            padding: 4px 6px 6px;
+        }
+
+        #simplemodal-container a {
+            color: #ddd;
+        }
+
+        #simplemodal-container a.modalCloseImg {
+            background: url('/static/images/x.png') no-repeat;
+            width: 25px;
+            height: 29px;
+            display: inline;
+            z-index: 3200;
+            position: absolute;
+            top: -15px;
+            right: -16px;
+            cursor: pointer;
+        }
+
+        #simplemodal-container h3 {
+            color: #84b8d9;
+        }
+    </style>
+
+    <div id='rate-box'>
+        <h3 class="rate"><a href="#">Rate This Title</a></h3>
+    </div>
+
+    <!-- modal content -->
+    <div id="rate-modal-content">
+        <h3>Rate This Title</h3>
+        <p>&nbsp;</p>
+        <p><form id='rate-promote' class="simplemodal-close" action="/rate/promote/747/" method="POST"><a href="#">Up Thumb</a></form></p>
+        <p><form id='rate-detract' class="simplemodal-close" action="/rate/detract/747/" method="POST"><a href="#">Down Thumb</a></form></p>
+    </div>
+{% endblock %}
+
+{% block extra_foot %}
+    <script>
+        $(function () {
+            // Load dialog on click
+            $('#rate-box .rate').click(function (e) {
+                $('#rate-modal-content').modal();
+                return false;
+            });
+            $('#rate-promote').click(function (e) {
+                $.post('/rate/promote/747/', $('#rate-promote').serialize());
+            })
+            $('#rate-detract').click(function (e) {
+                $.post('/rate/detract/747/', $('#rate-detract').serialize());
+            })
+        });
+
+    </script>
+{% endblock %}

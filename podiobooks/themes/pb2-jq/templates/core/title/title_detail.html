@@ -3,6 +3,7 @@
 {% load ad_templatetags %}
 {% load global_templatetags %}
 {% load title_templatetags %}
+{% load ratings_templatetags %}
 
 {% block metatags %}
     <meta name="Description"
@@ -98,6 +99,8 @@
 			<div class="clearfix title-details-top-top">
 				
 	            <div class="title-details-infobar">
+
+                    {% show_ratings_box request title %}
 				
 	                <div class="sharebox">
 	

@@ -12,6 +12,7 @@ from podiobooks.core.models import Award, Contributor, Category, Episode, Title,
 
 # pylint: disable=R0912
 
+
 class AwardListView(ListView):
     """Shows list of awards with a count of how many titles are in each."""
     
