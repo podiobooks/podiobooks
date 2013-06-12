@@ -58,7 +58,7 @@ def create_title_from_libsyn_rss(rss_feed_url):
 
     title.old_slug = title.slug
 
-    title.description = strip_tags(feed_tree.find('description').text)
+    title.description = strip_tags(feed_tree.find('description').text).strip()
     if feed_tree.find('{http://www.itunes.com/dtds/podcast-1.0.dtd}explicit').text == 'yes':
         title.is_explicit = True
     title.deleted = True
@@ -75,7 +75,7 @@ def create_title_from_libsyn_rss(rss_feed_url):
         episode = Episode()
         episode.title = title
         episode.name = item.find('title').text
-        episode.description = strip_tags(item.find('description').text)
+        episode.description = strip_tags(item.find('description').text).strip()
         episode.filesize = item.find('enclosure').get('length')
         episode.url = item.find('enclosure').get('url').replace('traffic.libsyn.com', 'media.podiobooks.com')
         episode.duration = item.find('{http://www.itunes.com/dtds/podcast-1.0.dtd}duration').text
