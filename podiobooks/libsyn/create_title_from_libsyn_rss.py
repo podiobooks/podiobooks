@@ -58,7 +58,9 @@ def create_title_from_libsyn_rss(rss_feed_url):
         episode.description = html.strip_entities(
             html.strip_tags(
                 html.remove_tags(
-                    item.find('description').text, 'script style link meta xml')))
+                    item.find('description').text, 'script style link meta xml'))).replace(
+                        '&rsquo;', ''
+        )
         episode.filesize = item.find('enclosure').get('length')
         episode.url = item.find('enclosure').get('url').replace('traffic.libsyn.com', 'media.podiobooks.com')
         episode.duration = item.find('{http://www.itunes.com/dtds/podcast-1.0.dtd}duration').text
