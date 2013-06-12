@@ -9,7 +9,7 @@ from django.template.defaultfilters import slugify
 from email.utils import mktime_tz, parsedate_tz
 import datetime
 import time
-from django.utils import html
+import HTMLParser
 from django.utils import timezone
 
 
@@ -55,12 +55,7 @@ def create_title_from_libsyn_rss(rss_feed_url):
         episode = Episode()
         episode.title = title
         episode.name = item.find('title').text
-        episode.description = html.strip_entities(
-            html.strip_tags(
-                html.remove_tags(
-                    item.find('description').text, 'script style link meta xml'))).replace(
-                        '&rsquo;', ''
-        )
+        episode.description = strip_tags(item.find('description').text)
         episode.filesize = item.find('enclosure').get('length')
         episode.url = item.find('enclosure').get('url').replace('traffic.libsyn.com', 'media.podiobooks.com')
         episode.duration = item.find('{http://www.itunes.com/dtds/podcast-1.0.dtd}duration').text
@@ -76,3 +71,23 @@ def create_title_from_libsyn_rss(rss_feed_url):
         episode.save()
 
     return title
+
+
+class MLStripper(HTMLParser):
+    """Hard-Core HTML Tag Stripper Class"""
+    def __init__(self):
+        self.reset()
+        self.fed = []
+
+    def handle_data(self, d):
+        self.fed.append(d)
+
+    def get_data(self):
+        return ''.join(self.fed)
+
+
+def strip_tags(html):
+    """Strip all HTML Tags and Entities"""
+    s = MLStripper()
+    s.feed(html)
+    return s.get_data()
