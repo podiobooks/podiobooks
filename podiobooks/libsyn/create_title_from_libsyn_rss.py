@@ -9,8 +9,28 @@ from django.template.defaultfilters import slugify
 from email.utils import mktime_tz, parsedate_tz
 import datetime
 import time
-import HTMLParser
+from HTMLParser import HTMLParser
 from django.utils import timezone
+
+
+class MLStripper(HTMLParser):
+    """Hard-Core HTML Tag Stripper Class"""
+    def __init__(self):
+        self.reset()
+        self.fed = []
+
+    def handle_data(self, d):
+        self.fed.append(d)
+
+    def get_data(self):
+        return ''.join(self.fed)
+
+
+def strip_tags(html):
+    """Strip all HTML Tags and Entities"""
+    s = MLStripper()
+    s.feed(html)
+    return s.get_data()
 
 
 def create_title_from_libsyn_rss(rss_feed_url):
@@ -38,7 +58,7 @@ def create_title_from_libsyn_rss(rss_feed_url):
 
     title.old_slug = title.slug
 
-    title.description = feed_tree.find('description').text
+    title.description = strip_tags(feed_tree.find('description').text)
     if feed_tree.find('{http://www.itunes.com/dtds/podcast-1.0.dtd}explicit').text == 'yes':
         title.is_explicit = True
     title.deleted = True
@@ -71,23 +91,3 @@ def create_title_from_libsyn_rss(rss_feed_url):
         episode.save()
 
     return title
-
-
-class MLStripper(HTMLParser):
-    """Hard-Core HTML Tag Stripper Class"""
-    def __init__(self):
-        self.reset()
-        self.fed = []
-
-    def handle_data(self, d):
-        self.fed.append(d)
-
-    def get_data(self):
-        return ''.join(self.fed)
-
-
-def strip_tags(html):
-    """Strip all HTML Tags and Entities"""
-    s = MLStripper()
-    s.feed(html)
-    return s.get_data()
