@@ -9,7 +9,7 @@ from django.template.defaultfilters import slugify
 from email.utils import mktime_tz, parsedate_tz
 import datetime
 import time
-from django.utils.html import strip_tags
+from django.utils import html
 from django.utils import timezone
 
 
@@ -55,16 +55,15 @@ def create_title_from_libsyn_rss(rss_feed_url):
         episode = Episode()
         episode.title = title
         episode.name = item.find('title').text
-        episode.description = strip_tags(item.find('description').text).replace(
-            '&nbsp;', '').replace(
-            '&quot;', '').replace(
-            'rt&quot;', '').replace(
-            '&emdash;', '')
+        episode.description = html.strip_entities(
+            html.strip_tags(
+                html.remove_tags(
+                    item.find('description').text, 'script style link meta')))
         episode.filesize = item.find('enclosure').get('length')
         episode.url = item.find('enclosure').get('url').replace('traffic.libsyn.com', 'media.podiobooks.com')
         episode.duration = item.find('{http://www.itunes.com/dtds/podcast-1.0.dtd}duration').text
         episode.media_date_created = datetime.datetime.fromtimestamp(mktime_tz(parsedate_tz(item.find('pubDate').text)),
-                                                            timezone.utc)
+                                                                     timezone.utc)
         try:
             episode.sequence = int(
                 episode.url[episode.url.rfind('.') - 2:episode.url.rfind('.')])  # Use URL File Name to Calc Seq
