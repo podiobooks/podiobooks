@@ -4,10 +4,10 @@
 
 from django.conf.urls import include, patterns, url
 from podiobooks.core.views import FeedRedirectView, TitleRedirectView
-from podiobooks.core.views.browse import AwardDetailView, AwardListView, BrowseOptionsView, CategoryDetailView, CategoryListView, ContributorDetailView, ContributorListView, EpisodeDetailView, SeriesDetailView, SeriesListView, TitleListView, TitleRecentListView, TitleDetailView
+from podiobooks.core.views.browse import AwardDetailView, AwardListView, BrowseOptionsView, CategoryDetailView, CategoryListView, ContributorDetailView, ContributorListView, EpisodeDetailView, SeriesDetailView, SeriesListView, TitleListView, TitleRecentListView, TitleDetailView, TitleRemovedView
 from podiobooks.core.views import title_search
 from podiobooks.core.views.shelf import FilteredShelf
-from podiobooks.core.urls import urls_api
+from . import urls_api
 
 
 urlpatterns = patterns('',
@@ -41,6 +41,7 @@ urlpatterns = patterns('',
     url(r'^title/$', TitleListView.as_view(), name='title_list'),
     url(r'^title/recent/$', TitleRecentListView.as_view(), name='title_recent_list'),
     url(r'^title/(?P<slug>[^/]+)/$', TitleDetailView.as_view(), name='title_detail'),
+    url(r'^title/removed/(?P<slug>[^/]+)/$', TitleRemovedView.as_view(), name='title_detail_removed'),
 
     # Homepage Shelf AJAX Endpoints
     url(r'^shelf/(?P<shelf_type>[\w_]+)/$', FilteredShelf.as_view(), name="shelf"),
