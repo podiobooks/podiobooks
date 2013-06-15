@@ -65,8 +65,12 @@ class UrlTestCase(TestCase):
         self.assertEquals(404, response.status_code)
 
     def test_title_detail_deleted(self):
+        response = self.client.get('/title/removed/deleted-title/')
+        self.assertEquals(200, response.status_code)
+
+    def test_title_detail_removed(self):
         response = self.client.get('/title/deleted-title/')
-        self.assertEquals(404, response.status_code)
+        self.assertEquals(302, response.status_code)
 
     def test_category_list(self):
         response = self.client.get('/category/')
