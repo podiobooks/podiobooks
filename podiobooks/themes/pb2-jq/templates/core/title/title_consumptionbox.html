@@ -2,16 +2,17 @@
 {% load url from future %}
 
 <div class="consumption-box clearfix">
-    
+
     <div class="headphone-title">
         Get This
         <br>
         Book Now!
     </div>
-    
+
     <ul data-title-slug="{{ title.slug }}" class='consume-list'>
         {% if title.itunes_adam_id %}
-            <li id="consume-itunes" class='consume-itunes'><a href="http://itunes.apple.com/podcast/id{{ title.itunes_adam_id }}">Listen in
+            <li id="consume-itunes" class='consume-itunes'><a
+                    href="http://itunes.apple.com/podcast/id{{ title.itunes_adam_id }}">Listen in
                 iTunes</a></li>
         {% endif %}
         {% for item in title.media.all %}
@@ -21,16 +22,17 @@
             {% endif %}
             {% if item.name == 'Kindle Version' %}
                 <li id="consume-amazon" class='consume-kindle'><a
-                        href="http://www.amazon.com/dp/{{ item.identifier }}/?tag=podiobookscom-20">Buy on Kindle</a></li>
+                        href="http://www.amazon.com/dp/{{ item.identifier }}/?tag=podiobookscom-20">Buy on Kindle</a>
+                </li>
             {% endif %}
             {% if item.name == 'Smashwords Version' %}
                 <li id="consume-smashwords" class='consume-smashwords'><a
-                        href="http://www.smashwords.com/books/view/{{ item.identifier }}?ref=evoterra">Buy eBook</a></li>
+                        href="http://www.smashwords.com/books/view/{{ item.identifier }}?ref=evoterra">Buy eBook</a>
+                </li>
             {% endif %}
         {% endfor %}
-        <li id="consume-rss" class='consume-rss'><a href="{% url 'title_episodes_feed' title.slug %}">RSS Feed (Free!)</a></li>
     </ul>
-    
+
     {% show_donation_button title %}
-    
+
 </div>
