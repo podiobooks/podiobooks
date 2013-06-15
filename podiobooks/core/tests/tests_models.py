@@ -7,6 +7,7 @@ from podiobooks.core.models import *  #@UnusedWildImport
 from django.template.defaultfilters import slugify
 from django.db.models import Count
 
+
 class TitleTestCase(TestCase):
     """Test the Podiobooks Models from a Title-Centric POV"""
 
