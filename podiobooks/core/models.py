@@ -8,6 +8,7 @@ from django.template.loader import render_to_string
 
 # pylint: disable=C0111,R0201,W0232
 
+
 class Award(models.Model):
     """Awards are just that: awards for a title, like winning a Parsec, etc."""
     slug = models.SlugField()
@@ -57,7 +58,7 @@ class Contributor(models.Model):
     author or authors."""
     slug = models.SlugField(max_length=1000, db_index=True)
     user = models.ForeignKey(User, null=True, blank=True,
-        related_name='contributor_info') #User is an OOTB Django Auth Model
+                             related_name='contributor_info')  # User is an OOTB Django Auth Model
     first_name = models.CharField(max_length=255)
     middle_name = models.CharField(max_length=255, blank=True)
     last_name = models.CharField(max_length=255)
@@ -102,13 +103,13 @@ class Episode(models.Model):
     """
     title = models.ForeignKey('Title', related_name='episodes')
     name = models.CharField(max_length=255)
-    sequence = models.IntegerField() #Order in the Story
+    sequence = models.IntegerField()  # Order in the Story
     description = models.TextField(blank=True)
     url = models.URLField()
     filesize = models.IntegerField(default=0,
-        help_text="In bytes, corresponds to 'length' in RSS feed") #Size of the media file
+        help_text="In bytes, corresponds to 'length' in RSS feed")  # Size of the media file
     duration = models.CharField(max_length=20, default='45:00',
-        help_text='Duration of the media file in minutes:seconds') #Length of the media file (in minutes)
+        help_text='Duration of the media file in minutes:seconds')  # Length of the media file (in minutes)
     contributors = models.ManyToManyField('Contributor', through='EpisodeContributor')
     deleted = models.BooleanField(default=False, db_index=True)
     media_date_created = models.DateTimeField(blank=True, null=True,
@@ -244,11 +245,11 @@ class Title(models.Model):
     detractor_count = models.IntegerField(default=0, db_index=True)
     deleted = models.BooleanField(default=False, verbose_name='Deleted?', db_index=True)
     contributors = models.ManyToManyField('Contributor',
-        through='TitleContributor') #related_name doesn't work with manual intermediary tables
+                                          through='TitleContributor')  # related_name doesn't work with manual through
     # Note: TitleContributor Objects (intermediate table) are available as titlecontributors.all()
     byline = models.CharField(max_length=1024, blank=True) # This is a formatted cache of the title contributors
     categories = models.ManyToManyField('Category',
-        through='TitleCategory') #related_name doesn't work with manual intermediary tables
+                                        through='TitleCategory')  # related_name doesn't work with manual through tables
     # Note: TitleCategory Objects (intermediate table) are available as titlecategories.all()
     category_list = models.CharField(max_length=1024, blank=True) # This is a formatted cache of the categories
     awards = models.ManyToManyField('Award', null=True, blank=True, related_name='titles')
@@ -284,7 +285,7 @@ class Title(models.Model):
             return 0
 
     def description_br(self):
-        return self.description.replace('\n', '\n<br/>') # pylint: disable=E1101
+        return self.description.replace('\n', '\n<br/>')  # pylint: disable=E1101
 
     def computed_rating(self):
         nps = self.net_promoter_score() / 100
@@ -324,7 +325,8 @@ class TitleCategory(models.Model):
 
 # pylint: disable=W0613
 def update_category_list(sender, instance, **kwargs):
-    """ Update category list cache on titles when a new title category is added...hooked to pre_save trigger for titlecategory below """
+    """ Update category list cache on titles when a new title category is added.
+        Hooked to pre_save trigger for titlecategory below """
     categories = instance.title.categories.all()
     category_list = render_to_string('core/title/title_category_list.html', {'categories': categories, })
 
