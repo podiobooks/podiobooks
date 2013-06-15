@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% load title_templatetags %}
+
+{% block headtitle %}{{ title.name }} {{ title.get_byline }} on Podiobooks.com Has Been Removed{% endblock %}
+
+{% block head %}
+    <link rel="canonical" href="{{ request.build_absolute_uri }}"/>
+{% endblock %}
+
+{% block content %}
+    <article>
+        <h2>We apologize, but this title is no longer available on Podiobooks.com.</h2>
+
+        <p>&nbsp;</p>
+        {% if title.media.all %}
+            <p>You may still be able to find it at one of these fine establishments:</p>
+            <aside>
+                <ul data-title-slug="{{ title.slug }}" class='consume-list'>
+                    {% for item in title.media.all %}
+                        {% if item.name == 'Print Version' %}
+                            <li id="consume-amazon" class='consume-amazon'><a
+                                    href="http://www.amazon.com/dp/{{ item.identifier }}/?tag=podiobookscom-20">Buy
+                                Book</a>
+                            </li>
+                        {% endif %}
+                        {% if item.name == 'Kindle Version' %}
+                            <li id="consume-amazon" class='consume-kindle'><a
+                                    href="http://www.amazon.com/dp/{{ item.identifier }}/?tag=podiobookscom-20">Buy on
+                                Kindle</a>
+                            </li>
+                        {% endif %}
+                        {% if item.name == 'Smashwords Version' %}
+                            <li id="consume-smashwords" class='consume-smashwords'><a
+                                    href="http://www.smashwords.com/books/view/{{ item.identifier }}?ref=evoterra">Buy
+                                eBook</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </aside>
+        {% endif %}
+    </article>
+{% endblock %}
+

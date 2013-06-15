@@ -2,10 +2,9 @@
 
 from django.db.models import Count
 
-from django.core.urlresolvers import reverse
 from django.views.generic import DetailView, ListView, TemplateView
-from django.shortcuts import get_object_or_404
-from django.http import HttpResponsePermanentRedirect
+from django.shortcuts import get_object_or_404, redirect
+from django.http import Http404
 from django.core.exceptions import ObjectDoesNotExist
 
 from podiobooks.core.models import Award, Contributor, Category, Episode, Title, Series
@@ -149,6 +148,20 @@ class TitleRecentListView(ListView):
     template_name = 'core/title/title_recent_list.html'
 
 
+class TitleRemovedView(DetailView):
+    """Show alterative consumption links for titles that have been marked as deleted."""
+    template_name = 'core/title/title_detail_removed.html'
+    context_object_name = 'title'
+
+    def get_object(self, queryset=None):
+        slug = self.kwargs.get('slug', None)
+        try:
+            title = Title.objects.prefetch_related("media",).filter(slug=slug).get()
+            return title
+        except ObjectDoesNotExist:
+            raise Http404
+
+
 class TitleDetailView(DetailView):
     """Detail for a particular title"""
     template_name = 'core/title/title_detail.html'
@@ -162,7 +175,7 @@ class TitleDetailView(DetailView):
                 "series", "episodes", "media", "license",
                 "titlecontributors", "titlecontributors__contributor",
                 "titlecontributors__contributor_type"
-            ).filter(slug=slug, deleted=False).get()
+            ).filter(slug=slug).get()
             return title
         except ObjectDoesNotExist:
             self.redirect = True
@@ -171,7 +184,9 @@ class TitleDetailView(DetailView):
     def get(self, request, *args, **kwargs):
         self.object = self.get_object()
         if self.redirect:
-            return HttpResponsePermanentRedirect(reverse('title_detail', args={self.object.slug}))
+            return redirect('title_detail', self.object.slug, permanent=True)
         else:
+            if self.object.deleted:
+                return redirect('title_detail_removed', self.object.slug)
             context = self.get_context_data(object=self.object)
             return self.render_to_response(context)
