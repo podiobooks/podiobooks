@@ -9,15 +9,17 @@ from podiobooks.core.models import Episode
 
 ### INLINES
 
+
 class AdScheduledPositionInline(admin.TabularInline):
     model = AdSchedulePosition
 
-    fields = ['sequence']
+    fields = ['sequence', 'episode']
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == "episode":
             kwargs["queryset"] = Episode.objects.filter(title__slug='pbads')
         return super(AdScheduledPositionInline, self).formfield_for_manytomany(db_field, request, **kwargs)
+
 
 class AdTitleInline(admin.TabularInline):
     model = AdScheduleTitle
@@ -27,9 +29,11 @@ class AdTitleInline(admin.TabularInline):
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == "episode":
             kwargs["queryset"] = Episode.objects.filter(title__slug='pbads')
-        return super(AdScheduledPositionInline, self).formfield_for_manytomany(db_field, request, **kwargs)
+        return super(AdTitleInline, self).formfield_for_manytomany(db_field, request, **kwargs)
+
 
 ### MAIN ADMIN CLASSES
+
 
 class AdScheduleAdmin(admin.ModelAdmin):
     model = AdSchedule
