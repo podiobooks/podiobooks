@@ -30,6 +30,7 @@
                         href="http://www.smashwords.com/books/view/{{ item.identifier }}?ref=evoterra">Buy eBook</a>
                 </li>
             {% endif %}
+            <li id="consume-rss" class='consume-rss'><a href="{% url 'title_episodes_feed' title.slug %}">RSS Feed (Free!)</a></li>
         {% endfor %}
     </ul>
 
