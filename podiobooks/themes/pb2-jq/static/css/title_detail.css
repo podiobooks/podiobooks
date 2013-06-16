@@ -258,27 +258,30 @@
 }
 
 .consume-itunes a {
-    background: url('../images/pb-itunes-logo.png') left center no-repeat;
+    background: url('../images/pb-itunes-logo.png') left top no-repeat;
     background-size: 48px 48px;
+    padding-top:15px;
 }
 
 .consume-rss a {
-    background: url('../images/pb-rss-icon.gif') 15px 8px no-repeat;
+    background: url('../images/pb-rss-icon.gif') 15px top no-repeat;
 }
 
 .consume-amazon a {
-    background: url('../images/pb-amazon-logo.png') left center no-repeat;
+    background: url('../images/pb-amazon-logo.png') left top no-repeat;
     background-size: 48px 48px;
 }
 
 .consume-kindle a {
-    background: url('../images/pb-kindle-logo.png') left center no-repeat;
+    background: url('../images/pb-kindle-logo.png') left top no-repeat;
     background-size: 48px 48px;
+    padding-top:15px;
 }
 
 .consume-smashwords a {
-    background: url('../images/pb-smashwords-logo.png') left center no-repeat;
+    background: url('../images/pb-smashwords-logo.png') left top no-repeat;
     background-size: 48px 48px;
+    padding-top:15px;
 }
 
 /*
