@@ -263,8 +263,7 @@
 }
 
 .consume-rss a {
-    background: url('../images/pb-rss-icon.gif') 15px center no-repeat;
-    font-size: smaller;
+    background: url('../images/pb-rss-icon.gif') 15px 8px no-repeat;
 }
 
 .consume-amazon a {
