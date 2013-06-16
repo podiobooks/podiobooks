@@ -244,7 +244,9 @@
 }
 
 
-
+/*
+ * 5 Panes per shelf
+ */
 @media all and (min-width:1200px){
 	.width{
 		width:1080px;
@@ -268,4 +270,8 @@
 	.browse-choices-ad{
 		margin:10px 0 0 ;
 	}
+	.consume-list a {
+		padding-left:65px;
+	}
+	
 }
