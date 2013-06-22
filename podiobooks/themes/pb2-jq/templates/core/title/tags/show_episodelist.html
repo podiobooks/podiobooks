@@ -4,8 +4,9 @@
         {% for episode in episode_list %}
             <li class="episode-list-item">
                 <h3 class="episode-list-title">
-                    <a class="episode-audio-link" href="{{ episode.url }}">{{ episode.name }}</a>
+                    <a name="{{ episode.pk }}" class="episode-audio-link" href="{{ episode.url }}">{{ episode.name }}</a>
                 </h3>
+
                 <div class="episode-list-description">
                     {{ episode.description }}
                 </div>
