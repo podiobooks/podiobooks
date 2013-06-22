@@ -25,6 +25,7 @@ from pyga.requests import Event, Session, Tracker, Visitor
 
 LOGGER = logging.getLogger(name='podiobooks.feeds')
 
+
 class TitleFeed(Feed):
     """A simple feed that lists all Titles"""
     feed_type = Rss201rev2Feed
@@ -104,7 +105,7 @@ class EpisodeFeed(Feed):
             return 'no'
 
     def language(self, obj):
-        """Setup the language for the feed based on the title language. Note that this does not work in Django 1.4.1, but is on the list for future."""
+        """Setup the language for the feed based on the title language. Note that this does not work in Django 1.4.1."""
         if obj.language:
             return obj.language
         else:
