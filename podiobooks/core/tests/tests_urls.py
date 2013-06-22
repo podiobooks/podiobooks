@@ -3,7 +3,6 @@
 # pylint: disable=C0103,C0111,R0904
 
 from django.test import TestCase
-from django.test.client import Client
 
 
 class UrlTestCase(TestCase):
@@ -70,7 +69,7 @@ class UrlTestCase(TestCase):
 
     def test_title_detail_removed(self):
         response = self.client.get('/title/deleted-title/')
-        self.assertEquals(302, response.status_code)
+        self.assertRedirects(response, '/title/removed/deleted-title/', status_code=302)
 
     def test_category_list(self):
         response = self.client.get('/category/')
@@ -89,8 +88,8 @@ class UrlTestCase(TestCase):
         self.assertEquals(200, response.status_code)
 
     def test_episode_detail(self):
-        response = self.client.get('/episode/68250/') # Double Share, Episode 1
-        self.assertEquals(200, response.status_code)
+        response = self.client.get('/episode/68250/')  # Double Share, Episode 1
+        self.assertRedirects(response, '/title/trader-tales-4-double-share/', status_code=301)
 
     def test_series_list(self):
         response = self.client.get('/series/')
@@ -142,11 +141,11 @@ class UrlTestCase(TestCase):
 
     def test_pb1_book_redirect(self):
         response = self.client.get('/podiobooks/book.php', {'ID': 24})
-        self.assertEquals(301, response.status_code)
+        self.assertRedirects(response, '/title/earthcore/', status_code=301)
 
     def test_pb1_xml_redirect(self):
         response = self.client.get('/index.xml')
-        self.assertEquals(301, response.status_code)
+        self.assertRedirects(response, '/rss/feeds/titles/recent/', status_code=301)
 
     def test_pb1_feed_redirect(self):
         response = self.client.get('/title/trader-tales-4-double-share/feed/')
