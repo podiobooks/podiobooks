@@ -105,7 +105,7 @@ class EpisodeFeed(Feed):
             return 'no'
 
     def language(self, obj):
-        """Setup the language for the feed based on the title language. Note that this does not work in Django 1.4.1."""
+        """Setup the language for the feed based on the title language. Note that this does not work in Django 1.4.1"""
         if obj.language:
             return obj.language
         else:
@@ -220,8 +220,11 @@ class EpisodeFeed(Feed):
 
         return keywords
 
+    def item_guid(self, obj):
+        return str(obj.pk)
+
     def item_link(self, obj):
-        return obj.get_absolute_url()
+        return "{0}#{1}".format(obj.title.get_absolute_url(), str(obj.pk))
 
     def item_pubdate(self, obj):
         return obj.media_date_created if obj.media_date_created is not None else obj.date_created
