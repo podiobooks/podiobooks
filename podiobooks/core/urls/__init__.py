@@ -4,7 +4,10 @@
 
 from django.conf.urls import include, patterns, url
 from podiobooks.core.views import FeedRedirectView, TitleRedirectView
-from podiobooks.core.views.browse import AwardDetailView, AwardListView, BrowseOptionsView, CategoryDetailView, CategoryListView, ContributorDetailView, ContributorListView, EpisodeDetailView, SeriesDetailView, SeriesListView, TitleListView, TitleRecentListView, TitleDetailView, TitleRemovedView
+from podiobooks.core.views.browse import AwardDetailView, AwardListView, BrowseOptionsView, CategoryDetailView
+from podiobooks.core.views.browse import CategoryListView, ContributorDetailView, ContributorListView
+from podiobooks.core.views.browse import EpisodeRedirectView, SeriesDetailView, SeriesListView
+from podiobooks.core.views.browse import TitleListView, TitleRecentListView, TitleDetailView, TitleRemovedView
 from podiobooks.core.views import title_search
 from podiobooks.core.views.shelf import FilteredShelf
 from . import urls_api
@@ -24,7 +27,7 @@ urlpatterns = patterns('',
     url(r'^contributor/(?P<slug>[^/]+)/$', ContributorDetailView.as_view(), name='contributor_detail'),
 
     # Episode
-    url(r'^episode/(?P<pk>[^/]+)/$', EpisodeDetailView.as_view(), name='episode_detail'),
+    url(r'^episode/(?P<pk>[^/]+)/$', EpisodeRedirectView.as_view(), name='episode_detail'),
 
     # Series
     url(r'^series/$', SeriesListView.as_view(), name='series_list'),
