@@ -6,7 +6,9 @@
         <br/>
         Love this free audiobook? <a href="http://blog.podiobooks.com/why-you-should-donate/" target="blank">support</a> it!
         <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-            <input type="hidden" name="cmd" value="_donations"><input type="hidden" name="business" value="{{ DONATION_BUSINESS_NAME }}">
+            <input type="hidden" name="cmd" value="_donations">
+            <input type="hidden" name="business" value="{{ DONATION_BUSINESS_NAME }}">
+            <input type="hidden" name="hosted_button_id" value="X7ZTFK3464SX6">
             <input type="hidden" name="item_name" value="Podiobooks.com Author Donation">
             <input type="hidden" name="item_number" value="{{ title.name }}  {{ title.get_byline|striptags }}">
             $<input type="text" name="amount" value="4.99" size="8">
