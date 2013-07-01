@@ -21,7 +21,8 @@ if "GONDOR_DATABASE_URL" in os.environ:
     }
     DATABASE_POOL_ARGS = {
         'max_overflow': 75,
-        'pool_size': 10
+        'pool_size': 10,
+        'timeout': 90,
     }
     SOUTH_DATABASE_ADAPTERS = {
         'default': 'south.db.postgresql_psycopg2'
