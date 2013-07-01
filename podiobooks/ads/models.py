@@ -13,6 +13,9 @@ class AdSchedule(models.Model):
     description = models.TextField(blank=True)
 
     deleted = models.BooleanField(default=False)
+    date_start = models.DateTimeField(auto_now_add=True)
+    date_end = models.DateTimeField(blank=True, null=True)
+    priority = models.IntegerField(default=10, help_text="Higher Numbers Will Insert Earlier If Conflict.")
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
 

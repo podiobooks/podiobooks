@@ -56,11 +56,56 @@ class TitleTestCase(TestCase):
 
         self.assertEquals(1, self.title1.ad_schedules.count())
 
+        #  Insert ad episodes into episode list
         episode_list = list(self.title1.episodes.all())
-        first_ad_schedule = self.title1.ad_schedules.get()
-        ad_schedule_positions = first_ad_schedule.ad_schedule.ad_schedule_positions.all()
+        ad_schedule_positions = AdSchedulePosition.objects.filter(ad_schedule__in=self.title1.ad_schedules.all())
         for position in ad_schedule_positions:
             episode_list.insert(position.sequence - 1, position.episode)  # sequence - 1 since .insert inserts after
 
         print episode_list
         self.assertEquals(self.episode1, episode_list[4])
+        self.assertEquals(26, len(episode_list))
+
+    def test_multiple_ad_schedules(self):
+        # Create a Second AdSchedule
+        schedule2 = AdSchedule.objects.create(
+            name="Podiobooks Ad Schedule #2",
+            description="Test Ad Schedule 2",
+            priority=30
+        )
+
+        # Grab Episodes to Attach
+        all_episodes = Episode.objects.filter(title__pk=250)
+        episode2_1 = all_episodes[1]
+        episode2_2 = all_episodes[2]
+
+        # Add Ad Episodes to AdSchedule
+        ad_schedule_ep1 = AdSchedulePosition.objects.create(
+            ad_schedule=schedule2,
+            episode=episode2_1,
+            sequence=5
+        )
+
+        ad_schedule_ep2 = AdSchedulePosition.objects.create(
+            ad_schedule=schedule2,
+            episode=episode2_2,
+            sequence=15
+        )
+
+        self.ad_schedule_title = AdScheduleTitle.objects.create(
+            title=self.title1,
+            ad_schedule=schedule2
+        )
+
+        self.assertEquals(2, schedule2.ad_schedule_positions.count())
+        self.assertEquals(2, self.title1.ad_schedules.count())
+
+        #  Insert ad episodes into episode list
+        episode_list = list(self.title1.episodes.all())
+        ad_schedule_positions = AdSchedulePosition.objects.filter(ad_schedule__in=self.title1.ad_schedules.all())
+        for position in ad_schedule_positions:
+            episode_list.insert(position.sequence - 1, position.episode)  # sequence - 1 since .insert inserts after
+
+        print episode_list
+        self.assertEquals(episode2_1, episode_list[4])
+        self.assertEquals(28, len(episode_list))
