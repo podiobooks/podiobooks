@@ -29,6 +29,10 @@ class MLStripper(HTMLParser):
 def strip_tags(html):
     """Strip all HTML Tags and Entities"""
     s = MLStripper()
+    
+    if not html:
+        html = ''
+    
     s.feed(html)
     return s.get_data()
 
