@@ -18,6 +18,8 @@ class AdSchedule(models.Model):
     priority = models.IntegerField(default=10, help_text="Higher Numbers Will Insert Earlier If Conflict.")
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
+    
+    titles = models.ManyToManyField(Title, null=True, blank=True)
 
     class Meta:
         ordering = ['name']
@@ -45,18 +47,18 @@ class AdSchedulePosition(models.Model):
     def __unicode__(self):
         return self.ad_schedule__name
 
-
-class AdScheduleTitle(models.Model):
-    """Ad Schedules Many To Many With Titles."""
-    ad_schedule = models.ForeignKey('AdSchedule', related_name='titles')
-    title = models.ForeignKey(Title, related_name='ad_schedules')
-
-    # Note - titles are available as titles.all()
-    date_created = models.DateTimeField(auto_now_add=True)
-    date_updated = models.DateTimeField(auto_now=True)
-
-    class Meta:
-        verbose_name_plural = "Ad Schedule Titles"
-
-    def __unicode__(self):
-        return self.name
+# 
+# class AdScheduleTitle(models.Model):
+#     """Ad Schedules Many To Many With Titles."""
+#     ad_schedule = models.ForeignKey('AdSchedule')
+#     title = models.ForeignKey(Title)
+# 
+#     # Note - titles are available as titles.all()
+#     date_created = models.DateTimeField(auto_now_add=True)
+#     date_updated = models.DateTimeField(auto_now=True)
+# 
+#     class Meta:
+#         verbose_name_plural = "Ad Schedule Titles"
+# 
+#     def __unicode__(self):
+#         return self.name
