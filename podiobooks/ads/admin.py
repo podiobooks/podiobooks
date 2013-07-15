@@ -4,7 +4,7 @@
 
 from django.contrib import admin
 
-from podiobooks.ads.models import AdSchedule, AdSchedulePosition, AdScheduleTitle
+from podiobooks.ads.models import AdSchedule, AdSchedulePosition
 from podiobooks.core.models import Episode
 
 ### INLINES
@@ -20,16 +20,16 @@ class AdScheduledPositionInline(admin.TabularInline):
             kwargs["queryset"] = Episode.objects.filter(title__slug='pb-ads')
         return super(AdScheduledPositionInline, self).formfield_for_foreignkey(db_field, request, **kwargs)
 
-
-class AdTitleInline(admin.TabularInline):
-    model = AdScheduleTitle
+# 
+# class AdTitleInline(admin.TabularInline):
+#     model = AdScheduleTitle
 
 ### MAIN ADMIN CLASSES
 
 
 class AdScheduleAdmin(admin.ModelAdmin):
     model = AdSchedule
-    inlines = [AdScheduledPositionInline, AdTitleInline]
-
+    inlines = [AdScheduledPositionInline, ]
+    filter_horizontal = ["titles", ]
 
 admin.site.register(AdSchedule, AdScheduleAdmin)
