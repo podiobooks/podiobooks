@@ -15,21 +15,21 @@ class AdScheduledPositionInline(admin.TabularInline):
 
     fields = ['sequence', 'episode']
 
-    def formfield_for_foreignkey(self, db_field, request, **kwargs):
-        if db_field.name == "episode":
-            kwargs["queryset"] = Episode.objects.filter(title__slug='pbads')
-        return super(AdScheduledPositionInline, self).formfield_for_manytomany(db_field, request, **kwargs)
+#    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+#        if db_field.name == "episode":
+#            kwargs["queryset"] = Episode.objects.filter(title__slug='pbads')
+#        return super(AdScheduledPositionInline, self).formfield_for_manytomany(db_field, request, **kwargs)
 
 
-class AdTitleInline(admin.TabularInline):
-    model = AdScheduleTitle
-
-    fields = ['sequence']
-
-    def formfield_for_foreignkey(self, db_field, request, **kwargs):
-        if db_field.name == "episode":
-            kwargs["queryset"] = Episode.objects.filter(title__slug='pbads')
-        return super(AdTitleInline, self).formfield_for_manytomany(db_field, request, **kwargs)
+# class AdTitleInline(admin.TabularInline):
+#     model = AdScheduleTitle
+#
+#     fields = ['sequence']
+#
+#     def formfield_for_foreignkey(self, db_field, request, **kwargs):
+#         if db_field.name == "episode":
+#             kwargs["queryset"] = Episode.objects.filter(title__slug='pbads')
+#         return super(AdTitleInline, self).formfield_for_manytomany(db_field, request, **kwargs)
 
 
 ### MAIN ADMIN CLASSES
