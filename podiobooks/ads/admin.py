@@ -14,6 +14,7 @@ class AdScheduledPositionInline(admin.TabularInline):
     model = AdSchedulePosition
 
     fields = ['sequence', 'episode']
+    extra = 0
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == "episode":
