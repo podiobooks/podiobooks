@@ -14,24 +14,25 @@ from podiobooks.core.models import Award, Contributor, Category, Episode, Title,
 
 class AwardListView(ListView):
     """Shows list of awards with a count of how many titles are in each."""
-
+    
     template_name = "core/award/award_list.html"
-    awarded_titles = Title.objects.filter(deleted=False, awards__isnull=False)
-
-    awards_list = []
-    for title in awarded_titles:
-        for award in title.awards.all():
-            if not award in awards_list:
-                awards_list.append(award)
-
-    queryset = Award.objects.annotate(title_count=Count('titles')).filter(title_count__gt=0,
-                                                                          deleted=False,
-                                                                          pk__in=[award.pk for award in
-                                                                                  awards_list]
-                                                                          ).order_by('name').prefetch_related("titles")
-
     context_object_name = 'award_list'
     paginate_by = 40
+
+    def get_queryset(self):
+        awarded_titles = Title.objects.filter(deleted=False, awards__isnull=False)
+        awards_list = []
+        for title in awarded_titles:
+            for award in title.awards.all():
+                if not award in awards_list:
+                    awards_list.append(award)
+        return Award.objects.annotate(
+            title_count=Count('titles')).filter(
+                title_count__gt=0,
+                deleted=False,
+                pk__in=[award.pk for award in awards_list]).order_by('name').prefetch_related("titles")
+                                                                          
+    
 
 
 class AwardDetailView(ListView):
