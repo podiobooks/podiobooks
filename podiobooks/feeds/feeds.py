@@ -16,9 +16,11 @@ from django.core.urlresolvers import reverse
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import get_object_or_404
 from django.db.models import Q
+from django.db import connection
 from django.http import Http404
 
 from podiobooks.core.models import Title, Episode
+from podiobooks.ads.models import get_ep_list_with_ads_for_title
 from podiobooks.feeds.protocols.itunes import ITunesFeed
 
 from pyga.requests import Event, Session, Tracker, Visitor
@@ -80,8 +82,9 @@ class EpisodeFeed(Feed):
 
     def __call__(self, request, *args, **kwargs):
         asdf = super(EpisodeFeed, self).__call__(request, *args, **kwargs)
-#         for query in connection.queries:
-#             print query
+        for query in connection.queries:
+            print query
+        print "QUERY COUNT: " + str(len(connection.queries))
         return asdf
         
     def __init__(self, *args, **kwargs):    
@@ -139,10 +142,10 @@ class EpisodeFeed(Feed):
         
         title_slug = kwargs.get('title_slug', None)
         
-        title_set = Title.objects.prefetch_related('episodes', 'categories', 'contributors')
+        title_set = Title.objects.all()
         
         try:
-            obj = title_set.filter(Q(slug__exact=title_slug) | Q(old_slug__exact=title_slug)).distinct()[0]
+            obj = title_set.get(Q(slug__exact=title_slug) | Q(old_slug__exact=title_slug))
         except IndexError:
             raise ObjectDoesNotExist
         
@@ -167,11 +170,8 @@ class EpisodeFeed(Feed):
         return 'yes'
 
     def items(self, obj):
-        return Episode.objects.prefetch_related(
-            "title",
-            "contributors",
-            "title__categories",
-            "title__awards").filter(title__id__exact=obj.id).order_by('sequence')
+#        return Episode.objects.prefetch_related("title").filter(title__id__exact=obj.id).order_by('sequence')
+        return get_ep_list_with_ads_for_title(obj)
 
     def item_comments(self, obj):
         return add_domain(Site.objects.get_current().domain, obj.title.get_absolute_url())
@@ -197,7 +197,6 @@ class EpisodeFeed(Feed):
         """
         extra_args = {
             'duration': self.item_duration(item),
-            'keywords': self.item_keywords(item),
             'order': self.item_order(item),
             'comments': self.item_comments(item)
         }
@@ -208,17 +207,6 @@ class EpisodeFeed(Feed):
             return '45:00'
         else:  # pragma no cover
             return obj.duration
-
-    def item_keywords(self, obj):
-        keywords = u'%s, %s, %s' % (
-            obj.name.replace(' ', ''),
-            self.author_name(obj.title),
-            'podiobook, audiobook')
-
-        for category in self.categories(obj.title):
-            keywords += ', ' + category.name
-
-        return keywords
 
     def item_guid(self, obj):
         return str(obj.pk)
