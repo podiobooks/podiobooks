@@ -26,6 +26,7 @@ class AwardListView(ListView):
             for award in title.awards.all():
                 if not award in awards_list:
                     awards_list.append(award)
+
         return Award.objects.annotate(
             title_count=Count('titles')).filter(
                 title_count__gt=0,
@@ -59,9 +60,11 @@ class BrowseOptionsView(TemplateView):
 class CategoryListView(ListView):
     """List of Categories with Count of Titles for Each"""
     template_name = 'core/category/category_list.html'
-    queryset = Category.objects.annotate(title_count=Count('title')).filter(
-        title_count__gt=0, deleted=False).order_by('name').prefetch_related("title_set")
     context_object_name = 'category_list'
+    
+    def get_queryset(self):
+        return Category.objects.annotate(title_count=Count('title')).filter(title_count__gt=0, deleted=False).order_by('name').prefetch_related("title_set")
+    
 
 
 class CategoryDetailView(ListView):
@@ -83,10 +86,11 @@ class CategoryDetailView(ListView):
 class ContributorListView(ListView):
     """List of all Contributors on the Site, with title count for each"""
     template_name = 'core/contributor/contributor_list.html'
-    queryset = Contributor.objects.prefetch_related("title_set").filter(deleted=False, title__deleted=False).annotate(
-        title_count=Count('title')).filter(title_count__gt=0).order_by('last_name')
     context_object_name = 'contributor_list'
     paginate_by = 40
+    
+    def get_queryset(self):
+        return Contributor.objects.prefetch_related("title_set").filter(deleted=False, title__deleted=False).annotate(title_count=Count('title')).filter(title_count__gt=0).order_by('last_name')
 
 
 class ContributorDetailView(ListView):
@@ -139,12 +143,10 @@ class SeriesDetailView(ListView):
     context_object_name = 'title_list'
 
     def get_queryset(self):
-        return Title.objects.prefetch_related("titlecontributors",
-                                              "titlecontributors__contributor",
-                                              "titlecontributors__contributor_type"
-                                              ).order_by(
-                                                  "series_sequence").filter(series__slug=self.kwargs.get('slug'),
-                                                                            deleted=False)
+        return Title.objects.prefetch_related(
+            "titlecontributors", 
+            "titlecontributors__contributor",
+            "titlecontributors__contributor_type").order_by("series_sequence").filter(series__slug=self.kwargs.get('slug'), deleted=False)
 
     def get_context_data(self, **kwargs):
         series = get_object_or_404(Series, slug=self.kwargs.get('slug'))
@@ -154,23 +156,27 @@ class SeriesDetailView(ListView):
 
 class TitleListView(ListView):
     """List of all titles on the site alphabetically"""
-    queryset = Title.objects.prefetch_related("titlecontributors",
-                                              "titlecontributors__contributor_type",
-                                              "titlecontributors__contributor").filter(deleted=False).order_by('name')
     context_object_name = 'title_list'
     paginate_by = 25
     template_name = 'core/title/title_list.html'
+    
+    def get_queryset(self):
+        return Title.objects.prefetch_related("titlecontributors",
+            "titlecontributors__contributor_type",
+            "titlecontributors__contributor").filter(deleted=False).order_by('name')
 
 
 class TitleRecentListView(ListView):
     """List of all titles on the site in release order"""
-    queryset = Title.objects.prefetch_related("titlecontributors",
-                                              "titlecontributors__contributor_type",
-                                              "titlecontributors__contributor"
-                                              ).filter(deleted=False).order_by('-date_created')
     context_object_name = 'title_list'
     paginate_by = 25
     template_name = 'core/title/title_recent_list.html'
+    
+    def get_queryset(self):
+        return Title.objects.prefetch_related(
+            "titlecontributors",
+            "titlecontributors__contributor_type",
+            "titlecontributors__contributor").filter(deleted=False).order_by('-date_created')
 
 
 class TitleRemovedView(DetailView):
@@ -215,3 +221,4 @@ class TitleDetailView(DetailView):
                 return redirect('title_detail_removed', self.object.slug)
             context = self.get_context_data(object=self.object)
             return self.render_to_response(context)
+
