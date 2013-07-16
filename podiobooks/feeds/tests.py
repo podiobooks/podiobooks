@@ -25,6 +25,8 @@ class FeedUrlTestCase(TestCase):
         response = self.client.get('/rss/feeds/episodes/trader-tales-4-double-share/')
         self.assertContains(response, 'PB-DoubleShare-01.mp3')
         self.assertContains(response, 'PB-DoubleShare-25.mp3')
+        print response
+        self.fail("debug")
         
     def testEpisodeFeedAdult(self):
         response = self.client.get('/rss/feeds/episodes/the-plump-buffet/')
