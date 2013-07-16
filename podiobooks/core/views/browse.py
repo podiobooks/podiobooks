@@ -32,8 +32,6 @@ class AwardListView(ListView):
                 title_count__gt=0,
                 deleted=False,
                 pk__in=[award.pk for award in awards_list]).order_by('name').prefetch_related("titles")
-                                                                          
-    
 
 
 class AwardDetailView(ListView):

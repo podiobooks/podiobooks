@@ -107,13 +107,13 @@ class Episode(models.Model):
     description = models.TextField(blank=True)
     url = models.URLField()
     filesize = models.IntegerField(default=0,
-        help_text="In bytes, corresponds to 'length' in RSS feed")  # Size of the media file
+                                   help_text="In bytes, corresponds to 'length' in RSS feed")  # Size of the media file
     duration = models.CharField(max_length=20, default='45:00',
-        help_text='Duration of the media file in minutes:seconds')  # Length of the media file (in minutes)
+                                help_text='Duration of the media file in minutes:seconds')  # Length of the media file (in minutes)
     contributors = models.ManyToManyField('Contributor', through='EpisodeContributor')
     deleted = models.BooleanField(default=False, db_index=True)
     media_date_created = models.DateTimeField(blank=True, null=True,
-        help_text='Date the media file was added (e.g. to Libsyn)')
+                                              help_text='Date the media file was added (e.g. to Libsyn)')
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
 
@@ -121,11 +121,11 @@ class Episode(models.Model):
         ordering = ['title__name', 'sequence']
 
     def __unicode__(self):
-        return self.title.name + ': Episode #' + str(self.sequence) + ': ' + self.name
+        return 'Episode #{0}: {1}'.format(self.sequence, self.description)
 
     @models.permalink
     def get_absolute_url(self):
-        return ('episode_detail', [self.id]) # pylint: disable=E1101
+        return 'episode_detail', [self.id]  # pylint: disable=E1101
 
     def _get_filesize_mb(self):
         return round(self.filesize / 1024.0 / 1024.0, 2)
@@ -166,7 +166,7 @@ MEDIA_NAME_CHOICES = (
     ('Print Version', 'Print Version'),
     ('Kindle Version', 'Kindle Version'),
     ('Smashwords Version', 'Smashwords Version'),
-    )
+)
 
 
 class Media(models.Model):
@@ -254,13 +254,13 @@ class Title(models.Model):
     category_list = models.CharField(max_length=1024, blank=True) # This is a formatted cache of the categories
     awards = models.ManyToManyField('Award', null=True, blank=True, related_name='titles')
     libsyn_show_id = models.CharField(max_length=50, db_index=True, blank=True, verbose_name='LibSyn Show ID',
-        help_text='Starts with k-')
+                                      help_text='Starts with k-')
     itunes_adam_id = models.IntegerField(null=True, blank=True, verbose_name='iTunes ADAM Id',
-        help_text='From iTunes Page URL for Podcast')
+                                         help_text='From iTunes Page URL for Podcast')
     itunes_new_feed_url = models.BooleanField(default=False, verbose_name='iTunes New Feed Url Tag',
-        help_text='Include <itunes:new_feed_url> tag in feed (Required if you are changing the slug)')
+                                              help_text='Include <itunes:new_feed_url> tag in feed (Required if you are changing the slug)')
     podiobooker_blog_url = models.URLField(max_length=255, null=True, blank=True, verbose_name='Blog URL',
-        help_text='Full URL to Blog Post Announcing Book')
+                                           help_text='Full URL to Blog Post Announcing Book')
     # Note: episodes are available as episodes.all()
     # Note: media are available as media.all()
     # Note: promos are available as promos.all()
@@ -333,6 +333,7 @@ def update_category_list(sender, instance, **kwargs):
     instance.title.category_list = category_list
     instance.title.save()
 
+
 post_save.connect(update_category_list, sender=TitleCategory)
 
 
@@ -349,7 +350,7 @@ class TitleContributor(models.Model):
         ordering = ['contributor_type__slug', 'date_created']
 
     def __unicode__(self):
-        return self.contributor.display_name + ": " + self.contributor_type.name + " of " + self.title.name
+        return str(self.pk)
 
 
 class TitleUrl(models.Model):
@@ -362,5 +363,5 @@ class TitleUrl(models.Model):
     date_updated = models.DateTimeField(auto_now=True)
 
     def __unicode__(self):
-        return "TitleUrls"
+        return url
 
