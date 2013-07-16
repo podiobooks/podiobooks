@@ -80,8 +80,8 @@ class EpisodeFeed(Feed):
 
     def __call__(self, request, *args, **kwargs):
         asdf = super(EpisodeFeed, self).__call__(request, *args, **kwargs)
-        #for query in connection.queries:
-          #  print query
+#         for query in connection.queries:
+#             print query
         return asdf
         
     def __init__(self, *args, **kwargs):    
