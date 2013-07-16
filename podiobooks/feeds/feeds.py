@@ -79,13 +79,6 @@ class RecentTitleFeed(TitleFeed):
 class EpisodeFeed(Feed):
     """Main feed used to generate the list of episodes for an individual Title"""
     feed_type = ITunesFeed
-
-    def __call__(self, request, *args, **kwargs):
-        asdf = super(EpisodeFeed, self).__call__(request, *args, **kwargs)
-        for query in connection.queries:
-            print query
-        print "QUERY COUNT: " + str(len(connection.queries))
-        return asdf
         
     def __init__(self, *args, **kwargs):    
         super(EpisodeFeed, self).__init__(*args, **kwargs)
