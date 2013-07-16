@@ -116,7 +116,7 @@ class TitleTestCase(TestCase):
 
     def test_future_ad_schedules(self):
         self.schedule2.titles.add(self.title1)
-        self.schedule2.date_start = datetime.datetime.now(timezone.utc) + datetime.timedelta(5)  # 5 days in future to start
+        self.schedule2.date_start = datetime.datetime.now(timezone.utc) + datetime.timedelta(5)  # Expire 5 days in future
         self.schedule2.save()
 
         self.assertEquals(1, get_active_ad_schedules_for_title(self.title1).count())
@@ -129,7 +129,7 @@ class TitleTestCase(TestCase):
 
     def test_expired_ad_schedules(self):
         self.schedule2.titles.add(self.title1)
-        self.schedule2.date_end = datetime.datetime.now(timezone.utc) - datetime.timedelta(5)  # 5 days in past to end
+        self.schedule2.date_end = datetime.datetime.now(timezone.utc) - datetime.timedelta(5)  # Expire 5 days in past
         self.schedule2.save()
 
         self.assertEquals(2, self.schedule2.ad_schedule_positions.count())
@@ -142,7 +142,7 @@ class TitleTestCase(TestCase):
         self.assertEquals(26, len(episode_list))
 
         ### Test no active ad schedules
-        self.schedule1.date_end = datetime.datetime.now(timezone.utc) - datetime.timedelta(5)  # 5 days in past to end
+        self.schedule1.date_end = datetime.datetime.now(timezone.utc) - datetime.timedelta(5)  # Expire 5 days in past
         self.schedule1.save()
 
         self.assertEquals(0, get_active_ad_schedules_for_title(self.title1).count())
