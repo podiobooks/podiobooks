@@ -52,6 +52,5 @@ class ITunesFeed(Rss201rev2Feed):
         handler.addQuickElement(u'itunes:subtitle', item['description'][:255])
         handler.addQuickElement(u'itunes:summary', item['description'])
         handler.addQuickElement(u'itunes:duration', item['duration'])
-        handler.addQuickElement(u'itunes:keywords', item['keywords'])
         handler.addQuickElement(u'itunes:order', item['order'])
             
