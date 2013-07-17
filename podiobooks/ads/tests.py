@@ -165,3 +165,15 @@ class TitleTestCase(TestCase):
 #        print episode_list
         self.assertEquals(self.episode1, episode_list[4])
 
+    def test_end_of_title_ad(self):
+        self.ad_schedule_ep99 = AdSchedulePosition.objects.create(
+            ad_schedule=self.schedule1,
+            episode=self.episode1,
+            sequence=99
+        )
+
+        episode_list = get_ep_list_with_ads_for_title(self.title1)
+        print episode_list
+        print len(episode_list)
+        self.assertEquals(self.episode1, episode_list[len(episode_list)-1])
+
