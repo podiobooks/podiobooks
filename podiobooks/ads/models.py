@@ -47,7 +47,7 @@ class AdSchedulePosition(models.Model):
         ordering = ['ad_schedule__name']
 
     def __unicode__(self):
-        return self.ad_schedule__name
+        return str(self.pk)
 
 
 ### UTILITY FUNCTIONS
