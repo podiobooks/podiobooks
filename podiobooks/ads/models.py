@@ -65,10 +65,17 @@ def get_ep_list_with_ads_for_title(title):
 
     episode_list = list(title.episodes.all().order_by('sequence').prefetch_related('title'))
     ad_schedule_positions = AdSchedulePosition.objects.filter(ad_schedule__in=get_active_ad_schedules_for_title(title))
+    
     for position in ad_schedule_positions:
-        next_episode = episode_list[position.sequence]
-        before_this_date = next_episode.media_date_created if next_episode.media_date_created is not None else next_episode.date_created
-        hacked_pubdate = before_this_date - datetime.timedelta(0, 1)
+        try:
+            next_episode = episode_list[position.sequence]
+            before_this_date = next_episode.media_date_created if next_episode.media_date_created is not None else next_episode.date_created
+            hacked_pubdate = before_this_date - datetime.timedelta(0, 1)
+        except IndexError:
+            last_episode = episode_list[-1]
+            after_this_date = last_episode.media_date_created if last_episode.media_date_created is not None else last_episode.date_created
+            hacked_pubdate = after_this_date + datetime.timedelta(0, 1)
+            
         position.episode.hacked_pubdate = hacked_pubdate
         episode_list.insert(position.sequence - 1, position.episode)  # sequence - 1 since .insert inserts after
 
