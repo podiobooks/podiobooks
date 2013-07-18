@@ -88,7 +88,7 @@ def create_title_from_libsyn_rss(rss_feed_url):
         try:
             episode.sequence = int(
                 episode.url[episode.url.rfind('.') - 2:episode.url.rfind('.')])  # Use URL File Name to Calc Seq
-            episode.media_date_created = start_date + datetime.timedelta(0, episode.sequence)
+            episode.media_date_created = start_date + datetime.timedelta(10, episode.sequence)
         except ValueError:
             print episode.url
             episode.sequence = 0
