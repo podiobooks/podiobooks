@@ -208,6 +208,8 @@ class EpisodeFeed(Feed):
         return "{0}#{1}".format(obj.title.get_absolute_url(), str(obj.pk))
 
     def item_pubdate(self, obj):
+        if hasattr(obj,"hacked_pubdate"):
+            return obj.hacked_pubdate
         return obj.media_date_created if obj.media_date_created is not None else obj.date_created
 
     def item_title(self, obj):
