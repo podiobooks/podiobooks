@@ -117,9 +117,9 @@ class FeedRedirectView(RedirectView):
             title = get_object_or_404(Title, pk=pk)
         else:
             try:
-                title = Title.objects.filter(Q(slug=slug) | Q(old_slug=slug)).distinct()[0]
-            except IndexError:
-                raise Http404
+                title = Title.objects.get(slug=slug)
+            except ObjectDoesNotExist:
+                title = get_object_or_404(Title, old_slug=slug)
 
         return reverse_lazy('title_episodes_feed', args=(title.slug,))
 
