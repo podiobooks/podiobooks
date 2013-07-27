@@ -138,9 +138,9 @@ class EpisodeFeed(Feed):
         title_set = Title.objects.all()
         
         try:
-            obj = title_set.get(Q(slug__exact=title_slug) | Q(old_slug__exact=title_slug))
-        except IndexError:
-            raise ObjectDoesNotExist
+            obj = title_set.get(slug__exact=title_slug)
+        except ObjectDoesNotExist:
+            obj = get_object_or_404(title_set, old_slug__exact=title_slug)
         
         ### Google Analytics for Feed
         tracker = Tracker(settings.GOOGLE_ANALYTICS_ID, Site.objects.get_current().domain)
