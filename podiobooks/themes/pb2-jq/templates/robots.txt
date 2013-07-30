@@ -1,8 +1,6 @@
 # www.robotstxt.org/
 # www.google.com/support/webmasters/bin/answer.py?hl=en&answer=156449
+# Disallow all robots on non-prod-sites
 
 User-agent: *
 Disallow: /
-
-User-agent: Mediapartners-Google
-Allow: /
