@@ -70,13 +70,14 @@ def get_ep_list_with_ads_for_title(title):
         try:
             next_episode = episode_list[position.sequence]
             before_this_date = next_episode.media_date_created if next_episode.media_date_created is not None else next_episode.date_created
-            hacked_pubdate = before_this_date - datetime.timedelta(0, 1)
+            injected_pubdate = before_this_date - datetime.timedelta(0, 1)
         except IndexError:
             last_episode = episode_list[-1]
             after_this_date = last_episode.media_date_created if last_episode.media_date_created is not None else last_episode.date_created
-            hacked_pubdate = after_this_date + datetime.timedelta(0, 1)
-            
-        position.episode.hacked_pubdate = hacked_pubdate
+            injected_pubdate = after_this_date + datetime.timedelta(0, 1)
+
+        position.episode.injected_pubdate = injected_pubdate
+        position.episode.injected_sequence = position.sequence
         episode_list.insert(position.sequence - 1, position.episode)  # sequence - 1 since .insert inserts after
 
     return episode_list

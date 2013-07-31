@@ -208,8 +208,8 @@ class EpisodeFeed(Feed):
         return "{0}#{1}".format(obj.title.get_absolute_url(), str(obj.pk))
 
     def item_pubdate(self, obj):
-        if hasattr(obj,"hacked_pubdate"):
-            return obj.hacked_pubdate
+        if hasattr(obj,"injected_pubdate"):
+            return obj.injected_pubdate
         return obj.media_date_created if obj.media_date_created is not None else obj.date_created
 
     def item_title(self, obj):
@@ -225,4 +225,7 @@ class EpisodeFeed(Feed):
         return obj.name
 
     def item_order(self, obj):
-        return str(obj.sequence)
+        if hasattr(obj,"injected_sequence"):
+            return str(obj.injected_sequence)
+        else:
+            return str(obj.sequence)
