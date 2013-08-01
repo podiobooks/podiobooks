@@ -62,6 +62,9 @@ urlpatterns = \
 
              # Search
              (r'^search/', include('podiobooks.search.urls')),
+             
+             # MUB include
+             (r'^mub/', include('mub.urls')),
 
              # Robots, Favicon and Related
              (r'^robots\.txt$', RobotsView.as_view()),
