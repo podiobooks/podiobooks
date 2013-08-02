@@ -1,7 +1,7 @@
 django<1.5
 django-adminactions==0.2
 django-debug-toolbar==0.9.4
-django-jenkins=0.14.0
+django-jenkins==0.14.0
 git+git://github.com/Brant/django-mub.git
 django-tastypie==0.9.15
 feedparser==5.1.3
