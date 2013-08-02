@@ -184,7 +184,7 @@ DONATION_BUSINESS_NAME = 'evo@podiobooks.com'
 #INTERNAL_IPS = ('127.0.0.1',)
 #INSTALLED_APPS += ( "debug_toolbar", )
 #MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware', )
-### MEDIABRUTE
+### MUB
 MUB_CSS_ORDER = (
     ("jquery.pbshelf.css", "clear.css", "styles.css", "base-shelf.css"),
     ("gsc-overrides.css", "adaptive.css", "small-screen.css")
