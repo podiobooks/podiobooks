@@ -3,7 +3,7 @@ django-redis==3.3
 django-postgrespool==0.2.4
 newrelic==1.13.1.31
 eventlet==0.13.0
-gunicorn==0.17.5
+gunicorn==17.5
 hiredis==0.1.1
 psycopg2==2.5.1
 redis==2.7.6
