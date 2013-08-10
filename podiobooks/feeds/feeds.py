@@ -135,7 +135,7 @@ class EpisodeFeed(Feed):
         
         title_slug = kwargs.get('title_slug', None)
         
-        title_set = Title.objects.all()
+        title_set = Title.objects.filter(deleted=False)
         
         try:
             obj = title_set.get(slug__exact=title_slug)
