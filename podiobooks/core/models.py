@@ -121,7 +121,7 @@ class Episode(models.Model):
         ordering = ['title__name', 'sequence']
 
     def __unicode__(self):
-        return 'Episode #{0}: {1}'.format(self.sequence, self.name)
+        return u'Episode #{0}: {1}'.format(self.sequence, self.name)
 
     @models.permalink
     def get_absolute_url(self):
