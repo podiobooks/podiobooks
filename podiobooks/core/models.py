@@ -363,5 +363,5 @@ class TitleUrl(models.Model):
     date_updated = models.DateTimeField(auto_now=True)
 
     def __unicode__(self):
-        return url
+        return self.url
 
