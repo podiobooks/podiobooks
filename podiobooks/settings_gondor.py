@@ -47,6 +47,19 @@ if "GONDOR_REDIS_URL" in os.environ:
         },
     }
 
+    MIDDLEWARE_CLASSES = (
+        # 'django.middleware.gzip.GZipMiddleware',  # https://www.djangoproject.com/weblog/2013/aug/06/breach-and-django/
+        'django.middleware.doc.XViewMiddleware',
+        'django.contrib.sessions.middleware.SessionMiddleware',
+        'django.contrib.auth.middleware.AuthenticationMiddleware',
+        'django.contrib.messages.middleware.MessageMiddleware',
+        'django.middleware.cache.UpdateCacheMiddleware',
+        'django.middleware.common.CommonMiddleware',
+        'django.middleware.cache.FetchFromCacheMiddleware',
+        'django.middleware.http.ConditionalGetMiddleware',
+        'podiobooks.core.middleware.PermanentRedirectMiddleware',
+    )
+
 EMAIL_BACKEND = os.environ.get("EMAIL_BACKEND", "django.core.mail.backends.console.EmailBackend")
 EMAIL_HOST = os.environ.get("EMAIL_HOST", "")
 EMAIL_PORT = os.environ.get("EMAIL_PORT", 587)
