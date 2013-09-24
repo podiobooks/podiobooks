@@ -284,6 +284,8 @@ body form.gsc-search-box{
 
 .wide-skyscraper-ad {
     text-align:center;
+    width:160px;
+    margin:1em auto;
 }
 
 .leaderboard-ad-placeholder {
