@@ -52,7 +52,7 @@ urlpatterns = \
              (r'^account/signin/$', login_view),
 
              # Feeds
-             (r'^rss/', include('podiobooks.feeds.urls'), {"GA_TRACK": True}),
+             (r'^rss/', include('podiobooks.feeds.urls')),
 
              # Libsyn Utils
              (r'^libsyn/', include('podiobooks.libsyn.urls')),
