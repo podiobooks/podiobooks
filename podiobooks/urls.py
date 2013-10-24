@@ -52,7 +52,7 @@ urlpatterns = \
              (r'^account/signin/$', login_view),
 
              # Feeds
-             (r'^rss/', include('podiobooks.feeds.urls')),
+             (r'^rss/', include('podiobooks.feeds.urls'), {"GA_TRACK": True}),
 
              # Libsyn Utils
              (r'^libsyn/', include('podiobooks.libsyn.urls')),
@@ -62,7 +62,7 @@ urlpatterns = \
 
              # Search
              (r'^search/', include('podiobooks.search.urls')),
-             
+
              # MUB
              (r'^mub/', include('mub.urls')),
 

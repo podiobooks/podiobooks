@@ -1,0 +1,3 @@
+"""
+Feeds Middleware module
+"""
