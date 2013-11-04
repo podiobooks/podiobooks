@@ -264,6 +264,9 @@ class Title(models.Model):
     # Note: episodes are available as episodes.all()
     # Note: media are available as media.all()
     # Note: promos are available as promos.all()
+    tips_allowed = models.BooleanField(default=True, verbose_name='Collect Tips for this Title')
+    scribl_allowed = models.BooleanField(default=True, verbose_name='Show this Title on Scribl')
+    date_accepted = models.DateTimeField(verbose_name='Date Terms and Conditions for this Title Accepted by Author')
     date_created = models.DateTimeField(auto_now_add=True, db_index=True, verbose_name='Date Created')
     date_updated = models.DateTimeField(auto_now=True, db_index=True, verbose_name='Date Updated')
 
