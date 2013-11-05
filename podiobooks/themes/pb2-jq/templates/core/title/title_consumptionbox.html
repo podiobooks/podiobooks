@@ -34,6 +34,6 @@
         <li id="consume-rss" class='consume-rss'><a href="{% url 'title_episodes_feed' title.slug %}">RSS Feed (Free!)</a></li>
     </ul>
 
-    {% show_donation_button title %}
+    {% if title.tips_allowed %}{% show_tipjar_button title %}{% endif %}
 
 </div>
