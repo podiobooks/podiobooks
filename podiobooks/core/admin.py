@@ -145,7 +145,7 @@ class TitleAdmin(admin.ModelAdmin):
         }),
         ('Series', {
             'classes': ('collapse',),
-            'fields': ('series', 'series_sequence',)
+            'fields': ('series', 'series_sequence')
         }),
         ('Awards', {
             'classes': ('collapse',),
