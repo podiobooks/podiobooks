@@ -2,16 +2,18 @@
 
 import xmlrpclib
 
-def main(): # pragma: no cover
+
+def main():  # pragma: no cover
     """MAIN FUNCTION TO RUN IF THIS SCRIPT IS CALLED ALONE"""
-    
-    SERVER_URL = 'http://api.libsyn.com/xmlrpc'
-    SERVER = xmlrpclib.Server(SERVER_URL)
-    
-    RESULT = SERVER.system.listMethods()
-    
-    for r in RESULT:
+
+    server_url = 'http://api.libsyn.com/xmlrpc'
+    server = xmlrpclib.Server(server_url)
+
+    result = server.system.listMethods()
+
+    for r in result:
         print r
-    
+
+
 if __name__ == "__main__":
     main()  # pragma: no cover

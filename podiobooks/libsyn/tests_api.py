@@ -28,10 +28,8 @@ class LibsynAPITestCase(TestCase):
         self.pprinter.pprint(show_info)
         self.assertEquals('k-e76e81ee69d5d413', show_info['show_id'])
 
-    @staticmethod
     def testMethodHelp(self):
         libsyn_method_help.main()
 
-    @staticmethod
     def testSystemMethods(self):
         libsyn_system_methods.main()
