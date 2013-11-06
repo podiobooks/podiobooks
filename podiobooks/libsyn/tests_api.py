@@ -8,6 +8,7 @@ from podiobooks.libsyn import libsyn_method_help
 from podiobooks.libsyn import libsyn_system_methods
 import pprint
 
+
 class LibsynAPITestCase(TestCase):
     # fixtures = []
 
@@ -16,7 +17,7 @@ class LibsynAPITestCase(TestCase):
 
     def testShowInfo(self):
         show_info = get_show_info('theflownsky')
-        self.pprinter.pprint(show_info) # pretty print the result
+        self.pprinter.pprint(show_info)  # pretty print the result
         self.assertEquals('k-9b89823b4508200f', show_info['show_id'])
 
         show_info = get_show_info('notesfromthevault')
@@ -27,8 +28,10 @@ class LibsynAPITestCase(TestCase):
         self.pprinter.pprint(show_info)
         self.assertEquals('k-e76e81ee69d5d413', show_info['show_id'])
 
+    @staticmethod
     def testMethodHelp(self):
         libsyn_method_help.main()
 
+    @staticmethod
     def testSystemMethods(self):
         libsyn_system_methods.main()
