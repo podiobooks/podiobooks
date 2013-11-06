@@ -20,7 +20,7 @@ class Award(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
 
-    class Meta:
+    class Meta(object):
         ordering = ['name']
 
     def __unicode__(self):
@@ -41,7 +41,7 @@ class Category(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
 
-    class Meta:
+    class Meta(object):
         verbose_name_plural = "categories"
         ordering = ['name']
 
@@ -70,7 +70,7 @@ class Contributor(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
 
-    class Meta:
+    class Meta(object):
         ordering = ['last_name', 'first_name']
 
     def __unicode__(self):
@@ -88,7 +88,7 @@ class ContributorType(models.Model):
     byline_text = models.CharField(max_length=255)
     # Note: TitleContributor Objects (intermediate table) are available as titlecontributors.all()
 
-    class Meta:
+    class Meta(object):
         verbose_name_plural = "Contributor Types"
 
     def __unicode__(self):
@@ -117,7 +117,7 @@ class Episode(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
 
-    class Meta:
+    class Meta(object):
         ordering = ['title__name', 'sequence']
 
     def __unicode__(self):
@@ -140,7 +140,7 @@ class EpisodeContributor(models.Model):
     contributor_type = models.ForeignKey('ContributorType', related_name='episodecontributors')
     date_created = models.DateTimeField(auto_now_add=True)
 
-    class Meta:
+    class Meta(object):
         verbose_name_plural = "Episode Contributors"
 
 
@@ -155,7 +155,7 @@ class License(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
 
-    class Meta:
+    class Meta(object):
         ordering = ['slug']
 
     def __unicode__(self):
@@ -180,7 +180,7 @@ class Media(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
 
-    class Meta:
+    class Meta(object):
         verbose_name_plural = "media"
         ordering = ['name']
 
@@ -193,7 +193,7 @@ class Rating(models.Model):
     last_rating_id = models.IntegerField(default=0, db_index=True)
     date_created = models.DateTimeField(auto_now_add=True)
 
-    class Meta:
+    class Meta(object):
         get_latest_by = 'date_created'
 
     def __unicode__(self):
@@ -210,7 +210,7 @@ class Series(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
 
-    class Meta:
+    class Meta(object):
         verbose_name_plural = "series"
         ordering = ['name']
 
@@ -270,7 +270,7 @@ class Title(models.Model):
     date_created = models.DateTimeField(auto_now_add=True, db_index=True, verbose_name='Date Created')
     date_updated = models.DateTimeField(auto_now=True, db_index=True, verbose_name='Date Updated')
 
-    class Meta:
+    class Meta(object):
         ordering = ['name']
 
     def __unicode__(self):
@@ -322,7 +322,7 @@ class TitleCategory(models.Model):
     title = models.ForeignKey('Title', related_name='titlecategories')
     category = models.ForeignKey('Category', related_name='titlecategories')
 
-    class Meta:
+    class Meta(object):
         verbose_name_plural = "Title Categories"
 
 
@@ -348,7 +348,7 @@ class TitleContributor(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
 
-    class Meta:
+    class Meta(object):
         verbose_name_plural = "Title Contributors"
         ordering = ['contributor_type__slug', 'date_created']
 
