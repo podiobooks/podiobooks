@@ -2,6 +2,8 @@
 Create a PB2 Title Object by parsing a libsyn RSS feed.
 """
 
+# pylint: disable=R0904,W0231
+
 from xml.etree import ElementTree
 import urllib
 from podiobooks.core.models import Episode, License, Title
@@ -31,13 +33,13 @@ class MLStripper(HTMLParser):
 
 def strip_tags(html):
     """Strip all HTML Tags and Entities"""
-    s = MLStripper()
+    stripper = MLStripper()
     
     if not html:
         html = ''
     
-    s.feed(html)
-    return s.get_data()
+    stripper.feed(html)
+    return stripper.get_data()
 
 
 def create_title_from_libsyn_rss(rss_feed_url):
