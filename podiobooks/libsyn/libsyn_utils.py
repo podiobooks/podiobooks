@@ -59,7 +59,7 @@ def _sign_params(user, params):
     keys = params.keys()
     keys.sort()
     for key in keys:
-        if (_is_scalar(params[key])):  # pragma: no cover
+        if _is_scalar(params[key]):  # pragma: no cover
             temp_str = "%s%s" % (key, params[key])
             hash_str += temp_str
 
@@ -72,7 +72,7 @@ def _is_scalar(x):
     return isinstance(x, basestring) or isinstance(x, int)
 
 
-class User:
+class User(object):
     """Just a simple user class to hold basic information """
 
     def __init__(self, email, api_key):

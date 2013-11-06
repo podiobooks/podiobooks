@@ -6,7 +6,7 @@ from django.db.models import Count, Q
 
 from podiobooks.core.models import Category, Contributor
 
-# pylint: disable=R0924
+# pylint: disable=R0924,E1002
 
 class BrowseByForm(forms.Form):
     """ Form used to choose a way to browse - used in header """
@@ -16,7 +16,7 @@ class BrowseByForm(forms.Form):
 
 class CategoryChoiceForm(forms.Form):
     """ Form used to select a category - used in header """
-    
+
     def __init__(self, request, cookie, *args, **kwargs):
         """ Custom init to check for cookies """
         super(CategoryChoiceForm, self).__init__(*args, **kwargs)

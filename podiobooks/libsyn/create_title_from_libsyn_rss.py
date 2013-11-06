@@ -16,13 +16,16 @@ from django.utils import timezone
 class MLStripper(HTMLParser):
     """Hard-Core HTML Tag Stripper Class"""
     def __init__(self):
+        """Initialize"""
         self.reset()
         self.fed = []
 
     def handle_data(self, d):
+        """Append the stripped data"""
         self.fed.append(d)
 
     def get_data(self):
+        """Get the stripped data"""
         return ''.join(self.fed)
 
 
