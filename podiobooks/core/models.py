@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.template.loader import render_to_string
 
-# pylint: disable=C0111,R0201,W0232
+# pylint: disable=C0111,R0201,W0232,W1001
 
 
 class Award(models.Model):
