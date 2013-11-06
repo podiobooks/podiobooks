@@ -8,6 +8,7 @@ from django.conf import settings
 from podiobooks.core.models import License
 import os
 
+
 class LibsynRSSTestCase(TestCase):
     # fixtures = []
 
