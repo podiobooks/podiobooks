@@ -15,11 +15,8 @@ from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import get_object_or_404
-from django.db.models import Q
-from django.db import connection
-from django.http import Http404
 
-from podiobooks.core.models import Title, Episode
+from podiobooks.core.models import Title
 from podiobooks.ads.models import get_ep_list_with_ads_for_title
 from podiobooks.feeds.protocols.itunes import ITunesFeed
 
