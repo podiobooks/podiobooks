@@ -1,4 +1,4 @@
-django<1.7
+django<1.5
 django-adminactions==0.3
 django-debug-toolbar==0.10.2
 django-jenkins==0.14.1
