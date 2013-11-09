@@ -108,6 +108,7 @@
 	-moz-column-count: 2;
 	-o-column-count: 2;
 	column-count: 2;
+	list-style:none;
 }
 .csscolumns .browse-list li{
 	
