@@ -228,7 +228,7 @@
 * TipJar
 */
 .tipjar-box {
-    padding: 5px;
+    padding: 10px 5px;
     margin: 9px;
     text-align: center;
     -webkit-border-radius: 10px;
@@ -245,8 +245,27 @@
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#dce5ef', endColorstr = '#74a7bf', GradientType = 0); /* IE6-9 */
 }
 
-.tipjar-box input {
-    padding-left: 3px;
+
+.tipjar-submit{
+	border:none;
+	padding:10px 20px;
+	font-size:1.1em;
+	background:#c35230;
+	text-align: center;
+	color:#fefefe;
+	display:block;
+	margin:.5em auto;
+	border-radius: 10px;
+}
+.tipjar-amount{
+	font-size:1.2em;
+	border-radius:5px;
+	padding:5px;
+	border:none;
+	background:#fefefe;
+}
+.tipjar-form{
+	
 }
 
 /*
