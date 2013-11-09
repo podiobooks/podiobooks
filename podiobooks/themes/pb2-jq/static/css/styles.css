@@ -175,7 +175,6 @@ img{
 .search {
     float: right;
     width:250px;
-    margin-top:-5px;
 }
 .nav-bar input.gsc-search-button-v2{
     padding:6px 18px;
@@ -249,8 +248,6 @@ body form.gsc-search-box{
 */
 .pg-foot {
     padding: 25px 0 10px;
-    
-    border-top:solid 1px #d7d7d7;
 }
 
 .site-menu-active .pg-foot {
