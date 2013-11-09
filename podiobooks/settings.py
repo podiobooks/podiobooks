@@ -189,6 +189,6 @@ MUB_CSS_ORDER = (
     ("jquery.pbshelf.css", "clear.css", "styles.css", "base-shelf.css"),
     ("gsc-overrides.css", "adaptive.css", "small-screen.css")
 )
-MUB_MINIFY = True
+MUB_MINIFY = False
 # This is to catch special domain names and redirect them to the main
 REDIRECT_DOMAINS = []
