@@ -91,6 +91,8 @@ STATIC_URL = "/assets/static/"  # make sure this maps inside of a static_urls UR
 
 FILE_UPLOAD_PERMISSIONS = 0640
 
+MUB_MINIFY = True
+
 ### DEBUG TOOLBAR
 ### Replicated Here to Enable Picking Up Environment Setting from Gondor
 if DEBUG:
