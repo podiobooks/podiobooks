@@ -218,9 +218,9 @@
 }
 
 /*
-* Donate
+* TipJar
 */
-.donate-box {
+.tipjar-box {
     padding: 5px;
     margin: 9px;
     text-align: center;
@@ -238,7 +238,7 @@
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#dce5ef', endColorstr = '#74a7bf', GradientType = 0); /* IE6-9 */
 }
 
-.donate-box input {
+.tipjar-box input {
     padding-left: 3px;
 }
 

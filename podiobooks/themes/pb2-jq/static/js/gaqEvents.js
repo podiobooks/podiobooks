@@ -47,20 +47,20 @@ $(function () {
 	
 	
     /*
-     * GA events for elements in the 'Donate to this author' form
+     * GA events for elements in the 'Tip this author' form
      *
-     * The .donate-box template is actually repeated in the markup
+     * The .tipjar-box template is actually repeated in the markup
      * 		So, we're going to handle each iteration of the list separately.
      */
-    $(".donate-box").each(function(){
+    $(".tipjar-box").each(function(){
     	
     	var box = $(this);
     	var slug = box.data("title-slug");
     	
-    	box.find("#title-donate-submit").click(function(){
+    	box.find("#title-tipjar-submit").click(function(){
 			var form = $(this).parents("form");
 			var amount = parseInt(form.find('input[name="amount"]').val());
-			_gaq.push(['_trackEvent', 'Donate', 'DetailPage-Donate', slug, amount]);
+			_gaq.push(['_trackEvent', 'TipJar', 'DetailPage-TipJar', slug, amount]);
     	});
     	
     });
