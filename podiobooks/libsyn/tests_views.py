@@ -6,9 +6,10 @@ from django.test import TestCase
 from django.contrib.auth.models import User
 from podiobooks.core.models import License
 
+
 class LibsynImportViewsTestCase(TestCase):
     # fixtures = []
-    
+
     def setUp(self):
         self.admin_user = User.objects.create_superuser('admin', 'admin@admin.com', 'pass')
         License.objects.create(slug='by-nc-nd', text='by-nc-nd', url='by-nc-nd')

@@ -60,10 +60,10 @@ def show_rating_icon(title):
     return {'title': title}
 
 
-@register.inclusion_tag('core/title/tags/show_donation_button.html')
-def show_donation_button(title):
-    """ Show button to enable people to donate to this title """
-    return {'title': title, 'DONATION_BUSINESS_NAME': settings.DONATION_BUSINESS_NAME}
+@register.inclusion_tag('core/title/tags/show_tipjar_button.html')
+def show_tipjar_button(title):
+    """ Show button to enable people to tip the author of this title """
+    return {'title': title, 'TIPJAR_BUSINESS_NAME': settings.TIPJAR_BUSINESS_NAME}
 
 
 @register.inclusion_tag('core/title/tags/show_comments.html')

@@ -178,8 +178,9 @@ FACEBOOK_APP_ID = "155134080235"
 # <meta name="descripton"> default value
 BASE_META_DESCRIPTION = "Free audio books delivered as podcasts. Subscribe for free to any book and start from chapter one. Podiobooks.com"
 
-### DONATIONS
-DONATION_BUSINESS_NAME = 'evo@podiobooks.com'
+### TIPJAR
+TIPJAR_BUSINESS_NAME = 'evo@podiobooks.com'
+
 #INTERNAL_IPS = ('127.0.0.1',)
 #INSTALLED_APPS += ( "debug_toolbar", )
 #MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware', )
