@@ -8,6 +8,7 @@
 	.float-return{
 		float:none;
 	}
+
 	/*
 	 * Browse Choices
 	 */
@@ -67,7 +68,6 @@
 		margin:15px auto;
 		width:250px;
 	}
-	
 	
 	/*
 	 * width-specific classes
@@ -490,9 +490,6 @@
 		padding-bottom:12px;
 	}
 	
-	
-	
-	
 	/*
 	 * Title list
 	 */
@@ -500,7 +497,8 @@
 
 	}
 	.title-list-title{
-
+		font-size:1.3em;
+		line-height: 1.2em;
 	}
 	.title-list-item{
 		padding:15px 0;
@@ -552,6 +550,60 @@
 		display:block;
 		height:33px;
 		padding:11px 15px 0;
+	}
+
+	/*
+	 * Title Details
+	 */
+	.title-details-header{
+		position: relative;
+	}
+	.title-details-header-info{
+		float:none;
+		width:100%;
+	}
+	.title-details-header-cover{
+		position: absolute;
+		right:0;
+		top:0;
+		width:25%;
+	}
+	.title-details-header-info p,
+	.title-details-header-info h1{
+		width:70%;
+	}
+	
+	.title-details-square-ad{
+		float:none;
+		width:auto;
+		margin:0 -10px 1em;
+		text-align: center;
+		background:#e7e7e7;
+
+	}
+	.first-chapter{
+		text-align: center;
+	}
+	.episode-list-title{
+		float:none;
+		width:auto;
+	}
+	.episode-list-player{
+		float:none;
+		width:100%;
+		margin:.5em 0;
+	}
+	.episode-list-item{
+		padding:.8em 0 .4em;
+	}
+	.ui-tabs .ui-tabs-panel{
+		padding:.5em;
+	}
+	.title-comment-readmore a{
+		display:block;
+	}
+	.title-details .consumption-box{
+		display:block;
 	}
 	
 }
