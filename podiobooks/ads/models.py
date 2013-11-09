@@ -23,7 +23,7 @@ class AdSchedule(models.Model):
 
     titles = models.ManyToManyField(Title, null=True, blank=True, related_name='ad_schedules')
 
-    class Meta:
+    class Meta(object):
         ordering = ['name']
         verbose_name_plural = "Ad Schedules"
 
@@ -37,13 +37,13 @@ class AdSchedulePosition(models.Model):
     episode = models.ForeignKey(Episode, related_name='ad_schedule_episodes')
     sequence = models.IntegerField()
 
-    class Meta:
+    class Meta(object):
         verbose_name_plural = "Ad Schedule Positions"
 
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
 
-    class Meta:
+    class Meta(object):
         ordering = ['ad_schedule__name']
 
     def __unicode__(self):
