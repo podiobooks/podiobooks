@@ -30,6 +30,7 @@
 
 .shelf-heading {
     padding: 8px 10px 7px 20px;
+    margin:0;
     border-radius: 10px 10px 0 0;
     box-shadow: 0 3px 5px rgba(150, 150, 150, .8);
 }
@@ -104,6 +105,7 @@
     overflow: hidden;
     position:relative;
     box-shadow:inset 0 0 5px rgba(0,0,0,.2);
+    font-size:.7em;
 }
 .shelf-item-ad{
 	padding:0;
@@ -115,12 +117,10 @@
 	box-shadow:inset 0 0 3px rgba(0,0,0,.1);
 }
 .shelf-cover {
-	position:absolute;
-	left:10px;
-	top:10px;
+	float:left;
     padding: 0;
-    margin: 0;
-    width: 67px;    
+    margin: 0 1em .4em 0;
+    width: 67px;
     box-shadow:-1px 1px 5px rgba(0,0,0,.2);
 }
 .loading{
@@ -136,16 +136,15 @@
 
 .shelf-item-text {
     float: left;
-    margin: -3px 0 0 76px;
-    font-size: 12px;
+    margin: -3px 0 0;
     height:98%;
     color:#373737;
     overflow:hidden;
-    line-height:1.4em;
 }
-
+.shelf-item-text p{
+	line-height: 1.3em;
+}
 .shelf-item-heading {
-    font-size: 14px;
     line-height:1.4em;
 }
 
@@ -155,9 +154,9 @@
 }
 
 .shelf-item-contributors {
-    font-size: 12px;
     display: block;
-    padding:3px 0 5px;
+    padding:0;
+    margin:.3em 0;
 }
 
 .shelf-item-rating {
@@ -172,8 +171,8 @@
 }
 
 /*
-* Next/Prev Arrows
-*/
+ * Next/Prev Arrows
+ */
 .shelf-arrow{
 	display: block;
     position: absolute;
