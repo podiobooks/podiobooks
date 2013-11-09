@@ -25,6 +25,7 @@
 	margin:20px;
 	vertical-align:middle;
 	text-align:center;
+	line-height: normal;
 }
 .browse-choices a{
 	display:block;		
@@ -91,6 +92,7 @@
 	padding:15px;
 	word-break:normal;
 	text-align:center;
+	font-family: Tahoma, sans-serif;
 }
 .browse-choices-ad{
 	float:right;	

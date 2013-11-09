@@ -1,16 +1,20 @@
 {% load title_templatetags %}
+
 {% if episode_list %}
     <ul class="episode-list">
         {% for episode in episode_list %}
             <li class="episode-list-item">
-                <h3 class="episode-list-title">
-                    <a name="{{ episode.pk }}" class="episode-audio-link" href="{{ episode.url }}">{{ episode.name }}</a>
-                </h3>
-
+            	<div class="clearfix">
+	                <h3 class="episode-list-title">
+	                    <a name="{{ episode.pk }}" class="episode-audio-link" href="{{ episode.url }}">{{ episode.name }}</a>
+	                </h3>
+	                <audio controls preload="metadata" class="episode-list-player">
+			    		<source src="{{ episode.url }}" type="audio/mp3" codecs="mp3" />
+					</audio>
+				</div>
                 <div class="episode-list-description">
-                    {{ episode.description }}
+                    <p>{{ episode.description }}</p>
                 </div>
-                <div class="clearfix"></div>
             </li>
         {% endfor %}
     </ul>

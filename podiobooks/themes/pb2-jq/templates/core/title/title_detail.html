@@ -5,8 +5,7 @@
 {% load title_templatetags %}
 
 {% block metatags %}
-    <meta name="Description"
-          content="{{ title.description|striptags|truncatewords:45 }}"/>
+    <meta name="Description" content="{{ title.description|striptags|truncatewords:45 }}"/>
 {% endblock %}
 
 {% block headtitle %}{{ title.name }} {{ title.get_byline }} on Podiobooks.com{% endblock %}
@@ -16,13 +15,108 @@
 {% endblock %}
 
 {% block content %}
-    
+
+    <article class="title-details" data-title-slug="{{ title.slug }}" itemscope itemtype="http://schema.org/Book">
+
+        <meta itemprop="bookFormat" content="AudioBook/Serialized">
+
+        <header class="clearfix title-details-header">
+            <div class="title-details-header-info">
+                <h1 itemprop="name">{{ title.name }} {% show_rating_icon title %}</h1>
+                <p>{% show_contributors title "True" %}</p>
+                <p>{{ title.category_list|safe }}</p>
+
+                {% if title.series %}
+	                <p>Series:
+						<a href="{{ title.series.get_absolute_url }}">{{ title.series.name }}</a>
+						{% if title.series_sequence > 0 %}
+							(Book {{ title.series_sequence }})
+						{% endif %}
+		            </p>
+	            {% endif %}
+            </div>
+
+            <div class="title-details-header-cover">{% show_titlecover title %}</div>
+
+        </header>
+
+        <div class="clearfix">
+        	<!--
+            <ul class="clearfix title-details-social-share">
+                <li>{% show_tweet %}</li>
+                <li>{% show_plusone %}</li>
+                <li>{% show_like %}</li>
+			</ul>
+			-->
+            <div class="clearfix" itemprop="description">
+
+            	<aside class="title-details-square-ad">
+            		<script type="text/javascript"><!--
+						google_ad_client = "ca-pub-1276519440300441";
+						/* Title - Square */
+						google_ad_slot = "1452521796";
+						google_ad_width = 250;
+						google_ad_height = 250;
+						//-->
+					</script>
+					<script type="text/javascript"
+					src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+					</script>
+            	</aside>
+
+				{% autoescape off %}{{ title.description|linebreaks|removetags:"img" }}{% endautoescape %}
+
+            </div>
+
+        </div>
+
+        {% include "core/title/title_consumptionbox.html" %}
+
+        <footer class="title-footer">
+            <div class="title-tabs">
+                <ul>
+                    <li>
+                        <a class='tab-trigger' href="#episodes-tab">Listen To Episodes</a>
+                    </li>
+
+                    <li>
+                        <a class='tab-trigger' href="#comments-tab">Comments</a>
+                    </li>
+
+                </ul>
+
+                <div title="Episodes" id="episodes-tab">
+                    {% if title.episodes.all %}
+                        {% show_episodelist title %}
+                    {% else %}
+                        <h3>
+                            No Episodes Are Available Yet.
+                        </h3>
+                    {% endif %}
+                </div>
+
+                <div title="Comments" id="comments-tab">
+                    {% show_comments title.podiobooker_blog_url %}
+                </div>
+
+            </div>
+
+            {% if title.license %}
+                <p class="title-license">
+                    <a rel="license" href="{{ title.license.url }}"><img class="title-license-img" alt="{{ title.license.text }} Logo" src="{{ title.license.image_url }}"/></a>
+                    This work is licensed under a
+                    <a href="{{ title.license.url }}">{{ title.license.text }}</a> license.
+                </p>
+            {% endif %}
+        </footer>
+    </article>
+
     <aside class="title-details-extras">
 
         {% include "core/title/title_consumptionbox.html" %}
-        
+
         {% show_awardshow title %}
-        
+
         <div id="wide-skyscraper-ad" class="wide-skyscraper-ad">
             {% if not 'Erotica' in title.category_list %}
                 <script type="text/javascript"><!--
@@ -38,115 +132,8 @@
 				</script>
             {% endif %}
         </div>
-        
+
     </aside>
-
-    <article data-title-slug="{{ title.slug }}" class="title-details" itemscope itemtype="http://schema.org/Book">
-
-        <meta itemprop="bookFormat" content="AudioBook/Serialized">
-        
-        <header>
-            <div class="title-details-titlebar">
-                <h1 class="title-details-title" itemprop="name">{{ title.name }} {% show_rating_icon title %}</h1>
-
-                <p class="byline">
-                    {% show_contributors title "True" %}
-                </p>
-                <p>{{ title.category_list|safe }}</p>
-            </div>
-            <div class='imagebox'>
-                {% show_titlecover title %}
-            </div>
-            
-            {% if title.series %}
-                <div class="title-details-seriesbar">
-                    <a href="{{ title.series.get_absolute_url }}">{{ title.series.name }}</a>
-                    {% if title.series_sequence > 0 %}:
-                        Book {{ title.series_sequence }}
-                    {% endif %}
-                </div>
-            {% endif %}
-            
-                
-        </header>
-        
-        <div class="title-details-top clearfix">
-			<div class="clearfix title-details-top-top">
-				
-	            <div class="title-details-infobar">
-				
-	                <div class="sharebox">
-	
-	                    {% show_tweet %}
-	                    {% show_plusone %}
-	                    {% show_like %}
-	
-	                </div>
-	            </div>
-			</div>
-			
-			
-            <div class="title-description clearfix" itemprop="description">
-            	<aside class="ad-float-right">
-            		<script type="text/javascript"><!--
-						google_ad_client = "ca-pub-1276519440300441";
-						/* Title - Square */
-						google_ad_slot = "1452521796";
-						google_ad_width = 250;
-						google_ad_height = 250;
-						//-->
-					</script>
-					<script type="text/javascript"
-					src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-					</script>
-            	</aside>
-				{% autoescape off %}{{ title.description|linebreaks|removetags:"img" }}{% endautoescape %}
-            </div>
-                
-        </div>
-
-        <aside class="title-details-extras title-details-extras-inline">
-            {% include "core/title/title_consumptionbox.html" %}
-        </aside>
-
-        <footer class="title-footer">
-            <div class="title-tabs">
-                <ul>
-                    <li>
-                        <a class='tab-trigger' href="#episodes-tab">Listen To Episodes</a>
-                    </li>
-
-                    <li>
-                        <a class='tab-trigger' href="#comments-tab">Comments</a>
-                    </li>
-                    
-                </ul>
-                <div title="Episodes" id="episodes-tab">
-                    {% if title.episodes.all %}
-                        {% show_episodelist title %}
-                    {% else %}
-                        <h3>
-                            No Episodes Are Available Yet.
-                        </h3>
-                    {% endif %}
-                </div>
-                <div title="Comments" id="comments-tab">
-                    {% show_comments title.podiobooker_blog_url %}
-                </div>
-                
-            </div>
-
-            {% if title.license %}
-                <p class="title-license">
-                    <a rel="license" href="{{ title.license.url }}"><img class="title-license-img" alt="{{ title.license.text }} Logo" src="{{ title.license.image_url }}"/></a>
-
-                    This work is licensed under a
-                    <a href="{{ title.license.url }}">{{ title.license.text }}</a> license.
-                </p>
-
-            {% endif %}
-        </footer>
-    </article>
 
 {% endblock %}
 

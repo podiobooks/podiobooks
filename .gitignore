@@ -29,3 +29,4 @@ settings_test_local.py
 style-*_.css
 mediabrute_usefile
 *conflicted\ copy*
+.codeintel/*
