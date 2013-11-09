@@ -22,8 +22,8 @@
 	width:65%;
 }
 .title-details-square-ad{
-	float:left;
-	margin:1em 1.5em 1.5em 0;
+	float:right;
+	margin:0 0 1.5em 1.5em;
 }
 
 
@@ -53,17 +53,25 @@
 }
 
 .title-comment-byline {
-    margin: 10px 0 0 0;
+    margin:1.4em 0 0;
     font-weight: bold;
 }
 
 .title-comment-text {
-    margin: 2px 0 2px 0;
+    margin:.3em 0 0;
 }
 
 .title-comment-readmore {
-    margin: 15px 0 0 0;
+	margin:2em 0 0;
     font-weight: bold;
+}
+
+.title-comment-readmore a,
+.title-comment-readmore a:hover,
+.title-comment-readmore a:link,
+.title-comment-readmore a:active,
+.title-comment-readmore a:visited{
+	color:#0054A6;
 }
 
 
@@ -79,10 +87,6 @@
     list-style: none;
 }
 
-.episode-list-item {
-    padding: 20px 0 0 0;
-    margin: 0;
-}
 .episode-list-player{
 	width:40%;
 	float:right;
@@ -161,6 +165,9 @@
     background: -ms-linear-gradient(top, #d9e4f0 0%, #a9d4f9 100%); /* IE10+ */
     background: linear-gradient(to bottom, #d9e4f0 0%, #a9d4f9 100%); /* W3C */
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#d9e4f0', endColorstr = '#a9d4f9', GradientType = 0); /* IE6-9 */
+}
+.title-details .consumption-box{
+	display:none;
 }
 
 .headphone-title {
@@ -248,7 +255,9 @@
 .episode-list-item {
     border-bottom: solid 1px #e2e5e7;
     border-top: solid 1px #fff;
-    padding: 20px 0;
+    padding:1.1em 0;
+    margin:0;
+
 }
 
 .episode-list-item:first-of-type {
