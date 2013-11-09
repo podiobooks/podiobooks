@@ -1,6 +1,6 @@
 """Admin site customizations for Podiobooks main"""
 
-# pylint: disable=C0111,E0602,F0401,R0904
+# pylint: disable=C0111,E0602,F0401,R0904,E1002
 
 from django.contrib import admin
 from django.forms.widgets import Textarea, TextInput
@@ -138,9 +138,14 @@ class TitleAdmin(admin.ModelAdmin):
             'fields': (
                 'display_on_homepage', 'is_adult', 'is_explicit', 'is_family_friendly', 'is_for_kids', 'language')
         }),
+        ('Scribl and Tips', {
+            'classes': ('collapse',),
+            'fields': (
+                'tips_allowed', 'scribl_allowed', 'date_accepted')
+        }),
         ('Series', {
             'classes': ('collapse',),
-            'fields': ('series', 'series_sequence',)
+            'fields': ('series', 'series_sequence')
         }),
         ('Awards', {
             'classes': ('collapse',),
