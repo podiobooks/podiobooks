@@ -3,7 +3,7 @@
  */
 @media all and (max-width:501px){
 	h1{
-		font-size:19px;
+
 	}
 	.float-return{
 		float:none;
@@ -18,7 +18,7 @@
 		padding:0;
 	}
 	.browse-choices a{
-		font-size:16px;
+
 	}
 	.hide-on-small-screen{
 		display:none;
@@ -57,12 +57,7 @@
 	.horizontal-large-ad{
 		display:none;
 	}
-	.ad-float-right{
-		float:none;
-		text-align:center;
-		display:block;
-		
-	}
+
 	.block-ad{
 		display:none;
 	}
@@ -141,12 +136,6 @@
 	.loading{
 		float:none;
 		margin-right:0;
-	}
-	.imagebox{
-		text-align:left;
-		width:auto;
-		float:left;
-		margin:0 10px 0 0;
 	}
 	.promoter-count,
 	.detractor-count {
@@ -254,6 +243,7 @@
 	.site-menu ul{
 		display:block;
 		float:none;
+		margin:0;
 	}
 	.site-menu li{
 		display:block;
@@ -271,7 +261,6 @@
 		background-size:13px;
 	}
 	.site-menu a:after{
-		
 		content:">";
 		 font-weight: normal;
 	    font-style: normal;
@@ -279,12 +268,9 @@
 	    font-family: 'WebSymbolsRegular';
 	    font-size:9px;
 	    position: absolute;
-	    
 	    right:10px;
 	    top:40%;
 	    color:#fff;
-	    
-	    
 	}
 	.site-menu a:active,
 	.site-menu a:hover,
@@ -375,29 +361,6 @@
 	.pg .gsc-search-box table{
 		margin:0;
 	}
-	/*
-	 * Title Details
-	 */
-	.title-details-titlebar{
-		min-height:92px;
-		padding:0 90px 0px 0;
-	}
-	.title-details{
-		position:relative;
-	}
-	.imagebox{
-		float:none;
-		width:auto;
-		position:absolute;
-		z-index:999;
-		top:0;	
-		right:0;
-		margin:0;
-		padding:0;
-	}
-	.cover-image{
-		width:60px;	
-	}
 	
 	.title-license{
 		padding:0;		
@@ -410,21 +373,12 @@
 		padding:0;
 		margin:3px 10px 0 0;
 	}
-	.title-description {
-		font-size:17px;
-		line-height:1.5em;
-	}
+
 	.fdbk_tab_left,
 	.fdbk_tab_bottom{
 		display:none;
 	}
-	
-	.first-chapter{
-		width:auto;	
-		float:none;
-		margin:0;
-		padding:10px 0;
-	}
+
 	.tab-trigger{
 		font-size:14px;
 	}
@@ -543,10 +497,10 @@
 	 * Title list
 	 */
 	.title-list{
-		margin-bottom:25px;
+
 	}
 	.title-list-title{
-		font-size:16px;
+
 	}
 	.title-list-item{
 		padding:15px 0;
@@ -594,7 +548,6 @@
 	}
 	.browse-by a{
 		color:#fff;
-		font-size:18px;
 		font-weight:bold;
 		display:block;
 		height:33px;
