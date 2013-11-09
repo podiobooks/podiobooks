@@ -250,12 +250,17 @@
 	border:none;
 	padding:10px 20px;
 	font-size:1.1em;
-	background:#c35230;
+	background:#e25f38;
 	text-align: center;
 	color:#fefefe;
 	display:block;
-	margin:.5em auto;
+	margin:.9em auto .4em auto;
 	border-radius: 10px;
+	-webkit-transition:background-color .15s ease-in-out;
+	-ms-transition:background-color .15s ease-in-out;
+	-moz-transition:background-color .15s ease-in-out;
+	-o-transition:background-color .15s ease-in-out;
+	transition:background-color .15s ease-in-out;
 }
 .tipjar-amount{
 	font-size:1.2em;
@@ -263,6 +268,9 @@
 	padding:5px;
 	border:none;
 	background:#fefefe;
+}
+.tipjar-submit:hover{
+	background:#f6673d;
 }
 .tipjar-form{
 	
