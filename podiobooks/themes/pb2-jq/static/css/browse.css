@@ -25,6 +25,7 @@
 	margin:20px;
 	vertical-align:middle;
 	text-align:center;
+	line-height: normal;
 }
 .browse-choices a{
 	display:block;		
