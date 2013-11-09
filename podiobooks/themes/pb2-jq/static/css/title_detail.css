@@ -1,45 +1,40 @@
 /*
  * Title details
  */
-.title-details-extras {
-    float: left;
-    width: 18%;
+
+.title-details{
+	float:left;
+	width:75%;
+}
+.title-details-extras{
+	float:right;
+	width:20%;
+}
+.title-details-header{
+	margin:0 0 2.5em;	
+}
+.title-details-header-cover{
+	float:left;
+	width:30%;
+}
+.title-details-header-info{
+	float:right;
+	width:65%;
+}
+.title-details-square-ad{
+	float:left;
+	margin:1em 1.5em 1.5em 0;
 }
 
-.title-details-extras-inline {
-    display: none;
-}
-
-.title-details {
-    float: right;
-    width: 78%;
-}
-
-.title-details-titlebar {
-    border-bottom: solid 1px #b2b2b2;  
-    margin: 0 0 15px;
-}
-
-.title-description {
-    margin: 0;
-    line-height: 1.4em;
-    font-size: 16px;
-    margin:0 0 10px 0;
-}
-
-.title-details-seriesbar {
-    padding: 0 0 20px;
-}
 
 .title-license {
-
     position: relative;
     padding-left:100px
 
 }
 
 .title-footer{
-	overflow:none;
+	overflow: hidden;
 }
 
 .title-license a,
@@ -71,25 +66,13 @@
     font-weight: bold;
 }
 
-.complete {
-    font-weight: bold;
-    color: green;
-}
-
-.title-details-top {
-    padding: 0 0 0px;
-}
-.title-details-top-top{
-	margin:0 0 30px;
-	position:relative;
-	min-height:150px;
-}
 
 /*
 * Tabs
 */
 .title-tabs {
     margin: 0 0 40px;
+    font-size:1em;
 }
 
 .episode-list {
@@ -100,9 +83,14 @@
     padding: 20px 0 0 0;
     margin: 0;
 }
+.episode-list-player{
+	width:40%;
+	float:right;
+}
 
 .episode-list-title {
-
+	float:left;
+	width:50%;
 }
 
 .episode-list-description {
@@ -112,20 +100,6 @@
 /*
  * Infobox
  */
-.title-details-infobar {
-    background-color: #D9E4F0;
-    padding: 15px 15px 20px;
-
-    float: right;
-    width: 100px;
-
-    box-shadow: 0 2px 6px rgba(0, 0, 0, .3);
-
-    border-radius: 5px;
-    position:absolute;
-    top:0;
-    right:0;
-}
 
 .category a,
 .category a:active,
@@ -139,10 +113,6 @@
     text-decoration: underline;
 }
 
-.net-promoter-box {
-    font-size: smaller;
-    margin-top: 10px;
-}
 
 .detractor-count {
     display: block;
@@ -152,41 +122,6 @@
     display: inline;
 }
 
-/*
- * Sharing
- */
-.sharebox {
-    padding: 10px 0 0;
-    overflow: hidden;
-}
-
-.title-sharebox {
-    margin-top: 6px;
-    font-size: smaller;
-}
-
-.title-sharebox a,
-.title-sharebox a:active,
-.title-sharebox a:link,
-.title-sharebox a:hover,
-.title-sharebox a:visited {
-    text-decoration: none;
-}
-
-.title-sharebox a:hover {
-    text-decoration: underline;
-}
-
-.title-sharebox ul {
-    list-style: none;
-}
-
-.imagebox {
-    float: left;
-    text-align: center;
-    font-size: 10px;
-    margin: 0 25px 25px 0;
-}
 
 /*
 * awards
@@ -198,7 +133,7 @@
 	
 }
 .award-show li{
-	margin:10px 0px;
+	margin:10px 0;
 	text-align:center;
 }
 
@@ -211,13 +146,11 @@
 * Consumption Box
 */
 .consumption-box {
-    margin: 0 0px 30px 0;
+	font-size:.8em;
 
+    margin: 0 0 30px 0;
     box-shadow: 0 3px 5px #aaa;
-
     border-radius: 10px;
-
-    font-size: 12px;
     position: relative;
 
     background: #d9e4f0; /* Old browsers */
@@ -248,7 +181,7 @@
     text-decoration: none;
     display: block;
     height: 48px;
-    margin: 8px 0 0 0px;
+    margin: 8px 0 0 0;
     padding: 0 0 0 55px;
     text-align: left;
 }
@@ -307,22 +240,6 @@
 
 .donate-box input {
     padding-left: 3px;
-}
-
-/*
-* Player
-*/
-.first-chapter {
-    padding: 0px 0 35px;
-    float: left;
-}
-
-.first-chapter h2 {
-    padding: 0px 0 10px;
-    color: #4b4b4b;
-    font-weight: normal;
-    font-size: 19px;
-    font-style: italic;
 }
 
 /*
