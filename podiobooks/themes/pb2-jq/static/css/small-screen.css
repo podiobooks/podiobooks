@@ -3,7 +3,7 @@
  */
 @media all and (max-width:501px){
 	h1{
-
+		font-size:1.5em;
 	}
 	.float-return{
 		float:none;
@@ -34,6 +34,7 @@
 	}
 	.browe-choices-page h1{
 		text-align:center;
+		padding-left:0;
 	}
 	.browse-choices-ad{
 		margin:-10px 0 20px 0;
