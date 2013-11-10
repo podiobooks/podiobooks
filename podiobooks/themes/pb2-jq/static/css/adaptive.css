@@ -9,7 +9,9 @@
 	.home .width{
 		padding:0 40px;
 	}
-	.pg-foot,
+	.pg-foot{
+		padding:30px 18px 10px;
+	}
 	.home .pg-foot{
 		padding:30px 40px 10px;
 	}
