@@ -53,7 +53,8 @@ a.fdbk_tab_bottom {
 	float:left;
 	
 }
-img{
+img,
+audio{
 	max-width:100%;
 }
 
