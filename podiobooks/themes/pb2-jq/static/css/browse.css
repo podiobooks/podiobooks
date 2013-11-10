@@ -15,7 +15,7 @@
 	text-decoration:none;
 	width:100%;
 	color:#ccc;
-	text-shadow:1px 1px 1px #fff, -1px -1px 1px #000;
+	text-shadow:1px 1px 1px #e7e7e7, -1px -1px 1px #272727;
 }
 .browse-choices li{
 	display:inline-block;
