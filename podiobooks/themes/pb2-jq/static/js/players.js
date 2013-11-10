@@ -26,7 +26,7 @@ $(function(){
 			str = " autoplay='autoplay' ";
 		}
 
-		$("<audio controls" + str + "><source src='" + href + "' type='audio/mp3' codecs='mp3'></audio>").appendTo(ele);
+		$("<audio class='first-episode-html5-player' controls" + str + "><source src='" + href + "' type='audio/mp3' codecs='mp3'></audio>").appendTo(ele);
 
 		var audioPlayer = ele.find("audio");
 		audioPlayer.bind("play", function(){
