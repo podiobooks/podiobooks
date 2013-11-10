@@ -616,8 +616,11 @@
 		padding:.5em;
 	}
 
-	.title-details .consumption-box{
-		display:block;
+	.title-details .consume-list{
+		-ms-column-count:1;
+		-moz-column-count: 1;
+		-webkit-column-count: 1;
+		column-count:1;
 	}
 	
 }
