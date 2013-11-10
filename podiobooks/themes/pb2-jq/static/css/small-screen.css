@@ -558,6 +558,7 @@
 	 */
 	.title-details-header{
 		position: relative;
+		margin:0;
 	}
 	.title-details-header-info{
 		float:none;
@@ -577,10 +578,15 @@
 	.title-details-square-ad{
 		float:none;
 		width:auto;
-		margin:0 -10px 1em;
+		margin:1em -10px 1em;
 		text-align: center;
 		background:#e7e7e7;
+		height:250px;
+		padding:5px 0;
 
+	}
+	.first-episode-html5-player{
+		width:100%;
 	}
 	.first-chapter{
 		text-align: center;
