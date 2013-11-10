@@ -161,9 +161,7 @@
 	.nav{
 		display:none;
 	}
-	.menu-triggers{
-		display:block;
-	}
+	
 	.site-menu{
 		display:none;
 		position:absolute;
@@ -181,9 +179,12 @@
 		margin:0;
 	}
 	.menu-triggers{
+		margin:0;
+		display:block;
 		float:left;
 		border-left:solid 1px #b2ceee;
 		border-right:solid 1px #e2e8ee;
+		list-style: none;
 	}
 	.menu-triggers li{
 		padding:0;
@@ -212,8 +213,11 @@
 	
 	.menu-trigger img{
 		height:30px;
+		width:44px;
 		padding:5px 35px 0 5px;
 		margin:0;
+
+		display:inline-block;
 	}
 	
 	.head{
@@ -540,6 +544,12 @@
 		height:44px;
 		border-right:solid 1px #E2E8EE;
 	}
+	.site-menu .browse-by{
+		height:auto;
+	}
+	.site-menu .browse-by a{
+		padding-bottom:8px;
+	}
 	.browse-by li{
 		display:block;
 		border-right:solid 1px #B2CEEE;
@@ -583,7 +593,6 @@
 		background:#e7e7e7;
 		height:250px;
 		padding:5px 0;
-
 	}
 	.first-episode-html5-player{
 		width:100%;
