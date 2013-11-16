@@ -91,6 +91,7 @@ INSTALLED_APPS = (
     'podiobooks.libsyn',
     'podiobooks.feeds',
     'podiobooks.search',
+    'podiobooks.ratings',
     'south',
 )
 
