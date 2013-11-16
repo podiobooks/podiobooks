@@ -1,0 +1,27 @@
+{% load ratings_tags %}
+<!--
+<p>Promoters: {{ title.promoter_count }}</p>
+<p>Detractors: {{ title.detractor_count }}</p>
+
+{% with title.promoter_count|add:title.detractor_count as TOTAL_VOTES %}
+	<p>Total: {{ TOTAL_VOTES }}</p>
+{% endwith %}
+-->
+<p class="rating-instructions">Rate this Podiobook</p>
+<ul class="rating-widget">
+	<li class="rating-widget-item rating-widget-item-promote {% if rating == 1 %}rating-widget-item-promote-active{% endif %}">
+		{% if rating != 1 %}<a href="{% url 'promote_title' slug=title.slug %}" class="rate-title rating-widget-link">{% endif %}
+			<span class="visuallyhidden">Promote</span>
+			<span aria-hidden="true" class="icon-thumbs-up rating-widget-icon"></span>
+		{% if rating != 1 %}</a>{% endif %}
+	</li>
+
+	{% show_overall_rating title %}
+
+	<li class="rating-widget-item rating-widget-item-detract {% if rating == -1 %}rating-widget-item-detract-active{% endif %}">
+		{% if rating != -1 %}<a href="{% url 'detract_title' slug=title.slug %}" class="rate-title rating-widget-link">{% endif %}
+			<span class="visuallyhidden">Detract</span>
+			<span aria-hidden="true" class="icon-thumbs-down rating-widget-icon"></span>
+		{% if rating != -1 %}</a>{% endif %}
+	</li>
+</ul>
