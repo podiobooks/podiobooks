@@ -4,18 +4,15 @@
 .browe-choices-page h1{
 	padding-left:30px;
 }
-[data-icon]:before{
-	font-family: "WebSymbolsRegular";
-	content: attr(data-icon);
-	speak:none;
-}
-.browse-choices [data-icon]:before{
+.browse-choices [class^="icon-"]:before, 
+.browse-choices [class*=" icon-"]:before{
 	display:block;
 	font-size:4em;
 	text-decoration:none;
 	width:100%;
 	color:#ccc;
 	text-shadow:1px 1px 1px #e7e7e7, -1px -1px 1px #272727;
+	margin:.1em 0;
 }
 .browse-choices li{
 	display:inline-block;
@@ -62,7 +59,8 @@
 	text-decoration:none;
 	color:#0054A6;
 }
-.no-touch .browse-choices a:hover [data-icon]:before{
+.no-touch .browse-choices a:hover [class^="icon-"]:before, 
+.no-touch .browse-choices a:hover [class*=" icon-"]:before {
 	color:#B2472C;
 }
 .no-touch .browse-choices a:hover{
