@@ -1,0 +1,7 @@
+<li class="rating-widget-item rating-widget-item-rating">
+	{% if not rating %}
+		N/A
+	{% else %}
+		<span class="rating-range rating-range-{{ rating_range }}">{{ rating }}%</span>
+	{% endif %}
+</li>

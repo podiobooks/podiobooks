@@ -1,9 +1,123 @@
-.promote-menu{
-	position:absolute;
-	z-index:9999;
-	background:#f00;
-	display:none;
+.rating-instructions{
+	margin:0 0 .3em;
+	font-weight: bold;
+	font-size:.9em;
 }
-.menu-active{
+.rating-widget-wrap{
+	width:30%;
+	float:left;
+	text-align: center;
+	padding:1em 0;
+}
+.rating-widget{
+	list-style:none;
+	padding:0;
+	
+	width:100%;
+	border-radius: 100px;
+}
+.rating-widget-item{
+	float:right;
+	width:24%;
+	margin:0;
+	text-align: center;
+	line-height:1.5em;
+	font-size:1.5em;
+	color:#fefefe;
+}
+.rating-widget-link{
 	display:block;
 }
+.rating-widget-item-promote .rating-widget-link{
+	background:#d7d7d7;
+	color:#13ab13;
+	border-left:solid 1px #fff;
+	border-radius:0 10px 10px 0;
+}
+.rating-widget-item-promote .rating-widget-link:hover{
+	color:#fefefe;
+	background:#13ab13;
+	border-left:solid 1px #13ab13;
+	
+}
+.rating-widget-item-detract .rating-widget-link {
+	background:#d7d7d7;
+	color:#96191f;
+	border-radius:10px 0 0 10px;
+	border-right:solid 1px #b7b7b7;
+}
+.rating-widget-item-detract .rating-widget-link:hover {
+	background:#96191f;
+	color:#fefefe;
+	border-right:solid 1px #96191f;
+}
+.rating-widget-item-promote{
+	background:#13ab13;
+	border-radius:0 10px 10px 0;
+	border-left:solid 1px #b7b7b7;
+}
+.rating-widget-item-promote-active{
+	border-left:solid 1px #fff;
+}
+.rating-widget-item-detract{
+	background:#96191f;
+	border-radius:10px 0 0 10px;
+	border-right:solid 1px #fff;
+}
+.rating-widget-item-rating{
+	width:50%;
+	font-weight: bold;
+	background:#d7d7d7;
+	
+	
+}
+.ratings-too-few{
+	font-size:.6em;
+	font-weight: normal;
+	display: inline-block;
+	line-height: normal;
+	vertical-align: middle;
+}
+
+.rating-range {
+	
+}
+
+.rating-range-100{
+	color:#13ab13;
+}
+.rating-range-90{
+	color:#13ab13;	
+}
+.rating-range-80{
+	color:#89e022;
+}
+.rating-range-70{
+	color:#e0be22;
+}
+.rating-range-60{
+	color:#e0be22;
+}
+.rating-range-50{
+	color:#e0be22;	
+}
+.rating-range-40{
+	
+	color:#e08922;
+}
+.rating-range-30{
+	
+	color:#96191f;
+	
+}
+.rating-range-20{
+		
+	color:#96191f;
+}
+.rating-range-10{
+	color:#96191f;
+}
+.rating-range-0{
+	color:#96191f;	
+}
+
