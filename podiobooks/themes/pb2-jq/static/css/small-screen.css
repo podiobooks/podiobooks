@@ -620,5 +620,9 @@
 		-webkit-column-count: 1;
 		column-count:1;
 	}
+	.rating-widget-wrap{
+		width:100%;
+		float:none;
+	}
 	
 }

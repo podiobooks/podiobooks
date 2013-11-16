@@ -17,6 +17,9 @@
 	float:left;
 	width:30%;
 }
+.title-details-header-cover img{
+	width:100%;
+}
 .title-details-header-info{
 	float:right;
 	width:65%;
