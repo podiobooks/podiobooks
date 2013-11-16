@@ -15,6 +15,7 @@ site.add_action(actions.export_as_csv)
 
 ### INLINES
 
+
 class AwardTitlesInline(admin.TabularInline):
     model = Title.awards.through
     extra = 0
@@ -74,7 +75,6 @@ class ContributorAdmin(admin.ModelAdmin):
     search_fields = ['display_name', ]
     ordering = ['last_name', 'first_name']
     list_display = ['last_name', 'first_name', 'title_count']
-
 
     def title_count(self, obj):
         return obj.title_set.count()
@@ -141,7 +141,7 @@ class TitleAdmin(admin.ModelAdmin):
         ('Scribl and Tips', {
             'classes': ('collapse',),
             'fields': (
-                'tips_allowed', 'scribl_allowed', 'date_accepted')
+                'scribl_book_id', 'tips_allowed', 'scribl_allowed', 'date_accepted')
         }),
         ('Series', {
             'classes': ('collapse',),
