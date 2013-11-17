@@ -22,11 +22,11 @@
 	line-height:1.5em;
 	font-size:1.5em;
 	color:#fefefe;
-}
-.rating-widget-link{
-	display:block;
 	overflow: hidden;
 	position: relative;
+}
+.rating-widget-link{
+	display:block;	
 }
 .rating-widget-item-promote .rating-widget-link{
 	background:#d7d7d7;
@@ -51,16 +51,18 @@
 	color:#fefefe;
 	border-right:solid 1px #96191f;
 }
-.rating-widget-item-promote{
-	background:#13ab13;
+.rating-widget-item-promote{	
 	border-radius:0 10px 10px 0;
 	border-left:solid 1px #b7b7b7;
 }
+.rating-widget-item-detract-active{
+	background:#96191f;
+}
 .rating-widget-item-promote-active{
+	background:#13ab13;
 	border-left:solid 1px #fff;
 }
 .rating-widget-item-detract{
-	background:#96191f;
 	border-radius:10px 0 0 10px;
 	border-right:solid 1px #fff;
 }
