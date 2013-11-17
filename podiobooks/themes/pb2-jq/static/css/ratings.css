@@ -12,9 +12,7 @@
 .rating-widget{
 	list-style:none;
 	padding:0;
-	
 	width:100%;
-	border-radius: 100px;
 }
 .rating-widget-item{
 	float:right;
@@ -27,6 +25,9 @@
 }
 .rating-widget-link{
 	display:block;
+	overflow: hidden;
+	width:100%;
+	position: relative;
 }
 .rating-widget-item-promote .rating-widget-link{
 	background:#d7d7d7;
