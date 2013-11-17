@@ -10,12 +10,14 @@ from django.db.models import F
 from django.conf import settings
 from django.views.decorators.cache import never_cache
 from django.template.loader import render_to_string
+from django.views.decorators.csrf import csrf_protect
 
 from podiobooks.ratings.util import get_ratings_widget_dict
 from podiobooks.core.views import Title
 
 
 @never_cache
+@csrf_protect
 def get_ratings(request, slug):
     """Returns rating for a title as a json response"""
 
