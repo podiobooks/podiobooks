@@ -52,6 +52,11 @@
 	color:#fefefe;
 	border-right:solid 1px #96191f;
 }
+
+.rating-widget-active .rating-widget-link{
+	color:#272727;
+}
+
 .rating-widget-item-promote{	
 	border-radius:0 10px 10px 0;
 	border-left:solid 1px #b7b7b7;
