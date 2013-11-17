@@ -63,14 +63,12 @@
 .rating-widget-item-detract{
 	background:#96191f;
 	border-radius:10px 0 0 10px;
-	border-right:solid 1px #fff;
+	border-right:solid 2px #fff;
 }
 .rating-widget-item-rating{
 	width:50%;
 	font-weight: bold;
 	background:#d7d7d7;
-	
-	
 }
 .ratings-too-few{
 	font-size:.6em;
