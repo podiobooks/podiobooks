@@ -7,7 +7,7 @@
 	<p>Total: {{ TOTAL_VOTES }}</p>
 {% endwith %}
 -->
-<p class="rating-instructions">Rate this Podiobook</p>
+
 <ul class="rating-widget">
 	<li class="rating-widget-item rating-widget-item-promote {% if rating == 1 %}rating-widget-item-promote-active{% endif %}">
 		{% if rating != 1 %}<a href="{% url 'promote_title' slug=title.slug %}" class="rate-title rating-widget-link">{% endif %}
