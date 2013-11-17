@@ -1,8 +1,14 @@
 $(function(){
 
 	var article = $("#titleArticle");
-	var ratingPlacement = $("<div id='titleRating' class='rating-widget-wrap' />").insertAfter(article.find(".title-details-header-cover"));
+	var cover = article.find(".title-details-header-cover");
+
+	cover.wrap("<div class='title-details-header-cover-wrap' />");
+
+	var ratingPlacement = $("<div id='titleRating' class='rating-widget-wrap' />").insertAfter(cover);
+
 	var waitingBar = $("<img src='" + siteVars("img") + "ajax-loader-bar.gif' />").hide().appendTo("body");
+
 	article.each(function(){
 
 		var slug = article.data("title-slug");

@@ -572,6 +572,11 @@
 		float:none;
 		width:100%;
 	}
+	.title-details-header-cover-wrap{
+		float:none;
+		width:auto;
+	}
+	.title-details-header-cover-wrap .title-details-header-cover,
 	.title-details-header-cover{
 		position: absolute;
 		right:0;
