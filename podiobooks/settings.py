@@ -110,12 +110,12 @@ DATABASES = {
 
 ### CACHE SETTINGS
 CACHES = {
-    #    'default': {
-    #        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache'
-    #    },
-    'default': {
-        'BACKEND': 'django.core.cache.backends.dummy.DummyCache'
-    }
+       'default': {
+           'BACKEND': 'django.core.cache.backends.locmem.LocMemCache'
+       },
+    # 'default': {
+    #     'BACKEND': 'django.core.cache.backends.dummy.DummyCache'
+    # }
 }
 
 # Local time zone for this installation. Choices can be found here:
