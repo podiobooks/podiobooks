@@ -10,7 +10,6 @@ $(function(){
 	var waitingBar = $("<img src='" + siteVars("img") + "ajax-loader-bar.gif' />").hide().appendTo("body");
 
 	article.each(function(){
-
 		var slug = article.data("title-slug");
 		$.ajax('/rate/' + slug + '/').success(function(data){
 			if (data.widget){

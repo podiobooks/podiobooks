@@ -17,9 +17,7 @@ from podiobooks.core.views import Title
 
 @never_cache
 def get_ratings(request, slug):
-    """
-    Return a template with the ratings for a title
-    """
+    """Returns rating for a title as a json response"""
     if not request.is_ajax():
         return HttpResponse(json.dumps({"status": "ok"}), mimetype='application/json')
 
