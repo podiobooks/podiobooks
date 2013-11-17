@@ -18,15 +18,21 @@ from podiobooks.core.views import Title
 @never_cache
 def get_ratings(request, slug):
     """Returns rating for a title as a json response"""
+
     if not request.is_ajax():
         return HttpResponse(json.dumps({"status": "ok"}), mimetype='application/json')
+
+    try:
+        in_storage = int(request.GET.get("in_storage", False))
+    except ValueError:
+        in_storage = False
 
     try:
         title = Title.objects.get(slug=slug, deleted=False)
     except ObjectDoesNotExist:
         return HttpResponse(json.dumps({"status": "error", "message": "Title not found"}), mimetype='application/json')
 
-    resp = get_ratings_widget_dict(request, title)
+    resp = get_ratings_widget_dict(request, title, in_storage)
     return HttpResponse(json.dumps(resp), mimetype='application/json')
 
 
@@ -46,6 +52,11 @@ class RateTitleView(View):
         except ObjectDoesNotExist:
             return HttpResponse(json.dumps({"status": "error", "message": "Title not found"}), mimetype='application/json')
 
+        try:
+            in_storage = int(request.POST.get("in_storage", False))
+        except ValueError:
+            in_storage = False
+
         ip = str(request.META['REMOTE_ADDR'])
         ip_title_list = cache.get(ip, default={})
 
@@ -62,26 +73,31 @@ class RateTitleView(View):
                 ip_title_list[title.pk] = -1
                 title.detractor_count += 1
 
-            title.save()
-            cache.set(ip, ip_title_list, 100000000)
+            if not in_storage:
+                title.save()
+                cache.set(ip, ip_title_list, 100000000)
 
         # Changing vote from detract to promote
         if up and rating == -1:
             ip_title_list[title.pk] = 1
             title.promoter_count += 1
             title.detractor_count -= 1
-            title.save()
-            cache.set(ip, ip_title_list, 100000000)
+
+            if not in_storage:
+                title.save()
+                cache.set(ip, ip_title_list, 100000000)
 
         # Changing vote from promote to detract
         if not up and rating == 1:
             ip_title_list[title.pk] = -1
             title.promoter_count -= 1
             title.detractor_count += 1
-            title.save()
-            cache.set(ip, ip_title_list, 100000000)
 
-        resp = get_ratings_widget_dict(request, title)
+            if not in_storage:
+                title.save()
+                cache.set(ip, ip_title_list, 100000000)
+
+        resp = get_ratings_widget_dict(request, title, in_storage=1 if up else -1)
         return HttpResponse(json.dumps(resp), mimetype='application/json')
 
 
