@@ -8,7 +8,7 @@ $(function(){
 	if ($("#titleArticle").length > 0){
 
 		var csrftoken = $.cookie('csrftoken');
-
+		l(csrftoken);
 		$.ajaxSetup({
 			crossDomain: false, // obviates need for sameOrigin test
 			beforeSend: function(xhr, settings) {
