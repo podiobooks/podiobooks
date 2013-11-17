@@ -5,7 +5,10 @@ $(function(){
 
 	cover.wrap("<div class='title-details-header-cover-wrap' />");
 
+
+
 	var ratingPlacement = $("<div id='titleRating' class='rating-widget-wrap' />").insertAfter(cover);
+	$("<p class='rating-instructions'>Rate this Podiobook</p>").insertBefore(ratingPlacement);
 
 	var waitingBar = $("<img src='" + siteVars("img") + "ajax-loader-bar.gif' />").hide().appendTo("body");
 
