@@ -26,7 +26,6 @@
 .rating-widget-link{
 	display:block;
 	overflow: hidden;
-	width:100%;
 	position: relative;
 }
 .rating-widget-item-promote .rating-widget-link{
@@ -63,7 +62,7 @@
 .rating-widget-item-detract{
 	background:#96191f;
 	border-radius:10px 0 0 10px;
-	border-right:solid 2px #fff;
+	border-right:solid 1px #fff;
 }
 .rating-widget-item-rating{
 	width:50%;
