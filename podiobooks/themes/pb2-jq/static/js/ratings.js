@@ -33,6 +33,10 @@ $(function(){
 			if (data.widget){
 				ratingPlacement.html($(data.widget));
 			}
+
+			if (data.titleSlug && hasLocalStorage){
+				localStorage.setItem(data.titleSlug, data.userRating);
+			}
 		});
 
 
