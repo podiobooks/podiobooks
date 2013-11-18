@@ -33,9 +33,13 @@ def get_ratings_widget_dict(request, title, in_storage=False):
     # if there is an IP-based rating
     #   but there was nothing in storage
     #   spit back a fresh widget
+    # if there is a mismatch between storage and IP
+    #   spit back a widget showing vote from storage
     else:
         if not in_storage:
             rating = 0
+        else:
+            rating = in_storage
 
     # End honeypots
 
