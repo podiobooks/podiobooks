@@ -29,6 +29,9 @@
 .rating-widget-link{
 	display:block;	
 }
+.rating-widget-link:hover{
+	text-decoration: none;
+}
 .rating-widget-item-promote .rating-widget-link{
 	background:#d7d7d7;
 	color:#13ab13;
