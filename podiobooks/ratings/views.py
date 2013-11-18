@@ -55,7 +55,7 @@ class RateTitleView(View):
 
         in_storage = get_rating_from_storage(request)
 
-        ip = str(request.META['REMOTE_ADDR'])
+        ip = "pb-rating-%s" % str(request.META['REMOTE_ADDR'])
         ip_title_list = cache.get(ip, default={})
 
         # rating will hold value for the rating pulled from cache
