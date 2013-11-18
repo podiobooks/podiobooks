@@ -7,8 +7,6 @@ $(function(){
 
 	if ($("#titleArticle").length > 0){
 
-
-
 		var hasLocalStorage = $("html").hasClass("localstorage");
 
 		var article = $("#titleArticle");
@@ -81,6 +79,5 @@ $(function(){
 
 			});
 		});
-
 	}
 });
