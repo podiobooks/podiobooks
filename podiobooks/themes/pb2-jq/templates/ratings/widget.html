@@ -8,7 +8,7 @@
 {% endwith %}
 -->
 
-<ul class="rating-widget {% if rating != 0 %}rating-widget-active{% endif %}">
+<ul class="rating-widget {% if rating != 0 %}rating-widget-active{% endif %} {% if total_ratings < 5 %}rating-widget-too-few{% endif %}">
 	<li class="rating-widget-item rating-widget-item-promote {% if rating == 1 %}rating-widget-item-promote-active{% endif %}">
 		{% if rating != 1 %}<a href="{% url 'promote_title' slug=title.slug %}" class="rate-title rating-widget-link">{% endif %}
 			<span class="visuallyhidden">Promote</span>

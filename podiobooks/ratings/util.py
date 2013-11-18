@@ -26,7 +26,7 @@ def get_ratings_widget_dict(request, title, in_storage=False):
         "detrators": title.detractor_count,
         "widget": render_to_string(
             "ratings/widget.html",
-            {"rating": rating, "title": title}
+            {"rating": rating, "title": title, "total_ratings": title.promoter_count + title.detractor_count}
         ),
         "userRating": rating,
         "titleSlug": title.slug
