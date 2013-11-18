@@ -7,16 +7,7 @@ $(function(){
 
 	if ($("#titleArticle").length > 0){
 
-		var csrftoken = $.cookie('csrftoken');
-		l(csrftoken);
-		$.ajaxSetup({
-			crossDomain: false, // obviates need for sameOrigin test
-			beforeSend: function(xhr, settings) {
-				if (!csrfSafeMethod(settings.type)) {
-					xhr.setRequestHeader("X-CSRFToken", csrftoken);
-				}
-			}
-		});
+
 
 		var hasLocalStorage = $("html").hasClass("localstorage");
 
@@ -49,6 +40,17 @@ $(function(){
 
 		$("#titleArticle").on("click", ".rate-title", function(ev){
 			ev.preventDefault();
+
+			var csrftoken = $.cookie('csrftoken');
+
+			$.ajaxSetup({
+				crossDomain: false, // obviates need for sameOrigin test
+				beforeSend: function(xhr, settings) {
+					if (!csrfSafeMethod(settings.type)) {
+						xhr.setRequestHeader("X-CSRFToken", csrftoken);
+					}
+				}
+			});
 
 			ratingPlacement.height(ratingPlacement.height());
 			ratingPlacement.empty();
