@@ -75,6 +75,10 @@ class RateTitleView(View):
         if ip_title_list and ip_title_list.has_key(title.pk):
             rating = ip_title_list[title.pk]
 
+        # corrects for changing vote after chaning IP
+        if in_storage and rating != in_storage:
+            rating = in_storage
+
         # Fresh Vote
         if rating == 0:
             ip_title_list[title.pk] = 1 if up else -1
