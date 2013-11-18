@@ -11,7 +11,7 @@ def get_ratings_widget_dict(request, title, in_storage=False):
 
     resp = {"status": "ok"}
 
-    ip = str(request.META['REMOTE_ADDR'])
+    ip = "pb-rating-%s" % str(request.META['REMOTE_ADDR'])
     ip_title_list = cache.get(ip)
 
     rating = 0
