@@ -1,7 +1,5 @@
-<li class="rating-widget-item rating-widget-item-rating">
-	{% if not rating %}
-		N/A
-	{% else %}
+{% if rating %}
+	<li class="rating-widget-item rating-widget-item-rating">
 		<span class="rating-range rating-range-{{ rating_range }}">{{ rating }}%</span>
-	{% endif %}
-</li>
+	</li>
+{% endif %}
