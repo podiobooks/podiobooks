@@ -91,20 +91,20 @@ class RateTitleView(View):
             ip_title_list[title.pk] = 1
             title.promoter_count += 1
             title.detractor_count -= 1
+            cache.set(ip, ip_title_list, 100000000)
 
             if not in_storage:
                 title.save()
-                cache.set(ip, ip_title_list, 100000000)
 
         # Changing vote from promote to detract
         if not up and rating == 1:
             ip_title_list[title.pk] = -1
             title.promoter_count -= 1
             title.detractor_count += 1
+            cache.set(ip, ip_title_list, 100000000)
 
             if not in_storage:
                 title.save()
-                cache.set(ip, ip_title_list, 100000000)
 
         resp = get_ratings_widget_dict(request, title, in_storage=1 if up else -1)
         return HttpResponse(json.dumps(resp), mimetype='application/json')
