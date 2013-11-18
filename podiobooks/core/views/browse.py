@@ -14,7 +14,7 @@ from podiobooks.core.models import Award, Contributor, Category, Episode, Title,
 
 class AwardListView(ListView):
     """Shows list of awards with a count of how many titles are in each."""
-    
+
     template_name = "core/award/award_list.html"
     context_object_name = 'award_list'
     paginate_by = 40
@@ -59,10 +59,10 @@ class CategoryListView(ListView):
     """List of Categories with Count of Titles for Each"""
     template_name = 'core/category/category_list.html'
     context_object_name = 'category_list'
-    
+
     def get_queryset(self):
         return Category.objects.annotate(title_count=Count('title')).filter(title_count__gt=0, deleted=False).order_by('name').prefetch_related("title_set")
-    
+
 
 
 class CategoryDetailView(ListView):
@@ -86,7 +86,7 @@ class ContributorListView(ListView):
     template_name = 'core/contributor/contributor_list.html'
     context_object_name = 'contributor_list'
     paginate_by = 40
-    
+
     def get_queryset(self):
         return Contributor.objects.prefetch_related("title_set").filter(deleted=False, title__deleted=False).annotate(title_count=Count('title')).filter(title_count__gt=0).order_by('last_name')
 
@@ -142,7 +142,7 @@ class SeriesDetailView(ListView):
 
     def get_queryset(self):
         return Title.objects.prefetch_related(
-            "titlecontributors", 
+            "titlecontributors",
             "titlecontributors__contributor",
             "titlecontributors__contributor_type").order_by("series_sequence").filter(series__slug=self.kwargs.get('slug'), deleted=False)
 
@@ -157,7 +157,7 @@ class TitleListView(ListView):
     context_object_name = 'title_list'
     paginate_by = 25
     template_name = 'core/title/title_list.html'
-    
+
     def get_queryset(self):
         return Title.objects.prefetch_related("titlecontributors",
             "titlecontributors__contributor_type",
@@ -169,7 +169,7 @@ class TitleRecentListView(ListView):
     context_object_name = 'title_list'
     paginate_by = 25
     template_name = 'core/title/title_recent_list.html'
-    
+
     def get_queryset(self):
         return Title.objects.prefetch_related(
             "titlecontributors",
