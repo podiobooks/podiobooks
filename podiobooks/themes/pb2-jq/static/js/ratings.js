@@ -5,17 +5,6 @@ $(function(){
 		return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
 	};
 
-	// CSRF protection
-	var csrftoken = $.cookie('csrftoken');
-	$.ajaxSetup({
-		crossDomain: false, // obviates need for sameOrigin test
-		beforeSend: function(xhr, settings) {
-			if (!csrfSafeMethod(settings.type)) {
-				xhr.setRequestHeader("X-CSRFToken", csrftoken);
-			}
-		}
-	});
-
 	var hasLocalStorage = $("html").hasClass("localstorage");
 
 	var getCurrentStorage = function(slug){
@@ -33,6 +22,17 @@ $(function(){
 
 
 	if ($("#titleArticle").length > 0 && hasLocalStorage){
+
+		// CSRF protection
+		var csrftoken = $.cookie('csrftoken');
+		$.ajaxSetup({
+			crossDomain: false, // obviates need for sameOrigin test
+			beforeSend: function(xhr, settings) {
+				if (!csrfSafeMethod(settings.type)) {
+					xhr.setRequestHeader("X-CSRFToken", csrftoken);
+				}
+			}
+		});
 
 		var waitingBar = $("<img src='" + siteVars("img") + "ajax-loader-bar.gif' />").hide().appendTo("body");
 		var article = $("#titleArticle");
