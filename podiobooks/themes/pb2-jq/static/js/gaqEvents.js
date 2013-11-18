@@ -44,8 +44,8 @@ $(function () {
 
 
     });
-	
-	
+
+
     /*
      * GA events for elements in the 'Tip this author' form
      *
@@ -53,16 +53,16 @@ $(function () {
      * 		So, we're going to handle each iteration of the list separately.
      */
     $(".tipjar-box").each(function(){
-    	
-    	var box = $(this);
-    	var slug = box.data("title-slug");
-    	
-    	box.find("#title-tipjar-submit").click(function(){
+
+		var box = $(this);
+		var slug = box.data("title-slug");
+
+		box.find("#title-tipjar-submit").click(function(){
 			var form = $(this).parents("form");
 			var amount = parseInt(form.find('input[name="amount"]').val());
 			_gaq.push(['_trackEvent', 'TipJar', 'DetailPage-TipJar', slug, amount]);
-    	});
-    	
+		});
+
     });
 
     /*
@@ -77,7 +77,7 @@ $(function () {
             }
         });
     });
-    
+
 	$(".shelf").delegate(".shelf-cover", "click", function(){
         var img = $(this);
         var link = img.parent();
@@ -92,55 +92,61 @@ $(function () {
     $(".shelf-wrapper").delegate(".shelf-select-form select", "change", function (ev) {
         _gaq.push(['_trackEvent', 'Widgets', 'HomePage-ShelfDropDown', $(this).val()]);
     });
-    
-    
+
+
     /*
      * Shelf 'next' button
      */
     $(".shelf-wrapper").delegate(".shelf-arrow-left", "click", function(){
-    	
-    	var arrow = $(this);
-    	var rightArrow = arrow.siblings(".shelf-arrow-right");
-    	var numClicks = parseInt(rightArrow.data("num-clicks"));
-    	
-    	if (!numClicks){
-			numClicks = 0;						
+
+		var arrow = $(this);
+		var rightArrow = arrow.siblings(".shelf-arrow-right");
+		var numClicks = parseInt(rightArrow.data("num-clicks"));
+
+		if (!numClicks){
+			numClicks = 0;
 		}
 		else{
 			numClicks -= 1;
 		}
-		
+
 		rightArrow.data("num-clicks", numClicks);
     });
     $(".shelf-wrapper").delegate(".shelf-arrow-right", "click", function(){
-    	
+
 		var arrow = $(this);
 		var numClicks = parseInt(arrow.data("num-clicks"));
-		
+
 		var shelf = arrow.parents(".shelf").find(".shelf-pages");
 		var threshold = parseInt(shelf.data("threshold"));
-		
+
 		if (!threshold){
 			threshold = 0;
 			shelf.data("threshold", threshold);
-		}		
-		
-		
-		if (!numClicks){			
+		}
+
+
+		if (!numClicks){
 			numClicks = 1;
-			arrow.data("num-clicks", numClicks);			
-		}    	
-		else{			
-			numClicks++;			
 			arrow.data("num-clicks", numClicks);
 		}
-		
+		else{
+			numClicks++;
+			arrow.data("num-clicks", numClicks);
+		}
+
 		if (numClicks > threshold){
 			threshold += 1;
 			shelf.data("threshold", threshold);
 			_gaq.push(['_trackEvent', 'Widgets', 'HomePage-ShelfNextButton', shelf.attr("id"), (numClicks+1)]);
 		}
-		
+
+    });
+
+    $("#titleArticle").on("click", ".rate-title", function(ev){
+		var vote = $(this).find(".visuallyhidden:first").text();
+		var slug = $("#titleArticle").data('title-slug');
+		_gaq.push(['_trackEvent', 'Rating', slug, vote]);
     });
 
 });
