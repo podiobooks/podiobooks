@@ -13,7 +13,7 @@ from django.views.decorators.cache import never_cache
 from django.template.loader import render_to_string
 from django.views.decorators.csrf import csrf_protect
 
-from podiobooks.ratings.util import get_ratings_widget_dict
+from podiobooks.ratings.util import get_ratings_widget_dict, get_rating_from_storage
 from podiobooks.core.views import Title
 
 from django.middleware.csrf import get_token
@@ -31,10 +31,7 @@ def get_ratings(request, slug):
     if not request.is_ajax():
         return HttpResponse(json.dumps({"status": "ok"}), mimetype='application/json')
 
-    try:
-        in_storage = int(request.GET.get("in_storage", False))
-    except ValueError:
-        in_storage = False
+    in_storage = get_rating_from_storage(request)
 
     try:
         title = Title.objects.get(slug=slug, deleted=False)
@@ -61,11 +58,7 @@ class RateTitleView(View):
         except ObjectDoesNotExist:
             return HttpResponse(json.dumps({"status": "error", "message": "Title not found"}), mimetype='application/json')
 
-        # in_storage is the old vote (if there was one)
-        try:
-            in_storage = int(request.POST.get("in_storage", False))
-        except ValueError:
-            in_storage = False
+        in_storage = get_rating_from_storage(request)
 
         ip = str(request.META['REMOTE_ADDR'])
         ip_title_list = cache.get(ip, default={})
@@ -96,7 +89,7 @@ class RateTitleView(View):
             ip_title_list[title.pk] = 1
             cache.set(ip, ip_title_list, 100000000)
 
-            if not in_storage or in_storage == -1:
+            if in_storage == -1:
                 title.promoter_count += 1
                 title.detractor_count -= 1
                 title.save()
@@ -106,7 +99,7 @@ class RateTitleView(View):
             ip_title_list[title.pk] = -1
             cache.set(ip, ip_title_list, 100000000)
 
-            if not in_storage or in_storage == 1:
+            if in_storage == 1:
                 title.promoter_count -= 1
                 title.detractor_count += 1
                 title.save()
