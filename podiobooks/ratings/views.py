@@ -1,15 +1,45 @@
 """ Django Views for Ratings"""
 import pickle
+import json
 
 from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
 from django.core.cache import cache
 from django.http import HttpResponse
+from django.template import RequestContext, Template
 from django.views.generic import View
 from django.db.models import F
 from django.conf import settings
+from django.views.decorators.cache import never_cache
+from django.template.loader import render_to_string
+from django.views.decorators.csrf import csrf_protect
 
+from podiobooks.ratings.util import get_ratings_widget_dict, get_rating_from_storage
 from podiobooks.core.views import Title
 
+from django.middleware.csrf import get_token
+
+
+@never_cache
+@csrf_protect
+def get_ratings(request, slug):
+    """Returns rating for a title as a json response"""
+
+    # since there is no actual form associated with the ratings stuff
+    # this will manually fire up a csrftoken cookie
+    get_token(request)
+
+    if not request.is_ajax():
+        return HttpResponse(json.dumps({"status": "ok"}), mimetype='application/json')
+
+    in_storage = get_rating_from_storage(request)
+
+    try:
+        title = Title.objects.get(slug=slug, deleted=False)
+    except ObjectDoesNotExist:
+        return HttpResponse(json.dumps({"status": "error", "message": "Title not found"}), mimetype='application/json')
+
+    resp = get_ratings_widget_dict(request, title, in_storage)
+    return HttpResponse(json.dumps(resp), mimetype='application/json')
 
 
 class RateTitleView(View):
@@ -17,54 +47,62 @@ class RateTitleView(View):
 
     up = True
 
-    def post(self, request, pk=None, up=True):
+    def post(self, request, slug, up=True):
         """Add an upvote/downvote for a specific title"""
 
         if not request.is_ajax():
-            return HttpResponse("['status':'ok']", mimetype='application/json')
-        
-        # Use cache to hold IP
-        ip_title_list = cache.get(request.META['REMOTE_ADDR'])
-        if not ip_title_list:
-            cache.set(request.META['REMOTE_ADDR'], [pk,], 10000000)
-        elif pk in ip_title_list:
-            return HttpResponse("['error':'You have already voted for this title.']", mimetype="application/json")
-        else:
-            ip_title_list.add(pk)
-            cache.set(request.META['REMOTE_ADDR'], ip_title_list, 10000000)
+            return HttpResponse(json.dumps({"status": "ok"}), mimetype='application/json')
 
-        # Keep a comma-separated, signed cookie of all the titles ever voted for
-        # It's possible that someone could hit max cookie length limit here, what then?
-        # Also, since the cookies are sent back and forth on each request, this means the more you vote, the slower the site
-        vote_cookie = request.get_signed_cookie('v', False)
-        if vote_cookie:
-            vote_cookie_list = vote_cookie.split(',')
-            if pk in vote_cookie_list:
-                return HttpResponse("['error':'You have already voted for this title.']", mimetype="application/json")
-            else:
-                vote_cookie_list.append(pk)
-                vote_cookie = ','.join(vote_cookie_list)
-        else:
-            vote_cookie = str(pk)
-            
         try:
-            title = Title.objects.get(pk=pk)
+            title = Title.objects.get(slug=slug, deleted=False)
+        except ObjectDoesNotExist:
+            return HttpResponse(json.dumps({"status": "error", "message": "Title not found"}), mimetype='application/json')
 
-            if up:
-                title.promoter_count = F('promoter_count') + 1
-            else:
-                title.detractor_count = F('detractor_count') + 1
+        in_storage = get_rating_from_storage(request)
 
-            title.save() # Commented out until security can be put in place.
+        ip = str(request.META['REMOTE_ADDR'])
+        ip_title_list = cache.get(ip, default={})
 
-            title = Title.objects.get(pk=pk)
+        # rating will hold value for the rating pulled from cache
+        rating = 0
+        if ip_title_list and ip_title_list.has_key(title.pk):
+            rating = ip_title_list[title.pk]
 
-            response = HttpResponse("[{0}, {1}]".format(title.promoter_count, title.detractor_count), mimetype='application/json')
-            response.set_signed_cookie('v', vote_cookie)
+        # corrects for changing vote after chaning IP
+        if in_storage and rating != in_storage:
+            rating = in_storage
 
-            return response
+        # Fresh Vote
+        if rating == 0:
+            ip_title_list[title.pk] = 1 if up else -1
+            cache.set(ip, ip_title_list, 100000000)
 
-        except ObjectDoesNotExist or MultipleObjectsReturned:
-            return HttpResponse("['error':'Title Not Found.']", mimetype='application/json')
-        
+            if not in_storage:
+                if up:
+                    title.promoter_count += 1
+                else:
+                    title.detractor_count += 1
+                title.save()
 
+        # Changing vote from detract to promote
+        if up and rating == -1:
+            ip_title_list[title.pk] = 1
+            cache.set(ip, ip_title_list, 100000000)
+
+            if in_storage == -1:
+                title.promoter_count += 1
+                title.detractor_count -= 1
+                title.save()
+
+        # Changing vote from promote to detract
+        if not up and rating == 1:
+            ip_title_list[title.pk] = -1
+            cache.set(ip, ip_title_list, 100000000)
+
+            if in_storage == 1:
+                title.promoter_count -= 1
+                title.detractor_count += 1
+                title.save()
+
+        resp = get_ratings_widget_dict(request, title, in_storage=1 if up else -1)
+        return HttpResponse(json.dumps(resp), mimetype='application/json')
