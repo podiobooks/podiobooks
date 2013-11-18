@@ -61,6 +61,7 @@ class RateTitleView(View):
         except ObjectDoesNotExist:
             return HttpResponse(json.dumps({"status": "error", "message": "Title not found"}), mimetype='application/json')
 
+        # in_storage is the old vote (if there was one)
         try:
             in_storage = int(request.POST.get("in_storage", False))
         except ValueError:
@@ -69,44 +70,44 @@ class RateTitleView(View):
         ip = str(request.META['REMOTE_ADDR'])
         ip_title_list = cache.get(ip, default={})
 
+        # rating will hold value for the rating pulled from cache
         rating = 0
         if ip_title_list and ip_title_list.has_key(title.pk):
             rating = ip_title_list[title.pk]
 
         # Fresh Vote
         if rating == 0:
-            if up:
-                ip_title_list[title.pk] = 1
-                title.promoter_count += 1
-            else:
-                ip_title_list[title.pk] = -1
-                title.detractor_count += 1
 
+            ip_title_list[title.pk] = 1 if up else -1
             cache.set(ip, ip_title_list, 100000000)
 
             if not in_storage:
+                if up:
+                    ip_title_list[title.pk] = 1
+                else:
+                    title.detractor_count += 1
                 title.save()
+
 
         # Changing vote from detract to promote
         if up and rating == -1:
-            ip_title_list[title.pk] = 1
-            title.promoter_count += 1
-            title.detractor_count -= 1
 
+            ip_title_list[title.pk] = 1
             cache.set(ip, ip_title_list, 100000000)
 
-            if not in_storage:
+            if not in_storage or in_storage == -1:
+                title.promoter_count += 1
+                title.detractor_count -= 1
                 title.save()
 
         # Changing vote from promote to detract
         if not up and rating == 1:
             ip_title_list[title.pk] = -1
-            title.promoter_count -= 1
-            title.detractor_count += 1
-
             cache.set(ip, ip_title_list, 100000000)
 
-            if not in_storage:
+            if not in_storage or in_storage == 1:
+                title.promoter_count -= 1
+                title.detractor_count += 1
                 title.save()
 
         resp = get_ratings_widget_dict(request, title, in_storage=1 if up else -1)
