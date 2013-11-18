@@ -8,7 +8,7 @@
 	                <h3 class="episode-list-title">
 	                    <a name="{{ episode.pk }}" class="episode-audio-link" href="{{ episode.url }}">{{ episode.name }}</a>
 	                </h3>
-	                <audio controls preload="metadata" class="episode-list-player">
+	                <audio controls preload="none" class="episode-list-player">
 			    		<source src="{{ episode.url }}" type="audio/mp3" codecs="mp3" />
 					</audio>
 				</div>
