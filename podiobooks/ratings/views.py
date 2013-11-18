@@ -5,6 +5,7 @@ import json
 from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
 from django.core.cache import cache
 from django.http import HttpResponse
+from django.template import RequestContext, Template
 from django.views.generic import View
 from django.db.models import F
 from django.conf import settings
@@ -15,11 +16,17 @@ from django.views.decorators.csrf import csrf_protect
 from podiobooks.ratings.util import get_ratings_widget_dict
 from podiobooks.core.views import Title
 
+from django.middleware.csrf import get_token
+
 
 @never_cache
 @csrf_protect
 def get_ratings(request, slug):
     """Returns rating for a title as a json response"""
+
+    # since there is no actual form associated with the ratings stuff
+    # this will manually fire up a csrftoken cookie
+    get_token(request)
 
     if not request.is_ajax():
         return HttpResponse(json.dumps({"status": "ok"}), mimetype='application/json')
