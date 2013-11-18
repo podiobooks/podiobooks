@@ -17,7 +17,7 @@
 }
 .rating-widget-item{
 	float:right;
-	width:24%;
+	width:24.5%;
 	margin:0;
 	text-align: center;
 	line-height:1.5em;
@@ -35,25 +35,26 @@
 .rating-widget-item-promote .rating-widget-link{
 	background:#d7d7d7;
 	color:#13ab13;
-	border-left:solid 1px #fff;
 	border-radius:0 10px 10px 0;
+	border-left:solid 1px #fff;
 }
 .rating-widget-item-promote .rating-widget-link:hover{
 	color:#fefefe;
 	background:#13ab13;
-	border-left:solid 1px #13ab13;
+	
 	
 }
 .rating-widget-item-detract .rating-widget-link {
 	background:#d7d7d7;
 	color:#96191f;
 	border-radius:10px 0 0 10px;
-	border-right:solid 1px #b7b7b7;
+	border-right:solid 1px #fff;
+	
 }
 .rating-widget-item-detract .rating-widget-link:hover {
 	background:#96191f;
 	color:#fefefe;
-	border-right:solid 1px #96191f;
+	
 }
 
 .rating-widget-active .rating-widget-link{
@@ -62,18 +63,18 @@
 
 .rating-widget-item-promote{	
 	border-radius:0 10px 10px 0;
-	border-left:solid 1px #b7b7b7;
+	
 }
 .rating-widget-item-detract-active{
 	background:#96191f;
 }
 .rating-widget-item-promote-active{
 	background:#13ab13;
-	border-left:solid 1px #fff;
+	
 }
 .rating-widget-item-detract{
 	border-radius:10px 0 0 10px;
-	border-right:solid 1px #fff;
+	
 }
 .rating-widget-item-rating{
 	width:50%;
@@ -86,6 +87,12 @@
 	display: inline-block;
 	line-height: normal;
 	vertical-align: middle;
+}
+.rating-widget-too-few{
+	
+}
+.rating-widget-too-few .rating-widget-item{
+	width:49.5%;
 }
 
 .rating-range {
