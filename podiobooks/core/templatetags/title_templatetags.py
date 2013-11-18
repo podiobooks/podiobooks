@@ -31,7 +31,6 @@ def get_libsyn_cover_url(title, height, width):
 def show_titlecover(title):
     """ Pulls and formats the cover for a Title """
     redirected_url = get_libsyn_cover_url(title, 334, 200)
-    print redirected_url
     return {'title': title, 'url': redirected_url}
 
 
