@@ -62,6 +62,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 MIDDLEWARE_CLASSES = (
 #    'django.middleware.gzip.GZipMiddleware',  # https://www.djangoproject.com/weblog/2013/aug/06/breach-and-django/
     'django.middleware.doc.XViewMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -91,6 +92,7 @@ INSTALLED_APPS = (
     'podiobooks.libsyn',
     'podiobooks.feeds',
     'podiobooks.search',
+    'podiobooks.ratings',
     'south',
 )
 
@@ -109,9 +111,9 @@ DATABASES = {
 
 ### CACHE SETTINGS
 CACHES = {
-    #    'default': {
-    #        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache'
-    #    },
+       # 'default': {
+       #     'BACKEND': 'django.core.cache.backends.locmem.LocMemCache'
+       # },
     'default': {
         'BACKEND': 'django.core.cache.backends.dummy.DummyCache'
     }
