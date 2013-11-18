@@ -11,11 +11,22 @@
 	width:20%;
 }
 .title-details-header{
-	margin:0 0 2.5em;	
+	margin:0 0 1.5em;	
 }
 .title-details-header-cover{
 	float:left;
 	width:30%;
+}
+.title-details-header-cover-wrap{
+	float:left;
+	width:30%;
+}
+.title-details-header-cover-wrap .title-details-header-cover{
+	float:none;
+	width:auto;
+}
+.title-details-header-cover img{
+	width:100%;
 }
 .title-details-header-info{
 	float:right;
@@ -23,9 +34,12 @@
 }
 .title-details-square-ad{
 	float:right;
-	margin:0 0 1.5em 1.5em;
+	padding:.5em;
+	background:#e7e7e7;
+	margin:0 0 1em 1em;
+	width:250px;
+	height:250px;
 }
-
 
 .title-license {
     position: relative;
