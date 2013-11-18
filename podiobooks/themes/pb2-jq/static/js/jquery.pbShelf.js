@@ -29,7 +29,7 @@
 (function( $ ){
 
 	$.fn.pbShelf = function( options ) {
-  
+
 		var settings = {
 			"cookie"				:		null,
 			"shelfItem"				:		".shelf-item",
@@ -43,19 +43,19 @@
 			"rubberBandStrength"	:		3,
 			"alreadyWrapped"		:		false
 		};
-		
-		
-		
+
+
+
 		return this.each(function(){
-			
+
 			if (options){
 				$.extend(settings, options);
 			}
-			
+
 			if (!($.easing)){
 				settings.easeFunction = null;
 			}
-			
+
 			/*
 			 * Debugging function for logging the current shelf status
 			 */
@@ -71,7 +71,7 @@
 				l("shelfViewBoundaries" + shelfViewBoundaries);
 				l("==================");
 			};
-			
+
 			/*
 			 * Shelf status variables
 			 */
@@ -84,18 +84,18 @@
 			var curStep = 0;
 			var maxLeft = 0;
 			var shelfViewBoundaries = [[0, 0], 0, 0]; // [[<offset left>, <offset top>], <shelf width>, <shelf height>]
-			
+
 			/*
 			 * Some shelf element localization
 			 */
 			var wholeShelf;
-			
+
 			var shelf = $(this);
-			
+
 			var shelfSteps;
 			var leftArrow;
 			var rightArrow;
-						
+
 			/*
 			 * Store the shelf as local variable,
 			 * Set shelf height
@@ -103,18 +103,18 @@
 			 * (otherwise it compresses when elements are removed)
 			 */
 			shelf.height(shelf.height());
-			
-			
-			
+
+
+
 			/*
 			 * If the shelf has a select box,
 			 * bind the on-change event to reset the plugin
 			 */
 			if (shelf.has("form select")){
 				var sel = shelf.find("form select");
-				
+
 				sel.unbind("change");
-				
+
 				sel.change(function(){
 					var modSettings = settings;
 					modSettings.url = sel.parents("form").attr("action") + sel.val() + '/';
@@ -122,17 +122,17 @@
 					shelf.pbShelf(modSettings);
 				});
 			}
-			
+
 			var loadImages = function(){
-				
+
 				// How many images in-advance we want to load (it'll actually be this number, minus 1')
 				var perLoad = 5;
-				
+
 				// calculate how many items per shelf we have
 				var perSlide = Math.floor(shelf.width() / itemWidth);
-				
+
 				var items = shelf.find(".shelf-item");
-				
+
 				// calculate a 'start' and 'end' range for how many shelf items to check
 				// we are going to check whether or not there are enough images pre-loaded
 				// for the next set of shelf items to display on-slide
@@ -141,7 +141,7 @@
 				if (end > items.length){
 					end = items.length;
 				}
-				
+
 				// Build a 'set' of unloaded images
 				var loadMore = true;
 				var set = [];
@@ -153,17 +153,17 @@
 						set = set.add($(items[i]).find('[data-image-src]'));
 					}
 				}
-				
+
 				// If we aren' running into an issue, don't load any more images yet
 				if (set.length + 1 < perSlide * perLoad){
 					loadMore = false;
 				}
-				
+
 				// If we are running up against the end of the shelf, finish out the image loads
 				if (end === items.length){
 					loadMore = true;
 				}
-				
+
 				// If we have decided to load a set images
 				// Load them now
 				if (loadMore){
@@ -178,21 +178,21 @@
 					}
 				}
 			};
-	
+
 			var makeShelf = function(){
-				
+
 				shelfSteps = $("<ul class='shelf-step'/>").prependTo(shelf);
-				
+
 				if (progress.length > 0){
 					progress.appendTo("body").hide();
 				}
-				
+
 				/*
 				 * If the appended data has shelf items,
 				 * proceed with building shelf functionality
 				 */
 				if(shelf.find(settings.shelfItem).length){
-					
+
 					/*
 					 * Find all the shelf items,
 					 * add up their total widths
@@ -206,8 +206,8 @@
 						w += itemWidth;
 					});
 					maxWidth = w;
-					
-					
+
+
 					/*
 					 * Wrap all the shelf items,
 					 * create a "field of vision"
@@ -220,11 +220,11 @@
 						shelf.find(settings.shelfItem).wrapAll("<div class='whole-shelf'/>");
 						wholeShelf = shelf.find(".whole-shelf");
 						wholeShelf.wrap("<div class='shelf-view'/>");
-						wholeShelf.width(maxWidth + 100);	
+						wholeShelf.width(maxWidth + 100);
 					}
-					
-					
-					
+
+
+
 					/*
 					 * Append the right/left arrows,
 					 * let the arrow handler figure out
@@ -240,23 +240,23 @@
 					 * Just hide the progress bar
 					 */
 					handleArrows();
-					
+
 				}
-				
-				
+
+
 				/*
 				 * Click events for right and left arrows
 				 */
 				if (rightArrow){
 					rightArrow.click(function(e){
-						
+
 						e.preventDefault();
-						
+
 						if (cur < maxWidth - shelf.width()){
-							
+
 							var shelfWidth = shelf.width();
 							var targ = cur + parseInt(shelfWidth / itemWidth, 10) * itemWidth;
-														
+
 							if (targ < maxLeft){
 								cur = targ;
 							}
@@ -264,9 +264,9 @@
 								cur = maxLeft;
 								targ = maxLeft;
 							}
-							
+
 							where = cur / itemWidth;
-							
+
 							wholeShelf.animate({
 								left: -targ
 							}, 600, settings.easeFunction);
@@ -274,24 +274,24 @@
 						handleArrows();
 					});
 				}
-				
+
 				if (leftArrow){
 					leftArrow.click(function(e){
-						
+
 						e.preventDefault();
-						
+
 						if (cur > 0){
-							
+
 							var shelfWidth = shelf.width();
-							
+
 							// accomidates for the far-right being offset at the left of the shelf
 							var targ = parseInt(cur / itemWidth, 10) * itemWidth - parseInt(shelfWidth / itemWidth, 10) * itemWidth;
-							
+
 							if (cur % itemWidth !== 0){
 								targ += itemWidth;
 							}
-							
-							
+
+
 							if (targ <= 0){
 								cur = 0;
 								targ = 0;
@@ -299,13 +299,13 @@
 							else{
 								cur = targ;
 							}
-							
+
 							where = cur / itemWidth;
 							if (where < 0){
 								where = 0;
 							}
-							
-														
+
+
 							wholeShelf.animate({
 								left: -targ
 							}, 600, settings.easeFunction);
@@ -313,8 +313,8 @@
 						handleArrows();
 					});
 				}
-				
-				
+
+
 				/*
 				 * Add arrow/positioner to window resize
 				 *
@@ -324,74 +324,74 @@
 				 */
 				$(window).unbind("resize", handleArrows);
 				$(window).bind("resize", handleArrows);
-				
-				
+
+
 				/*
 				 * Native touch events
 				 * to animate shelf movement
 				 * on touch devices
 				 */
 				if (wholeShelf && $("html").hasClass("touch")){
-					
+
 					var startX;
 					var startY;
-					
+
 					var startLeft;
 					var movingThisShelf = false;
-					
+
 					var slidingShelf = false;
 					var scrollingInstead = false;
 					var xxx = 0;
 					var yyy = 0;
 
 					document.addEventListener('touchstart', function(event){
-						
+
 						movingThisShelf = false;
 						slidingShelf = false;
 						scrollingInstead = false;
 						xxx = 0;
 						yyy = 0;
-						
+
 						var touch = event.touches[0];
-						
+
 						startLeft = parseInt(wholeShelf.css("left").replace("px", ""), 10);
 						startX = touch.pageX;
 						startY = touch.pageY;
-						
+
 						if (startX > shelfViewBoundaries[0][0] && startY > shelfViewBoundaries[0][1]){
 							if (startX < shelfViewBoundaries[0][0] + shelfViewBoundaries[1] && startY < shelfViewBoundaries[0][1] + shelfViewBoundaries[2]){
 								movingThisShelf = true;
-								
-								
-								
+
+
+
 							}
 						}
 					}, false);
-					
+
 					document.addEventListener('touchmove', function(event){
-						
+
 						if (movingThisShelf){
-							
+
 							var touch = event.touches[0];
 							var x = touch.pageX;
 							var y = touch.pageY;
 							var deltaX;
 							var deltaY;
-							
+
 							if (startX > x){	// sliding finger left
 								deltaX = startX - x;
 							}
 							else{				// sliding finger right
 								deltaX = -(x - startX);
 							}
-							
+
 							if (startY > y){	// sliding finger up
 								deltaY = startY - y;
 							}
 							else{				// sliding finger down
 								deltaY = -(y - startY);
 							}
-							
+
 							// If we havent yet decided whether we are sliding a shelf or scrolling,
 							// Make that decision now
 							if (!slidingShelf && !scrollingInstead){
@@ -409,7 +409,7 @@
 							// If we're sliding, prevent scrolling
 							if (slidingShelf){
 								event.preventDefault();
-								
+
 								shelf.find("a").each(function(){
 									var item = $(this);
 									var href = item.attr("href");
@@ -421,47 +421,47 @@
 									}
 								});
 							}
-							
+
 							// As long as we haven't decided that we are scrolling,
 							// move the shelf
-							if (!scrollingInstead){								
+							if (!scrollingInstead){
 								var whereTo = startLeft - (deltaX);
-								
+
 								if (whereTo > 0){
 									whereTo /= settings.rubberBandStrength;
 								}
 								else if (-(whereTo) > maxLeft){
-									whereTo = -(maxLeft) + ((whereTo + maxLeft) / settings.rubberBandStrength);									
+									whereTo = -(maxLeft) + ((whereTo + maxLeft) / settings.rubberBandStrength);
 								}
-								
+
 								wholeShelf.css({"left": whereTo});
 							}
 						}
 					}, false);
-					
+
 					document.addEventListener('touchend', function(event){
-						
+
 						if (movingThisShelf){
-							
+
 							var endLeft = parseInt(wholeShelf.css("left").replace("px", ""), 10);
 							var shelfWidth = shelf.width();
-							
+
 							var touch = event.changedTouches[0];
 							var x = touch.pageX;
 							var diff = startX - x;
 							var diffY = Math.abs(Math.abs(touch.pageY) - Math.abs(startY));
-														
+
 							if (endLeft > 0){	// Far left
-								
+
 								wholeShelf.animate({"left": 0}, 400, settings.easeFunction, function(){
 									cur = 0;
 									where = cur / itemWidth;
 									handleArrows();
 								});
-								
+
 							}
 							else if (-(endLeft) > maxLeft){	// Far Right
-								
+
 								wholeShelf.animate({"left": -(maxLeft)}, 400, settings.easeFunction, function(){
 									cur = maxLeft;
 									where = cur / itemWidth;
@@ -470,16 +470,16 @@
 							}
 							else{
 								var whereToGo = parseInt(endLeft / itemWidth, 10);
-								
+
 								if (diff > 0 && Math.abs(diffY) < Math.abs(diff) && !scrollingInstead){
 									whereToGo -= 1;
 								}
 								whereToGo = whereToGo * itemWidth;
-								
+
 								if (-(whereToGo) > maxLeft){
 									whereToGo = -(maxLeft);
 								}
-								
+
 								wholeShelf.animate({"left": whereToGo}, 400, settings.easeFunction, function(){
 									cur = -(parseInt(wholeShelf.css("left").replace("px", ""), 10));
 									where = cur / itemWidth;
@@ -495,7 +495,7 @@
 						shelf.find("[data-old-href]").each(function(){
 							var item = $(this);
 							var t = setTimeout(function(){
-								item.unbind(".safeGuard");	
+								item.unbind(".safeGuard");
 								var possibleHref = item.attr("data-old-href");
 								item.attr("href", possibleHref).removeAttr("data-old-href");
 							}, 100);
@@ -503,8 +503,8 @@
 					}, false);
 				}
 			};
-			
-			
+
+
 			/*
 			 * If we have a cookie name to set, set it
 			 * based on the currently selected form>select
@@ -518,16 +518,16 @@
 					$.cookie(settings.cookie, "None", {expires: -1});
 				}
 			}
-			
-			
+
+
 			/*
 			 * Right/left shelf arrows
 			 * create, added/removed to/from shelf later
 			 */
-			leftArrow = $("<a class='shelf-arrow shelf-arrow-left' href='#'><span data-icon='<' aria-hidden='true'></span><span class='visuallyhidden'>Next Page</span></a>");
-			rightArrow = $("<a class='shelf-arrow shelf-arrow-right' href='#'><span data-icon='>' aria-hidden='true'></span><span class='visuallyhidden'>Previous Page</span></a>");
-			
-			
+			leftArrow = $("<a class='shelf-arrow shelf-arrow-left' href='#'><span class='icon-left-open' aria-hidden='true'></span><span class='visuallyhidden'>Next Page</span></a>");
+			rightArrow = $("<a class='shelf-arrow shelf-arrow-right' href='#'><span class='icon-right-open' aria-hidden='true'></span><span class='visuallyhidden'>Previous Page</span></a>");
+
+
 			/*
 			 * Swift step:
 			 * Moving via position dots
@@ -537,32 +537,32 @@
 				a.click(function(e){
 					e.preventDefault();
 					var targ;
-					
+
 					if ( i >= 0 ){
 						var px = i * per * itemWidth;
 						if (px > maxWidth - shelf.width()){
 							px = maxWidth - shelf.width();
 						}
-						
+
 						targ = "-" + (px) + "px";
 						where = px / itemWidth;
 						cur = px;
-						
+
 					}
 					else{
 						targ = -(maxLeft);
 						cur = maxLeft;
 						where = cur / itemWidth;
 					}
-					
+
 					wholeShelf.animate({
 						left:targ
 					}, 600, settings.easeFunction);
-					
+
 					handleArrows();
 				});
 			};
-				
+
 			/*
 			 * Current shelf position
 			 */
@@ -646,8 +646,8 @@
 					settings.afterMoveEnd((Math.round(where) + perSlide), perSlide);
 				}
 			};
-			 
-			
+
+
 			/*
 			 * Figure out where the boundaries of each shelf are
 			 */
@@ -658,15 +658,15 @@
 					var topLeft = [offset.left, offset.top];
 					var w = view.width();
 					var h = view.height();
-					shelfViewBoundaries = [topLeft, w, h];	
+					shelfViewBoundaries = [topLeft, w, h];
 				}
 				else{
 					shelfViewBoundaries = [[0, 0], 0, 0];
 				}
-				
+
 			};
-			
-			
+
+
 			/*
 			 * Hiding/showing arrows
 			 * based on shelf position
@@ -684,13 +684,13 @@
 				else{
 					rightArrow.addClass("hidden");
 				}
-				
+
 				handleShelfPosition();
-				
+
 			};
-			
+
 			/*
-			 * Create a progress bar, 
+			 * Create a progress bar,
 			 * if there isn't one already created by another shelf
 			 */
 			var progress = $(".shelf-ajax-loader");
@@ -698,12 +698,12 @@
 				$("<p class='shelf-ajax-loader'><img src='" + settings.ajaxLoaderImage + "' /></p>").appendTo($("body"));
 				progress = $(".shelf-ajax-loader");
 			}
-			
+
 			/*
 			 * Ajax workhorse
 			 */
 			if (settings.url && settings.clearShelfFirst){
-				
+
 				/*
 				 * Remove all content from shelf,
 				 * except for the select box
@@ -719,24 +719,24 @@
 						item.remove();
 					}
 				});
-				
+
 				/*
 				 * Ajax Progress element image,
 				 * appears in middle of shelf during onchange ajax call
 				 *
 				 * Create it, append it to the body for caching,
 				 * move it into the shelf and show
-				 */				
+				 */
 				if ($(shelf).find(".shelf-ajax-loader").length < 1){
 					progress.appendTo(shelf);
 				}
 				progress.show();
-				
+
 				$.ajax({
 					method:"get",
 					url:settings.url,
 					success:function(data){
-						
+
 						/*
 						 * Ajax request should return HTML
 						 *
