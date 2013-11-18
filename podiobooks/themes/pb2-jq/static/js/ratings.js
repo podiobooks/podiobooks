@@ -23,16 +23,6 @@ $(function(){
 
 	if ($("#titleArticle").length > 0 && hasLocalStorage){
 
-		// CSRF protection
-		var csrftoken = $.cookie('csrftoken');
-		$.ajaxSetup({
-			crossDomain: false, // obviates need for sameOrigin test
-			beforeSend: function(xhr, settings) {
-				if (!csrfSafeMethod(settings.type)) {
-					xhr.setRequestHeader("X-CSRFToken", csrftoken);
-				}
-			}
-		});
 
 		var waitingBar = $("<img src='" + siteVars("img") + "ajax-loader-bar.gif' />").hide().appendTo("body");
 		var article = $("#titleArticle");
@@ -64,6 +54,18 @@ $(function(){
 		$("#titleArticle").on("click", ".rate-title", function(ev){
 
 			ev.preventDefault();
+
+
+			// CSRF protection
+			var csrftoken = $.cookie('csrftoken');
+			$.ajaxSetup({
+				crossDomain: false, // obviates need for sameOrigin test
+				beforeSend: function(xhr, settings) {
+					if (!csrfSafeMethod(settings.type)) {
+						xhr.setRequestHeader("X-CSRFToken", csrftoken);
+					}
+				}
+			});
 
 			// Correct layout bouncing, show waiting gif
 			ratingPlacement.height(ratingPlacement.height());
