@@ -146,7 +146,16 @@ $(function () {
     $("#titleArticle").on("click", ".rate-title", function(ev){
 		var vote = $(this).find(".visuallyhidden:first").text();
 		var slug = $("#titleArticle").data('title-slug');
-		_gaq.push(['_trackEvent', 'Rating', slug, vote]);
+		var voteValue;
+
+		if (vote === 'Promote'){
+			voteValue = 1;
+		}
+		else{
+			voteValue = 0;
+		}
+
+		_gaq.push(['_trackEvent', 'Rating', 'DetailPage-RatingWidget', slug, voteValue]);
     });
 
 });
