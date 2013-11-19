@@ -183,18 +183,21 @@ class TitleRemovedView(DetailView):
     """Show alternative consumption links for titles that have been marked as deleted."""
     template_name = 'core/title/title_detail_removed.html'
     context_object_name = 'title'
+    object = None
 
     def get_object(self, queryset=None):
         slug = self.kwargs.get('slug', None)
         try:
-            return Title.objects.prefetch_related("media", ).filter(slug=slug).get()
+            title = Title.objects.prefetch_related("media", ).filter(slug=slug).get()
+            return title
         except ObjectDoesNotExist:
             raise Http404
 
     def get(self, request, *args, **kwargs):
-        title = self.get_object()
-        if title.deleted:
-            return title
+        self.object = self.get_object()
+        if self.object.deleted:
+            context = self.get_context_data(object=self.object)
+            return self.render_to_response(context)
         else:
             return HttpResponsePermanentRedirect(title.get_absolute_url())
 
