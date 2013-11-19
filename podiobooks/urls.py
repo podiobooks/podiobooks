@@ -20,7 +20,7 @@ from podiobooks.core.sitemaps import AwardDetailSitemap, CategoryDetailSitemap, 
 # from podiobooks.core import urls as core_urls
 # from podiobooks.ratings import urls as ratings_urls
 # from podiobooks.search import urls as search_urls
-from podiobooks.core.views import IndexView
+from podiobooks.core.views import AccelView, IndexView
 
 
 from .views import BlogRedirectView, TextTemplateView, RobotsView
@@ -68,9 +68,9 @@ urlpatterns = \
 
              # Robots, Favicon and Related
              (r'^robots\.txt$', RobotsView.as_view()),
-             (r'^favicon\.ico$', RedirectView.as_view(url=settings.STATIC_URL + 'images/favicon.ico')),
+             (r'^favicon\.ico$', AccelView.as_view(url='images/favicon.ico')),
              (r'^apple-touch-icon\.png$',
-              RedirectView.as_view(url=settings.STATIC_URL + 'images/apple-touch-icon.png')),
+              AccelView.as_view(url=settings.STATIC_URL + 'images/apple-touch-icon.png')),
              (r'^humans\.txt$', TextTemplateView.as_view(template_name='humans.txt')),
              (r'^crossdomain\.xml', TextTemplateView.as_view(template_name='crossdomain.xml')),
 

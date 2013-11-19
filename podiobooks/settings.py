@@ -37,6 +37,7 @@ MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'mediaroot')
 # Staticfiles Config
 THE_THEME = "pb2-jq"
 STATIC_ROOT = PROJECT_ROOT + "/staticroot/"
+ACCEL_REDIRECT = False
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(PROJECT_ROOT, "themes", THE_THEME, "static"), ]
 TEMPLATE_DIRS = [os.path.join(PROJECT_ROOT, "themes", THE_THEME, 'templates'), ]
