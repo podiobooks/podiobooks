@@ -4,7 +4,7 @@ $(function () {
      * GA events for elements in the 'ways to consume this book' list
      *
      * The .consume-list template is actually repeated in the markup
-     * 		So, we're going to handle each iteration of the list separately.
+     * So, we're going to handle each iteration of the list separately.
      */
     $(".consume-list").each(function () {
         var list = $(this);
@@ -50,7 +50,7 @@ $(function () {
      * GA events for elements in the 'Tip this author' form
      *
      * The .tipjar-box template is actually repeated in the markup
-     * 		So, we're going to handle each iteration of the list separately.
+     * So, we're going to handle each iteration of the list separately.
      */
     $(".tipjar-box").each(function(){
 
@@ -68,28 +68,31 @@ $(function () {
     /*
      * GA events for homepage shelves
      */
-    $(".shelf").delegate(".shelf-item-heading a", "click", function(){
+    $(".shelf").on("click", ".shelf-item-heading a", function(ev){
+
         var link = $(this);
-        link.click(function (ev) {
-            var slug = link.data("title-slug");
-            if (slug) {
-                _gaq.push(['_trackEvent', 'Widgets', 'HomePage-ShelfTitleClick', slug, 1]);
-            }
-        });
+
+        var slug = link.data("title-slug");
+        if (slug) {
+            _gaq.push(['_trackEvent', 'Widgets', 'HomePage-ShelfTitleClick', slug, 1]);
+        }
+
     });
 
-	$(".shelf").delegate(".shelf-cover", "click", function(){
+	$(".shelf").on("click", ".shelf-cover", function(ev){
+
         var img = $(this);
         var link = img.parent();
-        link.click(function (ev) {
-            var slug = img.data("title-slug");
-            if (slug) {
-                _gaq.push(['_trackEvent', 'Widgets', 'HomePage-ShelfTitleClick', slug, 0]);
-            }
-        });
+
+        var slug = img.data("title-slug");
+
+        if (slug) {
+            _gaq.push(['_trackEvent', 'Widgets', 'HomePage-ShelfTitleClick', slug, 0]);
+        }
+
     });
 
-    $(".shelf-wrapper").delegate(".shelf-select-form select", "change", function (ev) {
+    $(".shelf-wrapper").on("change", ".shelf-select-form select", function (ev) {
         _gaq.push(['_trackEvent', 'Widgets', 'HomePage-ShelfDropDown', $(this).val()]);
     });
 
@@ -97,7 +100,7 @@ $(function () {
     /*
      * Shelf 'next' button
      */
-    $(".shelf-wrapper").delegate(".shelf-arrow-left", "click", function(){
+    $(".shelf-wrapper").on("click", ".shelf-arrow-left", function(){
 
 		var arrow = $(this);
 		var rightArrow = arrow.siblings(".shelf-arrow-right");
@@ -112,8 +115,8 @@ $(function () {
 
 		rightArrow.data("num-clicks", numClicks);
     });
-    $(".shelf-wrapper").delegate(".shelf-arrow-right", "click", function(){
 
+    $(".shelf-wrapper").on("click", ".shelf-arrow-right", function(){
 		var arrow = $(this);
 		var numClicks = parseInt(arrow.data("num-clicks"));
 
