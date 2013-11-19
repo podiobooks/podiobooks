@@ -69,7 +69,11 @@ class UrlTestCase(TestCase):
 
     def test_title_detail_removed(self):
         response = self.client.get('/title/deleted-title/')
-        self.assertRedirects(response, '/title/removed/deleted-title/', status_code=302)
+        self.assertRedirects(response, '/title/removed/deleted-title/', status_code=301)
+
+    def test_title_detail_not_removed(self):
+        response = self.client.get('/title/removed/trader-tales-4-double-share/')
+        self.assertRedirects(response, '/title/trader-tales-4-double-share/', status_code=301)
 
     def test_category_list(self):
         response = self.client.get('/category/')
