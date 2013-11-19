@@ -1,14 +1,17 @@
 """ Django Views for the Podiobooks Core Module"""
 
+import os
+
 from django.core.urlresolvers import reverse
 from django.core.urlresolvers import reverse_lazy
 
 from django.utils.http import urlquote
-from django.views.generic import RedirectView, TemplateView
+from django.views.generic import RedirectView, TemplateView, View
 from django.shortcuts import get_object_or_404, redirect
-from django.http import Http404, HttpResponsePermanentRedirect
+from django.http import Http404, HttpResponse, HttpResponseRedirect, HttpResponsePermanentRedirect
 from django.core.exceptions import ObjectDoesNotExist
 from django.db.models import Q
+from django.conf import settings
 
 
 from podiobooks.core.models import Title, Category
@@ -139,3 +142,39 @@ class TitleRedirectView(RedirectView):
             return reverse_lazy('title_detail', args=(slug,))
         else:
             raise Http404
+
+
+class AccelView(View):
+    """ Let Nginx Return Static Files That Have To Map """
+
+    url = None
+
+    def get(self, request, *args, **kwargs):
+        if self.url:
+            if settings.ACCEL_REDIRECT:
+                response = HttpResponse()
+                response['Content-Type'] = ""  # let nginx determine the content type
+                response['X-Accel-Redirect'] = os.path.join(settings.STATIC_URL, self.url).encode('utf-8')
+                return response
+            else:
+                return HttpResponseRedirect(os.path.join(settings.STATIC_URL, self.url).encode('utf-8'))
+        else:
+            return http.Http404()
+
+    def head(self, request, *args, **kwargs):
+        return self.get(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        return self.get(request, *args, **kwargs)
+
+    def options(self, request, *args, **kwargs):
+        return self.get(request, *args, **kwargs)
+
+    def delete(self, request, *args, **kwargs):
+        return self.get(request, *args, **kwargs)
+
+    def put(self, request, *args, **kwargs):
+        return self.get(request, *args, **kwargs)
+
+    def patch(self, request, *args, **kwargs):
+        return self.get(request, *args, **kwargs)
