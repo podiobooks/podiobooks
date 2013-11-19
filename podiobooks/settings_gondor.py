@@ -6,6 +6,8 @@ from .settings import *
 DEBUG = eval(os.environ.get("DEBUG", "False"))
 TEMPLATE_DEBUG = DEBUG
 
+ACCEL_REDIRECT = True
+
 if "GONDOR_DATABASE_URL" in os.environ:
     urlparse.uses_netloc.append("postgres")
     url = urlparse.urlparse(os.environ["GONDOR_DATABASE_URL"])
