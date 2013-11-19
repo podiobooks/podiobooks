@@ -199,7 +199,7 @@ class TitleRemovedView(DetailView):
             context = self.get_context_data(object=self.object)
             return self.render_to_response(context)
         else:
-            return HttpResponsePermanentRedirect(title.get_absolute_url())
+            return HttpResponsePermanentRedirect(self.object.get_absolute_url())
 
 
 class TitleDetailView(DetailView):
@@ -227,7 +227,7 @@ class TitleDetailView(DetailView):
             return redirect('title_detail', self.object.slug, permanent=True)
         else:
             if self.object.deleted:
-                return redirect('title_detail_removed', self.object.slug)
+                return redirect('title_detail_removed', self.object.slug, permanent=True)
             context = self.get_context_data(object=self.object)
             return self.render_to_response(context)
 
