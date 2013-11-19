@@ -4,7 +4,7 @@ from django.db.models import Count
 
 from django.views.generic import DetailView, ListView, TemplateView, RedirectView
 from django.shortcuts import get_object_or_404, redirect
-from django.http import Http404
+from django.http import Http404, HttpResponsePermanentRedirect
 from django.core.exceptions import ObjectDoesNotExist
 from django.middleware.csrf import get_token
 
@@ -180,17 +180,23 @@ class TitleRecentListView(ListView):
 
 
 class TitleRemovedView(DetailView):
-    """Show alterative consumption links for titles that have been marked as deleted."""
+    """Show alternative consumption links for titles that have been marked as deleted."""
     template_name = 'core/title/title_detail_removed.html'
     context_object_name = 'title'
 
     def get_object(self, queryset=None):
         slug = self.kwargs.get('slug', None)
         try:
-            title = Title.objects.prefetch_related("media", ).filter(slug=slug).get()
-            return title
+            return Title.objects.prefetch_related("media", ).filter(slug=slug).get()
         except ObjectDoesNotExist:
             raise Http404
+
+    def get(self, request, *args, **kwargs):
+        title = self.get_object()
+        if title.deleted:
+            return title
+        else:
+            return HttpResponsePermanentRedirect(title.get_absolute_url())
 
 
 class TitleDetailView(DetailView):
