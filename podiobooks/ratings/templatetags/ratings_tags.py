@@ -20,6 +20,9 @@ def show_overall_rating(title):
     rating = int(rating * 100)
     rating_range *= 100
 
+    if rating > 100:
+        rating = 100
+
     return {"rating": rating, "rating_range": int(rating_range)}
 
 
