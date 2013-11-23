@@ -10,13 +10,12 @@ from django.views.generic import RedirectView, TemplateView, View
 from django.shortcuts import get_object_or_404, redirect
 from django.http import Http404, HttpResponse, HttpResponseRedirect, HttpResponsePermanentRedirect
 from django.core.exceptions import ObjectDoesNotExist
-from django.db.models import Q
 from django.conf import settings
 
 
 from podiobooks.core.models import Title, Category
-from podiobooks.core.forms import CategoryChoiceForm, ContributorChoiceForm, TitleSearchForm
-from podiobooks.core.queries import get_featured_shelf_titles, get_recently_released_shelf_titles, get_toprated_shelf_titles
+from podiobooks.core.forms import CategoryChoiceForm, TitleSearchForm
+from podiobooks.core.queries import get_featured_shelf_titles, get_recently_released_shelf_titles, get_popular_shelf_titles
 
 # pylint: disable=R0912,C0103
 
@@ -36,9 +35,10 @@ class IndexView(TemplateView):
         featured_title_list = get_featured_shelf_titles(initial_category_slug)
 
         # Top Rated Shelf
-        contributor_choice_form = ContributorChoiceForm(self.request, cookie="top_rated_by_author")
-        initial_contributor_slug = contributor_choice_form.fields["contributor"].initial
-        toprated_title_list = get_toprated_shelf_titles(initial_contributor_slug)
+        category_choice_form_popular = CategoryChoiceForm(self.request, cookie="popular_by_category")
+        initial_category_slug_popular = category_choice_form_popular.fields["category"].initial
+        toprated_title_list = get_popular_shelf_titles(initial_category_slug_popular)
+
 
         # Recently Released Shelf
         category_choice_form_recent = CategoryChoiceForm(self.request, cookie="recent_by_category")
@@ -51,7 +51,7 @@ class IndexView(TemplateView):
             'toprated_title_list': toprated_title_list,
             'recently_released_list': recently_released_list,
             'category_choice_form': category_choice_form,
-            'contributor_choice_form': contributor_choice_form,
+            'contributor_choice_form': category_choice_form_popular,
             'category_choice_form_recent': category_choice_form_recent,
         }
 
@@ -63,7 +63,7 @@ def title_search(request, keywords=None):
     takes in a list of keywords to full-text search titles on
 
     url: /content/title/search/<keywords>
-    
+
     template : Redirects to Google Search
     """
 
