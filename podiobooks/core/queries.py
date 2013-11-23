@@ -27,7 +27,7 @@ def get_featured_shelf_titles(category='all'):
             category_filter
         ).order_by('?')[:20]
         cache.set('featured_shelf_titles_' + category, titles, 604800)
-    
+
     return titles
 
 
@@ -41,16 +41,25 @@ def get_toprated_shelf_titles(contributor='all'):
         contributor_filter = Q()
 
     if not titles:
-        titles = Title.objects.prefetch_related(
-            "titlecontributors",
-            "titlecontributors__contributor",
-            "titlecontributors__contributor_type"
-        ).filter(
+        initial_query = Title.objects.filter(
             Q(display_on_homepage=True) &
             Q(deleted=False) &
             Q(promoter_count__gte=20) &
             contributor_filter
-        ).order_by('-promoter_count')[:20]
+        )
+
+        top_rated = []
+        for title in initial_query:
+            rating = (float(title.promoter_count) / (title.promoter_count + title.detractor_count))
+            if rating > .89:
+                top_rated.append(title)
+
+        titles = Title.objects.prefetch_related(
+            "titlecontributors",
+            "titlecontributors__contributor",
+            "titlecontributors__contributor_type"
+        ).filter(pk__in=[title.pk for title in top_rated]).order_by("?")[:20]
+
         cache.set('toprated_shelf_titles_' + contributor, titles, 240)
 
     return titles
