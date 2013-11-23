@@ -5,7 +5,7 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.http import Http404
 from django.views.generic.base import View
-from podiobooks.core.queries import get_featured_shelf_titles, get_recently_released_shelf_titles, get_toprated_shelf_titles
+from podiobooks.core.queries import get_featured_shelf_titles, get_recently_released_shelf_titles, get_toprated_shelf_titles, get_popular_shelf_titles
 
 # pylint: disable=W0613
 
@@ -18,7 +18,7 @@ class FilteredShelf(View):
     def get(self, request, shelf_type, title_filter='all'):
         """
         Handle incoming GET requests
-        
+
         'shelf_type' should be a method of this class; 404 if not
         'title_filter' is passed along to 'shelf_type' as an optional filter to apply to the shelf
         """
@@ -29,9 +29,19 @@ class FilteredShelf(View):
 
         return method(title_filter)
 
+    def popular_by_category(self, category='all'):
+        """
+        Top rated titles, filtered by a category
+        """
+        popular_title_list = get_popular_shelf_titles(category)
+        return render_to_response("core/shelf/tags/show_shelf_pages.html", {"title_list": popular_title_list, "no_ads": True},
+            context_instance=RequestContext(self.request))
+
     def top_rated_by_author(self, author='all'):
         """
         Top rated titles, filtered by a contributor
+
+        ** SHELF NOT CURRENTLY IN USE **
         """
         toprated_title_list = get_toprated_shelf_titles(author)
         return render_to_response("core/shelf/tags/show_shelf_pages.html", {"title_list": toprated_title_list, "no_ads": True},
