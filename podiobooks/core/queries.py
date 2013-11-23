@@ -60,7 +60,7 @@ def get_popular_shelf_titles(category='all'):
             "titlecontributors__contributor_type"
         ).filter(pk__in=[title.pk for title in top_rated]).order_by("?")[:20]
 
-        cache.set('toprated_shelf_titles_' + category, titles, 604800)
+        cache.set('toprated_shelf_titles_' + category, titles, 302400)
 
     return titles
 
