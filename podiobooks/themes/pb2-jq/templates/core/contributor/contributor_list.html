@@ -24,24 +24,24 @@
 			src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 		</script>
     </aside>
-    <h1>All Contributors, Alphabetically by Last Name</h1>
+    <h1>All Contributors, Alphabetical by Last Name</h1>
     {% if page_obj.number > 1 %}
         <span class="current">
             <em>Page {{ page_obj.number }} of {{ paginator.num_pages }}</em>
         </span>
     {% endif %}
-    
-   
+
+
     <ul class="browse-list">
-    	
-	    
+
+
         {% for contributor in contributor_list %}
             <li class="contributor_list_item">
                 <a href="
 		{% ifequal contributor.title_set.all.count 1 %}
 			{% url 'title_detail' slug=contributor.title_set.all|first %}
-		{% else %} 
-			{{ contributor.get_absolute_url }} 
+		{% else %}
+			{{ contributor.get_absolute_url }}
 		{% endifequal %}">{{ contributor.display_name }}</a>
                 ({{ contributor|count_titles }}<span class="hide-on-small-screen"> title{{ contributor|count_titles|pluralize }}</span>)</li>
         {% endfor %}
