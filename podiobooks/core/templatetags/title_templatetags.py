@@ -1,9 +1,11 @@
 """ Tags used for working with Titles """
+import feedparser
 
 from django import template
 from django.conf import settings
 from django.contrib.sites.models import Site
-import feedparser
+
+from podiobooks.core.util import get_libsyn_cover_url
 
 register = template.Library()
 
@@ -17,14 +19,6 @@ def show_awardshow(title):
 def show_contributors(title, detail=False):
     """ standardize formatting for contributor list for a given title """
     return {"title": title, "detail": detail, "SITE": Site.objects.get_current()}
-
-
-def get_libsyn_cover_url(title, height, width):
-    """Pulls the final libsyn URL for a title from libsyn"""
-    scale_url = "http://asset-server.libsyn.com/show/{0}/height/{1}/width/{2}".format(title.libsyn_show_id, height,
-        width)
-    # Removed Lookup logic with caching and such - was not improving overall site performance.
-    return scale_url
 
 
 @register.inclusion_tag('core/title/tags/show_titlecover.html')
