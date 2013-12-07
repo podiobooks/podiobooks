@@ -161,9 +161,8 @@ audio{
 .browse-by {
     list-style: none;
     display: block;
-    width: 200px;
-    text-align: center;
-    margin: 0 auto;
+    float:left;
+    padding:5px 0 0;
 }
 
 .browse-by li {
@@ -177,6 +176,7 @@ audio{
 .search {
     float: right;
     width:250px;
+    padding:5px 0 0;
 }
 .nav-bar input.gsc-search-button-v2{
     padding:6px 18px;
@@ -359,12 +359,12 @@ body form.gsc-search-box{
     display: block;
     width: 160px;
     height: 50px;
-    padding-top: 30px;
     border-radius: 15px;
     color: #fff;
     z-index: 9999;
-    padding: 30px 20px 0;
+    padding:10px 10px 5px;
     text-decoration: none;
+    text-align: center;
 
     background: #40a8d1; /* Old browsers */
     background: -moz-linear-gradient(top, #40a8d1 0%, #4280bd 100%); /* FF3.6+ */
@@ -375,6 +375,7 @@ body form.gsc-search-box{
     background: linear-gradient(to bottom, #40a8d1 0%, #4280bd 100%); /* W3C */
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#40a8d1', endColorstr = '#4280bd', GradientType = 0); /* IE6-9 */
 
+    
 }
 
 .jump-to-content:focus {
@@ -412,5 +413,51 @@ body form.gsc-search-box{
     height: 11px;
     width: 37px;
     margin: 5px 0 3px 0;
+}
+
+/**
+ * Global Donate form
+ */
+.global-donate-form{
+	margin:0;
+	font-size:100%;
+	width:200px;
+	margin:0 auto;
+	text-align: center;
+}
+.title-detail-page .global-donate-submit{
+	background:none;
+	padding-left:0;
+	padding-right: 0;
+	color:#0054A6;
+}
+.title-detail-page .global-donate-submit:hover{
+	background:none;
+	padding-left:0;
+	padding-right: 0;
+	color:#c35230;
+}
+.global-donate-submit{
+	border:none;
+	background:none;
+	margin:0;
+	padding:0;
+	font-size: 1em;
+	color:#0054A6;
+	font-family:Verdana, sans-serif;
+	outline:none;
+	vertical-align: baseline;
+	line-height: 1.5em;
+	font-weight: 300;
+	background:#e25f38;
+	color:#fefefe;
+	padding:5px 15px;
+	border-radius: 30px;
+
+	-webkit-font-smoothing: antialiased;
+}
+
+.global-donate-submit:hover{
+    background:#f6673d;
 }
 
