@@ -160,7 +160,7 @@ class AccelView(View):
             else:
                 return HttpResponseRedirect(os.path.join(settings.STATIC_URL, self.url).encode('utf-8'))
         else:
-            return Http404()
+            raise Http404()
 
     def head(self, request, *args, **kwargs):
         """ Handle HEAD Requests"""
