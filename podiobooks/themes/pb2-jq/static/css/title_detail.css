@@ -272,6 +272,7 @@
 	display:block;
 	margin:.9em auto .4em auto;
 	border-radius: 10px;
+	
 	-webkit-transition:background-color .15s ease-in-out;
 	-ms-transition:background-color .15s ease-in-out;
 	-moz-transition:background-color .15s ease-in-out;
