@@ -454,6 +454,12 @@ body form.gsc-search-box{
 	padding:5px 15px;
 	border-radius: 30px;
 
+    -webkit-appearance: none;
+    -o-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none;
+    
 	-webkit-font-smoothing: antialiased;
 }
 
