@@ -10,9 +10,6 @@ from podiobooks.core.util import get_libsyn_cover_url
 from podiobooks.core.queries import get_featured_shelf_titles, get_recently_released_shelf_titles, get_popular_shelf_titles
 
 
-
-
-
 class TitlesResource(ModelResource):
     """Resource for Exposing Title Model via API"""
 
