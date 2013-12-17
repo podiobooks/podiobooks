@@ -117,24 +117,11 @@
 		    var feedback_widget = new GSFN.feedback_widget(feedback_widget_options);
 		</script>
 
-        <!-- Start of Woopra Code -->
-        <script type="text/javascript">
-            function woopraReady(tracker) {
-                tracker.setDomain('podiobooks.com');
-                tracker.setIdleTimeout(1800000);
-                tracker.track();
-                return false;
-            }
-            (function() {
-                var wsc = document.createElement('script');
-                wsc.src = document.location.protocol+'//static.woopra.com/js/woopra.js';
-                wsc.type = 'text/javascript';
-                wsc.async = true;
-                var ssc = document.getElementsByTagName('script')[0];
-                ssc.parentNode.insertBefore(wsc, ssc);
-            })();
-        </script>
-        <!-- End of Woopra Code -->
+		<script type="text/javascript">
+		var infolinks_pid = 1973980;
+		var infolinks_wsid = 0;
+		</script>
+		<script type="text/javascript" src="http://resources.infolinks.com/js/infolinks_main.js"></script>
 
 		{% block extra_foot %}{% endblock %}
 
