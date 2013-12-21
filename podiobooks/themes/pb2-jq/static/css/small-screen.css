@@ -583,7 +583,7 @@
 	.global-donate-submit:hover,
 	.global-donate-submit{
 		border-radius: 0;
-		border-right:solid 1px #B2CEEE;
+		border-right:none;
 		height:42px;
 		padding:0 15px;
 
