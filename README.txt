@@ -28,5 +28,5 @@ For development use, a requirements_dev.txt exists to pull in additional package
 
 In the devscripts/virtualenv folder are a series of scripts that will be useful in setting up your local development environment with virtualenv, which creates an isolated Python environment just for this project.
 
-A warning that getting the "PIL" imaging library to install correctly using any method is tricky, the easiest way on windows seems to be to install the free Visual Studio Express so that PIP can be compiled.
+A warning that getting the "PIL" imaging library to install correctly using any method is tricky. Django is now using the "Pillow" library, so downloading that as a separate installer is a good idea.
 
