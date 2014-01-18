@@ -502,6 +502,9 @@ body form.gsc-search-box{
 	color: #c35230;
 }
 
+.donate-options{
+	position: relative;
+}
 .two-col{
 
 }
@@ -513,4 +516,29 @@ body form.gsc-search-box{
 .two-col-right{
 	width:45%;
 	float:right;
+}
+
+.or-p{
+	position: absolute;
+	top:25%;
+	left:45%;
+	
+	border:solid 3px #d0deee;
+	border-radius: 200px;
+	
+	height:90px;
+	width:90px;
+	font-size:1.8em;
+	line-height:1em;
+}
+.or-wrap{
+	border:solid 2px #9ec3ee;
+	border-radius:200px;
+	width:80px;
+	display: block;
+	margin:3px;
+	height:58px;
+	padding-top:22px;
+	color:#777;
+	background:#fff;
 }
