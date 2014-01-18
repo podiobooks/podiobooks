@@ -10,6 +10,19 @@
 		margin:0 0 1.4em;
 	}
 
+	.two-col-left,
+	.two-col-right{
+		display: block;
+		float:none;
+		width:auto;
+		margin:1em 0 2em;
+	}
+	.donate .two-col{
+		margin:0;
+		padding:0;
+		border:none;
+	}
+
 	/*
 	 * Browse Choices
 	 */
@@ -120,7 +133,6 @@
 	.nav{
 		width:auto;
 	}
-	.global-donate-form,
 	.browse-by{
 		float:left;
 		width:auto;	
@@ -551,10 +563,13 @@
 	/*
 	 * Browse Link
 	 */
-	.browse-by{
+	.browse-by,
+	.global-donate-button-wrap{
 		float:left;
 		height:42px;
 		border-right:solid 1px #E2E8EE;
+		width:auto;
+		padding:0;
 	}
 	.site-menu .browse-by{
 		height:auto;
@@ -562,35 +577,28 @@
 	.site-menu .browse-by a{
 		padding-bottom:8px;
 	}
-	.browse-by li{
+	.browse-by li,
+	.global-donate-button-wrap .global-donate-button{
 		display:block;
 		border-right:solid 1px #B2CEEE;
 		height:100%;
+		border-radius: 0;
+
 	}
-	.title-detail-page .global-donate-submit:hover,
-	.title-detail-page .global-donate-submit,
-	.global-donate-submit,
-	.global-donate-submit:hover,
-	.browse-by a{
+	
+	.browse-by a,
+	.global-donate-button-wrap .global-donate-button,
+	.global-donate-button-wrap .global-donate-button:hover{
 		color:#fff;
 		display:block;
 		height:33px;
 		padding:8px 15px 0;
 		font-size:17px;
-	}
-	.title-detail-page .global-donate-submit:hover,
-	.title-detail-page .global-donate-submit,
-	.global-donate-submit:hover,
-	.global-donate-submit{
-		border-radius: 0;
-		border-right:none;
-		height:42px;
-		padding:0 15px;
+		vertical-align: baseline;
+		line-height: 1.5em;
 
 	}
-	.global-donate-form{
-		border-right:solid 1px #E2E8EE;
-	}
+	
 
 	/*
 	 * Title Details
