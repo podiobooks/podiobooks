@@ -68,6 +68,14 @@
 	.title-details-extras{
 		width:25%;
 	}
+	.global-donate-button-wrap{
+		display: block;
+		text-align: left;
+		margin:0;
+		float:left;
+		width:100%;
+		padding:10px 0;
+	}
 }
 
 
@@ -156,11 +164,6 @@
 	.title-details{
 		float:none;
 		width:auto;
-	}
-	.global-donate-form{
-		width: auto;
-		text-align: left;
-		margin: 0;
 	}
 	
 }
