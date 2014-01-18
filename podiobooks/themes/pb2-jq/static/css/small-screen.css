@@ -667,5 +667,18 @@
 	.rating-widget-wrap{
 		width:100%;
 	}
+
+
+	.or-p{
+		position: static;
+		top:auto;
+		left:auto;
+		
+		border:solid 3px #d0deee;
+		border-radius: 200px;
+		
+		margin:1em auto;
+	}
+	
 	
 }
