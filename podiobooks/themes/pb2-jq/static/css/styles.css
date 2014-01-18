@@ -418,41 +418,28 @@ body form.gsc-search-box{
 /**
  * Global Donate form
  */
-.global-donate-form{
-	margin:0;
-	font-size:100%;
-	width:200px;
-	margin:0 auto;
-	text-align: center;
+.general-donation-form{
+	
 }
-.title-detail-page .global-donate-submit{
-	background:none;
-	padding-left:0;
-	padding-right: 0;
-	color:#0054A6;
-}
-.title-detail-page .global-donate-submit:hover{
-	background:none;
-	padding-left:0;
-	padding-right: 0;
-	color:#c35230;
-}
-.global-donate-submit{
+.submit-button,
+.submit-button:link,
+.submit-button:hover,
+.submit-button:active,
+.submit-button:visited{
 	border:none;
-	background:none;
 	margin:0;
-	padding:0;
 	font-size: 1em;
-	color:#0054A6;
 	font-family:Verdana, sans-serif;
 	outline:none;
-	vertical-align: baseline;
+	display:inline-block;
+	
 	line-height: 1.5em;
 	font-weight: 300;
 	background:#e25f38;
 	color:#fefefe;
 	padding:5px 15px;
 	border-radius: 30px;
+	border:solid 1px #e25f38;
 
     -webkit-appearance: none;
     -o-appearance: none;
@@ -463,7 +450,66 @@ body form.gsc-search-box{
 	-webkit-font-smoothing: antialiased;
 }
 
-.global-donate-submit:hover{
+.submit-button:hover{
     background:#f6673d;
 }
 
+.author-donation-submit{
+	border-radius:0 30px 30px 0;
+	width:35%;
+}
+.author-donation-text{
+	font-size:1em;
+	padding:5px 10px;
+	text-align: center;
+	line-height: 1.5em;
+	border:none;
+	background:none;
+	margin:0;
+	background:none;
+	border:solid 1px #b7b7b7;
+	border-right:none;
+	width:50%;
+}
+.author-donation-form label{
+	display: block;
+	text-align: left;
+	padding-left:5%;
+}
+
+.global-donate-button{
+
+}
+.global-donate-button-wrap{
+	margin:0 auto;
+	width:100px;
+	display: block;
+	text-align: center;
+	line-height: 1.5em;
+	font-size:1em;
+
+}
+.donate .global-donate-button,
+.title-detail-page .global-donate-button{
+	background:none;
+	border:none;
+	color: #0054A6;
+	padding:5px 0 0;
+}
+.donate .global-donate-button:hover,
+.title-detail-page .global-donate-button:hover{
+	color: #c35230;
+}
+
+.two-col{
+
+}
+
+.two-col-left{
+	width:48%;
+	float:left;
+}
+.two-col-right{
+	width:45%;
+	float:right;
+}
