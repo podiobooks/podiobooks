@@ -7,8 +7,8 @@
 
 <h1>Make a Donation</h1>
 
-<div class="two-col clearfix">
-	<div class="two-col-left">
+<div class="two-col clearfix donate-options">
+	<section class="two-col-left">
 		<h2>Have a favorite author?</h2>
 		<p><img src="{% static "images/donate/authors.png" %}" /></p>
 		<p>Make a donation directly to one of your favorite authors! Just type his or her name in the box and we'll make sure the donation gets there.</p>
@@ -22,9 +22,11 @@
             <label for="authorDonationText" class="visuallyhidden">Author Name:</label>
             <input id="authorDonationText" type="text" placeholder="Author's Name" name="item_number" class="author-donation-text"><input type="submit" value="Donate" name="submit" class="submit-button author-donation-submit" />
         </form>
+	</section>
 
-	</div>
-	<div class="two-col-right">
+	<p class="or-p"><span class="or-wrap">OR</span></p>
+
+	<section class="two-col-right">
 		<h2>Make a general donation</h2>
 		<p><img src="{% static "images/donate/podiobooks.png" %}" /></p>
 		<p>Make a donation to the Podiobooks organization. By donating, you're helping to keep the lights on and the podiobooks flowin'.</p>
@@ -35,7 +37,7 @@
 			<input type="submit" value="Donate to Podiobooks" class="submit-button"/>
 		</form>
 
-	</div>
+	</section>
 </div>
 
 {% endblock %}
