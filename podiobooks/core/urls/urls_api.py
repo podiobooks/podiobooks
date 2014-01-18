@@ -3,7 +3,7 @@ from tastypie.api import Api
 from podiobooks.core.api import (
     AllTitlesResource, FeaturedTitlesResource,
     RecentTitlesResource, TopRatedTitlesResource,
-    EpisodesResource, TitleDetailResource
+    EpisodesResource, TitleDetailResource, SearchTitlesResource
 )
 
 v1_api = Api(api_name='v1')
@@ -13,6 +13,7 @@ v1_api.register(RecentTitlesResource())
 v1_api.register(TopRatedTitlesResource())
 v1_api.register(TitleDetailResource())
 v1_api.register(EpisodesResource())
+v1_api.register(SearchTitlesResource())
 
 urlpatterns = patterns('',
     (r'', include(v1_api.urls)), #http://podiobooks.com/api/v1/title/?format=json
