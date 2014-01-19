@@ -158,6 +158,7 @@ class AccelView(View):
     url = None
 
     def get(self, request, *args, **kwargs):
+        """ Handle GET Requests"""
         if self.url:
             if settings.ACCEL_REDIRECT:
                 response = HttpResponse()
@@ -167,22 +168,28 @@ class AccelView(View):
             else:
                 return HttpResponseRedirect(os.path.join(settings.STATIC_URL, self.url).encode('utf-8'))
         else:
-            return http.Http404()
+            raise Http404()
 
     def head(self, request, *args, **kwargs):
+        """ Handle HEAD Requests"""
         return self.get(request, *args, **kwargs)
 
     def post(self, request, *args, **kwargs):
+        """ Handle POST Requests"""
         return self.get(request, *args, **kwargs)
 
     def options(self, request, *args, **kwargs):
+        """ Handle OPTIONS Requests"""
         return self.get(request, *args, **kwargs)
 
     def delete(self, request, *args, **kwargs):
+        """ Handle DELETE Requests"""
         return self.get(request, *args, **kwargs)
 
     def put(self, request, *args, **kwargs):
+        """ Handle PUT Requests"""
         return self.get(request, *args, **kwargs)
 
     def patch(self, request, *args, **kwargs):
+        """ Handle PATCH Requests"""
         return self.get(request, *args, **kwargs)
