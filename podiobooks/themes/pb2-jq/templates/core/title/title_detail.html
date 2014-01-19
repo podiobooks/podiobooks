@@ -10,6 +10,8 @@
 
 {% block headtitle %}{{ title.name }} {{ title.get_byline }} on Podiobooks.com{% endblock %}
 
+{% block body_class %}title-detail-page{% endblock %}
+
 {% block head %}
     <link rel="canonical" href="{{ request.build_absolute_uri }}"/>
 {% endblock %}
