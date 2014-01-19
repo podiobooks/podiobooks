@@ -471,6 +471,9 @@ body form.gsc-search-box{
 	border:solid 1px #b7b7b7;
 	border-right:none;
 	width:50%;
+	box-shadow: none;
+	-webkit-appearance: none;
+	border-radius: 0;
 }
 .author-donation-form label{
 	display: block;
