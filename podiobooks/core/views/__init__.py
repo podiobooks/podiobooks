@@ -23,6 +23,14 @@ INITIAL_CATEGORY = 'science-fiction'
 INITIAL_CONTRIBUTOR = 'mur-lafferty'
 
 
+class DonationView(TemplateView):
+    """ Donation options """
+    template_name = "core/donate/donate.html"
+
+    def get_context_data(self, **kwarwgs):
+        return {"TIPJAR_BUSINESS_NAME": settings.TIPJAR_BUSINESS_NAME}
+
+
 class IndexView(TemplateView):
     """Home Page"""
 
