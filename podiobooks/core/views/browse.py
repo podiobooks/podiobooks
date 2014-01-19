@@ -6,7 +6,6 @@ from django.views.generic import DetailView, ListView, TemplateView, RedirectVie
 from django.shortcuts import get_object_or_404, redirect
 from django.http import Http404, HttpResponsePermanentRedirect
 from django.core.exceptions import ObjectDoesNotExist
-from django.middleware.csrf import get_token
 
 from podiobooks.core.models import Award, Contributor, Category, Episode, Title, Series
 
