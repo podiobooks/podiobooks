@@ -12,7 +12,7 @@
 
 {% block content %}
 
-    <form action="{% url 'libsyn_import_view' %}" method="post">
+    <form action="{% url 'libsyn_import_view' %}" method="post">{% csrf_token %}
         {{ form.as_p }}
     <input type="submit" name="Import" value="Import">
     </form>
