@@ -5,6 +5,12 @@ from podiobooks.core.forms import TitleSearchForm, BrowseByForm
 
 register = template.Library()
 
+
+@register.inclusion_tag('core/tags/show_donate.html')
+def show_donate():
+    """ Shows the global donation form/link """
+    return {}
+
 @register.inclusion_tag('core/tags/show_browsebox.html')
 def show_browsebox():
     """ Shows the browse by section of the header """
@@ -51,7 +57,7 @@ def show_pagination_links(paginator, page_obj):
 def truncatewords_afterchar(value, limit=80):
     """
     Truncates a string after a given number of chars keeping whole words.
-    
+
     Usage:
         {{ string|truncatesmart }}
         {{ string|truncatesmart:50 }}
