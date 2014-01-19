@@ -154,8 +154,9 @@
 	}	
 	
 	.pg-foot{
-		border-top:solid 1px #b2b2b2;	
+		border-top:solid 1px #d7d7d7;	
 		text-align:center;	
+		padding-top:30px;
 	}
 	
 	
@@ -247,7 +248,7 @@
 		margin:0;	
 	}
 	.pg{
-		padding:30px 10px 70px;
+		padding:30px 10px 10px;
 		background:#fff url(img/pb-background.jpg) left -350px repeat-x;
 		position: relative;
 	}
