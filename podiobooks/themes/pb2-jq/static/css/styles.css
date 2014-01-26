@@ -91,16 +91,9 @@ audio{
 
 .nav-bar {
     padding: .7em 1.2em .6em;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    -o-border-radius: 10px;
     border-radius: 10px;
-    -webkit-box-shadow: 0 3px 5px #aaa;
-    -moz-box-shadow: 0 3px 5px #aaa;
-    -o-box-shadow: 0 3px 5px #aaa;
     box-shadow: 0 3px 5px #aaa;
     margin: 0 0 35px 0;
-    
     position: relative;
     background: #d0deee; /* Old browsers */
     min-height:27px;

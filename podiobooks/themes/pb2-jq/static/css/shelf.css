@@ -104,7 +104,7 @@
     height: 180px;
     overflow: hidden;
     position:relative;
-    box-shadow:inset 0 0 5px rgba(0,0,0,.2);
+    
     font-size:.7em;
 }
 .shelf-item-ad{
@@ -113,9 +113,6 @@
 	width:200px;
 	height:200px;
 }
-.shelf-light .shelf-item{
-	box-shadow:inset 0 0 3px rgba(0,0,0,.1);
-}
 .shelf-cover {
 	float:left;
     padding: 0;
@@ -123,7 +120,6 @@
     width: 67px;
     min-height: 67px;
     display:inline-block;
-    box-shadow:-1px 1px 5px rgba(0,0,0,.2);
 }
 .loading{
 	box-shadow:none;
