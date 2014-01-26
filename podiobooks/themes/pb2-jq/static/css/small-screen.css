@@ -129,6 +129,8 @@
 	.home .width,
 	.width{
 		width:auto;
+		padding:0;
+		margin:0;
 	}
 	.nav{
 		width:auto;
@@ -151,15 +153,16 @@
 	}
 	.search-submit{
 		margin-left:10px;
-	}	
-	
+	}		
+	.home .pg-foot,
 	.pg-foot{
 		border-top:solid 1px #d7d7d7;	
 		text-align:center;	
-		padding-top:30px;
+		padding:1em 18px;
 	}
-	
-	
+	.foot-moveable{
+		text-align: center;
+	}
 	.loading{
 		float:none;
 		margin-right:0;
@@ -682,5 +685,9 @@
 		margin:1em auto;
 	}
 	
+	.foot-moveable{
+		margin-left:-18px;
+		margin-right:-18px;
+	}
 	
 }
