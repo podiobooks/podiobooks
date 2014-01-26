@@ -83,7 +83,7 @@
 	.gplus-wrap,
 	.libsyn-wrap{
 		float:none;
-		margin:1em 0;
+		margin:0 0 1em;
 	}
 }
 
@@ -211,16 +211,19 @@
 	.footer-ad{
 		margin: 1em 0;
 	}
-	
+
 	.foot-moveable{
 		position: absolute;
 		top:1em;
 		right:0;
 	}
+	.home .foot-moveable{
+		top:0;
+	}
 	.gplus-wrap,
 	.libsyn-wrap{
 		float:none;
-		margin:1em 0;
+		margin:0 0 1em;
 	}
 	.pg-foot{
 		margin:1.5em auto;
