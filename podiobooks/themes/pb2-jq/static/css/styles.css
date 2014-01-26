@@ -249,13 +249,17 @@ body form.gsc-search-box{
 }
 .home .pg-foot{
 	border-top:none;
+	padding:0;
 	margin:0 auto;
 }
 .foot-moveable{
 	text-align: center;
 	float:right;
 }
-
+.libsyn-wrap,
+.gplus-wrap{
+	margin:0 0 1em;
+}
 .site-menu-active .pg-foot {
     background: #fff;
 
