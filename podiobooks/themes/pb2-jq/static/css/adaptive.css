@@ -12,6 +12,12 @@
 		padding-left:40px;
 		padding-right: 40px;
 	}
+	.home .pg-foot{
+		padding-left:0;
+		padding-right:0;	
+		width:95%;
+		margin:0 auto;
+	}
 	.nav{
 		margin:0;
 		float:left;
