@@ -82,7 +82,7 @@ audio{
 }
 
 .pg {
-    padding: 0 0 5px;
+    padding: 0;
 }
 
 .touch .hide-on-touch {
@@ -241,12 +241,24 @@ body form.gsc-search-box{
 /*
 * Foot
 */
-.pg-foot {
-    padding: 25px 0 10px;
+.pg-foot{
+	position: relative;
+	padding:1em 0 0;
+	margin:1em auto;
+	border-top:solid 1px #e7e7e7;
+}
+.home .pg-foot{
+	border-top:none;
+	margin:0 auto;
+}
+.foot-moveable{
+	text-align: center;
+	float:right;
 }
 
 .site-menu-active .pg-foot {
     background: #fff;
+
 }
 
 .pg-foot ul {
@@ -262,7 +274,9 @@ body form.gsc-search-box{
 }
 .foot-nav {
 	font-size:.9em;
-    margin:0 0 15px;
+    margin:0 0 1em;
+    text-align: center;
+
 }
 
 .pg-foot .foot-nav-extra {
@@ -271,6 +285,12 @@ body form.gsc-search-box{
 
 .pg-foot p {
     color: #464646;
+}
+.footer-ad{
+	width:728px;
+	height:90px;
+	overflow:hidden;
+	margin: 1em auto;	
 }
 
 
@@ -293,10 +313,11 @@ body form.gsc-search-box{
     margin:1em auto;
 }
 
+
 .leaderboard-ad-placeholder {
     width: 728px;
     height: 90px;
-    margin-left: 8px;
+    margin:0;
     background: url('http://www.google.com/help/hc/images/adsense/adsense_185665_adformat-text_728x90_en.png');
 }
 
