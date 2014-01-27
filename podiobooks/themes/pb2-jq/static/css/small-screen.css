@@ -157,8 +157,9 @@
 	.home .pg-foot,
 	.pg-foot{
 		border-top:solid 1px #d7d7d7;	
-		text-align:center;	
-		padding:1em 18px;
+		text-align:center;
+		margin:0 10px;
+		padding:1em 0;
 	}
 	.foot-moveable{
 		text-align: center;
@@ -248,7 +249,7 @@
 	}
 	
 	.head{
-		margin:0;	
+		margin:0;
 	}
 	.pg{
 		padding:30px 10px 10px;
@@ -685,9 +686,5 @@
 		margin:1em auto;
 	}
 	
-	.foot-moveable{
-		margin-left:-18px;
-		margin-right:-18px;
-	}
 	
 }

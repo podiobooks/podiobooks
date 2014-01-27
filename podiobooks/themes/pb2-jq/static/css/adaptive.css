@@ -3,20 +3,13 @@
  */
 @media all and (max-width:950px){	
 	.width{		
-		width:auto;
-		margin-left: 18px;
-		margin-right: 18px;
-		
+		width:92%;
 	}
 	.home .width{
-		padding-left:40px;
-		padding-right: 40px;
+		
 	}
 	.home .pg-foot{
-		padding-left:0;
-		padding-right:0;	
 		width:95%;
-		margin:0 auto;
 	}
 	.nav{
 		margin:0;
@@ -132,10 +125,10 @@
 
 	.width,
 	.home .width{
-		width:95%;
+		
 	}
 	.home .width{
-		padding:0;
+		
 	}
 	.hide-on-mobile{
 		display:none;
@@ -230,10 +223,6 @@
 	.libsyn-wrap{
 		float:none;
 		margin:0 0 1em;
-	}
-	.pg-foot{
-		margin:1.5em auto;
-		padding:1.5em 0;
 	}
 
 }

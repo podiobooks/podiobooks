@@ -243,14 +243,12 @@ body form.gsc-search-box{
 */
 .pg-foot{
 	position: relative;
-	padding:1em 0 0;
-	margin:1em auto;
 	border-top:solid 1px #e7e7e7;
+	margin-top:1em;
+	padding-top:1em;
 }
 .home .pg-foot{
 	border-top:none;
-	padding:0;
-	margin:0 auto;
 }
 .foot-moveable{
 	text-align: center;
