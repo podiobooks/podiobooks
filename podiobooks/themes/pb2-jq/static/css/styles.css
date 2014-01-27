@@ -258,10 +258,6 @@ body form.gsc-search-box{
 .gplus-wrap{
 	margin:0 0 1em;
 }
-.site-menu-active .pg-foot {
-    background: #fff;
-
-}
 
 .pg-foot ul {
     list-style: none;
@@ -349,9 +345,7 @@ body form.gsc-search-box{
     display: none;
 }
 
-.site-menu {
-    display: none;
-}
+
 .pagination{
 	margin:15px 0;
 }
