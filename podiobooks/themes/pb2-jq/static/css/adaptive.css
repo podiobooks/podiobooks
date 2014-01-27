@@ -2,15 +2,11 @@
  * 3 panes per shelf
  */
 @media all and (max-width:950px){	
+	.home .width,
 	.width{		
 		width:92%;
 	}
-	.home .width{
-		
-	}
-	.home .pg-foot{
-		width:95%;
-	}
+	
 	.nav{
 		margin:0;
 		float:left;
