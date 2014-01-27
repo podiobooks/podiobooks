@@ -6,11 +6,12 @@
 	.width{		
 		width:92%;
 	}
-	.pg-foot{
+	.pg-foot,
+	.home .pg-foot{
 		width:auto;
 		margin:0 10px;
+		text-align: center;
 	}
-	
 	.nav{
 		margin:0;
 		float:left;
@@ -69,14 +70,11 @@
 		margin:0 0 0 10px;
 		float:left;
 	}
-	.foot-nav{
-		text-align: left;
-	}
 	.footer-ad{
-		margin:1em 0;
+		margin:1em auto;
+		text-align: center;
 	}
 	.foot-moveable{
-		text-align: left;
 		float: none;
 	}
 	.gplus-wrap,
@@ -85,8 +83,6 @@
 		margin:0 0 1em;
 	}
 }
-
-
 
 /* 
  * 2 panes per shelf
