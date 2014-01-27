@@ -192,19 +192,7 @@
 		display:none;
 	}
 	
-	.site-menu{
-		display:none;
-		position:absolute;
-		z-index:100;
-		border-bottom:solid 1px #C7D9ED;
-	}
-	.site-menu .nav,
-	.site-menu .browse-by{
-		display:block;
-		text-align:left;
-		border-right:none;
-		border-left:none;
-	}
+
 	.nav-bar li{
 		margin:0;
 	}
@@ -262,58 +250,7 @@
 	.home .pg{
 		padding:0;
 	}
-	.site-menu-active{
-		background:#b1cded;
-		overflow:hidden;
-		
-	}
-	.site-menu-active .pg{
-		box-shadow:inset 0 0 8px rgba(0,0,0,.2);
-	}
-	.site-menu{
-		min-width:230px;
-	}
-	.site-menu ul{
-		display:block;
-		float:none;
-		margin:0;
-	}
-	.site-menu li{
-		display:block;
-		float:none;
-		width:auto;
-	}
-	.site-menu a{
-		display:block;
-		float:none;
-		width:auto;
-		padding:12px 10px;
-		border-top:solid 1px #c7d9ed;
-		border-bottom:solid 1px #a5c6ed;
-		position:relative;
-		background-size:13px;
-	}
-	.site-menu a:after{
-		content:"\e801";
-		 font-weight: normal;
-	    font-style: normal;
-	    line-height: normal;
-	    font-family: 'fontello';
-	    font-size:9px;
-	    position: absolute;
-	    right:10px;
-	    top:40%;
-	    color:#fff;
-	}
-	.site-menu a:active,
-	.site-menu a:hover,
-	.site-menu a:link,
-	.site-menu a:visited,
-	.site-menu a{
-		color:#fff;
-		text-decoration:none;
-		font-weight:bold;
-	}
+
 	.podiobooks-nav-text,
 	.podiobooks-nav-text a,
 	.podiobooks-nav-text a:link,
@@ -577,12 +514,7 @@
 		padding:0;
 		margin:0;
 	}
-	.site-menu .browse-by{
-		height:auto;
-	}
-	.site-menu .browse-by a{
-		padding-bottom:8px;
-	}
+
 	.browse-by li,
 	.global-donate-button-wrap .global-donate-button{
 		display:block;
