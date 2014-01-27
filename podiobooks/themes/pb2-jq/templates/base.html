@@ -58,9 +58,18 @@
 				<p class='logo'><a href='{{ HOME_URL }}'><img alt='Podiobooks Logo' src='{{ STATIC_URL }}images/pb-logo.jpg'/></a></p>
 
 				<div class='nav-bar clearfix'>
+
 					{% block search_box %}
 				    	{% show_searchbox %}
 				    {% endblock %}
+
+				    <ul class='menu-triggers'>
+				    	<li>
+				    		<a href='{% url 'home_page' %}' class='menu-trigger' id='site-menu-trigger'>
+				    			<img src='{% static 'images/pb-logo-icon.png' %}' />
+				    		</a>
+				    	</li>
+				    </ul>
 
 				    <p class="podiobooks-nav-text"><a href="{{ HOME_URL }}">Podiobooks</a></p>
 
@@ -117,7 +126,7 @@
 		</script>
 
 		{% block extra_foot %}{% endblock %}
-		
+
 <script type="text/javascript">
 var infolinks_pid = 1973980;
 var infolinks_wsid = 0;
