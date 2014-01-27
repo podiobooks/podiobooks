@@ -265,7 +265,8 @@ body form.gsc-search-box{
 
 .pg-foot li {
     display: inline;
-    margin: 0 4px;
+    display: inline-block;
+    margin: 4px;
 }
 .pg-foot li:first-of-type{
 	margin:0 4px 0 0;
@@ -274,7 +275,6 @@ body form.gsc-search-box{
 	font-size:.9em;
     margin:0 0 1em;
     text-align: center;
-
 }
 
 .pg-foot .foot-nav-extra {
