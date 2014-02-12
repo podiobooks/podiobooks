@@ -115,8 +115,8 @@ if DEBUG:
     DEBUG_TOOLBAR_CONFIG = {
         'INTERCEPT_REDIRECTS': False
     }
-else:
     DEBUG_TOOLBAR_PATCH_SETTINGS = False  # Trying to get around gunicorn startup error
+
 
 LOGGING = {
     'version': 1,
