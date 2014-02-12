@@ -185,7 +185,7 @@ BASE_META_DESCRIPTION = "Free audio books delivered as podcasts. Subscribe for f
 TIPJAR_BUSINESS_NAME = 'evo@podiobooks.com'
 
 #INTERNAL_IPS = ('127.0.0.1',)
-#INSTALLED_APPS += ( "debug_toolbar", )
+#INSTALLED_APPS += ( "deug_toolbar", )
 #MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware', )
 ### MUB
 MUB_CSS_ORDER = (
