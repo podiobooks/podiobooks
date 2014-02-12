@@ -2,7 +2,6 @@
 
 import os
 
-from django.core.urlresolvers import reverse
 from django.core.urlresolvers import reverse_lazy
 
 from django.utils.http import urlquote
@@ -84,7 +83,7 @@ def title_search(request, keywords=None):
                 category = Category.objects.get(slug=request.GET.get('category'))
             return redirect('category_detail', category.slug, permanent=True)
         except ObjectDoesNotExist:
-            return HttpResponsePermanentRedirect(reverse('category_list'))
+            return HttpResponsePermanentRedirect(reverse_lazy('category_list'))
 
     # Convert PB1-style 'keyword' arg into keywords
     if "keyword" in request.GET:
@@ -97,9 +96,9 @@ def title_search(request, keywords=None):
         keywords = form.cleaned_data['keyword']
 
     if keywords:
-        return HttpResponsePermanentRedirect(redirect_to=reverse('site_search') + '?q=' + urlquote(keywords))
+        return HttpResponsePermanentRedirect(redirect_to=reverse_lazy('site_search') + '?q=' + urlquote(keywords))
 
-    return HttpResponsePermanentRedirect(redirect_to=reverse('site_search'))
+    return HttpResponsePermanentRedirect(redirect_to=reverse_lazy('site_search'))
 
 
 def clean_id(id_num=None):
