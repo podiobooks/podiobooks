@@ -7,6 +7,7 @@ from django.contrib.syndication.views import add_domain
 import feedparser
 from django.core.urlresolvers import reverse_lazy
 
+
 class Command(NoArgsCommand):
     """
         Validates All Feeds
