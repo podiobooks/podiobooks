@@ -63,6 +63,7 @@ class Contributor(models.Model):
     middle_name = models.CharField(max_length=255, blank=True)
     last_name = models.CharField(max_length=255)
     display_name = models.CharField(max_length=255)
+    email_address = models.EmailField(max_length=1024, blank=True)
     community_handle = models.CharField(max_length=255, blank=True)
     scribl_username = models.CharField(max_length=255, blank=True)
     deleted = models.BooleanField(default=False)
