@@ -141,7 +141,7 @@ class TitleAdmin(admin.ModelAdmin):
         ('Scribl and Tips', {
             'classes': ('collapse',),
             'fields': (
-                'scribl_book_id', 'tips_allowed', 'scribl_allowed', 'date_accepted')
+                'scribl_book_id', 'tips_allowed', 'scribl_allowed', 'date_accepted', 'payment_email_address')
         }),
         ('Series', {
             'classes': ('collapse',),
