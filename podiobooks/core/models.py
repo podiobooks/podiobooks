@@ -255,6 +255,7 @@ class Title(models.Model):
     # Note: TitleCategory Objects (intermediate table) are available as titlecategories.all()
     category_list = models.CharField(max_length=1024, blank=True) # This is a formatted cache of the categories
     awards = models.ManyToManyField('Award', null=True, blank=True, related_name='titles')
+    payment_email_address = models.EmailField(null=True, blank=True, help_text='Email address to send payments or tips for this title.')
     libsyn_show_id = models.CharField(max_length=50, db_index=True, blank=True, verbose_name='LibSyn Show ID',
                                       help_text='Starts with k-')
     itunes_adam_id = models.IntegerField(null=True, blank=True, verbose_name='iTunes ADAM Id',
