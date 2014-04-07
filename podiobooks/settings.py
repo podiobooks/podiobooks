@@ -148,27 +148,13 @@ USE_L10N = True
 SECRET_KEY = 'zv$+w7juz@(g!^53o0ai1u082)=jkz9my_r=3)fglrj5t8l$2#'
 
 # Set a default timeout for external URL grabs, such as for the comments and for Google Analytics from Feeds
-socket.setdefaulttimeout(2) #2 second timeout for grabbing feed
+socket.setdefaulttimeout(2)  # 2 second timeout for grabbing feed
 
 ### DEBUG TOOLBAR
 if DEBUG:
     MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
     INTERNAL_IPS = ('127.0.0.1',)
     INSTALLED_APPS += ('debug_toolbar',)
-
-    DEBUG_TOOLBAR_PANELS = (
-        'debug_toolbar.panels.timer.TimerDebugPanel',
-        'debug_toolbar.panels.headers.HeaderDebugPanel',
-        'debug_toolbar.panels.request_vars.RequestVarsDebugPanel',
-        'debug_toolbar.panels.template.TemplateDebugPanel',
-        'debug_toolbar.panels.sql.SQLDebugPanel',
-        'debug_toolbar.panels.signals.SignalDebugPanel',
-        'debug_toolbar.panels.logger.LoggingPanel',
-    )
-
-    DEBUG_TOOLBAR_CONFIG = {
-        'INTERCEPT_REDIRECTS': False
-    }
 
 ##### Custom Variables Below Here #######
 
@@ -184,9 +170,6 @@ BASE_META_DESCRIPTION = "Free audio books delivered as podcasts. Subscribe for f
 ### TIPJAR
 TIPJAR_BUSINESS_NAME = 'evo@podiobooks.com'
 
-#INTERNAL_IPS = ('127.0.0.1',)
-#INSTALLED_APPS += ( "debug_toolbar", )
-#MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware', )
 ### MUB
 MUB_CSS_ORDER = (
     ("jquery.pbshelf.css", "clear.css", "styles.css", "base-shelf.css"),

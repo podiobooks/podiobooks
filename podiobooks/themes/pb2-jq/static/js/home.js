@@ -1,9 +1,5 @@
 $(function(){
 
-	var clearShelfCookies = function(cookie){
-		$.cookie(cookie, "None", {expires: -1});
-	};
-
 	var gaqPush = function(shelf, titlesDeep, perSlide){
 
 		var shelfPages = shelf.find(".shelf-pages");
@@ -20,14 +16,6 @@ $(function(){
 			_gaq.push(['_trackEvent', 'Widgets', 'HomePage-ShelfTitlesDeep', shelf.find(".shelf-pages").attr("id"), (titlesDeep+1)]);
 		}
 	};
-
-
-	// 6/8/2013 - added this to clear out old cookies
-	// Can be removed later (anytime after july 2013)
-	clearShelfCookies("featured_by_category");
-	clearShelfCookies("top_rated_by_author");
-	clearShelfCookies("recent_by_category");
-
 
 	if ($("body").hasClass("home")){
 		$("#featured_shelfPageContainer").pbShelf({

@@ -58,17 +58,25 @@
 				<p class='logo'><a href='{{ HOME_URL }}'><img alt='Podiobooks Logo' src='{{ STATIC_URL }}images/pb-logo.jpg'/></a></p>
 
 				<div class='nav-bar clearfix'>
+
 					{% block search_box %}
 				    	{% show_searchbox %}
 				    {% endblock %}
 
-				    <ul class='nav'>
-				        <li><a href='http://blog.podiobooks.com/'>Blog</a></li>
-                        <li><a href='http://blog.podiobooks.com/what-happened-to-my-login/'>Account</a></li>
+				    <ul class='menu-triggers'>
+				    	<li>
+				    		<a href='{% url 'home_page' %}' class='menu-trigger'>
+				    			<img src='{% static 'images/pb-logo-icon.png' %}' />
+				    		</a>
+				    	</li>
 				    </ul>
+
 				    <p class="podiobooks-nav-text"><a href="{{ HOME_URL }}">Podiobooks</a></p>
 
 				    {% show_browsebox %}
+
+				    {% show_donate %}
+
 				</div>
 
 		    {% endblock %}
@@ -117,26 +125,13 @@
 		    var feedback_widget = new GSFN.feedback_widget(feedback_widget_options);
 		</script>
 
-        <!-- Start of Woopra Code -->
-        <script type="text/javascript">
-            function woopraReady(tracker) {
-                tracker.setDomain('podiobooks.com');
-                tracker.setIdleTimeout(1800000);
-                tracker.track();
-                return false;
-            }
-            (function() {
-                var wsc = document.createElement('script');
-                wsc.src = document.location.protocol+'//static.woopra.com/js/woopra.js';
-                wsc.type = 'text/javascript';
-                wsc.async = true;
-                var ssc = document.getElementsByTagName('script')[0];
-                ssc.parentNode.insertBefore(wsc, ssc);
-            })();
-        </script>
-        <!-- End of Woopra Code -->
-
 		{% block extra_foot %}{% endblock %}
+
+<script type="text/javascript">
+var infolinks_pid = 1973980;
+var infolinks_wsid = 0;
+</script>
+<script type="text/javascript" src="http://resources.infolinks.com/js/infolinks_main.js"></script>
 
 	</body>
 </html>
