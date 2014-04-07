@@ -14,16 +14,8 @@ framework.
 
 """
 import os
-import django.core.management
-from django.core.urlresolvers import reverse
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "podiobooks.settings")
-
-# Hack to force preload of everything at WSGI init
-utility = django.core.management.ManagementUtility()
-command = utility.fetch_command('runserver')
-command.validate()
-reverse('recent_titles_feed')
 
 # This application object is used by any WSGI server configured to use this
 # file. This includes Django's development server, if the WSGI_APPLICATION
