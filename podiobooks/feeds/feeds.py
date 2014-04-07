@@ -12,7 +12,7 @@ from django.contrib.sites.models import Site
 from django.utils.feedgenerator import Rss201rev2Feed
 from django.utils.html import strip_tags
 from django.conf import settings
-from django.core.urlresolvers import reverse
+from django.core.urlresolvers import reverse_lazy
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import get_object_or_404
 
@@ -55,7 +55,7 @@ class TitleFeed(Feed):
         return strip_tags(obj.description).replace('&amp;', '&')
 
     def item_link(self, obj):
-        return reverse('title_episodes_feed', args=[obj.slug])
+        return reverse_lazy('title_episodes_feed', args=[obj.slug])
 
     def item_title(self, obj):
         return strip_tags(obj.name).replace('&amp;', '&')

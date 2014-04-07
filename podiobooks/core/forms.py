@@ -1,5 +1,5 @@
 """ Forms """
-from django.core.urlresolvers import reverse
+from django.core.urlresolvers import reverse_lazy
 from django.core.cache import cache
 from django import forms
 from django.db.models import Count, Q
@@ -7,6 +7,7 @@ from django.db.models import Count, Q
 from podiobooks.core.models import Category, Contributor
 
 # pylint: disable=R0924,E1002
+
 
 class BrowseByForm(forms.Form):
     """ Form used to choose a way to browse - used in header """
@@ -39,7 +40,7 @@ class CategoryChoiceForm(forms.Form):
                 pass
         
         self.fields["category"] = forms.ChoiceField(choices=categories, widget=forms.Select(attrs={'class':'pb-category-choice'}), initial=initial_category)
-        self.submit_url = reverse("shelf", kwargs={"shelf_type": cookie})
+        self.submit_url = reverse_lazy("shelf", kwargs={"shelf_type": cookie})
 
 
 class ContributorChoiceForm(forms.Form):
@@ -55,8 +56,8 @@ class ContributorChoiceForm(forms.Form):
             top_contributors = Contributor.objects.annotate(title_count=Count('title')).filter(title__display_on_homepage=True, title__deleted=False, title__promoter_count__gte=20).order_by('-title_count').values_list('slug', 'display_name', 'title_count')[:10]
              
             contributors = []
-            for slug, name, titles in top_contributors: # pylint: disable=W0612
-                contributors.append( (str(slug), str(name)), )  #strip off the count, which has to be in the values list because of the order_by
+            for slug, name, titles in top_contributors:  # pylint: disable=W0612
+                contributors.append( (str(slug), str(name)), )  # strip off the count, which has to be in the values list because of the order_by
               
             cache.set('contributor_dropdown_values', contributors, 240)
             
@@ -71,14 +72,11 @@ class ContributorChoiceForm(forms.Form):
             except IndexError:
                 pass
         
-        self.fields["contributor"] = forms.ChoiceField(choices=[(slug, display) for slug, display in contributors], widget=forms.Select(attrs={'class':'pb-contributor-choice'}), initial=initial_contributor)
-        self.submit_url = reverse("shelf", kwargs={"shelf_type": cookie})
+        self.fields["contributor"] = forms.ChoiceField(choices=[(slug, display) for slug, display in contributors], widget=forms.Select(attrs={'class': 'pb-contributor-choice'}), initial=initial_contributor)
+        self.submit_url = reverse_lazy("shelf", kwargs={"shelf_type": cookie})
 
 
 class TitleSearchForm(forms.Form):
     """ Form used to search for titles, used in header and on search page. """
 
     keyword = forms.CharField(label="Search for", widget=forms.TextInput(attrs={'class':'search-keywords', "autocapitalize": "off"}))
-    
-    
-    
