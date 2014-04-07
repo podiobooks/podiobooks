@@ -12,7 +12,7 @@ from django.contrib.admindocs import urls as admindocs_urls
 from django.contrib.sitemaps.views import sitemap as sitemap_urls
 from django.views.static import serve as dev_static_views
 from django.conf import settings
-from django.views.generic import RedirectView
+from django.views.generic import RedirectView, TemplateView
 
 from podiobooks.core.sitemaps import AwardDetailSitemap, CategoryDetailSitemap, ContributorDetailSitemap, TitleDetailSitemap
 # from podiobooks.feeds import urls as feeds_urls
@@ -20,7 +20,7 @@ from podiobooks.core.sitemaps import AwardDetailSitemap, CategoryDetailSitemap, 
 # from podiobooks.core import urls as core_urls
 # from podiobooks.ratings import urls as ratings_urls
 # from podiobooks.search import urls as search_urls
-from podiobooks.core.views import AccelView, IndexView
+from podiobooks.core.views import AccelView, IndexView, DonationView
 
 
 from .views import BlogRedirectView, TextTemplateView, RobotsView
@@ -35,6 +35,9 @@ urlpatterns = \
     patterns('',
              # Home Page
              url(r'^$', IndexView.as_view(), name="home_page"),
+
+             # Donation Options View
+             url (r'^donate/$', DonationView.as_view(), name='donate'),
 
              # Recent Titles Feed Redirect
              url(r'^index\.xml$', RedirectView.as_view(url='/rss/feeds/titles/recent/')),
@@ -110,8 +113,8 @@ urlpatterns = \
               RedirectView.as_view(url='http://blog.podiobooks.com/frequently-asked-questions/')),
 
              # PB1 Donate Page
-             (r'donate/|donate\.php',
-              RedirectView.as_view(url='http://blog.podiobooks.com/why-you-should-donate/')),
+             (r'donate\.php',
+              RedirectView.as_view(url='/donate')),
 
              # PB1 Spread The Word Page
              (r'spreadtheword\.php',

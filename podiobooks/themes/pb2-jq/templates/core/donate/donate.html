@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block headtitle %}Make a Donation - Podiobooks.com{% endblock %}
+{% load staticfiles %}
+{% block body_class %}donate{% endblock %}
+{% block content %}
+
+<h1>Make a Donation</h1>
+
+<div class="two-col clearfix donate-options">
+	<section class="two-col-left">
+		<h2>Have a favorite author?</h2>
+		<p><img src="{% static "images/donate/authors.png" %}" /></p>
+		<p>Tip one of your favorite authors directly! Just type his or her name in the box and we'll make sure that author receives your donation.</p>
+
+
+        <form class="author-donation-form" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+             <input type="hidden" name="cmd" value="_donations">
+            <input type="hidden" name="business" value="{{ TIPJAR_BUSINESS_NAME }}">
+            <input type="hidden" name="hosted_button_id" value="X7ZTFK3464SX6">
+            <input type="hidden" name="item_name" value="Podiobooks.com Author Tip">
+            <label for="authorDonationText" class="visuallyhidden">Author Name:</label>
+            <input id="authorDonationText" type="text" placeholder="Author's Name" name="item_number" class="author-donation-text"><input type="submit" value="Tip" name="submit" class="submit-button author-donation-submit" />
+        </form>
+	</section>
+
+	<p class="or-p"><span class="or-wrap">OR</span></p>
+
+	<section class="two-col-right">
+		<h2>Make a general donation</h2>
+		<p><img src="{% static "images/donate/podiobooks.png" %}" /></p>
+		<p>Make a donation to the Podiobooks organization. By donating, you're helping to keep the lights on and the podiobooks flowin'.</p>
+
+		<form class="general-donation-form" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+			<input type="hidden" name="cmd" value="_s-xclick">
+			<input type="hidden" name="hosted_button_id" value="X7ZTFK3464SX6">
+			<input type="submit" value="Donate to Podiobooks" class="submit-button"/>
+		</form>
+
+	</section>
+</div>
+
+{% endblock %}
