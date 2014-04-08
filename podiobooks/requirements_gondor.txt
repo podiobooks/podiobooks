@@ -7,4 +7,4 @@ gunicorn==18.0
 hiredis==0.1.1
 psycopg2==2.5.1
 redis==2.8
--e git+git@github.com:podiobooks/podiobooks_data.git
+git+git@github.com:podiobooks/podiobooks_data.git
