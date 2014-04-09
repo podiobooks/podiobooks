@@ -3,6 +3,7 @@
 # pylint: disable=C0103,C0111,R0904
 
 from django.test import TestCase
+from django.conf import settings
 
 
 class UrlTestCase(TestCase):
@@ -154,3 +155,35 @@ class UrlTestCase(TestCase):
     def test_pb1_feed_redirect(self):
         response = self.client.get('/title/trader-tales-4-double-share/feed/')
         self.assertRedirects(response, '/rss/feeds/episodes/trader-tales-4-double-share/', status_code=301)
+
+    def test_blog_redirect(self):
+        response = self.client.get('/blog')
+        self.assertEquals(301, response.status_code)
+
+    def test_robots(self):
+        response = self.client.get('/robots.txt')
+        self.assertEquals(200, response.status_code)
+
+    def test_crossdomain(self):
+        response = self.client.get('/crossdomain.xml')
+        self.assertEquals(200, response.status_code)
+
+    def test_favicon(self):
+        settings.ACCEL_REDIRECT=True
+        response = self.client.get('/favicon.ico')
+        self.assertEquals(200, response.status_code)
+        self.assertTrue(response.has_header('X-Accel-Redirect'))
+        settings.ACCEL_REDIRECT=False
+        response = self.client.get('/favicon.ico')
+        self.assertEquals(302, response.status_code)
+        self.assertFalse(response.has_header('X-Accel-Redirect'))
+
+    def test_apple_touch_icon(self):
+        settings.ACCEL_REDIRECT=True
+        response = self.client.get('/apple-touch-icon.png')
+        self.assertEquals(200, response.status_code)
+        self.assertTrue(response.has_header('X-Accel-Redirect'))
+        settings.ACCEL_REDIRECT=False
+        response = self.client.get('/apple-touch-icon.png')
+        self.assertEquals(302, response.status_code)
+        self.assertFalse(response.has_header('X-Accel-Redirect'))
