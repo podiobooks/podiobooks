@@ -24,6 +24,11 @@ class RatingsTestCase(TestCase):
         self.assertEquals(200, response.status_code)
         self.assertContains(response, 'widget')
 
+        # Test Not Found
+        response = self.client.post('/rate/title-does-not-exist/promote/', {}, HTTP_X_REQUESTED_WITH='XMLHttpRequest')
+        self.assertEquals(200, response.status_code)
+        self.assertContains(response, 'not found')
+
     def test_detract(self):
         # Test Non-AJAX Call
         response = self.client.post('/rate/trader-tales-4-double-share/detract/')
@@ -35,6 +40,11 @@ class RatingsTestCase(TestCase):
         self.assertEquals(200, response.status_code)
         self.assertContains(response, 'widget')
 
+        # Test Not Found
+        response = self.client.post('/rate/title-does-not-exist/detract/', {}, HTTP_X_REQUESTED_WITH='XMLHttpRequest')
+        self.assertEquals(200, response.status_code)
+        self.assertContains(response, 'not found')
+
     def test_get_ratings(self):
         # Test Non-AJAX Call
         response = self.client.post('/rate/trader-tales-4-double-share/')
@@ -45,5 +55,10 @@ class RatingsTestCase(TestCase):
         response = self.client.post('/rate/trader-tales-4-double-share/', {}, HTTP_X_REQUESTED_WITH='XMLHttpRequest')
         self.assertEquals(200, response.status_code)
         self.assertContains(response, 'widget')
+
+        # Test Not Found
+        response = self.client.post('/rate/title-does-not-exist/', {}, HTTP_X_REQUESTED_WITH='XMLHttpRequest')
+        self.assertEquals(200, response.status_code)
+        self.assertContains(response, 'not found')
 
 
