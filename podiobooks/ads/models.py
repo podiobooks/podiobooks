@@ -62,7 +62,7 @@ def get_ep_list_with_ads_for_title(title):
     """Return a list of episodes with ad inserts for a title"""
 
     episode_list = list(title.episodes.all().order_by('sequence').prefetch_related('title'))
-    ad_schedule_positions = AdSchedulePosition.objects.filter(ad_schedule__in=get_active_ad_schedules_for_title(title))
+    ad_schedule_positions = AdSchedulePosition.objects.filter(ad_schedule__in=get_active_ad_scheds_for_title(title))
     
     for position in ad_schedule_positions:
         try:
