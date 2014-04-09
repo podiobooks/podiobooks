@@ -178,3 +178,6 @@ MUB_CSS_ORDER = (
 MUB_MINIFY = False
 # This is to catch special domain names and redirect them to the main
 REDIRECT_DOMAINS = []
+
+# Django_Jenkins Default Tasks
+JENKINS_TASKS = ('django_jenkins.tasks.with_coverage',)
