@@ -4,6 +4,7 @@ import os, shutil
 from django.conf import settings
 from django.core.management.base import CommandError, NoArgsCommand
 
+
 class Command(NoArgsCommand):
     """
         Copy media to MEDIA_ROOT
@@ -22,6 +23,7 @@ class Command(NoArgsCommand):
             raise CommandError("Local Media Path '{0}' does not exist".format(local_media))
 
     def copy_dir(self, local_path, dest_path):
+        """Copy a whole directory to new path"""
         for item in os.listdir(local_path):
             item_path = os.path.join(local_path, item)
             if os.path.isdir(item_path):

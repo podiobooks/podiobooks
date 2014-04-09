@@ -31,8 +31,8 @@ def show_shelf_pages(shelf_id, shelf_name, title_list, ad_template=None):
 
 @register.inclusion_tag('core/shelf/tags/show_shelf_item.html')
 def show_shelf_item(shelf_id, title):
-    """ Displays a detail snippet for a single title """    
-    return { 'shelf_id': shelf_id, 'title' : title }
+    """ Displays a detail snippet for a single title """
+    return {'shelf_id': shelf_id, 'title': title}
 
 
 @register.filter

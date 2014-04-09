@@ -1,1 +1,1 @@
-__author__ = 'cyface'
+"""Ads module for Podiobooks"""

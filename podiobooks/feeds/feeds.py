@@ -76,10 +76,10 @@ class RecentTitleFeed(TitleFeed):
 class EpisodeFeed(Feed):
     """Main feed used to generate the list of episodes for an individual Title"""
     feed_type = ITunesFeed
-        
-    def __init__(self, *args, **kwargs):    
+
+    def __init__(self, *args, **kwargs):
         super(EpisodeFeed, self).__init__(*args, **kwargs)
-    
+
     def author_name(self, obj):
         authors = obj.titlecontributors.filter(contributor_type=1).values_list('contributor__display_name', flat=True)
         author_string = ', '.join(authors)
@@ -112,7 +112,7 @@ class EpisodeFeed(Feed):
         if obj.license:
             return obj.license.slug
         else:
-            return "All Rights Reserved by Author" # pragma: no cover
+            return "All Rights Reserved by Author"  # pragma: no cover
 
     def feed_extra_kwargs(self, obj):
         """
@@ -129,23 +129,23 @@ class EpisodeFeed(Feed):
 
     # pylint: disable=W0221
     def get_object(self, request, *args, **kwargs):
-        
+
         title_slug = kwargs.get('title_slug', None)
-        
+
         title_set = Title.objects.filter(deleted=False)
-        
+
         try:
             obj = title_set.get(slug__exact=title_slug)
         except ObjectDoesNotExist:
             obj = get_object_or_404(title_set, old_slug__exact=title_slug)
-        
+
         ### Google Analytics for Feed
         tracker = Tracker(settings.GOOGLE_ANALYTICS_ID, Site.objects.get_current().domain)
         visitor = Visitor()
         visitor.ip_address = request.META.get('REMOTE_ADDR', '')
         visitor.user_agent = request.META.get('HTTP_USER_AGENT', '')
         event = Event(category='RSS', action='Podiobooks Episodes Feed', label=title_slug, value=None,
-            noninteraction=False)
+                      noninteraction=False)
         try:
             tracker.track_event(event, Session(), visitor)
         except (URLError, timeout):
@@ -160,7 +160,7 @@ class EpisodeFeed(Feed):
         return 'yes'
 
     def items(self, obj):
-#        return Episode.objects.prefetch_related("title").filter(title__id__exact=obj.id).order_by('sequence')
+        #        return Episode.objects.prefetch_related("title").filter(title__id__exact=obj.id).order_by('sequence')
         return get_ep_list_with_ads_for_title(obj)
 
     def item_comments(self, obj):
@@ -205,7 +205,7 @@ class EpisodeFeed(Feed):
         return "{0}#{1}".format(obj.title.get_absolute_url(), str(obj.pk))
 
     def item_pubdate(self, obj):
-        if hasattr(obj,"injected_pubdate"):
+        if hasattr(obj, "injected_pubdate"):
             return obj.injected_pubdate
         return obj.media_date_created if obj.media_date_created is not None else obj.date_created
 
@@ -222,7 +222,7 @@ class EpisodeFeed(Feed):
         return obj.name
 
     def item_order(self, obj):
-        if hasattr(obj,"injected_sequence"):
+        if hasattr(obj, "injected_sequence"):
             return str(obj.injected_sequence)
         else:
             return str(obj.sequence)
