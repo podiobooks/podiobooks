@@ -86,7 +86,7 @@ class TitleTestCase(TestCase):
         self.assertEquals(0, get_active_ad_scheds_for_title(self.title1).count())
 
         episode_list = get_ep_list_with_ads_for_title(self.title1)
-#        print episode_list
+        # print episode_list
 
         self.assertEquals(self.title1.episodes.all()[4], episode_list[4])
         self.assertEquals(23, len(episode_list))
@@ -97,7 +97,7 @@ class TitleTestCase(TestCase):
 
         #  Insert ad episodes into episode list
         episode_list = get_ep_list_with_ads_for_title(self.title1)
-#        print episode_list
+        # print episode_list
 
         self.assertEquals(self.episode1, episode_list[4])
         self.assertEquals(26, len(episode_list))
@@ -109,7 +109,7 @@ class TitleTestCase(TestCase):
         self.assertEquals(2, get_active_ad_scheds_for_title(self.title1).count())
 
         episode_list = get_ep_list_with_ads_for_title(self.title1)
-#        print episode_list
+        # print episode_list
 
         self.assertEquals(self.episode2_1, episode_list[4])
         self.assertEquals(28, len(episode_list))
@@ -122,7 +122,7 @@ class TitleTestCase(TestCase):
         self.assertEquals(1, get_active_ad_scheds_for_title(self.title1).count())
 
         episode_list = get_ep_list_with_ads_for_title(self.title1)
-#        print episode_list
+        # print episode_list
 
         self.assertEquals(self.episode1, episode_list[4])
         self.assertEquals(26, len(episode_list))
@@ -136,7 +136,7 @@ class TitleTestCase(TestCase):
         self.assertEquals(1, get_active_ad_scheds_for_title(self.title1).count())
 
         episode_list = get_ep_list_with_ads_for_title(self.title1)
-#        print episode_list
+        # print episode_list
 
         self.assertEquals(self.episode1, episode_list[4])
         self.assertEquals(26, len(episode_list))
@@ -147,7 +147,7 @@ class TitleTestCase(TestCase):
 
         self.assertEquals(0, get_active_ad_scheds_for_title(self.title1).count())
         episode_list = get_ep_list_with_ads_for_title(self.title1)
-#        print episode_list
+        # print episode_list
 
         self.assertEquals(self.title1.episodes.all()[4], episode_list[4])
         self.assertEquals(23, len(episode_list))
@@ -162,7 +162,7 @@ class TitleTestCase(TestCase):
         self.assertEquals(1, get_active_ad_scheds_for_title(self.title2).count())
 
         episode_list = get_ep_list_with_ads_for_title(self.title2)
-#        print episode_list
+        # print episode_list
         self.assertEquals(self.episode1, episode_list[4])
 
     def test_end_of_title_ad(self):
@@ -173,7 +173,7 @@ class TitleTestCase(TestCase):
         )
 
         episode_list = get_ep_list_with_ads_for_title(self.title1)
-        print episode_list
-        print len(episode_list)
+        # print episode_list
+        # print len(episode_list)
         self.assertEquals(self.episode1, episode_list[len(episode_list)-1])
 
