@@ -9,6 +9,8 @@ from django.core.management import call_command
 class ManagementCommandsTestCase(TestCase):
     """Test the top level management commands"""
 
+    fixtures = ['test_data.json', ]
+
     def setUp(self):
         pass
 
