@@ -1,21 +1,18 @@
-
+"""Ratings module Utility Functions"""
 
 from django.template.loader import render_to_string
 from django.core.cache import cache
-from django.core.exceptions import ObjectDoesNotExist
-
-from podiobooks.core.views import Title
 
 
 def get_ratings_widget_dict(request, title, in_storage=False):
-
+    """Retrieves the ratings widget from storage"""
     resp = {"status": "ok"}
 
-    ip = "pb-rating-%s" % str(request.META['REMOTE_ADDR'])
-    ip_title_list = cache.get(ip)
+    ip_address = "pb-rating-%s" % str(request.META['REMOTE_ADDR'])
+    ip_title_list = cache.get(ip_address)
 
     rating = 0
-    if ip_title_list and ip_title_list.has_key(title.pk):
+    if ip_title_list and title.pk in ip_title_list:
         rating = ip_title_list[title.pk]
 
 

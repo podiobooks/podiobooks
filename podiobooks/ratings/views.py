@@ -7,7 +7,6 @@ from django.http import HttpResponse
 
 from django.views.generic import View
 from django.views.decorators.cache import never_cache
-from django.views.decorators.csrf import csrf_protect
 
 from podiobooks.ratings.util import get_ratings_widget_dict, get_rating_from_storage
 from podiobooks.core.views import Title
@@ -40,9 +39,9 @@ def get_ratings(request, slug):
 class RateTitleView(View):
     """Rate Title"""
 
-    up = True
+    up_vote = True
 
-    def post(self, request, slug, up=True):
+    def post(self, request, slug, up_vote=True):
         """Add an upvote/downvote for a specific title"""
 
         if not request.is_ajax():
@@ -55,34 +54,34 @@ class RateTitleView(View):
 
         in_storage = get_rating_from_storage(request)
 
-        ip = "pb-rating-%s" % str(request.META['REMOTE_ADDR'])
-        ip_title_list = cache.get(ip, default={})
+        ip_address = "pb-rating-%s" % str(request.META['REMOTE_ADDR'])
+        ip_title_list = cache.get(ip_address, default={})
 
         # rating will hold value for the rating pulled from cache
         rating = 0
         if ip_title_list and ip_title_list.has_key(title.pk):
             rating = ip_title_list[title.pk]
 
-        # corrects for changing vote after chaning IP
+        # corrects for changing vote after changing IP
         if in_storage and rating != in_storage:
             rating = in_storage
 
         # Fresh Vote
         if rating == 0:
-            ip_title_list[title.pk] = 1 if up else -1
-            cache.set(ip, ip_title_list, 100000000)
+            ip_title_list[title.pk] = 1 if up_vote else -1
+            cache.set(ip_address, ip_title_list, 100000000)
 
             if not in_storage:
-                if up:
+                if up_vote:
                     title.promoter_count += 1
                 else:
                     title.detractor_count += 1
                 title.save()
 
         # Changing vote from detract to promote
-        if up and rating == -1:
+        if up_vote and rating == -1:
             ip_title_list[title.pk] = 1
-            cache.set(ip, ip_title_list, 100000000)
+            cache.set(ip_address, ip_title_list, 100000000)
 
             if in_storage == -1:
                 title.promoter_count += 1
@@ -90,14 +89,14 @@ class RateTitleView(View):
                 title.save()
 
         # Changing vote from promote to detract
-        if not up and rating == 1:
+        if not up_vote and rating == 1:
             ip_title_list[title.pk] = -1
-            cache.set(ip, ip_title_list, 100000000)
+            cache.set(ip_address, ip_title_list, 100000000)
 
             if in_storage == 1:
                 title.promoter_count -= 1
                 title.detractor_count += 1
                 title.save()
 
-        resp = get_ratings_widget_dict(request, title, in_storage=1 if up else -1)
+        resp = get_ratings_widget_dict(request, title, in_storage=1 if up_vote else -1)
         return HttpResponse(json.dumps(resp), mimetype='application/json')

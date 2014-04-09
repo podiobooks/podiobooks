@@ -9,7 +9,7 @@ class TextTemplateView(TemplateView):
     def render_to_response(self, context, **response_kwargs):
         """Returns a Template as text/plain"""
         response_kwargs['mimetype'] = 'text/plain'
-        return super(TemplateView, self).render_to_response(context, **response_kwargs)
+        return super(TextTemplateView, self).render_to_response(context, **response_kwargs)
 
 
 class RobotsView(TextTemplateView):
@@ -26,6 +26,7 @@ class RobotsView(TextTemplateView):
 
 
 class BlogRedirectView(RedirectView):
+    """Redirect to the blog appending the old path"""
     permanent = True
 
     def get_redirect_url(self, **kwargs):

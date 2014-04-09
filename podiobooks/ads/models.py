@@ -39,19 +39,17 @@ class AdSchedulePosition(models.Model):
 
     class Meta(object):
         verbose_name_plural = "Ad Schedule Positions"
+        ordering = ['ad_schedule__name']
 
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
-
-    class Meta(object):
-        ordering = ['ad_schedule__name']
 
     def __unicode__(self):
         return str(self.pk)
 
 
 ### UTILITY FUNCTIONS
-def get_active_ad_schedules_for_title(title):
+def get_active_ad_scheds_for_title(title):
     """Return a list of active ad schedules for a title"""
 
     ad_schedule_list = title.ad_schedules.filter(date_start__lte=datetime.datetime.now(timezone.utc),

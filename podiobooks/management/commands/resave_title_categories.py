@@ -12,6 +12,7 @@ class Command(NoArgsCommand):
     """
     No arguments needed for this
     """
+
     def handle_noargs(self, **options):
         """
         Run RUN!

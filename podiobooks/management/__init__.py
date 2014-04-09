@@ -1,1 +1,1 @@
-__author__ = 'cyface'
+"""Django management commands for Podiobooks"""

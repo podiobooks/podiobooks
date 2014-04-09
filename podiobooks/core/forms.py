@@ -6,7 +6,7 @@ from django.db.models import Count, Q
 
 from podiobooks.core.models import Category, Contributor
 
-# pylint: disable=R0924,E1002
+# pylint: disable=E1002
 
 
 class BrowseByForm(forms.Form):
@@ -57,7 +57,7 @@ class ContributorChoiceForm(forms.Form):
              
             contributors = []
             for slug, name, titles in top_contributors:  # pylint: disable=W0612
-                contributors.append( (str(slug), str(name)), )  # strip off the count, which has to be in the values list because of the order_by
+                contributors.append((str(slug), str(name)),)  # strip off the count, which has to be in the values list because of the order_by
               
             cache.set('contributor_dropdown_values', contributors, 240)
             
