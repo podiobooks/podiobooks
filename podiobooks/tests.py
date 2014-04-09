@@ -7,7 +7,7 @@ from django.core.management import call_command
 
 
 class ManagementCommandsTestCase(TestCase):
-    """Test the Podiobooks Models from a Title-Centric POV"""
+    """Test the top level management commands"""
 
     def setUp(self):
         pass
