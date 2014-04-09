@@ -15,7 +15,6 @@ def get_ratings_widget_dict(request, title, in_storage=False):
     if ip_title_list and title.pk in ip_title_list:
         rating = ip_title_list[title.pk]
 
-
     # The following setups become honeypots for voting:
     #   to prevent abuse
     #   while letting the user perceive their actions as votes
@@ -41,8 +40,8 @@ def get_ratings_widget_dict(request, title, in_storage=False):
     # End honeypots
 
     resp = {
-        "promotors": title.promoter_count,
-        "detrators": title.detractor_count,
+        "promoters": title.promoter_count,
+        "detractors": title.detractor_count,
         "widget": render_to_string(
             "ratings/widget.html",
             {"rating": rating, "title": title, "total_ratings": title.promoter_count + title.detractor_count}
