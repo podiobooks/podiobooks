@@ -43,11 +43,12 @@ class FeedUrlTestCase(TestCase):
         response = self.client.get('/rss/feeds/episodes/the-plump-buffet/')
         self.assertNotContains(response, '<itunes:new-feed-url>')
 
-    class ManagementCommandsTestCase(TestCase):
-        """Test the Podiobooks Models from a Title-Centric POV"""
 
-        def setUp(self):
-            pass
+class ManagementCommandsTestCase(TestCase):
+    """Test the Podiobooks Models from a Title-Centric POV"""
 
-        def test_clear_cache(self):
-            call_command('validate_feeds')
+    def setUp(self):
+        pass
+
+    def test_validate_feeds(self):
+        call_command('validate_feeds')
