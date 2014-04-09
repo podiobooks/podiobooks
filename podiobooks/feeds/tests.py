@@ -3,10 +3,9 @@
 # pylint: disable=C0103,C0111,R0904
 
 from django.test import TestCase
-from django.test.client import Client
 from django.contrib.auth.models import User
-from podiobooks.core.models import Title, Episode
-from datetime import datetime, timedelta
+from podiobooks.core.models import Title
+from django.core.management import call_command
 
 
 class FeedUrlTestCase(TestCase):
@@ -43,3 +42,12 @@ class FeedUrlTestCase(TestCase):
 
         response = self.client.get('/rss/feeds/episodes/the-plump-buffet/')
         self.assertNotContains(response, '<itunes:new-feed-url>')
+
+    class ManagementCommandsTestCase(TestCase):
+        """Test the Podiobooks Models from a Title-Centric POV"""
+
+        def setUp(self):
+            pass
+
+        def test_clear_cache(self):
+            call_command('validate_feeds')
