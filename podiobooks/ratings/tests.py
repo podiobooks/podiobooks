@@ -14,14 +14,36 @@ class RatingsTestCase(TestCase):
         pass
 
     def test_promote(self):
+        # Test Non-AJAX Call
         response = self.client.post('/rate/trader-tales-4-double-share/promote/')
         self.assertEquals(200, response.status_code)
+        self.assertContains(response, 'ok')
+
+        # Test Simulating AJAX Call
+        response = self.client.post('/rate/trader-tales-4-double-share/promote/', {}, HTTP_X_REQUESTED_WITH='XMLHttpRequest')
+        self.assertEquals(200, response.status_code)
+        self.assertContains(response, 'widget')
 
     def test_detract(self):
+        # Test Non-AJAX Call
         response = self.client.post('/rate/trader-tales-4-double-share/detract/')
         self.assertEquals(200, response.status_code)
+        self.assertContains(response, 'ok')
+
+        # Test Simulating AJAX Call
+        response = self.client.post('/rate/trader-tales-4-double-share/promote/', {}, HTTP_X_REQUESTED_WITH='XMLHttpRequest')
+        self.assertEquals(200, response.status_code)
+        self.assertContains(response, 'widget')
 
     def test_get_ratings(self):
+        # Test Non-AJAX Call
         response = self.client.post('/rate/trader-tales-4-double-share/')
         self.assertEquals(200, response.status_code)
+        self.assertContains(response, 'ok')
+
+        # Test Simulating AJAX Call
+        response = self.client.post('/rate/trader-tales-4-double-share/', {}, HTTP_X_REQUESTED_WITH='XMLHttpRequest')
+        self.assertEquals(200, response.status_code)
+        self.assertContains(response, 'widget')
+
 
