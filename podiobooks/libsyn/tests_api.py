@@ -17,7 +17,7 @@ class LibsynAPITestCase(TestCase):
         self.pprinter = pprint.PrettyPrinter(indent=4)
 
     def test_show_info(self):
-        if settings.LIBSYN_NETWORK_SLUG:
+        if hasattr(settings, 'LIBSYN_NETWORK_SLUG'):
             show_info = get_show_info('theflownsky')
             self.pprinter.pprint(show_info)  # pretty print the result
             self.assertEquals('k-9b89823b4508200f', show_info['show_id'])
@@ -30,19 +30,16 @@ class LibsynAPITestCase(TestCase):
             self.pprinter.pprint(show_info)
             self.assertEquals('k-e76e81ee69d5d413', show_info['show_id'])
         else:
-            print("Skipping Libsyn Show Info Tests")
             self.assertTrue(True)
 
     def test_method_help(self):
-        if settings.LIBSYN_NETWORK_SLUG:
+        if hasattr(settings, 'LIBSYN_NETWORK_SLUG'):
             libsyn_method_help.main()
         else:
-            print("Skipping Libsyn Help API Test")
             self.assertTrue(True)
 
     def test_system_methods(self):
-        if settings.LIBSYN_NETWORK_SLUG:
+        if hasattr(settings, 'LIBSYN_NETWORK_SLUG'):
             libsyn_system_methods.main()
         else:
-            print("Skipping Libsyn Method API Test")
             self.assertTrue(True)
