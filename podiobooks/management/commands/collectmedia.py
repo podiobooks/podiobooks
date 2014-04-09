@@ -36,4 +36,4 @@ class Command(NoArgsCommand):
                 try:
                     shutil.copy2(os.path.join(local_path, item), os.path.join(dest_path, item))
                 except (shutil.Error, IOError) as error:
-                    print(error)
+                    print error

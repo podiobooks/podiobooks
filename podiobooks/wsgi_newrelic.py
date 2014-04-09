@@ -13,6 +13,9 @@ middleware here, or combine a Django application with an application of another
 framework.
 
 """
+
+# pylint: disable=C0103
+
 import os
 import newrelic.agent
 

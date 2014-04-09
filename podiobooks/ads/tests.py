@@ -5,7 +5,7 @@
 from django.test import TestCase
 from .models import AdSchedule, AdSchedulePosition
 from podiobooks.core.models import Episode, Title
-from .models import get_active_ad_schedules_for_title, get_ep_list_with_ads_for_title
+from .models import get_active_ad_scheds_for_title, get_ep_list_with_ads_for_title
 from django.template.defaultfilters import slugify
 import datetime
 from django.utils import timezone
@@ -83,7 +83,7 @@ class TitleTestCase(TestCase):
     def test_with_no_ad_schedules(self):
         self.schedule1.titles.remove(self.title1)
         self.assertEquals(3, self.schedule1.ad_schedule_positions.count())
-        self.assertEquals(0, get_active_ad_schedules_for_title(self.title1).count())
+        self.assertEquals(0, get_active_ad_scheds_for_title(self.title1).count())
 
         episode_list = get_ep_list_with_ads_for_title(self.title1)
 #        print episode_list
@@ -93,7 +93,7 @@ class TitleTestCase(TestCase):
 
     def test_ad_schedules(self):
         self.assertEquals(3, self.schedule1.ad_schedule_positions.count())
-        self.assertEquals(1, get_active_ad_schedules_for_title(self.title1).count())
+        self.assertEquals(1, get_active_ad_scheds_for_title(self.title1).count())
 
         #  Insert ad episodes into episode list
         episode_list = get_ep_list_with_ads_for_title(self.title1)
@@ -106,7 +106,7 @@ class TitleTestCase(TestCase):
         self.schedule2.titles.add(self.title1)
 
         self.assertEquals(2, self.schedule2.ad_schedule_positions.count())
-        self.assertEquals(2, get_active_ad_schedules_for_title(self.title1).count())
+        self.assertEquals(2, get_active_ad_scheds_for_title(self.title1).count())
 
         episode_list = get_ep_list_with_ads_for_title(self.title1)
 #        print episode_list
@@ -119,7 +119,7 @@ class TitleTestCase(TestCase):
         self.schedule2.date_start = datetime.datetime.now(timezone.utc) + datetime.timedelta(5)  # Expire 5 days in future
         self.schedule2.save()
 
-        self.assertEquals(1, get_active_ad_schedules_for_title(self.title1).count())
+        self.assertEquals(1, get_active_ad_scheds_for_title(self.title1).count())
 
         episode_list = get_ep_list_with_ads_for_title(self.title1)
 #        print episode_list
@@ -133,7 +133,7 @@ class TitleTestCase(TestCase):
         self.schedule2.save()
 
         self.assertEquals(2, self.schedule2.ad_schedule_positions.count())
-        self.assertEquals(1, get_active_ad_schedules_for_title(self.title1).count())
+        self.assertEquals(1, get_active_ad_scheds_for_title(self.title1).count())
 
         episode_list = get_ep_list_with_ads_for_title(self.title1)
 #        print episode_list
@@ -145,7 +145,7 @@ class TitleTestCase(TestCase):
         self.schedule1.date_end = datetime.datetime.now(timezone.utc) - datetime.timedelta(5)  # Expire 5 days in past
         self.schedule1.save()
 
-        self.assertEquals(0, get_active_ad_schedules_for_title(self.title1).count())
+        self.assertEquals(0, get_active_ad_scheds_for_title(self.title1).count())
         episode_list = get_ep_list_with_ads_for_title(self.title1)
 #        print episode_list
 
@@ -158,8 +158,8 @@ class TitleTestCase(TestCase):
 
         self.assertEquals(3, self.schedule1.ad_schedule_positions.count())
         self.assertEquals(2, self.schedule1.titles.count())
-        self.assertEquals(1, get_active_ad_schedules_for_title(self.title1).count())
-        self.assertEquals(1, get_active_ad_schedules_for_title(self.title2).count())
+        self.assertEquals(1, get_active_ad_scheds_for_title(self.title1).count())
+        self.assertEquals(1, get_active_ad_scheds_for_title(self.title2).count())
 
         episode_list = get_ep_list_with_ads_for_title(self.title2)
 #        print episode_list

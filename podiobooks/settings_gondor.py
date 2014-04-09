@@ -1,3 +1,5 @@
+"""GONDOR.IO specific settings"""
+
 import os
 import urlparse
 
@@ -10,15 +12,15 @@ ACCEL_REDIRECT = True
 
 if "GONDOR_DATABASE_URL" in os.environ:
     urlparse.uses_netloc.append("postgres")
-    url = urlparse.urlparse(os.environ["GONDOR_DATABASE_URL"])
+    db_url = urlparse.urlparse(os.environ["GONDOR_DATABASE_URL"])
     DATABASES = {
         "default": {
             "ENGINE": 'django.db.backends.postgresql_psycopg2',
-            "NAME": url.path[1:],
-            "USER": url.username,
-            "PASSWORD": url.password,
-            "HOST": url.hostname,
-            "PORT": url.port
+            "NAME": db_url.path[1:],
+            "USER": db_url.username,
+            "PASSWORD": db_url.password,
+            "HOST": db_url.hostname,
+            "PORT": db_url.port
         }
     }
     DATABASE_POOL_ARGS = {
@@ -32,10 +34,10 @@ if "GONDOR_DATABASE_URL" in os.environ:
 
 if "GONDOR_REDIS_URL" in os.environ:
     urlparse.uses_netloc.append("redis")
-    url = urlparse.urlparse(os.environ["GONDOR_REDIS_URL"])
-    GONDOR_REDIS_HOST = url.hostname
-    GONDOR_REDIS_PORT = url.port
-    GONDOR_REDIS_PASSWORD = url.password
+    db_url = urlparse.urlparse(os.environ["GONDOR_REDIS_URL"])
+    GONDOR_REDIS_HOST = db_url.hostname
+    GONDOR_REDIS_PORT = db_url.port
+    GONDOR_REDIS_PASSWORD = db_url.password
     CACHE_MIDDLEWARE_SECONDS = 3600
 
     # Cache Settings
