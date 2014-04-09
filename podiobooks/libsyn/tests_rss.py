@@ -15,7 +15,7 @@ class LibsynRSSTestCase(TestCase):
     def setUp(self):
         License.objects.create(slug='by-nc-nd', text='by-nc-nd', url='by-nc-nd')
 
-    def testParseOlderRss(self):
+    def test_parse_older_rss(self):
         title = create_title_from_libsyn_rss.create_title_from_libsyn_rss(os.path.join(settings.PROJECT_ROOT, 'libsyn', 'libsyn_example.rss'))
         self.assertEquals(title.name, 'Infected')
         self.assertEquals(title.slug, 'infected')
@@ -26,7 +26,7 @@ class LibsynRSSTestCase(TestCase):
         title2 = create_title_from_libsyn_rss.create_title_from_libsyn_rss(os.path.join(settings.PROJECT_ROOT, 'libsyn', 'libsyn_example.rss'))
         self.assertRegexpMatches(title2.slug, 'CHANGEME')
 
-    def testParseRss(self):
+    def test_parse_rss(self):
         title = create_title_from_libsyn_rss.create_title_from_libsyn_rss(os.path.join(settings.PROJECT_ROOT, 'libsyn', 'libsyn_recent_example.rss'))
         self.assertEquals(title.name, 'The Wonderful World of Linus Bailey')
         self.assertEquals(title.slug, 'the-wonderful-world-of-linus-bailey')
