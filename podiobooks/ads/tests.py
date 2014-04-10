@@ -11,7 +11,7 @@ import datetime
 from django.utils import timezone
 
 
-class TitleTestCase(TestCase):
+class AdScheduleTestCase(TestCase):
     fixtures = ['test_data.json', ]
 
     def setUp(self):
