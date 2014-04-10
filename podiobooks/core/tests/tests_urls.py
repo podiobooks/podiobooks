@@ -15,22 +15,27 @@ class UrlTestCase(TestCase):
     def test_home(self):
         response = self.client.get('/')
         self.assertEquals(200, response.status_code)
+        self.assertNotContains(response, 'error')
 
     def test_award_list(self):
         response = self.client.get('/award/')
         self.assertEquals(200, response.status_code)
+        self.assertNotContains(response, 'error')
 
     def test_award_detail(self):
         response = self.client.get('/award/dead-letter-award-2008-winner/')
         self.assertEquals(200, response.status_code)
+        self.assertNotContains(response, 'error')
 
     def test_title_list(self):
         response = self.client.get('/title/')
         self.assertEquals(200, response.status_code)
+        self.assertNotContains(response, 'error')
 
     def test_title_recent_list(self):
         response = self.client.get('/title/recent/')
         self.assertEquals(200, response.status_code)
+        self.assertNotContains(response, 'error')
 
     def test_title_search_page(self):
         response = self.client.get('/title/search/', follow=True)
@@ -55,6 +60,8 @@ class UrlTestCase(TestCase):
     def test_title_detail(self):
         response = self.client.get('/title/trader-tales-4-double-share/')
         self.assertEquals(200, response.status_code)
+        self.assertContains(response, "lowell")
+        self.assertNotContains(response, "error")
 
     def test_title_detail_old_slug(self):
         response = self.client.get('/title/double-share/')
@@ -67,6 +74,7 @@ class UrlTestCase(TestCase):
     def test_title_detail_deleted(self):
         response = self.client.get('/title/removed/deleted-title/')
         self.assertEquals(200, response.status_code)
+        self.assertNotContains(response, 'error')
 
     def test_title_detail_removed(self):
         response = self.client.get('/title/deleted-title/')
@@ -79,18 +87,22 @@ class UrlTestCase(TestCase):
     def test_category_list(self):
         response = self.client.get('/category/')
         self.assertEquals(200, response.status_code)
+        self.assertNotContains(response, 'error')
 
     def test_category_detail(self):
         response = self.client.get('/category/science-fiction/')
         self.assertEquals(200, response.status_code)
+        self.assertNotContains(response, 'error')
 
     def test_contributor_list(self):
         response = self.client.get('/contributor/')
         self.assertEquals(200, response.status_code)
+        self.assertNotContains(response, 'error')
 
     def test_contributor_detail(self):
         response = self.client.get('/contributor/nathan-lowell/')
         self.assertEquals(200, response.status_code)
+        self.assertNotContains(response, 'error')
 
     def test_episode_detail(self):
         response = self.client.get('/episode/68250/')  # Double Share, Episode 1
@@ -99,14 +111,17 @@ class UrlTestCase(TestCase):
     def test_series_list(self):
         response = self.client.get('/series/')
         self.assertEquals(200, response.status_code)
+        self.assertNotContains(response, 'error')
 
     def test_series_detail(self):
         response = self.client.get('/series/a-traders-tale-from-the-golden-age-of-the-solar-clipper/')
         self.assertEquals(200, response.status_code)
+        self.assertNotContains(response, 'error')
 
     def test_sitemap(self):
         response = self.client.get('/sitemap.xml')
         self.assertEquals(200, response.status_code)
+        self.assertNotContains(response, 'error')
 
     def test_pb1_login_redirect(self):
         response = self.client.get('/login.php')
@@ -163,16 +178,19 @@ class UrlTestCase(TestCase):
     def test_robots(self):
         response = self.client.get('/robots.txt')
         self.assertEquals(200, response.status_code)
+        self.assertNotContains(response, 'error')
 
     def test_crossdomain(self):
         response = self.client.get('/crossdomain.xml')
         self.assertEquals(200, response.status_code)
+        self.assertNotContains(response, 'error')
 
     def test_favicon(self):
         settings.ACCEL_REDIRECT=True
         response = self.client.get('/favicon.ico')
         self.assertEquals(200, response.status_code)
         self.assertTrue(response.has_header('X-Accel-Redirect'))
+        self.assertNotContains(response, 'error')
         settings.ACCEL_REDIRECT=False
         response = self.client.get('/favicon.ico')
         self.assertEquals(302, response.status_code)
@@ -183,6 +201,7 @@ class UrlTestCase(TestCase):
         response = self.client.get('/apple-touch-icon.png')
         self.assertEquals(200, response.status_code)
         self.assertTrue(response.has_header('X-Accel-Redirect'))
+        self.assertNotContains(response, 'error')
         settings.ACCEL_REDIRECT=False
         response = self.client.get('/apple-touch-icon.png')
         self.assertEquals(302, response.status_code)
