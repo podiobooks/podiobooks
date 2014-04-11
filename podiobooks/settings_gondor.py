@@ -1,6 +1,6 @@
 """GONDOR.IO specific settings"""
 
-# pylint: disable=W0614
+# pylint: disable=W0614,W0401
 
 import os
 import urlparse
