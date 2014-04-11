@@ -36,15 +36,15 @@ urlpatterns = patterns('',
     # Title Browse Options (has to appear before title detail so 'search' doesn't get swallowed as a slug)
     url(r'^title/browse/$', BrowseOptionsView.as_view(), name='title_browse'),
 
-     # Title Search (has to appear before title detail so 'search' doesn't get swallowed as a slug)
+    # Title Search (has to appear before title detail so 'search' doesn't get swallowed as a slug)
     url(r'^title/search/$', title_search, name='title_search'),
     url(r'^title/search/(?P<keywords>[^/]+)/$', title_search, name='title_search_keywords'),
 
     # Title
     url(r'^title/$', TitleListView.as_view(), name='title_list'),
     url(r'^title/recent/$', TitleRecentListView.as_view(), name='title_recent_list'),
-    url(r'^title/(?P<slug>[^/]+)/$', TitleDetailView.as_view(), name='title_detail'),
     url(r'^title/removed/(?P<slug>[^/]+)/$', TitleRemovedView.as_view(), name='title_detail_removed'),
+    url(r'^title/(?P<slug>[^/]+)/$', TitleDetailView.as_view(), name='title_detail'),
 
     # Homepage Shelf AJAX Endpoints
     url(r'^shelf/(?P<shelf_type>[\w_]+)/$', FilteredShelf.as_view(), name="shelf"),
