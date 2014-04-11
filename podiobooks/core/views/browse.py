@@ -227,6 +227,8 @@ class TitleDetailView(DetailView):
         else:
             if self.object.deleted:
                 return redirect('title_detail_removed', self.object.slug, permanent=True)
+            if request.GET.get('cg9ka', False):  # Strip off old PB1 Custom Feed Variable if present
+                return redirect('title_detail', self.object.slug, permanent=True)
             context = self.get_context_data(object=self.object)
             return self.render_to_response(context)
 
