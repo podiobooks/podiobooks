@@ -14,7 +14,7 @@ framework.
 
 """
 
-# pylint: disable=C0103
+# pylint: disable=C0103,F0401
 
 import os
 import newrelic.agent
