@@ -21,6 +21,7 @@
 
         <div id="pb_webResult">
             <div class="gs-webResult gs-result"
+            {% if request.get_host != 'podiobooks.com' %}
                  data-vars="{localUrl:function() {return unescapedUrl.replace('podiobooks.com', '{{ request.get_host }}');},
                             longUrl:function() {var i = unescapedUrl.indexOf(visibleUrl);return i < 1 ? visibleUrl : unescapedUrl.substring(i).replace('podiobooks.com','{{ request.get_host }}');},
                             cleanTitle:function() {return title.replace('on Podiobooks.com','').replace('| Podiobooker', ' - Podiobooker Blog');}}
@@ -30,6 +31,15 @@
                      data-body="render('thumbnail',richSnippet,{url:localUrl(),target:target})"></div>
                 <div class="gs-title"><a class="gs-title" data-attr="{href:localUrl(),target:target}"
                                          data-body="html(cleanTitle())"></a></div>
+            {% else %}
+                data-vars="{longUrl:function() {var i = unescapedUrl.indexOf(visibleUrl);return i < 1 ? visibleUrl : unescapedUrl.substring(i);},
+                            cleanTitle:function() {return title.replace('on Podiobooks.com','').replace('| Podiobooker', ' - Podiobooker Blog');}}
+                            ">
+                <div data-if="Vars.richSnippet && (Vars.richSnippet.cseThumbnail || Vars.richSnippet.book)" data-attr="0"
+                     data-body="render('thumbnail',richSnippet,{url:unescapedUrl,target:target})"></div>
+                <div class="gs-title"><a class="gs-title" data-attr="{href:unescapedUrl,target:target}"
+                                         data-body="html(cleanTitle())"></a></div>
+            {%  endif %}
                 <div class="gs-snippet" data-body="html(content)"></div>
                 <div class="gs-snippet gs-pb-meta"
                      data-if="Vars.richSnippet && Vars.richSnippet.book && Vars.richSnippet.book.genre"
