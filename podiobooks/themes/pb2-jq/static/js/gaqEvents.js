@@ -17,6 +17,11 @@ $(function () {
             });
         });
 
+        list.find("#consume-scribl>a").each(function () {
+            $(this).click(function () {
+                _gaq.push(['_trackEvent', 'Consume', 'DetailPage-BuyFromScribl', slug]);
+            });
+        });
 
         list.find("#consume-amazon>a").each(function () {
             $(this).click(function () {
