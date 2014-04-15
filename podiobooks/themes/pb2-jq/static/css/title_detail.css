@@ -217,6 +217,12 @@
     
 }
 
+.consume-scribl a {
+    background: url('../images/pb-scribl-logo.png') left top no-repeat;
+    background-size: 48px 48px;
+
+}
+
 .consume-rss a {
     background: url('../images/rss-icon.png') left top no-repeat;
     background-size: 48px 48px;

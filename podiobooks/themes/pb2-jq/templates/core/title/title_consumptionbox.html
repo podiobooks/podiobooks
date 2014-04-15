@@ -15,6 +15,10 @@
                     href="http://itunes.apple.com/podcast/id{{ title.itunes_adam_id }}">Listen in
                 iTunes</a></li>
         {% endif %}
+        {% if title.itunes_adam_id %}
+            <li id="consume-scribl" class='consume-scribl'><a
+                    href="https://www.scribl.com/books/[{{ title.scribl_book_id }}">Buy on Scribl</a></li>
+        {% endif %}
         {% for item in title.media.all %}
             {% if item.name == 'Print Version' %}
                 <li id="consume-amazon" class='consume-amazon'><a
