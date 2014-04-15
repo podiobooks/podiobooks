@@ -17,7 +17,7 @@
         {% endif %}
         {% if title.itunes_adam_id %}
             <li id="consume-scribl" class='consume-scribl'><a
-                    href="https://www.scribl.com/books/[{{ title.scribl_book_id }}">Buy on Scribl</a></li>
+                    href="https://www.scribl.com/books/{{ title.scribl_book_id }}">Buy on Scribl</a></li>
         {% endif %}
         {% for item in title.media.all %}
             {% if item.name == 'Print Version' %}
