@@ -267,7 +267,7 @@ class Title(models.Model):
     # Note: episodes are available as episodes.all()
     # Note: media are available as media.all()
     # Note: promos are available as promos.all()
-    scribl_book_id = models.IntegerField(null=True, blank=True, verbose_name='Scribl Book Id')
+    scribl_book_id = models.CharField(null=True, blank=True, max_length=20, verbose_name='Scribl Book Id')
     tips_allowed = models.BooleanField(default=True, verbose_name='Collect Tips for this Title')
     scribl_allowed = models.BooleanField(default=True, verbose_name='Show this Title on Scribl')
     date_accepted = models.DateTimeField(null=True, verbose_name='Date Terms and Conditions for this Title Accepted by Author')
