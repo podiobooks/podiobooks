@@ -237,13 +237,12 @@
 .consume-kindle a {
     background: url('../images/pb-kindle-logo.png') left top no-repeat;
     background-size: 48px 48px;
-    
 }
 
 .consume-smashwords a {
     background: url('../images/pb-smashwords-logo.png') left top no-repeat;
     background-size: 48px 48px;
-    
+    letter-spacing: -.5px;
 }
 
 /*
