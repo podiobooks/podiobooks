@@ -30,3 +30,10 @@ style-*_.css
 mediabrute_usefile
 *conflicted\ copy*
 .codeintel/*
+*/staticroot/admin/*
+*/staticroot/adminactions/*
+*/staticroot/css/*
+*/staticroot/debug_toolbar/*
+*/staticroot/images/*
+*/staticroot/js/*
+*/staticroot/swf/*

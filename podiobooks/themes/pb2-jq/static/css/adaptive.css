@@ -77,7 +77,7 @@
 	.foot-moveable{
 		float: none;
 	}
-	.gplus-wrap,
+	.social-wrap,
 	.libsyn-wrap{
 		float:none;
 		margin:0 0 1em;
@@ -215,10 +215,10 @@
 	.home .foot-moveable{
 		top:0;
 	}
-	.gplus-wrap,
+	.social-wrap,
 	.libsyn-wrap{
 		float:none;
-		margin:0 0 1em;
+		margin:0 0 0;
 	}
 
 }
