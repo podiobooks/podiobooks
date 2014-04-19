@@ -273,7 +273,7 @@ body form.gsc-search-box {
 
 .libsyn-wrap,
 .social-wrap {
-    margin: 0 0 1em;
+    margin: 0 0 2em;
 }
 
 .pg-foot ul {
@@ -301,6 +301,10 @@ body form.gsc-search-box {
 
 .pg-foot p {
     color: #464646;
+}
+
+.legal p {
+    margin: 0 0 0 1em;
 }
 
 .footer-ad {
