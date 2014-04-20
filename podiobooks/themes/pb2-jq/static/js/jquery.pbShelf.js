@@ -8,20 +8,20 @@
  *
  * History:
  *
- * 0.1: 	Initial plugin creation
- * 0.2: 	Internalized checking for change form, adding binding for onChange
- * 0.3: 	Added some more settings for custom classes
- * 0.4: 	Shelf position indicator
- * 0.5: 	Support for shelves that don't need ajax calls
- * 0.6: 	Uses 'find' instead of 'children' for digging up relevant shelf peices
- * 0.7: 	Allows for shelf creation based on static content (i.e. no need to ajax on first load)
- * 0.8: 	Allows blank incoming cookies to delete the existing cookie
- * 0.9: 	Dynamic touch-sliding for adjustable-width shelves
+ * 0.1:     Initial plugin creation
+ * 0.2:     Internalized checking for change form, adding binding for onChange
+ * 0.3:     Added some more settings for custom classes
+ * 0.4:     Shelf position indicator
+ * 0.5:     Support for shelves that don't need ajax calls
+ * 0.6:     Uses 'find' instead of 'children' for digging up relevant shelf peices
+ * 0.7:     Allows for shelf creation based on static content (i.e. no need to ajax on first load)
+ * 0.8:     Allows blank incoming cookies to delete the existing cookie
+ * 0.9:     Dynamic touch-sliding for adjustable-width shelves
  *			Shelf width no longer needs to be a full item width
  *			Callback hooks for "after movement" of shelves;
  *			Adding option for turning off positioning of shelf steps
  * 0.9.1:	Native touch events
- * 			Easing to settings
+ *          Easing to settings
  *			Rubber Band Strength to settings
  *
  */
@@ -590,7 +590,7 @@
                         var li;
                         var iPlus = i + 1;
 
-                        if (i == curStep) {
+                        if (i === curStep) {
                             li = $("<li><a class='shelf-step-cur' href='#'><span class='visuallyhidden'>Page " + iPlus + "</span></a></li>").appendTo(shelfSteps);
                         }
                         else {

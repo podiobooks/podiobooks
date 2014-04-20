@@ -1,5 +1,5 @@
 function l(msg){
 	if(window.console){
-		console.log(msg);	
+		window.console.log(msg);
 	}
 }
