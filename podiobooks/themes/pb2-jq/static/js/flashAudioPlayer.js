@@ -71,7 +71,7 @@ var AudioPlayer = function () {
             flashParams.menu = "false";
 
             for (key in instanceOptions) {
-                if (key == "pagebg" || key == "width" || key == "transparentpagebg") {
+                if (key === "pagebg" || key === "width" || key === "transparentpagebg") {
                     continue;
                 }
                 flashVars[key] = instanceOptions[key];
@@ -90,14 +90,14 @@ var AudioPlayer = function () {
         syncVolumes: function (playerID, volume) {
             currentVolume = volume;
             for (var i = 0; i < instances.length; i++) {
-                if (instances[i] != playerID) {
+                if (instances[i] !== playerID) {
                     getPlayer(instances[i]).setVolume(currentVolume);
                 }
             }
         },
 
         activate: function (playerID, info) {
-            if (activePlayerID && activePlayerID != playerID) {
+            if (activePlayerID && activePlayerID !== playerID) {
                 getPlayer(activePlayerID).close();
             }
 
@@ -110,7 +110,7 @@ var AudioPlayer = function () {
 
         close: function (playerID) {
             getPlayer(playerID).close();
-            if (playerID == activePlayerID) {
+            if (playerID === activePlayerID) {
                 activePlayerID = null;
             }
         },
