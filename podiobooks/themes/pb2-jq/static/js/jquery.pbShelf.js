@@ -109,6 +109,16 @@
                 });
             }
 
+            var loadImageForItem = function(item){
+				item.find('[data-image-src]').each(function () {
+                    var a = $(this);
+                    var src = a.data("image-src");
+                    var img = $("<img data-title-slug='" + a.data("title-slug") + "' class='shelf-cover' alt='Cover for " + a.data("title-name") + "' src='" + src + "' />");
+                    a.html(img);
+                    a.removeAttr("data-image-src");
+                });
+            };
+
             var loadImages = function () {
 
                 // How many images in-advance we want to load (it'll actually be this number, minus 1')
@@ -153,13 +163,7 @@
                 // Load them now
                 if (loadMore) {
                     for (var i = start - 1; i < end; i++) {
-                        $(items[i]).find('[data-image-src]').each(function () {
-                            var a = $(this);
-                            var src = a.data("image-src");
-                            var img = $("<img data-title-slug='" + a.data("title-slug") + "' class='shelf-cover' alt='Cover for " + a.data("title-name") + "' src='" + src + "' />");
-                            a.html(img);
-                            a.removeAttr("data-image-src");
-                        });
+						loadImageForItem($(items[i]));
                     }
                 }
             };
