@@ -22,8 +22,7 @@ if "GONDOR_DATABASE_URL" in os.environ:
             "USER": DB_URL.username,
             "PASSWORD": DB_URL.password,
             "HOST": DB_URL.hostname,
-            "PORT": DB_URL.port,
-            "CONN_MAX_AGE": 12
+            "PORT": DB_URL.port
         }
     }
     SOUTH_DATABASE_ADAPTERS = {
