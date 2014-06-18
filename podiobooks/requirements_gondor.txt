@@ -1,6 +1,5 @@
 -r requirements.txt
 django-redis==3.3
-django-postgrespool==0.2.4
 newrelic==2.18.1.15
 eventlet==0.14.0
 gunicorn==18.0
