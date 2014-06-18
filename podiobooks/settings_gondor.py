@@ -22,13 +22,9 @@ if "GONDOR_DATABASE_URL" in os.environ:
             "USER": DB_URL.username,
             "PASSWORD": DB_URL.password,
             "HOST": DB_URL.hostname,
-            "PORT": DB_URL.port
+            "PORT": DB_URL.port,
+            "CONN_MAX_AGE": 12
         }
-    }
-    DATABASE_POOL_ARGS = {
-        'max_overflow': 75,
-        'pool_size': 10,
-        'timeout': 90,
     }
     SOUTH_DATABASE_ADAPTERS = {
         'default': 'south.db.postgresql_psycopg2'
