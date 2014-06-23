@@ -1,7 +1,7 @@
 PODIOBOOKS.COM 2.0
 ==================
 Team Lead: Tim White (tim@cyface.com)
-Team Lead Emeritus: Chris Miller (chris@podiobooks.com)
+Team Lead Emeritus: Chris Miller (chris@ctmiller.net)
 
 Contributors
 ------------
