@@ -17,12 +17,16 @@ if "GONDOR_DATABASE_URL" in os.environ:
     DB_URL = urlparse.urlparse(os.environ["GONDOR_DATABASE_URL"])
     DATABASES = {
         "default": {
-            "ENGINE": 'django.db.backends.postgresql_psycopg2',
+            "ENGINE": 'django_db_geventpool.backends.postgresql_psycopg2',
             "NAME": DB_URL.path[1:],
             "USER": DB_URL.username,
             "PASSWORD": DB_URL.password,
             "HOST": DB_URL.hostname,
-            "PORT": DB_URL.port
+            "PORT": DB_URL.port,
+            'CONN_MAX_AGE': 0,
+            'OPTIONS': {
+                'MAX_CONNS': 60
+            }
         }
     }
     SOUTH_DATABASE_ADAPTERS = {
@@ -95,7 +99,7 @@ FILE_UPLOAD_PERMISSIONS = 0640
 
 MUB_MINIFY = True
 
-### DEBUG TOOLBAR
+# ## DEBUG TOOLBAR
 ### Replicated Here to Enable Picking Up Environment Setting from Gondor
 if DEBUG:
     MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
@@ -105,7 +109,6 @@ if DEBUG:
         'INTERCEPT_REDIRECTS': False
     }
     DEBUG_TOOLBAR_PATCH_SETTINGS = False  # Trying to get around gunicorn startup error
-
 
 LOGGING = {
     'version': 1,
