@@ -15,7 +15,6 @@ ACCEL_REDIRECT = True
 if "GONDOR_DATABASE_URL" in os.environ:
     urlparse.uses_netloc.append("postgres")
     DB_URL = urlparse.urlparse(os.environ["GONDOR_DATABASE_URL"])
-    DB_POOL_SIZE = int(os.environ["DB_POOL_SIZE"])
     DATABASES = {
         "default": {
             "ENGINE": 'django_postgrespool',
@@ -30,9 +29,9 @@ if "GONDOR_DATABASE_URL" in os.environ:
         'default': 'south.db.postgresql_psycopg2'
     }
     DATABASE_POOL_ARGS = {
-        'max_overflow': 75,
+        'max_overflow': int(os.environ["DB_POOL_OVERFLOW"]),
         'pool_size': int(os.environ["DB_POOL_SIZE"]),
-        'recycle': 90
+        'recycle': int(os.environ["DB_POOL_TIMEOUT"]),
     }
 
 
