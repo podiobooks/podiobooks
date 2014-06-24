@@ -181,3 +181,8 @@ REDIRECT_DOMAINS = []
 
 # Django_Jenkins Default Tasks
 JENKINS_TASKS = ('django_jenkins.tasks.with_coverage',)
+
+# try:
+#     from .settings_local import *
+# except ImportError:
+#     pass
