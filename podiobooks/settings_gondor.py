@@ -18,17 +18,12 @@ if "GONDOR_DATABASE_URL" in os.environ:
     DB_POOL_SIZE = int(os.environ["DB_POOL_SIZE"])
     DATABASES = {
         "default": {
-            "ENGINE": 'dbpool.db.backends.postgresql_psycopg2',
+            "ENGINE": 'django.db.backends.postgresql_psycopg2',
             "NAME": DB_URL.path[1:],
             "USER": DB_URL.username,
             "PASSWORD": DB_URL.password,
             "HOST": DB_URL.hostname,
-            "PORT": DB_URL.port,
-            "CONN_MAX_AGE": 0,
-            "OPTIONS": {
-                "MAX_CONNS": DB_POOL_SIZE,
-                "TEST_ON_BORROW": True
-            }
+            "PORT": DB_URL.port
         }
     }
     SOUTH_DATABASE_ADAPTERS = {
