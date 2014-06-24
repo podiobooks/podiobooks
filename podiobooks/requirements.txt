@@ -9,4 +9,3 @@ mimeparse==0.1.3
 pillow==2.4.0
 pyga==2.5.0
 south==0.8.4
-git+git://github.com/Brant/django-postgrespool@master
