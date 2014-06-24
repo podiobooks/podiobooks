@@ -23,6 +23,14 @@ newrelic.agent.initialize('podiobooks/newrelic.ini', os.environ.get('INSTANCE_TY
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "podiobooks.settings")
 
+# Django DB GEventPool
+from psycogreen.gevent import patch_psycopg
+
+
+def post_fork(server, worker):
+    patch_psycopg()
+    worker.log_info("Made Psycopg2 Green")
+
 # This application object is used by any WSGI server configured to use this
 # file. This includes Django's development server, if the WSGI_APPLICATION
 # setting points here.
