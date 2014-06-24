@@ -1,5 +1,4 @@
 -r requirements.txt
-django-db-geventpool==0.90
 django-redis==3.3
 newrelic==2.18.1.15
 eventlet==0.14.0
