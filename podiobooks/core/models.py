@@ -6,6 +6,8 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.template.loader import render_to_string
 
+from noodles.models import DefinedWidthsAssetsFromImagesMixin
+
 # pylint: disable=C0111,R0201,W0232,W1001
 
 
@@ -224,7 +226,7 @@ class Series(models.Model):
         return 'series_detail', [self.slug]
 
 
-class Title(models.Model):
+class Title(DefinedWidthsAssetsFromImagesMixin, models.Model):
     """Title is the central class, and represents the media item as a whole.
     Example: A book. A season of a TV Series. A volume of a Comic Book. A set of
     college lectures."""
@@ -279,6 +281,9 @@ class Title(models.Model):
 
     def __unicode__(self):
         return self.slug
+
+    def get_dimensions(self):
+        return [100, 300, 600, 900]
 
     @models.permalink
     def get_absolute_url(self):
