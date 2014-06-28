@@ -112,9 +112,18 @@
             var loadImageForItem = function(item){
 				item.find('[data-image-src]').each(function () {
                     var a = $(this);
+
                     var src = a.data("image-src");
-                    var img = $("<img data-title-slug='" + a.data("title-slug") + "' class='shelf-cover' alt='Cover for " + a.data("title-name") + "' src='" + src + "' />");
-                    a.html(img);
+                    var img = $("<img data-title-slug='" + a.data("title-slug") + "' class='shelf-cover shelf-cover-loading' alt='Cover for " + a.data("title-name") + "' src='" + src + "' />");
+
+                    if (a.find("img").length < 1){
+                    	img.appendTo(a);
+
+                    	a.imagesLoaded(function(){
+	                		img.removeClass("shelf-cover-loading");
+	                    });
+                    }
+
                     a.removeAttr("data-image-src");
                 });
             };
@@ -743,6 +752,11 @@
             }
             shelf.addClass("pbShelf");
             loadImages();
+
+			shelf.on("pbshelf:loadimages", function(){
+				loadImages();
+			});
+
         });
     };
 })(jQuery);

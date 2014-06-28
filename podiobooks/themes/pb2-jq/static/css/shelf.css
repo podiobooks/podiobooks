@@ -104,8 +104,15 @@
     height: 180px;
     overflow: hidden;
     position:relative;
-    
     font-size:.7em;
+}
+.shelf-cover-wrap{
+	display: block;
+	float:left;
+	min-width:67px;
+	min-height: 67px;
+	margin: 0 1em .4em 0;
+	padding:0;
 }
 .shelf-item-ad{
 	padding:0;
@@ -113,23 +120,35 @@
 	width:200px;
 	height:200px;
 }
+
+.shelf-cover-loading{
+	opacity:0;
+}
+.no-opacity .shelf-cover-loading{
+	display: none;
+}
 .shelf-cover {
+	-ms-transform: translate3d(0, 0, 0);
+	-o-transform: translate3d(0, 0, 0);
+	-webkit-transform: translate3d(0, 0, 0);
+	-moz-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
+
+	-webkit-transition: opacity .2s ease-in-out;
+	-moz-transition: opacity .2s ease-in-out;
+	-o-transition: opacity .2s ease-in-out;
+	-ms-transition: opacity .2s ease-in-out;
+	transition: opacity .2s ease-in-out;
+
 	float:left;
     padding: 0;
-    margin: 0 1em .4em 0;
+    margin:0;
     width: 67px;
     min-height: 67px;
     display:inline-block;
 }
 .loading{
 	box-shadow:none;
-}
-
-.shelf-item .shelf-cover .shelf-cover-loading {
-    width: auto;
-    height: auto;
-    float: none;
-    margin: 30px auto;
 }
 
 .shelf-item-text {
