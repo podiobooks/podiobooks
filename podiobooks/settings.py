@@ -176,8 +176,12 @@ MUB_CSS_ORDER = (
     ("gsc-overrides.css", "adaptive.css", "small-screen.css")
 )
 MUB_MINIFY = False
+
 # This is to catch special domain names and redirect them to the main
 REDIRECT_DOMAINS = []
+
+# This is to turn off cover downloads for non-production systems
+LOCALIZE_COVERS = False
 
 # Django_Jenkins Default Tasks
 JENKINS_TASKS = ('django_jenkins.tasks.with_coverage',)

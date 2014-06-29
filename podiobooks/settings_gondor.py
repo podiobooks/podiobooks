@@ -101,6 +101,8 @@ FILE_UPLOAD_PERMISSIONS = 0640
 
 MUB_MINIFY = True
 
+LOCALIZE_COVERS = True
+
 # ## DEBUG TOOLBAR
 ### Replicated Here to Enable Picking Up Environment Setting from Gondor
 if DEBUG:
