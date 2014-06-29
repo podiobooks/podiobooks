@@ -28,9 +28,12 @@ def show_full_titlecover(title):
     """ Pulls and formats the cover for a Title
     for details page"""
     ret_dict = {"title": title, "url": get_libsyn_cover_url(title, 334, 200)}
-    url = get_cover_url_at_width(title, 600)
-    if url:
-        ret_dict["url"] = url
+
+    if getattr(settings, "LOCALIZE_COVERS", False):
+        url = get_cover_url_at_width(title, 600)
+        if url:
+            ret_dict["url"] = url
+
     return ret_dict
 
 
@@ -39,18 +42,23 @@ def show_titlecover(title):
     """ Pulls and formats the cover for a Title
     for details page"""
     ret_dict = {"title": title, "url": get_libsyn_cover_url(title, 334, 200)}
-    url = get_cover_url_at_width(title, 400)
-    if url:
-        ret_dict["url"] = url
+
+    if getattr(settings, "LOCALIZE_COVERS", False):
+        url = get_cover_url_at_width(title, 400)
+        if url:
+            ret_dict["url"] = url
+
     return ret_dict
 
 
 @register.simple_tag()
 def get_shelf_cover_url(title):
     """ Gets the Final, Real Image URL for a Title from Libsyn """
-    url = get_cover_url_at_width(title, 200)
-    if url:
-        return url
+    if getattr(settings, "LOCALIZE_COVERS", False):
+        url = get_cover_url_at_width(title, 200)
+        if url:
+            return url
+
     return get_libsyn_cover_url(title, 99, 67)
 
 
