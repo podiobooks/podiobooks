@@ -147,9 +147,6 @@
     min-height: 67px;
     display:inline-block;
 }
-.loading{
-	box-shadow:none;
-}
 
 .shelf-item-text {
     float: left;
