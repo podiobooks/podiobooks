@@ -106,7 +106,7 @@ class SeriesAdmin(admin.ModelAdmin):
 
 
 class TitleAdmin(admin.ModelAdmin):
-    actions = ['add_from_libsyn']
+    actions = ['add_from_libsyn', 'clear_cover_image', ]
     date_hierarchy = 'date_created'
     list_display = (
         'name', 'license', 'is_explicit', 'is_adult', 'is_family_friendly', 'is_for_kids',
@@ -152,6 +152,10 @@ class TitleAdmin(admin.ModelAdmin):
             'fields': ('awards',)
         }))
     filter_horizontal = ['awards']
+
+    def clear_cover_image(self, request, queryset):
+        queryset.update(cover=None, assets_from_images=None)
+    clear_cover_image.short_descripton = "Clear cover images"
 
 
 class TitleContributorAdmin(admin.ModelAdmin):
