@@ -7,7 +7,7 @@ from noodles.util import AssetsFromImageHandler
 from django.conf import settings
 
 
-def download_image(title, upload_path=''):
+def download_cover(title, upload_path=''):
     raw_cover_url = "http://asset-server.libsyn.com/show/%s/" % title.libsyn_show_id
 
     destination_dir = os.path.join(settings.MEDIA_ROOT, upload_path)

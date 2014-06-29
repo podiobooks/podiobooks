@@ -16,6 +16,7 @@ class AwardDetailSitemap(Sitemap):
         """Last modified date for this object"""
         return obj.date_updated
 
+
 class CategoryDetailSitemap(Sitemap):
     """All Categories"""
     changefreq = "never"
@@ -28,6 +29,7 @@ class CategoryDetailSitemap(Sitemap):
         """Last modified date for this object"""
         return obj.date_updated
 
+
 class ContributorDetailSitemap(Sitemap):
     """All Contributors"""
     changefreq = "never"
@@ -39,6 +41,7 @@ class ContributorDetailSitemap(Sitemap):
     def lastmod(self, obj):
         """Last modified date for this object"""
         return obj.date_updated
+
 
 class TitleDetailSitemap(Sitemap):
     """All Titles"""
