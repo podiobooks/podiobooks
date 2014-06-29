@@ -18,6 +18,7 @@ on_deploy:
     - manage.py collectstatic --noinput
     - manage.py collectmedia
     - manage.py mub_minify
+    - manage.py localize_title_covers
 
 # URLs which should be served by Gondor mapping to a filesystem location
 # relative to your writable storage area.
