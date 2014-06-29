@@ -26,7 +26,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         if options['clear']:
             print "Clearing existing covers..."
-            Title.objects.all().update(cover=None)
+            Title.objects.all().update(cover=None, assets_from_images=None)
 
         titles = Title.objects.filter(Q(cover__isnull=True) | Q(cover=''), deleted=False)
 
