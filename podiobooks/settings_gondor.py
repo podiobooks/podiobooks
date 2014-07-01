@@ -17,7 +17,8 @@ if "GONDOR_DATABASE_URL" in os.environ:
     DB_URL = urlparse.urlparse(os.environ["GONDOR_DATABASE_URL"])
     DATABASES = {
         "default": {
-            "ENGINE": 'django_postgrespool',
+            # "ENGINE": 'django_postgrespool',
+            "ENGINE": 'django.db.backends.postgresql_psycopg2',
             "NAME": DB_URL.path[1:],
             "USER": DB_URL.username,
             "PASSWORD": DB_URL.password,
@@ -28,11 +29,11 @@ if "GONDOR_DATABASE_URL" in os.environ:
     SOUTH_DATABASE_ADAPTERS = {
         'default': 'south.db.postgresql_psycopg2'
     }
-    DATABASE_POOL_ARGS = {
-        'max_overflow': int(os.environ["DB_POOL_OVERFLOW"]),
-        'pool_size': int(os.environ["DB_POOL_SIZE"]),
-        'recycle': int(os.environ["DB_POOL_TIMEOUT"]),
-    }
+    # DATABASE_POOL_ARGS = {
+    #     'max_overflow': int(os.environ["DB_POOL_OVERFLOW"]),
+    #     'pool_size': int(os.environ["DB_POOL_SIZE"]),
+    #     'recycle': int(os.environ["DB_POOL_TIMEOUT"]),
+    # }
 
 if "GONDOR_REDIS_URL" in os.environ:
     urlparse.uses_netloc.append("redis")
