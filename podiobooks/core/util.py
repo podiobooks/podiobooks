@@ -22,16 +22,19 @@ def download_cover(title, upload_path=''):
     destination = os.path.join(destination_dir, image_file)
     upload_path = "%s/%s" % (upload_path, image_file)
 
-    if not os.path.isfile(destination):
-        filename, httpresponse = urllib.urlretrieve(raw_cover_url)
-        img = Image.open(filename)
-        if img.mode != "RGB":
-            img = img.convert("RGB")
-        img.save(destination, "JPEG", quality=100)
+    try:
+        if not os.path.isfile(destination):
+            filename, httpresponse = urllib.urlretrieve(raw_cover_url)
+            img = Image.open(filename)
+            if img.mode != "RGB":
+                img = img.convert("RGB")
+            img.save(destination, "JPEG", quality=100)
 
-    if not title.cover:
-        title.cover = upload_path
-        title.save()
+        if not title.cover:
+            title.cover = upload_path
+            title.save()
+    except IOError:
+        pass
 
     return title.cover
 
