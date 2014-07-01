@@ -7,4 +7,3 @@ hiredis==0.1.3
 psycopg2==2.5.3
 redis==2.10.1
 -e git+git@github.com:podiobooks/podiobooks_data.git#egg=podiobooks_data
-git+git://github.com/Brant/django-postgrespool@master
