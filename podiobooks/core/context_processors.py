@@ -7,6 +7,7 @@ Special Context Processors (adds variables to template contexts) for Podiobooks
 from django.conf import settings
 from django.contrib.sites.models import Site
 
+
 def js_api_keys(request):
     """
     Adds JavaScript API Keys variables to the context.
@@ -15,6 +16,7 @@ def js_api_keys(request):
         'GOOGLE_ANALYTICS_ID': settings.GOOGLE_ANALYTICS_ID,
         'FACEBOOK_APP_ID': settings.FACEBOOK_APP_ID
     }
+
 
 def current_site(request):
     """Adds current site object to context"""

@@ -1,11 +1,15 @@
 """ Tags used for working with Titles """
+import feedparser
 
 from django import template
 from django.conf import settings
 from django.contrib.sites.models import Site
-import feedparser
+
+from podiobooks.core.util import get_cover_url_at_width, get_libsyn_cover_url
+
 
 register = template.Library()
+
 
 @register.inclusion_tag('core/title/tags/show_awardshow.html')
 def show_awardshow(title):
@@ -19,26 +23,43 @@ def show_contributors(title, detail=False):
     return {"title": title, "detail": detail, "SITE": Site.objects.get_current()}
 
 
-def get_libsyn_cover_url(title, height, width):
-    """Pulls the final libsyn URL for a title from libsyn"""
-    scale_url = "http://asset-server.libsyn.com/show/{0}/height/{1}/width/{2}".format(title.libsyn_show_id, height,
-        width)
-    # Removed Lookup logic with caching and such - was not improving overall site performance.
-    return scale_url
+@register.inclusion_tag('core/title/tags/show_titlecover.html')
+def show_full_titlecover(title):
+    """ Pulls and formats the cover for a Title
+    for details page"""
+    ret_dict = {"title": title, "url": get_libsyn_cover_url(title, 334, 200)}
+
+    if getattr(settings, "LOCALIZE_COVERS", False):
+        url = get_cover_url_at_width(title, 600)
+        if url:
+            ret_dict["url"] = url
+
+    return ret_dict
 
 
 @register.inclusion_tag('core/title/tags/show_titlecover.html')
 def show_titlecover(title):
-    """ Pulls and formats the cover for a Title """
-    redirected_url = get_libsyn_cover_url(title, 334, 200)
-    return {'title': title, 'url': redirected_url}
+    """ Pulls and formats the cover for a Title
+    for details page"""
+    ret_dict = {"title": title, "url": get_libsyn_cover_url(title, 334, 200)}
+
+    if getattr(settings, "LOCALIZE_COVERS", False):
+        url = get_cover_url_at_width(title, 400)
+        if url:
+            ret_dict["url"] = url
+
+    return ret_dict
 
 
 @register.simple_tag()
 def get_shelf_cover_url(title):
     """ Gets the Final, Real Image URL for a Title from Libsyn """
-    redirected_url = get_libsyn_cover_url(title, 99, 67)
-    return redirected_url
+    if getattr(settings, "LOCALIZE_COVERS", False):
+        url = get_cover_url_at_width(title, 200)
+        if url:
+            return url
+
+    return get_libsyn_cover_url(title, 99, 67)
 
 
 @register.inclusion_tag('core/title/tags/show_titlelist.html')
@@ -78,6 +99,7 @@ def show_comments(podiobooker_url):
         entries = []
 
     return {'comments': entries, 'podiobooker_url': podiobooker_url}
+
 
 @register.filter
 def count_titles(something):

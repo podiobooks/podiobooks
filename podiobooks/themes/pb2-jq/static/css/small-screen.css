@@ -164,10 +164,6 @@
 	.foot-moveable{
 		text-align: center;
 	}
-	.loading{
-		float:none;
-		margin-right:0;
-	}
 	.promoter-count,
 	.detractor-count {
 		height:30px;
