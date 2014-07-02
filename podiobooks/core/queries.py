@@ -5,7 +5,9 @@ from django.db.models import Max, Q
 
 from podiobooks.core.models import Title
 
+
 # pylint: disable=C0103
+
 
 def get_featured_shelf_titles(category='all'):
     """Returns a randomized list of non-deleted titles with display_on_homepage == True"""
@@ -117,7 +119,8 @@ def get_recently_released_shelf_titles(category='all'):
             Q(is_adult=False) &
             Q(deleted=False) &
             category_filter
-        ).annotate(Max("episodes__date_created")
+        ).annotate(
+            Max("episodes__date_created")
         ).order_by('-episodes__date_created__max')[:20]
         cache.set('recently_released_shelf_titles_' + category, titles, 240)
 
