@@ -69,6 +69,10 @@ if "GONDOR_REDIS_URL" in os.environ:
         'podiobooks.core.middleware.PermanentRedirectMiddleware',
     )
 
+if "GONDOR_DATA_DIR" in os.environ: 
+    GONDOR_DATA_DIR = os.environ["GONDOR_DATA_DIR"]
+    FIXTURE_DIRS = (GONDOR_DATA_DIR,)
+
 EMAIL_BACKEND = os.environ.get("EMAIL_BACKEND", "django.core.mail.backends.console.EmailBackend")
 EMAIL_HOST = os.environ.get("EMAIL_HOST", "")
 EMAIL_PORT = os.environ.get("EMAIL_PORT", 587)
