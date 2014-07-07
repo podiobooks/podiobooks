@@ -5,7 +5,7 @@ key: CUZ4WGBG6BX
 vcs: git
 
 # Runtime Environment
-runtime: python-2.7.7
+runtime: python-2.7.6
 
 # This path is relative to your project root (the directory gondor.yml lives in.)
 requirements_file: podiobooks/requirements_gondor.txt
