@@ -109,6 +109,7 @@ DATABASES = {
         #        'SUPPORTS_TRANSACTIONS': 'true',
     }
 }
+FIXTURE_DIRS = {os.path.join(PROJECT_ROOT, "..", "..", "podiobooks_data")}
 
 ### CACHE SETTINGS
 CACHES = {
