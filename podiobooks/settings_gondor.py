@@ -99,6 +99,8 @@ MEDIA_ROOT = os.path.join(os.environ["GONDOR_DATA_DIR"], "site_media", "mediaroo
 STATIC_ROOT = os.path.join(os.environ["GONDOR_DATA_DIR"], "site_media", "staticroot") + "/"
 
 MEDIA_URL = "%s/assets/media/" % os.environ.get("MEDIA_DOMAIN", "")  # make sure this maps inside of a static_urls URL in gondor.yml
+if not MEDIA_URL.startswith("/"):
+    MEDIA_URL = "//%s" % MEDIA_URL
 
 STATIC_URL = "/assets/static/"  # make sure this maps inside of a static_urls URL in gondor.yml
 
