@@ -17,7 +17,7 @@ if "GONDOR_DATABASE_URL" in os.environ:
     DB_URL = urlparse.urlparse(os.environ["GONDOR_DATABASE_URL"])
     DATABASES = {
         "default": {
-            "ENGINE": 'django_postgrespool',
+            "ENGINE": 'django_pgpooler',
             # "ENGINE": 'django.db.backends.postgresql_psycopg2',
             "NAME": DB_URL.path[1:],
             "USER": DB_URL.username,
@@ -69,7 +69,7 @@ if "GONDOR_REDIS_URL" in os.environ:
         'podiobooks.core.middleware.PermanentRedirectMiddleware',
     )
 
-if "GONDOR_DATA_DIR" in os.environ: 
+if "GONDOR_DATA_DIR" in os.environ:
     GONDOR_DATA_DIR = os.environ["GONDOR_DATA_DIR"]
     FIXTURE_DIRS = (GONDOR_DATA_DIR,)
 
