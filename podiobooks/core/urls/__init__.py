@@ -45,6 +45,7 @@ urlpatterns = patterns('',
     url(r'^title/recent/$', TitleRecentListView.as_view(), name='title_recent_list'),
     url(r'^title/removed/(?P<slug>[^/]+)/$', TitleRemovedView.as_view(), name='title_detail_removed'),
     url(r'^title/(?P<slug>[^/]+)/$', TitleDetailView.as_view(), name='title_detail'),
+    url(r'^title/(?P<slug>[^/]+)/comments/$', 'podiobooks.core.views.browse.get_comments', name='title_detail_comments'),
 
     # Homepage Shelf AJAX Endpoints
     url(r'^shelf/(?P<shelf_type>[\w_]+)/$', FilteredShelf.as_view(), name="shelf"),

@@ -24,7 +24,7 @@ $(function(){
 	if ($("#titleArticle").length > 0 && hasLocalStorage){
 
 
-		var waitingBar = $("<img src='" + siteVars("img") + "ajax-loader-bar.gif' />").hide().appendTo("body");
+		var waitingBar = $("<img id='loaderGif' src='" + siteVars("img") + "ajax-loader-bar.gif' />").hide().appendTo("body");
 		var article = $("#titleArticle");
 		var slug = article.data("title-slug");
 		var cover = article.find(".title-details-header-cover");

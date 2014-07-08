@@ -81,7 +81,7 @@
                     </li>
 
                     <li>
-                        <a class='tab-trigger' href="#comments-tab">Comments</a>
+                        <a class='tab-trigger' href="{% url 'title_detail_comments' slug=title.slug %}">Comments</a>
                     </li>
 
                 </ul>
@@ -95,11 +95,6 @@
                         </h3>
                     {% endif %}
                 </div>
-
-                <div title="Comments" id="comments-tab">
-                    {% show_comments title.podiobooker_blog_url %}
-                </div>
-
             </div>
 
             {% if title.license %}
