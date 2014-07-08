@@ -3,9 +3,10 @@
 from django.db.models import Count
 
 from django.views.generic import DetailView, ListView, TemplateView, RedirectView
-from django.shortcuts import get_object_or_404, redirect
-from django.http import Http404, HttpResponsePermanentRedirect
+from django.shortcuts import get_object_or_404, redirect, render_to_response
+from django.http import Http404, HttpResponsePermanentRedirect, HttpResponseBadRequest
 from django.core.exceptions import ObjectDoesNotExist
+from django.template import RequestContext
 
 from podiobooks.core.models import Award, Contributor, Category, Episode, Title, Series
 
@@ -232,3 +233,16 @@ class TitleDetailView(DetailView):
             context = self.get_context_data(object=self.object)
             return self.render_to_response(context)
 
+
+def get_comments(request, slug):
+    """ Return pre-templated comments for a title """
+
+    # if not request.is_ajax():
+    #     return HttpResponseBadRequest()
+
+    try:
+        title = Title.objects.get(slug=slug)
+    except ObjectDoesNotExist:
+        raise Http404
+
+    return render_to_response("core/title/title_comments.html", {"title": title}, context_instance=RequestContext(request))
