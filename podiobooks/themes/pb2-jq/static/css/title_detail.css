@@ -282,6 +282,7 @@
 	-moz-transition:background-color .15s ease-in-out;
 	-o-transition:background-color .15s ease-in-out;
 	transition:background-color .15s ease-in-out;
+	-webkit-appearance: none;
 }
 .tipjar-amount{
 	font-size:1.2em;

@@ -44,7 +44,7 @@ def show_titlecover(title):
     ret_dict = {"title": title, "url": get_libsyn_cover_url(title, 334, 200)}
 
     if getattr(settings, "LOCALIZE_COVERS", False):
-        url = get_cover_url_at_width(title, 400)
+        url = get_cover_url_at_width(title, 300)
         if url:
             ret_dict["url"] = url
 
@@ -55,7 +55,7 @@ def show_titlecover(title):
 def get_shelf_cover_url(title):
     """ Gets the Final, Real Image URL for a Title from Libsyn """
     if getattr(settings, "LOCALIZE_COVERS", False):
-        url = get_cover_url_at_width(title, 200)
+        url = get_cover_url_at_width(title, 100)
         if url:
             return url
 
