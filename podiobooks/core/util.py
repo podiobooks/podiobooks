@@ -19,7 +19,7 @@ def use_placeholder_cover_for_title(title, upload_path=''):
 
     # try:
     if not os.path.isfile(destination):
-        img = Image.open(settings.LOCALIZED_COVER_PLACEHOLDER)
+        img = Image.open(os.path.join(settings.STATIC_ROOT, settings.LOCALIZED_COVER_PLACEHOLDER))
         if img.mode != "RGB":
             img = img.convert("RGB")
         img.save(destination, "JPEG", quality=100)
@@ -82,6 +82,7 @@ def get_cover_url_at_width(title, width):
     attr = "cover_%s" % width
     try:
         return getattr(title, attr).url
+
     except AttributeError:
         download_cover(title)
         if title.cover:
