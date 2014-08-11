@@ -7,14 +7,39 @@ from noodles.util import AssetsFromImageHandler
 from django.conf import settings
 
 
-def download_cover(title, upload_path=''):
-    raw_cover_url = "http://asset-server.libsyn.com/show/%s/" % title.libsyn_show_id
-
+def use_placeholder_cover_for_title(title, upload_path=''):
     if not upload_path:
         upload_path = title.cover.field.upload_to
 
     destination_dir = os.path.join(settings.MEDIA_ROOT, upload_path)
+    if not os.path.isdir(destination_dir):
+        os.makedirs(destination_dir)
 
+    image_file = "%s.jpg" % title.slug
+    destination = os.path.join(destination_dir, image_file)
+    upload_path = "%s/%s" % (upload_path, image_file)
+
+    try:
+        if not os.path.isfile(destination):
+            img = Image.open(settings.LOCALIZED_COVER_PLACEHOLDER)
+            if img.mode != "RGB":
+                img = img.convert("RGB")
+            img.save(destination, "JPEG", quality=100)
+
+        if not title.cover:
+            title.cover = upload_path
+            title.save()
+    except IOError:
+        pass
+
+    return title.cover
+
+
+def download_cover_from_libsyn(title, upload_path=''):
+    if not upload_path:
+        upload_path = title.cover.field.upload_to
+
+    destination_dir = os.path.join(settings.MEDIA_ROOT, upload_path)
     if not os.path.isdir(destination_dir):
         os.makedirs(destination_dir)
 
@@ -24,6 +49,7 @@ def download_cover(title, upload_path=''):
 
     try:
         if not os.path.isfile(destination):
+            raw_cover_url = "http://asset-server.libsyn.com/show/%s/" % title.libsyn_show_id
             filename, httpresponse = urllib.urlretrieve(raw_cover_url)
             img = Image.open(filename)
             if img.mode != "RGB":
@@ -32,20 +58,19 @@ def download_cover(title, upload_path=''):
 
         if not title.cover:
             title.cover = upload_path
-
-            try:
-                title.save()
-            except KeyError:  # this comes when noodles asks the imaging library to manipulate an unknown filetype
-                img = Image.open(settings.LOCALIZED_COVER_PLACEHOLDER)
-                if img.mode != "RGB":
-                    img = img.convert("RGB")
-                img.save(destination, "JPEG", quality=100)
-                title.save()
+            title.save()
 
     except IOError:
         pass
 
     return title.cover
+
+
+def download_cover(title, upload_path=''):
+    if title.libsyn_show_id:
+        return download_cover_from_libsyn(title, upload_path)
+    else:
+        return use_placeholder_cover_for_title(title, upload_path)
 
 
 def get_cover_url_at_width(title, width):
