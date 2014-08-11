@@ -41,7 +41,7 @@ ACCEL_REDIRECT = False
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(PROJECT_ROOT, "themes", THE_THEME, "static"), ]
 TEMPLATE_DIRS = [os.path.join(PROJECT_ROOT, "themes", THE_THEME, 'templates'), ]
-LOCALIZED_COVER_PLACEHOLDER = os.path.join(STATIC_ROOT, "images/cover-placeholder.jpg")
+LOCALIZED_COVER_PLACEHOLDER = os.path.join("images/cover-placeholder.jpg")
 
 
 # List of callables that know how to import templates from various sources.
