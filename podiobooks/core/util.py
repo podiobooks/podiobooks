@@ -35,7 +35,7 @@ def download_cover(title, upload_path=''):
 
             try:
                 title.save()
-            except KeyError:
+            except KeyError:  # this comes when noodles asks the imaging library to manipulate an unknown filetype
                 img = Image.open(settings.LOCALIZED_COVER_PLACEHOLDER)
                 if img.mode != "RGB":
                     img = img.convert("RGB")
