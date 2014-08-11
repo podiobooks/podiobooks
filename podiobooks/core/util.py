@@ -32,7 +32,16 @@ def download_cover(title, upload_path=''):
 
         if not title.cover:
             title.cover = upload_path
-            title.save()
+
+            try:
+                title.save()
+            except KeyError:
+                img = Image.open(settings.LOCALIZED_COVER_PLACEHOLDER)
+                if img.mode != "RGB":
+                    img = img.convert("RGB")
+                img.save(destination, "JPEG", quality=100)
+                title.save()
+
     except IOError:
         pass
 
