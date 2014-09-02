@@ -126,6 +126,18 @@ urlpatterns = \
 
              # Hack Redirect
              (r'submit', RedirectView.as_view(url='/')),
+
+             # Author Start Page
+             (r'start$',
+              RedirectView.as_view(url='http://blog.podiobooks.com/how-to-get-your-books-listed-on-podiobooks-com/')),
+
+             # Ad Redirect
+             (r'website$',
+              RedirectView.as_view(url='http://a.strk.ly/7WS9s')),
+
+             # Audible Referral Program
+             (r'audible$',
+              RedirectView.as_view(url='http://www.anrdoezrs.net/click-7635086-1644783')),
     )
 
 #Only hook up the static and media to run through Django in a dev environment...in prod, handle with web server
