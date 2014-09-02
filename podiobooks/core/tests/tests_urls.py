@@ -175,6 +175,18 @@ class UrlTestCase(TestCase):
         response = self.client.get('/blog')
         self.assertEquals(301, response.status_code)
 
+    def test_website_redirect(self):
+        response = self.client.get('/website')
+        self.assertEquals(301, response.status_code)
+
+    def test_audible_redirect(self):
+        response = self.client.get('/audible')
+        self.assertEquals(301, response.status_code)
+
+    def test_start_redirect(self):
+        response = self.client.get('/start')
+        self.assertEquals(301, response.status_code)
+
     def test_robots(self):
         response = self.client.get('/robots.txt')
         self.assertEquals(200, response.status_code)
