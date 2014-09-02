@@ -5,12 +5,12 @@ import os
 from django.core.urlresolvers import reverse_lazy
 
 from django.utils.http import urlquote
-from django.views.generic import RedirectView, TemplateView, View
+from django.views.generic import ListView, RedirectView, TemplateView, View
 from django.shortcuts import get_object_or_404, redirect
 from django.http import Http404, HttpResponse, HttpResponseRedirect, HttpResponsePermanentRedirect
 from django.core.exceptions import ObjectDoesNotExist
 from django.conf import settings
-
+from django.db.models import Count
 
 from podiobooks.core.models import Title, Category
 from podiobooks.core.forms import CategoryChoiceForm, TitleSearchForm
@@ -45,7 +45,6 @@ class IndexView(TemplateView):
         category_choice_form_popular = CategoryChoiceForm(self.request, cookie="popular_by_category")
         initial_category_slug_popular = category_choice_form_popular.fields["category"].initial
         toprated_title_list = get_popular_shelf_titles(initial_category_slug_popular)
-
 
         # Recently Released Shelf
         category_choice_form_recent = CategoryChoiceForm(self.request, cookie="recent_by_category")
@@ -192,3 +191,15 @@ class AccelView(View):
     def patch(self, request, *args, **kwargs):
         """ Handle PATCH Requests"""
         return self.get(request, *args, **kwargs)
+
+
+class ReportsView(TemplateView):
+    """Admin Reports List Page"""
+    template_name = "core/reports/report_list.html"
+
+
+class NoMediaReportView(ListView):
+    """Admin Reports For Titles With No Media"""
+    template_name = "core/reports/report_nomedia.html"
+    context_object_name = 'title_list'
+    queryset = Title.objects.annotate(num_media=Count('media')).filter(num_media=0)

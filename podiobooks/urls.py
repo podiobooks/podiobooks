@@ -8,6 +8,7 @@
 from django.conf.urls import patterns, url, include
 from django.contrib import admin
 from django.contrib.auth.views import login as login_view
+from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib.admindocs import urls as admindocs_urls
 from django.contrib.sitemaps.views import sitemap as sitemap_urls
 from django.views.static import serve as dev_static_views
@@ -15,16 +16,9 @@ from django.conf import settings
 from django.views.generic import RedirectView, TemplateView
 
 from podiobooks.core.sitemaps import AwardDetailSitemap, CategoryDetailSitemap, ContributorDetailSitemap, TitleDetailSitemap
-# from podiobooks.feeds import urls as feeds_urls
-# from podiobooks.libsyn import urls as libsyn_urls
-# from podiobooks.core import urls as core_urls
-# from podiobooks.ratings import urls as ratings_urls
-# from podiobooks.search import urls as search_urls
-from podiobooks.core.views import AccelView, IndexView, DonationView
-
+from podiobooks.core.views import AccelView, IndexView, DonationView, ReportsView, NoMediaReportView
 
 from .views import BlogRedirectView, TextTemplateView, RobotsView
-
 
 admin.autodiscover()
 
@@ -37,7 +31,7 @@ urlpatterns = \
              url(r'^$', IndexView.as_view(), name="home_page"),
 
              # Donation Options View
-             url (r'^donate/$', DonationView.as_view(), name='donate'),
+             url(r'^donate/$', DonationView.as_view(), name='donate'),
 
              # Recent Titles Feed Redirect
              url(r'^index\.xml$', RedirectView.as_view(url='/rss/feeds/titles/recent/')),
@@ -47,6 +41,10 @@ urlpatterns = \
 
              # Admin documentation
              (r'^admin/doc/', include(admindocs_urls)),
+
+             # Admin reports
+             url(r'^admin/reports/$', staff_member_required(ReportsView.as_view()), name='report_list'),
+             url(r'^admin/reports/nomedia/$', staff_member_required(NoMediaReportView.as_view()), name='report_nomedia'),
 
              # Admin Site
              (r'^admin/', include(admin.site.urls)),
@@ -128,19 +126,19 @@ urlpatterns = \
              (r'submit', RedirectView.as_view(url='/')),
 
              # Author Start Page
-             (r'start$',
+             (r'start/$',
               RedirectView.as_view(url='http://blog.podiobooks.com/how-to-get-your-books-listed-on-podiobooks-com/')),
 
              # Ad Redirect
-             (r'website$',
+             (r'website/$',
               RedirectView.as_view(url='http://a.strk.ly/7WS9s')),
 
              # Audible Referral Program
-             (r'audible$',
+             (r'audible/$',
               RedirectView.as_view(url='http://www.anrdoezrs.net/click-7635086-1644783')),
     )
 
-#Only hook up the static and media to run through Django in a dev environment...in prod, handle with web server
+# Only hook up the static and media to run through Django in a dev environment...in prod, handle with web server
 if settings.DEBUG:
     urlpatterns += patterns('',
                             url(r'^media/(?P<path>.*)$', dev_static_views, {

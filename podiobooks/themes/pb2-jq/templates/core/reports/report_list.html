@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block headtitle %}Administrator Reports - {{ SITE.name }}{% endblock %}
+{% block content %}
+    <h1>Podiobooks Administrator Reports</h1>
+    <hr/>
+        <ul style="margin:50px 50px 300px 100px;">
+            <li><a href="{% url 'report_nomedia' %}">Titles Without Media</a></li>
+        </ul>
+{% endblock %}

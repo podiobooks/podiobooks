@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% load global_templatetags %}
+{% load title_templatetags %}
+
+{% block headtitle %}Titles With No Media - {{ SITE.name }}{% endblock %}
+
+{% block content %}
+
+    <h1>
+        Titles With No Media
+    </h1>
+
+    <ul class="browse-list">
+        {% for title in title_list %}
+            <li><a href="{{ title.get_absolute_url }}">{{ title.name }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}
