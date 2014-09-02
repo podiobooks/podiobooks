@@ -6,6 +6,7 @@ from django.views.generic import FormView, TemplateView
 from .forms import LibsynImportForm
 from .create_title_from_libsyn_rss import create_title_from_libsyn_rss
 
+
 class ImportFromLibsynFormView(FormView):
     """Displays and Validates Form to Collect Libsyn Slug for Title to be Imported"""
     template_name = "libsyn/import_from_libsyn.html"
