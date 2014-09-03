@@ -4,3 +4,4 @@ docutils
 gondor
 pylint
 sphinx
+git+git://github.com/Brant/django-pgpooler@master
