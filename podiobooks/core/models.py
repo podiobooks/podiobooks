@@ -289,6 +289,10 @@ class Title(DefinedWidthsAssetsFromImagesMixin, models.Model):
     def get_absolute_url(self):
         return ('title_detail', [self.slug])
 
+    @models.permalink
+    def get_rss_feed_url(self):
+        return ('title_episodes_feed', [self.slug])
+
     def net_promoter_score(self):
         total_count = self.promoter_count + self.detractor_count
         if total_count:
