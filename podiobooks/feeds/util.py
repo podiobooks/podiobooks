@@ -11,6 +11,3 @@ def cache_title_feed(title):
         "url=%s&token=%s" % (title.get_rss_feed_url(), settings.FEED_CACHE_TOKEN),
         timeout=120).read()
     return json.loads(contents)["success"]
-
-
-
