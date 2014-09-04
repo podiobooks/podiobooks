@@ -11,6 +11,7 @@ DEBUG = eval(os.environ.get("DEBUG", "False"))
 TEMPLATE_DEBUG = DEBUG
 
 ACCEL_REDIRECT = True
+USE_X_FORWARDED_HOST = True
 
 if "GONDOR_DATABASE_URL" in os.environ:
     urlparse.uses_netloc.append("postgres")
@@ -103,10 +104,9 @@ INSTALLED_APPS += ()
 MEDIA_ROOT = os.path.join(os.environ["GONDOR_DATA_DIR"], "site_media", "mediaroot", )
 STATIC_ROOT = os.path.join(os.environ["GONDOR_DATA_DIR"], "site_media", "staticroot") + "/"
 
-
-MEDIA_URL = "%s/assets/media/" % os.environ.get("MEDIA_DOMAIN", "")  # make sure this maps inside of a static_urls URL in gondor.yml
+MEDIA_URL = "{0}/assets/media/".format(os.environ.get("MEDIA_DOMAIN", ""))  # make sure this maps inside of a static_urls URL in gondor.yml
 if not MEDIA_URL.startswith("/"):
-    MEDIA_URL = "//%s" % MEDIA_URL
+    MEDIA_URL = "//{0}".format(MEDIA_URL)
 
 STATIC_URL = "/assets/static/"  # make sure this maps inside of a static_urls URL in gondor.yml
 
