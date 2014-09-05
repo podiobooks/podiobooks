@@ -1,12 +1,13 @@
 """Admin site customizations for Podiobooks main"""
 
 # pylint: disable=C0111,E0602,F0401,R0904,E1002
-
+from django import forms
 from django.contrib import admin
 from django.forms.widgets import Textarea, TextInput
 from django.db import models
 
 from podiobooks.core.models import Award, Category, Contributor, ContributorType, Episode, License, Media, Series, Title, TitleCategory, TitleContributor
+from podiobooks.feeds.util import cache_title_feed
 
 import adminactions.actions as actions
 from django.contrib.admin import site
@@ -152,6 +153,10 @@ class TitleAdmin(admin.ModelAdmin):
             'fields': ('awards',)
         }))
     filter_horizontal = ['awards']
+
+    def save_model(self, request, obj, form, change):
+        obj.save()
+        cache_title_feed(obj)
 
     def clear_cover_image(self, request, queryset):
         queryset.update(cover=None, assets_from_images=None)
