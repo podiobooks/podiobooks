@@ -11,7 +11,6 @@ DEBUG = eval(os.environ.get("DEBUG", "False"))
 TEMPLATE_DEBUG = DEBUG
 
 ACCEL_REDIRECT = True
-USE_X_FORWARDED_HOST = True
 
 if "GONDOR_DATABASE_URL" in os.environ:
     urlparse.uses_netloc.append("postgres")
