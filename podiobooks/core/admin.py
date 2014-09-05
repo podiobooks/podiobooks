@@ -1,7 +1,8 @@
 """Admin site customizations for Podiobooks main"""
 
 # pylint: disable=C0111,E0602,F0401,R0904,E1002
-from django import forms
+
+from django.contrib import messages
 from django.contrib import admin
 from django.forms.widgets import Textarea, TextInput
 from django.db import models
@@ -107,7 +108,7 @@ class SeriesAdmin(admin.ModelAdmin):
 
 
 class TitleAdmin(admin.ModelAdmin):
-    actions = ['add_from_libsyn', 'clear_cover_image', ]
+    actions = ['add_from_libsyn', 'clear_cover_image', 'freshen_feed_cache', ]
     date_hierarchy = 'date_created'
     list_display = (
         'name', 'license', 'is_explicit', 'is_adult', 'is_family_friendly', 'is_for_kids',
@@ -161,6 +162,14 @@ class TitleAdmin(admin.ModelAdmin):
     def clear_cover_image(self, request, queryset):
         queryset.update(cover=None, assets_from_images=None)
     clear_cover_image.short_descripton = "Clear cover images"
+
+    def freshen_feed_cache(self, request, queryset):
+        if len(queryset) <= 5:
+            for title in queryset:
+                cache_title_feed(title)
+        else:
+            self.message_user(request, "Please only freshen the feeds of 5 titles at a time. More will take quite a while.")
+    freshen_feed_cache.short_descripton = "Refresh RSS feed cache"
 
 
 class TitleContributorAdmin(admin.ModelAdmin):
