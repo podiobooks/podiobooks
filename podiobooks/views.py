@@ -17,8 +17,8 @@ class RobotsView(TextTemplateView):
     """
 
     def get_template_names(self, **kwargs):
-        current_site = Site.objects.get_current()
-        if current_site.domain == 'podiobooks.com':
+        host = self.request.get_host()
+        if host == 'www.podiobooks.com' or host == 'podiobooks.com':
             return ['robots_prod.txt']
         else:
             return ['robots.txt']
