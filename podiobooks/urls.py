@@ -19,7 +19,7 @@ from django.views.decorators.vary import vary_on_headers
 from podiobooks.core.sitemaps import AwardDetailSitemap, CategoryDetailSitemap, ContributorDetailSitemap, TitleDetailSitemap
 from podiobooks.core.views import AccelView, IndexView, DonationView, ReportsView, NoMediaReportView
 
-from .views import BlogRedirectView, TextTemplateView, RobotsView, HeadersView
+from .views import BlogRedirectView, TextTemplateView, RobotsView
 
 admin.autodiscover()
 
@@ -69,7 +69,7 @@ urlpatterns = \
              (r'^mub/', include('mub.urls')),
 
              # Robots, Favicon and Related
-             (r'^robots\.txt$', RobotsView.as_view()),
+             (r'^robots\.txt$', vary_on_headers('HOST')(RobotsView.as_view())),
              (r'^favicon\.ico$', AccelView.as_view(url='images/favicon.ico')),
              (r'^apple-touch-icon\.png$',
               AccelView.as_view(url=settings.STATIC_URL + 'images/apple-touch-icon.png')),
@@ -137,9 +137,6 @@ urlpatterns = \
              # Audible Referral Program
              (r'audible/$',
               RedirectView.as_view(url='http://www.anrdoezrs.net/click-7635086-1644783')),
-
-             # Headers Dump
-             (r'headers/$', vary_on_headers('HOST')(HeadersView.as_view())),
     )
 
 # Only hook up the static and media to run through Django in a dev environment...in prod, handle with web server

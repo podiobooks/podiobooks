@@ -12,6 +12,8 @@ class TextTemplateView(TemplateView):
 class RobotsView(TextTemplateView):
     """
     Routes robots to the robots.txt file depending on the site name.
+
+    Note that this depends on the hostname; so if caching is on, it may be caching the HOST header.
     """
 
     def get_template_names(self, **kwargs):
@@ -28,11 +30,3 @@ class BlogRedirectView(RedirectView):
 
     def get_redirect_url(self, **kwargs):
         return 'http://blog.podiobooks.com' + self.kwargs.get('url_remainder', '')
-
-
-class HeadersView(TemplateView):
-    """Dump Headers"""
-    template_name = "headers.html"
-
-    def get_context_data(self, **kwargs):
-        return {"request": self.request, "host": self.request.get_host()}
