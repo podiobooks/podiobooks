@@ -14,7 +14,7 @@ def cache_title_feed(title):
         "url=%s&token=%s" % (title.get_rss_feed_url(), settings.FEED_CACHE_TOKEN),
         headers={"x_endpoint_app_sig": generate_feed_signature(title)}
     )
-
+    print request.headers
     try:
         contents = urllib2.urlopen(request, timeout=120).read()
         return json.loads(contents)["success"]
