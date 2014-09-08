@@ -12,7 +12,7 @@ def cache_title_feed(title):
     request = urllib2.Request(
         settings.FEED_CACHE_ENDPOINT,
         "url=%s&token=%s" % (title.get_rss_feed_url(), settings.FEED_CACHE_TOKEN),
-        headers={"x_endpoint_app_sig": generate_feed_signature(title)}
+        headers={"x-endpoint-app-sig": generate_feed_signature(title)}
     )
     print request.headers
     try:
