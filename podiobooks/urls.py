@@ -139,7 +139,7 @@ urlpatterns = \
               RedirectView.as_view(url='http://www.anrdoezrs.net/click-7635086-1644783')),
 
              # Headers Dump
-             (r'headers/$', vary_on_headers('HTTP_HOST')(HeadersView.as_view())),
+             (r'headers/$', vary_on_headers('HOST')(HeadersView.as_view())),
     )
 
 # Only hook up the static and media to run through Django in a dev environment...in prod, handle with web server
