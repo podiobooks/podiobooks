@@ -4,7 +4,7 @@ Caches Feeds
 from django.core.management.base import BaseCommand, CommandError
 
 from podiobooks.core.models import Title
-from podiobooks.feeds.util import cache_title_feed
+from podiobooks.feeds.util import cache_title_feed, generate_feed_signature
 
 from optparse import make_option
 

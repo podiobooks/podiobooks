@@ -129,7 +129,6 @@ class EpisodeFeed(Feed):
 
     # pylint: disable=W0221
     def get_object(self, request, *args, **kwargs):
-
         title_slug = kwargs.get('title_slug', None)
 
         title_set = Title.objects.filter(deleted=False)
