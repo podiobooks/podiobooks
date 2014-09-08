@@ -14,6 +14,7 @@ from django.contrib.sitemaps.views import sitemap as sitemap_urls
 from django.views.static import serve as dev_static_views
 from django.conf import settings
 from django.views.generic import RedirectView, TemplateView
+from django.views.decorators.vary import vary_on_headers
 
 from podiobooks.core.sitemaps import AwardDetailSitemap, CategoryDetailSitemap, ContributorDetailSitemap, TitleDetailSitemap
 from podiobooks.core.views import AccelView, IndexView, DonationView, ReportsView, NoMediaReportView
@@ -138,8 +139,7 @@ urlpatterns = \
               RedirectView.as_view(url='http://www.anrdoezrs.net/click-7635086-1644783')),
 
              # Headers Dump
-             (r'headers/$',
-              HeadersView.as_view()),
+             (r'headers/$', vary_on_headers('HTTP_HOST')(HeadersView.as_view())),
     )
 
 # Only hook up the static and media to run through Django in a dev environment...in prod, handle with web server
