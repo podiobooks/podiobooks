@@ -10,6 +10,11 @@
         </a>
     </li>
     <li>
+        <a href="/admin/reports/" class="link">
+            Reports
+        </a>
+    </li>
+    <li>
         <a href="{% url cl.opts|admin_urlname:'add' %}{% if is_popup %}?_popup=1{% endif %}" class="addlink">
             {% blocktrans with cl.opts.verbose_name as name %}Add {{ name }}{% endblocktrans %}
         </a>
