@@ -18,7 +18,7 @@ from django.views.generic import RedirectView, TemplateView
 from podiobooks.core.sitemaps import AwardDetailSitemap, CategoryDetailSitemap, ContributorDetailSitemap, TitleDetailSitemap
 from podiobooks.core.views import AccelView, IndexView, DonationView, ReportsView, NoMediaReportView
 
-from .views import BlogRedirectView, TextTemplateView, RobotsView
+from .views import BlogRedirectView, TextTemplateView, RobotsView, HeadersView
 
 admin.autodiscover()
 
@@ -136,6 +136,10 @@ urlpatterns = \
              # Audible Referral Program
              (r'audible/$',
               RedirectView.as_view(url='http://www.anrdoezrs.net/click-7635086-1644783')),
+
+             # Headers Dump
+             (r'headers/$',
+              HeadersView.as_view()),
     )
 
 # Only hook up the static and media to run through Django in a dev environment...in prod, handle with web server
