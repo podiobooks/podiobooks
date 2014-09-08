@@ -41,7 +41,7 @@ if "GONDOR_REDIS_URL" in os.environ:
     GONDOR_REDIS_HOST = DB_URL.hostname
     GONDOR_REDIS_PORT = DB_URL.port
     GONDOR_REDIS_PASSWORD = DB_URL.password
-    CACHE_MIDDLEWARE_SECONDS = 3600
+    CACHE_MIDDLEWARE_SECONDS = int(os.environ.get("CACHE_MIDDLEWARE_SECONDS", 3600))
 
     # Cache Settings
     CACHES = {
