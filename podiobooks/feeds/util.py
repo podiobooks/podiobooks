@@ -2,6 +2,7 @@ import urllib2
 import json
 import hmac
 import hashlib
+import logging
 
 from django.conf import settings
 
@@ -9,10 +10,10 @@ from django.conf import settings
 def cache_title_feed(title):
     """ responsible for calling the endpoint url caching a title's feed """
 
-    print "DOING FEED CACHING"
-    print settings.FEED_CACHE_ENDPOINT
-    print settings.FEED_CACHE_TOKEN
-    print settings.FEED_CACHE_SECRET
+    logging.warning("DOING FEED CACHING")
+    logging.warning(settings.FEED_CACHE_ENDPOINT)
+    logging.warning(settings.FEED_CACHE_TOKEN)
+    logging.warning(settings.FEED_CACHE_SECRET)
 
     request = urllib2.Request(
         settings.FEED_CACHE_ENDPOINT,
