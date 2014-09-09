@@ -21,3 +21,10 @@ def js_api_keys(request):
 def current_site(request):
     """Adds current site object to context"""
     return {'SITE': Site.objects.get_current()}
+
+
+def feed_settings(request):
+    """Adds settings to use for feeds to context."""
+    return {
+        'FEED_URL': settings.FEED_URL,
+    }

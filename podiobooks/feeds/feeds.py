@@ -12,7 +12,7 @@ from django.contrib.sites.models import Site
 from django.utils.feedgenerator import Rss201rev2Feed
 from django.utils.html import strip_tags
 from django.conf import settings
-from django.core.urlresolvers import reverse_lazy
+from django.core.urlresolvers import reverse_lazy, reverse
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import get_object_or_404
 
@@ -30,8 +30,14 @@ class TitleFeed(Feed):
     feed_type = Rss201rev2Feed
 
     title = "Podiobooks All Titles Feed"
-    link = '/rss/feeds/titles'
+
     description = "Titles from Podiobooks.com"
+
+    def link(self):
+        return reverse_lazy('title_browse')
+
+    def feed_url(self):
+        return settings.FEED_URL + reverse('all_titles_feed')
 
     def items(self):
         """Returns the list of items for the feed"""
@@ -39,6 +45,8 @@ class TitleFeed(Feed):
 
     def get_feed(self, obj, request):
         ### Google Analytics for Feed
+        ### Commented Out Because of Feed Caching
+        """
         tracker = Tracker(settings.GOOGLE_ANALYTICS_ID, Site.objects.get_current().domain)
         visitor = Visitor()
         visitor.ip_address = request.META.get('REMOTE_ADDR', '')
@@ -48,6 +56,7 @@ class TitleFeed(Feed):
             tracker.track_event(event, Session(), visitor)
         except (URLError, timeout):
             LOGGER.info("GA Feed Ping Timeout")
+        """
 
         return super(TitleFeed, self).get_feed(obj, request)
 
@@ -55,7 +64,7 @@ class TitleFeed(Feed):
         return strip_tags(obj.description).replace('&amp;', '&')
 
     def item_link(self, obj):
-        return reverse_lazy('title_episodes_feed', args=[obj.slug])
+        return settings.FEED_URL + reverse('title_episodes_feed', args=[obj.slug])
 
     def item_title(self, obj):
         return strip_tags(obj.name).replace('&amp;', '&')
@@ -65,7 +74,7 @@ class RecentTitleFeed(TitleFeed):
     """A simple feed that lists recent Titles"""
 
     title = "Podiobooks Recent Titles Feed"
-    link = '/rss/feeds/titles/recent'
+    link = settings.FEED_URL + '/rss/feeds/titles/recent'
     description = "Recent Titles from Podiobooks.com"
 
     def items(self):
@@ -76,9 +85,6 @@ class RecentTitleFeed(TitleFeed):
 class EpisodeFeed(Feed):
     """Main feed used to generate the list of episodes for an individual Title"""
     feed_type = ITunesFeed
-
-    def __init__(self, *args, **kwargs):
-        super(EpisodeFeed, self).__init__(*args, **kwargs)
 
     def author_name(self, obj):
         authors = obj.titlecontributors.filter(contributor_type=1).values_list('contributor__display_name', flat=True)
@@ -127,6 +133,24 @@ class EpisodeFeed(Feed):
         }
         return extra_args
 
+    def image(self, obj):
+        return "http://asset-server.libsyn.com/show/{0}".format(obj.libsyn_show_id)
+
+    def complete(self, obj):
+        return 'yes'
+
+    def link(self, obj):
+        return obj.get_absolute_url()
+
+    def feed_url(self, obj):
+        return settings.FEED_URL + reverse('title_episodes_feed', args=[obj.slug])
+
+    def subtitle(self, obj):
+        return u'A free audiobook by %s' % self.author_name(obj)
+
+    def title(self, obj):
+        return obj.name
+
     # pylint: disable=W0221
     def get_object(self, request, *args, **kwargs):
         title_slug = kwargs.get('title_slug', None)
@@ -139,6 +163,8 @@ class EpisodeFeed(Feed):
             obj = get_object_or_404(title_set, old_slug__exact=title_slug)
 
         ### Google Analytics for Feed
+        ### Commented out because of Feed Caching
+        """
         tracker = Tracker(settings.GOOGLE_ANALYTICS_ID, Site.objects.get_current().domain)
         visitor = Visitor()
         visitor.ip_address = request.META.get('REMOTE_ADDR', '')
@@ -149,14 +175,9 @@ class EpisodeFeed(Feed):
             tracker.track_event(event, Session(), visitor)
         except (URLError, timeout):
             LOGGER.info("GA Feed Ping Timeout")
+        """
 
         return obj
-
-    def image(self, obj):
-        return "http://asset-server.libsyn.com/show/{0}".format(obj.libsyn_show_id)
-
-    def complete(self, obj):
-        return 'yes'
 
     def items(self, obj):
         #        return Episode.objects.prefetch_related("title").filter(title__id__exact=obj.id).order_by('sequence')
@@ -210,15 +231,6 @@ class EpisodeFeed(Feed):
 
     def item_title(self, obj):
         return strip_tags(obj.name).replace('&amp;', '&')
-
-    def link(self, obj):
-        return obj.get_absolute_url()
-
-    def subtitle(self, obj):
-        return u'A free audiobook by %s' % self.author_name(obj)
-
-    def title(self, obj):
-        return obj.name
 
     def item_order(self, obj):
         if hasattr(obj, "injected_sequence"):

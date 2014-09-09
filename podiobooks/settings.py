@@ -43,6 +43,8 @@ STATICFILES_DIRS = [os.path.join(PROJECT_ROOT, "themes", THE_THEME, "static"), ]
 TEMPLATE_DIRS = [os.path.join(PROJECT_ROOT, "themes", THE_THEME, 'templates'), ]
 LOCALIZED_COVER_PLACEHOLDER = os.path.join("images/cover-placeholder.jpg")
 
+# URL to Use for Feeds
+FEED_URL = "http://MONKEYSHINES"  # This will be overridden in prod conf with an alt protocol/domain
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -58,10 +60,12 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.static',
     'podiobooks.core.context_processors.js_api_keys',
     'podiobooks.core.context_processors.current_site',
+    'podiobooks.core.context_processors.feed_settings',
     'django.core.context_processors.request',
 )
 
 MIDDLEWARE_CLASSES = (
+    'podiobooks.core.middleware.StripAnalyticsCookies',
     'django.middleware.gzip.GZipMiddleware',  # Not running SSL, so gzip doesn't matter
     'django.middleware.doc.XViewMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',

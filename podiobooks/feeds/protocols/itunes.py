@@ -15,11 +15,11 @@ class ITunesFeed(Rss201rev2Feed):
         """Adds elements at the root of the feed"""
         super(ITunesFeed, self).add_root_elements(handler)
 
-        #Basic Attributes
+        # Basic Attributes
         for category in self.feed['global_categories']:
             handler.addQuickElement(u'category', category)
 
-        #iTunes Base Elements
+        # iTunes Base Elements
         handler.addQuickElement(u'itunes:explicit', self.feed['explicit'])
         handler.addQuickElement(u'itunes:author', self.feed['author_name'])
         handler.addQuickElement(u'itunes:image', None, {u'href': self.feed['image']})
@@ -27,18 +27,18 @@ class ITunesFeed(Rss201rev2Feed):
         handler.addQuickElement(u'itunes:subtitle', self.feed['description'][:255])
         handler.addQuickElement(u'itunes:complete', strip_tags(self.feed['complete']))
 
-        #iTunes Category
+        # iTunes Category
         handler.startElement(u'itunes:category', {u'text': u'Arts'})
         handler.addQuickElement(u'itunes:category', None, {u'text': u'Literature'})
         handler.endElement(u'itunes:category')
 
-        #iTunes Owner
+        # iTunes Owner
         handler.startElement(u'itunes:owner', {})
         handler.addQuickElement(u'itunes:name', u'Evo Terra')
         handler.addQuickElement(u'itunes:email', u'evo@podiobooks.com')
         handler.endElement(u'itunes:owner')
 
-        #iTunes New Feed URL
+        # iTunes New Feed URL
         if self.feed['itunes_new_feed_url']:
             handler.addQuickElement(u'itunes:new-feed-url', strip_tags(self.feed['feed_url']))
 
@@ -46,11 +46,10 @@ class ITunesFeed(Rss201rev2Feed):
         """Adds new elements to each item in the feed"""
         super(ITunesFeed, self).add_item_elements(handler, item)
 
-        #iTunes Elements
+        # iTunes Elements
         handler.addQuickElement(u'itunes:explicit', self.feed['explicit'])
         handler.addQuickElement(u'itunes:author', self.feed['author_name'])
         handler.addQuickElement(u'itunes:subtitle', item['description'][:255])
         handler.addQuickElement(u'itunes:summary', item['description'])
         handler.addQuickElement(u'itunes:duration', item['duration'])
         handler.addQuickElement(u'itunes:order', item['order'])
-            

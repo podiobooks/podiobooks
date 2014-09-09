@@ -111,6 +111,11 @@ if not MEDIA_URL.startswith("/"):
 
 STATIC_URL = "/assets/static/"  # make sure this maps inside of a static_urls URL in gondor.yml
 
+# URL to use for Feeds
+FEED_URL = "{0}/assets/media/".format(os.environ.get("FEED_DOMAIN", ""))
+if not FEED_URL.startswith("/"):
+    FEED_URL = "//{0}".format(FEED_URL)
+
 FILE_UPLOAD_PERMISSIONS = 0640
 
 MUB_MINIFY = True
