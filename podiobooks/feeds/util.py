@@ -9,12 +9,6 @@ from django.conf import settings
 
 def cache_title_feed(title):
     """ responsible for calling the endpoint url caching a title's feed """
-
-    logging.warning("DOING FEED CACHING")
-    logging.warning(settings.FEED_CACHE_ENDPOINT)
-    logging.warning(settings.FEED_CACHE_TOKEN)
-    logging.warning(settings.FEED_CACHE_SECRET)
-
     request = urllib2.Request(
         settings.FEED_CACHE_ENDPOINT,
         "url=%s&token=%s" % (title.get_rss_feed_url(), settings.FEED_CACHE_TOKEN),
