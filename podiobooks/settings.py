@@ -44,7 +44,7 @@ TEMPLATE_DIRS = [os.path.join(PROJECT_ROOT, "themes", THE_THEME, 'templates'), ]
 LOCALIZED_COVER_PLACEHOLDER = os.path.join("images/cover-placeholder.jpg")
 
 # URL to Use for Feeds
-FEED_URL = "http://MONKEYSHINES"  # This will be overridden in prod conf with an alt protocol/domain
+FEED_URL = ""  # This will be overridden in prod conf with an alt protocol/domain
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
