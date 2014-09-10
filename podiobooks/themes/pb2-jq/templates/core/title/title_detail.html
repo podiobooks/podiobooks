@@ -24,17 +24,19 @@
         <header class="clearfix title-details-header">
             <div class="title-details-header-info">
                 <h1 itemprop="name">{{ title.name }} {% show_rating_icon title %}</h1>
+
                 <p>{% show_contributors title "True" %}</p>
+
                 <p>{{ title.category_list|safe }}</p>
 
                 {% if title.series %}
-	                <p>Series:
-						<a href="{{ title.series.get_absolute_url }}">{{ title.series.name }}</a>
-						{% if title.series_sequence > 0 %}
-							(Book {{ title.series_sequence }})
-						{% endif %}
-		            </p>
-	            {% endif %}
+                    <p>Series:
+                        <a href="{{ title.series.get_absolute_url }}">{{ title.series.name }}</a>
+                        {% if title.series_sequence > 0 %}
+                            (Book {{ title.series_sequence }})
+                        {% endif %}
+                    </p>
+                {% endif %}
             </div>
 
             <div class="title-details-header-cover">{% show_full_titlecover title %}</div>
@@ -42,7 +44,7 @@
         </header>
 
         <div class="clearfix">
-        	<!--
+            <!--
             <ul class="clearfix title-details-social-share">
                 <li>{% show_tweet %}</li>
                 <li>{% show_plusone %}</li>
@@ -51,21 +53,27 @@
 			-->
             <div class="clearfix" itemprop="description">
 
-            	<aside class="title-details-square-ad">
-            		<script type="text/javascript"><!--
-						google_ad_client = "ca-pub-1276519440300441";
-						/* Title - Square */
-						google_ad_slot = "1452521796";
-						google_ad_width = 250;
-						google_ad_height = 250;
-						//-->
-					</script>
-					<script type="text/javascript"
-					src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-					</script>
-            	</aside>
+                <aside class="title-details-square-ad">
+                    {% if 'Erotica' in title.category_list %}
+                        <a href="http://www.ErectionFitness.com/ct/298422?b=7262&t=2014Sept"><img src="http://www2.sellhealth.com/2/ef250x250.gif" border=0></a>
+                    {% elif 'Spirituality' in title.category_list %}
+                        <a href="http://click.linksynergy.com/fs-bin/click?id=y8AvMVrRK4c&offerid=186232.10000139&subid=0&type=4"><IMG border="0"   alt="Spiritual Cinema Circle" src="http://ad.linksynergy.com/fs-bin/show?id=y8AvMVrRK4c&bids=186232.10000139&subid=0&type=4&gridnum=14"></a>
+                    {% else %}
+                        <script type="text/javascript"><!--
+                        google_ad_client = "ca-pub-1276519440300441";
+                        /* Title - Square */
+                        google_ad_slot = "1452521796";
+                        google_ad_width = 250;
+                        google_ad_height = 250;
+                        //-->
+                        </script>
+                        <script type="text/javascript"
+                                src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+                        </script>
+                    {% endif %}
+                </aside>
 
-				{% autoescape off %}{{ title.description|linebreaks|removetags:"img" }}{% endautoescape %}
+                {% autoescape off %}{{ title.description|linebreaks|removetags:"img" }}{% endautoescape %}
 
             </div>
 
@@ -116,16 +124,19 @@
         <div id="wide-skyscraper-ad" class="wide-skyscraper-ad">
             {% if not 'Erotica' in title.category_list %}
                 <script type="text/javascript"><!--
-					google_ad_client = "ca-pub-1276519440300441";
-					/* Title -  Wide Sky */
-					google_ad_slot = "9254990190";
-					google_ad_width = 160;
-					google_ad_height = 600;
-					//-->
-				</script>
-				<script type="text/javascript"
-				src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-				</script>
+                google_ad_client = "ca-pub-1276519440300441";
+                /* Title -  Wide Sky */
+                google_ad_slot = "9254990190";
+                google_ad_width = 160;
+                google_ad_height = 600;
+                //-->
+                </script>
+                <script type="text/javascript"
+                        src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+                </script>
+            {% endif %}
+            {% if 'Erotica' in title.category_list %}
+                <a href="http://www.ErectionFitness.com/ct/298422?b=7252&t=2014Sept"><img src="http://www2.sellhealth.com/2/ef120x600.gif" border=0></a>
             {% endif %}
         </div>
 
