@@ -7,8 +7,10 @@ from django.contrib import admin
 from podiobooks.ads.models import AdSchedule, AdSchedulePosition
 from podiobooks.core.models import Episode
 
-### INLINES
+from podiobooks.feeds.util import cache_title_feed
 
+
+### INLINES
 
 class AdScheduledPositionInline(admin.TabularInline):
     model = AdSchedulePosition
@@ -20,8 +22,7 @@ class AdScheduledPositionInline(admin.TabularInline):
         if db_field.name == "episode":
             kwargs["queryset"] = Episode.objects.filter(title__slug='pb-ads')
         return super(AdScheduledPositionInline, self).formfield_for_foreignkey(db_field, request, **kwargs)
-
-# 
+#
 # class AdTitleInline(admin.TabularInline):
 #     model = AdScheduleTitle
 
@@ -32,5 +33,10 @@ class AdScheduleAdmin(admin.ModelAdmin):
     model = AdSchedule
     inlines = [AdScheduledPositionInline, ]
     filter_horizontal = ["titles", ]
+
+    def save_model(self, request, obj, form, change):
+        for title in obj.titles.all():
+            cache_title_feed(title)
+        obj.save()
 
 admin.site.register(AdSchedule, AdScheduleAdmin)
