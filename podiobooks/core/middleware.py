@@ -27,7 +27,9 @@ class StripAnalyticsCookies(object):
     strip_re = re.compile(r'(__utm.=.+?(?:; |$))')
 
     def process_request(self, request):
+        """Strip Analytics Cookies out before they are considered for cache"""
         try:
             cookie = self.strip_re.sub('', request.META['HTTP_COOKIE'])
             request.META['HTTP_COOKIE'] = cookie
-        except: pass
+        except:
+            pass

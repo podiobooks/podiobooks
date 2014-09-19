@@ -4,9 +4,6 @@
 
 import logging
 
-from urllib2 import URLError
-from socket import timeout
-
 from django.contrib.syndication.views import Feed, add_domain
 from django.contrib.sites.models import Site
 from django.utils.feedgenerator import Rss201rev2Feed
@@ -19,8 +16,6 @@ from django.shortcuts import get_object_or_404
 from podiobooks.core.models import Title
 from podiobooks.ads.models import get_ep_list_with_ads_for_title
 from podiobooks.feeds.protocols.itunes import ITunesFeed
-
-from pyga.requests import Event, Session, Tracker, Visitor
 
 LOGGER = logging.getLogger(name='podiobooks.feeds')
 
@@ -42,23 +37,6 @@ class TitleFeed(Feed):
     def items(self):
         """Returns the list of items for the feed"""
         return Title.objects.all().filter(deleted=False)
-
-    def get_feed(self, obj, request):
-        ### Google Analytics for Feed
-        ### Commented Out Because of Feed Caching
-        """
-        tracker = Tracker(settings.GOOGLE_ANALYTICS_ID, Site.objects.get_current().domain)
-        visitor = Visitor()
-        visitor.ip_address = request.META.get('REMOTE_ADDR', '')
-        visitor.user_agent = request.META.get('HTTP_USER_AGENT', '')
-        event = Event(category='RSS', action=self.title, label=self.link, value=None, noninteraction=False)
-        try:
-            tracker.track_event(event, Session(), visitor)
-        except (URLError, timeout):
-            LOGGER.info("GA Feed Ping Timeout")
-        """
-
-        return super(TitleFeed, self).get_feed(obj, request)
 
     def item_description(self, obj):
         return strip_tags(obj.description).replace('&amp;', '&')
@@ -161,21 +139,6 @@ class EpisodeFeed(Feed):
             obj = title_set.get(slug__exact=title_slug)
         except ObjectDoesNotExist:
             obj = get_object_or_404(title_set, old_slug__exact=title_slug)
-
-        ### Google Analytics for Feed
-        ### Commented out because of Feed Caching
-        """
-        tracker = Tracker(settings.GOOGLE_ANALYTICS_ID, Site.objects.get_current().domain)
-        visitor = Visitor()
-        visitor.ip_address = request.META.get('REMOTE_ADDR', '')
-        visitor.user_agent = request.META.get('HTTP_USER_AGENT', '')
-        event = Event(category='RSS', action='Podiobooks Episodes Feed', label=title_slug, value=None,
-                      noninteraction=False)
-        try:
-            tracker.track_event(event, Session(), visitor)
-        except (URLError, timeout):
-            LOGGER.info("GA Feed Ping Timeout")
-        """
 
         return obj
 

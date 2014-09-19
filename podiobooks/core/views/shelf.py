@@ -5,7 +5,8 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.http import Http404
 from django.views.generic.base import View
-from podiobooks.core.queries import get_featured_shelf_titles, get_recently_released_shelf_titles, get_toprated_shelf_titles, get_popular_shelf_titles
+from podiobooks.core.queries import get_featured_shelf_titles, get_recently_released_shelf_titles, \
+    get_toprated_shelf_titles, get_popular_shelf_titles
 
 # pylint: disable=W0613
 
@@ -34,8 +35,9 @@ class FilteredShelf(View):
         Top rated titles, filtered by a category
         """
         popular_title_list = get_popular_shelf_titles(category)
-        return render_to_response("core/shelf/tags/show_shelf_pages.html", {"title_list": popular_title_list, "no_ads": True},
-            context_instance=RequestContext(self.request))
+        return render_to_response("core/shelf/tags/show_shelf_pages.html",
+                                  {"title_list": popular_title_list, "no_ads": True},
+                                  context_instance=RequestContext(self.request))
 
     def top_rated_by_author(self, author='all'):
         """
@@ -44,21 +46,24 @@ class FilteredShelf(View):
         ** SHELF NOT CURRENTLY IN USE **
         """
         toprated_title_list = get_toprated_shelf_titles(author)
-        return render_to_response("core/shelf/tags/show_shelf_pages.html", {"title_list": toprated_title_list, "no_ads": True},
-            context_instance=RequestContext(self.request))
+        return render_to_response("core/shelf/tags/show_shelf_pages.html",
+                                  {"title_list": toprated_title_list, "no_ads": True},
+                                  context_instance=RequestContext(self.request))
 
     def recent_by_category(self, category='all'):
         """
         Display Recently Released Titles by Category
         """
         recently_released_list = get_recently_released_shelf_titles(category)
-        return render_to_response("core/shelf/tags/show_shelf_pages.html", {"title_list": recently_released_list, "no_ads": True},
-            context_instance=RequestContext(self.request))
+        return render_to_response("core/shelf/tags/show_shelf_pages.html",
+                                  {"title_list": recently_released_list, "no_ads": True},
+                                  context_instance=RequestContext(self.request))
 
     def featured_by_category(self, category='all'):
         """
         Featured titles, filtered by category (genre)
         """
         featured_title_list = get_featured_shelf_titles(category)
-        return render_to_response("core/shelf/tags/show_shelf_pages.html", {"title_list": featured_title_list, "no_ads": True},
-            context_instance=RequestContext(self.request))
+        return render_to_response("core/shelf/tags/show_shelf_pages.html",
+                                  {"title_list": featured_title_list, "no_ads": True},
+                                  context_instance=RequestContext(self.request))

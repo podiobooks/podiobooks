@@ -1,3 +1,4 @@
+"""Gneeral Podiobooks Utilities"""
 import os
 import urllib
 from PIL import Image
@@ -6,6 +7,7 @@ from django.conf import settings
 
 
 def use_placeholder_cover_for_title(title, upload_path=''):
+    """If an image isn't loaded, use a placeholder cover"""
     if not upload_path:
         upload_path = title.cover.field.upload_to
 
@@ -34,6 +36,7 @@ def use_placeholder_cover_for_title(title, upload_path=''):
 
 
 def download_cover_from_libsyn(title, upload_path=''):
+    """Download cover image from Libsyn"""
     if not upload_path:
         upload_path = title.cover.field.upload_to
 
@@ -48,7 +51,7 @@ def download_cover_from_libsyn(title, upload_path=''):
     try:
         if not os.path.isfile(destination):
             raw_cover_url = "http://asset-server.libsyn.com/show/%s/" % title.libsyn_show_id
-            filename, httpresponse = urllib.urlretrieve(raw_cover_url)
+            filename, httpresponse = urllib.urlretrieve(raw_cover_url) # pylint: disable=W0612
             img = Image.open(filename)
             if img.mode != "RGB":
                 img = img.convert("RGB")
@@ -65,6 +68,7 @@ def download_cover_from_libsyn(title, upload_path=''):
 
 
 def download_cover(title, upload_path=''):
+    """Wrapper based on whether showID is filled out"""
     if title.libsyn_show_id:
         return download_cover_from_libsyn(title, upload_path)
     else:

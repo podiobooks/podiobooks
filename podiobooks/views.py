@@ -1,7 +1,6 @@
 """ Django Views for the Overall Site"""
 
 from django.views.generic import RedirectView, TemplateView
-from django.contrib.sites.models import Site
 
 
 class TextTemplateView(TemplateView):

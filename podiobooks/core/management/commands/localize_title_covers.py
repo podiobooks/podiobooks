@@ -4,8 +4,7 @@
 from optparse import make_option
 
 from django.db.models import Q
-from django.core.management.base import BaseCommand, CommandError
-from django.core.exceptions import ObjectDoesNotExist
+from django.core.management.base import BaseCommand
 
 from podiobooks.core.util import download_cover
 from podiobooks.core.models import Title
@@ -13,6 +12,7 @@ from podiobooks.core.models import Title
 
 class Command(BaseCommand):
     """
+    Download local versions of all covers.
     """
     option_list = BaseCommand.option_list + (
         make_option(

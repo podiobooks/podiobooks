@@ -1,8 +1,8 @@
+"""Utilities for use with feeds"""
 import urllib2
 import json
 import hmac
 import hashlib
-import logging
 
 from django.conf import settings
 
@@ -25,4 +25,5 @@ def cache_title_feed(title):
 
 
 def generate_feed_signature(title):
+    """Generates a hash key for the feed"""
     return hmac.new(str(settings.FEED_CACHE_SECRET), str(title.get_rss_feed_url()), digestmod=hashlib.sha256).hexdigest()

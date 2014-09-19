@@ -4,7 +4,7 @@ from django.db.models import Count
 
 from django.views.generic import DetailView, ListView, TemplateView, RedirectView
 from django.shortcuts import get_object_or_404, redirect, render_to_response
-from django.http import Http404, HttpResponsePermanentRedirect, HttpResponseBadRequest
+from django.http import Http404, HttpResponsePermanentRedirect
 from django.core.exceptions import ObjectDoesNotExist
 from django.template import RequestContext
 
@@ -31,9 +31,9 @@ class AwardListView(ListView):
 
         return Award.objects.annotate(
             title_count=Count('titles')).filter(
-                title_count__gt=0,
-                deleted=False,
-                pk__in=[award.pk for award in awards_list]).order_by('name').prefetch_related("titles")
+            title_count__gt=0,
+            deleted=False,
+            pk__in=[award.pk for award in awards_list]).order_by('name').prefetch_related("titles")
 
 
 class AwardDetailView(ListView):
@@ -63,8 +63,8 @@ class CategoryListView(ListView):
     context_object_name = 'category_list'
 
     def get_queryset(self):
-        return Category.objects.annotate(title_count=Count('title')).filter(title_count__gt=0, deleted=False).order_by('name').prefetch_related("title_set")
-
+        return Category.objects.annotate(title_count=Count('title')).filter(title_count__gt=0, deleted=False).order_by(
+            'name').prefetch_related("title_set")
 
 
 class CategoryDetailView(ListView):
@@ -90,7 +90,8 @@ class ContributorListView(ListView):
     paginate_by = 40
 
     def get_queryset(self):
-        return Contributor.objects.prefetch_related("title_set").filter(deleted=False, title__deleted=False).annotate(title_count=Count('title')).filter(title_count__gt=0).order_by('last_name')
+        return Contributor.objects.prefetch_related("title_set").filter(deleted=False, title__deleted=False).annotate(
+            title_count=Count('title')).filter(title_count__gt=0).order_by('last_name')
 
 
 class ContributorDetailView(ListView):
@@ -102,8 +103,8 @@ class ContributorDetailView(ListView):
         return Title.objects.prefetch_related("titlecontributors",
                                               "titlecontributors__contributor",
                                               "titlecontributors__contributor_type").distinct().filter(
-                                                  titlecontributors__contributor__slug=self.kwargs.get('slug'),
-                                                  deleted=False)
+            titlecontributors__contributor__slug=self.kwargs.get('slug'),
+            deleted=False)
 
     def get_context_data(self, **kwargs):
         contributor = get_object_or_404(Contributor, slug=self.kwargs.get('slug'))
@@ -146,7 +147,8 @@ class SeriesDetailView(ListView):
         return Title.objects.prefetch_related(
             "titlecontributors",
             "titlecontributors__contributor",
-            "titlecontributors__contributor_type").order_by("series_sequence").filter(series__slug=self.kwargs.get('slug'), deleted=False)
+            "titlecontributors__contributor_type").order_by("series_sequence").filter(
+            series__slug=self.kwargs.get('slug'), deleted=False)
 
     def get_context_data(self, **kwargs):
         series = get_object_or_404(Series, slug=self.kwargs.get('slug'))
@@ -162,8 +164,8 @@ class TitleListView(ListView):
 
     def get_queryset(self):
         return Title.objects.prefetch_related("titlecontributors",
-            "titlecontributors__contributor_type",
-            "titlecontributors__contributor").filter(deleted=False).order_by('name')
+                                              "titlecontributors__contributor_type",
+                                              "titlecontributors__contributor").filter(deleted=False).order_by('name')
 
 
 class TitleRecentListView(ListView):
@@ -238,11 +240,12 @@ def get_comments(request, slug):
     """ Return pre-templated comments for a title """
 
     # if not request.is_ajax():
-    #     return HttpResponseBadRequest()
+    # return HttpResponseBadRequest()
 
     try:
         title = Title.objects.get(slug=slug)
     except ObjectDoesNotExist:
         raise Http404
 
-    return render_to_response("core/title/title_comments.html", {"title": title}, context_instance=RequestContext(request))
+    return render_to_response("core/title/title_comments.html", {"title": title},
+                              context_instance=RequestContext(request))

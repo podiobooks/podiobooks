@@ -39,7 +39,7 @@ def make_api_call(user, method, params):
     print method
 
     try:
-        return eval(method)(api_params)
+        return eval(method)(api_params)  # pylint: disable=W0123
     except xmlrpclib.Fault, f:   # pragma: no cover
         print server
         raise f

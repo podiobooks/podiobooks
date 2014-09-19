@@ -4,22 +4,23 @@ Caches Feeds
 from django.core.management.base import BaseCommand, CommandError
 
 from podiobooks.core.models import Title
-from podiobooks.feeds.util import cache_title_feed, generate_feed_signature
+from podiobooks.feeds.util import cache_title_feed
 
 from optparse import make_option
 
 
 class Command(BaseCommand):
+    """Caches a feed at another location"""
 
     help = "Caches a feed (or all feeds) at another location"
     args = "[<feed_slug>]"
 
     option_list = BaseCommand.option_list + (
         make_option('--all',
-            action='store_true',
-            dest='all_feeds',
-            default=False,
-            help='Caches all feeds'),
+                    action='store_true',
+                    dest='all_feeds',
+                    default=False,
+                    help='Caches all feeds'),
     )
 
     def handle(self, *args, **options):
