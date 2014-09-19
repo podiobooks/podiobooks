@@ -1,5 +1,5 @@
 """
-
+Utilities to pull down local copies of all the covers.
 """
 from optparse import make_option
 

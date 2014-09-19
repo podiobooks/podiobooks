@@ -11,7 +11,7 @@ from django.template import RequestContext
 from podiobooks.core.models import Award, Contributor, Category, Episode, Title, Series
 
 
-# pylint: disable=R0912
+# pylint: disable=R0912,C0330
 
 
 class AwardListView(ListView):
