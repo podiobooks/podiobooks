@@ -75,9 +75,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'podiobooks.feeds.middleware.ga_tracking.GATracker',
     'django.middleware.http.ConditionalGetMiddleware',
-    'podiobooks.core.middleware.PermanentRedirectMiddleware',
-    'htmlmin.middleware.HtmlMinifyMiddleware',
-    'htmlmin.middleware.MarkRequestMiddleware',
+    'podiobooks.core.middleware.PermanentRedirectMiddleware',s
 )
 
 ROOT_URLCONF = 'podiobooks.urls'
