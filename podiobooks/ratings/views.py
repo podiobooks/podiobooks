@@ -23,17 +23,18 @@ def get_ratings(request, slug):
     get_token(request)
 
     if not request.is_ajax():
-        return HttpResponse(json.dumps({"status": "ok"}), mimetype='application/json')
+        return HttpResponse(json.dumps({"status": "ok"}), content_type='application/json')
 
     in_storage = get_rating_from_storage(request)
 
     try:
         title = Title.objects.get(slug=slug, deleted=False)
     except ObjectDoesNotExist:
-        return HttpResponse(json.dumps({"status": "error", "message": "Title not found"}), mimetype='application/json')
+        return HttpResponse(json.dumps({"status": "error", "message": "Title not found"}),
+                            content_type='application/json')
 
     resp = get_ratings_widget_dict(request, title, in_storage)
-    return HttpResponse(json.dumps(resp), mimetype='application/json')
+    return HttpResponse(json.dumps(resp), content_type='application/json')
 
 
 class RateTitleView(View):
@@ -45,12 +46,13 @@ class RateTitleView(View):
         """Add an upvote/downvote for a specific title"""
 
         if not request.is_ajax():
-            return HttpResponse(json.dumps({"status": "ok"}), mimetype='application/json')
+            return HttpResponse(json.dumps({"status": "ok"}), content_type='application/json')
 
         try:
             title = Title.objects.get(slug=slug, deleted=False)
         except ObjectDoesNotExist:
-            return HttpResponse(json.dumps({"status": "error", "message": "Title not found"}), mimetype='application/json')
+            return HttpResponse(json.dumps({"status": "error", "message": "Title not found"}),
+                                content_type='application/json')
 
         in_storage = get_rating_from_storage(request)
 
@@ -99,4 +101,4 @@ class RateTitleView(View):
                 title.save()
 
         resp = get_ratings_widget_dict(request, title, in_storage=1 if up_vote else -1)
-        return HttpResponse(json.dumps(resp), mimetype='application/json')
+        return HttpResponse(json.dumps(resp), content_type='application/json')
