@@ -13,10 +13,11 @@ from django.contrib.admindocs import urls as admindocs_urls
 from django.contrib.sitemaps.views import sitemap as sitemap_urls
 from django.views.static import serve as dev_static_views
 from django.conf import settings
-from django.views.generic import RedirectView, TemplateView
+from django.views.generic import RedirectView
 from django.views.decorators.vary import vary_on_headers
 
-from podiobooks.core.sitemaps import AwardDetailSitemap, CategoryDetailSitemap, ContributorDetailSitemap, TitleDetailSitemap
+from podiobooks.core.sitemaps import AwardDetailSitemap, CategoryDetailSitemap, ContributorDetailSitemap, \
+    TitleDetailSitemap
 from podiobooks.core.views import AccelView, IndexView, DonationView, ReportsView, NoMediaReportView
 
 from .views import BlogRedirectView, TextTemplateView, RobotsView
@@ -45,7 +46,8 @@ urlpatterns = \
 
              # Admin reports
              url(r'^admin/reports/$', staff_member_required(ReportsView.as_view()), name='report_list'),
-             url(r'^admin/reports/nomedia/$', staff_member_required(NoMediaReportView.as_view()), name='report_nomedia'),
+             url(r'^admin/reports/nomedia/$', staff_member_required(NoMediaReportView.as_view()),
+                 name='report_nomedia'),
 
              # Admin Site
              (r'^admin/', include(admin.site.urls)),
