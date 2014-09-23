@@ -131,7 +131,7 @@ CACHES = {
 # although not all choices may be available on all operating systems.
 # If running in a Windows environment this must be set to the same as your
 # system time zone.
-TIME_ZONE = 'America/Denver'
+TIME_ZONE = 'America/Seattle'
 
 # If you set this to False, Django will not use timezone-aware datetimes.
 USE_TZ = True
