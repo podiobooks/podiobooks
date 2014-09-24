@@ -129,15 +129,15 @@ urlpatterns = \
              (r'submit', RedirectView.as_view(url='/')),
 
              # Author Start Page
-             (r'start/$',
+             (r'start/?$',
               RedirectView.as_view(url='http://blog.podiobooks.com/how-to-get-your-books-listed-on-podiobooks-com/')),
 
              # Ad Redirect
-             (r'website/$',
+             (r'website/?$',
               RedirectView.as_view(url='http://a.strk.ly/7WS9s')),
 
              # Audible Referral Program
-             (r'audible/$',
+             (r'audible/?$',
               RedirectView.as_view(url='http://www.audibletrial.com/PodiobooksAudible')),
     )
 
