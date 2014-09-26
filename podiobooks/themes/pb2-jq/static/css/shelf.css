@@ -103,8 +103,8 @@
 .shelf-cover-wrap{
 	display: block;
 	float:left;
-	min-width:110px;
-	min-height: 100px;
+	min-width:120px;
+	min-height: 120px;
 	margin: 0 1em .4em 0;
 	padding:0;
 }

@@ -37,7 +37,17 @@
         })();
 
     </script>
+
     {% block head %}{% endblock %}
+
+    <script type="text/javascript">
+    	var pgw = 1000;
+
+    	if (window.innerWidth){
+    		pgw = parseInt(window.innerWidth);
+    	}
+
+    </script>
 </head>
 
 <body class='{% block body_class %}{% endblock %}{% if debug %} debug{% endif %}'>
