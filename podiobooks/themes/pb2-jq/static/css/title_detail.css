@@ -127,9 +127,7 @@
     text-decoration: none;
 }
 
-.category a:hover {
-    text-decoration: underline;
-}
+
 
 
 .detractor-count {
@@ -148,15 +146,18 @@
 	list-style: none;
 	margin:10px 0;
 	padding:0;
+	text-align: center;
 	
 }
 .award-show li{
 	margin:10px 0;
 	text-align:center;
+	display: inline-block;	
 }
 
 .award-show img {
     width: 80px;
+    vertical-align: middle;
     
 }
 
@@ -207,9 +208,6 @@
     text-align: left;
 }
 
-.consume-list a:hover {
-    text-decoration: underline;
-}
 
 .consume-itunes a {
     background: url('../images/pb-itunes-logo.png') left top no-repeat;

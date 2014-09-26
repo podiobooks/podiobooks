@@ -36,7 +36,6 @@ a:active {
 
 a:hover {
     color: #c35230;
-    text-decoration: underline;
 }
 
 ul,
@@ -123,9 +122,6 @@ audio {
     margin: 0 10px 0 0;
 }
 
-.nav-bar .cur {
-    text-decoration: underline;
-}
 
 .headerbar {
     padding: 15px 20px 8px 20px;

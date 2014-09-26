@@ -17,6 +17,9 @@
 /*
  * results
  */
+.title-list-title a{
+	color:#272727;
+}
 .title-list{
 	list-style:none;
 }
