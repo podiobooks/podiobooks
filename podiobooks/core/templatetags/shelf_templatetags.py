@@ -5,10 +5,12 @@ from django import template
 register = template.Library()
 
 
-@register.inclusion_tag('core/shelf/tags/show_shelf.html')
-def show_shelf(shelf_id, shelf_title, title_list, dropdown_form, base_css_class, ad_template=None):
+@register.inclusion_tag('core/shelf/tags/show_shelf.html', takes_context=True)
+def show_shelf(context, shelf_id, shelf_title, title_list, dropdown_form, base_css_class, ad_template=None):
     """Pulls in a template to show a title shelf for a particular set of titles"""
+    print "DEBUG: ", context['debug']
     return {
+        'debug': context['debug'],
         'shelf_id': shelf_id,
         'shelf_title': shelf_title,
         'title_list': title_list,
@@ -18,10 +20,11 @@ def show_shelf(shelf_id, shelf_title, title_list, dropdown_form, base_css_class,
     }
 
 
-@register.inclusion_tag('core/shelf/tags/show_shelf_pages.html')
-def show_shelf_pages(shelf_id, shelf_name, title_list, ad_template=None):
+@register.inclusion_tag('core/shelf/tags/show_shelf_pages.html', takes_context=True)
+def show_shelf_pages(context, shelf_id, shelf_name, title_list, ad_template=None):
     """Shows the guts of the shelf, the pages of items...used mainly to reload the guts of the shelf on the fly"""
     return {
+        'debug': context['debug'],
         'shelf_id': shelf_id,
         'shelf_name': shelf_name,
         'title_list': title_list,
@@ -38,8 +41,8 @@ def show_shelf_item(shelf_id, title):
 @register.filter
 def possible_ad_placements(title_list):
     """ Based on a list of titles, decide possible places to put an ad """
-    ret = range(1, len(title_list) / 2)
+    ret = range(2, len(title_list) / 3)
     if not ret:
         ret = [0]
     return ret
-        
+

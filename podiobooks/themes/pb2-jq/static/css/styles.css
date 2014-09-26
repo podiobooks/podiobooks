@@ -11,15 +11,14 @@ body {
 
 h1, h2, h3, h4 {
     margin: 0 0 .5em;
-    font-family: Tahoma, sans-serif;
-    font-weight: bold;
+    color:#979797;
+    font-weight: normal;
 }
 
 h1 {
     font-size: 1.7em;
     line-height: 1.2em;
     margin: 0 0 1em;
-
 }
 
 h2 {
@@ -70,8 +69,9 @@ audio {
 * Layout
 */
 .width {
-    width: 864px;
     margin: 0 auto;
+    width:88%;
+    min-width: 948px;
 }
 
 .logo {
@@ -204,16 +204,16 @@ body form.gsc-search-box {
     width: auto;
 }
 
-.search-results .nav-bar .search {
+.search-results-page .nav-bar .search {
     display: none;
 }
 
-.search-results .search-bar-trigger,
+.search-results-page .search-bar-trigger,
 .search-bar-trigger {
     display: none;
 }
 
-.search-results table.gsc-search-box {
+.search-results-page table.gsc-search-box {
     width: auto;
 }
 
@@ -310,12 +310,6 @@ body form.gsc-search-box {
     height: 40px;
 }
 
-.wide-skyscraper-ad {
-    text-align: center;
-    width: 160px;
-    margin: 1em auto;
-}
-
 .leaderboard-ad {
     width: 728px;
     height: 90px;
@@ -328,12 +322,6 @@ body form.gsc-search-box {
     margin: 20px 0;
 }
 
-.browse-list-120-ad {
-    float: right;
-    margin: 0 0 10px 10px;
-    width: 120px;
-}
-
 .menu-triggers {
     display: none;
 }
@@ -343,9 +331,18 @@ body form.gsc-search-box {
 }
 
 .pagination {
-    margin: 15px 0;
+	float:left;
+	width:65%;
+    margin: 1.3em 0;
+    text-align: center;
 }
 
+.pagination-previous{
+	float:left;	
+}
+.pagination-next{
+	float:right;
+}
 /*
  * Jump to content link
  */

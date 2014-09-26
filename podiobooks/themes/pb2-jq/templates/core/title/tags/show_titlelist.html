@@ -1,23 +1,16 @@
 {% load title_templatetags %}
+{% load global_templatetags %}
 
-<aside class="horizontal-large-ad">
-    {% include "core/ad/browse_results_list_ad_1.html" %}
-</aside>
 
 <ul class="title-list">
+
     {% for title in title_list %}
-        {% if forloop.counter == 3 %}
-            <li>
-                <aside class="title-list-250-ad">
-                    {% if 'Erotica' in title.category_list %}
-                        <a href="http://www.ErectionFitness.com/ct/298422?b=7262&t=2014Sept"><img src="http://www2.sellhealth.com/2/ef250x250.gif" border=0></a>
-                    {% elif 'Spirituality' in title.category_list %}
-                        <a href="http://click.linksynergy.com/fs-bin/click?id=y8AvMVrRK4c&offerid=186232.10000139&subid=0&type=4"><IMG border="0" alt="Spiritual Cinema Circle" src="http://ad.linksynergy.com/fs-bin/show?id=y8AvMVrRK4c&bids=186232.10000139&subid=0&type=4&gridnum=14"></a>
-                    {% else %}
-                        {% include "core/ad/browse_results_list_ad_2.html" %}
-                    {% endif %}
-                </aside>
-            </li>
+        {% if forloop.counter|modulus:8 == 1 %}
+        	{% include "core/ad/browse_results_list_ad_1.html" %}
+        {% endif %}
+
+        {% if forloop.counter|modulus:8 == 5 %}
+		    {% include "core/ad/browse_results_list_ad_2.html" %}
         {% endif %}
 
         <li>
@@ -28,7 +21,6 @@
                 <h1 class="title-list-title">
                     <a href="{{ title.get_absolute_url }}">{{ title.name }}</a>{% show_rating_icon title %}
                 </h1>
-
 
                 {% if page_name != 'contributor_title_list' %}
                     <p class="byline">
@@ -47,10 +39,7 @@
                         {{ title.description|striptags|truncatewords:65 }}
                     {% endautoescape %}
                 </p>
-
-
             </article>
-
         </li>
     {% endfor %}
 </ul>

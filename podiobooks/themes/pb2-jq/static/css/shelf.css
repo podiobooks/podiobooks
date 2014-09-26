@@ -2,26 +2,19 @@
  * Basic Shelf Styling
  */
 .shelf {
-    -webkit-border-top-left-radius: 0px;
-    -webkit-border-top-right-radius: 0px;
-    -webkit-border-bottom-left-radius: 10px;
-    -webkit-border-bottom-right-radius: 10px;
-    -moz-border-radius-topleft: 0px;
-    -moz-border-radius-topright: 0px;
-    -moz-border-radius-bottomleft: 10px;
-    -moz-border-radius-bottomright: 10px;
-    -o-border-radius: 0px 0px 10px 10px;
-    border-radius: 0px 0px 10px 10px;
+    border-radius: 0 0 10px 10px;
     
     box-shadow: 0 3px 5px rgba(150, 150, 150, .8);
     padding: 0 0px 0px 0px;
     position: relative;
     z-index: 3;
     width: 100%;
-    height: 217px;
-    margin-bottom: 40px;
-    
+    height: 317px;
+    margin:0;
     overflow:hidden;
+}
+.shelf-wrapper{
+	margin:20px 0;
 }
 
 .pbShelf{
@@ -33,6 +26,8 @@
     margin:0;
     border-radius: 10px 10px 0 0;
     box-shadow: 0 3px 5px rgba(150, 150, 150, .8);
+    font-weight: bold;
+    font-family: tahoma, sans-serif;
 }
 
 
@@ -97,29 +92,23 @@
 .shelf-item {
     background: #fff;
     float: left;
-    width: 180px;
+    width: 280px;
     margin: 8px 8px;
     border-radius: 10px;
     padding: 10px;
-    height: 180px;
+    height: 280px;
     overflow: hidden;
     position:relative;
-    font-size:.7em;
 }
 .shelf-cover-wrap{
 	display: block;
 	float:left;
-	min-width:67px;
-	min-height: 67px;
+	min-width:110px;
+	min-height: 100px;
 	margin: 0 1em .4em 0;
 	padding:0;
 }
-.shelf-item-ad{
-	padding:0;
-	border-radius:0;
-	width:200px;
-	height:200px;
-}
+
 
 .shelf-cover-loading{
 	opacity:0;
@@ -143,8 +132,8 @@
 	float:left;
     padding: 0;
     margin:0;
-    width: 67px;
-    min-height: 67px;
+    width: 100%;
+    height: auto;
     display:inline-block;
 }
 
@@ -152,26 +141,30 @@
     float: left;
     margin: -3px 0 0;
     height:98%;
-    color:#373737;
+    color:#545454;
     overflow:hidden;
-}
-.shelf-item-text p{
-	line-height: 1.3em;
+    font-size: .85em;
 }
 .shelf-item-heading {
-    line-height:1.4em;
-    font-size:1em;
+    line-height:1.2em;
+    margin:0 0 .2em;
+    font-weight: normal;
+    font-size:1.35em;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    
+}
+.shelf-item-heading a{
+	color:#979797;
+	text-decoration: none;
 }
 
-.shelf-item h3 a {
-    color: #0054a6;
-    text-decoration: none;
-}
 
 .shelf-item-contributors {
     display: block;
     padding:0;
-    margin:.3em 0;
+    margin:0 0 .5em;
+    font-size:.9em;
+    font-weight: bold;
 }
 
 .shelf-item-rating {
@@ -200,6 +193,15 @@
     font-size: 20px;
     font-weight:bold;
     overflow:hidden;
+}
+
+.csstransforms .shelf-arrow{
+	top:45%;
+	-webkit-transform: translateY(-50%);
+	-moz-transform: translateY(-50%);
+	-o-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
 }
 .shelf-dark .shelf-arrow{
     background:#06539e;   
@@ -288,12 +290,6 @@
 
 }
 
-.half-shelf .shelf,
-.half-shelf .shelf-heading {
-    -webkit-box-shadow: none;
-}
-
-
 .shelf-dark .shelf-step-cur {
     background: #c59e76;
 }
@@ -301,17 +297,3 @@
 .shelf-light .shelf-step-cur {
     background: #f0beb9;
 }
-
-/*
-* Half Shelf
-*/
-.half-shelf {
-    width: 484px;
-
-}
-
-.half-shelf-wrap {
-    width: 484px;
-    float: left;
-}
-

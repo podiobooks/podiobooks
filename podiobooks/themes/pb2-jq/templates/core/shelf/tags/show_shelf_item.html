@@ -4,18 +4,21 @@
 <article class="shelf-item" id="{{ shelf_id }}_title_{{ title.id }}">
 
     <div class="shelf-item-text">
-	   	<a class="shelf-cover-wrap" data-image-src="{% get_shelf_cover_url title %}" href="{% url 'title_detail' title.slug %}" data-title-slug="{{ title.slug }}" data-title-name="{{ title.name }}">
-	        <span class="visuallyhidden">Cover for {{ title.name }}</span>
-	    </a>
 
         <h3 class="shelf-item-heading">
-            <a data-title-slug="{{ title.slug }}" href="{% url 'title_detail' title.slug %}">{{ title.name|striptags|truncatewords_afterchar:"30" }}</a>
+            <a data-title-slug="{{ title.slug }}" href="{% url 'title_detail' title.slug %}">{{ title.name|striptags|truncatewords_afterchar:"50" }}</a>
         </h3>
 
         <p class="shelf-item-contributors">{% show_contributors title %}</p>
 
+        <a class="shelf-cover-wrap" data-image-src="{% get_shelf_cover_url title %}" href="{% url 'title_detail' title.slug %}" data-title-slug="{{ title.slug }}" data-title-name="{{ title.name }}">
+	        <span class="visuallyhidden">Cover for {{ title.name }}</span>
+	    </a>
+
+
+
         <p>
-            {% autoescape off %}{{ title.description|striptags|truncatewords_afterchar:"105" }}{% endautoescape %}
+            {% autoescape off %}{{ title.description|striptags|truncatewords_afterchar:"135" }}{% endautoescape %}
         </p>
     </div>
 

@@ -6,9 +6,9 @@
     {% if title_list.count %}
         <h1>{{ series.name }}</h1>
         {% if page_obj.number > 1 %}
-            <span class="current">
+            <p class="current">
                 <em>Page {{ page_obj.number }} of {{ paginator.num_pages }}</em>
-            </span>
+            </p>
         {% endif %}
         {% show_titlelist title_list "series_title_list" %}
     {% else %}

@@ -2,50 +2,42 @@
 {% load global_templatetags %}
 {% load title_templatetags %}
 
+{% block body_class %} browse-list-page {% endblock %}
+
 {% block headtitle %}Audio book authors, producers and narrators on {{ SITE.name }}{% endblock %}
 
 {% block metatags %}
-    <meta name="Description"
-          content="Quickly find the free audio books by your favorite author, producer or narrator."/>
+	<meta name="Description"
+		  content="Quickly find the free audio books by your favorite author, producer or narrator."/>
 {% endblock %}
 
 {% block content %}
- 	<aside class="browse-list-120-ad">
-    	<script type="text/javascript"><!--
-			google_ad_client = "ca-pub-1276519440300441";
-			/* Browse - Contributor List */
-			google_ad_slot = "5338200999";
-			google_ad_width = 120;
-			google_ad_height = 600;
-			//-->
-		</script>
-		<script type="text/javascript"
-			src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-		</script>
-    </aside>
-    <h1>All Contributors, Alphabetical by Last Name</h1>
-    {% if page_obj.number > 1 %}
-        <span class="current">
-            <em>Page {{ page_obj.number }} of {{ paginator.num_pages }}</em>
-        </span>
-    {% endif %}
+	<h1>All Contributors, Alphabetical by Last Name</h1>
+
+	{% include "core/ad/browse_list.html" %}
+
+	{% if page_obj.number > 1 %}
+		<p class="current">
+			<em>Page {{ page_obj.number }} of {{ paginator.num_pages }}</em>
+		</p>
+	{% endif %}
 
 
-    <ul class="browse-list">
+	<ul class="browse-list">
 
 
-        {% for contributor in contributor_list %}
-            <li class="contributor_list_item">
-                <a href="
+		{% for contributor in contributor_list %}
+			<li class="contributor_list_item">
+				<a href="
 		{% ifequal contributor.title_set.all.count 1 %}
 			{% url 'title_detail' slug=contributor.title_set.all|first %}
 		{% else %}
 			{{ contributor.get_absolute_url }}
 		{% endifequal %}">{{ contributor.display_name }}</a>
-                ({{ contributor|count_titles }}<span class="hide-on-small-screen">&nbsp;title{{ contributor|count_titles|pluralize }}</span>)</li>
-        {% endfor %}
-    </ul>
-    <br>
-    {% show_pagination_links paginator page_obj %}
+				({{ contributor|count_titles }}<span class="hide-on-small-screen">&nbsp;title{{ contributor|count_titles|pluralize }}</span>)</li>
+		{% endfor %}
+	</ul>
+	<br>
+	{% show_pagination_links paginator page_obj %}
 {% endblock %}
 

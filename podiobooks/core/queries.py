@@ -60,7 +60,7 @@ def get_popular_shelf_titles(category='all'):
             "titlecontributors",
             "titlecontributors__contributor",
             "titlecontributors__contributor_type"
-        ).filter(pk__in=[title.pk for title in top_rated]).order_by("?")[:20]
+        ).filter(pk__in=[title.pk for title in top_rated]).order_by("?")[:15]
 
         cache.set('toprated_shelf_titles_' + category, titles, 302400)
 
@@ -94,7 +94,7 @@ def get_toprated_shelf_titles(contributor='all'):
             "titlecontributors",
             "titlecontributors__contributor",
             "titlecontributors__contributor_type"
-        ).filter(pk__in=[title.pk for title in top_rated]).order_by("?")[:20]
+        ).filter(pk__in=[title.pk for title in top_rated]).order_by("?")[:15]
 
         cache.set('toprated_shelf_titles_' + contributor, titles, 604800)
 
@@ -121,7 +121,7 @@ def get_recently_released_shelf_titles(category='all'):
             category_filter
         ).annotate(
             Max("episodes__date_created")
-        ).order_by('-episodes__date_created__max')[:20]
+        ).order_by('-episodes__date_created__max')[:15]
         cache.set('recently_released_shelf_titles_' + category, titles, 240)
 
     return titles

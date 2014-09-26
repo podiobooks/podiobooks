@@ -6,11 +6,11 @@
 /*
  * ads
  */
-.search-results .block-ad{
+.search-results-page .block-ad{
 	float:right;
 	margin:20px 0 20px 40px;
 }
-.search-results .horizontal-large-ad{
+.search-results-page .horizontal-large-ad{
 	margin:10px auto 30px;
 }
 
@@ -35,6 +35,7 @@
 	margin:0 1.5em 1em 0;
 	width:15%;
 }
+.title-list-300-ad,
 .title-list-250-ad{
 	float:right;
 	margin:0 0 10px 20px;

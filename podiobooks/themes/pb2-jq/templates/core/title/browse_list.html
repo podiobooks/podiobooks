@@ -5,13 +5,14 @@
 
 {% block headtitle %}Browse Titles on {{ SITE.name }}{% endblock %}
 
-{% block body_class %}browe-choices-page{% endblock %}
+{% block body_class %}browse-choices-page{% endblock %}
 
 {% block content %}
-	<aside class="browse-choices-ad">
-		{% include "core/ad/browse_choices_ad_1.html" %}
-	</aside>
+
+
+
 	<h1>Browse Titles By</h1>
+		{% include "core/ad/browse_choices.html" %}
     <ul class="browse-choices">
         <li><a href="{% url 'contributor_list' %}"><span aria-hidden='true' class="icon-user"></span><span class="browse-choices-item">Author<span class="hide-on-small-screen">,<br/>Contributor</span></span></a></li>
         <li><a href="{% url 'title_recent_list' %}"><span aria-hidden='true' class="icon-arrows-cw"></span><span class="browse-choices-item">Recent<span class="hide-on-small-screen">ly<br />Released</span></span></a></li>
@@ -20,7 +21,5 @@
         <li><a href="{% url 'title_browse_awards' %}"><span aria-hidden='true' class="icon-star"></span><span class="browse-choices-item">Awards<span class="hide-on-small-screen">,<br/>Nominations</span></span></a></li>
         <li><a href="{% url 'title_list' %}"><span aria-hidden='true' class="icon-font"></span><span class="browse-choices-item">All Titles<span class="hide-on-small-screen">,<br/>Alphabetical</span></span></a></li>
     </ul>
-    <aside class="browse-choices-ad browse-choices-ad-2">
-		{% include "core/ad/browse_choices_ad_2.html" %}
-	</aside>
+
 {% endblock %}

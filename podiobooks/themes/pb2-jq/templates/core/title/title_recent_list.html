@@ -9,12 +9,15 @@
 		<h1>Recently Released</h1>
 		<h2><a href="{% url 'recent_titles_feed' %}"><img class="float-right" src="{{ STATIC_URL }}images/pb-rss-icon.gif" /> <span class="subscribable-heading-text">Subscribe to recently released</span></a></h2>
 	</hgroup>
+
     {% if page_obj.number > 1 %}
-        <span class="current">
-                <em>Page {{ page_obj.number }} of {{ paginator.num_pages }}</em>
-            </span>
+        <p class="current">
+            <em>Page {{ page_obj.number }} of {{ paginator.num_pages }}</em>
+        </p>
     {% endif %}
-    
+
     {% show_titlelist title_list "title_list" %}
+
     {% show_pagination_links paginator page_obj %}
+
 {% endblock %}

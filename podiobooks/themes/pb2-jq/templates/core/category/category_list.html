@@ -4,29 +4,21 @@
 
 {% load title_templatetags %}
 
+{% block body_class %} browse-list-page {% endblock %}
+
 {% block metatags %}
     <meta name="Description"
           content="We offer hundreds of free audio books in many categories and genres. Fiction & non-fiction, science fiction & fantasy, comedy & business… and a whole lot more!"/>
 {% endblock %}
 
 {% block content %}
-	<aside class="browse-list-120-ad">
-		<script type="text/javascript"><!--
-			google_ad_client = "ca-pub-1276519440300441";
-			/* Browse - Category List Skyscraper */
-			google_ad_slot = "6814934199";
-			google_ad_width = 120;
-			google_ad_height = 600;
-			//-->
-		</script>
-		<script type="text/javascript"
-			src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-		</script>
-	</aside>
+
 	<h1>All Categories</h1>
 
+	{% include "core/ad/browse_list.html" %}
+
 	<ul class="browse-list">
-		{% for category in category_list %} 
+		{% for category in category_list %}
 			<li class="category_list_item category_{{ category.slug }}"><a href="{{ category.get_absolute_url }}">{{ category.name }}</a> ({{ category|count_titles }}<span class="hide-on-small-screen">&nbsp;title{{ category|count_titles|pluralize }}</span>)</li>
 		{% endfor %}
 	</ul>

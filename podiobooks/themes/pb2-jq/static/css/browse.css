@@ -1,7 +1,7 @@
 /*
  * Browse By ______ list
  */
-.browe-choices-page h1{
+.browse-choices-page h1{
 	padding-left:30px;
 }
 .browse-choices [class^="icon-"]:before, 
@@ -19,7 +19,7 @@
 	padding:0;
 	list-style:none;
 	width:40%;
-	margin:20px;
+	margin:0 20px 40px 20px;
 	vertical-align:middle;
 	text-align:center;
 	line-height: normal;
@@ -82,7 +82,7 @@
 	margin:0;
 	padding:0;
 	float:none;
-	width:70%;
+	width:65%;
 	float:left;
 }
 .browse-choices-item{
@@ -91,10 +91,6 @@
 	word-break:normal;
 	text-align:center;
 	font-family: Tahoma, sans-serif;
-}
-.browse-choices-ad{
-	float:right;	
-	margin:80px 0 0 ;
 }
 /*
  * Browse List
@@ -107,6 +103,8 @@
 	-o-column-count: 2;
 	column-count: 2;
 	list-style:none;
+	float:left;
+	width:65%;
 }
 .csscolumns .browse-list li{
 	display:block;

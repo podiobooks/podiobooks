@@ -6,6 +6,11 @@ from podiobooks.core.forms import TitleSearchForm, BrowseByForm
 register = template.Library()
 
 
+@register.filter
+def modulus(number, dividedby):
+    """ Just a utiity function for modulus math """
+    return number % dividedby
+
 @register.inclusion_tag('core/tags/show_donate.html')
 def show_donate():
     """ Shows the global donation form/link """

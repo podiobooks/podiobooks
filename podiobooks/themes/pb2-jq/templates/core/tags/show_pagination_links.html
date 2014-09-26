@@ -1,7 +1,7 @@
 {% if paginator.num_pages > 1 %}
     <div class="pagination">
         {% if page_obj.has_previous %}
-            <a href="?page={{ page_obj.previous_page_number }}">Previous Page</a>
+            <a class="pagination-previous" href="?page={{ page_obj.previous_page_number }}">Previous Page</a>
         {% endif %}
 
         <span class="current">
@@ -9,7 +9,7 @@
         </span>
 
         {% if page_obj.has_next %}
-            <a href="?page={{ page_obj.next_page_number }}">Next Page</a>
+            <a class="pagination-next" href="?page={{ page_obj.next_page_number }}">Next Page</a>
         {% endif %}
     </div>
 {% endif %}

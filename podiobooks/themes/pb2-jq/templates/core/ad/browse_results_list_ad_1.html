@@ -1,8 +1,23 @@
-<script async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<ins class="adsbygoogle"
-    style="display:inline-block;width:728px;height:90px"
-    data-ad-client="ca-pub-1276519440300441"
-    data-ad-slot="6954534995"></ins>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+<li>
+	{% if 'Erotica' in title.category_list %}
+		<aside class="title-list-250-ad">
+			<a href="http://www.ErectionFitness.com/ct/298422?b=7262&t=2014Sept"><img src="http://www2.sellhealth.com/2/ef250x250.gif" border=0></a>
+		</aside>
+	{% elif 'Spirituality' in title.category_list %}
+		<aside class="title-list-250-ad">
+			<a href="http://click.linksynergy.com/fs-bin/click?id=y8AvMVrRK4c&offerid=186232.10000139&subid=0&type=4"><IMG border="0" alt="Spiritual Cinema Circle" src="http://ad.linksynergy.com/fs-bin/show?id=y8AvMVrRK4c&bids=186232.10000139&subid=0&type=4&gridnum=14"></a>
+		</aside>
+	{% else %}
+		<aside class="title-list-300-ad">
+			<script async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+			<ins class="adsbygoogle"
+				style="display:inline-block;width:250px;height:250px"
+				data-ad-client="ca-pub-1276519440300441"
+				data-ad-slot="3861467791"></ins>
+			<script>
+				(adsbygoogle = window.adsbygoogle || []).push({});
+			</script>
+		</aside>
+	{% endif %}
+</li>
+

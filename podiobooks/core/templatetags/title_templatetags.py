@@ -55,7 +55,7 @@ def show_titlecover(title):
 def get_shelf_cover_url(title):
     """ Gets the Final, Real Image URL for a Title from Libsyn """
     if getattr(settings, "LOCALIZE_COVERS", False):
-        url = get_cover_url_at_width(title, 100)
+        url = get_cover_url_at_width(title, 200)
         if url:
             return url
 

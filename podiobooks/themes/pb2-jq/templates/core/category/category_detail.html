@@ -15,9 +15,9 @@
             {{ category.name }} Titles
         </h1>
         {% if page_obj.number > 1 %}
-            <span class="current">
+            <p class="current">
                 <em>Page {{ page_obj.number }} of {{ paginator.num_pages }}</em>
-            </span>
+            </p>
         {% endif %}
         {% show_titlelist title_list "category_title_list" %}
     {% else %}

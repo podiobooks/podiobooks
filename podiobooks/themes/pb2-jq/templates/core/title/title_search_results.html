@@ -3,7 +3,7 @@
 {% load title_templatetags %}
 {% block headtitle %}Title Search Results - {{ SITE.name }}{% endblock %}
 
-{% block body_class %}search-results{% endblock %}
+{% block body_class %}search-results-page{% endblock %}
 
 {% block search_box %}
 
@@ -29,9 +29,9 @@
     {% if result_count %}
         <h1>{{ result_count }} results for "{{ keywords }}"</h1>
         {% if title_list.number > 1 %}
-            <span class="current">
-            <em>Page {{ title_list.number }} of {{ paginator.num_pages }}</em>
-        </span>
+            <p class="current">
+	            <em>Page {{ title_list.number }} of {{ paginator.num_pages }}</em>
+	        </p>
         {% endif %}
     {% else %}
         {% if keywords %}
