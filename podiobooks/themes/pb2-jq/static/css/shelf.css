@@ -14,7 +14,7 @@
     overflow:hidden;
 }
 .shelf-wrapper{
-	margin:20px 0;
+	margin:2em 0;
 }
 
 .pbShelf{
@@ -92,10 +92,10 @@
 .shelf-item {
     background: #fff;
     float: left;
-    width: 280px;
+    width: 270px;
     margin: 8px 8px;
     border-radius: 10px;
-    padding: 10px;
+    padding: 10px 15px;
     height: 280px;
     overflow: hidden;
     position:relative;
@@ -105,7 +105,7 @@
 	float:left;
 	width:120px;
 	min-height: 120px;
-	margin: 0 1em .4em 0;
+	margin: 0 1.2em 1.2em 0;
 	padding:0;
 }
 
@@ -162,7 +162,7 @@
 .shelf-item-contributors {
     display: block;
     padding:0;
-    margin:0 0 .5em;
+    margin:0 0 1.2em;
     font-size:.9em;
     font-weight: bold;
 }
