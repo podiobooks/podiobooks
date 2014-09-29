@@ -83,7 +83,7 @@
  * Browse List
  */
 .browse-list{
-	margin:0;
+	margin:0 0 1em;
 	padding:0;
 	-webkit-column-count: 2;
 	-moz-column-count: 2;
