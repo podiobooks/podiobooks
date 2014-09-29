@@ -1,7 +1,7 @@
 """Django Custom Template Tags For Handling Shelves Full of Titles"""
 
 from django import template
-from dango.conf import settings
+from django.conf import settings
 
 register = template.Library()
 
