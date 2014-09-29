@@ -91,15 +91,15 @@
 }
 
 .shelf-item {
-    background: #fff;
+    background: #fdfdfd;
     float: left;
     width: 270px;
     margin: 8px 8px;
     border-radius: 10px;
     padding: 10px 15px;
     height: 280px;
-    overflow: hidden;
     position:relative;
+    overflow: hidden;
 }
 .shelf-cover-wrap{
 	display: block;
@@ -143,7 +143,6 @@
     margin: -3px 0 0;
     height:98%;
     color:#545454;
-    overflow:hidden;
     font-size: .85em;
 }
 .shelf-item-heading {
