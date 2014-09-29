@@ -1,12 +1,14 @@
 .home .nav-bar{
 	margin:0;
 }
-.home .shelf-cover,
-.cover-image{
+.cover-image,
+.home .shelf-cover{
 	box-shadow: 0 0 5px rgba(0,0,0,.5);
 	z-index: 90;
 	position: relative;
 	padding:3px;
 	background: #fff;
-
+}
+.cover-image{
+	padding:4px;
 }
