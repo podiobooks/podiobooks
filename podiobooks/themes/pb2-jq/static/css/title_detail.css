@@ -12,6 +12,11 @@
 }
 .title-details-header-cover img{
 	width:100%;
+	-webkit-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
 }
 .title-details-rail .title-details-header-cover{
 	width:100%;

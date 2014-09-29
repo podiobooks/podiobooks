@@ -41,7 +41,7 @@ def show_shelf_item(shelf_id, title):
 @register.filter
 def possible_ad_placements(title_list):
     """ Based on a list of titles, decide possible places to put an ad """
-    ret = range(2, len(title_list) / 3)
+    ret = range(2, len(title_list) / 2)
     if not ret:
         ret = [0]
     return ret
