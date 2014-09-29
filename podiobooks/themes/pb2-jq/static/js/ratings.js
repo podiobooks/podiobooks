@@ -28,7 +28,7 @@ $(function(){
 		var article = $("#titleArticle");
 		var slug = article.data("title-slug");
 		var cover = article.find(".title-details-header-cover");
-		cover.wrap("<div class='title-details-header-cover-wrap' />");
+		cover.wrap("<div class='title-details-header-cover-wrap clearfix' />");
 		var ratingPlacement = $("<div id='titleRating' class='rating-widget-wrap' />").insertAfter(cover);
 		$("<p class='rating-instructions'>Rate this Podiobook</p>").insertBefore(ratingPlacement);
 
