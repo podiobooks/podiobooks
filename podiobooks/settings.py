@@ -179,7 +179,7 @@ TIPJAR_BUSINESS_NAME = 'evo@podiobooks.com'
 ### MUB
 MUB_CSS_ORDER = (
     ("jquery.pbshelf.css", "clear.css", "styles.css", "base-shelf.css"),
-    ("gsc-overrides.css", "adaptive.css", "small-screen.css")
+    ("ads.css", "gsc-overrides.css", "adaptive.css", "small-screen.css")
 )
 MUB_MINIFY = False
 

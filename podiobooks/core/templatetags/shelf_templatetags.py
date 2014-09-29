@@ -8,7 +8,6 @@ register = template.Library()
 @register.inclusion_tag('core/shelf/tags/show_shelf.html', takes_context=True)
 def show_shelf(context, shelf_id, shelf_title, title_list, dropdown_form, base_css_class, ad_template=None):
     """Pulls in a template to show a title shelf for a particular set of titles"""
-    print "DEBUG: ", context['debug']
     return {
         'debug': context['debug'],
         'shelf_id': shelf_id,

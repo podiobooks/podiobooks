@@ -2,18 +2,19 @@
 {% elif 'Spirituality' in title.category_list %}
 {% else %}
 	<li>
-	  	<aside class="horizontal-large-ad">
-
-	  		<script type="text/javascript">
-	  			if (pgw > 727){
-		  			var ad;
-		  			ad = '<script async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script>';
-		  			ad += '<ins class="adsbygoogle" style="display:inline-block;width:728px;height:90px" data-ad-client="ca-pub-1276519440300441" data-ad-slot="6954534995"><\/ins>';
-		  			ad += '<script>(adsbygoogle = window.adsbygoogle || []).push({});<\/script>';
-		  			document.write(ad);
-		  		}
-	  		</script>
-
+	  	<aside class="a browse-results-ad-2">
+	  		{% if not debug %}
+		  		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+				<!-- Mid-page 2 | Resp | BR -->
+				<ins class="adsbygoogle"
+				     style="display:block"
+				     data-ad-client="ca-pub-1276519440300441"
+				     data-ad-slot="4014668194"
+				     data-ad-format="auto"></ins>
+				<script>
+				(adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
+			{% endif %}
 		</aside>
 	</li>
 {% endif %}

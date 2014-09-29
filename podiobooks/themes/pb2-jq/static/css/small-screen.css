@@ -23,23 +23,7 @@
 		border:none;
 	}
 
-	/*
-	 * Browse Choices
-	 */
-	.browse-choices{
-		text-align:center;
-		margin:10px 0 30px;
-		width:auto;
-	}
-	.browse-choices li{
-		width:45%;
-		text-align:center;
-		margin:5px 5px;
-		padding:0;
-	}
-	.browse-choices a{
-
-	}
+	
 	.hide-on-small-screen{
 		display:none;
 	}
@@ -351,7 +335,7 @@
 	}
 
 	.tab-trigger{
-		font-size:14px;
+		font-size:.8em;
 	}
 
 	/*
@@ -561,8 +545,13 @@
 	
 	.title-details-inline-ad{
 		float:none;
-		margin:1em 0;
+		margin:1em auto;
 		text-align: center;
+		width:300px;
+	}
+	.title-details-right-small,
+	.title-details-right-large{
+		display: none;
 	}
 	.first-episode-html5-player{
 		width:100%;

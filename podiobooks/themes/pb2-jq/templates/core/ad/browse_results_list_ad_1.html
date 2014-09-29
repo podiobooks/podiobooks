@@ -8,16 +8,20 @@
 			<a href="http://click.linksynergy.com/fs-bin/click?id=y8AvMVrRK4c&offerid=186232.10000139&subid=0&type=4"><IMG border="0" alt="Spiritual Cinema Circle" src="http://ad.linksynergy.com/fs-bin/show?id=y8AvMVrRK4c&bids=186232.10000139&subid=0&type=4&gridnum=14"></a>
 		</aside>
 	{% else %}
-		<aside class="title-list-300-ad">
-			<script async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-			<ins class="adsbygoogle"
-				style="display:inline-block;width:250px;height:250px"
-				data-ad-client="ca-pub-1276519440300441"
-				data-ad-slot="3861467791"></ins>
-			<script>
+		{% if not debug %}
+			<aside class="a browse-results-ad-1">
+				<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+				<!-- Mid-page 1 | Resp | BR -->
+				<ins class="adsbygoogle"
+				     style="display:block"
+				     data-ad-client="ca-pub-1276519440300441"
+				     data-ad-slot="2537934997"
+				     data-ad-format="auto"></ins>
+				<script>
 				(adsbygoogle = window.adsbygoogle || []).push({});
-			</script>
-		</aside>
+				</script>
+			</aside>
+		{% endif %}
 	{% endif %}
 </li>
 

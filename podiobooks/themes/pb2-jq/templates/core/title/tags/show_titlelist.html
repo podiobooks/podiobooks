@@ -5,12 +5,16 @@
 <ul class="title-list">
 
     {% for title in title_list %}
-        {% if forloop.counter|modulus:8 == 1 %}
+        {% if forloop.counter == 1 %}
         	{% include "core/ad/browse_results_list_ad_1.html" %}
         {% endif %}
 
-        {% if forloop.counter|modulus:8 == 5 %}
+        {% if forloop.counter == 3 %}
 		    {% include "core/ad/browse_results_list_ad_2.html" %}
+        {% endif %}
+
+        {% if forloop.counter == 7 and title_list|length > 9 %}
+		    {% include "core/ad/browse_results_list_ad_3.html" %}
         {% endif %}
 
         <li>

@@ -1,19 +1,19 @@
-<aside class="title-details-inline-ad">
+<aside class="a title-details-inline-ad">
 	{% if 'Erotica' in title.category_list %}
 		<a href="http://www.ErectionFitness.com/ct/298422?b=7262&t=2014Sept"><img src="http://www2.sellhealth.com/2/ef250x250.gif" border=0></a>
 	{% elif 'Spirituality' in title.category_list %}
 		<a href="http://click.linksynergy.com/fs-bin/click?id=y8AvMVrRK4c&offerid=186232.10000139&subid=0&type=4"><IMG border="0"   alt="Spiritual Cinema Circle" src="http://ad.linksynergy.com/fs-bin/show?id=y8AvMVrRK4c&bids=186232.10000139&subid=0&type=4&gridnum=14"></a>
 	{% else %}
-		<script type="text/javascript"><!--
-		google_ad_client = "ca-pub-1276519440300441";
-		/* Title - Square */
-		google_ad_slot = "1452521796";
-		google_ad_width = 250;
-		google_ad_height = 250;
-		//-->
-		</script>
-		<script type="text/javascript"
-				src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
-		</script>
+		{% if not debug %}
+			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+			<!-- Mid-page | Med Rect | DP -->
+			<ins class="adsbygoogle"
+			     style="display:inline-block;width:300px;height:250px"
+			     data-ad-client="ca-pub-1276519440300441"
+			     data-ad-slot="6411561390"></ins>
+			<script>
+			(adsbygoogle = window.adsbygoogle || []).push({});
+			</script>
+		{% endif %}
 	{% endif %}
 </aside>

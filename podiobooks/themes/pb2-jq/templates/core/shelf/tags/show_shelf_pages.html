@@ -6,15 +6,12 @@
 			<div class="whole-shelf">
 			    {% with title_list|possible_ad_placements|random as PUT_HERE %}
 				    {% for title in title_list %}
-				    	
 				    	{% if not no_ads and forloop.counter == PUT_HERE and ad_template  %}
-				    		<aside class="shelf-item shelf-item-ad">		    			
+				    		<aside class="shelf-item shelf-item-ad a">
 								{% include ad_template %}
 							</aside>
 				    	{% endif %}
-				    			    	
 				        {% show_shelf_item shelf_id title %}
-				        
 				    {% endfor %}
 			    {% endwith %}
 		    </div>
