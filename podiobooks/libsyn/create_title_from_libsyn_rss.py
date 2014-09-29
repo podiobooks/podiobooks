@@ -72,6 +72,8 @@ def create_title_from_libsyn_rss(rss_feed_url):
         title.is_explicit = True
     title.deleted = True
 
+    title.libsyn_cover_image_url = feed_tree.find('image').find('url').text
+
     default_license = License.objects.get(slug='by-nc-nd')
     title.license = default_license
 

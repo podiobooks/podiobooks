@@ -6,7 +6,8 @@ from django.contrib import admin
 from django.forms.widgets import Textarea, TextInput
 from django.db import models
 
-from podiobooks.core.models import Award, Category, Contributor, ContributorType, Episode, License, Media, Series, Title, TitleCategory, TitleContributor
+from podiobooks.core.models import Award, Category, Contributor, ContributorType, Episode, License, Media, Series, \
+    Title, TitleCategory, TitleContributor
 from podiobooks.feeds.util import cache_title_feed
 
 import adminactions.actions as actions
@@ -14,7 +15,7 @@ from django.contrib.admin import site
 
 site.add_action(actions.export_as_csv)
 
-### INLINES
+# ## INLINES
 
 
 class AwardTitlesInline(admin.TabularInline):
@@ -56,7 +57,7 @@ class TitleMediaInline(admin.TabularInline):
     exclude = ('deleted', )
 
 
-### MAIN ADMIN CLASSES
+# ## MAIN ADMIN CLASSES
 
 class AwardAdmin(admin.ModelAdmin):
     list_display = ('name',)
@@ -134,9 +135,15 @@ class TitleAdmin(admin.ModelAdmin):
     fieldsets = (
         ('Title Information', {
             'fields': (
-                'libsyn_show_id', 'name', 'slug', 'old_slug', 'itunes_new_feed_url', 'description', 'license',
-                'itunes_adam_id', 'podiobooker_blog_url',
-                'deleted')
+                'name', 'slug', 'old_slug', 'description', 'license', 'podiobooker_blog_url', 'deleted')
+        }),
+        ('Libsyn Information', {
+            'fields': (
+                'libsyn_show_id', 'libsyn_slug', 'libsyn_cover_image_url', )
+        }),
+        ('iTunes Information', {
+            'fields': (
+                'itunes_adam_id', 'itunes_new_feed_url',)
         }),
         ('Flags (Explicitness, Disp. on Homepage, Lang.)', {
             'classes': ('collapse',),
@@ -164,6 +171,7 @@ class TitleAdmin(admin.ModelAdmin):
 
     def clear_cover_image(self, request, queryset):
         queryset.update(cover=None, assets_from_images=None)
+
     clear_cover_image.short_descripton = "Clear cover images"
 
     def freshen_feed_cache(self, request, queryset):
@@ -171,7 +179,9 @@ class TitleAdmin(admin.ModelAdmin):
             for title in queryset:
                 cache_title_feed(title)
         else:
-            self.message_user(request, "Please only freshen the feeds of 5 titles at a time. More will take quite a while.")
+            self.message_user(request,
+                              "Please only freshen the feeds of 5 titles at a time. More will take quite a while.")
+
     freshen_feed_cache.short_descripton = "Refresh RSS feed cache"
 
 

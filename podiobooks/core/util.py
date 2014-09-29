@@ -1,9 +1,12 @@
 """Gneeral Podiobooks Utilities"""
 import os
+import re
 import urllib
 from PIL import Image
 
 from django.conf import settings
+from xml.etree import ElementTree
+from podiobooks.core.models import Episode, Title
 
 
 def use_placeholder_cover_for_title(title, upload_path=''):
@@ -50,8 +53,11 @@ def download_cover_from_libsyn(title, upload_path=''):
 
     try:
         if not os.path.isfile(destination):
-            raw_cover_url = "http://asset-server.libsyn.com/show/%s/" % title.libsyn_show_id
-            filename, httpresponse = urllib.urlretrieve(raw_cover_url) # pylint: disable=W0612
+            if title.libsyn_cover_image_url:
+                raw_cover_url = title.libsyn_cover_image_url
+            else:
+                raw_cover_url = "http://asset-server.libsyn.com/show/%s/" % title.libsyn_show_id
+            filename, httpresponse = urllib.urlretrieve(raw_cover_url)  # pylint: disable=W0612
             img = Image.open(filename)
             if img.mode != "RGB":
                 img = img.convert("RGB")
@@ -93,10 +99,43 @@ def get_cover_url_at_width(title, width):
             try:
                 return getattr(title, attr).url
             except AttributeError:
-                return title.cover
+               return title.cover
     return None
 
 
 def get_libsyn_cover_url(title, height, width):
     """Pulls the final libsyn URL for a title from libsyn"""
     return "http://asset-server.libsyn.com/show/{0}/height/{1}/width/{2}".format(title.libsyn_show_id, height, width)
+
+
+def update_libsyn_slug(title):
+    """Update the libsyn slug field on the title based on the first episode MP3 path"""
+    first_episode = title.episodes.all()[0]
+    try:
+        title.libsyn_slug = re.search('com/(.*)/', first_episode.url).group(1)
+        title.save()
+    except:
+        print ("{0} not updated.".format(title.slug))
+
+
+def update_episode_media_url(episode):
+    """Update the media url for an episode to use the podiobooks alias"""
+    episode.url = episode.url.replace('http://traffic.libsyn.com', 'http://media.podiobooks.com')
+    episode.save()
+
+
+def update_libsyn_cover_image_url(title):
+    """Get the libsyn RSS file, pull the image url, and update the title"""
+    if title.libsyn_slug:
+        try:
+            rss_feed_url = "http://{0}.podiobooks.libsynpro.com/rss".format(title.libsyn_slug)
+            print rss_feed_url
+            feed = urllib.urlopen(rss_feed_url)
+            feed_tree = ElementTree.parse(feed).getroot()
+            title.libsyn_cover_image_url = feed_tree.find('channel').find('image').find('url').text
+            title.save()
+        except:
+            print ("Not Updating {0}, Error".format(title.slug))
+            raise
+    else:
+        print ("Not Updating {0}, No Libsyn Slug")

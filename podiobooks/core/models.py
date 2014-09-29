@@ -251,28 +251,35 @@ class Title(DefinedWidthsAssetsFromImagesMixin, models.Model):
     contributors = models.ManyToManyField('Contributor',
                                           through='TitleContributor')  # related_name doesn't work with manual through
     # Note: TitleContributor Objects (intermediate table) are available as titlecontributors.all()
-    byline = models.CharField(max_length=1024, blank=True) # This is a formatted cache of the title contributors
+    byline = models.CharField(max_length=1024, blank=True)  # This is a formatted cache of the title contributors
     categories = models.ManyToManyField('Category',
                                         through='TitleCategory')  # related_name doesn't work with manual through tables
     # Note: TitleCategory Objects (intermediate table) are available as titlecategories.all()
-    category_list = models.CharField(max_length=1024, blank=True) # This is a formatted cache of the categories
+    category_list = models.CharField(max_length=1024, blank=True)  # This is a formatted cache of the categories
     awards = models.ManyToManyField('Award', null=True, blank=True, related_name='titles')
-    payment_email_address = models.EmailField(null=True, blank=True, help_text='Email address to send payments or tips for this title.')
+    payment_email_address = models.EmailField(null=True, blank=True,
+                                              help_text='Email address to send payments or tips for this title.')
     libsyn_show_id = models.CharField(max_length=50, db_index=True, blank=True, verbose_name='LibSyn Show ID',
                                       help_text='Starts with k-')
+    libsyn_slug = models.SlugField(max_length=50, db_index=True, blank=True, verbose_name='LibSyn Slug',
+                                   help_text='Show Slug from Libsyn')
+    libsyn_cover_image_url = models.URLField(max_length=500, null=True, blank=True,
+                                             verbose_name='Libsyn Cover Image URL',
+                                             help_text='Full URL to Libsyn-hosted cover image.')
     itunes_adam_id = models.IntegerField(null=True, blank=True, verbose_name='iTunes ADAM Id',
                                          help_text='From iTunes Page URL for Podcast')
     itunes_new_feed_url = models.BooleanField(default=False, verbose_name='iTunes New Feed Url Tag',
                                               help_text='Include <itunes:new_feed_url> tag in feed (Required if you are changing the slug)')
     podiobooker_blog_url = models.URLField(max_length=255, null=True, blank=True, verbose_name='Blog URL',
-                                           help_text='Full URL to Blog Post Announcing Book')
+                                           help_text='Full URL to Blog Post Announcing Book - Used to Pull Comments')
     # Note: episodes are available as episodes.all()
     # Note: media are available as media.all()
     # Note: promos are available as promos.all()
     scribl_book_id = models.CharField(null=True, blank=True, max_length=20, verbose_name='Scribl Book Id')
     tips_allowed = models.BooleanField(default=True, verbose_name='Collect Tips for this Title')
     scribl_allowed = models.BooleanField(default=True, verbose_name='Show this Title on Scribl')
-    date_accepted = models.DateTimeField(null=True, verbose_name='Date Terms and Conditions for this Title Accepted by Author')
+    date_accepted = models.DateTimeField(null=True,
+                                         verbose_name='Date Terms and Conditions for this Title Accepted by Author')
     date_created = models.DateTimeField(auto_now_add=True, db_index=True, verbose_name='Date Created')
     date_updated = models.DateTimeField(auto_now=True, db_index=True, verbose_name='Date Updated')
 
