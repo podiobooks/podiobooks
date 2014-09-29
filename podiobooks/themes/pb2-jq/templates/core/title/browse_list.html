@@ -8,11 +8,10 @@
 {% block body_class %}browse-choices-page{% endblock %}
 
 {% block content %}
-
-
-
 	<h1>Browse Titles By</h1>
-		{% include "core/ad/browse_choices.html" %}
+
+	{% include "core/ad/browse_choices.html" %}
+
     <ul class="browse-choices">
         <li><a href="{% url 'contributor_list' %}"><span aria-hidden='true' class="icon-user"></span><span class="browse-choices-item">Author<span class="hide-on-small-screen">,<br/>Contributor</span></span></a></li>
         <li><a href="{% url 'title_recent_list' %}"><span aria-hidden='true' class="icon-arrows-cw"></span><span class="browse-choices-item">Recent<span class="hide-on-small-screen">ly<br />Released</span></span></a></li>

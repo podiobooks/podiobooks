@@ -5,6 +5,7 @@
 	display: block;
 	overflow: hidden;
 	background: transparent;
+	padding:0;
 }
 .a .adsbygoogle{
 	width:100%;
@@ -14,7 +15,7 @@
  * Individual spots
  */
 .shelf-item-ad{
-	margin:25px 8px 0;
+	margin:30px 8px 0;
 	height:250px;
 	width:300px;
 	border-radius: 0;

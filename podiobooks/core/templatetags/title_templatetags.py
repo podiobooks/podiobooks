@@ -62,10 +62,10 @@ def get_shelf_cover_url(title):
     return get_libsyn_cover_url(title, 99, 67)
 
 
-@register.inclusion_tag('core/title/tags/show_titlelist.html')
-def show_titlelist(title_list, page_name):
+@register.inclusion_tag('core/title/tags/show_titlelist.html', takes_context=True)
+def show_titlelist(context, title_list, page_name):
     """ Formats a list of titles, used on search, category, author list pages """
-    return {'title_list': title_list, 'page_name': page_name}
+    return {'title_list': title_list, 'page_name': page_name, "debug": context['debug']}
 
 
 @register.inclusion_tag('core/title/tags/show_episodelist.html')
