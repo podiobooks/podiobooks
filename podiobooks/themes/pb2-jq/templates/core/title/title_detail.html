@@ -20,39 +20,38 @@
     <article class="title-details" id="titleArticle" data-title-slug="{{ title.slug }}" itemscope itemtype="http://schema.org/Book">
 
         <meta itemprop="bookFormat" content="AudioBook/Serialized">
+        <div class="clearfix">
+	        <section class="title-details-rail">
+		        <div class="title-details-header-cover">{% show_full_titlecover title %}</div>
+		        {% include "core/ad/title_detail_inline.html" %}
+	        </section>
 
-        <section class="title-details-rail">
-	        <div class="title-details-header-cover">{% show_full_titlecover title %}</div>
-	        {% include "core/ad/title_detail_inline.html" %}
-        </section>
+	        <header class="title-details-header">
+	            <div class="title-details-header-info">
+	                <h1 itemprop="name">{{ title.name }} {% show_rating_icon title %}</h1>
 
-        <header class="title-details-header">
-            <div class="title-details-header-info">
-                <h1 itemprop="name">{{ title.name }} {% show_rating_icon title %}</h1>
+	                <p>{% show_contributors title "True" %}</p>
 
-                <p>{% show_contributors title "True" %}</p>
+	                <p>{{ title.category_list|safe }}</p>
 
-                <p>{{ title.category_list|safe }}</p>
+	                {% if title.series %}
+	                    <p>Series:
+	                        <a href="{{ title.series.get_absolute_url }}">{{ title.series.name }}</a>
+	                        {% if title.series_sequence > 0 %}
+	                            (Book {{ title.series_sequence }})
+	                        {% endif %}
+	                    </p>
+	                {% endif %}
+	            </div>
+	        </header>
 
-                {% if title.series %}
-                    <p>Series:
-                        <a href="{{ title.series.get_absolute_url }}">{{ title.series.name }}</a>
-                        {% if title.series_sequence > 0 %}
-                            (Book {{ title.series_sequence }})
-                        {% endif %}
-                    </p>
-                {% endif %}
-            </div>
-        </header>
-
-        <div itemprop="description">
-
-            {% autoescape off %}{{ title.description|linebreaks|removetags:"img" }}{% endautoescape %}
-
-        </div>
+	        <div itemprop="description">
+	            {% autoescape off %}{{ title.description|linebreaks|removetags:"img" }}{% endautoescape %}
+	        </div>
 
 
-        {% include "core/title/title_consumptionbox.html" %}
+	        {% include "core/title/title_consumptionbox.html" %}
+	    </div>
 
         <footer class="title-footer">
             <div class="title-tabs">
