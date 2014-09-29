@@ -21,7 +21,12 @@
 
         <meta itemprop="bookFormat" content="AudioBook/Serialized">
 
-        <header class="clearfix title-details-header">
+        <section class="title-details-rail">
+	        <div class="title-details-header-cover">{% show_full_titlecover title %}</div>
+	        {% include "core/ad/title_detail_inline.html" %}
+        </section>
+
+        <header class="title-details-header">
             <div class="title-details-header-info">
                 <h1 itemprop="name">{{ title.name }} {% show_rating_icon title %}</h1>
 
@@ -38,22 +43,14 @@
                     </p>
                 {% endif %}
             </div>
-
-            <div class="title-details-header-cover">{% show_full_titlecover title %}</div>
-
         </header>
 
-        <div class="clearfix">
+        <div itemprop="description">
 
-            <div class="clearfix" itemprop="description">
-
-                {% include "core/ad/title_detail_inline.html" %}
-
-                {% autoescape off %}{{ title.description|linebreaks|removetags:"img" }}{% endautoescape %}
-
-            </div>
+            {% autoescape off %}{{ title.description|linebreaks|removetags:"img" }}{% endautoescape %}
 
         </div>
+
 
         {% include "core/title/title_consumptionbox.html" %}
 

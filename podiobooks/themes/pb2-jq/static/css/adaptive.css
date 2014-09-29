@@ -50,18 +50,6 @@
 	.title-details{
 		width:53%;
 	}
-	.title-details-header-info{
-		float: none;
-	}
-	.title-details-header-cover-wrap{
-		float: none;
-		width:auto;
-		margin:1em 0;
-	}
-	.title-details-header-cover-wrap .cover-image{
-		max-height: 300px;
-		width:auto;
-	}
 	.title-details-inline-ad{
 		float:none;
 		margin:1em 0;
@@ -219,10 +207,6 @@
 	}
 	.title-details{
 		width:68%;
-	}
-	.title-details-inline-ad{
-		float:left;
-		margin:0em 1em 1em 0;
 	}
 	.foot-nav{
 		text-align: left;

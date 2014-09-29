@@ -520,35 +520,18 @@
 	/*
 	 * Title Details
 	 */
-	.title-details-header{
-		position: relative;
-		margin:0;
+	.title-detail-page{
+		padding-bottom:100px;
 	}
-	.title-details-header-info{
-		float:none;
-		width:100%;
-	}
-	.title-details-header-cover-wrap{
-		float:none;
-		width:auto;
-	}
-	.title-details-header-cover-wrap .title-details-header-cover,
-	.title-details-header-cover{
-		position: absolute;
-		right:0;
-		top:0;
-		width:25%;
-	}
-	.title-details-header-info p,
-	.title-details-header-info h1{
-		width:70%;
-	}
-	
-	.title-details-inline-ad{
-		float:none;
-		margin:1em auto;
+	.title-details-rail{
 		text-align: center;
-		width:300px;
+		width:auto;
+		float: none;
+		margin:1em 0;
+	}
+	.title-details-inline-ad{
+		margin:1em auto;
+
 	}
 	.title-details-right-small,
 	.title-details-right-large{
@@ -559,6 +542,14 @@
 	}
 	.first-chapter{
 		text-align: center;
+		position: fixed;
+		bottom:0;
+		left:0;
+		width:96%;
+		background:#FFF;
+		padding:10px 2%;
+		box-shadow: 0 -2px 3px rgba(0,0,0,.2);
+		z-index:99;
 	}
 	.episode-list-title{
 		float:none;
