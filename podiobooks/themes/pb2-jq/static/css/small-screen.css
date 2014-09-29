@@ -527,7 +527,7 @@
 		text-align: center;
 		width:auto;
 		float: none;
-		margin:1em 0;
+		margin:0 0 1em;
 	}
 	.title-details-inline-ad{
 		margin:1em auto;
