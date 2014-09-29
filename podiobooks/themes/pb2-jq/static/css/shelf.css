@@ -28,6 +28,7 @@
     box-shadow: 0 3px 5px rgba(150, 150, 150, .8);
     font-weight: bold;
     font-family: tahoma, sans-serif;
+    font-size:25px;
 }
 
 
@@ -235,7 +236,7 @@
 .shelf-select-form {
     position: absolute;
     right: 10px;
-    top: -35px;
+    top: -37px;
 }
 
 .shelf-select-form label {
@@ -265,7 +266,7 @@
     float: left;
     list-style: none;
     position: absolute;
-    top: -22px;
+    top: -27px;
     left: 45%;
 }
 /*
