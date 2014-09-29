@@ -9,9 +9,10 @@
     position: relative;
     z-index: 3;
     width: 100%;
-    height: 317px;
+    height: 330px;
     margin:0;
     overflow:hidden;
+
 }
 .shelf-wrapper{
 	margin:2em 0;
@@ -94,7 +95,7 @@
     background: #fdfdfd;
     float: left;
     width: 270px;
-    margin: 8px 8px;
+    margin: 15px 8px;
     border-radius: 10px;
     padding: 10px 15px;
     height: 280px;
@@ -187,8 +188,8 @@
     top: 35px;
     z-index: 5;
     opacity:.8;
-    height:80px;
-    padding:55px 7px 0 7px;
+    height:90px;
+    padding:65px 7px 0 7px;
     box-shadow:0 0 7px rgba(0,0,0,.1);
     font-size: 20px;
     font-weight:bold;
@@ -196,7 +197,7 @@
 }
 
 .csstransforms .shelf-arrow{
-	top:45%;
+	top:47%;
 	-webkit-transform: translateY(-50%);
 	-moz-transform: translateY(-50%);
 	-o-transform: translateY(-50%);

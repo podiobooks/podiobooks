@@ -390,14 +390,23 @@
 	}
 	.shelf-arrow-right{
 		right:10px;
-		top:-75px;
+		top:-80px;
 		background-size:13px;
 	}
 	.shelf-arrow-left{
 		left:auto;
 		right:35%;
-		top:-75px;
+		top:-80px;
 		background-size:13px;
+	}
+	.csstransforms .shelf-arrow{
+		top:auto;
+		top:-80px;
+		-webkit-transform: translateY(0);
+		-moz-transform: translateY(0);
+		-o-transform: translateY(0);
+		-ms-transform: translateY(0);
+		transform: translateY(0);
 	}
 	.touch .shelf-arrow{
 		display:none;
