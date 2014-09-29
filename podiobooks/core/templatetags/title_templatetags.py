@@ -30,7 +30,7 @@ def show_full_titlecover(title):
     ret_dict = {"title": title, "url": get_libsyn_cover_url(title, 334, 200)}
 
     if getattr(settings, "LOCALIZE_COVERS", False):
-        url = get_cover_url_at_width(title, 600)
+        url = get_cover_url_at_width(title, 900)
         if url:
             ret_dict["url"] = url
 
