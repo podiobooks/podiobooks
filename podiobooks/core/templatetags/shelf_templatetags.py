@@ -1,6 +1,7 @@
 """Django Custom Template Tags For Handling Shelves Full of Titles"""
 
 from django import template
+from dango.conf import settings
 
 register = template.Library()
 
@@ -9,7 +10,7 @@ register = template.Library()
 def show_shelf(context, shelf_id, shelf_title, title_list, dropdown_form, base_css_class, ad_template=None):
     """Pulls in a template to show a title shelf for a particular set of titles"""
     return {
-        'debug': context['debug'],
+        'debug': settings.DEBUG,
         'shelf_id': shelf_id,
         'shelf_title': shelf_title,
         'title_list': title_list,
@@ -23,7 +24,7 @@ def show_shelf(context, shelf_id, shelf_title, title_list, dropdown_form, base_c
 def show_shelf_pages(context, shelf_id, shelf_name, title_list, ad_template=None):
     """Shows the guts of the shelf, the pages of items...used mainly to reload the guts of the shelf on the fly"""
     return {
-        'debug': context['debug'],
+        'debug': settings.DEBUG,
         'shelf_id': shelf_id,
         'shelf_name': shelf_name,
         'title_list': title_list,

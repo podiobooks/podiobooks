@@ -65,7 +65,7 @@ def get_shelf_cover_url(title):
 @register.inclusion_tag('core/title/tags/show_titlelist.html', takes_context=True)
 def show_titlelist(context, title_list, page_name):
     """ Formats a list of titles, used on search, category, author list pages """
-    return {'title_list': title_list, 'page_name': page_name, "debug": context['debug']}
+    return {'title_list': title_list, 'page_name': page_name, 'debug': settings.DEBUG}
 
 
 @register.inclusion_tag('core/title/tags/show_episodelist.html')
