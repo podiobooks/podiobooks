@@ -49,7 +49,7 @@ def create_title_from_libsyn_rss(rss_feed_url):
         feed = urllib.urlopen(rss_feed_url)
         feed_tree = ElementTree.parse(feed).getroot()
         libsyn_slug = re.search('//(.*).podiobooks', rss_feed_url).group(1)
-    else:
+    else:  # Only unit tests hit this side
         feed_tree = ElementTree.parse(rss_feed_url).getroot()
         libsyn_slug = 'linus'
 
