@@ -30,18 +30,19 @@
 	        <header class="title-details-header">
 	            <div class="title-details-header-info">
 
-	                <p>{% show_contributors title "True" %}</p>
+	                <p>{% show_contributors title "True" %}<br />
 
-	                <p>{{ title.category_list|safe }}</p>
+	                {{ title.category_list|safe }}
 
 	                {% if title.series %}
-	                    <p>Series:
+	                    <br/>Series:
 	                        <a href="{{ title.series.get_absolute_url }}">{{ title.series.name }}</a>
 	                        {% if title.series_sequence > 0 %}
 	                            (Book {{ title.series_sequence }})
 	                        {% endif %}
-	                    </p>
+
 	                {% endif %}
+	                </p>
 	            </div>
 	        </header>
 
