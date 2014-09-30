@@ -267,7 +267,11 @@
     background: linear-gradient(to bottom, #dce5ef 0%, #74a7bf 100%); /* W3C */
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr = '#dce5ef', endColorstr = '#74a7bf', GradientType = 0); /* IE6-9 */
 }
-
+.tipjar-box h2{
+	color:#272727;
+	font-weight: bold;
+	font-size:1.1em;
+}
 
 .tipjar-submit{
 	border:none;
