@@ -15,11 +15,17 @@
 /**
  * Individual spots
  */
+.home-leaderboard{
+	width:728px;
+	height:90px;
+	margin:0 auto;
+}
 .shelf-item-ad{
-	margin:35px 8px 0;
+	/*margin:35px 8px 0;*/
 	height:250px;
-	width:300px;
+	width:250px;
 	border-radius: 0;
+
 }
 .title-details-inline-ad{
 	width:300px;

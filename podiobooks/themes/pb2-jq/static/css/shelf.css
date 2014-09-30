@@ -3,19 +3,17 @@
  */
 .shelf {
     border-radius: 0 0 10px 10px;
-    
     box-shadow: 0 3px 5px rgba(150, 150, 150, .8);
     padding: 0 0px 0px 0px;
     position: relative;
     z-index: 3;
     width: 100%;
-    height: 330px;
-    margin:0;
+    height: 267px;
+    margin-bottom: 1em;
     overflow:hidden;
-
 }
 .shelf-wrapper{
-	margin:2em 0;
+	margin:2em 0 1em;
 }
 
 .pbShelf{
@@ -29,7 +27,7 @@
     box-shadow: 0 3px 5px rgba(150, 150, 150, .8);
     font-weight: bold;
     font-family: tahoma, sans-serif;
-    font-size:25px;
+    font-size:22px;
 }
 
 
@@ -92,22 +90,22 @@
 }
 
 .shelf-item {
-    background: #fdfdfd;
+    background: #fff;
     float: left;
-    width: 270px;
-    margin: 15px 8px;
+    width: 230px;
+    margin: 8px 8px;
     border-radius: 10px;
-    padding: 10px 15px;
-    height: 280px;
-    position:relative;
+    padding: 10px;
+    height: 230px;
     overflow: hidden;
+    position:relative;
 }
 .shelf-cover-wrap{
 	display: block;
 	float:left;
-	width:120px;
-	min-height: 120px;
-	margin: 0 1.2em 1.2em 0;
+	width:67px;
+	min-height: 67px;
+	margin: 2px 1.2em 1.2em 2px;
 	padding:0;
 }
 
@@ -144,18 +142,18 @@
     margin: -3px 0 0;
     height:98%;
     color:#545454;
-    font-size: .85em;
+    font-size: .8em;
 }
 .shelf-item-heading {
     line-height:1.2em;
     margin:0 0 .2em;
     font-weight: normal;
-    font-size:1.45em;
+    font-size:1.2em;
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
     
 }
 .shelf-item-heading a{
-	color:#979797;
+	color:#878787;
 	text-decoration: none;
 }
 

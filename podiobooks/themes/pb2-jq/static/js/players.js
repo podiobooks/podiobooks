@@ -1,7 +1,7 @@
 $(function(){
 
 	var episodes = $(".episode-audio-link:first");
-	var placement = $(".title-details-header-info");
+	var placement = $(".title-details-header-cover");
 	var htmlAudio = $("html").hasClass("audio");
 	var slug = $(episodes).parents("article").data("title-slug");
 	var canPlayMp3 = false;
@@ -86,7 +86,7 @@ $(function(){
 
 			var link = $(this);
 			var href = link.attr("href");
-			var audio = $("<div id='title-first-chapter-player' class='first-chapter'></div>").appendTo(placement);
+			var audio = $("<div id='title-first-chapter-player' class='first-chapter'></div>").insertAfter(placement);
 
 			if (canPlayMp3){
 				createHTML5Player(audio, href);
@@ -96,7 +96,7 @@ $(function(){
 				createFlashPlayer(flashReplaceMe, href);
 			}
 
-			$("<h2>Play First Chapter</h2>").prependTo(audio);
+			$("<h2>First Chapter</h2>").prependTo(audio);
 
 		});
 	}

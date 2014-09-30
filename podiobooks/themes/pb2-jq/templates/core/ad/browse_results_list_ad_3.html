@@ -1,16 +1,21 @@
 <li>
-	<span class="a browse-results-ad-3">
-		{% if not debug %}
-			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-			<!-- Mid-page 3 | Resp | BR -->
-			<ins class="adsbygoogle"
-			     style="display:block"
-			     data-ad-client="ca-pub-1276519440300441"
-			     data-ad-slot="5491401392"
-			     data-ad-format="auto"></ins>
-			<script>
-			(adsbygoogle = window.adsbygoogle || []).push({});
-			</script>
-		{% endif %}
-	</span>
+
+	{% if 'Erotica' in title.category_list %}
+	{% elif 'Spirituality' in title.category_list %}
+	{% else %}
+		<span class="a browse-results-ad-3">
+			{% if not debug %}
+				<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+				<!-- Mid-page 3 | Resp | BR -->
+				<ins class="adsbygoogle"
+				     style="display:block"
+				     data-ad-client="ca-pub-1276519440300441"
+				     data-ad-slot="5491401392"
+				     data-ad-format="auto"></ins>
+				<script>
+				(adsbygoogle = window.adsbygoogle || []).push({});
+				</script>
+			{% endif %}
+		</span>
+	{% endif %}
 </li>

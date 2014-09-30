@@ -64,23 +64,18 @@
 	/*
 	 * ads
 	 */
-	.horizontal-large-ad{
-		display:none;
+	.home-leaderboard{
+		display: none;
 	}
 
 	.block-ad{
 		display:none;
 	}
-
-	.title-list-300-ad,
 	.title-list-250-ad{
 		float:none;
 		display:block;
 		margin:1em auto;
 		width:250px;
-	}
-	.title-list-300-ad{
-		width:300px;
 	}
 	
 	/*
@@ -533,7 +528,6 @@
 		padding-bottom:100px;
 	}
 	.title-details-rail{
-		text-align: center;
 		width:auto;
 		float: none;
 		margin:0 0 1em;
