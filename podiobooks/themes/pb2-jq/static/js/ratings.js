@@ -27,9 +27,9 @@ $(function(){
 		var waitingBar = $("<img id='loaderGif' src='" + siteVars("img") + "ajax-loader-bar.gif' />").hide().appendTo("body");
 		var article = $("#titleArticle");
 		var slug = article.data("title-slug");
-		var cover = article.find(".title-details-header-cover");
-		cover.wrap("<div class='title-details-header-cover-wrap clearfix' />");
-		var ratingPlacement = $("<div id='titleRating' class='rating-widget-wrap' />").insertAfter(cover);
+		var placement = article.find(".title-details-rail h1");
+		placement.wrap("<div class='title-details-header-cover-wrap clearfix' />");
+		var ratingPlacement = $("<div id='titleRating' class='rating-widget-wrap' />").insertAfter(placement);
 		$("<p class='rating-instructions'>Rate this Podiobook</p>").insertBefore(ratingPlacement);
 
 		var postData = {};

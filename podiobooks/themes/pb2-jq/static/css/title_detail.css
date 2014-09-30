@@ -2,6 +2,10 @@
 	margin: 1.5em 0;
 	padding:0;
 }
+.first-chapter h2{
+	color:#545454;
+	font-weight: bold;
+}
 /*
  * Title details
  */
@@ -26,8 +30,8 @@
 	width:100%;
 }
 
-.title-details-header-info h1{
-	color:#272727;
+.title-details h1{
+	margin:.5em 0 1em;
 }
 .title-details{
 	float:left;

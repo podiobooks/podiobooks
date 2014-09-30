@@ -22,8 +22,10 @@
         <meta itemprop="bookFormat" content="AudioBook/Serialized">
         <div class="clearfix">
 	        <section class="title-details-rail">
-	        	<h1 itemprop="name">{{ title.name }} {% show_rating_icon title %}</h1>
 		        <div class="title-details-header-cover">{% show_full_titlecover title %}</div>
+
+		        <h1 itemprop="name">{{ title.name }} {% show_rating_icon title %}</h1>
+
 		        {% include "core/ad/title_detail_inline.html" %}
 	        </section>
 
