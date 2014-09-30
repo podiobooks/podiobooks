@@ -25,6 +25,7 @@ class LibsynRSSTestCase(TestCase):
 
         title2 = create_title_from_libsyn_rss.create_title_from_libsyn_rss(os.path.join(settings.PROJECT_ROOT, 'libsyn', 'libsyn_example.rss'))
         self.assertRegexpMatches(title2.slug, 'CHANGEME')
+        self.assertEquals(title2.libsyn_slug, 'linus')
 
     def test_parse_rss(self):
         title = create_title_from_libsyn_rss.create_title_from_libsyn_rss(os.path.join(settings.PROJECT_ROOT, 'libsyn', 'libsyn_recent_example.rss'))
@@ -36,3 +37,4 @@ class LibsynRSSTestCase(TestCase):
 
         title2 = create_title_from_libsyn_rss.create_title_from_libsyn_rss(os.path.join(settings.PROJECT_ROOT, 'libsyn', 'libsyn_recent_example.rss'))
         self.assertRegexpMatches(title2.slug, 'CHANGEME')
+        self.assertEquals(title2.libsyn_slug, 'linus')
