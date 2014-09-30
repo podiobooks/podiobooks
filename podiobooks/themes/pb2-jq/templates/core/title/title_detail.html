@@ -20,18 +20,18 @@
     <article class="title-details" id="titleArticle" data-title-slug="{{ title.slug }}" itemscope itemtype="http://schema.org/Book">
 
         <meta itemprop="bookFormat" content="AudioBook/Serialized">
+
         <div class="clearfix">
-	        <section class="title-details-rail">
+        <p class="small-screen-only like-h1">{{ title.name }}</p>
+	        <aside class="title-details-rail">
 		        <div class="title-details-header-cover">{% show_full_titlecover title %}</div>
 
-		        <h1 itemprop="name">{{ title.name }} {% show_rating_icon title %}</h1>
-
 		        {% include "core/ad/title_detail_inline.html" %}
-	        </section>
+	        </aside>
 
 	        <header class="title-details-header">
 	            <div class="title-details-header-info">
-
+	            	<h1 itemprop="name" class="hide-on-small-screen">{{ title.name }} {% show_rating_icon title %}</h1>
 	                <p>{% show_contributors title "True" %}<br />
 
 	                {{ title.category_list|safe }}

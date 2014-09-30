@@ -9,13 +9,14 @@ body {
     color: #111;
 }
 
-h1, h2, h3, h4 {
+h1, h2, h3, h4,
+.like-h1 {
     margin: 0 0 .5em;
     color:#979797;
     font-weight: normal;
 }
 
-h1 {
+h1, .like-h1 {
     font-size: 1.7em;
     line-height: 1.2em;
     margin: 0 0 1em;
@@ -62,6 +63,10 @@ audio {
 
 .float-right {
     float: right;
+}
+
+.small-screen-only{
+	display: none;
 }
 
 /*

@@ -2,6 +2,7 @@
  * Smallest screen sizes
  */
 @media all and (max-width:501px){
+	.like-h1,
 	h1{
 		font-size:1.3em;
 	}
@@ -26,6 +27,9 @@
 	
 	.hide-on-small-screen{
 		display:none;
+	}
+	.small-screen-only{
+		display: block;
 	}
 	
 	.browse-choices a{
