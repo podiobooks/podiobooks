@@ -47,7 +47,7 @@ def download_cover_from_libsyn(title, upload_path=''):
     if not os.path.isdir(destination_dir):
         os.makedirs(destination_dir)
 
-    image_file = "%s.jpg" % title.libsyn_show_id
+    image_file = "%s.jpg" % title.slug
     destination = os.path.join(destination_dir, image_file)
     upload_path = "%s/%s" % (upload_path, image_file)
 
