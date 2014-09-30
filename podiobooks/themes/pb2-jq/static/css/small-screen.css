@@ -557,6 +557,7 @@
 		padding:10px 2%;
 		box-shadow: 0 -2px 3px rgba(0,0,0,.2);
 		z-index:99;
+		margin:0;
 	}
 	.episode-list-title{
 		float:none;
