@@ -53,6 +53,7 @@ def download_cover_from_libsyn(title, upload_path=''):
 
     try:
         if not os.path.isfile(destination):
+            print "Downloading new cover for %s..." % title.name
             if title.libsyn_cover_image_url:
                 raw_cover_url = title.libsyn_cover_image_url
             else:
@@ -66,6 +67,7 @@ def download_cover_from_libsyn(title, upload_path=''):
             img.save(destination, "JPEG", quality=100)
 
         if not title.cover or title.cover != upload_path:
+            print "Saving new cover in model for %s..." % title.name
             title.cover = upload_path
             title.save()
 
