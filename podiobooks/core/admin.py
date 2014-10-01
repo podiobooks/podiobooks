@@ -135,7 +135,7 @@ class TitleAdmin(admin.ModelAdmin):
     fieldsets = (
         ('Title Information', {
             'fields': (
-                'name', 'slug', 'old_slug', 'description', 'license', 'podiobooker_blog_url', 'deleted')
+                'name', 'slug', 'old_slug', 'description', 'license', 'podiobooker_blog_url', 'cover', 'deleted')
         }),
         ('Libsyn Information', {
             'fields': (
