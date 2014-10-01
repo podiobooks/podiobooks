@@ -51,35 +51,28 @@ def download_cover_from_libsyn(title, upload_path=''):
     destination = os.path.join(destination_dir, image_file)
     upload_path = "%s/%s" % (upload_path, image_file)
 
-    print "Image File: %s" % image_file
-    print "Destination: %s" % destination
-    print "Upload path: %s" % upload_path
+    try:
+        if not os.path.isfile(destination):
+            if title.libsyn_cover_image_url:
+                raw_cover_url = title.libsyn_cover_image_url
+            else:
+                raw_cover_url = "http://asset-server.libsyn.com/show/%s/" % title.libsyn_show_id
 
-    # try:
-    if not os.path.isfile(destination):
-        if title.libsyn_cover_image_url:
-            raw_cover_url = title.libsyn_cover_image_url
-        else:
-            raw_cover_url = "http://asset-server.libsyn.com/show/%s/" % title.libsyn_show_id
+            print raw_cover_url
 
-        print raw_cover_url
+            filename, httpresponse = urllib.urlretrieve(raw_cover_url)  # pylint: disable=W0612
 
-        filename, httpresponse = urllib.urlretrieve(raw_cover_url)  # pylint: disable=W0612
+            img = Image.open(filename)
+            if img.mode != "RGB":
+                img = img.convert("RGB")
+            img.save(destination, "JPEG", quality=100)
 
-        img = Image.open(filename)
-        if img.mode != "RGB":
-            img = img.convert("RGB")
-        img.save(destination, "JPEG", quality=100)
-    else:
-        print "Found file %s" % destination
+        if not title.cover or title.cover != upload_path:
+            title.cover = upload_path
+            title.save()
 
-    if not title.cover or title.cover != upload_path:
-        print "saving cover to field"
-        title.cover = upload_path
-        title.save()
-
-    # except IOError:
-    #     pass
+    except IOError:
+        pass
 
     return title.cover
 
