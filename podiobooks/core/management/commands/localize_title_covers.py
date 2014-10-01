@@ -38,7 +38,7 @@ class Command(BaseCommand):
             Title.objects.all().update(cover=None, assets_from_images=None)
 
         if len(args) > 0:
-            Title.objects.filter(Q(cover__isnull=True) | Q(cover=''), deleted=False, slug__in=args)
+            titles = Title.objects.filter(Q(cover__isnull=True) | Q(cover=''), deleted=False, slug__in=args)
         else:
             titles = Title.objects.filter(Q(cover__isnull=True) | Q(cover=''), deleted=False)
 
