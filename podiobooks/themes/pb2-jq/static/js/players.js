@@ -96,7 +96,7 @@ $(function(){
 				createFlashPlayer(flashReplaceMe, href);
 			}
 
-			$("<h2>First Chapter</h2>").prependTo(audio);
+			$("<h2>Play First Chapter</h2>").prependTo(audio);
 
 		});
 	}
