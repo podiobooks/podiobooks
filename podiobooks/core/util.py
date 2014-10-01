@@ -38,7 +38,7 @@ def use_placeholder_cover_for_title(title, upload_path=''):
     return title.cover
 
 
-def download_cover_from_libsyn(title, upload_path=''):
+def download_cover_from_libsyn(title, upload_path='', force_download=False):
     """Download cover image from Libsyn"""
     if not upload_path:
         upload_path = title.cover.field.upload_to
@@ -52,7 +52,7 @@ def download_cover_from_libsyn(title, upload_path=''):
     upload_path = "%s/%s" % (upload_path, image_file)
 
     try:
-        if not os.path.isfile(destination):
+        if not os.path.isfile(destination) or force_download:
             print "Downloading new cover for %s..." % title.name
             if title.libsyn_cover_image_url:
                 raw_cover_url = title.libsyn_cover_image_url
