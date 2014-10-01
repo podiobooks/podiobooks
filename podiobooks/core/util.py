@@ -77,10 +77,10 @@ def download_cover_from_libsyn(title, upload_path='', force_download=False):
     return title.cover
 
 
-def download_cover(title, upload_path=''):
+def download_cover(title, upload_path='', force_download=False):
     """Wrapper based on whether showID is filled out"""
     if title.libsyn_show_id or title.libsyn_slug:
-        return download_cover_from_libsyn(title, upload_path)
+        return download_cover_from_libsyn(title, upload_path, force_download)
     else:
         return use_placeholder_cover_for_title(title, upload_path)
 
