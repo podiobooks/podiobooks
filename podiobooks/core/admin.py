@@ -121,7 +121,7 @@ class TitleAdmin(admin.ModelAdmin):
     list_filter = (
         'license', 'display_on_homepage', 'is_explicit', 'is_adult', 'is_family_friendly', 'is_for_kids',
         'deleted', 'date_updated')
-    exclude = ('byline', 'category_list', 'cover',)
+    exclude = ('byline', 'category_list', )
     inlines = [
         TitleCategoryInline,
         TitleContributorInline,
