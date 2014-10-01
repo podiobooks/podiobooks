@@ -165,14 +165,10 @@ class TitleAdmin(admin.ModelAdmin):
         }))
     filter_horizontal = ['awards']
 
-    def save_model(self, request, obj, form, change):
-        obj.save()
-        cache_title_feed(obj)
-
     def clear_cover_image(self, request, queryset):
         queryset.update(cover=None, assets_from_images=None)
 
-    clear_cover_image.short_descripton = "Clear cover images"
+    clear_cover_image.short_description = "Clear cover images"
 
     def freshen_feed_cache(self, request, queryset):
         if len(queryset) <= 5:
@@ -182,7 +178,7 @@ class TitleAdmin(admin.ModelAdmin):
             self.message_user(request,
                               "Please only freshen the feeds of 5 titles at a time. More will take quite a while.")
 
-    freshen_feed_cache.short_descripton = "Refresh RSS feed cache"
+    freshen_feed_cache.short_description = "Refresh RSS feed cache"
 
 
 class TitleContributorAdmin(admin.ModelAdmin):
