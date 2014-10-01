@@ -24,7 +24,6 @@ class Command(BaseCommand):
         )
 
     def handle(self, *args, **options):
-
         if len(args) == 0:
             if options['clear']:
                 print "Clearing existing covers..."

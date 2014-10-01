@@ -66,6 +66,8 @@ def download_cover_from_libsyn(title, upload_path=''):
         if img.mode != "RGB":
             img = img.convert("RGB")
         img.save(destination, "JPEG", quality=100)
+    else:
+        print "Found file %s" % destination
 
     if not title.cover:
         print "saving cover to field"
