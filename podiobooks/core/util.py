@@ -58,8 +58,6 @@ def download_cover_from_libsyn(title, upload_path=''):
             else:
                 raw_cover_url = "http://asset-server.libsyn.com/show/%s/" % title.libsyn_show_id
 
-            print raw_cover_url
-
             filename, httpresponse = urllib.urlretrieve(raw_cover_url)  # pylint: disable=W0612
 
             img = Image.open(filename)
@@ -103,7 +101,7 @@ def get_cover_url_at_width(title, width):
             try:
                 return getattr(title, attr).url
             except AttributeError:
-               return title.cover
+                return title.cover
     return None
 
 
