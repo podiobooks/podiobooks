@@ -51,6 +51,10 @@ def download_cover_from_libsyn(title, upload_path=''):
     destination = os.path.join(destination_dir, image_file)
     upload_path = "%s/%s" % (upload_path, image_file)
 
+    print "Image File: %s" % image_file
+    print "Destination: %s" % destination
+    print "Upload path: %s" % upload_path
+
     # try:
     if not os.path.isfile(destination):
         if title.libsyn_cover_image_url:
