@@ -1,4 +1,4 @@
-"""Gneeral Podiobooks Utilities"""
+"""General Podiobooks Utilities"""
 import os
 import re
 import urllib
@@ -6,8 +6,8 @@ from PIL import Image
 
 from django.conf import settings
 from xml.etree import ElementTree
-from podiobooks.core.models import Episode, Title
 
+# pylint: disable=C0325
 
 def use_placeholder_cover_for_title(title, upload_path=''):
     """If an image isn't loaded, use a placeholder cover"""
