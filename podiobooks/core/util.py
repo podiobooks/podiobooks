@@ -69,7 +69,7 @@ def download_cover_from_libsyn(title, upload_path=''):
     else:
         print "Found file %s" % destination
 
-    if not title.cover:
+    if not title.cover or title.cover != upload_path:
         print "saving cover to field"
         title.cover = upload_path
         title.save()
