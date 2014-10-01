@@ -24,14 +24,21 @@ class Command(BaseCommand):
         )
 
     def handle(self, *args, **options):
-        if options['clear']:
-            print "Clearing existing covers..."
-            Title.objects.all().update(cover=None, assets_from_images=None)
 
-        titles = Title.objects.filter(Q(cover__isnull=True) | Q(cover=''), deleted=False)
+        if len(args) == 0:
+            if options['clear']:
+                print "Clearing existing covers..."
+                Title.objects.all().update(cover=None, assets_from_images=None)
 
-        print "%s covers to download..." % titles.count()
+            titles = Title.objects.filter(Q(cover__isnull=True) | Q(cover=''), deleted=False)
 
-        for title in titles:
+            print "%s covers to download..." % titles.count()
+
+            for title in titles:
+                print "Downloading %s..." % title.name
+                download_cover(title)
+
+        elif len(args) == 1:
+            title = Title.objects.get(slug=args[0])
             print "Downloading %s..." % title.name
             download_cover(title)

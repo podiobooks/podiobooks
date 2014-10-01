@@ -57,13 +57,18 @@ def download_cover_from_libsyn(title, upload_path=''):
             raw_cover_url = title.libsyn_cover_image_url
         else:
             raw_cover_url = "http://asset-server.libsyn.com/show/%s/" % title.libsyn_show_id
+
+        print raw_cover_url
+
         filename, httpresponse = urllib.urlretrieve(raw_cover_url)  # pylint: disable=W0612
+
         img = Image.open(filename)
         if img.mode != "RGB":
             img = img.convert("RGB")
         img.save(destination, "JPEG", quality=100)
 
     if not title.cover:
+        print "saving cover to field"
         title.cover = upload_path
         title.save()
 
