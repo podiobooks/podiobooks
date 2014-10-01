@@ -118,7 +118,7 @@
 	.search-results-top-ad{
 		height:250px;
 		width:300px;
-		margin:1em auto;
+		margin:0 auto 1em;
 	}
 	.browse-list-ad,
 	.browse-choices-ad{

@@ -7,7 +7,7 @@
 
 if (google && google.setOnLoadCallback){
 	google.setOnLoadCallback(function () {
-	    if ($("body").hasClass("search-results")){
+	    if ($("body").hasClass("search-results-page")){
 	        google.search.Csedr.addOverride("pb_");
 	        google.search.cse.element.render({
 	            div: "cse",
