@@ -87,10 +87,6 @@ class EpisodeAdmin(admin.ModelAdmin):
     date_hierarchy = 'date_created'
     search_fields = ['name', 'description']
 
-    def save_model(self, request, obj, form, change):
-        obj.save()
-        cache_title_feed(obj.title)
-
 
 class LicenseAdmin(admin.ModelAdmin):
     list_display = ('slug', 'text',)
