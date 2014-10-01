@@ -43,7 +43,7 @@ class Command(BaseCommand):
             titles = Title.objects.filter(deleted=False)
 
         if not options['force']:
-            titles.filter(Q(cover__isnull=True) | Q(cover=''))
+            titles = titles.filter(Q(cover__isnull=True) | Q(cover=''))
 
         print "%s covers to download..." % titles.count()
 
