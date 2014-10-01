@@ -38,9 +38,12 @@ class Command(BaseCommand):
             Title.objects.all().update(cover=None, assets_from_images=None)
 
         if len(args) > 0:
-            titles = Title.objects.filter(Q(cover__isnull=True) | Q(cover=''), deleted=False, slug__in=args)
+            titles = Title.objects.filter(deleted=False, slug__in=args)
         else:
-            titles = Title.objects.filter(Q(cover__isnull=True) | Q(cover=''), deleted=False)
+            titles = Title.objects.filter(deleted=False)
+
+        if not options['force']:
+            titles.filter(Q(cover__isnull=True) | Q(cover=''))
 
         print "%s covers to download..." % titles.count()
 
