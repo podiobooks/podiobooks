@@ -237,7 +237,7 @@ class Title(DefinedWidthsAssetsFromImagesMixin, models.Model):
     description = models.TextField()
     slug = models.SlugField(max_length=255, unique=True)
     old_slug = models.SlugField(max_length=255, unique=True, blank=True, null=True)
-    cover = models.ImageField(upload_to='images/covers', blank=True, null=True)
+    cover = models.ImageField(max_length=500, upload_to='images/covers', blank=True, null=True)
     license = models.ForeignKey('License', null=True, related_name='titles')
     display_on_homepage = models.BooleanField(default=False, db_index=True, verbose_name='Disp. On Homepage')
     is_adult = models.BooleanField(default=False, db_index=True, verbose_name='Is Adult')
