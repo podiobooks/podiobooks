@@ -2,9 +2,15 @@
 	margin: .5em 0 1.5em;
 	padding:0;
 }
+.first-chapter audio{
+	width:100%;
+	display: block;
+}
 .first-chapter h2{
-	color:#545454;
+	color:#111;
 	font-weight: bold;
+	font-size:.9em;
+	text-align: center;
 }
 /*
  * Title details

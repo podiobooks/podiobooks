@@ -549,7 +549,9 @@
 	}
 	.first-chapter{
 		text-align: center;
+		width:auto;
 	}
+	
 	.episode-list-title{
 		float:none;
 		width:auto;
