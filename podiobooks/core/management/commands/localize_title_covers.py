@@ -54,6 +54,6 @@ class Command(BaseCommand):
                 title.cover = None
                 title.assets_from_images = None
                 title.save()
-                download_cover(title, force_download=True)
+                download_cover(title)
             else:
                 download_cover(title)
