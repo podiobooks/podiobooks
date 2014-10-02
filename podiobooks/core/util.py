@@ -18,7 +18,7 @@ def use_placeholder_cover_for_title(title, upload_path=''):
     if not os.path.isdir(destination_dir):
         os.makedirs(destination_dir)
 
-    image_file = "%s.jpg" % title.slug
+    image_file = "%s-placeholder.jpg" % title.slug
     destination = os.path.join(destination_dir, image_file)
     upload_path = "%s/%s" % (upload_path, image_file)
 
