@@ -61,7 +61,7 @@ class RateTitleView(View):
 
         # rating will hold value for the rating pulled from cache
         rating = 0
-        if ip_title_list and ip_title_list.has_key(title.pk):
+        if ip_title_list and title.pk in ip_title_list:
             rating = ip_title_list[title.pk]
 
         # corrects for changing vote after changing IP
