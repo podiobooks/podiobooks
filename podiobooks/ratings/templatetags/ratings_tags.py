@@ -9,6 +9,14 @@ register = template.Library()
 @register.inclusion_tag('ratings/calculation.html')
 def show_overall_rating(title):
     """Calculate the overall rating for a title"""
+    if title.promoter_count < 0:
+        title.promoter_count = 0
+        title.save()
+
+    if title.detractor_count < 0:
+        title.detractor_count = 0
+        title.save()
+
     total = title.promoter_count + title.detractor_count
 
     if total < 5:
@@ -25,6 +33,3 @@ def show_overall_rating(title):
         rating = 100
 
     return {"rating": rating, "rating_range": int(rating_range)}
-
-
-
