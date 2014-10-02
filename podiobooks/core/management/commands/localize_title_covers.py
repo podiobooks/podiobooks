@@ -53,7 +53,7 @@ class Command(BaseCommand):
             if options['force']:
                 title.cover = None
                 title.assets_from_images = None
-                title.save()
+                print title.assets_from_images
                 download_cover(title, force_download=True)
             else:
                 download_cover(title)
