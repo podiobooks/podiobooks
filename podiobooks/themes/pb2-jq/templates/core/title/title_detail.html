@@ -91,15 +91,19 @@
 
     <aside class="title-details-extras">
 
+    	{% if not 'Erotica' in title.category_list %}
+    		{% include "core/ad/title_detail_sidebar_small.html" %}
+    	{% endif %}
+
         {% include "core/title/title_consumptionbox.html" %}
 
         {% show_awardshow title %}
 
         <div id="wide-skyscraper-ad" class="wide-skyscraper-ad">
-        	{% if 'Erotica' in title.category_list %}
+        	{% if  'Erotica' in title.category_list %}
         		<a href="http://www.ErectionFitness.com/ct/298422?b=7252&t=2014Sept"><img src="http://www2.sellhealth.com/2/ef120x600.gif" border=0></a>
         	{% else %}
-        		{% include "core/ad/title_detail_sidebar.html" %}
+        		{% include "core/ad/title_detail_sidebar_large.html" %}
         	{% endif %}
 
         </div>
