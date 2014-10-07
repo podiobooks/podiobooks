@@ -1,9 +1,6 @@
 """ Django Views for the Podiobooks Core Module"""
 
 import os
-import logging
-import pytz
-from datetime import datetime, timedelta
 
 from django.core.urlresolvers import reverse_lazy
 
@@ -15,7 +12,6 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.conf import settings
 from django.db.models import Count
 
-from podiobooks.tasks import hello_world
 from podiobooks.core.models import Title, Category
 from podiobooks.core.forms import CategoryChoiceForm, TitleSearchForm
 from podiobooks.core.queries import get_featured_shelf_titles, get_recently_released_shelf_titles, get_popular_shelf_titles
@@ -25,7 +21,6 @@ from podiobooks.core.queries import get_featured_shelf_titles, get_recently_rele
 INITIAL_CATEGORY = 'science-fiction'
 INITIAL_CONTRIBUTOR = 'mur-lafferty'
 
-logger = logging.getLogger("root")
 
 class DonationView(TemplateView):
     """ Donation options """
@@ -65,11 +60,6 @@ class IndexView(TemplateView):
             'contributor_choice_form': category_choice_form_popular,
             'category_choice_form_recent': category_choice_form_recent,
         }
-
-        logger.error("JUST TESTING From VIEW")
-        logger.error("%s" % (datetime.utcnow() + timedelta(seconds=60)))
-
-        hello_world.apply_async()
 
         return response_data
 
