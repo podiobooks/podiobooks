@@ -7,4 +7,4 @@ logger = logging.getLogger("celerytasks")
 
 @app.task
 def hello_world():
-    logger.error("JUST TESTING")
+    logger.error("JUST TESTING FROM TASK")

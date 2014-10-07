@@ -1,6 +1,7 @@
 """ Django Views for the Podiobooks Core Module"""
 
 import os
+import logging
 
 from django.core.urlresolvers import reverse_lazy
 
@@ -22,6 +23,7 @@ from podiobooks.core.queries import get_featured_shelf_titles, get_recently_rele
 INITIAL_CATEGORY = 'science-fiction'
 INITIAL_CONTRIBUTOR = 'mur-lafferty'
 
+logger = logging.getLogger("celerytasks")
 
 class DonationView(TemplateView):
     """ Donation options """
@@ -62,6 +64,7 @@ class IndexView(TemplateView):
             'category_choice_form_recent': category_choice_form_recent,
         }
 
+        logger.error("JUST TESTING From VIEW")
 
         hello_world()
 
