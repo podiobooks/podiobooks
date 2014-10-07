@@ -68,11 +68,7 @@ class IndexView(TemplateView):
 
         logger.error("JUST TESTING From VIEW")
 
-        soon = datetime.now() + timedelta(seconds=7)
-        soon = pytz.utc.localize(soon)
-        logger.error("TIME!!! %s" % soon)
-
-        hello_world.apply_async(eta=soon)
+        hello_world(timeout=7)
 
         return response_data
 
