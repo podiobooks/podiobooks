@@ -2,7 +2,6 @@
 
 from django.views.generic import RedirectView, TemplateView
 
-from podiobooks.tasks import hello_world
 
 class TextTemplateView(TemplateView):
     """Utility View to Render text/plain Content Type"""
@@ -15,9 +14,7 @@ class RobotsView(TextTemplateView):
 
     Note that this depends on the hostname; so if caching is on, it may be caching the HOST header.
     """
-
     def get_template_names(self, **kwargs):
-        hello_world()
         host = self.request.get_host()
         if host == 'www.podiobooks.com' or host == 'podiobooks.com':
             return ['robots_prod.txt']

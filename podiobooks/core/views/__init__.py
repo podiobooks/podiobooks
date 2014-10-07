@@ -12,6 +12,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.conf import settings
 from django.db.models import Count
 
+from podiobooks.tasks import hello_world
 from podiobooks.core.models import Title, Category
 from podiobooks.core.forms import CategoryChoiceForm, TitleSearchForm
 from podiobooks.core.queries import get_featured_shelf_titles, get_recently_released_shelf_titles, get_popular_shelf_titles
@@ -60,6 +61,9 @@ class IndexView(TemplateView):
             'contributor_choice_form': category_choice_form_popular,
             'category_choice_form_recent': category_choice_form_recent,
         }
+
+
+        hello_world()
 
         return response_data
 
