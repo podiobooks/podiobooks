@@ -2,7 +2,7 @@ import logging
 
 from podiobooks.celery import app
 
-logger = logging.getLogger("celerytasks")
+logger = logging.getLogger("root")
 
 
 @app.task

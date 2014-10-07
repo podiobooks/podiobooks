@@ -23,7 +23,7 @@ from podiobooks.core.queries import get_featured_shelf_titles, get_recently_rele
 INITIAL_CATEGORY = 'science-fiction'
 INITIAL_CONTRIBUTOR = 'mur-lafferty'
 
-logger = logging.getLogger("celerytasks")
+logger = logging.getLogger("root")
 
 class DonationView(TemplateView):
     """ Donation options """
