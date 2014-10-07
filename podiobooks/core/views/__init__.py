@@ -66,7 +66,9 @@ class IndexView(TemplateView):
             'category_choice_form_recent': category_choice_form_recent,
         }
 
+
         logger.error("JUST TESTING From VIEW")
+        logger.error("%s" % (datetime.utcnow() + timedelta(seconds=60)))
 
         hello_world(timeout=7)
 
