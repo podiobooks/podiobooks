@@ -2,6 +2,7 @@
 
 import os
 import logging
+import pytz
 from datetime import datetime, timedelta
 
 from django.core.urlresolvers import reverse_lazy
@@ -66,9 +67,12 @@ class IndexView(TemplateView):
         }
 
         logger.error("JUST TESTING From VIEW")
-        logger.error("TIME!!! %s" % (datetime.now() + timedelta(seconds=4)))
 
-        hello_world.apply_async(eta=datetime.now() + timedelta(seconds=4))
+        soon = datetime.now() + timedelta(seconds=7)
+        soon = pytz.utc.localize(soon)
+        logger.error("TIME!!! %s" % soon)
+
+        hello_world.apply_async(eta=soon)
 
         return response_data
 
