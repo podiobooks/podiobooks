@@ -2,6 +2,7 @@
 
 import os
 import logging
+from datetime import datetime, timedelta
 
 from django.core.urlresolvers import reverse_lazy
 
@@ -66,7 +67,7 @@ class IndexView(TemplateView):
 
         logger.error("JUST TESTING From VIEW")
 
-        hello_world.apply_async(countdown=5)
+        hello_world.apply_async(eta=datetime.now() + timedelta(seconds=4))
 
         return response_data
 
