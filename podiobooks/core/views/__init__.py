@@ -66,7 +66,7 @@ class IndexView(TemplateView):
 
         logger.error("JUST TESTING From VIEW")
 
-        hello_world.apply_async(timeout=5)
+        hello_world.apply_async(countdown=5)
 
         return response_data
 
