@@ -41,6 +41,7 @@ if "GONDOR_REDIS_URL" in os.environ:
     GONDOR_REDIS_HOST = DB_URL.hostname
     GONDOR_REDIS_PORT = DB_URL.port
     GONDOR_REDIS_PASSWORD = DB_URL.password
+
     CACHE_MIDDLEWARE_SECONDS = int(os.environ.get("CACHE_MIDDLEWARE_SECONDS", 3600))
 
     # Cache Settings
@@ -53,6 +54,18 @@ if "GONDOR_REDIS_URL" in os.environ:
             },
         },
     }
+
+    # Celery Queue
+    BROKER_TRANSPORT = "redis"
+    BROKER_HOST = GONDOR_REDIS_HOST
+    BROKER_PORT = GONDOR_REDIS_PORT
+    BROKER_VHOST = "0"
+    BROKER_PASSWORD = GONDOR_REDIS_PASSWORD
+
+    CELERY_RESULT_BACKEND = "redis"
+    CELERY_REDIS_HOST = GONDOR_REDIS_HOST
+    CELERY_REDIS_PORT = GONDOR_REDIS_PORT
+    CELERY_REDIS_PASSWORD = GONDOR_REDIS_PASSWORD
 
     MIDDLEWARE_CLASSES = (
         'podiobooks.core.middleware.StripAnalyticsCookies',
