@@ -69,7 +69,7 @@ class IndexView(TemplateView):
         logger.error("JUST TESTING From VIEW")
         logger.error("%s" % (datetime.utcnow() + timedelta(seconds=60)))
 
-        hello_world.apply_async(countdown=7)
+        hello_world.apply_async()
 
         return response_data
 
