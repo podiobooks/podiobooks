@@ -54,7 +54,6 @@ class IndexView(TemplateView):
         recently_released_list = get_recently_released_shelf_titles(initial_category_slug_recent)
 
         logger.error("JUST TESTING FROM VIEW")
-        hello_world.apply_async(countdown=5)
 
         # Render Template
         response_data = {
