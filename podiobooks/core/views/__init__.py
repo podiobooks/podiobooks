@@ -1,5 +1,5 @@
 """ Django Views for the Podiobooks Core Module"""
-
+import logging
 import os
 
 from django.core.urlresolvers import reverse_lazy
@@ -15,11 +15,13 @@ from django.db.models import Count
 from podiobooks.core.models import Title, Category
 from podiobooks.core.forms import CategoryChoiceForm, TitleSearchForm
 from podiobooks.core.queries import get_featured_shelf_titles, get_recently_released_shelf_titles, get_popular_shelf_titles
-
+from podiobooks.tasks import hello_world
 # pylint: disable=R0912,C0103
 
 INITIAL_CATEGORY = 'science-fiction'
 INITIAL_CONTRIBUTOR = 'mur-lafferty'
+
+logger = logging.getLogger("root")
 
 
 class DonationView(TemplateView):
@@ -50,6 +52,9 @@ class IndexView(TemplateView):
         category_choice_form_recent = CategoryChoiceForm(self.request, cookie="recent_by_category")
         initial_category_slug_recent = category_choice_form_recent.fields["category"].initial
         recently_released_list = get_recently_released_shelf_titles(initial_category_slug_recent)
+
+        logger.error("JUST TESTING FROM VIEW")
+        hello_world()
 
         # Render Template
         response_data = {
