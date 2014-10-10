@@ -53,8 +53,6 @@ class IndexView(TemplateView):
         initial_category_slug_recent = category_choice_form_recent.fields["category"].initial
         recently_released_list = get_recently_released_shelf_titles(initial_category_slug_recent)
 
-        logger.error("JUST TESTING FROM VIEW")
-
         # Render Template
         response_data = {
             'featured_title_list': featured_title_list,
