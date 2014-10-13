@@ -12,7 +12,7 @@ from django.contrib.sites.models import Site
 
 from podiobooks.tasks import ping_analytics_for_feeds
 
-LOGGER = logging.getLogger(name='podiobooks.feeds')
+LOGGER = logging.getLogger(name='root')
 GA_TRACKING = 'GA_TRACK'
 
 
@@ -27,5 +27,5 @@ class GATracker(object):
         """
         if GA_TRACKING in view_kwargs and GA_TRACKING:
             del view_kwargs[GA_TRACKING]
-
+            LOGGER.error("INSIDE MIDDLEWARE")
             ping_analytics_for_feeds(request, view_func, view_args, view_kwargs)
