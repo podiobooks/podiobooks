@@ -43,6 +43,7 @@ if "GONDOR_REDIS_URL" in os.environ:
     GONDOR_REDIS_PASSWORD = DB_URL.password
 
     BROKER_URL = "redis://:%s@%s:%s/0" % (GONDOR_REDIS_PASSWORD, GONDOR_REDIS_HOST, GONDOR_REDIS_PORT)
+    CELERY_ACCEPT_CONTENT = ['json', 'msgpack', 'yaml']
 
     CACHE_MIDDLEWARE_SECONDS = int(os.environ.get("CACHE_MIDDLEWARE_SECONDS", 3600))
 
@@ -65,8 +66,8 @@ if "GONDOR_REDIS_URL" in os.environ:
         'django.contrib.sessions.middleware.SessionMiddleware',
         'django.contrib.auth.middleware.AuthenticationMiddleware',
         'django.contrib.messages.middleware.MessageMiddleware',
-        'django.middleware.cache.UpdateCacheMiddleware',
         'podiobooks.feeds.middleware.ga_tracking.GATracker',
+        'django.middleware.cache.UpdateCacheMiddleware',
         'django.middleware.common.CommonMiddleware',
         'django.middleware.cache.FetchFromCacheMiddleware',
         'django.middleware.http.ConditionalGetMiddleware',

@@ -65,6 +65,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 )
 
 MIDDLEWARE_CLASSES = (
+
     'podiobooks.core.middleware.StripAnalyticsCookies',
     'django.middleware.gzip.GZipMiddleware',  # Not running SSL, so gzip doesn't matter
     'django.middleware.doc.XViewMiddleware',
@@ -72,9 +73,14 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    # 'podiobooks.feeds.middleware.ga_tracking.GATracker',
+    # 'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.common.CommonMiddleware',
+    # 'django.middleware.cache.FetchFromCacheMiddleware',
     'django.middleware.http.ConditionalGetMiddleware',
     'podiobooks.core.middleware.PermanentRedirectMiddleware',
+
+
 )
 
 ROOT_URLCONF = 'podiobooks.urls'
