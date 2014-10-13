@@ -63,6 +63,7 @@ class IndexView(TemplateView):
             'category_choice_form_recent': category_choice_form_recent,
         }
 
+        hello_world()
         return response_data
 
 
