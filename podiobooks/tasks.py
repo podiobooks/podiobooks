@@ -25,6 +25,7 @@ def ping_analytics_for_feeds(request, view_func, view_args, view_kwargs):
     event = Event(category='RSS', action=view_kwargs['title_slug'], label=request.path, value=None, noninteraction=False)
 
     try:
+        print "hi"
         logger = logging.getLogger(name='root')
 
         logger.error("Pushing feed ping to GA...")
