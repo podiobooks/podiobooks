@@ -27,5 +27,5 @@ class GATracker(object):
         """
         if GA_TRACKING in view_kwargs and GA_TRACKING:
             del view_kwargs[GA_TRACKING]
-            LOGGER.error("INSIDE MIDDLEWARE")
+            LOGGER.info("INSIDE MIDDLEWARE")
             ping_analytics_for_feeds(request, view_func, view_args, view_kwargs)

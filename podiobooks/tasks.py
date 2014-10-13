@@ -13,7 +13,7 @@ from podiobooks.celery import app
 @app.task
 def hello_world():
     logger = logging.getLogger("root")
-    logger.error("JUST TESTING FROM TASK")
+    logger.info("JUST TESTING FROM TASK")
     print "hi"
 
 
@@ -25,13 +25,12 @@ def ping_analytics_for_feeds(request, view_func, view_args, view_kwargs):
     event = Event(category='RSS', action=view_kwargs['title_slug'], label=request.path, value=None, noninteraction=False)
 
     try:
-        print "hi"
         logger = logging.getLogger(name='root')
 
-        logger.error("Pushing feed ping to GA...")
-        logger.error("Category: RSS")
-        logger.error("Action: %s" % view_kwargs['title_slug'])
-        logger.error("Label: %s" % request.path)
+        logger.info("Pushing feed ping to GA...")
+        logger.info("Category: RSS")
+        logger.info("Action: %s" % view_kwargs['title_slug'])
+        logger.info("Label: %s" % request.path)
 
         tracker.track_event(event, Session(), visitor)
     except (URLError, timeout):
