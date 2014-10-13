@@ -25,6 +25,13 @@ def ping_analytics_for_feeds(request, view_func, view_args, view_kwargs):
     event = Event(category='RSS', action=view_kwargs['title_slug'], label=request.path, value=None, noninteraction=False)
 
     try:
+        logger = logging.getLogger(name='podiobooks.feeds')
+
+        logger.info("Pushing feed ping to GA...")
+        logger.info("Category: RSS")
+        logger.info("Action: %s" % view_kwargs['title_slug'])
+        logger.info("Label: %s" % request.path)
+
         tracker.track_event(event, Session(), visitor)
     except (URLError, timeout):
         logger = logging.getLogger(name='podiobooks.feeds')
