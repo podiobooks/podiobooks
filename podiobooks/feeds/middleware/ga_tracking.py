@@ -35,6 +35,7 @@ class GATracker(object):
     def process_request(self, request):
         path = request.META.get("PATH_INFO", None)
         if path and path.startswith("/rss/feeds/episodes/") and path.endswith("/"):
+            LOGGER.info("INSIDE MIDDLEWARE")
             slug = path.split("/")[-2]
             ping_analytics_for_feeds(request, slug)
 
