@@ -20,5 +20,9 @@ class GATracker(object):
             logger = logging.getLogger(name='root')
             logger.info("INSIDE MIDDLEWARE")
 
-            slug = path.split("/")[-2]
+            while path.endswith("/"):
+                path = "/".join(path.split("/")[:-1])
+
+            slug = path.split("/")[-1]
+
             ping_analytics_for_feeds(request, slug)
