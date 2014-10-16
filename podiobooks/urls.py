@@ -127,6 +127,9 @@ urlpatterns = \
 
              # Hack Redirect
              (r'submit', RedirectView.as_view(url='/')),
+             
+             # Old Infected Redirect
+             (r'infected', RedirectView.as_view(url='/title/infected/')),
 
              # Author Start Page
              (r'start/?$',
