@@ -43,6 +43,7 @@ urlpatterns = \
 
              # Title
              url(r'^title/$', TitleListView.as_view(), name='title_list'),
+             url(r'^title/morevi', RedirectView.as_view(url='/title/morevi-the-chronicles-of-rafe-and-askana-remastered/')),
              url(r'^title/recent/$', TitleRecentListView.as_view(), name='title_recent_list'),
              url(r'^title/removed/(?P<slug>[^/]+)/$', TitleRemovedView.as_view(), name='title_detail_removed'),
              url(r'^title/(?P<slug>[^/]+)/$', TitleDetailView.as_view(), name='title_detail'),
