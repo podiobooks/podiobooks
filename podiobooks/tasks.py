@@ -7,7 +7,7 @@ from pyga.requests import Event, Session, Tracker, Visitor
 from django.conf import settings
 from django.contrib.sites.models import Site
 
-from podiobooks.celery import app
+from podiobooks.celery_config import app
 
 
 @app.task
