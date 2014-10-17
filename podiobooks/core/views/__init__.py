@@ -53,7 +53,7 @@ class IndexView(TemplateView):
         initial_category_slug_recent = category_choice_form_recent.fields["category"].initial
         recently_released_list = get_recently_released_shelf_titles(initial_category_slug_recent)
 
-        hello_world.apply_async(countdown=5)
+        # hello_world.apply_async(countdown=5)
 
         # Render Template
         response_data = {

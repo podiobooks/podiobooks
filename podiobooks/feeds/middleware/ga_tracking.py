@@ -47,4 +47,4 @@ class GATracker(object):
                 ping_analytics_for_feeds(request, "ALL TITLES FEED")
 
             elif path == reverse('recent_titles_feed'):
-                ping_analytics_for_feeds(request, "RECENT TITLES FEEDS")
+                ping_analytics_for_feeds.apply_async([request, "RECENT TITLES FEEDS"], countdown=5)
