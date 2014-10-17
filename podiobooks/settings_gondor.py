@@ -43,7 +43,7 @@ if "GONDOR_REDIS_URL" in os.environ:
     GONDOR_REDIS_PASSWORD = DB_URL.password
 
     BROKER_URL = "redis://:%s@%s:%s/0" % (GONDOR_REDIS_PASSWORD, GONDOR_REDIS_HOST, GONDOR_REDIS_PORT)
-    CELERY_ACCEPT_CONTENT = ['json', 'msgpack', 'yaml']
+    CELERY_ACCEPT_CONTENT = ['json', ]
 
     CACHE_MIDDLEWARE_SECONDS = int(os.environ.get("CACHE_MIDDLEWARE_SECONDS", 3600))
 
