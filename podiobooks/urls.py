@@ -69,6 +69,7 @@ urlpatterns = \
 
              # MUB
              (r'^mub/', include('mub.urls')),
+             url(r'^queue/test/$', 'podiobooks.views.test_task_queue', name='test_task_queue'),
 
              # Robots, Favicon and Related
              (r'^robots\.txt$', vary_on_headers('HOST')(RobotsView.as_view())),
@@ -127,7 +128,7 @@ urlpatterns = \
 
              # Hack Redirect
              (r'submit', RedirectView.as_view(url='/')),
-             
+
              # Old Infected Redirect
              (r'infected', RedirectView.as_view(url='/title/infected/')),
 

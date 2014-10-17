@@ -43,7 +43,7 @@ class GATracker(object):
                 slug = path.split("/")[-1]
 
                 if slug not in slugs_from_cache:
-                    ping_analytics_for_feeds.apply_async(args=[ip_address, user_agent, url_path, slug], countdown=5)
+                    ping_analytics_for_feeds(ip_address, user_agent, url_path, slug)
                 else:
                     logger.info("OLD SLUG URL, NOT PINGING GA")
 

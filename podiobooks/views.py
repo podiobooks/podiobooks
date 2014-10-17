@@ -1,6 +1,10 @@
 """ Django Views for the Overall Site"""
 
 from django.views.generic import RedirectView, TemplateView
+from django.views.decorators.cache import never_cache
+from django.http import HttpResponse
+
+from podiobooks.tasks import hello_world
 
 
 class TextTemplateView(TemplateView):
@@ -29,3 +33,9 @@ class BlogRedirectView(RedirectView):
 
     def get_redirect_url(self, **kwargs):
         return 'http://blog.podiobooks.com' + self.kwargs.get('url_remainder', '')
+
+
+@never_cache
+def test_task_queue(request):
+    hello_world.apply()
+    return HttpResponse("hi")

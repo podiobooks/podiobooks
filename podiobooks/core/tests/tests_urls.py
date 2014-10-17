@@ -17,6 +17,11 @@ class UrlTestCase(TestCase):
         self.assertEquals(200, response.status_code)
         self.assertNotContains(response, 'error')
 
+    def test_queue_test(self):
+        response = self.client.get('/queue/test/')
+        self.assertEquals(200, response.status_code)
+        self.assertNotContains(response, 'error')
+
     def test_award_list(self):
         response = self.client.get('/award/')
         self.assertEquals(200, response.status_code)
