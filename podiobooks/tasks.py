@@ -1,4 +1,7 @@
+from __future__ import absolute_import
+
 import logging
+
 from urllib2 import URLError
 from socket import timeout
 
