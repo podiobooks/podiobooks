@@ -17,8 +17,8 @@ from celery import shared_task
 @shared_task
 def hello_world():
     logger = logging.getLogger("root")
-    logger.info("JUST TESTING FROM TASK")
-    print "hi"
+    logger.info("JUST TESTING FROM TASK (LOG)")
+    print "JUST TESTING FROM TASK (PRINT)"
 
 
 @shared_task
