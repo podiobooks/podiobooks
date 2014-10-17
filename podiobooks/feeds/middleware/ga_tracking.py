@@ -31,6 +31,10 @@ class GATracker(object):
             logger = logging.getLogger(name='root')
             logger.info("INSIDE MIDDLEWARE")
 
+            ip_address = request.META.get('REMOTE_ADDR', '')
+            user_agent = request.META.get('HTTP_USER_AGENT', '')
+            url_path = request.path
+
             if path.startswith("/rss/feeds/episodes/"):
 
                 while path.endswith("/"):
@@ -39,12 +43,12 @@ class GATracker(object):
                 slug = path.split("/")[-1]
 
                 if slug not in slugs_from_cache:
-                    ping_analytics_for_feeds.apply_async([request, slug], countdown=5)
+                    ping_analytics_for_feeds.apply_async(args=[ip_address, user_agent, url_path, slug], countdown=5)
                 else:
                     logger.info("OLD SLUG URL, NOT PINGING GA")
 
             elif path == reverse('all_titles_feed'):
-                ping_analytics_for_feeds(request, "ALL TITLES FEED")
+                ping_analytics_for_feeds(ip_address, user_agent, url_path, "ALL TITLES FEED")
 
             elif path == reverse('recent_titles_feed'):
-                ping_analytics_for_feeds(request, "RECENT TITLES FEEDS")
+                ping_analytics_for_feeds(ip_address, user_agent, url_path, "RECENT TITLES FEEDS")
