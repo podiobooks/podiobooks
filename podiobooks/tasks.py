@@ -7,16 +7,17 @@ from pyga.requests import Event, Session, Tracker, Visitor
 from django.conf import settings
 from django.contrib.sites.models import Site
 
-from podiobooks.celery_config import app
+from celery import shared_task
 
 
-@app.task
+@shared_task
 def hello_world():
     logger = logging.getLogger("root")
     logger.info("JUST TESTING FROM TASK")
     print "hi"
 
 
+@shared_task
 def ping_analytics_for_feeds(request, action):
     tracker = Tracker(settings.GOOGLE_ANALYTICS_ID, Site.objects.get_current().domain)
     visitor = Visitor()
