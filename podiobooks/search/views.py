@@ -1,4 +1,3 @@
-# pylint: disable=R0801
 # """Django Search Views for Podiobooks"""
 
 from django.views.generic import TemplateView
