@@ -16,6 +16,7 @@ from celery import shared_task
 
 @shared_task
 def hello_world():
+    """Task to test that celery is working in a given env"""
     logger = logging.getLogger("root")
     logger.info("JUST TESTING FROM TASK (LOG)")
     print "JUST TESTING FROM TASK (PRINT)"
@@ -23,6 +24,7 @@ def hello_world():
 
 @shared_task
 def ping_analytics_for_feeds(ip_address, user_agent, url_path, action):
+    """Ping Google Analytics with a hit to this feed, async so doesn't block"""
     tracker = Tracker(settings.GOOGLE_ANALYTICS_ID, Site.objects.get_current().domain)
     visitor = Visitor()
     visitor.ip_address = ip_address
@@ -35,8 +37,8 @@ def ping_analytics_for_feeds(ip_address, user_agent, url_path, action):
 
         logger.info("Pushing feed ping to GA...")
         logger.info("Category: RSS")
-        logger.info("Action: %s" % action)
-        logger.info("Label: %s" % url_path)
+        logger.info("Action: %s", action)
+        logger.info("Label: %s", url_path)
 
         tracker.track_event(event, Session(), visitor)
     except (URLError, timeout):

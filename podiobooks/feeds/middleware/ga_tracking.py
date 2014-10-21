@@ -18,6 +18,7 @@ class GATracker(object):
     Middleware class to handle sending GA tracking event
     """
     def process_request(self, request):
+        """Can't Use process_view, since that is bypassed when cached"""
         slugs_from_cache = cache.get("old_title_slugs")
 
         if not slugs_from_cache:
