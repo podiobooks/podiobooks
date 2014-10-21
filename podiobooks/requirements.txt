@@ -1,16 +1,11 @@
-django>1.5,<1.7
-django-adminactions==0.6
+celery[redis]>3.1,<3.2django>1.6,<1.8
+django-adminactions==0.7
 django-debug-toolbar==1.2.1
 django-jenkins==0.16.3
 git+git://github.com/Brant/django-mub.git@master
 git+git://github.com/Brant/django-noodles.git@master
-django-tastypie==0.11.1
+django-tastypie==0.12.0
 feedparser==5.1.3
-mimeparse==0.1.3
-pillow==2.5.3  # Use the --use-wheel option to install on windows
+pillow==2.6.1
 pyga==2.5.0
-pytz==2014.7
 python-dateutil==2.2
-sqlparse==0.1.11
-south==0.8.4
-celery[redis]>3.1,<3.2

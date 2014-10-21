@@ -16,7 +16,9 @@ class LibsynImportViewsTestCase(TestCase):
 
     def test_slug_entry_view_redirect(self):
         response = self.client.get('/libsyn/import/')
-        self.assertRedirects(response, '/admin/?next=/libsyn/import/')
+        self.assertRedirects(response, '/admin/?next=/libsyn/import/', fetch_redirect_response=False)
+        response = self.client.get('/admin/?next=/libsyn/import/')
+        self.assertRedirects(response, '/admin/login/?next=/admin/%3Fnext%3D/libsyn/import/')
 
     def test_slug_entry_view(self):
         self.client.login(username='admin', password='pass')

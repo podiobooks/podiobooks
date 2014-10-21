@@ -17,6 +17,9 @@ import socket
 # Set the root path of the project so it's not hard coded
 PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 
+# Explicitly Define test runner to silence 1_6.W001 Warning
+TEST_RUNNER = 'django.test.runner.DiscoverRunner'
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -68,7 +71,7 @@ MIDDLEWARE_CLASSES = (
 
     'podiobooks.core.middleware.StripAnalyticsCookies',
     'django.middleware.gzip.GZipMiddleware',  # Not running SSL, so gzip doesn't matter
-    'django.middleware.doc.XViewMiddleware',
+    'django.contrib.admindocs.middleware.XViewMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -104,7 +107,6 @@ INSTALLED_APPS = (
     'podiobooks.feeds',
     'podiobooks.search',
     'podiobooks.ratings',
-    'south',
 )
 
 ### DATABASE SETTINGS
@@ -193,9 +195,6 @@ REDIRECT_DOMAINS = []
 
 # This is to turn off cover downloads for non-production systems
 LOCALIZE_COVERS = False
-
-# Django_Jenkins Default Tasks
-JENKINS_TASKS = ('django_jenkins.tasks.with_coverage',)
 
 # static feed caching
 FEED_CACHE_ENDPOINT = ''
