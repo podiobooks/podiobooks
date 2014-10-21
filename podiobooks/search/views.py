@@ -1,4 +1,4 @@
-# """Django Search Views for Podiobooks"""
+"""Django Search Views for Podiobooks"""
 
 from django.views.generic import TemplateView
 
