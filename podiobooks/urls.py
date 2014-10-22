@@ -22,8 +22,6 @@ from podiobooks.core.views import AccelView, IndexView, DonationView, ReportsVie
 
 from .views import BlogRedirectView, TextTemplateView, RobotsView
 
-admin.autodiscover()
-
 sitemaps = {'AwardDetail': AwardDetailSitemap, 'CategoryDetail': CategoryDetailSitemap,
             'ContributorDetail': ContributorDetailSitemap, 'TitleDetail': TitleDetailSitemap, }
 
