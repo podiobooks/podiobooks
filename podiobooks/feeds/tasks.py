@@ -37,5 +37,4 @@ def ping_analytics_for_feeds(ip_address, user_agent, url_path, action):
         # logger.info("GA Feed Ping: Category: RSS, Action: %s, Label: %s", action, url_path)
         tracker.track_event(event, Session(), visitor)
     except (URLError, timeout):
-        logger = logging.getLogger(name='root')
         logger.error("GA Feed Ping Timeout")
