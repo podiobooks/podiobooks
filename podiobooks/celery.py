@@ -11,7 +11,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'podiobooks.settings')
 APP = Celery(
     'podiobooks',
     include=[
-        'podiobooks.tasks',
+        'podiobooks.feeds.tasks',
     ]
 )
 
