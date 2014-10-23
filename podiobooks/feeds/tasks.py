@@ -32,15 +32,9 @@ def ping_analytics_for_feeds(ip_address, user_agent, url_path, action):
     visitor.user_agent = user_agent
 
     event = Event(category='RSS', action=action, label=url_path, value=None, noninteraction=False)
-
+    logger = logging.getLogger(name='root')
     try:
-        logger = logging.getLogger(name='root')
-
-        logger.info("Pushing feed ping to GA...")
-        logger.info("Category: RSS")
-        logger.info("Action: %s", action)
-        logger.info("Label: %s", url_path)
-
+        # logger.info("GA Feed Ping: Category: RSS, Action: %s, Label: %s", action, url_path)
         tracker.track_event(event, Session(), visitor)
     except (URLError, timeout):
         logger = logging.getLogger(name='root')
