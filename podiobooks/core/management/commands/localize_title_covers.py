@@ -38,7 +38,7 @@ class Command(BaseCommand):
             Title.objects.all().update(cover=None, assets_from_images=None)
 
         if len(args) > 0:
-            titles = Title.objects.filter(deleted=False, slug__in=args)
+            titles = Title.objects.filter(Q(libsyn_show_id__isnull=False) | Q(libsyn_slug__isnull=False), deleted=False, slug__in=args)
         else:
             titles = Title.objects.filter(deleted=False)
 
