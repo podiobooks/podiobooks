@@ -15,7 +15,6 @@ from django.db.models import Count
 from podiobooks.core.models import Title, Category
 from podiobooks.core.forms import CategoryChoiceForm, TitleSearchForm
 from podiobooks.core.queries import get_featured_shelf_titles, get_recently_released_shelf_titles, get_popular_shelf_titles
-from podiobooks.tasks import hello_world
 # pylint: disable=R0912,C0103
 
 INITIAL_CATEGORY = 'science-fiction'

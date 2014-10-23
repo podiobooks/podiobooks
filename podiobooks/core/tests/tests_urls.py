@@ -87,6 +87,18 @@ class CoreUrlsTestCase(TestCase):
         response = self.client.get('/title/removed/trader-tales-4-double-share/')
         self.assertRedirects(response, '/title/trader-tales-4-double-share/', status_code=301)
 
+    def test_pb1_book_redirect(self):
+        response = self.client.get('/podiobooks/book.php', {'ID': 24})
+        self.assertRedirects(response, '/title/earthcore/', status_code=301)
+
+    def test_pb1_feed_redirect(self):
+        response = self.client.get('/title/trader-tales-4-double-share/feed/')
+        self.assertRedirects(response, '/rss/feeds/episodes/trader-tales-4-double-share/', status_code=301)
+
+    def test_title_category_search_pb1(self):
+        response = self.client.get('/podiobooks/search.php', {'category': 1}, follow=True)
+        self.assertRedirects(response, '/category/science-fiction/', status_code=301)
+
     def test_category_list(self):
         response = self.client.get('/category/')
         self.assertEquals(200, response.status_code)

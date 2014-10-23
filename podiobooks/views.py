@@ -4,7 +4,7 @@ from django.views.generic import RedirectView, TemplateView
 from django.views.decorators.cache import never_cache
 from django.http import HttpResponse
 
-from podiobooks.tasks import hello_world
+from podiobooks.feeds.tasks import hello_world
 
 
 class TextTemplateView(TemplateView):
