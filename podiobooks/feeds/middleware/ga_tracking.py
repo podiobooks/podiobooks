@@ -1,5 +1,5 @@
 """
-MIddleware to send GA events when feeds are accessed
+Middleware to send GA events when feeds are accessed
 """
 import logging
 from django.db.models import Q
@@ -9,9 +9,6 @@ from django.core.cache import cache
 
 from podiobooks.feeds.tasks import ping_analytics_for_feeds
 from podiobooks.core.models import Title
-
-GA_TRACKING = 'GA_TRACK'
-
 
 class GATracker(object):
     """
