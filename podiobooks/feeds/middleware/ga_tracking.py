@@ -10,6 +10,7 @@ from django.core.cache import cache
 from podiobooks.feeds.tasks import ping_analytics_for_feeds
 from podiobooks.core.models import Title
 
+
 class GATracker(object):
     """
     Middleware class to handle sending GA tracking event
