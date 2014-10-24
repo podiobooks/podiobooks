@@ -38,5 +38,5 @@ class BlogRedirectView(RedirectView):
 @never_cache
 def test_task_queue(request):
     """Uncached test view for celery"""
-    hello_world.apply()
+    hello_world.delay()
     return HttpResponse("hi")
