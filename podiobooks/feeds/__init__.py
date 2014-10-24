@@ -1,3 +1,1 @@
-"""
-    This module is for RSS Feeds
-"""
+"""RSS Feeds For Podiobooks"""

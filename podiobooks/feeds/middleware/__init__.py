@@ -1,3 +1,1 @@
-"""
-Feeds Middleware module
-"""
+"""Feeds Middleware module"""

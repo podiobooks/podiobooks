@@ -24,22 +24,22 @@ class FeedUrlTestCase(TestCase):
         self.title1.itunes_new_feed_url = True
         self.title1.save()
 
-    def testEpisodeFeed(self):
+    def test_episode_feed(self):
         response = self.client.get('/rss/feeds/episodes/trader-tales-4-double-share/')
         self.assertContains(response, 'PB-DoubleShare-01.mp3')
         self.assertContains(response, 'PB-DoubleShare-25.mp3')
 
-    def testEpisodeFeedAdult(self):
+    def test_episode_feed_adult(self):
         response = self.client.get('/rss/feeds/episodes/the-plump-buffet/')
         self.assertContains(response, 'PB-PlumpBuffet-001.mp3')
         self.assertContains(response, 'PB-PlumpBuffet-09.mp3')
 
-    def testTitlesFeed(self):
+    def test_titles_feed(self):
         response = self.client.get('/rss/feeds/titles/')
         self.assertContains(response, 'Plump Buffet')
         self.assertContains(response, 'Double Share')
 
-    def testItunesNewFeedUrl(self):
+    def test_itunes_new_feed_url(self):
         response = self.client.get('/rss/feeds/episodes/trader-tales-4-double-share/')
         self.assertContains(response, '<itunes:new-feed-url>http://example.com/rss/feeds/episodes/trader-tales-4-double-share/</itunes:new-feed-url>')
 
