@@ -12,7 +12,6 @@ from django.conf import settings
 from django.contrib.sites.models import Site
 
 from celery import shared_task
-# from podiobooks.celery import app
 
 
 @shared_task
@@ -20,7 +19,6 @@ def hello_world():
     """Task to test that celery is working in a given env"""
     logger = logging.getLogger("root")
     logger.info("JUST TESTING FROM TASK (LOG)")
-    print "JUST TESTING FROM TASK (PRINT)"
 
 
 @shared_task

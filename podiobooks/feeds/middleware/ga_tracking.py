@@ -42,12 +42,12 @@ class GATracker(object):
                 slug = path.split("/")[-1]
 
                 if slug not in slugs_from_cache:
-                    ping_analytics_for_feeds(ip_address, user_agent, url_path, slug)
+                    ping_analytics_for_feeds.delay(ip_address, user_agent, url_path, slug)
                 else:
                     logger.info("OLD SLUG URL, NOT PINGING GA")
 
             elif path == reverse('all_titles_feed'):
-                ping_analytics_for_feeds(ip_address, user_agent, url_path, "ALL TITLES FEED")
+                ping_analytics_for_feeds.delay(ip_address, user_agent, url_path, "ALL TITLES FEED")
 
             elif path == reverse('recent_titles_feed'):
-                ping_analytics_for_feeds(ip_address, user_agent, url_path, "RECENT TITLES FEEDS")
+                ping_analytics_for_feeds.delay(ip_address, user_agent, url_path, "RECENT TITLES FEEDS")
