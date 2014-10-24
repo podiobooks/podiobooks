@@ -15,8 +15,10 @@ from HTMLParser import HTMLParser
 from django.utils import timezone
 import re
 
+
 class MLStripper(HTMLParser):
     """Hard-Core HTML Tag Stripper Class"""
+
     def __init__(self):
         """Initialize"""
         self.reset()
@@ -34,10 +36,10 @@ class MLStripper(HTMLParser):
 def strip_tags(html):
     """Strip all HTML Tags and Entities"""
     stripper = MLStripper()
-    
+
     if not html:
         html = ''
-    
+
     stripper.feed(html)
     return stripper.get_data()
 
