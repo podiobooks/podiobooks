@@ -50,7 +50,7 @@ class FeedUrlTestCase(TestCase):
 class CeleryTasksTestCase(SimpleTestCase):
     @override_settings(CELERY_EAGER_PROPAGATES_EXCEPTIONS=True,
                        CELERY_ALWAYS_EAGER=True,
-                       BROKER_BACKEND='memory')
+                       BROKER_URL='memory')
     def test_ping_analytics(self):
         result = ping_analytics_for_feeds.delay('0.0.0.0', 'test', 'test', 'test')
         self.assertIsInstance(result, AsyncResult, "Ping Didn't Return Async Result")

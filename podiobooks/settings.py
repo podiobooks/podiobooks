@@ -55,7 +55,7 @@ TEMPLATE_LOADERS = (
     'django.template.loaders.app_directories.Loader',
 )
 
-#List of callables that add their data to each template
+# List of callables that add their data to each template
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.debug',
     'django.contrib.auth.context_processors.auth',
@@ -76,7 +76,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    # 'podiobooks.feeds.middleware.ga_tracking.GATracker',
+    'podiobooks.feeds.middleware.ga_tracking.GATracker',
     # 'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.common.CommonMiddleware',
     # 'django.middleware.cache.FetchFromCacheMiddleware',
@@ -125,13 +125,17 @@ FIXTURE_DIRS = {os.path.join(PROJECT_ROOT, "..", "..", "podiobooks_data")}
 
 ### CACHE SETTINGS
 CACHES = {
-       # 'default': {
-       #     'BACKEND': 'django.core.cache.backends.locmem.LocMemCache'
-       # },
+    # 'default': {
+    #     'BACKEND': 'django.core.cache.backends.locmem.LocMemCache'
+    # },
     'default': {
         'BACKEND': 'django.core.cache.backends.dummy.DummyCache'
     }
 }
+
+# Celery Setup
+BROKER_URL = 'memory'
+CELERY_ALWAYS_EAGER = True  # Force immediate running of async tasks on dev
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
