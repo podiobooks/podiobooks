@@ -37,10 +37,10 @@ class Command(BaseCommand):
             print "Clearing existing covers..."
             Title.objects.all().update(cover=None, assets_from_images=None)
 
+        titles = Title.objects.filter(Q(libsyn_show_id__isnull=False) | Q(libsyn_slug__isnull=False), deleted=False)
+
         if len(args) > 0:
-            titles = Title.objects.filter(Q(libsyn_show_id__isnull=False) | Q(libsyn_slug__isnull=False), deleted=False, slug__in=args)
-        else:
-            titles = Title.objects.filter(deleted=False)
+            titles = titles.filter(slug__in=args)
 
         if not options['force']:
             titles = titles.filter(Q(cover__isnull=True) | Q(cover=''))
