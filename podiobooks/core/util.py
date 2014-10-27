@@ -51,10 +51,10 @@ def download_cover_from_libsyn(title, upload_path=''):
 
     image_file = "%s.jpg" % title.slug
     destination = os.path.join(destination_dir, image_file)
-    upload_path = "%s/%s" % (upload_path, image_file)
+    full_upload_path = "%s/%s" % (upload_path, image_file)
 
     try:
-        if not os.path.isfile(destination) or not title.cover or title.cover != upload_path:
+        if not os.path.isfile(destination) or not title.cover or title.cover != full_upload_path:
             print "Downloading new cover for %s..." % title.name
 
             # Make sure we have a fresh filename so that asset generation is triggered
@@ -63,13 +63,13 @@ def download_cover_from_libsyn(title, upload_path=''):
                 append += 1
                 image_file = "%s_%s.jpg" % (title.slug, append)
                 destination = os.path.join(destination_dir, image_file)
-                upload_path = "%s/%s" % (upload_path, image_file)
+                full_upload_path = "%s/%s" % (upload_path, image_file)
 
             logger = logging.getLogger("root")
 
             logger.info(image_file)
             logger.info(destination)
-            logger.info(upload_path)
+            logger.info(full_upload_path)
 
             if title.libsyn_cover_image_url:
                 raw_cover_url = title.libsyn_cover_image_url
@@ -83,9 +83,9 @@ def download_cover_from_libsyn(title, upload_path=''):
                 img = img.convert("RGB")
             img.save(destination, "JPEG", quality=100)
 
-        if not title.cover or title.cover != upload_path:
+        if not title.cover or title.cover != full_upload_path:
             print "Saving new cover in model for %s..." % title.name
-            title.cover = upload_path
+            title.cover = full_upload_path
             title.save()
 
     except IOError:
