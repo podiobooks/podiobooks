@@ -7,6 +7,8 @@ from PIL import Image
 from django.conf import settings
 from xml.etree import ElementTree
 
+import logging
+
 # pylint: disable=C0325
 
 def use_placeholder_cover_for_title(title, upload_path=''):
@@ -62,6 +64,12 @@ def download_cover_from_libsyn(title, upload_path=''):
                 image_file = "%s_%s.jpg" % (title.slug, append)
                 destination = os.path.join(destination_dir, image_file)
                 upload_path = "%s/%s" % (upload_path, image_file)
+
+            logger = logging.getLogger("root")
+
+            logger.info(image_file)
+            logger.info(destination)
+            logger.info(upload_path)
 
             if title.libsyn_cover_image_url:
                 raw_cover_url = title.libsyn_cover_image_url
