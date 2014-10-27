@@ -54,6 +54,15 @@ def download_cover_from_libsyn(title, upload_path=''):
     try:
         if not os.path.isfile(destination) or not title.cover or title.cover != upload_path:
             print "Downloading new cover for %s..." % title.name
+
+            # Make sure we have a fresh filename so that asset generation is triggered
+            append = 0
+            while os.path.isfile(destination):
+                append += 1
+                image_file = "%s_%s.jpg" % (title.slug, append)
+                destination = os.path.join(destination_dir, image_file)
+                upload_path = "%s/%s" % (upload_path, image_file)
+
             if title.libsyn_cover_image_url:
                 raw_cover_url = title.libsyn_cover_image_url
             else:
