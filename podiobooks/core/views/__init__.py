@@ -125,13 +125,9 @@ class FeedRedirectView(RedirectView):
         if pk:
             pk = clean_id(pk)
             title = get_object_or_404(Title, pk=pk)
-        else:
-            try:
-                title = Title.objects.get(slug=slug)
-            except ObjectDoesNotExist:
-                title = get_object_or_404(Title, old_slug=slug)
+            slug = title.slug
 
-        return reverse_lazy('title_episodes_feed', args=(title.slug,))
+        return reverse_lazy('title_episodes_feed', args=(slug,))
 
 
 class TitleRedirectView(RedirectView):
