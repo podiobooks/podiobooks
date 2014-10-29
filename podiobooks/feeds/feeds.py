@@ -16,6 +16,7 @@ from django.shortcuts import get_object_or_404
 from podiobooks.core.models import Title
 from podiobooks.ads.models import get_ep_list_with_ads_for_title
 from podiobooks.feeds.protocols.itunes import ITunesFeed
+from podiobooks.feeds.middleware.redirect_exception import Http301
 
 LOGGER = logging.getLogger(name='podiobooks.feeds')
 
@@ -139,6 +140,8 @@ class EpisodeFeed(Feed):
             obj = title_set.get(slug__exact=title_slug)
         except ObjectDoesNotExist:
             obj = get_object_or_404(title_set, old_slug__exact=title_slug)
+            if obj:
+                raise Http301(redirect_to=reverse_lazy('title_episodes_feed', args=[obj.slug]))
 
         return obj
 

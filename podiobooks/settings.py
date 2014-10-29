@@ -77,6 +77,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'podiobooks.feeds.middleware.ga_tracking.GATracker',
+    'podiobooks.feeds.middleware.redirect_exception.RedirectException',
     # 'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.common.CommonMiddleware',
     # 'django.middleware.cache.FetchFromCacheMiddleware',

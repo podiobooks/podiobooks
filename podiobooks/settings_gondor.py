@@ -67,6 +67,7 @@ if "GONDOR_REDIS_URL" in os.environ:
         'django.contrib.auth.middleware.AuthenticationMiddleware',
         'django.contrib.messages.middleware.MessageMiddleware',
         'podiobooks.feeds.middleware.ga_tracking.GATracker',
+        'podiobooks.feeds.middleware.redirect_exception.RedirectException',
         'django.middleware.cache.UpdateCacheMiddleware',
         'django.middleware.common.CommonMiddleware',
         'django.middleware.cache.FetchFromCacheMiddleware',
@@ -127,7 +128,7 @@ MUB_MINIFY = True
 LOCALIZE_COVERS = True
 
 # ## DEBUG TOOLBAR
-### Replicated Here to Enable Picking Up Environment Setting from Gondor
+# ## Replicated Here to Enable Picking Up Environment Setting from Gondor
 if DEBUG:
     MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
     INSTALLED_APPS += ('debug_toolbar',)
