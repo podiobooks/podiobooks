@@ -15,12 +15,7 @@ class FeedUrlTestCase(TestCase):
     fixtures = ['test_data.json', ]
 
     def setUp(self):
-        self.user1 = User.objects.create_user('testuser1', 'testuser1@test.com', 'testuser1password')
-        self.user2 = User.objects.create_user('testuser2', 'testuser2@test.com', 'testuser2password')
-        self.user3 = User.objects.create_user('testuser3', 'testuser3@test.com', 'testuser3password')
-
         self.title1 = Title.objects.get(slug='trader-tales-4-double-share')
-        self.title2 = Title.objects.get(slug='the-plump-buffet')
         self.title1.itunes_new_feed_url = True
         self.title1.save()
 
@@ -38,6 +33,10 @@ class FeedUrlTestCase(TestCase):
         response = self.client.get('/rss/feeds/titles/')
         self.assertContains(response, 'Plump Buffet')
         self.assertContains(response, 'Double Share')
+
+    def test_feed_redirect(self):
+        response = self.client.get('/rss/feeds/episodes/double-share/')
+        self.assertRedirects(response, '/rss/feeds/episodes/trader-tales-4-double-share/', status_code=301)
 
     def test_itunes_new_feed_url(self):
         response = self.client.get('/rss/feeds/episodes/trader-tales-4-double-share/')
