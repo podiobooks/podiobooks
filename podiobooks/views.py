@@ -2,7 +2,7 @@
 
 from django.views.generic import RedirectView, TemplateView, View
 from django.views.decorators.cache import never_cache
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.conf import settings
 import os
 
