@@ -3,6 +3,7 @@
 from django.views.generic import RedirectView, TemplateView, View
 from django.views.decorators.cache import never_cache
 from django.http import HttpResponse
+from django.conf import settings
 
 from podiobooks.feeds.tasks import hello_world
 
