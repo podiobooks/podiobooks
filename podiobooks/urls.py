@@ -18,9 +18,9 @@ from django.views.decorators.vary import vary_on_headers
 
 from podiobooks.core.sitemaps import AwardDetailSitemap, CategoryDetailSitemap, ContributorDetailSitemap, \
     TitleDetailSitemap
-from podiobooks.core.views import AccelView, IndexView, DonationView, ReportsView, NoMediaReportView
+from podiobooks.core.views import IndexView, DonationView, ReportsView, NoMediaReportView
 
-from .views import BlogRedirectView, TextTemplateView, RobotsView
+from .views import AccelView, BlogRedirectView, TextTemplateView, RobotsView
 
 sitemaps = {'AwardDetail': AwardDetailSitemap, 'CategoryDetail': CategoryDetailSitemap,
             'ContributorDetail': ContributorDetailSitemap, 'TitleDetail': TitleDetailSitemap, }

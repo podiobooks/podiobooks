@@ -147,49 +147,6 @@ class TitleRedirectView(RedirectView):
             raise Http404
 
 
-class AccelView(View):
-    """ Let Nginx Return Static Files That Have To Map """
-
-    url = None
-
-    def get(self, request, *args, **kwargs):
-        """ Handle GET Requests"""
-        if self.url:
-            if settings.ACCEL_REDIRECT:
-                response = HttpResponse()
-                response['Content-Type'] = ""  # let nginx determine the content type
-                response['X-Accel-Redirect'] = os.path.join(settings.STATIC_URL, self.url).encode('utf-8')
-                return response
-            else:
-                return HttpResponseRedirect(os.path.join(settings.STATIC_URL, self.url).encode('utf-8'))
-        else:
-            raise Http404()
-
-    def head(self, request, *args, **kwargs):
-        """ Handle HEAD Requests"""
-        return self.get(request, *args, **kwargs)
-
-    def post(self, request, *args, **kwargs):
-        """ Handle POST Requests"""
-        return self.get(request, *args, **kwargs)
-
-    def options(self, request, *args, **kwargs):
-        """ Handle OPTIONS Requests"""
-        return self.get(request, *args, **kwargs)
-
-    def delete(self, request, *args, **kwargs):
-        """ Handle DELETE Requests"""
-        return self.get(request, *args, **kwargs)
-
-    def put(self, request, *args, **kwargs):
-        """ Handle PUT Requests"""
-        return self.get(request, *args, **kwargs)
-
-    def patch(self, request, *args, **kwargs):
-        """ Handle PATCH Requests"""
-        return self.get(request, *args, **kwargs)
-
-
 class ReportsView(TemplateView):
     """Admin Reports List Page"""
     template_name = "core/reports/report_list.html"
