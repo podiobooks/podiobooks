@@ -108,6 +108,7 @@ INSTALLED_APPS += ()
 MEDIA_ROOT = os.path.join(os.environ["GONDOR_DATA_DIR"], "site_media", "mediaroot", )
 STATIC_ROOT = os.path.join(os.environ["GONDOR_DATA_DIR"], "site_media", "staticroot") + "/"
 
+MEDIA_DOMAIN = os.environ.get("MEDIA_DOMAIN", "")
 MEDIA_URL = "{0}/assets/media/".format(os.environ.get("MEDIA_DOMAIN", ""))  # make sure this maps inside of a static_urls URL in gondor.yml
 if not MEDIA_URL.startswith("/"):
     MEDIA_URL = "//{0}".format(MEDIA_URL)
@@ -124,8 +125,6 @@ else:
 FILE_UPLOAD_PERMISSIONS = 0640
 
 MUB_MINIFY = True
-
-LOCALIZE_COVERS = True
 
 # ## DEBUG TOOLBAR
 # ## Replicated Here to Enable Picking Up Environment Setting from Gondor

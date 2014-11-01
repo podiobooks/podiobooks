@@ -27,10 +27,13 @@ TEMPLATE_DEBUG = DEBUG
 MANAGERS = ()
 ADMINS = MANAGERS
 
+# Domain Name to Prepend to MEDIA URL
+MEDIA_DOMAIN = ""
+
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
-MEDIA_URL = '/media/'
+MEDIA_URL = '{0}/media/'.format(MEDIA_DOMAIN)
 
 # Absolute path to the directory that holds media.
 # Note that as of Django 1.3 - media is for uploaded files only.
@@ -197,9 +200,6 @@ MUB_MINIFY = False
 
 # This is to catch special domain names and redirect them to the main
 REDIRECT_DOMAINS = []
-
-# This is to turn off cover downloads for non-production systems
-LOCALIZE_COVERS = False
 
 # static feed caching
 FEED_CACHE_ENDPOINT = ''

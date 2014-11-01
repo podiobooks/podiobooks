@@ -4,7 +4,7 @@
 <article class="shelf-item" id="{{ shelf_id }}_title_{{ title.id }}">
 
     <div class="shelf-item-text">
-    	<a class="shelf-cover-wrap" data-image-src="{% get_shelf_cover_url title %}" href="{% url 'title_detail' title.slug %}" data-title-slug="{{ title.slug }}" data-title-name="{{ title.name }}">
+    	<a class="shelf-cover-wrap" data-image-src="{% get_cover_url title 100 %}" href="{% url 'title_detail' title.slug %}" data-title-slug="{{ title.slug }}" data-title-name="{{ title.name }}">
 	        <span class="visuallyhidden">Cover for {{ title.name }}</span>
 	    </a>
         <h3 class="shelf-item-heading">

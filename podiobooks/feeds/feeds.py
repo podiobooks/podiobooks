@@ -17,6 +17,7 @@ from podiobooks.core.models import Title
 from podiobooks.ads.models import get_ep_list_with_ads_for_title
 from podiobooks.feeds.protocols.itunes import ITunesFeed
 from podiobooks.feeds.middleware.redirect_exception import Http301
+from podiobooks.core.util import get_cover_url_at_width
 
 LOGGER = logging.getLogger(name='podiobooks.feeds')
 
@@ -113,7 +114,7 @@ class EpisodeFeed(Feed):
         return extra_args
 
     def image(self, obj):
-        return "http://asset-server.libsyn.com/show/{0}".format(obj.libsyn_show_id)
+        return format(get_cover_url_at_width(obj, 1400))
 
     def complete(self, obj):
         return 'yes'
@@ -146,7 +147,6 @@ class EpisodeFeed(Feed):
         return obj
 
     def items(self, obj):
-        #        return Episode.objects.prefetch_related("title").filter(title__id__exact=obj.id).order_by('sequence')
         return get_ep_list_with_ads_for_title(obj)
 
     def item_comments(self, obj):

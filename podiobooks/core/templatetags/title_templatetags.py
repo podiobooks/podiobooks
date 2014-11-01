@@ -5,7 +5,7 @@ from django import template
 from django.conf import settings
 from django.contrib.sites.models import Site
 
-from podiobooks.core.util import get_cover_url_at_width, get_libsyn_cover_url
+from podiobooks.core.util import get_cover_url_at_width
 
 
 register = template.Library()
@@ -24,42 +24,15 @@ def show_contributors(title, detail=False):
 
 
 @register.inclusion_tag('core/title/tags/show_titlecover.html')
-def show_full_titlecover(title):
-    """ Pulls and formats the cover for a Title
-    for details page"""
-    ret_dict = {"title": title, "url": get_libsyn_cover_url(title, 334, 200)}
-
-    if getattr(settings, "LOCALIZE_COVERS", False):
-        url = get_cover_url_at_width(title, 900)
-        if url:
-            ret_dict["url"] = url
-
-    return ret_dict
-
-
-@register.inclusion_tag('core/title/tags/show_titlecover.html')
-def show_titlecover(title):
-    """ Pulls and formats the cover for a Title
-    for details page"""
-    ret_dict = {"title": title, "url": get_libsyn_cover_url(title, 334, 200)}
-
-    if getattr(settings, "LOCALIZE_COVERS", False):
-        url = get_cover_url_at_width(title, 300)
-        if url:
-            ret_dict["url"] = url
-
-    return ret_dict
+def show_titlecover(title, width):
+    """Returns  Image Tag for Cover at Specified Width"""
+    return {"title": title, "url": get_cover_url_at_width(title, width)}
 
 
 @register.simple_tag()
-def get_shelf_cover_url(title):
-    """ Gets the Final, Real Image URL for a Title from Libsyn """
-    if getattr(settings, "LOCALIZE_COVERS", False):
-        url = get_cover_url_at_width(title, 100)
-        if url:
-            return url
-
-    return get_libsyn_cover_url(title, 99, 67)
+def get_cover_url(title, width):
+    """Returns the url to the cover image """
+    return get_cover_url_at_width(title, width)
 
 
 @register.inclusion_tag('core/title/tags/show_titlelist.html', takes_context=True)

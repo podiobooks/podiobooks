@@ -6,7 +6,7 @@ from optparse import make_option
 from django.db.models import Q
 from django.core.management.base import BaseCommand
 
-from podiobooks.core.util import download_cover
+from podiobooks.core.util import download_cover_from_libsyn
 from podiobooks.core.models import Title
 
 
@@ -54,6 +54,6 @@ class Command(BaseCommand):
                 title.cover = None
                 title.assets_from_images = None
                 title.save()
-                download_cover(title)
+                download_cover_from_libsyn(title)
             else:
-                download_cover(title)
+                download_cover_from_libsyn(title)

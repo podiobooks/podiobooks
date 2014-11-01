@@ -1,13 +1,17 @@
 """General Podiobooks Utilities"""
-import os
-import re
 import urllib
-from PIL import Image
-
-from django.conf import settings
+import logging
 from xml.etree import ElementTree
 
+import os
+import re
+from PIL import Image
+from django.conf import settings
+
+
 # pylint: disable=C0325
+
+LOGGER = logging.getLogger(name='podiobooks.util')
 
 
 def use_placeholder_cover_for_title(title, upload_path=''):
@@ -39,60 +43,54 @@ def use_placeholder_cover_for_title(title, upload_path=''):
     return title.cover
 
 
-def download_cover_from_libsyn(title, upload_path=''):
+def download_cover_from_libsyn(title):
     """Download cover image from Libsyn"""
-    if not upload_path:
-        upload_path = title.cover.field.upload_to
 
-    destination_dir = os.path.join(settings.MEDIA_ROOT, upload_path)
-    if not os.path.isdir(destination_dir):
-        os.makedirs(destination_dir)
+    if not title.libsyn_slug:  # If no libsyn slug, exit
+        return None
 
-    image_file = "%s.jpg" % title.slug
-    destination = os.path.join(destination_dir, image_file)
-    full_upload_path = "%s/%s" % (upload_path, image_file)
+    upload_path = title.cover.field.upload_to
+
+    absolute_upload_dir = os.path.join(settings.MEDIA_ROOT, upload_path)
+    if not os.path.isdir(absolute_upload_dir):
+        os.makedirs(absolute_upload_dir)
+
+    image_file_name = "{0}.jpg".format(title.slug)
+    upload_file_path = os.path.join(absolute_upload_dir, image_file_name)
+    cover_image_url = "{0}/{1}".format(upload_path, image_file_name)
 
     try:
-        if not os.path.isfile(destination) or not title.cover or title.cover != full_upload_path:
-            print "Downloading new cover for %s..." % title.name
+        LOGGER.info("Downloading new cover for {0}...", title.name)
 
-            # Make sure we have a fresh filename so that asset generation is triggered
-            append = 0
-            while os.path.isfile(destination):
-                append += 1
-                image_file = "%s_%s.jpg" % (title.slug, append)
-                destination = os.path.join(destination_dir, image_file)
-                full_upload_path = "%s/%s" % (upload_path, image_file)
+        # Make sure we have a fresh filename so that asset generation is triggered
+        append = 0
+        while os.path.isfile(upload_file_path):
+            append += 1
+            image_file_name = "%s_%s.jpg" % (title.slug, append)
+            upload_file_path = os.path.join(absolute_upload_dir, image_file_name)
+            cover_image_url = "%s/%s" % (upload_path, image_file_name)
 
-            if title.libsyn_cover_image_url:
-                raw_cover_url = title.libsyn_cover_image_url
-            else:
-                raw_cover_url = "http://asset-server.libsyn.com/show/%s/" % title.libsyn_show_id
+        rss_feed_url = "http://{0}.podiobooks.libsynpro.com/rss".format(title.libsyn_slug)
+        feed = urllib.urlopen(rss_feed_url)
+        feed_tree = ElementTree.parse(feed).getroot()
+        title.libsyn_cover_image_url = feed_tree.find('channel').find('image').find('url').text
 
-            filename, httpresponse = urllib.urlretrieve(raw_cover_url)  # pylint: disable=W0612
+        filename, httpresponse = urllib.urlretrieve(title.libsyn_cover_image_url)  # pylint: disable=W0612
 
-            img = Image.open(filename)
-            if img.mode != "RGB":
-                img = img.convert("RGB")
-            img.save(destination, "JPEG", quality=100)
+        img = Image.open(filename)
+        if img.mode != "RGB":
+            img = img.convert("RGB")
+        img.save(upload_file_path, "JPEG", quality=100)
 
-        if not title.cover or title.cover != full_upload_path:
-            print "Saving new cover in model for %s..." % title.name
-            title.cover = full_upload_path
-            title.save()
+        LOGGER.info("Saving new cover in model for {0}...", title.name)
+        title.cover = cover_image_url
+        title.save()
 
-    except IOError:
-        pass
+    except Exception as e:
+        LOGGER.error("Error Getting Cover for {0}, {1}", title.name, e)
+        raise
 
     return title.cover
-
-
-def download_cover(title, upload_path=''):
-    """Wrapper based on whether showID is filled out"""
-    if title.libsyn_show_id or title.libsyn_slug:
-        return download_cover_from_libsyn(title, upload_path)
-    else:
-        return use_placeholder_cover_for_title(title, upload_path)
 
 
 def get_cover_url_at_width(title, width):
@@ -106,50 +104,13 @@ def get_cover_url_at_width(title, width):
     attr = "cover_%s" % width
     try:
         return getattr(title, attr).url
-
     except AttributeError:
-        download_cover(title)
-        if title.cover:
-            try:
-                return getattr(title, attr).url
-            except AttributeError:
-                return title.cover
-    return None
+        download_cover_from_libsyn(title)
 
-
-def get_libsyn_cover_url(title, height, width):
-    """Pulls the final libsyn URL for a title from libsyn"""
-    return "http://asset-server.libsyn.com/show/{0}/height/{1}/width/{2}".format(title.libsyn_show_id, height, width)
-
-
-def update_libsyn_slug(title):
-    """Update the libsyn slug field on the title based on the first episode MP3 path"""
-    first_episode = title.episodes.all()[0]
-    try:
-        title.libsyn_slug = re.search('com/(.*)/', first_episode.url).group(1)
-        title.save()
-    except:
-        print ("{0} not updated.".format(title.slug))
-
-
-def update_episode_media_url(episode):
-    """Update the media url for an episode to use the podiobooks alias"""
-    episode.url = episode.url.replace('http://traffic.libsyn.com', 'http://media.podiobooks.com')
-    episode.save()
-
-
-def update_libsyn_cover_image_url(title):
-    """Get the libsyn RSS file, pull the image url, and update the title"""
-    if title.libsyn_slug:
+    if title.cover:
         try:
-            rss_feed_url = "http://{0}.podiobooks.libsynpro.com/rss".format(title.libsyn_slug)
-            print rss_feed_url
-            feed = urllib.urlopen(rss_feed_url)
-            feed_tree = ElementTree.parse(feed).getroot()
-            title.libsyn_cover_image_url = feed_tree.find('channel').find('image').find('url').text
-            title.save()
-        except:
-            print ("Not Updating {0}, Error".format(title.slug))
-            raise
-    else:
-        print ("Not Updating {0}, No Libsyn Slug")
+            return getattr(title, attr).url
+        except AttributeError:
+            return title.cover
+
+    return None
