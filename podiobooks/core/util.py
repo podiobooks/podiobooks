@@ -14,40 +14,11 @@ from django.conf import settings
 LOGGER = logging.getLogger(name='podiobooks.util')
 
 
-def use_placeholder_cover_for_title(title, upload_path=''):
-    """If an image isn't loaded, use a placeholder cover"""
-    if not upload_path:
-        upload_path = title.cover.field.upload_to
-
-    destination_dir = os.path.join(settings.MEDIA_ROOT, upload_path)
-    if not os.path.isdir(destination_dir):
-        os.makedirs(destination_dir)
-
-    image_file = "%s-placeholder.jpg" % title.slug
-    destination = os.path.join(destination_dir, image_file)
-    upload_path = "%s/%s" % (upload_path, image_file)
-
-    try:
-        if not os.path.isfile(destination):
-            img = Image.open(os.path.join(settings.STATIC_ROOT, settings.LOCALIZED_COVER_PLACEHOLDER))
-            if img.mode != "RGB":
-                img = img.convert("RGB")
-            img.save(destination, "JPEG", quality=100)
-
-        if not title.cover:
-            title.cover = upload_path
-            title.save()
-    except IOError:
-        pass
-
-    return title.cover
-
-
 def download_cover_from_libsyn(title):
     """Download cover image from Libsyn"""
 
-    if not title.libsyn_slug:  # If no libsyn slug, exit
-        return None
+    if not title.libsyn_slug and title.cover is None:  # If no libsyn slug or cover, return placeholder image
+        return settings.MEDIA_URL + '/images/cover-placeholder.jpg'
 
     upload_path = title.cover.field.upload_to
 
@@ -103,7 +74,11 @@ def get_cover_url_at_width(title, width):
     """
     attr = "cover_%s" % width
     try:
-        return getattr(title, attr).url
+        cover_url = getattr(title, attr).url
+        if settings.MEDIA_URL in cover_url:
+            return cover_url
+        else:
+            return settings.MEDIA_URL + cover_url
     except AttributeError:
         download_cover_from_libsyn(title)
 
