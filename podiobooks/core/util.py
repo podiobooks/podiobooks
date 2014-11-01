@@ -111,6 +111,6 @@ def get_cover_url_at_width(title, width):
         try:
             return getattr(title, attr).url
         except AttributeError:
-            return title.cover
+            return title.cover.url
 
     return None

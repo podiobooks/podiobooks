@@ -33,7 +33,10 @@ MEDIA_DOMAIN = ""
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
-MEDIA_URL = '/media/'
+if MEDIA_DOMAIN != "":
+    MEDIA_URL = "http://{0}/media/".format(MEDIA_DOMAIN)  # this maps inside of a static_urls URL in gondor.yml
+else:
+    MEDIA_URL = "/media/"  # make sure this maps inside of a static_urls URL in gondor.yml
 
 # Absolute path to the directory that holds media.
 # Note that as of Django 1.3 - media is for uploaded files only.
