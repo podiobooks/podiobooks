@@ -19,6 +19,8 @@ def download_cover_from_libsyn(title):
 
     if not title.libsyn_slug and title.cover is None:  # If no libsyn slug or cover, return placeholder image
         return settings.MEDIA_URL + '/images/cover-placeholder.jpg'
+    elif not title.libsyn_slug and title.cover is not None:
+        return title.cover
 
     upload_path = title.cover.field.upload_to
 
