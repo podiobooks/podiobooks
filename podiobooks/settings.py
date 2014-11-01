@@ -27,13 +27,13 @@ TEMPLATE_DEBUG = DEBUG
 MANAGERS = ()
 ADMINS = MANAGERS
 
-# Domain Name to Prepend to MEDIA URL
+# Domain Name to Prepend to MEDIA URL, used in feeds
 MEDIA_DOMAIN = ""
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
-MEDIA_URL = '{0}/media/'.format(MEDIA_DOMAIN)
+MEDIA_URL = '/media/'
 
 # Absolute path to the directory that holds media.
 # Note that as of Django 1.3 - media is for uploaded files only.

@@ -114,7 +114,10 @@ class EpisodeFeed(Feed):
         return extra_args
 
     def image(self, obj):
-        return "{0}{1}".format(settings.MEDIA_DOMAIN, get_cover_url_at_width(obj, 1400))
+        if settings.MEDIA_DOMAIN:
+            return "http://{0}".format(get_cover_url_at_width(obj, 1400))
+        else:
+            return add_domain(Site.objects.get_current().domain, get_cover_url_at_width(obj, 1400))
 
     def complete(self, obj):
         return 'yes'
