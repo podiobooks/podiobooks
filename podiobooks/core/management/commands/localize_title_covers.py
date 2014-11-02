@@ -19,12 +19,6 @@ class Command(BaseCommand):
 
     option_list = BaseCommand.option_list + (
         make_option(
-            '--clear',
-            action='store_true',
-            dest='clear',
-            default=False,
-            help='Clear all existing title covers first, then localize all covers'),
-        make_option(
             '--force',
             action='store_true',
             dest='force',
@@ -33,11 +27,7 @@ class Command(BaseCommand):
         )
 
     def handle(self, *args, **options):
-        if options['clear']:
-            print "Clearing existing covers..."
-            Title.objects.all().update(cover=None, assets_from_images=None)
-
-        titles = Title.objects.filter(Q(libsyn_show_id__isnull=False) | Q(libsyn_slug__isnull=False), deleted=False)
+        titles = Title.objects.filter(Q(libsyn_slug__isnull=False), deleted=False)
 
         if len(args) > 0:
             titles = titles.filter(slug__in=args)
