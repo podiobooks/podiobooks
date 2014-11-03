@@ -27,7 +27,7 @@ class Command(BaseCommand):
         )
 
     def handle(self, *args, **options):
-        titles = Title.objects.filter(Q(libsyn_slug__isnull=False), deleted=False)
+        titles = Title.objects.exclude(Q(libsyn_slug__isnull=True) | Q(libsyn_slug='') | Q(deleted=True))
 
         if len(args) > 0:
             titles = titles.filter(slug__in=args)

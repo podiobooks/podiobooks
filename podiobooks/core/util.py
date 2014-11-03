@@ -90,4 +90,4 @@ def get_cover_url_at_width(title, width):
         except AttributeError:
             return title.cover.url
 
-    return None
+    return ""
