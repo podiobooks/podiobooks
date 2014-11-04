@@ -1,13 +1,12 @@
 """General Podiobooks Utilities"""
 import urllib
 import logging
-from xml.etree import ElementTree
-
 import os
-import re
-from PIL import Image
-from django.conf import settings
 
+from xml.etree import ElementTree
+from PIL import Image
+
+from django.conf import settings
 
 # pylint: disable=C0325
 
@@ -18,7 +17,7 @@ def download_cover_from_libsyn(title):
     """Download cover image from Libsyn"""
 
     if not title.libsyn_slug and title.cover is None:  # If no libsyn slug or cover, return placeholder image
-        return settings.MEDIA_URL + '/images/cover-placeholder.jpg'
+        return settings.MEDIA_URL + 'images/cover-placeholder.jpg'
     elif not title.libsyn_slug and title.cover is not None:
         return title.cover
 
@@ -35,14 +34,6 @@ def download_cover_from_libsyn(title):
     try:
         LOGGER.info("Downloading new cover for {0}...", title.name)
 
-        # Make sure we have a fresh filename so that asset generation is triggered
-        append = 0
-        while os.path.isfile(upload_file_path):
-            append += 1
-            image_file_name = "%s_%s.jpg" % (title.slug, append)
-            upload_file_path = os.path.join(absolute_upload_dir, image_file_name)
-            cover_image_url = "%s/%s" % (upload_path, image_file_name)
-
         rss_feed_url = "http://{0}.podiobooks.libsynpro.com/rss".format(title.libsyn_slug)
         feed = urllib.urlopen(rss_feed_url)
         feed_tree = ElementTree.parse(feed).getroot()
@@ -57,7 +48,7 @@ def download_cover_from_libsyn(title):
 
         LOGGER.info("Saving new cover in model for {0}...", title.name)
         title.cover = cover_image_url
-        title.save()
+        title.save(always_create_assets=True)
 
     except Exception as e:
         LOGGER.error("Error Getting Cover for {0}, {1}", title.name, e)
