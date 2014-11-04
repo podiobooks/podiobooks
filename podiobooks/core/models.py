@@ -291,6 +291,9 @@ class Title(DefinedWidthsAssetsFromImagesMixin, models.Model):
 
     def get_dimensions(self):
         return [100, 300, 900, 1400]
+        
+    def get_quality(self):
+        return 85
 
     @models.permalink
     def get_absolute_url(self):
