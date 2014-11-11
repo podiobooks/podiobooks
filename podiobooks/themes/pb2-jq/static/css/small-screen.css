@@ -50,6 +50,10 @@
 		-o-column-count: 1;
 		column-count: 1;
 	}
+	.browse-results-ad-1{
+		height:250px;
+		width: 300px;
+	}
 	/**
 	 * Foot nav
 	 */
@@ -71,7 +75,7 @@
 	.home-leaderboard{
 		width:320px;
 		height:50px;
-		margin:.5em auto;
+		margin:.5em auto;	
 	}
 
 	.block-ad{
