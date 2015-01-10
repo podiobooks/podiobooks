@@ -10,7 +10,7 @@ from podiobooks.core.models import Episode
 from podiobooks.feeds.util import cache_title_feed
 
 
-### INLINES
+# INLINES
 
 class AdScheduledPositionInline(admin.TabularInline):
     model = AdSchedulePosition
@@ -26,7 +26,7 @@ class AdScheduledPositionInline(admin.TabularInline):
 # class AdTitleInline(admin.TabularInline):
 #     model = AdScheduleTitle
 
-### MAIN ADMIN CLASSES
+# MAIN ADMIN CLASSES
 
 
 class AdScheduleAdmin(admin.ModelAdmin):
@@ -34,9 +34,10 @@ class AdScheduleAdmin(admin.ModelAdmin):
     inlines = [AdScheduledPositionInline, ]
     filter_horizontal = ["titles", ]
 
-    def save_model(self, request, obj, form, change):
-        for title in obj.titles.all():
-            cache_title_feed(title)
-        obj.save()
+# @TODO: This code does not work since it tries to manipulate the titles before they are saved - might need to be post-save?
+#    def save_model(self, request, obj, form, change):
+#        for title in obj.titles.all():
+#            cache_title_feed(title)
+#        obj.save()
 
 admin.site.register(AdSchedule, AdScheduleAdmin)

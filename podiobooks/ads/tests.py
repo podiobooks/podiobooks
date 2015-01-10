@@ -26,7 +26,7 @@ class AdScheduleTestCase(TestCase):
         )
 
         # Grab Episodes to Attach
-        all_episodes = Episode.objects.filter(title__slug='shadowmagic')
+        all_episodes = Episode.objects.filter(title__slug='pb-ads')
         self.episode1 = all_episodes[1]
         self.episode2 = all_episodes[2]
 
@@ -141,7 +141,7 @@ class AdScheduleTestCase(TestCase):
         self.assertEquals(self.episode1, episode_list[4])
         self.assertEquals(26, len(episode_list))
 
-        ### Test no active ad schedules
+        # Test no active ad schedules
         self.schedule1.date_end = datetime.datetime.now(timezone.utc) - datetime.timedelta(5)  # Expire 5 days in past
         self.schedule1.save()
 
