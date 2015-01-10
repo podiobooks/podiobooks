@@ -19,10 +19,11 @@ class TitleResource(ModelResource):
             'category_list', 'date_updated'
         )
 
+
 class TitleSerializer(serializers.ModelSerializer):
     """API Definitions for Titles"""
-    categories = serializers.RelatedField(many=True)
-    contributors = serializers.RelatedField(many=True)
+    categories = serializers.RelatedField(many=True, read_only=True)
+    contributors = serializers.RelatedField(many=True, read_only=True)
 
     class Meta:
         model = Title
