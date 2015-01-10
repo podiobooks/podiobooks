@@ -46,7 +46,7 @@ if "GONDOR_REDIS_URL" in os.environ:
     CELERY_ALWAYS_EAGER = False
     CELERY_REDIS_DB = 0
 
-    CACHE_MIDDLEWARE_SECONDS = int(os.environ.get("CACHE_MIDDLEWARE_SECONDS", 3600))
+    CACHE_MIDDLEWARE_SECONDS = int(os.environ.get("CACHE_MIDDLEWARE_SECONDS", 5200))
 
     # Cache Settings
     CACHES = {
