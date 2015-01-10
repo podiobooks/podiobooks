@@ -17,7 +17,7 @@ class TitleTagsTestCase(TestCase):
         Count the titles in a set, excluding ones marked 'deleted'.
         """
         title_set = Title.objects.all()
-        self.assertEqual(5, title_set.count())
+        self.assertEqual(6, title_set.count())
         deleted_title = title_set.get(deleted=True)  # One deleted title
         contributor = Contributor.objects.get(pk=4291)
         author_type = ContributorType.objects.get(slug='author')
