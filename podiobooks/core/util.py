@@ -46,6 +46,11 @@ def download_cover_from_libsyn(title):
             img = img.convert("RGB")
         img.save(upload_file_path, "JPEG", quality=100)
 
+        try:
+            os.remove(filename)
+        except OSError:
+            pass
+
         LOGGER.info("Saving new cover in model for {0}...", title.name)
         title.cover = cover_image_url
         title.save(always_create_assets=True)
