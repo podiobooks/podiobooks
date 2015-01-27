@@ -16,9 +16,11 @@ LOGGER = logging.getLogger(name='podiobooks.util')
 def download_cover_from_libsyn(title):
     """Download cover image from Libsyn"""
 
-    if not title.libsyn_slug and title.cover is None:  # If no libsyn slug or cover, return placeholder image
-        return settings.MEDIA_URL + 'images/cover-placeholder.jpg'
-    elif not title.libsyn_slug and title.cover is not None:
+    # If no libsyn slug or cover, return "None"
+    # Later in the chain, this will result in a placeholder image
+    if not title.libsyn_slug and (title.cover is None or title.cover == ""):
+        return None
+    elif not title.libsyn_slug and (title.cover is not None and title.cover != ""):
         return title.cover
 
     upload_path = title.cover.field.upload_to
@@ -86,4 +88,4 @@ def get_cover_url_at_width(title, width):
         except AttributeError:
             return title.cover.url
 
-    return ""
+    return settings.LOCALIZED_COVER_PLACEHOLDER

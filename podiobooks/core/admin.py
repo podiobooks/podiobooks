@@ -5,19 +5,37 @@
 from django.contrib import admin
 from django.forms.widgets import Textarea, TextInput
 from django.db import models
+from django.contrib.admin import site
+from django.db.models import Q
+from django.contrib.admin import SimpleListFilter
+
+import adminactions.actions as actions
 
 from podiobooks.core.models import Award, Category, Contributor, ContributorType, Episode, License, Media, Series, \
     Title, TitleCategory, TitleContributor
 from podiobooks.feeds.util import cache_title_feed
 
-import adminactions.actions as actions
-from django.contrib.admin import site
 
 site.add_action(actions.export_as_csv)
 
+
+# ## Custom Filters
+class HasCoverListFilter(SimpleListFilter):
+    """ Custom filter to find titles that don't have a cover image """
+    title = "Has Cover"
+    parameter_name = 'has_cover'
+
+    def lookups(self, request, model_admin):
+        return (('y', 'Yes'), ('n', 'No'), )
+
+    def queryset(self, request, queryset):
+        if self.value() == 'y':
+            return queryset.filter(~Q(cover=""), cover__isnull=False)
+        if self.value() == 'n':
+            return queryset.filter(Q(cover="") | Q(cover__isnull=True))
+
+
 # ## INLINES
-
-
 class AwardTitlesInline(admin.TabularInline):
     model = Title.awards.through
     extra = 0
@@ -116,7 +134,7 @@ class TitleAdmin(admin.ModelAdmin):
     list_editable = ('display_on_homepage',)
     list_filter = (
         'license', 'display_on_homepage', 'is_explicit', 'is_adult', 'is_family_friendly', 'is_for_kids',
-        'deleted', 'date_updated')
+        'deleted', 'date_updated', HasCoverListFilter)
     exclude = ('byline', 'category_list', )
     inlines = [
         TitleCategoryInline,
