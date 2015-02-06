@@ -141,6 +141,10 @@ urlpatterns = \
              # Audible Referral Program
              (r'audible/?$',
               RedirectView.as_view(url='http://www.audibletrial.com/PodiobooksAudible')),
+              
+             # Audiobooks Referral Program
+             (r'audiobooks/?$',
+              RedirectView.as_view(url='http://affiliates.audiobooks.com/tracking/scripts/click.php?a_aid=54cb451d1bf77&a_bid=52ce997a')),
     )
 
 # Only hook up the static and media to run through Django in a dev environment...in prod, handle with web server
