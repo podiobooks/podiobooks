@@ -22,7 +22,7 @@
         <meta itemprop="bookFormat" content="AudioBook/Serialized">
 
         <div class="clearfix">
-        <p class="small-screen-only like-h1">{{ title.name }}</p>
+        	<p class="small-screen-only like-h1">{{ title.name }}</p>
 	        <aside class="title-details-rail">
 		        <div class="title-details-header-cover">{% show_titlecover title 900 %}</div>
 
@@ -51,49 +51,22 @@
 	        <div itemprop="description">
 	            {% autoescape off %}{{ title.description|linebreaks|removetags:"img" }}{% endautoescape %}
 	        </div>
+
+
+	        {% if not 'Erotica' in title.category_list %}
+		        <div class="clearfix title-detail-content-ad-2-wrap">
+		    		{% include "core/ad/title_detail_sidebar_small.html" %}
+    	    	</div>
+	    	{% endif %}
+
       	</div>
-
-        {% include "core/title/title_consumptionbox.html" %}
-
-        <footer class="title-footer">
-            <div class="title-tabs">
-                <ul>
-                    <li>
-                        <a class='tab-trigger' href="#episodes-tab"><span class="hide-on-small-screen">Listen To </span>Episodes</a>
-                    </li>
-
-                    <li>
-                        <a class='tab-trigger' href="{% url 'title_detail_comments' slug=title.slug %}">Comments</a>
-                    </li>
-
-                </ul>
-
-                <div title="Episodes" id="episodes-tab">
-                    {% if title.episodes.all %}
-                        {% show_episodelist title %}
-                    {% else %}
-                        <h3>
-                            No Episodes Are Available Yet.
-                        </h3>
-                    {% endif %}
-                </div>
-            </div>
-
-            {% if title.license %}
-                <p class="title-license">
-                    <a rel="license" href="{{ title.license.url }}"><img class="title-license-img" alt="{{ title.license.text }} Logo" src="{{ title.license.image_url }}"/></a>
-                    This work is licensed under a
-                    <a href="{{ title.license.url }}">{{ title.license.text }}</a> license.
-                </p>
-            {% endif %}
-        </footer>
     </article>
 
     <aside class="title-details-extras">
 
-    	{% if not 'Erotica' in title.category_list %}
-    		{% include "core/ad/title_detail_sidebar_small.html" %}
-    	{% endif %}
+
+
+
 
         {% include "core/title/title_consumptionbox.html" %}
 
@@ -108,7 +81,41 @@
 
         </div>
 
+        <footer class="title-footer">
+	        <div class="title-tabs">
+	            <ul>
+	            	<li>
+	                    <a class='tab-trigger' href="{% url 'title_detail_comments' slug=title.slug %}">Comments</a>
+	                </li>
+	                <li>
+	                    <a class='tab-trigger' href="#episodes-tab">Download <span class="hide-on-small-screen"> Episodes</span></a>
+	                </li>
+
+	            </ul>
+
+	            <div title="Episodes" id="episodes-tab">
+	                {% if title.episodes.all %}
+	                    {% show_episodelist title %}
+	                {% else %}
+	                    <h3>
+	                        No Episodes Are Available Yet.
+	                    </h3>
+	                {% endif %}
+	            </div>
+	        </div>
+
+	        {% if title.license %}
+	            <p class="title-license">
+	                <a rel="license" href="{{ title.license.url }}"><img class="title-license-img" alt="{{ title.license.text }} Logo" src="{{ title.license.image_url }}"/></a>
+	                This work is licensed under a
+	                <a href="{{ title.license.url }}">{{ title.license.text }}</a> license.
+	            </p>
+	        {% endif %}
+	    </footer>
+
     </aside>
+
+
 
 {% endblock %}
 

@@ -15,6 +15,12 @@
 /*
  * Title details
  */
+.title-details .title-footer{
+	display: block;
+}
+.title-details-extras .title-footer{
+	display: none;
+}
 .title-details-rail{
 	width:300px;
 	float: left;
@@ -128,6 +134,10 @@
 
 .episode-list-description {
 	
+}
+.title-detail-content-ad-2-wrap{
+	width: 100%;
+	float: left;
 }
 
 /*

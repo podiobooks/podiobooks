@@ -1,3 +1,4 @@
+/*
 $(function(){
 
 	var loadAds = function(){
@@ -32,3 +33,4 @@ $(function(){
 	loadAds();
 
 });
+*/

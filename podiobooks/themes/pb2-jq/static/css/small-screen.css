@@ -546,10 +546,6 @@
 		margin:1em auto;
 
 	}
-	.title-details-right-small,
-	.title-details-right-large{
-		display: none;
-	}
 	.first-episode-html5-player{
 		width:100%;
 	}
@@ -593,6 +589,12 @@
 		border:solid 3px #d0deee;
 		border-radius: 200px;
 		
+		margin:1em auto;
+	}
+	.title-details-right-large,
+	.title-details-content-ad-2{
+		width:300px;
+		height:250px;
 		margin:1em auto;
 	}
 	

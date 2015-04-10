@@ -12,6 +12,9 @@ function siteVars(opt){
 		case 'css':
 			return siteVars('static') + 'css/';
 			break;
+		case 'swf':
+			return siteVars('static') + 'swf/';
+			break;
 		default:
 			return null;
 			break;

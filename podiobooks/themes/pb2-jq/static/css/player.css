@@ -1,0 +1,247 @@
+.player-wrap{
+	margin: 1em 0;
+	background:#f2f5f7;
+	border:solid 1px #e7e7e7;
+	padding:1em 15px 0;
+	border-radius: 10px;
+	box-shadow: 0 1px 5px rgba(0,0,0,.1);
+}
+.player-wrap-title{
+	color:#676767;
+
+}
+.ttw-music-player {
+    width: auto;
+    margin: 0 auto;
+}
+
+.ttw-music-player .player {
+    width: 100%;
+}
+
+/* stuff we are hiding*/
+.ttw-music-player .rating,
+.ttw-music-player .artist-outer,
+.ttw-music-player .album-cover,
+.ttw-music-player .tracklist .rating,
+.ttw-music-player .buy,
+.ttw-music-player .buy.not-active {
+    display: none;
+}
+
+
+/** Track Info **/
+.ttw-music-player .track-info {
+    width: auto;
+    margin: 0;
+    float:none;
+    
+}
+
+.ttw-music-player .track-info p {
+    margin:0;
+}
+
+.ttw-music-player .player .title {
+    color: #373737;
+    font-weight: bold;
+    margin:.2em 0;
+    font-size: .9em;
+}
+
+.ttw-music-player .rating {
+    display: none;
+}
+
+
+/** Player **/
+.ttw-music-player .player-controls {
+    width: auto;
+    border-radius: 6px;
+    background: transparent;
+    float:none;
+    margin: 1.2em 0 1em;
+}
+
+.ttw-music-player .player-controls .main {
+    width:auto;
+    float: none;
+    text-align: center;
+    display: block;
+}
+
+.ttw-music-player .player-controls div {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.ttw-music-player .previous, .ttw-music-player .next {
+    height:50px;
+    width:30px;
+    background-size: 100% auto;
+}
+
+.ttw-music-player .play, .ttw-music-player .pause {
+    width:50px;
+    height:50px;
+    margin: 0 1.5em;
+}
+
+.ttw-music-player .previous {
+    background: transparent url(img/prev.svg) no-repeat center center scroll;
+}
+
+.ttw-music-player .next {
+    background: transparent url(img/next.svg) no-repeat center center scroll;
+}
+
+.ttw-music-player .play {
+    background: transparent url(img/play.svg) no-repeat center center;
+}
+
+.ttw-music-player .pause {
+    background: transparent url(img/pause.svg) no-repeat center center scroll;
+}
+
+.ttw-music-player .player-controls .progress-wrapper {
+    height: 20px;
+    width: auto;
+    float: none;
+    background: #222;
+    margin: 11px 0 10px 0;
+    border-radius: 4px;
+    display: block;
+}
+
+.ttw-music-player .progress {
+    height: 20px;
+    width: 100%;
+    cursor: pointer;
+}
+
+.ttw-music-player .elapsed {
+    height: 18px;
+    border-radius: 3px;
+    margin: 1px;
+    width: 65%;
+    background: #d0deee;
+}
+
+.ttw-music-player .unused-controls {
+    display: none !important;
+}
+
+/** Description **/
+.ttw-music-player .description {
+    clear: both;
+    margin: 0 0 1em;
+    font-size: .7em;
+    color: #777;
+}
+
+/** Track List **/
+.ttw-music-player .tracklist {
+    padding: 10px 0px;
+    border-radius: 6px;
+    color: #999;
+    font-size: .7em;
+}
+
+.ttw-music-player .tracklist ol {
+    margin: 0;
+    padding: 0;
+    overflow:hidden;
+}
+
+.ttw-music-player .tracklist li {
+    background: transparent url(img/player/tracklist-item-bg.png) repeat-x bottom left scroll;
+    padding: 10px 0 10px 0;
+    list-style-position: inside;
+    position: relative;
+}
+
+.ttw-music-player .tracklist li:hover {
+    color:#e25f38;
+}
+
+.ttw-music-player li:last-child{
+    background: none;
+}
+
+.ttw-music-player .show-more-button li:last-child{
+    background: transparent url(img/player/tracklist-item-bg.png) repeat-x bottom left scroll;
+}
+
+
+
+.ttw-music-player .tracklist .title {
+	-webkit-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+
+    width: 75%;
+    
+    display: inline-block;
+    padding: 0 0 0 14px;
+    cursor: pointer;
+}
+.ttw-music-player .tracklist .duration{
+	float: right;
+}
+.ttw-music-player li:nth-child(1n + 10) .title{
+    padding-left:7px;
+}
+
+.ttw-music-player li.playing {
+    color:#e25f38;
+
+}
+
+
+
+.ttw-music-player .more {
+    display:none;
+    font-size: .9em;
+    padding: 10px 0;
+    margin: 2em 0 0;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 6px;
+    background: #e7e7e7;
+}
+
+.ttw-music-player .more:hover {
+}
+
+.ttw-music-player .show-more-button .more{
+    display:block;
+}
+
+
+/** Transitions **/
+.ttw-music-player .more,
+.ttw-music-player .album-cover .highlight,
+.ttw-music-player .tracklist li,
+.ttw-music-player .buy {
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+
+/* http://perishablepress.com/press/2009/12/06/new-clearfix-hack */
+.ttw-music-player .player:after {
+    clear: both;
+    content: ' ';
+    display: block;
+    font-size: 0;
+    line-height: 0;
+    visibility: hidden;
+    width: 0;
+    height: 0;
+}
+
+
+

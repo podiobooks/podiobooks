@@ -33,7 +33,7 @@
 	text-decoration: none;
 }
 .rating-widget-item-promote .rating-widget-link{
-	background:#e7e7e7;
+	background:#f2f5f7;
 	color:#13ab13;
 	border-radius:0 10px 10px 0;
 	border-left:solid 1px #fff;
@@ -45,7 +45,7 @@
 	
 }
 .rating-widget-item-detract .rating-widget-link {
-	background:#e7e7e7;
+	background:#f2f5f7;
 	color:#96191f;
 	border-radius:10px 0 0 10px;
 	border-right:solid 1px #fff;
@@ -79,7 +79,7 @@
 .rating-widget-item-rating{
 	width:50%;
 	font-weight: bold;
-	background:#e7e7e7;
+	background:#f2f5f7;
 }
 .ratings-too-few{
 	font-size:.6em;
