@@ -32,7 +32,7 @@ $(function () {
 	// 	placement = $(".award-show");
 	// }
 
-	var playerWrap = $("<div class='player-wrap'><h2 class='player-wrap-title'>Episode Player</h2></div>").insertAfter(placement);
+	var playerWrap = $("<div class='player-wrap'><h2 class='player-wrap-title hidden'>Episode Player</h2></div>").insertAfter(placement);
 
 	$(".episode-list-item").each(function(){
 		var item = $(this);
