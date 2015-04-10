@@ -72,6 +72,12 @@ def get_cover_url_at_width(title, width):
 
     returns None if it fails all attempts
     """
+    try:
+        if settings.USE_COVER_PLACEHOLDERS_ONLY:
+            return settings.LOCALIZED_COVER_PLACEHOLDER
+    except AttributeError:
+        pass
+
     attr = "cover_%s" % width
     try:
         cover_url = getattr(title, attr).url

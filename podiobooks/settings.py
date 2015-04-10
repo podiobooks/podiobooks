@@ -51,6 +51,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(PROJECT_ROOT, "themes", THE_THEME, "static"), ]
 TEMPLATE_DIRS = [os.path.join(PROJECT_ROOT, "themes", THE_THEME, 'templates'), ]
 LOCALIZED_COVER_PLACEHOLDER = STATIC_URL + "images/cover-placeholder.jpg"
+USE_COVER_PLACEHOLDERS_ONLY = False
 
 # URL to Use for Feeds
 FEED_URL = ""  # This will be overridden in prod conf with an alt protocol/domain
