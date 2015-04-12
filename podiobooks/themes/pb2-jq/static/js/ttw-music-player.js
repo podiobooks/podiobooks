@@ -376,10 +376,10 @@
 
 
             function init() {
-                $player = $(cssSelector.player),
-                        $title = $player.find(cssSelector.title),
-                        $artist = $player.find(cssSelector.artist),
-                        $albumCover = $player.find(cssSelector.albumCover);
+                $player = $(cssSelector.player);
+                $title = $player.find(cssSelector.title);
+                $artist = $player.find(cssSelector.artist);
+                $albumCover = $player.find(cssSelector.albumCover);
 
                 setDescription();
 
@@ -478,7 +478,7 @@
                         var now = current;
                         $('<img src="' + myPlaylist[current].cover + '" alt="album cover" />', this).imagesLoaded(function(){
                             if(now == current)
-                                $albumCover.html($(this)).animate({opacity:1})
+                                $albumCover.html($(this)).animate({opacity:1});
                         });
                     }
                 });
@@ -495,7 +495,7 @@
             return{
                 buildInterface:buildInterface,
                 init:init
-            }
+            };
 
         };
 
@@ -559,41 +559,5 @@
         }
 
         appMgr();
-    };
-})(jQuery);
-
-(function($) {
-// $('img.photo',this).imagesLoaded(myFunction)
-// execute a callback when all images have loaded.
-// needed because .load() doesn't work on cached images
-
-// mit license. paul irish. 2010.
-// webkit fix from Oren Solomianik. thx!
-
-// callback function is passed the last image to load
-//   as an argument, and the collection as `this`
-
-
-    $.fn.imagesLoaded = function(callback) {
-        var elems = this.filter('img'),
-                len = elems.length;
-
-        elems.bind('load',
-                function() {
-                    if (--len <= 0) {
-                        callback.call(elems, this);
-                    }
-                }).each(function() {
-            // cached images don't fire load sometimes, so we reset src.
-            if (this.complete || this.complete === undefined) {
-                var src = this.src;
-                // webkit hack from http://groups.google.com/group/jquery-dev/browse_thread/thread/eee6ab7b2da50e1f
-                // data uri bypasses webkit log warning (thx doug jones)
-                this.src = "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==";
-                this.src = src;
-            }
-        });
-
-        return this;
     };
 })(jQuery);
