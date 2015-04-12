@@ -402,10 +402,10 @@
                          '    <p class="description"></p>' +
                         '        <div class="player-controls">' +
                         '            <div class="main">' +
-                        '                <div class="previous jp-previous"></div>' +
-                        '                <div class="play jp-play"></div>' +
-                        '                <div class="pause jp-pause"></div>' +
-                        '                <div class="next jp-next"></div>' +
+                        '                <div class="previous jp-previous"><span class="visuallyhidden">Previous Episode</span></div>' +
+                        '                <div class="play jp-play"><span class="visuallyhidden">Play</span></div>' +
+                        '                <div class="pause jp-pause"><span class="visuallyhidden">Pause</span></div>' +
+                        '                <div class="next jp-next"><span class="visuallyhidden">Next Episode</span></div>' +
                         '<!-- These controls aren\'t used by this plugin, but jPlayer seems to require that they exist -->' +
                         '                <span class="unused-controls">' +
                         '                    <span class="jp-video-play"></span>' +
