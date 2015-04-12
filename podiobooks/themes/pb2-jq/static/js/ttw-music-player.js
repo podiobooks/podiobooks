@@ -179,12 +179,25 @@
                 }
             }
 
+            function truncate(text, size){
+            	if (text.length > size) {
+					textTruncated = $.trim(text)
+									.substring(0, size)
+									.split(' ')
+									.slice(0, -1)
+									.join(' ');
+
+					return textTruncated + "...";
+				}
+				return text;
+            }
+
+
             function playlistConfig(index) {
                 current = index;
                 $myJplayer.jPlayer("setMedia", myPlaylist[current]);
-                options.description = myPlaylist[current].description;
+                options.description = truncate(myPlaylist[current].description, 200);
                 $self.find(cssSelector.description).html(options.description);
-
             }
 
             function playlistAdvance(index) {
@@ -370,6 +383,7 @@
 
                 setDescription();
 
+
                 $self.bind('mbPlaylistAdvance mbPlaylistInit', function() {
                     setTitle();
                     setArtist();
@@ -471,8 +485,11 @@
             }
 
             function setDescription() {
-                if (!isUndefined(options.description))
-                    $self.find(cssSelector.description).html(options.description).addClass(attr(cssSelector.descriptionShowing)).slideDown();
+                if (!isUndefined(options.description)){
+                	var descEle = $self.find(cssSelector.description);
+                    descEle.html(options.description).addClass(attr(cssSelector.descriptionShowing));
+                	descEle.slideDown();
+                }
             }
 
             return{
