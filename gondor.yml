@@ -15,8 +15,7 @@ requirements_file: podiobooks/requirements_gondor.txt
 on_deploy:
     - manage.py syncdb --noinput
     - manage.py migrate --noinput
-    - manage.py collectstatic --noinput --clear
-    - manage.py clear_cache
+    - manage.py collectstatic --noinput
     - manage.py collectmedia
     - manage.py mub_minify
     - manage.py localize_title_covers
