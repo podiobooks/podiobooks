@@ -7,5 +7,5 @@ v1_api.register(TitleResource())
 
 urlpatterns = patterns('',
     (r'', include(v1_api.urls)), # http://podiobooks.com/api/v1/title/?format=json
-    (r'', include(router.urls)),  # http://podiobooks.com/api/title/?format=json
+    (r'', include(router.urls)),  # http://podiobooks.com/api/titles/?format=json
 )
