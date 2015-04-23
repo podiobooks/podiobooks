@@ -1,8 +1,8 @@
 """Django REST Framework API Definitions"""
 
-# pylint: disable=R0904
+# pylint: disable=R0904,C0103
 
-from podiobooks.core.models import Contributor, Title, TitleContributor
+from podiobooks.core.models import Title, TitleContributor
 from rest_framework import routers, serializers, viewsets, fields
 
 
@@ -11,7 +11,8 @@ class TitleContributorSerializer(serializers.ModelSerializer):
     name = serializers.StringRelatedField(read_only=True, source="contributor")
     type = serializers.StringRelatedField(read_only=True, source="contributor_type")
 
-    class Meta:
+    class Meta(object):
+        """Class that defines TitleContributorSerializer behavior"""
         model = TitleContributor
         fields = (
             'name', 'type'
@@ -26,7 +27,8 @@ class TitleSerializer(serializers.ModelSerializer):
     series = serializers.StringRelatedField(read_only=True)
     url = fields.CharField(read_only=True, source="get_absolute_url")
 
-    class Meta:
+    class Meta(object):
+        """Class that defines TitleSerializer behavior"""
         model = Title
         fields = (
             'url', 'name', 'series', 'series_sequence', 'description', 'slug', 'cover', 'license', 'is_adult', 'is_explicit',

@@ -7,8 +7,6 @@ from django.contrib import admin
 from podiobooks.ads.models import AdSchedule, AdSchedulePosition
 from podiobooks.core.models import Episode
 
-from podiobooks.feeds.util import cache_title_feed
-
 
 # INLINES
 
@@ -22,9 +20,6 @@ class AdScheduledPositionInline(admin.TabularInline):
         if db_field.name == "episode":
             kwargs["queryset"] = Episode.objects.filter(title__slug='pb-ads')
         return super(AdScheduledPositionInline, self).formfield_for_foreignkey(db_field, request, **kwargs)
-#
-# class AdTitleInline(admin.TabularInline):
-#     model = AdScheduleTitle
 
 # MAIN ADMIN CLASSES
 
@@ -33,11 +28,5 @@ class AdScheduleAdmin(admin.ModelAdmin):
     model = AdSchedule
     inlines = [AdScheduledPositionInline, ]
     filter_horizontal = ["titles", ]
-
-# @TODO: This code does not work since it tries to manipulate the titles before they are saved - might need to be post-save?
-#    def save_model(self, request, obj, form, change):
-#        for title in obj.titles.all():
-#            cache_title_feed(title)
-#        obj.save()
 
 admin.site.register(AdSchedule, AdScheduleAdmin)

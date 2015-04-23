@@ -3,6 +3,7 @@ Middleware to catch redirect exceptions from feeds
 """
 from django.http import HttpResponsePermanentRedirect
 
+# pylint: disable=W0231,C0103
 
 class Http301(Exception):
     """Exception requesting redirect to a different url"""
@@ -19,5 +20,6 @@ class RedirectException(object):
     """
 
     def process_exception(self, request, exception):
+        """Catch the exception and redirect"""
         if isinstance(exception, Http301):
             return HttpResponsePermanentRedirect(redirect_to=exception.redirect_to)

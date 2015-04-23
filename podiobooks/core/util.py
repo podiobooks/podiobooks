@@ -34,7 +34,7 @@ def download_cover_from_libsyn(title):
     cover_image_url = "{0}/{1}".format(upload_path, image_file_name)
 
     try:
-        LOGGER.info("Downloading new cover for {0}...", title.name)
+        LOGGER.info("Downloading new cover for %s...", title.name)
 
         rss_feed_url = "http://{0}.podiobooks.libsynpro.com/rss".format(title.libsyn_slug)
         feed = urllib.urlopen(rss_feed_url)
@@ -53,12 +53,12 @@ def download_cover_from_libsyn(title):
         except OSError:
             pass
 
-        LOGGER.info("Saving new cover in model for {0}...", title.name)
+        LOGGER.info("Saving new cover in model for %s...", title.name)
         title.cover = cover_image_url
         title.save(always_create_assets=True)
 
     except Exception as e:
-        LOGGER.error("Error Getting Cover for {0}, {1}", title.name, e)
+        LOGGER.error("Error Getting Cover for %s, %s", title.name, e)
         raise
 
     return title.cover

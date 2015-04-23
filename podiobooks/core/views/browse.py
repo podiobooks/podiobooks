@@ -2,13 +2,13 @@
 
 from django.db.models import Count
 
-from django.views.generic import DetailView, ListView, TemplateView, RedirectView
+from django.views.generic import DetailView, ListView, TemplateView
 from django.shortcuts import get_object_or_404, redirect, render_to_response
 from django.http import Http404, HttpResponsePermanentRedirect
 from django.core.exceptions import ObjectDoesNotExist
 from django.template import RequestContext
 
-from podiobooks.core.models import Award, Contributor, Category, Episode, Title, Series
+from podiobooks.core.models import Award, Contributor, Category, Title, Series
 
 
 # pylint: disable=R0912,C0330

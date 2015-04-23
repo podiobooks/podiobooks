@@ -1,18 +1,17 @@
 """ Django Views for the Podiobooks Core Module"""
 import logging
-import os
 
 from django.core.urlresolvers import reverse_lazy
 
 from django.utils.http import urlquote
-from django.views.generic import ListView, RedirectView, TemplateView, View
+from django.views.generic import ListView, RedirectView, TemplateView
 from django.shortcuts import get_object_or_404, redirect
-from django.http import Http404, HttpResponse, HttpResponseRedirect, HttpResponsePermanentRedirect
+from django.http import Http404, HttpResponsePermanentRedirect
 from django.core.exceptions import ObjectDoesNotExist
 from django.conf import settings
 from django.db.models import Count
 
-from podiobooks.core.models import Title, Category
+from podiobooks.core.models import Title, Category, Episode
 from podiobooks.core.forms import CategoryChoiceForm, TitleSearchForm
 from podiobooks.core.queries import get_featured_shelf_titles, get_recently_released_shelf_titles, get_popular_shelf_titles
 # pylint: disable=R0912,C0103
