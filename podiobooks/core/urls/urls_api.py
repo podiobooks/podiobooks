@@ -1,6 +1,6 @@
-from django.conf.urls import patterns, include
-from podiobooks.core.api import router
+# from django.conf.urls import patterns, include
+# from podiobooks.core.api import router
 
-#urlpatterns = patterns('',
+# urlpatterns = patterns('',
 #                       (r'', include(router.urls)),  # http://podiobooks.com/api/titles/
 #                       )
