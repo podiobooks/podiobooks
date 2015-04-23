@@ -13,7 +13,7 @@ requirements_file: podiobooks/requirements_gondor.txt
 # Commands to be executed during deployment. These can handle migrations or
 # moving static files into place. Accepts same parameters as gondor run.
 on_deploy:
-    - manage.py syncdb --noinput
+    - manage.py syncdb --fake-initial --noinput
     - manage.py migrate --noinput
     - manage.py collectstatic --noinput
     - manage.py collectmedia
