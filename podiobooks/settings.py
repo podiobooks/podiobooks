@@ -105,6 +105,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django_jenkins',
     'mub',
+    'noodles',
     'podiobooks',
     'podiobooks.ads',
     'podiobooks.core',
