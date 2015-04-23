@@ -112,22 +112,6 @@ class ContributorDetailView(ListView):
                                                                    object_list=self.object_list)
 
 
-class EpisodeRedirectView(RedirectView):
-    """Redirect Requests for Episode Details to the Title Page for that Episode"""
-
-    def get_redirect_url(self, **kwargs):
-        """Uses PK of Episode to Redirect to Title"""
-        pk = kwargs.get('pk', None)  # pylint: disable=C0103
-
-        if pk:
-            episode = get_object_or_404(Episode, pk=pk)
-            title = get_object_or_404(Title, pk=episode.title.pk)
-        else:
-            raise Http404
-
-        return title.get_absolute_url()
-
-
 class SeriesListView(ListView):
     """List of all the Series on the site"""
     template_name = 'core/series/series_list.html'

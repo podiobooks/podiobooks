@@ -34,7 +34,7 @@ urlpatterns = \
              url(r'^donate/$', DonationView.as_view(), name='donate'),
 
              # Recent Titles Feed Redirect
-             url(r'^index\.xml$', RedirectView.as_view(url='/rss/feeds/titles/recent/')),
+             url(r'^index\.xml$', RedirectView.as_view(url='/rss/feeds/titles/recent/', permanent=True)),
 
              # URLs from core package
              (r'^', include('podiobooks.core.urls')),
@@ -84,67 +84,67 @@ urlpatterns = \
              (r'^sitemap\.xml$', sitemap_urls, {'sitemaps': sitemaps}),
 
              # PB1 Index Page
-             (r'index\.php|index\.html', RedirectView.as_view(url='/')),
+             (r'index\.php|index\.html', RedirectView.as_view(url='/', permanent=True)),
 
              # PB1 Search Redirect
-             (r'podiobooks/search\.php', RedirectView.as_view(url='/title/search/', query_string=True)),
+             (r'podiobooks/search\.php', RedirectView.as_view(url='/title/search/', permanent=True, query_string=True)),
 
              # PB1 Authors Doc
              (r'authors/PBAuthoringGuide+', RedirectView.as_view(
-                 url='http://blog.podiobooks.com/wp-content/uploads/2012/09/PBAuthoringGuidev2.0.4.pdf')),
+                 url='http://blog.podiobooks.com/wp-content/uploads/2012/09/PBAuthoringGuidev2.0.4.pdf', permanent=True)),
 
              # PB1 Login Page
              (r'account|login\.php|Xlogin\.php|register\.php',
-              RedirectView.as_view(url='http://blog.podiobooks.com/what-happened-to-my-login/')),
+              RedirectView.as_view(url='http://blog.podiobooks.com/what-happened-to-my-login/', permanent=True)),
 
              # PB1 Charts Page
              (r'charts\.php',
-              RedirectView.as_view(url='http://blog.podiobooks.com/what-happened-to-the-charts/')),
+              RedirectView.as_view(url='http://blog.podiobooks.com/what-happened-to-the-charts/', permanent=True)),
 
              # PB1 Authors Page
              (r'authors\.php|authors/pbpro\.php', RedirectView.as_view(
-                 url='http://blog.podiobooks.com/how-to-get-your-books-listed-on-podiobooks-com/')),
+                 url='http://blog.podiobooks.com/how-to-get-your-books-listed-on-podiobooks-com/', permanent=True)),
 
              # PB1 Staff Page
-             (r'staff\.php', RedirectView.as_view(url='http://blog.podiobooks.com/podiobooks-staff/')),
+             (r'staff\.php', RedirectView.as_view(url='http://blog.podiobooks.com/podiobooks-staff/', permanent=True)),
 
              # PB1 About Page
              (r'about\.php',
-              RedirectView.as_view(url='http://blog.podiobooks.com/frequently-asked-questions/')),
+              RedirectView.as_view(url='http://blog.podiobooks.com/frequently-asked-questions/', permanent=True)),
 
              # PB1 Donate Page
              (r'donate\.php',
-              RedirectView.as_view(url='/donate')),
+              RedirectView.as_view(url='/donate', permanent=True)),
 
              # PB1 Spread The Word Page
              (r'spreadtheword\.php',
-              RedirectView.as_view(url='http://blog.podiobooks.com/why-you-should-donate/')),
+              RedirectView.as_view(url='http://blog.podiobooks.com/why-you-should-donate/', permanent=True)),
 
              # PB1 Legal Page
              (r'legal\.php', RedirectView.as_view(
-                 url='http://blog.podiobooks.com/privacy-and-legal-speak-in-plain-if-not-ill-formed-english/')),
+                 url='http://blog.podiobooks.com/privacy-and-legal-speak-in-plain-if-not-ill-formed-english/', permanent=True)),
 
              # Hack Redirect
-             (r'submit', RedirectView.as_view(url='/')),
+             (r'submit', RedirectView.as_view(url='/', permanent=True)),
 
              # Old Infected Redirect
-             (r'infected', RedirectView.as_view(url='/title/infected/')),
+             (r'infected', RedirectView.as_view(url='/title/infected/', permanent=True)),
 
              # Author Start Page
              (r'start/?$',
-              RedirectView.as_view(url='http://blog.podiobooks.com/how-to-get-your-books-listed-on-podiobooks-com/')),
+              RedirectView.as_view(url='http://blog.podiobooks.com/how-to-get-your-books-listed-on-podiobooks-com/', permanent=True)),
 
              # Ad Redirect
              (r'website/?$',
-              RedirectView.as_view(url='http://a.strk.ly/7WS9s')),
+              RedirectView.as_view(url='http://a.strk.ly/7WS9s', permanent=True)),
 
              # Audible Referral Program
              (r'audible/?$',
-              RedirectView.as_view(url='http://www.audibletrial.com/PodiobooksAudible')),
+              RedirectView.as_view(url='http://www.audibletrial.com/PodiobooksAudible', permanent=True)),
               
              # Audiobooks Referral Program
              (r'audiobooks/?$',
-              RedirectView.as_view(url='http://affiliates.audiobooks.com/tracking/scripts/click.php?a_aid=54cb451d1bf77&a_bid=52ce997a')),
+              RedirectView.as_view(url='http://affiliates.audiobooks.com/tracking/scripts/click.php?a_aid=54cb451d1bf77&a_bid=52ce997a', permanent=True)),
     )
 
 # Only hook up the static and media to run through Django in a dev environment...in prod, handle with web server

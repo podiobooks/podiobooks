@@ -31,6 +31,23 @@ class DonationView(TemplateView):
         return {"TIPJAR_BUSINESS_NAME": settings.TIPJAR_BUSINESS_NAME}
 
 
+class EpisodeRedirectView(RedirectView):
+    """Redirect Requests for Episode Details to the Title Page for that Episode"""
+    permanent = True
+
+    def get_redirect_url(self, **kwargs):
+        """Uses PK of Episode to Redirect to Title"""
+        pk = kwargs.get('pk', None)  # pylint: disable=C0103
+
+        if pk:
+            episode = get_object_or_404(Episode, pk=pk)
+            title = get_object_or_404(Title, pk=episode.title.pk)
+        else:
+            raise Http404
+
+        return title.get_absolute_url()
+
+
 class IndexView(TemplateView):
     """Home Page"""
 
@@ -113,6 +130,7 @@ def clean_id(id_num=None):
 
 class FeedRedirectView(RedirectView):
     """Redirect the PB1 Feed Path to the PB2 Feed Path"""
+    permanent = True
 
     def get_redirect_url(self, **kwargs):
         """Uses PK of Title or Slug from URL to redirect to feed"""
@@ -132,6 +150,7 @@ class FeedRedirectView(RedirectView):
 
 class TitleRedirectView(RedirectView):
     """Redirect the PB1 book.php Path to the PB2 Title Path"""
+    permanent = True
 
     def get_redirect_url(self, **kwargs):
         """Uses ID of Title from URL to redirect to Title"""

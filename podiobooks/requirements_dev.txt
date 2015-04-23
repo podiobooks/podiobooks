@@ -1,6 +1,6 @@
 -r requirements.txt
-coverage
+coverage>=3.7.1
 docutils
-gondor
-pylint
+gondor>=1.2.5
+pylint>=1.4.3
 sphinx

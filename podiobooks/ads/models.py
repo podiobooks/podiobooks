@@ -21,7 +21,7 @@ class AdSchedule(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
 
-    titles = models.ManyToManyField(Title, null=True, blank=True, related_name='ad_schedules')
+    titles = models.ManyToManyField(Title, blank=True, related_name='ad_schedules')
 
     class Meta(object):
         ordering = ['name']

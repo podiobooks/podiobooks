@@ -4,10 +4,10 @@
 
 from django.conf.urls import include, patterns, url
 from django.views.generic import RedirectView
-from podiobooks.core.views import FeedRedirectView, TitleRedirectView
+from podiobooks.core.views import EpisodeRedirectView, FeedRedirectView, TitleRedirectView
 from podiobooks.core.views.browse import AwardDetailView, AwardListView, BrowseOptionsView, CategoryDetailView
 from podiobooks.core.views.browse import CategoryListView, ContributorDetailView, ContributorListView
-from podiobooks.core.views.browse import EpisodeRedirectView, SeriesDetailView, SeriesListView
+from podiobooks.core.views.browse import SeriesDetailView, SeriesListView
 from podiobooks.core.views.browse import TitleListView, TitleRecentListView, TitleDetailView, TitleRemovedView
 from podiobooks.core.views import title_search
 from podiobooks.core.views.shelf import FilteredShelf
@@ -44,7 +44,7 @@ urlpatterns = \
 
              # Title
              url(r'^title/$', TitleListView.as_view(), name='title_list'),
-             url(r'^title/morevi$', RedirectView.as_view(url='/title/morevi-the-chronicles-of-rafe-and-askana-remastered/')),
+             url(r'^title/morevi$', RedirectView.as_view(url='/title/morevi-the-chronicles-of-rafe-and-askana-remastered/', permanent=True)),
              url(r'^title/recent/$', TitleRecentListView.as_view(), name='title_recent_list'),
              url(r'^title/removed/(?P<slug>[^/]+)/$', TitleRemovedView.as_view(), name='title_detail_removed'),
              url(r'^title/(?P<slug>[^/]+)/$', TitleDetailView.as_view(), name='title_detail'),

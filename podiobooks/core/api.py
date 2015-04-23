@@ -1,36 +1,37 @@
-"""Django TastyPie API Definitions"""
+"""Django REST Framework API Definitions"""
 
 # pylint: disable=R0904
 
-from tastypie.resources import ModelResource
-from podiobooks.core.models import Category, Contributor, Title, TitleContributor
-from rest_framework import routers, serializers, viewsets
+from podiobooks.core.models import Contributor, Title, TitleContributor
+from rest_framework import routers, serializers, viewsets, fields
 
 
-class TitleResource(ModelResource):
-    """Resource for Exposing Title Model via API"""
+class TitleContributorSerializer(serializers.ModelSerializer):
+    """API Definitions for Contributors"""
+    name = serializers.StringRelatedField(read_only=True, source="contributor")
+    type = serializers.StringRelatedField(read_only=True, source="contributor_type")
 
-    class Meta(object):
-        """Defines queryset exposed via API"""
-        queryset = Title.objects.all()
+    class Meta:
+        model = TitleContributor
         fields = (
-            'name', 'contributors', 'series', 'series_sequence', 'description', 'slug', 'cover', 'license', 'is_adult', 'is_explicit',
-            'is_family_friendly', 'is_for_kids', 'promoter_count', 'detractor_count',
-            'category_list', 'date_updated'
+            'name', 'type'
         )
 
 
 class TitleSerializer(serializers.ModelSerializer):
     """API Definitions for Titles"""
-    categories = serializers.RelatedField(many=True, read_only=True)
-    contributors = serializers.RelatedField(many=True, read_only=True)
+    categories = serializers.StringRelatedField(many=True, read_only=True)
+    contributors = TitleContributorSerializer(many=True, read_only=True, source="titlecontributors")
+    license = serializers.StringRelatedField(read_only=True)
+    series = serializers.StringRelatedField(read_only=True)
+    url = fields.CharField(read_only=True, source="get_absolute_url")
 
     class Meta:
         model = Title
         fields = (
-            'name', 'contributors', 'series', 'series_sequence', 'description', 'slug', 'cover', 'license', 'is_adult', 'is_explicit',
+            'url', 'name', 'series', 'series_sequence', 'description', 'slug', 'cover', 'license', 'is_adult', 'is_explicit',
             'is_family_friendly', 'is_for_kids', 'promoter_count', 'detractor_count',
-            'category_list', 'date_updated'
+            'categories', 'byline', 'contributors', 'date_updated'
         )
 
 
