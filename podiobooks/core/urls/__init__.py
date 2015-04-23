@@ -11,7 +11,6 @@ from podiobooks.core.views.browse import SeriesDetailView, SeriesListView
 from podiobooks.core.views.browse import TitleListView, TitleRecentListView, TitleDetailView, TitleRemovedView
 from podiobooks.core.views import title_search
 from podiobooks.core.views.shelf import FilteredShelf
-from podiobooks.core.urls.urls_api import *
 
 
 urlpatterns = \
