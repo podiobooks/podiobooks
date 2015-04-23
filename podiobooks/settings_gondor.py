@@ -26,9 +26,6 @@ if "GONDOR_DATABASE_URL" in os.environ:
             "PORT": DB_URL.port
         }
     }
-    SOUTH_DATABASE_ADAPTERS = {
-        'default': 'south.db.postgresql_psycopg2'
-    }
     DATABASE_POOL_ARGS = {
         'max_overflow': int(os.environ["DB_POOL_OVERFLOW"]),
         'pool_size': int(os.environ["DB_POOL_SIZE"]),
