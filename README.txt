@@ -1,11 +1,9 @@
 PODIOBOOKS.COM 2.0
 ==================
 Team Lead: Tim White (tim@cyface.com)
-Team Lead Emeritus: Chris Miller (chris@ctmiller.net)
+Lead Developer: Brant Steen (brant@brantsteen.com)
 
-Contributors
-------------
-Brant Steen (brant@brantsteen.com)
+Team Lead Emeritus: Chris Miller (chris@ctmiller.net)
 
 License
 -------
