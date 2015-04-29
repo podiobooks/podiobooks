@@ -1,7 +1,9 @@
-PODIOBOOKS.COM 2.0
+Podiobooks.com
 ==================
 Team Lead: Tim White (tim@cyface.com)
+
 Lead Developer: Brant Steen (brant@brantsteen.com)
+
 
 Team Lead Emeritus: Chris Miller (chris@ctmiller.net)
 
@@ -12,7 +14,7 @@ This software is licensed under a GPL v3.0 license. Please visit http://www.gnu.
 Purpose
 -------
 
-The purpose of the Podiobooks project is to create a platform for distributing serialized audiobooks. Additionally, there should be a strong community element, allowing consumers to connect with each other and the author.  This software will eventually replace the current PHP-based solution at http://www.podiobooks.com.
+The purpose of the Podiobooks project is to create a platform for distributing serialized audiobooks.
 
 Required Packages
 -----------------
