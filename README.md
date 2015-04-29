@@ -18,9 +18,7 @@ The purpose of the Podiobooks project is to create a platform for distributing s
 
 Required Packages
 -----------------
-This software depends on the following libraries being available on the Python Path (e.g. having been easy_installed into the site-packages directory)
-
-The project has been set up to use Python pip and virtualenv, so you can find an list of all dependencies in the podiobooks/requirements.txt file.
+The project has been set up to use pip and virtualenv, so you can find an list of all dependencies in the podiobooks/requirements.txt file.
 
 You can choose to install that list of dependencies directly in your Python installation, or using virtualenv.
 
