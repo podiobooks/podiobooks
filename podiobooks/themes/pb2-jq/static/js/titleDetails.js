@@ -51,6 +51,7 @@ $(function () {
 			});
 		});
 
+
 		playerWrap.ttwMusicPlayer(myPlaylist, {
 			autoPlay:false,
 			description:"",
