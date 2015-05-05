@@ -36,7 +36,12 @@ $(function () {
 
 		var playerWrap = $("<div class='player-wrap'><h2 class='player-wrap-title hidden'>Episode Player</h2></div>").insertAfter(placement);
 
-		$(".episode-list-item").each(function(){
+		var footer = $(".title-footer");
+		if (footer.length > 1){
+			footer = $(footer[0]);
+		}
+
+		footer.find(".episode-list-item").each(function(){
 			var item = $(this);
 			myPlaylist.push({
 				mp3: item.find(".episode-audio-link").attr("href"),
