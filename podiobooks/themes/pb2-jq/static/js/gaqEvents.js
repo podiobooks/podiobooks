@@ -166,35 +166,4 @@ $(function () {
 		_gaq.push(['_trackEvent', 'Rating', 'DetailPage-RatingWidget', slug, voteValue]);
     });
 
-    /* Detail page Player events */
-    $(".title-details-extras .player-wrap").on("click", ".jp-play", function(ev){
-    	var slug = $("#titleArticle").data('title-slug');
-		_gaq.push(['_trackEvent', 'DetailPage-Player', 'Play Control', slug]);
-    });
-    $(".title-details-extras .player-wrap").on("click", ".jp-pause", function(ev){
-    	var slug = $("#titleArticle").data('title-slug');
-		_gaq.push(['_trackEvent', 'DetailPage-Player', 'Pause Control', slug]);
-    });
-    $(".title-details-extras .player-wrap").on("click", ".jp-previous", function(ev){
-    	var slug = $("#titleArticle").data('title-slug');
-		_gaq.push(['_trackEvent', 'DetailPage-Player', 'Previous Control', slug]);
-    });
-    $(".title-details-extras .player-wrap").on("click", ".jp-next", function(ev){
-    	var slug = $("#titleArticle").data('title-slug');
-		_gaq.push(['_trackEvent', 'DetailPage-Player', 'Next Control', slug]);
-    });
-    $(".title-details-extras .player-wrap").on("click", ".more", function(ev){
-    	var slug = $("#titleArticle").data('title-slug');
-		_gaq.push(['_trackEvent', 'DetailPage-Player', 'Show More Episodes', slug]);
-    });
-    $(".title-details-extras .player-wrap").on("click", ".more", function(ev){
-    	var slug = $("#titleArticle").data('title-slug');
-		_gaq.push(['_trackEvent', 'DetailPage-Player', 'Show More Episodes', slug]);
-    });
-    $(".title-details-extras .player-wrap .tracks").on("click", ".title", function(ev){
-    	var slug = $("#titleArticle").data('title-slug');
-    	var track = $(this).parents(".track");
-    	var value = track.siblings().andSelf().index(track) + 1;
-		_gaq.push(['_trackEvent', 'DetailPage-Player', 'Jump to Episode', "Episode " + value]);
-    });
 });
