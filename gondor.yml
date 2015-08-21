@@ -14,11 +14,11 @@ requirements_file: podiobooks/requirements_gondor.txt
 # moving static files into place. Accepts same parameters as gondor run.
 on_deploy:
     - manage.py migrate --fake-initial --noinput
-    - manage.py collectstatic --noinput --clear
+    - manage.py collectstatic --noinput
     - manage.py collectmedia
     - manage.py mub_minify
     - manage.py localize_title_covers
-    - manage.py clear_cache
+    # - manage.py clear_cache
 
 # URLs which should be served by Gondor mapping to a filesystem location
 # relative to your writable storage area.
