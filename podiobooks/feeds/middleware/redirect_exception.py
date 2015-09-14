@@ -5,6 +5,7 @@ from django.http import HttpResponsePermanentRedirect
 
 # pylint: disable=W0231,C0103
 
+
 class Http301(Exception):
     """Exception requesting redirect to a different url"""
     redirect_to = "/"

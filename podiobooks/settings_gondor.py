@@ -59,13 +59,13 @@ if "GONDOR_REDIS_URL" in os.environ:
 
     MIDDLEWARE_CLASSES = (
         'podiobooks.core.middleware.StripAnalyticsCookies',
-        'django.middleware.gzip.GZipMiddleware',  # https://www.djangoproject.com/weblog/2013/aug/06/breach-and-django/
+        'django.middleware.gzip.GZipMiddleware',
         'django.contrib.admindocs.middleware.XViewMiddleware',
         'django.middleware.csrf.CsrfViewMiddleware',
         'django.contrib.sessions.middleware.SessionMiddleware',
         'django.contrib.auth.middleware.AuthenticationMiddleware',
         'django.contrib.messages.middleware.MessageMiddleware',
-        'podiobooks.feeds.middleware.ga_tracking.GATracker',
+#        'podiobooks.feeds.middleware.ga_tracking.GATracker',
         'podiobooks.feeds.middleware.redirect_exception.RedirectException',
         'django.middleware.cache.UpdateCacheMiddleware',
         'django.middleware.common.CommonMiddleware',
