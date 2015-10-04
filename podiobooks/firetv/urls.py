@@ -7,4 +7,4 @@ urlpatterns = patterns('',
                        # FireTV
                        url(r'^$', FireTVView.as_view(), name='firetv'),
                        url(r'^media/(?P<pk>[^/]+)$', FireTVMediaView.as_view(), name='firetv_media'),
-)
+                       )
