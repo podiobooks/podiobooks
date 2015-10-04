@@ -45,7 +45,7 @@
 	background: -o-radial-gradient(center, ellipse cover,  #f7f7f7 0%,#e9e9e9 100%); /* Opera 12+ */
 	background: -ms-radial-gradient(center, ellipse cover,  #f7f7f7 0%,#e9e9e9 100%); /* IE10+ */
 	background: radial-gradient(ellipse at center,  #f7f7f7 0%,#e9e9e9 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7f7f7', endColorstr='#e9e9e9',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+	filter: "progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7f7f7', endColorstr='#e9e9e9',GradientType=1 )"; /* IE6-9 fallback on horizontal gradient */
 
 
 	font-size:18px;

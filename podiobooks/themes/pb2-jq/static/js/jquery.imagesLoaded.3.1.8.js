@@ -1,5 +1,5 @@
 /*!
- * imagesLoaded PACKAGED v3.1.6
+ * imagesLoaded PACKAGED v3.1.8
  * JavaScript is all like "You images are done yet or what?"
  * MIT License
  */
@@ -13,6 +13,7 @@
  */
 
 (function () {
+
 
 	/**
 	 * Class for managing events.
@@ -556,7 +557,7 @@ if ( typeof define === 'function' && define.amd ) {
 })( this );
 
 /*!
- * imagesLoaded v3.1.6
+ * imagesLoaded v3.1.8
  * JavaScript is all like "You images are done yet or what?"
  * MIT License
  */
@@ -578,7 +579,7 @@ if ( typeof define === 'function' && define.amd ) {
     // CommonJS
     module.exports = factory(
       window,
-      require('eventEmitter'),
+      require('wolfy87-eventemitter'),
       require('eventie')
     );
   } else {
@@ -590,7 +591,7 @@ if ( typeof define === 'function' && define.amd ) {
     );
   }
 
-})( this,
+})( window,
 
 // --------------------------  factory -------------------------- //
 

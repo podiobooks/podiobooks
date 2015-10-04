@@ -57,7 +57,7 @@ $(function(){
 
 
 			// CSRF protection
-			var csrftoken = $.cookie('csrftoken');
+			var csrftoken = Cookies.set('csrftoken');
 			$.ajaxSetup({
 				crossDomain: false, // obviates need for sameOrigin test
 				beforeSend: function(xhr, settings) {

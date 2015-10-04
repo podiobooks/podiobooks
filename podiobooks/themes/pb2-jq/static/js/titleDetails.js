@@ -61,7 +61,7 @@ $(function () {
 			autoPlay:false,
 			description:"",
 			jPlayer:{
-				swfPath: siteVars('swf')
+				swfPath: siteVars('swf') + '/jquery-jplayer.swf'
 			}
 		});
 

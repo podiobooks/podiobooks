@@ -376,7 +376,7 @@ body form.gsc-search-box {
     background: -o-linear-gradient(top, #40a8d1 0%, #4280bd 100%); /* Opera 11.10+ */
     background: -ms-linear-gradient(top, #40a8d1 0%, #4280bd 100%); /* IE10+ */
     background: linear-gradient(to bottom, #40a8d1 0%, #4280bd 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#40a8d1', endColorstr='#4280bd', GradientType=0); /* IE6-9 */
+    filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#40a8d1', endColorstr='#4280bd', GradientType=0)"; /* IE6-9 */
 }
 
 .jump-to-content:focus {

@@ -109,19 +109,19 @@
                 });
             }
 
-            var loadImageForItem = function(item){
-				item.find('[data-image-src]').each(function () {
+            var loadImageForItem = function (item) {
+                item.find('[data-image-src]').each(function () {
                     var a = $(this);
 
                     var src = a.data("image-src");
                     var img = $("<img data-title-slug='" + a.data("title-slug") + "' class='shelf-cover shelf-cover-loading' alt='Cover for " + a.data("title-name") + "' src='" + src + "' />");
 
-                    if (a.find("img").length < 1){
-                    	img.appendTo(a);
+                    if (a.find("img").length < 1) {
+                        img.appendTo(a);
 
-                    	a.imagesLoaded(function(){
-	                		img.removeClass("shelf-cover-loading");
-	                    });
+                        a.imagesLoaded(function () {
+                            img.removeClass("shelf-cover-loading");
+                        });
                     }
 
                     a.removeAttr("data-image-src");
@@ -172,7 +172,7 @@
                 // Load them now
                 if (loadMore) {
                     for (var i = start - 1; i < end; i++) {
-						loadImageForItem($(items[i]));
+                        loadImageForItem($(items[i]));
                     }
                 }
             };
@@ -508,10 +508,10 @@
             if (settings.cookie) {
                 var val = shelf.find("form select").val();
                 if (val !== "") {
-                    $.cookie(settings.cookie, val, {expires: 7});
+                    Cookies.set(settings.cookie, val, {expires: 7});
                 }
                 else {
-                    $.cookie(settings.cookie, "None", {expires: -1});
+                    Cookies.set(settings.cookie, "None", {expires: -1});
                 }
             }
 
@@ -753,9 +753,9 @@
             shelf.addClass("pbShelf");
             loadImages();
 
-			shelf.on("pbshelf:loadimages", function(){
-				loadImages();
-			});
+            shelf.on("pbshelf:loadimages", function () {
+                loadImages();
+            });
 
         });
     };

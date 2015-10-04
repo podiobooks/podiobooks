@@ -1,5 +1,5 @@
 /*
- * Use V2 of searach API
+ * Use V2 of search API
  * https://developers.google.com/custom-search/docs/element#cse-element
  * https://developers.google.com/custom-search/docs/element#supported_attributes
  */

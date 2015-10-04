@@ -22,100 +22,90 @@
         <meta itemprop="bookFormat" content="AudioBook/Serialized">
 
         <div class="clearfix">
-        	<p class="small-screen-only like-h1">{{ title.name }}</p>
-	        <aside class="title-details-rail">
-		        <div class="title-details-header-cover">{% show_titlecover title 900 %}</div>
+            <p class="small-screen-only like-h1">{{ title.name }}</p>
+            <aside class="title-details-rail">
+                <div class="title-details-header-cover">{% show_titlecover title 900 %}</div>
 
-		        {% include "core/ad/title_detail_inline.html" %}
-	        </aside>
+                {% include "core/ad/title_detail_inline.html" %}
+            </aside>
 
-	        <header class="title-details-header">
-	            <div class="title-details-header-info">
-	            	<h1 itemprop="name" class="hide-on-small-screen">{{ title.name }} {% show_rating_icon title %}</h1>
-	                <p>{% show_contributors title "True" %}<br />
+            <header class="title-details-header">
+                <div class="title-details-header-info">
+                    <h1 itemprop="name" class="hide-on-small-screen">{{ title.name }} {% show_rating_icon title %}</h1>
 
-	                {{ title.category_list|safe }}
+                    <p>{% show_contributors title "True" %}<br/>
 
-	                {% if title.series %}
-	                    <br/>Series:
-	                        <a href="{{ title.series.get_absolute_url }}">{{ title.series.name }}</a>
-	                        {% if title.series_sequence > 0 %}
-	                            (Book {{ title.series_sequence }})
-	                        {% endif %}
+                        {{ title.category_list|safe }}
 
-	                {% endif %}
-	                </p>
-	            </div>
-	        </header>
+                        {% if title.series %}
+                            <br/>Series:
+                            <a href="{{ title.series.get_absolute_url }}">{{ title.series.name }}</a>
+                            {% if title.series_sequence > 0 %}
+                                (Book {{ title.series_sequence }})
+                            {% endif %}
 
-	        <div itemprop="description">
-	            {% autoescape off %}{{ title.description|linebreaks|removetags:"img" }}{% endautoescape %}
-	        </div>
+                        {% endif %}
+                    </p>
+                </div>
+            </header>
+
+            <div itemprop="description">
+                {% autoescape off %}{{ title.description|linebreaks|removetags:"img" }}{% endautoescape %}
+            </div>
 
 
-	        {% if not 'Erotica' in title.category_list %}
-		        <div class="clearfix title-detail-content-ad-2-wrap">
-		    		{% include "core/ad/title_detail_sidebar_small.html" %}
-    	    	</div>
-	    	{% endif %}
+            {% if not 'Erotica' in title.category_list %}
+                <div class="clearfix title-detail-content-ad-2-wrap">
+                    {% include "core/ad/title_detail_sidebar_small.html" %}
+                </div>
+            {% endif %}
 
-      	</div>
+        </div>
     </article>
 
     <aside class="title-details-extras">
-
-
-
-
-
         {% include "core/title/title_consumptionbox.html" %}
 
         {% show_awardshow title %}
 
         <div id="wide-skyscraper-ad" class="wide-skyscraper-ad">
-        	{% if  'Erotica' in title.category_list %}
-        		<a href="http://www.ErectionFitness.com/ct/298422?b=7252&t=2014Sept"><img src="http://www2.sellhealth.com/2/ef120x600.gif" border=0></a>
-        	{% else %}
-        		{% include "core/ad/title_detail_sidebar_large.html" %}
-        	{% endif %}
-
+            {% if  'Erotica' in title.category_list %}
+                <a href="http://www.ErectionFitness.com/ct/298422?b=7252&t=2014Sept"><img src="http://www2.sellhealth.com/2/ef120x600.gif" border=0></a>
+            {% else %}
+                {% include "core/ad/title_detail_sidebar_large.html" %}
+            {% endif %}
         </div>
 
         <footer class="title-footer">
-	        <div class="title-tabs">
-	            <ul>
-	            	<li>
-	                    <a class='tab-trigger' href="{% url 'title_detail_comments' slug=title.slug %}">Comments</a>
-	                </li>
-	                <li>
-	                    <a class='tab-trigger' href="#episodes-tab">Download <span class="hide-on-small-screen"> Episodes</span></a>
-	                </li>
+            <div class="title-tabs">
+                <ul>
+                    <li>
+                        <a class='tab-trigger' href="{% url 'title_detail_comments' slug=title.slug %}">Comments</a>
+                    </li>
+                    <li>
+                        <a class='tab-trigger' href="#episodes-tab">Download <span class="hide-on-small-screen"> Episodes</span></a>
+                    </li>
+                </ul>
 
-	            </ul>
+                <div title="Episodes" id="episodes-tab">
+                    {% if title.episodes.all %}
+                        {% show_episodelist title %}
+                    {% else %}
+                        <h3>
+                            No Episodes Are Available Yet.
+                        </h3>
+                    {% endif %}
+                </div>
+            </div>
 
-	            <div title="Episodes" id="episodes-tab">
-	                {% if title.episodes.all %}
-	                    {% show_episodelist title %}
-	                {% else %}
-	                    <h3>
-	                        No Episodes Are Available Yet.
-	                    </h3>
-	                {% endif %}
-	            </div>
-	        </div>
-
-	        {% if title.license %}
-	            <p class="title-license">
-	                <a rel="license" href="{{ title.license.url }}"><img class="title-license-img" alt="{{ title.license.text }} Logo" src="{{ title.license.image_url }}"/></a>
-	                This work is licensed under a
-	                <a href="{{ title.license.url }}">{{ title.license.text }}</a> license.
-	            </p>
-	        {% endif %}
-	    </footer>
-
+            {% if title.license %}
+                <p class="title-license">
+                    <a rel="license" href="{{ title.license.url }}"><img class="title-license-img" alt="{{ title.license.text }} Logo" src="{{ title.license.image_url }}"/></a>
+                    This work is licensed under a
+                    <a href="{{ title.license.url }}">{{ title.license.text }}</a> license.
+                </p>
+            {% endif %}
+        </footer>
     </aside>
-
-
-
 {% endblock %}
 
