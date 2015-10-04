@@ -112,6 +112,63 @@ class FireTVView(View):
         return HttpResponse(json.dumps(return_data), content_type='application/json')
 
 
+class FireTVCategoryListView(View):
+    """FireTV JSON for A Title"""
+
+    def get(self, request, *args, **kwargs):
+        # ## Build Category & Root Folder Lists
+        categories = Category.objects.all().order_by('pk')
+        root_folders = []
+        category_folders = []
+        for category in categories:
+            # ## Root Folders - Folder Entries for Each Category
+            root_folders.append(
+                {
+                    'id': category.id + CATEGORY_ID_OFFSET,
+                    'type': 'folder',
+                }
+            )
+
+            # ## Category Folders - Folder for each Category
+            category_titles = category.title_set.all()
+            category_title_folders = []
+            for title in category_titles:
+                category_title_folders.append(
+                    {
+                        'id': title.id + TITLE_ID_OFFSET,
+                        'type': 'folder',
+                    }
+                )
+
+            category_folders.append(
+                {
+                    'id': category.id + CATEGORY_ID_OFFSET,
+                    'title': category.name,
+                    'imgURL': '',
+                    'description': category.name + ' Podiobooks',
+                    'contents': category_title_folders,
+                }
+            )
+
+        # ## Assemble Folders Object
+        folders = [{
+            'id': 1,
+            'title': 'root',
+            'imgURL': '',
+            'description': '',
+            'contents': [root_folders]
+        }, ]
+
+        folders.extend(category_folders)
+
+        # ## Assemble Return Data
+        return_data = {
+            'folders': folders
+        }
+
+        return HttpResponse(json.dumps(return_data), content_type='application/json')
+
+
 class FireTVMediaView(View):
     """FireTV JSON for A Title"""
 
