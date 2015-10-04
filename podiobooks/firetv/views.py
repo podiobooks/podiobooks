@@ -1,33 +1,112 @@
 """Django Search Views for FireTV"""
 
-from django.views.generic import View
-from podiobooks.core.models import Category, Title
 import json
+from email.utils import formatdate
 from django.http import HttpResponse
+from django.views.generic import View
+from podiobooks.core.models import Category, Episode, Title
+
+TITLE_ID_OFFSET = 1000000
+CATEGORY_ID_OFFSET = 2000000
 
 
 class FireTVView(View):
     """FireTV JSON"""
 
     def get(self, request, *args, **kwargs):
-        # titles = Title.objects.all()[:20]
-        categories = Category.objects.all().order_by('pk')[:20]
+
+        # ## Build Category & Root Folder Lists
+        categories = Category.objects.all().order_by('pk')
+        root_folders = []
         category_folders = []
         for category in categories:
-            category_folders.append({
-                'id': category.id,
-                'title': category.name,
-                'imgURL': '',
-                'description': category.name + ' Podiobooks',
-                'contents': ''
-            })
+            # ## Root Folders - Folder Entries for Each Category
+            root_folders.append(
+                {
+                    'id': category.id + CATEGORY_ID_OFFSET,
+                    'type': 'folder',
+                }
+            )
 
-        folders = {'folders': [{
+            # ## Category Folders - Folder for each Category
+            category_titles = category.title_set.all()[:20]
+            category_title_folders = []
+            for title in category_titles:
+                category_title_folders.append(
+                    {
+                        'id': title.id + TITLE_ID_OFFSET,
+                        'type': 'folder',
+                    }
+                )
+
+            category_folders.append(
+                {
+                    'id': category.id + CATEGORY_ID_OFFSET,
+                    'title': category.name,
+                    'imgURL': '',
+                    'description': category.name + ' Podiobooks',
+                    'contents': category_title_folders,
+                }
+            )
+
+        # ## Build Title Folder Lists
+        titles = Title.objects.all()[:20]
+        title_folders = []
+        for title in titles:
+            episodes = title.episodes.all()
+            episode_entries = []
+            for episode in episodes:
+                episode_entries.append(
+                    {
+                        'id': episode.id,
+                        'type': 'media'
+                    }
+                )
+
+            title_folders.append(
+                {
+                    'id': title.id + TITLE_ID_OFFSET,
+                    'title': title.name,
+                    'imgURL': title.libsyn_cover_image_url,
+                    'description': unicode(title.description),
+                    'contents': episode_entries
+                }
+            )
+
+        # ## Assemble Folders Object
+        folders = [{
             'id': 1,
             'title': 'root',
             'imgURL': '',
             'description': '',
-            'contents': category_folders
-        }], }
+            'contents': [root_folders]
+        }, ]
 
-        return HttpResponse(json.dumps(folders), content_type='application/json')
+        folders.extend(category_folders)
+        folders.extend(title_folders)
+
+        # ## Set Up Media Entries for Each Episode
+        episodes = Episode.objects.all()[:20]
+        media_entries = []
+        for episode in episodes:
+            media_entries.append(
+                {
+                    "id": episode.id,
+                    "title": episode.title.name,
+                    "pubDate": formatdate(float(episode.title.date_updated.strftime('%s'))),
+                    "thumbURL": episode.title.libsyn_cover_image_url,
+                    "imgURL": episode.title.libsyn_cover_image_url,
+                    "videoURL": episode.url,
+                    "type": "audio",
+                    "categories": list(episode.title.categories.values_list('name', flat=True)),
+                    "description": episode.description
+                }
+            )
+
+        # ## Assemble Return Data
+        return_data = {
+            'folders': folders,
+            'media': media_entries
+        }
+
+        return HttpResponse(json.dumps(return_data), content_type='application/json')
