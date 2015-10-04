@@ -1,9 +1,9 @@
-"""Django URLs for Site Search"""
+"""Django URLs for FireTV"""
 
 from django.conf.urls import patterns, url
-from .views import GoogleSearchView
+from .views import FireTVView
 
 urlpatterns = patterns('',
-                       # Google Custom Search
-                       url(r'^$', GoogleSearchView.as_view(), name='site_search'),
+                       # FireTV
+                       url(r'^$', FireTVView.as_view(), name='firetv'),
 )

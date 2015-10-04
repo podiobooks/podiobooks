@@ -56,6 +56,9 @@ urlpatterns = \
              # Feeds
              (r'^rss/', include('podiobooks.feeds.urls')),
 
+             # FireTv
+             (r'^firetv/', include('podiobooks.firetv.urls')),
+
              # Libsyn Utils
              (r'^libsyn/', include('podiobooks.libsyn.urls')),
 
