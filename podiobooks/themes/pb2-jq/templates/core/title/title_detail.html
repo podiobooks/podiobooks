@@ -77,6 +77,9 @@
         </div>
 
         <footer class="title-footer">
+            {% if contributor.patreon_username %}
+                <h2><a href="http://www.patreon.com/{{ contributor.patreon_username }}">Support this Author on Patreon!</a></h2>
+            {% endif %}
             <div class="title-tabs">
                 <ul>
                     <li>

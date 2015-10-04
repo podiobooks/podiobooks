@@ -67,6 +67,7 @@ class Contributor(models.Model):
     display_name = models.CharField(max_length=255)
     email_address = models.EmailField(max_length=1024, blank=True)
     community_handle = models.CharField(max_length=255, blank=True)
+    patreon_username = models.CharField(max_length=255, blank=True)
     scribl_username = models.CharField(max_length=255, blank=True)
     deleted = models.BooleanField(default=False)
     # Note: Titles are available a title_set.all()

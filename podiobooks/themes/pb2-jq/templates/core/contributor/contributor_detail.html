@@ -7,6 +7,10 @@
 		<h1>
 		    {{ contributor.display_name }}
 		</h1>
+
+        {% if contributor.patreon_username %}
+            <h2><a href="http://www.patreon.com/{{ contributor.patreon_username }}">Support this Author on Patreon!</a></h2>
+        {% endif %}
 		
 		{% show_titlelist title_list "contributor_title_list" %}
 	

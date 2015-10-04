@@ -117,7 +117,7 @@ class FireTVCategoryListView(View):
 
     def get(self, request, *args, **kwargs):
         # ## Build Category & Root Folder Lists
-        categories = Category.objects.all().order_by('pk')
+        categories = Category.objects.all().order_by('name')
         root_folders = []
         category_folders = []
         for category in categories:
