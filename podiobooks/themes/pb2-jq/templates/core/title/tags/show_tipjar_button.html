@@ -5,6 +5,7 @@
         <h2>Tip this Author!</h2>
 
         <p>Love this free audiobook? <a href="http://blog.podiobooks.com/why-you-should-donate/" target="blank">support</a> it!</p>
+
         <form class="tipjar-form" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
             <input type="hidden" name="cmd" value="_donations">
             <input type="hidden" name="business" value="{{ TIPJAR_BUSINESS_NAME }}">
@@ -18,5 +19,9 @@
             <br/>
             <input type="submit" id="title-tipjar-submit" value="Tip Author!" name="submit" class="tipjar-submit"/>
         </form>
+
+        {% if title.contributors.all.0.patreon_username %}
+            <h2><a href="http://www.patreon.com/{{ title.contributors.all.0.patreon_username }}">Support this Author on Patreon!</a></h2>
+        {% endif %}
     </div>
 {% endif %}

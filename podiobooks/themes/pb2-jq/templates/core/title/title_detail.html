@@ -53,7 +53,6 @@
                 {% autoescape off %}{{ title.description|linebreaks|removetags:"img" }}{% endautoescape %}
             </div>
 
-
             {% if not 'Erotica' in title.category_list %}
                 <div class="clearfix title-detail-content-ad-2-wrap">
                     {% include "core/ad/title_detail_sidebar_small.html" %}
@@ -77,9 +76,6 @@
         </div>
 
         <footer class="title-footer">
-            {% if contributor.patreon_username %}
-                <h2><a href="http://www.patreon.com/{{ contributor.patreon_username }}">Support this Author on Patreon!</a></h2>
-            {% endif %}
             <div class="title-tabs">
                 <ul>
                     <li>
