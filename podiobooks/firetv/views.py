@@ -3,7 +3,7 @@
 import json
 from email.utils import formatdate
 from django.http import HttpResponse
-from django.views.generic import View
+from django.views.generic import DetailView, View
 from podiobooks.core.models import Category, Episode, Title
 
 TITLE_ID_OFFSET = 1000000
@@ -106,6 +106,38 @@ class FireTVView(View):
         # ## Assemble Return Data
         return_data = {
             'folders': folders,
+            'media': media_entries
+        }
+
+        return HttpResponse(json.dumps(return_data), content_type='application/json')
+
+
+class FireTVMediaView(View):
+    """FireTV JSON for A Title"""
+
+    def get(self, request, *args, **kwargs):
+        pk = int(kwargs.get('pk', TITLE_ID_OFFSET)) - TITLE_ID_OFFSET
+
+        # ## Set Up Media Entries for Each Episode
+        episodes = Title.objects.get(pk=pk).episodes.all()
+        media_entries = []
+        for episode in episodes:
+            media_entries.append(
+                {
+                    "id": episode.id,
+                    "title": episode.title.name,
+                    "pubDate": formatdate(float(episode.title.date_updated.strftime('%s'))),
+                    "thumbURL": episode.title.libsyn_cover_image_url,
+                    "imgURL": episode.title.libsyn_cover_image_url,
+                    "videoURL": episode.url,
+                    "type": "audio",
+                    "categories": list(episode.title.categories.values_list('name', flat=True)),
+                    "description": episode.description
+                }
+            )
+
+        # ## Assemble Return Data
+        return_data = {
             'media': media_entries
         }
 
