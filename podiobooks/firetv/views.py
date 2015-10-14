@@ -109,8 +109,7 @@ class FireTVView(View):
             'media': media_entries
         }
 
-        return HttpResponse(json.dumps(return_data, sort_keys=True,
-...                  indent=4), content_type='application/json')
+        return HttpResponse(json.dumps(return_data, sort_keys=True, indent=4), content_type='application/json')
 
 
 class FireTVCategoryListView(View):
@@ -167,8 +166,7 @@ class FireTVCategoryListView(View):
             'folders': folders
         }
 
-        return HttpResponse(json.dumps(return_data, sort_keys=True,
-...                  indent=4), content_type='application/json')
+        return HttpResponse(json.dumps(return_data, sort_keys=True, indent=4), content_type='application/json')
 
 
 class FireTVMediaView(View):
@@ -200,5 +198,4 @@ class FireTVMediaView(View):
             'media': media_entries
         }
 
-        return HttpResponse(json.dumps(return_data, sort_keys=True,
-...                  indent=4), content_type='application/json')
+        return HttpResponse(json.dumps(return_data, sort_keys=True, indent=4), content_type='application/json')
