@@ -65,6 +65,7 @@ if "GONDOR_REDIS_URL" in os.environ:
         'django.contrib.sessions.middleware.SessionMiddleware',
         'django.contrib.auth.middleware.AuthenticationMiddleware',
         'django.contrib.messages.middleware.MessageMiddleware',
+        'x_robots_tag_middleware.middleware.XRobotsTagMiddleware',
 #        'podiobooks.feeds.middleware.ga_tracking.GATracker',
         'podiobooks.feeds.middleware.redirect_exception.RedirectException',
         'django.middleware.cache.UpdateCacheMiddleware',
