@@ -82,7 +82,8 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'podiobooks.feeds.middleware.ga_tracking.GATracker',
+    'x_robots_tag_middleware.middleware.XRobotsTagMiddleware',
+#    'podiobooks.feeds.middleware.ga_tracking.GATracker',
     'podiobooks.feeds.middleware.redirect_exception.RedirectException',
     # 'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -225,3 +226,5 @@ try:
     from podiobooks.settings_local import *
 except ImportError:
     pass
+
+X_ROBOTS_TAG = ['noindex', 'nofollow']
