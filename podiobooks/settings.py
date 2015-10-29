@@ -222,9 +222,9 @@ REST_FRAMEWORK = {
     ]
 }
 
+X_ROBOTS_TAG = ['noindex', 'nofollow']
+
 try:
     from podiobooks.settings_local import *
 except ImportError:
     pass
-
-X_ROBOTS_TAG = ['noindex', 'nofollow']
