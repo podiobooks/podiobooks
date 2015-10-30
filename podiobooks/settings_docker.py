@@ -64,8 +64,7 @@ EMAIL_USE_TLS = True
 MANAGERS = (('Podiobooks DEV', 'podiobooksdev@gmail.com'),)
 ADMINS = (('Podiobooks DEV', 'podiobooksdev@gmail.com'),)
 SEND_BROKEN_LINK_EMAILS = eval(os.environ.get("SEND_BROKEN_LINK_EMAILS", "False"))
-ALLOWED_HOSTS = ['.podiobooks.com', 'il086.gondor.co', 'lt832.gondor.co', 'sf602.gondor.co', 'jk134.gondor.co']
-REDIRECT_DOMAINS = ['il086.gondor.co', 'lt832.gondor.co', 'sf602.gondor.co', 'jk134.gondor.co']
+ALLOWED_HOSTS = ['.podiobooks.com', '.cyface.com']
 
 GOOGLE_ANALYTICS_ID = os.environ.get("GOOGLE_ANALYTICS_ID", GOOGLE_ANALYTICS_ID)
 
@@ -108,11 +107,6 @@ LOGGING = {
             "handlers": ["console"],
             'propagate': True,
             "level": "INFO",
-        },
-        'gunicorn': {
-            'handlers': ['console'],
-            'propagate': True,
-            'level': 'INFO',
         },
         'django': {
             'handlers': ['console'],
