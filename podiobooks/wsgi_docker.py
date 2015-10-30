@@ -19,7 +19,7 @@ framework.
 import os
 import newrelic.agent
 
-newrelic.agent.initialize('podiobooks/newrelic.ini', os.environ.get('INSTANCE_TYPE', 'development'))
+newrelic.agent.initialize('podiobooks/newrelic.ini', os.environ.get('INSTANCE_TYPE', 'staging'))
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "podiobooks.settings_docker")
 

@@ -15,7 +15,7 @@ DB_URL = 'db'
 DATABASES = {
     "default": {
         "ENGINE": 'django.db.backends.postgresql_psycopg2',
-        "NAME": 'db',
+        "NAME": 'postgres',
         "USER": 'podiobooks',
         "PASSWORD": 'podiobooks',
         "HOST": 'db',
@@ -28,10 +28,11 @@ CACHE_MIDDLEWARE_SECONDS = int(os.environ.get("CACHE_MIDDLEWARE_SECONDS", 5200))
 # Cache Settings
 CACHES = {
     'default': {
-        'BACKEND': 'redis_cache.cache.RedisCache',
-        'LOCATION': 'redis',
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': 'redis://redis:6379/1',
         'OPTIONS': {
             'DB': 1,
+	    "CLIENT_CLASS": "django_redis.client.DefaultClient",
         },
     },
 }
@@ -70,24 +71,11 @@ GOOGLE_ANALYTICS_ID = os.environ.get("GOOGLE_ANALYTICS_ID", GOOGLE_ANALYTICS_ID)
 
 SECRET_KEY = os.environ.get("SECRET_KEY", 'zv$+w7juz@(g!^53o0ai1u082)=jkz9my_r=3)fglrj5t8l$2#')
 
-INSTALLED_APPS += ()
-
 FILE_UPLOAD_PERMISSIONS = 0640
 
-MUB_MINIFY = True
+MUB_MINIFY = False
 
 X_ROBOTS_TAG = ['noindex', 'nofollow']
-
-# ## DEBUG TOOLBAR
-# ## Replicated Here to Enable Picking Up Environment Setting from Gondor
-if DEBUG:
-    MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
-    INSTALLED_APPS += ('debug_toolbar',)
-
-    DEBUG_TOOLBAR_CONFIG = {
-        'INTERCEPT_REDIRECTS': False
-    }
-    DEBUG_TOOLBAR_PATCH_SETTINGS = False  # Trying to get around gunicorn startup error
 
 LOGGING = {
     'version': 1,
