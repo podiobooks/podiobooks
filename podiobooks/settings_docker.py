@@ -7,7 +7,7 @@ import urlparse
 
 from .settings import *
 
-DEBUG = "False"
+DEBUG = eval(os.environ.get("DEBUG", "False"))
 TEMPLATE_DEBUG = DEBUG
 
 ACCEL_REDIRECT = True
@@ -32,7 +32,7 @@ CACHES = {
         'LOCATION': 'redis://redis:6379/1',
         'OPTIONS': {
             'DB': 1,
-	    "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        "CLIENT_CLASS": "django_redis.client.DefaultClient",
         },
     },
 }

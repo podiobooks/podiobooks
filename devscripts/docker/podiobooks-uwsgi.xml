@@ -9,7 +9,7 @@
 	<enable-threads>true</enable-threads>
 	<logto>/opt/podiobooks/data/uwsgi.log</logto>
 	<wsgi-file>/opt/podiobooks/data/podiobooks/podiobooks/wsgi_docker.py</wsgi-file>
-    <if-file>/opt/podiobooks/data/podiobooks/podiobooks_dep/docker/podiobooks-uwsgi-dev.xml</if-file>
-        <xml>/opt/podiobooks/data/podiobooks/podiobooks_dep/docker/podiobooks-uwsgi-dev.xml</xml>
+    <if-file>/opt/podiobooks/data/podiobooks-uwsgi-local.xml</if-file>
+        <xml>/opt/podiobooks/data/podiobooks-uwsgi-local.xml</xml>
     <endif/>
 </uwsgi>
