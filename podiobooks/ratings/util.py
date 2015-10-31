@@ -63,7 +63,7 @@ def get_rating_from_storage(request):
 
     # in_storage is the old vote (if there was one)
     try:
-        in_storage = int(request.REQUEST.get("in_storage", False))
+        in_storage = int(request.POST.get("in_storage", False))
         if in_storage != -1 and in_storage != 1:
             in_storage = False
     except ValueError:
