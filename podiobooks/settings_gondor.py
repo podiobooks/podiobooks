@@ -132,17 +132,6 @@ if os.environ.get("INSTANCE_TYPE", "") == 'production':
 else:
     X_ROBOTS_TAG = ['noindex', 'nofollow']
 
-# ## DEBUG TOOLBAR
-# ## Replicated Here to Enable Picking Up Environment Setting from Gondor
-if DEBUG:
-    MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
-    INSTALLED_APPS += ('debug_toolbar',)
-
-    DEBUG_TOOLBAR_CONFIG = {
-        'INTERCEPT_REDIRECTS': False
-    }
-    DEBUG_TOOLBAR_PATCH_SETTINGS = False  # Trying to get around gunicorn startup error
-
 LOGGING = {
     'version': 1,
     "disable_existing_loggers": False,

@@ -76,14 +76,15 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 
 MIDDLEWARE_CLASSES = (
     'podiobooks.core.middleware.StripAnalyticsCookies',
-    'django.middleware.gzip.GZipMiddleware',  # Not running SSL, so gzip doesn't matter
+    'django.middleware.gzip.GZipMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.contrib.admindocs.middleware.XViewMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'x_robots_tag_middleware.middleware.XRobotsTagMiddleware',
-#    'podiobooks.feeds.middleware.ga_tracking.GATracker',
+    #    'podiobooks.feeds.middleware.ga_tracking.GATracker',
     'podiobooks.feeds.middleware.redirect_exception.RedirectException',
     # 'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -96,6 +97,7 @@ ROOT_URLCONF = 'podiobooks.urls'
 
 INSTALLED_APPS = (
     'adminactions',
+    'debug_toolbar',
     'django.contrib.admin',
     'django.contrib.admindocs',
     'django.contrib.auth',
@@ -175,12 +177,6 @@ SECRET_KEY = 'zv$+w7juz@(g!^53o0ai1u082)=jkz9my_r=3)fglrj5t8l$2#'
 # Set a default timeout for external URL grabs, such as for the comments and for Google Analytics from Feeds
 socket.setdefaulttimeout(2)  # 2 second timeout for grabbing feed
 
-### DEBUG TOOLBAR
-if DEBUG:
-    MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
-    INTERNAL_IPS = ('127.0.0.1',)
-    INSTALLED_APPS += ('debug_toolbar',)
-
 ##### Custom Variables Below Here #######
 
 # Google Analytics ID
@@ -223,6 +219,13 @@ REST_FRAMEWORK = {
 }
 
 X_ROBOTS_TAG = ['noindex', 'nofollow']
+
+# http://django-debug-toolbar.readthedocs.org/en/1.4/installation.html#explicit-setup
+DEBUG_TOOLBAR_PATCH_SETTINGS = False
+INTERNAL_IPS = "127.0.0.1"
+DEBUG_TOOLBAR_CONFIG = {
+    'INTERCEPT_REDIRECTS': False
+}
 
 try:
     from podiobooks.settings_local import *
