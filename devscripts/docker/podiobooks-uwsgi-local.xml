@@ -1,11 +1,13 @@
 <uwsgi>
 	<workers>2</workers>
     <env>DEBUG=True</env>
-    <env>SECRET_KEY=zv$+w7juz@qg!q53o0ai1u082q=jkz9my_r=3qfglrj5t8l$2#></env>
+    <!-- Note that SECRET_KEY can't have any ^ or @ or ( )
+    <env>SECRET_KEY=></env>
     <env>EMAIL_BACKEND=django.core.mail.backends.smtp.EmailBackend</env>
-    <env>EMAIL_HOST=None</env>
-    <env>EMAIL_HOST_USER=None</env>
-    <env>EMAIL_HOST_PASSWORD=None</env>
+    <env>EMAIL_HOST=</env>
+    <env>EMAIL_HOST_USER=</env>
+    <env>EMAIL_HOST_PASSWORD=</env>
+    -->
     <env><![CDATA[DEFAULT_FROM_EMAIL="Podiobooks DEV <podiobooksdev@gmail.com>"]]></env>
     <env><![CDATA[SERVER_EMAIL="Podiobooks DEV <podiobooksdev@gmail.com>"]]></env>
     <env>MANAGERS="(('Podiobooks DEV', 'podiobooksdev@gmail.com'),)"</env>
@@ -16,7 +18,9 @@
     <env>INSTANCE_TYPE=development</env>
     <env>MEDIA_DOMAIN=dev.media.podiobooks.com</env>
     <env>FEED_DOMAIN=dev.feeds.podiobooks.com</env>
-    <env>FEED_CACHE_TOKEN=None</env>
-    <env>FEED_CACHE_SECRET=None</env>
+    <!--
+    <env>FEED_CACHE_TOKEN=</env>
+    <env>FEED_CACHE_SECRET=</env>
     <env>FEED_CACHE_ENDPOINT=http://endpoints.podiobooks.com/caching/url/</env>
+    -->
 </uwsgi>
