@@ -60,6 +60,7 @@ if "GONDOR_REDIS_URL" in os.environ:
     MIDDLEWARE_CLASSES = (
         'podiobooks.core.middleware.StripAnalyticsCookies',
         'django.middleware.gzip.GZipMiddleware',
+        'debug_toolbar.middleware.DebugToolbarMiddleware',
         'django.contrib.admindocs.middleware.XViewMiddleware',
         'django.middleware.csrf.CsrfViewMiddleware',
         'django.contrib.sessions.middleware.SessionMiddleware',
