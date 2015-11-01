@@ -15,7 +15,7 @@ DB_URL = 'db'
 DATABASES = {
     "default": {
         "ENGINE": 'django.db.backends.postgresql_psycopg2',
-        "NAME": 'postgres',
+        "NAME": 'podiobooks',
         "USER": 'podiobooks',
         "PASSWORD": 'podiobooks',
         "HOST": 'db',
