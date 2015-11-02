@@ -73,7 +73,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY", 'zv$+w7juz@(g!^53o0ai1u082)=jkz9my_r=3
 
 FILE_UPLOAD_PERMISSIONS = 0640
 
-MUB_MINIFY = False
+MUB_MINIFY = os.environ.get("MUB_MINIFY", False)
 
 X_ROBOTS_TAG = ['noindex', 'nofollow']
 
