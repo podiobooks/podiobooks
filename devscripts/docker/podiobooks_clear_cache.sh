@@ -3,4 +3,4 @@
 # The podiobooks-initial-setup.sh should create the key for you, but you have to add it in the github interface as the podiobooks user in github.
 cd /opt/podiobooks/data/podiobooks
 . .env/bin/activate
-python manage.py clear_cache
+python manage.py clear_cache --settings=podiobooks.settings_docker
