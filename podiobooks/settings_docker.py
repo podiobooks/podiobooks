@@ -75,7 +75,7 @@ FILE_UPLOAD_PERMISSIONS = 0640
 
 MUB_MINIFY = os.environ.get("MUB_MINIFY", False)
 
-X_ROBOTS_TAG = ['noindex', 'nofollow']
+X_ROBOTS_TAG = os.environ.get("X_ROBOTS_TAG", ['noindex', 'nofollow'])
 
 LOGGING = {
     'version': 1,
