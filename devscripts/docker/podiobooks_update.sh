@@ -9,4 +9,5 @@ python manage.py localize_title_covers --settings=podiobooks.settings_docker
 python manage.py collectstatic --noinput --settings=podiobooks.settings_docker
 python manage.py collectmedia --settings=podiobooks.settings_docker
 chown -R podiobooks.podiobooks /opt/podiobooks/data/podiobooks
+echo "Touching uWSGI"
 touch /opt/podiobooks/data/podiobooks-uwsgi.xml
