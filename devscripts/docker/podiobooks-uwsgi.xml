@@ -6,6 +6,7 @@
 	<master>true</master>
 	<pidfile>/opt/podiobooks/data/uwsgi.pid</pidfile>
 	<enable-threads>true</enable-threads>
+    <touch-reload>/opt/podiobooks/data/podiobooks-uwsgi.xml</touch-reload>
 	<logto>/opt/podiobooks/data/uwsgi.log</logto>
 	<wsgi-file>/opt/podiobooks/data/podiobooks/podiobooks/wsgi_docker.py</wsgi-file>
     <if-file>/opt/podiobooks/data/podiobooks-uwsgi-local.xml</if-file>
