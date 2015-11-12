@@ -122,8 +122,3 @@ class TopLevelUrlsTestCase(SimpleTestCase):
         response = self.client.get('/apple-touch-icon.png')
         self.assertEquals(302, response.status_code)
         self.assertFalse(response.has_header('X-Accel-Redirect'))
-
-    def test_queue_test(self):
-        response = self.client.get('/queue/test/')
-        self.assertEquals(200, response.status_code)
-        self.assertNotContains(response, 'error')
