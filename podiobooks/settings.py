@@ -86,8 +86,6 @@ ROOT_URLCONF = 'podiobooks.urls'
 
 INSTALLED_APPS = (
     'adminactions',
-    'celery',
-    'debug_toolbar',
     'django.contrib.admin',
     'django.contrib.admindocs',
     'django.contrib.auth',
