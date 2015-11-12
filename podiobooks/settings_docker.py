@@ -11,7 +11,6 @@ DEBUG = eval(os.environ.get("DEBUG", "False"))
 TEMPLATE_DEBUG = DEBUG
 
 ACCEL_REDIRECT = True
-DB_URL = 'db'
 DATABASES = {
     "default": {
         "ENGINE": 'django.db.backends.postgresql_psycopg2',
@@ -31,30 +30,10 @@ CACHES = {
         'BACKEND': 'django_redis.cache.RedisCache',
         'LOCATION': 'redis://redis:6379/1',
         'OPTIONS': {
-            'DB': 1,
-        "CLIENT_CLASS": "django_redis.client.DefaultClient",
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
         },
     },
 }
-
-MIDDLEWARE_CLASSES = (
-    'podiobooks.core.middleware.StripAnalyticsCookies',
-    'django.middleware.gzip.GZipMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
-    'django.contrib.admindocs.middleware.XViewMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'x_robots_tag_middleware.middleware.XRobotsTagMiddleware',
-#        'podiobooks.feeds.middleware.ga_tracking.GATracker',
-    'podiobooks.feeds.middleware.redirect_exception.RedirectException',
-    'django.middleware.cache.UpdateCacheMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.cache.FetchFromCacheMiddleware',
-    'django.middleware.http.ConditionalGetMiddleware',
-    'podiobooks.core.middleware.PermanentRedirectMiddleware',
-)
 
 EMAIL_BACKEND = os.environ.get("EMAIL_BACKEND", "django.core.mail.backends.console.EmailBackend")
 EMAIL_HOST = os.environ.get("EMAIL_HOST", "")
