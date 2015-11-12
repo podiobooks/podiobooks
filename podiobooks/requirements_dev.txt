@@ -1,5 +1,5 @@
 -r requirements.txt
-coverage==4.0.2
+coverage>=4.0
 docutils
 gondor>=1.2.5
 pylint>=1.4.4

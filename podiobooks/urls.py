@@ -70,6 +70,7 @@ urlpatterns = \
 
              # MUB
              (r'^mub/', include('mub.urls')),
+             url(r'^queue/test/$', 'podiobooks.views.test_task_queue', name='test_task_queue'),
 
              # Robots, Favicon and Related
              (r'^robots\.txt$', vary_on_headers('HOST')(RobotsView.as_view())),
@@ -143,11 +144,11 @@ urlpatterns = \
              # Audible Referral Program
              (r'audible/?$',
               RedirectView.as_view(url='http://www.audibletrial.com/PodiobooksAudible', permanent=True)),
-
+              
              # Audiobooks Referral Program
              (r'audiobooks/?$',
               RedirectView.as_view(url='http://affiliates.audiobooks.com/tracking/scripts/click.php?a_aid=54cb451d1bf77&a_bid=52ce997a', permanent=True)),
-             )
+    )
 
 # Only hook up the static and media to run through Django in a dev environment...in prod, handle with web server
 if settings.DEBUG:
@@ -155,12 +156,4 @@ if settings.DEBUG:
                             url(r'^media/(?P<path>.*)$', dev_static_views, {
                                 'document_root': settings.MEDIA_ROOT
                             }),
-                            )
-
-# Only hook up the debug toolbar to run in a dev environment.
-if settings.DEBUG:
-    import debug_toolbar
-
-    urlpatterns += patterns('',
-                            url(r'^__debug__/', include(debug_toolbar.urls)),
-                            )
+    )
