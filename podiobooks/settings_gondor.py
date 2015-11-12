@@ -33,6 +33,9 @@ if "GONDOR_REDIS_URL" in os.environ:
     GONDOR_REDIS_PORT = DB_URL.port
     GONDOR_REDIS_PASSWORD = DB_URL.password
     BROKER_URL = "redis://:%s@%s:%s/0" % (GONDOR_REDIS_PASSWORD, GONDOR_REDIS_HOST, GONDOR_REDIS_PORT)
+    CELERY_ALWAYS_EAGER = False
+    CELERY_REDIS_DB = 0
+
     CACHE_MIDDLEWARE_SECONDS = int(os.environ.get("CACHE_MIDDLEWARE_SECONDS", 5200))
 
     # Cache Settings
