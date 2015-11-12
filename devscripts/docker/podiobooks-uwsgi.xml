@@ -1,6 +1,7 @@
 <uwsgi>
 	<socket>/opt/podiobooks/data/uwsgi.sock</socket>
 	<chmod-socket>666</chmod-socket>
+    <stats>:1717</stats>
 	<chdir>/opt/podiobooks/data/podiobooks</chdir>
 	<virtualenv>/opt/podiobooks/data/podiobooks/.env</virtualenv>
 	<master>true</master>
