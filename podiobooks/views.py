@@ -1,10 +1,13 @@
 """ Django Views for the Overall Site"""
 
 from django.views.generic import RedirectView, TemplateView, View
+from django.views.decorators.cache import never_cache
 from django.http import HttpResponse, HttpResponseRedirect
 from django.conf import settings
 from django.http import Http404
 import os
+
+from podiobooks.feeds.tasks import hello_world
 
 
 class AccelView(View):
@@ -49,7 +52,6 @@ class AccelView(View):
         """ Handle PATCH Requests"""
         return self.get(request, *args, **kwargs)
 
-
 class TextTemplateView(TemplateView):
     """Utility View to Render text/plain Content Type"""
     content_type = 'text/plain'
@@ -76,3 +78,10 @@ class BlogRedirectView(RedirectView):
 
     def get_redirect_url(self, **kwargs):
         return 'http://blog.podiobooks.com' + self.kwargs.get('url_remainder', '')
+
+
+@never_cache
+def test_task_queue(request):
+    """Uncached test view for celery"""
+    hello_world.delay()
+    return HttpResponse("hi")
