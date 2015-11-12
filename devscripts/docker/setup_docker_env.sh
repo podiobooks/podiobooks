@@ -6,4 +6,4 @@
 
 virtualenv --no-site-packages .env
 . ./.env/bin/activate
-pip install -r podiobooks/requirements_uwsgi.txt
+pip install -r podiobooks/requirements_server.txt

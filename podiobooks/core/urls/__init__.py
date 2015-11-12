@@ -61,7 +61,5 @@ urlpatterns = \
              url(r'^title/(?P<slug>[^/]+)/feed', FeedRedirectView.as_view()),
              url(r'^bookfeed/(?P<user_id>\d+)/(?P<pk>\d+)/book\.xml', FeedRedirectView.as_view()),
              url(r'^bookfeed/sampler/(?P<pk>\d+)/book\.xml', FeedRedirectView.as_view()),
-
-             # API
-             # (r'^api/', include(urls_api)),
     )
+

@@ -20,12 +20,8 @@ PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 # Explicitly Define test runner to silence 1_6.W001 Warning
 TEST_RUNNER = 'django.test.runner.DiscoverRunner'
 
-DEBUG = True
+DEBUG = eval(os.environ.get("DEBUG", "True"))
 TEMPLATE_DEBUG = DEBUG
-
-# List of Admin users to be emailed by error system
-MANAGERS = ()
-ADMINS = MANAGERS
 
 # Domain Name to Prepend to MEDIA URL, used in feeds
 MEDIA_DOMAIN = ""
@@ -44,17 +40,10 @@ else:
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'mediaroot')
 
 # Staticfiles Config
-THE_THEME = "pb2-jq"
 STATIC_ROOT = PROJECT_ROOT + "/staticroot/"
-ACCEL_REDIRECT = False
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(PROJECT_ROOT, "themes", THE_THEME, "static"), ]
-TEMPLATE_DIRS = [os.path.join(PROJECT_ROOT, "themes", THE_THEME, 'templates'), ]
-LOCALIZED_COVER_PLACEHOLDER = STATIC_URL + "images/cover-placeholder.jpg"
-USE_COVER_PLACEHOLDERS_ONLY = False
-
-# URL to Use for Feeds
-FEED_URL = ""  # This will be overridden in prod conf with an alt protocol/domain
+STATICFILES_DIRS = [os.path.join(PROJECT_ROOT, "themes", "pb2-jq", "static"), ]
+TEMPLATE_DIRS = [os.path.join(PROJECT_ROOT, "themes", "pb2-jq", 'templates'), ]
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -116,36 +105,37 @@ INSTALLED_APPS = (
     'podiobooks.feeds',
     'podiobooks.search',
     'podiobooks.ratings',
-    'rest_framework',
 )
 
-### DATABASE SETTINGS
+# ## DATABASE SETTINGS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(PROJECT_ROOT, 'pb2.db'),
         'USER': 'pb2',
         'PASSWORD': '',
-        #        'HOST': '127.0.0.1',
-        #        'PORT': '', # Set to empty string for default.
-        #        'SUPPORTS_TRANSACTIONS': 'true',
     }
 }
 FIXTURE_DIRS = {os.path.join(PROJECT_ROOT, "..", "..", "podiobooks_data")}
 
-### CACHE SETTINGS
+# ## CACHE SETTINGS
+CACHE_MIDDLEWARE_SECONDS = int(os.environ.get("CACHE_MIDDLEWARE_SECONDS", "5200"))
+CACHE_MIDDLEWARE_ALIAS = os.environ.get("CACHE_MIDDLEWARE_ALIAS", "default")
 CACHES = {
-    # 'default': {
-    #     'BACKEND': 'django.core.cache.backends.locmem.LocMemCache'
-    # },
     'default': {
         'BACKEND': 'django.core.cache.backends.dummy.DummyCache'
-    }
+    },
+    'locmem': {
+         'BACKEND': 'django.core.cache.backends.locmem.LocMemCache'
+    },
+    'redis': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': 'redis://redis:6379/1',
+        'OPTIONS': {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        },
+    },
 }
-
-# Celery Setup
-BROKER_URL = 'memory'
-CELERY_ALWAYS_EAGER = True  # Force immediate running of async tasks on dev
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -172,54 +162,70 @@ USE_I18N = False
 USE_L10N = True
 
 # Make this unique, and don't share it with anybody.
-SECRET_KEY = 'zv$+w7juz@(g!^53o0ai1u082)=jkz9my_r=3)fglrj5t8l$2#'
+SECRET_KEY = os.environ.get("SECRET_KEY", 'zv$+w7juz@(g!^53o0ai1u082)=jkz9my_r=3)fglrj5t8l$2#')
+
+# # Allowed domains to connect
+ALLOWED_HOSTS = ['.podiobooks.com', '.cyface.com']
+
+# Permissions for File Uploads
+FILE_UPLOAD_PERMISSIONS = 0640
+
+# ## Email
+EMAIL_BACKEND = os.environ.get("EMAIL_BACKEND", "django.core.mail.backends.console.EmailBackend")
+EMAIL_HOST = os.environ.get("EMAIL_HOST", "")
+EMAIL_PORT = os.environ.get("EMAIL_PORT", 587)
+EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER", "")
+EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD", "")
+EMAIL_USE_TLS = True
+MANAGERS = (('Podiobooks DEV', 'podiobooksdev@gmail.com'),)
+ADMINS = (('Podiobooks DEV', 'podiobooksdev@gmail.com'),)
+SEND_BROKEN_LINK_EMAILS = eval(os.environ.get("SEND_BROKEN_LINK_EMAILS", "False"))
+
+# #### Custom Variables Below Here #######
 
 # Set a default timeout for external URL grabs, such as for the comments and for Google Analytics from Feeds
 socket.setdefaulttimeout(2)  # 2 second timeout for grabbing feed
 
-##### Custom Variables Below Here #######
+# # Cover Localization
+LOCALIZED_COVER_PLACEHOLDER = STATIC_URL + "images/cover-placeholder.jpg"
+USE_COVER_PLACEHOLDERS_ONLY = False
+
+# # Nginx Accel Redirect for favicon and robots
+ACCEL_REDIRECT = eval(os.environ.get("ACCEL_REDIRECT", "False"))
 
 # Google Analytics ID
-GOOGLE_ANALYTICS_ID = "UA-5071400-1"
+GOOGLE_ANALYTICS_ID = os.environ.get("GOOGLE_ANALYTICS_ID", "UA-5071400-1")
 
 # Facebook Application ID
-FACEBOOK_APP_ID = "155134080235"
+FACEBOOK_APP_ID = os.environ.get("FACEBOOK_APP_ID", "155134080235")
 
 # <meta name="descripton"> default value
 BASE_META_DESCRIPTION = "Free audio books delivered as podcasts. Subscribe for free to any book and start from chapter one. Podiobooks.com"
 
-### TIPJAR
+# ## TIPJAR
 TIPJAR_BUSINESS_NAME = 'evo@podiobooks.com'
 
-### MUB
+# ## MUB
 MUB_CSS_ORDER = (
     ("jquery.pbshelf.css", "clear.css", "styles.css", "base-shelf.css"),
     ("ads.css", "gsc-overrides.css", "adaptive.css", "small-screen.css")
 )
-MUB_MINIFY = False
+MUB_MINIFY = eval(os.environ.get("MUB_MINIFY", "False"))
 
 # This is to catch special domain names and redirect them to the main
-REDIRECT_DOMAINS = []
+REDIRECT_DOMAINS = os.environ.get("REDIRECT_DOMAINS",[])
 
-# static feed caching
-FEED_CACHE_ENDPOINT = ''
-FEED_CACHE_TOKEN = ''  # generated by endpoint service
-FEED_CACHE_SECRET = ''  # generated by endpoint service
+# Google Robots Tag Config, in prod you must change this or the site won't be indexed
+X_ROBOTS_TAG = os.environ.get("X_ROBOTS_TAG", ['noindex', 'nofollow'])
 
-CELERY_ACCEPT_CONTENT = ['json', 'msgpack', 'yaml']
-CELERY_TASK_SERIALIZER = 'json'
-CELERY_RESULT_SERIALIZER = 'json'
+# URL to Use for Feeds
+FEED_DOMAIN = os.environ.get("FEED_DOMAIN", "")
+if FEED_DOMAIN != "":
+    FEED_URL = "http://{0}".format(FEED_DOMAIN)
+else:
+    FEED_URL = ""
 
-REST_FRAMEWORK = {
-    # Use Django's standard `django.contrib.auth` permissions,
-    # or allow read-only access for unauthenticated users.
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
-    ]
-}
-
-X_ROBOTS_TAG = ['noindex', 'nofollow']
-
+# ## Debug Toolbar
 # http://django-debug-toolbar.readthedocs.org/en/1.4/installation.html#explicit-setup
 DEBUG_TOOLBAR_PATCH_SETTINGS = False
 INTERNAL_IPS = "127.0.0.1"
@@ -227,6 +233,54 @@ DEBUG_TOOLBAR_CONFIG = {
     'INTERCEPT_REDIRECTS': False
 }
 
+# ## LOGGING
+LOGGING = {
+    'version': 1,
+    "disable_existing_loggers": False,
+    'formatters': {
+        'verbose': {
+            'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
+        },
+        'simple': {
+            'format': '%(levelname)s %(message)s'
+        },
+    },
+    'handlers': {
+        'null': {
+            'level': 'DEBUG',
+            'class': 'django.utils.log.NullHandler',
+        },
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple'
+        },
+        'mail_admins': {
+            'level': 'ERROR',
+            'class': 'django.utils.log.AdminEmailHandler'
+        }
+    },
+    'loggers': {
+        "root": {
+            "handlers": ["console"],
+            'propagate': True,
+            "level": "INFO",
+        },
+        'django': {
+            'handlers': ['console'],
+            'propagate': True,
+            'level': 'INFO',
+        },
+        'django.request': {
+            'handlers': ['mail_admins'],
+            'level': 'ERROR',
+            'propagate': False,
+        },
+    }
+}
+
+
+# ## LOCAL SETTINGS OVERRIDES
 try:
     from podiobooks.settings_local import *
 except ImportError:
