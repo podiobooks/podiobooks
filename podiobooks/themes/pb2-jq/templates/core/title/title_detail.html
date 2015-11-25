@@ -78,9 +78,11 @@
         <footer class="title-footer">
             <div class="title-tabs">
                 <ul>
-                    <li>
-                        <a class='tab-trigger' href="{% url 'title_detail_comments' slug=title.slug %}">Comments</a>
-                    </li>
+                    {% if title.podiobooker_blog_url %}
+                        <li>
+                            <a class='tab-trigger' href="{% url 'title_detail_comments' slug=title.slug %}">Comments</a>
+                        </li>
+                    {% endif %}
                     <li>
                         <a class='tab-trigger' href="#episodes-tab">Download <span class="hide-on-small-screen"> Episodes</span></a>
                     </li>
