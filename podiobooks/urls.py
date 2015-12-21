@@ -151,7 +151,7 @@ urlpatterns = \
               
             # Pledge Vanity URL
              (r'pledge/?$',
-              RedirectView.as_view(url=' https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=H32A88G62SBKQ', permanent=True)),
+              RedirectView.as_view(url='https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=H32A88G62SBKQ', permanent=True)),
     )
 
 # Only hook up the static and media to run through Django in a dev environment...in prod, handle with web server
