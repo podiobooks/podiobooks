@@ -90,6 +90,10 @@ class TopLevelUrlsTestCase(SimpleTestCase):
     def test_start_redirect(self):
         response = self.client.get('/start')
         self.assertEquals(301, response.status_code)
+        
+    def test_pledge_redirect(self):
+        response = self.client.get('/pledge')
+        self.assertEquals(301, response.status_code)
 
     def test_robots(self):
         response = self.client.get('/robots.txt')
