@@ -17,3 +17,8 @@
 .donate .footer-ad{
 	display: none;
 }
+
+.subscribe-options .two-col-left img{
+	height: auto;
+	width: auto;
+}
