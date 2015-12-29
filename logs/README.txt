@@ -1,0 +1,1 @@
+The logs directory is a placeholder for logs.  Actual log files shouldn't be checked in.
