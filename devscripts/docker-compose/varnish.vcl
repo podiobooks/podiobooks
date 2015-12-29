@@ -1,3 +1,5 @@
+vcl 4.0;
+
 backend default {
 
     # Set a host.
@@ -20,7 +22,7 @@ sub vcl_recv {
   }
 
   # Only vary on the sessionid or csrftoken cookies
-  if (req.request == "GET" && (req.url ~ "^/static" || (req.http.cookie !~ "sessionid" && req.http.cookie !~ "csrftoken" && req.http.cookie !~ "AUTHENTICATION"))) {
+  if (req.method == "GET" && (req.url ~ "^/static" || (req.http.cookie !~ "sessionid" && req.http.cookie !~ "csrftoken" && req.http.cookie !~ "AUTHENTICATION"))) {
     remove req.http.Cookie;
   }
 
