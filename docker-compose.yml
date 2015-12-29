@@ -29,5 +29,5 @@ varnish:
     - 9500:80
   links:
     - nginx
-  volumes:
-    - ./devscripts/docker-compose/varnish.vcl:/etc/varnish/default.vcl:ro
+#  volumes:
+#    - ./devscripts/docker-compose/varnish.vcl:/etc/varnish/default.vcl:ro
