@@ -24,7 +24,7 @@ uwsgi:
     - db
     - redis
 varnish:
-  image: varnish
+  image: dockerimages/docker-varnish
   ports:
     - 9500:80
   links:
