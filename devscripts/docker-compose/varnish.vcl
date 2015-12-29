@@ -1,3 +1,5 @@
+vcl 4.0;
+
 /*
 *
 * First, set up a backend to answer the request if there's not a cache hit.
@@ -39,28 +41,6 @@ sub vcl_recv {
 }
 /*
 *
-* Next, let's set up the subroutine to deal with cache misses.
-*
-*/
-sub vcl_miss {
-
-    # We're not doing anything fancy. Just pass the request along to the
-    # subroutine which will fetch something from the backend.
-    return(fetch);
-}
-/*
-*
-* Now, let's set up a subroutine to deal with cache hits.
-*
-*/
-sub vcl_hit {
-
-    # Again, nothing fancy. Just pass the request along to the subroutine
-    # which will deliver a result from the cache.
-    return(deliver);
-}
-/*
-*
 * This is the subroutine which will fetch a response from the backend.
 * It's pretty fancy because this is where the basic logic for caching is set.
 *
@@ -80,14 +60,4 @@ sub vcl_fetch {
     return (deliver);
   }
 
-}
-/*
-*
-* Finally, let's set up a subroutine which will deliver a response to the client.
-*
-*/
-sub vcl_deliver {
-    # Nothing fancy. Just deliver the goods.
-    # Note: Both cache hits and cache misses will use this subroutine.
-    return(deliver);
 }
