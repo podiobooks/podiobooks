@@ -10,7 +10,7 @@ uwsgi:
   vacuum: true
   workers: 4
   wsgi-file: podiobooks/wsgi.py
-  cache2: name=mycache,items=100
-  route: ^/$ cache:key=myhome,name=mycache
-  route: ^/$ cachestore:key=myhome,name=mycache
+#  cache2: name=mycache,items=100
+#  route: ^/$ cache:key=myhome,name=mycache
+# route: ^/$ cachestore:key=myhome,name=mycache
 
