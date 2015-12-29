@@ -1,0 +1,26 @@
+redis:
+  image: redis
+db:
+  image: postgres
+uwsgi:
+  build: .
+  environment:
+    DJANGO_SETTINGS_MODULE: 'podiobooks.settings_docker_compose'
+  command: uwsgi --yaml=devscripts/docker-compose/uwsgi-compose.yml
+  volumes:
+    - .:/code
+  ports:
+    - 7000
+  links:
+    - db
+    - redis
+nginx:
+  image: nginx
+  links:
+    - uwsgi
+    - sd
+  volumes:
+    - .:/code
+    - ./devscripts/docker-compose/nginx.conf:/etc/nginx/nginx.conf:ro
+  ports:
+    - 9000:80

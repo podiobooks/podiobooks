@@ -1,0 +1,16 @@
+uwsgi:
+  chdir: /code
+  enable-threads: true
+  logfile-chmod: 644
+  logto: /code/logs/uwsgi.log
+  master: true
+  pidfile: /code/logs/uwsgi.pid
+  pythonpath: .
+  uwsgi-socket: 0.0.0.0:7000
+  vacuum: true
+  workers: 4
+  wsgi-file: podiobooks/wsgi.py
+  cache2: name=mycache,items=100
+  route: ^/$ cache:key=myhome,name=mycache
+  route: ^/$ cachestore:key=myhome,name=mycache
+
