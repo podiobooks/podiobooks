@@ -34,3 +34,5 @@ podiobooks/staticroot
 !podiobooks/staticroot/README.txt
 podiobooks/mediaroot
 !podiobooks/mediaroot/README.txt
+podiobooks/core/fixtures/alldata.json.zip
+logs
