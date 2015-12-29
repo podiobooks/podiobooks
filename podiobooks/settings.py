@@ -76,7 +76,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 
 MIDDLEWARE_CLASSES = (
     'podiobooks.core.middleware.StripAnalyticsCookies',
-    'django.middleware.gzip.GZipMiddleware',  # Not running SSL, so gzip doesn't matter
+#    'django.middleware.gzip.GZipMiddleware',  # Not running SSL, so gzip doesn't matter
     'django.contrib.admindocs.middleware.XViewMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
