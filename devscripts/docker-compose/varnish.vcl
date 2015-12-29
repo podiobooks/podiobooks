@@ -1,5 +1,3 @@
-vcl 4.0;
-
 backend default {
 
     # Set a host.
