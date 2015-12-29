@@ -12,5 +12,6 @@ uwsgi:
   wsgi-file: podiobooks/wsgi.py
   cache2: name=mycache,items=100
   route: ^/$ cache:key=myhome,name=mycache
+  route-if: contains:${HTTP_ACCEPT_ENCODING};gzip cache:key=gzipped_myhome,name=mycache,content_encoding=gzip
   route: ^/$ cachestore:key=myhome,name=mycache
 
