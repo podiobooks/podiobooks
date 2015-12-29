@@ -1,10 +1,5 @@
 vcl 4.0;
 
-/*
-*
-* First, set up a backend to answer the request if there's not a cache hit.
-*
-*/
 backend default {
 
     # Set a host.
@@ -13,51 +8,49 @@ backend default {
     # Set a port. 80 is normal Web traffic.
     .port = "9000";
 }
-/*
-*
-* Next, configure the "receive" subroutine.
-*
-*/
+
 sub vcl_recv {
 
-  # unless sessionid/csrftoken is in the request, don't pass ANY cookies (referral_source, utm, etc)
-  if (req.request == "GET" && (req.url ~ "^/static" || (req.http.cookie !~ "sessionid" && req.http.cookie !~ "csrftoken"))) {
+  # /static and /media files never cached
+  if (req.url ~ "^/static" || req.url ~ "^/media") {
+    return (pipe);
+  }
+
+  # Websocket support
+  if (req.http.Upgrade ~ "(?i)websocket") {
+     return (pipe);
+  }
+
+  # Only vary on the sessionid or csrftoken cookies
+  if (req.request == "GET" && (req.url ~ "^/static" || (req.http.cookie !~ "sessionid" && req.http.cookie !~ "csrftoken" && req.http.cookie !~ "AUTHENTICATION"))) {
     remove req.http.Cookie;
   }
 
-  # normalize accept-encoding to account for different browsers
-  # see: https://www.varnish-cache.org/trac/wiki/VCLExampleNormalizeAcceptEncoding
+  # Normalize accept-encoding to account for different browsers
   if (req.http.Accept-Encoding) {
-    if (req.http.Accept-Encoding ~ "gzip") {
-      set req.http.Accept-Encoding = "gzip";
+    if (req.url ~ "\.(jpg|png|gif|gz|tgz|bz2|tbz|mp3|ogg)$") {
+        # No point in compressing these
+        remove req.http.Accept-Encoding;
+    } elsif (req.http.Accept-Encoding ~ "gzip") {
+        set req.http.Accept-Encoding = "gzip";
     } elsif (req.http.Accept-Encoding ~ "deflate") {
-      set req.http.Accept-Encoding = "deflate";
+        set req.http.Accept-Encoding = "deflate";
     } else {
-      # unkown algorithm
-      remove req.http.Accept-Encoding;
+        # unknown algorithm
+        remove req.http.Accept-Encoding;
     }
   }
 
 }
-/*
-*
-* This is the subroutine which will fetch a response from the backend.
-* It's pretty fancy because this is where the basic logic for caching is set.
-*
-*/
-sub vcl_fetch {
 
-  # static files always cached
-  if (req.url ~ "^/static") {
-       unset beresp.http.set-cookie;
-       return (deliver);
-  }
+sub vcl_fetch {
+  # Set custom VCL header
+  set beresp.http.X-Varnish-Backend = beresp.backend.name;
 
   # pass through for anything with a session/csrftoken set
-  if (beresp.http.set-cookie ~ "sessionid" || beresp.http.set-cookie ~ "csrftoken") {
-    return (pass);
+  if (beresp.http.set-cookie ~ "sessionid" || beresp.http.set-cookie ~ "csrftoken" || beresp.http.set-cookie ~ "AUTHENTICATION") {
+    return (hit_for_pass);
   } else {
     return (deliver);
   }
-
 }
