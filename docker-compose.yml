@@ -1,33 +1,49 @@
 redis:
+  container_name: podiobooks_redis
+  dns:
+    - 127.0.0.1
   image: redis
 db:
+  container_name: podiobooks_postgres
+  dns:
+    - 127.0.0.1
   image: postgres
 nginx:
+  container_name: podiobooks_nginx
+  dns:
+    - 127.0.0.1
+    - 8.8.8.8
   image: nginx
-  links:
-    - uwsgi
+  ports:
+    - 8080
   volumes:
     - .:/code
     - ./devscripts/docker-compose/nginx.conf:/etc/nginx/nginx.conf:ro
-  ports:
-    - 9000:80
 uwsgi:
   build: .
+  command: uwsgi --yaml=devscripts/docker-compose/uwsgi-compose.yml
+  container_name: podiobooks_uwsgi
+  dns:
+    - 127.0.0.1
+    - 8.8.8.8
   environment:
     DJANGO_SETTINGS_MODULE: 'podiobooks.settings_docker_compose'
-  command: uwsgi --yaml=devscripts/docker-compose/uwsgi-compose.yml
-  volumes:
-    - .:/code
   ports:
     - 7000
-  links:
-    - db
-    - redis
+  volumes:
+    - .:/code
 varnish:
+  container_name: podiobooks_varnish
+  environment:
+    VARNISHD_PARAMS: -a :8000
+  dns:
+    - 127.0.0.1
+    - 8.8.8.8
   image: million12/varnish
   ports:
-    - 9500:80
-  links:
-    - nginx
+    - 8000:8000
   volumes:
     - ./devscripts/docker-compose/varnish.vcl:/etc/varnish/default.vcl:ro
+  volumes_from:
+    - uwsgi # Forces varnish to load after uwsgi
+    - nginx # Forces varnish to load after nginx

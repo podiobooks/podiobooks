@@ -12,9 +12,21 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'postgres',
         'USER': 'postgres',
-        'HOST': 'db',
+        'HOST': 'podiobooks_postgres',
         'PORT': 5432,
     }
 }
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '192.168.99.100', '.cyface.com']
+# Cache Settings
+CACHES = {
+    'default': {
+        'BACKEND': 'django_redis.cache.RedisCache',
+        'LOCATION': 'redis://podiobooks_redis:6379/1',
+        'OPTIONS': {
+            'DB': 1,
+        "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        },
+    },
+}
+
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '192.168.99.100', '.cyface.com', '.podiobooks.com']

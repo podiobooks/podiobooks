@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-docker-compose run uwsgi /bin/bash
+docker-compose --x-networking run uwsgi /bin/bash

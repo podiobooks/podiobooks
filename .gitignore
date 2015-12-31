@@ -23,16 +23,15 @@ js-*_.js
 local_settings.py
 nosetests.xml
 reports
-settings_local.py
-settings_local_test.py
-settings_test_local.py
+settings_local*
 style-*_.css
 mediabrute_usefile
 *conflicted\ copy*
 .codeintel/*
-podiobooks/staticroot
+podiobooks/staticroot/*
 !podiobooks/staticroot/README.txt
-podiobooks/mediaroot
+podiobooks/mediaroot/*
 !podiobooks/mediaroot/README.txt
 podiobooks/core/fixtures/alldata.json.zip
-logs
+logs/*
+!logs/README.txt

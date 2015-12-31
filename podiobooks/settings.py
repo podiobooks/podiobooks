@@ -14,88 +14,21 @@ It is ignored by default by .gitignore, so if you don't mess with that, you shou
 import os
 import socket
 
-# Set the root path of the project so it's not hard coded
-PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-# Explicitly Define test runner to silence 1_6.W001 Warning
-TEST_RUNNER = 'django.test.runner.DiscoverRunner'
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = os.environ.get("SECRET_KEY", 'zv$+w7juz@(g!^53o0ai1u082)=jkz9my_r=3)fglrj5t8l$2#')
 
-DEBUG = True
-TEMPLATE_DEBUG = DEBUG
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = os.environ.get("DEBUG", True)
+INTERNAL_IPS = os.environ.get("INTERNAL_IPS", '127.0.0.1',)
 
-# List of Admin users to be emailed by error system
-MANAGERS = ()
-ADMINS = MANAGERS
+# URL Config
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", ['127.0.0.1', 'localhost', '.cyface.com', '.podiobooks.com', ])
 
-# Domain Name to Prepend to MEDIA URL, used in feeds
-MEDIA_DOMAIN = ""
-
-# URL that handles the media served from MEDIA_ROOT. Make sure to use a
-# trailing slash if there is a path component (optional in other cases).
-# Examples: "http://media.lawrence.com", "http://example.com/media/"
-if MEDIA_DOMAIN != "":
-    MEDIA_URL = "http://{0}/media/".format(MEDIA_DOMAIN)  # this maps inside of a static_urls URL in gondor.yml
-else:
-    MEDIA_URL = "/media/"  # make sure this maps inside of a static_urls URL in gondor.yml
-
-# Absolute path to the directory that holds media.
-# Note that as of Django 1.3 - media is for uploaded files only.
-# Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'mediaroot')
-
-# Staticfiles Config
-THE_THEME = "pb2-jq"
-STATIC_ROOT = PROJECT_ROOT + "/staticroot/"
-ACCEL_REDIRECT = False
-STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(PROJECT_ROOT, "themes", THE_THEME, "static"), ]
-TEMPLATE_DIRS = [os.path.join(PROJECT_ROOT, "themes", THE_THEME, 'templates'), ]
-LOCALIZED_COVER_PLACEHOLDER = STATIC_URL + "images/cover-placeholder.jpg"
-USE_COVER_PLACEHOLDERS_ONLY = False
-
-# URL to Use for Feeds
-FEED_URL = ""  # This will be overridden in prod conf with an alt protocol/domain
-
-# List of callables that know how to import templates from various sources.
-TEMPLATE_LOADERS = (
-    'django.template.loaders.filesystem.Loader',
-    'django.template.loaders.app_directories.Loader',
-)
-
-# List of callables that add their data to each template
-TEMPLATE_CONTEXT_PROCESSORS = (
-    'django.core.context_processors.debug',
-    'django.contrib.auth.context_processors.auth',
-    'django.core.context_processors.media',
-    'django.core.context_processors.static',
-    'podiobooks.core.context_processors.js_api_keys',
-    'podiobooks.core.context_processors.current_site',
-    'podiobooks.core.context_processors.feed_settings',
-    'django.core.context_processors.request',
-)
-
-MIDDLEWARE_CLASSES = (
-    'podiobooks.core.middleware.StripAnalyticsCookies',
-#    'django.middleware.gzip.GZipMiddleware',  # Not running SSL, so gzip doesn't matter
-    'django.contrib.admindocs.middleware.XViewMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'x_robots_tag_middleware.middleware.XRobotsTagMiddleware',
-#    'podiobooks.feeds.middleware.ga_tracking.GATracker',
-    'podiobooks.feeds.middleware.redirect_exception.RedirectException',
-    # 'django.middleware.cache.UpdateCacheMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    # 'django.middleware.cache.FetchFromCacheMiddleware',
-    'django.middleware.http.ConditionalGetMiddleware',
-    'podiobooks.core.middleware.PermanentRedirectMiddleware',
-)
-
-ROOT_URLCONF = 'podiobooks.urls'
-
-INSTALLED_APPS = (
+INSTALLED_APPS = [
     'adminactions',
+    'debug_toolbar',
     'django.contrib.admin',
     'django.contrib.admindocs',
     'django.contrib.auth',
@@ -114,13 +47,53 @@ INSTALLED_APPS = (
     'podiobooks.feeds',
     'podiobooks.search',
     'podiobooks.ratings',
-)
+]
 
-### DATABASE SETTINGS
+MIDDLEWARE_CLASSES = [
+    'django.middleware.gzip.GZipMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'django.contrib.admindocs.middleware.XViewMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'x_robots_tag_middleware.middleware.XRobotsTagMiddleware',
+    'podiobooks.feeds.middleware.redirect_exception.RedirectException',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.http.ConditionalGetMiddleware',
+    'podiobooks.core.middleware.PermanentRedirectMiddleware',
+]
+
+ROOT_URLCONF = 'podiobooks.urls'
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [os.path.join(BASE_DIR, "podiobooks", "themes", 'pb2-jq', 'templates'), ],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.core.context_processors.debug',
+                'django.contrib.auth.context_processors.auth',
+                'django.template.context_processors.media',
+                'django.template.context_processors.static',
+                'podiobooks.core.context_processors.js_api_keys',
+                'podiobooks.core.context_processors.current_site',
+                'podiobooks.core.context_processors.feed_settings',
+                'django.core.context_processors.request',
+            ],
+            'debug': DEBUG,
+        },
+    }
+]
+
+WSGI_APPLICATION = 'podiobooks.wsgi.application'
+
+# Database
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(PROJECT_ROOT, 'pb2.db'),
+        'NAME': os.path.join(BASE_DIR, 'podiobooks', 'pb2.db'),
         'USER': 'pb2',
         'PASSWORD': '',
         #        'HOST': '127.0.0.1',
@@ -128,9 +101,28 @@ DATABASES = {
         #        'SUPPORTS_TRANSACTIONS': 'true',
     }
 }
-FIXTURE_DIRS = {os.path.join(PROJECT_ROOT, "..", "..", "podiobooks_data")}
+FIXTURE_DIRS = {os.path.join(BASE_DIR, "..", "..", "podiobooks_data")}
 
-### CACHE SETTINGS
+
+# Password validation
+# https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
+AUTH_PASSWORD_VALIDATORS = [
+    {
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+    },
+    {
+        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+    },
+]
+
+
+# Cache Settings
 CACHES = {
     # 'default': {
     #     'BACKEND': 'django.core.cache.backends.locmem.LocMemCache'
@@ -140,80 +132,99 @@ CACHES = {
     }
 }
 
-# Celery Setup
-BROKER_URL = 'memory'
-CELERY_ALWAYS_EAGER = True  # Force immediate running of async tasks on dev
-
-# Local time zone for this installation. Choices can be found here:
-# http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
-# although not all choices may be available on all operating systems.
-# If running in a Windows environment this must be set to the same as your
-# system time zone.
-TIME_ZONE = 'America/Denver'
-
-# If you set this to False, Django will not use timezone-aware datetimes.
-USE_TZ = True
-
-# Language code for this installation. All choices can be found here:
-# http://www.i18nguy.com/unicode/language-identifiers.html
+# Internationalization
 LANGUAGE_CODE = 'en-us'
-
-SITE_ID = 1
-
-# If you set this to False, Django will make some optimizations so as not
-# to load the internationalization machinery.
+TIME_ZONE = 'America/Denver'
 USE_I18N = False
-
-# If you set this to False, Django will not format dates, numbers and
-# calendars according to the current locale.
 USE_L10N = True
 
-# Make this unique, and don't share it with anybody.
-SECRET_KEY = 'zv$+w7juz@(g!^53o0ai1u082)=jkz9my_r=3)fglrj5t8l$2#'
+# Sites
+SITE_ID = 1
+
+# Media Config
+MEDIA_DOMAIN = os.environ.get('MEDIA_DOMAIN', "")
+if MEDIA_DOMAIN != "":
+    MEDIA_URL = "http://{0}/media/".format(MEDIA_DOMAIN)  # this maps inside of a static_urls URL in gondor.yml
+else:
+    MEDIA_URL = "/media/"  # make sure this maps inside of a static_urls URL in gondor.yml
+MEDIA_ROOT = os.path.join(BASE_DIR, "podiobooks", 'mediaroot')
+FILE_UPLOAD_PERMISSIONS = int(os.environ.get('FILE_UPLOAD_PERMISSIONS', 0644))
+
+# Staticfiles Config
+STATIC_ROOT = os.path.join(BASE_DIR, "podiobooks", "staticroot")
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "podiobooks", "themes", "pb2-jq", "static"), ]
 
 # Set a default timeout for external URL grabs, such as for the comments and for Google Analytics from Feeds
 socket.setdefaulttimeout(2)  # 2 second timeout for grabbing feed
 
-### DEBUG TOOLBAR
-if DEBUG:
-    MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
-    INTERNAL_IPS = ('127.0.0.1',)
-    INSTALLED_APPS += ('debug_toolbar',)
+# Email Settings
+EMAIL_BACKEND = os.environ.get("EMAIL_BACKEND", "django.core.mail.backends.console.EmailBackend")
+EMAIL_HOST = os.environ.get("EMAIL_HOST", "")
+EMAIL_PORT = int(os.environ.get("EMAIL_PORT", 587))
+EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER", "")
+EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD", "")
+EMAIL_USE_TLS = True
+
+# Error Email Settings
+MANAGERS = os.environ.get('MANAGERS', ())
+ADMINS = MANAGERS
+SEND_BROKEN_LINK_EMAILS = eval(os.environ.get("SEND_BROKEN_LINK_EMAILS" == 'True', "False"))
 
 ##### Custom Variables Below Here #######
 
+# Celery
+BROKER_URL = 'memory'
+CELERY_ALWAYS_EAGER = os.environ.get("CELERY_ALWAYS_EAGER" == 'True', True)  # Force immediate running of async tasks on dev
+CELERY_ACCEPT_CONTENT = ['json', 'msgpack', 'yaml']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_REDIS_DB = os.environ.get("CELERY_REDIS_DB", 0)
+
+# Debug Toolbar
+DEBUG_TOOLBAR_PATCH_SETTINGS = False
+
 # Google Analytics ID
-GOOGLE_ANALYTICS_ID = "UA-5071400-1"
+GOOGLE_ANALYTICS_ID = os.environ.get("GOOGLE_ANALYTICS_ID", "UA-5071400-1")
 
 # Facebook Application ID
-FACEBOOK_APP_ID = "155134080235"
+FACEBOOK_APP_ID = os.environ.get("FACEBOOK_APP_ID", "155134080235")
 
 # <meta name="descripton"> default value
 BASE_META_DESCRIPTION = "Free audio books delivered as podcasts. Subscribe for free to any book and start from chapter one. Podiobooks.com"
 
-### TIPJAR
-TIPJAR_BUSINESS_NAME = 'evo@podiobooks.com'
+# PayPal Email Address
+TIPJAR_BUSINESS_NAME = "evo@podiobooks.com"
 
-### MUB
+# Accel Redirect View
+ACCEL_REDIRECT = os.environ.get("ACCEL_REDIRECT" == 'True', False)
+
+# MUB Minify
 MUB_CSS_ORDER = (
     ("jquery.pbshelf.css", "clear.css", "styles.css", "base-shelf.css"),
     ("ads.css", "gsc-overrides.css", "adaptive.css", "small-screen.css")
 )
-MUB_MINIFY = False
+MUB_MINIFY = os.environ.get("MUB_MINIFY" == 'True', False)
 
-# This is to catch special domain names and redirect them to the main
-REDIRECT_DOMAINS = []
+# Feed URL/Caching
+FEED_DOMAIN = os.environ.get("FEED_DOMAIN", "")
+if FEED_DOMAIN != "":
+    FEED_URL = "http://{0}".format(FEED_DOMAIN)
+else:
+    FEED_URL = ""
+FEED_CACHE_ENDPOINT = str(os.environ.get("FEED_CACHE_ENDPOINT", ""))
+FEED_CACHE_TOKEN = str(os.environ.get("FEED_CACHE_TOKEN", ""))  # generated by endpoint service
+FEED_CACHE_SECRET = str(os.environ.get("FEED_CACHE_SECRET", ""))  # generated by endpoint service
 
-# static feed caching
-FEED_CACHE_ENDPOINT = ''
-FEED_CACHE_TOKEN = ''  # generated by endpoint service
-FEED_CACHE_SECRET = ''  # generated by endpoint service
+# Cover Rendition Generation
+LOCALIZED_COVER_PLACEHOLDER = STATIC_URL + "images/cover-placeholder.jpg"
+USE_COVER_PLACEHOLDERS_ONLY = False
 
-CELERY_ACCEPT_CONTENT = ['json', 'msgpack', 'yaml']
-CELERY_TASK_SERIALIZER = 'json'
-CELERY_RESULT_SERIALIZER = 'json'
+# X-Robots-Tag Middleware - By Default Site Won't Be Indexed
+X_ROBOTS_TAG = os.environ.get("X_ROBOTS_TAG", "noindex, nofollow").split(',')
 
-X_ROBOTS_TAG = ['noindex', 'nofollow']
+# Redirect Domains
+REDIRECT_DOMAINS = os.environ.get("REDIRECT_DOMAINS", "").split(',')
 
 try:
     from podiobooks.settings_local import *

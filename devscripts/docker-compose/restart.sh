@@ -4,4 +4,4 @@ docker-compose stop nginx
 docker-compose kill -s SIGINT uwsgi
 docker-compose stop db redis
 sleep 1s
-docker-compose up -d
+docker-compose --x-networking up -d
