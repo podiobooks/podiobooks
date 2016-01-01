@@ -1,7 +1,6 @@
 """
 Utilities to pull down local copies of all the covers.
 """
-from optparse import make_option
 
 from django.db.models import Q
 from django.core.management.base import BaseCommand
@@ -17,19 +16,22 @@ class Command(BaseCommand):
     args = '(<title_slug> <title_slug> <title_slug>)'
     help = 'Localizes all title covers (or a selected few, based on a slugs)'
 
-    option_list = BaseCommand.option_list + (
-        make_option(
-            '--force',
-            action='store_true',
-            dest='force',
-            default=False,
-            help='Force localization of covers, even if one is already set'),
-        )
+    def add_arguments(self, parser):
+        # Positional arguments
+        parser.add_argument('title_list', nargs='*')
+
+        # Named (optional) arguments
+        parser.add_argument('--force',
+                            action='store_true',
+                            dest='force',
+                            default=False,
+                            help='Force localization of covers, even if one is already set')
 
     def handle(self, *args, **options):
         titles = Title.objects.exclude(Q(libsyn_slug__isnull=True) | Q(libsyn_slug='') | Q(deleted=True))
 
         if len(args) > 0:
+            print "len"
             titles = titles.filter(slug__in=args)
 
         if not options['force']:

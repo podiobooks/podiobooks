@@ -2,10 +2,10 @@
 
 import os, shutil
 from django.conf import settings
-from django.core.management.base import CommandError, NoArgsCommand
+from django.core.management.base import CommandError, BaseCommand
 
 
-class Command(NoArgsCommand):
+class Command(BaseCommand):
     """
         Copy media to MEDIA_ROOT
     """

@@ -21,13 +21,14 @@ SECRET_KEY = os.environ.get("SECRET_KEY", 'zv$+w7juz@(g!^53o0ai1u082)=jkz9my_r=3
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DEBUG", True)
-INTERNAL_IPS = os.environ.get("INTERNAL_IPS", '127.0.0.1',)
+INTERNAL_IPS = os.environ.get("INTERNAL_IPS", '127.0.0.1', )
 
 # URL Config
 ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", ['127.0.0.1', 'localhost', '.cyface.com', '.podiobooks.com', ])
 
 INSTALLED_APPS = [
     'adminactions',
+    'cache_purge_hooks',
     'debug_toolbar',
     'django.contrib.admin',
     'django.contrib.admindocs',
@@ -73,14 +74,14 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
-                'django.core.context_processors.debug',
+                'django.template.context_processors.debug',
                 'django.contrib.auth.context_processors.auth',
                 'django.template.context_processors.media',
                 'django.template.context_processors.static',
                 'podiobooks.core.context_processors.js_api_keys',
                 'podiobooks.core.context_processors.current_site',
                 'podiobooks.core.context_processors.feed_settings',
-                'django.core.context_processors.request',
+                'django.template.context_processors.request',
             ],
             'debug': DEBUG,
         },
@@ -103,7 +104,6 @@ DATABASES = {
 }
 FIXTURE_DIRS = {os.path.join(BASE_DIR, "..", "..", "podiobooks_data")}
 
-
 # Password validation
 # https://docs.djangoproject.com/en/1.9/ref/settings/#auth-password-validators
 AUTH_PASSWORD_VALIDATORS = [
@@ -121,7 +121,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Cache Settings
 CACHES = {
     # 'default': {
@@ -135,6 +134,7 @@ CACHES = {
 # Internationalization
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'America/Denver'
+USE_TZ = True
 USE_I18N = False
 USE_L10N = True
 
@@ -225,6 +225,60 @@ X_ROBOTS_TAG = os.environ.get("X_ROBOTS_TAG", "noindex, nofollow").split(',')
 
 # Redirect Domains
 REDIRECT_DOMAINS = os.environ.get("REDIRECT_DOMAINS", "").split(',')
+
+# Varnish
+CACHE_PURGE_HOOKS_BACKEND = 'cache_purge_hooks.backends.dummy.Dummy'
+
+# Logging
+LOGGING = {
+    'version': 1,
+    "disable_existing_loggers": False,
+    'formatters': {
+        'verbose': {
+            'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
+        },
+        'simple': {
+            'format': '%(levelname)s %(message)s'
+        },
+    },
+    'handlers': {
+        'null': {
+            'level': 'DEBUG',
+            'class': 'logging.NullHandler',
+        },
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'simple'
+        },
+        'mail_admins': {
+            'level': 'ERROR',
+            'class': 'django.utils.log.AdminEmailHandler'
+        }
+    },
+    'loggers': {
+        "root": {
+            "handlers": ["console"],
+            'propagate': True,
+            "level": "INFO",
+        },
+        'gunicorn': {
+            'handlers': ['console'],
+            'propagate': True,
+            'level': 'INFO',
+        },
+        'django': {
+            'handlers': ['console'],
+            'propagate': True,
+            'level': 'DEBUG',
+        },
+        'django.request': {
+            'handlers': ['mail_admins'],
+            'level': 'ERROR',
+            'propagate': False,
+        },
+    }
+}
 
 try:
     from podiobooks.settings_local import *

@@ -14,15 +14,10 @@ backend nginx {
 
 sub vcl_recv {
     # Proxy /static to nginx, everything else to uwsgi.
-    if (req.url ~ "^/static/|^/media/") {
+    if (req.url ~ "^/static|media/") {
         set req.backend_hint = nginx;
     } else {
         set req.backend_hint = uwsgi;
-    }
-
-    # Don't Cache Admin Site
-    if (req.url ~ "^/admin/") {
-        return(pass);
     }
 
     # Remove any Google Analytics based cookies
@@ -32,9 +27,6 @@ sub vcl_recv {
     set req.http.Cookie = regsuball(req.http.Cookie, "utmctr=[^;]+(; )?", "");
     set req.http.Cookie = regsuball(req.http.Cookie, "utmcmd.=[^;]+(; )?", "");
     set req.http.Cookie = regsuball(req.http.Cookie, "utmccn.=[^;]+(; )?", "");
-
-    # Remove Django CRSF Token Cookie
-    set req.http.Cookie = regsuball(req.http.Cookie, "csrftoken=[^;]+(; )?", "");
 
     return(hash);
 }

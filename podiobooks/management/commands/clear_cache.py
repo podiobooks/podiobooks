@@ -1,10 +1,10 @@
 """Clears the Cache"""
 
 from django.core.cache import cache
-from django.core.management.base import NoArgsCommand
+from django.core.management.base import BaseCommand
 
 
-class Command(NoArgsCommand):
+class Command(BaseCommand):
     """
         Clears the Cache
     """

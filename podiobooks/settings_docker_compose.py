@@ -5,7 +5,9 @@ try:
 except ImportError:
     pass
 
-DEBUG = False
+DEBUG = True
+
+ALLOWED_HOSTS = ['localhost', '.podiobooks.com', '.cyface.com', '192.168.99.100']
 
 DATABASES = {
     'default': {
@@ -29,4 +31,10 @@ CACHES = {
     },
 }
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '192.168.99.100', '.cyface.com', '.podiobooks.com']
+# Varnish
+CACHE_PURGE_HOOKS_BACKEND = 'cache_purge_hooks.backends.varnishbackend.VarnishManager'
+VARNISHADM_HOST = "podiobooks_varnish"
+VARNISHADM_PORT = 6082
+VARNISHADM_SECRET = "/etc/varnish/secret"
+VARNISHADM_SITE_DOMAIN = ".*"
+VARNISHADM_BIN = "/usr/bin/varnishadm"

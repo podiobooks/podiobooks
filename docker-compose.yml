@@ -32,18 +32,21 @@ uwsgi:
     - 7000
   volumes:
     - .:/code
+    - ./devscripts/docker-compose/varnish_secret:/etc/varnish/secret:ro
 varnish:
   container_name: podiobooks_varnish
   environment:
-    VARNISHD_PARAMS: -a :8000
+    VARNISHD_PARAMS: -a :8000 -T :6082 -S /etc/varnish/secret
   dns:
     - 127.0.0.1
     - 8.8.8.8
   image: million12/varnish
   ports:
+    - 6082 # Management Port
     - 8000:8000
   volumes:
     - ./devscripts/docker-compose/varnish.vcl:/etc/varnish/default.vcl:ro
+    - ./devscripts/docker-compose/varnish_secret:/etc/varnish/secret:ro
   volumes_from:
-    - uwsgi # Forces varnish to load after uwsgi
     - nginx # Forces varnish to load after nginx
+    - uwsgi  # Forces varnish to load after uwsgi

@@ -1,12 +1,15 @@
 """Podiobooks Main Models File"""
 
 from __future__ import division
+from cache_purge_hooks import cache_purge_hook
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.exceptions import ObjectDoesNotExist
 from django.db.models.signals import post_save
 from django.template.loader import render_to_string
 
 from noodles.models import DefinedWidthsAssetsFromImagesMixin
+
 
 # pylint: disable=C0111,R0201,W0232,W1001
 
@@ -91,6 +94,7 @@ class ContributorType(models.Model):
     slug = models.SlugField()
     name = models.CharField(max_length=255)
     byline_text = models.CharField(max_length=255)
+
     # Note: TitleContributor Objects (intermediate table) are available as titlecontributors.all()
 
     class Meta(object):
@@ -132,10 +136,29 @@ class Episode(models.Model):
     def get_absolute_url(self):
         return 'episode_detail', [self.id]  # pylint: disable=E1101
 
-    def _get_filesize_mb(self):
-        return round(self.filesize / 1024.0 / 1024.0, 2)
+    def get_absolute_urls(self):
+        """Used to clear varnish cache"""
+        try:
+            abs_urls = [
+                self.get_absolute_url(),
+                self.title.get_absolute_url(),
+                self.title.get_rss_feed_url()
+            ]
+        except ObjectDoesNotExist:
+            abs_urls = abs_urls = [
+                self.get_absolute_url(),
+            ]
 
-    filesize_mb = property(_get_filesize_mb)
+        return abs_urls
+
+
+def _get_filesize_mb(self):
+    return round(self.filesize / 1024.0 / 1024.0, 2)
+
+
+filesize_mb = property(_get_filesize_mb)
+
+cache_purge_hook(Episode)
 
 
 class EpisodeContributor(models.Model):
@@ -292,7 +315,7 @@ class Title(DefinedWidthsAssetsFromImagesMixin, models.Model):
 
     def get_dimensions(self):
         return [100, 300, 900, 1400]
-        
+
     def get_quality(self):
         return 85
 
@@ -303,6 +326,22 @@ class Title(DefinedWidthsAssetsFromImagesMixin, models.Model):
     @models.permalink
     def get_rss_feed_url(self):
         return ('title_episodes_feed', [self.slug])
+
+    def get_absolute_urls(self):
+        """Used to clear varnish cache"""
+        abs_urls = [
+            self.get_absolute_url(),
+            self.get_rss_feed_url(),
+            ''  # Clear Homepage
+        ]
+
+        for contributor in self.contributors.all():
+            abs_urls.append(contributor.get_absolute_url())
+
+        for category in self.categories.all():
+            abs_urls.append(category.get_absolute_url())
+
+        return abs_urls
 
     def net_promoter_score(self):
         total_count = self.promoter_count + self.detractor_count
@@ -338,6 +377,9 @@ class Title(DefinedWidthsAssetsFromImagesMixin, models.Model):
         return ret
 
 
+cache_purge_hook(Title)
+
+
 class TitleCategory(models.Model):
     """
         Join table to associate categories to titles.
@@ -355,7 +397,7 @@ def update_category_list(sender, instance, **kwargs):
     """ Update category list cache on titles when a new title category is added.
         Hooked to pre_save trigger for titlecategory below """
     categories = instance.title.categories.all()
-    category_list = render_to_string('core/title/title_category_list.html', {'categories': categories, })
+    category_list = render_to_string('core/title/title_category_list.html', {'categories': categories,})
 
     instance.title.category_list = category_list
     instance.title.save()
