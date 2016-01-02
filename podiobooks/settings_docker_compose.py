@@ -31,6 +31,9 @@ CACHES = {
     },
 }
 
+# MUB
+MUB_MINIFY = True
+
 # Varnish
 CACHE_PURGE_HOOKS_BACKEND = 'cache_purge_hooks.backends.varnishbackend.VarnishManager'
 VARNISHADM_HOST = "podiobooks_varnish"
