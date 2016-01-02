@@ -68,6 +68,9 @@ MIDDLEWARE_CLASSES = [
     'podiobooks.core.middleware.PermanentRedirectMiddleware',
 ]
 
+MIDDLEWARE_CLASSES.remove('debug_toolbar.middleware.DebugToolbarMiddleware')
+INSTALLED_APPS.remove('debug_toolbar')
+
 if "GONDOR_DATA_DIR" in os.environ:
     GONDOR_DATA_DIR = os.environ["GONDOR_DATA_DIR"]
     FIXTURE_DIRS = (GONDOR_DATA_DIR,)
