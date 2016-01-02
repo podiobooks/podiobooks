@@ -51,23 +51,22 @@ if "GONDOR_REDIS_URL" in os.environ:
         },
     }
 
-    MIDDLEWARE_CLASSES = (
-        'podiobooks.core.middleware.StripAnalyticsCookies',
-        'django.middleware.gzip.GZipMiddleware',
-        'django.contrib.admindocs.middleware.XViewMiddleware',
-        'django.middleware.csrf.CsrfViewMiddleware',
-        'django.contrib.sessions.middleware.SessionMiddleware',
-        'django.contrib.auth.middleware.AuthenticationMiddleware',
-        'django.contrib.messages.middleware.MessageMiddleware',
-        'x_robots_tag_middleware.middleware.XRobotsTagMiddleware',
-#        'podiobooks.feeds.middleware.ga_tracking.GATracker',
-        'podiobooks.feeds.middleware.redirect_exception.RedirectException',
-        'django.middleware.cache.UpdateCacheMiddleware',
-        'django.middleware.common.CommonMiddleware',
-        'django.middleware.cache.FetchFromCacheMiddleware',
-        'django.middleware.http.ConditionalGetMiddleware',
-        'podiobooks.core.middleware.PermanentRedirectMiddleware',
-    )
+MIDDLEWARE_CLASSES = [
+    'django.middleware.gzip.GZipMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'django.contrib.admindocs.middleware.XViewMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'x_robots_tag_middleware.middleware.XRobotsTagMiddleware',
+    'podiobooks.feeds.middleware.redirect_exception.RedirectException',
+    'django.middleware.cache.UpdateCacheMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.cache.FetchFromCacheMiddleware',
+    'django.middleware.http.ConditionalGetMiddleware',
+    'podiobooks.core.middleware.PermanentRedirectMiddleware',
+]
 
 if "GONDOR_DATA_DIR" in os.environ:
     GONDOR_DATA_DIR = os.environ["GONDOR_DATA_DIR"]
