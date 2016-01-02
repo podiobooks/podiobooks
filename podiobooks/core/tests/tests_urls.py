@@ -3,7 +3,6 @@
 # pylint: disable=C0103,C0111,R0904
 
 from django.test import SimpleTestCase, TestCase
-from django.conf import settings
 
 
 class TitleSearchRedirectsTestCase(SimpleTestCase):

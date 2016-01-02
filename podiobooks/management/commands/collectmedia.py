@@ -1,19 +1,20 @@
 """Copies Media from the mediaroot dir to MEDIA_ROOT"""
 
-import os, shutil
+import os
+import shutil
 from django.conf import settings
 from django.core.management.base import CommandError, BaseCommand
 
 
 class Command(BaseCommand):
     """
-        Copy media to MEDIA_ROOT
+        Copy media to MEDIA_ROOT (useful when MEDIA_ROOT ends up being outside the code tree, e.g. on a server)
     """
     help = "Copy media files from local storage to MEDIA_ROOT"
 
-    def handle_noargs(self, **options):
+    def handle(self, **options):
 
-        local_media = os.path.join(settings.PROJECT_ROOT, "mediaroot")
+        local_media = os.path.join(settings.BASE_DIR, 'podiobooks', 'mediaroot')
 
         if os.path.exists(local_media):
             if not os.path.exists(settings.MEDIA_ROOT):
@@ -22,10 +23,15 @@ class Command(BaseCommand):
         else:
             raise CommandError("Local Media Path '{0}' does not exist".format(local_media))
 
-    def copy_dir(self, local_path, dest_path):
-        """Copy a whole directory to new path"""
-        for item in os.listdir(local_path):
-            item_path = os.path.join(local_path, item)
+    def copy_dir(self, source_path, dest_path):
+        """
+            Copy a whole directory to new path
+
+            :param source_path: source directory path
+            :param dest_path: destination directory path
+        """
+        for item in os.listdir(source_path):
+            item_path = os.path.join(source_path, item)
             if os.path.isdir(item_path):
                 try:
                     os.mkdir(os.path.join(dest_path, item))
@@ -34,6 +40,6 @@ class Command(BaseCommand):
                 self.copy_dir(item_path, os.path.join(dest_path, item))
             else:
                 try:
-                    shutil.copy2(os.path.join(local_path, item), os.path.join(dest_path, item))
+                    shutil.copy2(os.path.join(source_path, item), os.path.join(dest_path, item))
                 except (shutil.Error, IOError) as error:
                     print error

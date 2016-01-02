@@ -2,7 +2,7 @@
 
 # pylint: disable=C0103,C0111,R0902,R0904,W0401,W0614
 
-from django.test import TestCase, SimpleTestCase
+from django.test import SimpleTestCase, TestCase
 from django.core.management import call_command
 from django.conf import settings
 
@@ -29,11 +29,6 @@ class TopLevelUrlsTestCase(SimpleTestCase):
     def test_title_search_pb1(self):
         response = self.client.get('/podiobooks/search.php', {'keyword': 'sigler'}, follow=True)
         self.assertRedirects(response, '/search/?q=sigler', status_code=301)
-
-    def test_sitemap(self):
-        response = self.client.get('/sitemap.xml')
-        self.assertEquals(200, response.status_code)
-        self.assertNotContains(response, 'error')
 
     def test_pb1_login_redirect(self):
         response = self.client.get('/login.php')
@@ -70,10 +65,6 @@ class TopLevelUrlsTestCase(SimpleTestCase):
     def test_pb1_legal_redirect(self):
         response = self.client.get('/legal.php')
         self.assertEquals(301, response.status_code)
-
-    def test_pb1_xml_redirect(self):
-        response = self.client.get('/index.xml')
-        self.assertRedirects(response, '/rss/feeds/titles/recent/', status_code=301)
 
     def test_blog_redirect(self):
         response = self.client.get('/blog')
@@ -131,3 +122,16 @@ class TopLevelUrlsTestCase(SimpleTestCase):
         response = self.client.get('/queue/test/')
         self.assertEquals(200, response.status_code)
         self.assertNotContains(response, 'error')
+
+
+class TestDatabaseUrls(TestCase):
+    """Test URLs that end up doing database work, and thus require TestCase and not SimpleTestCase"""
+
+    def test_sitemap(self):
+        response = self.client.get('/sitemap.xml')
+        self.assertEquals(200, response.status_code)
+        self.assertNotContains(response, 'error')
+
+    def test_pb1_xml_redirect(self):
+        response = self.client.get('/index.xml')
+        self.assertRedirects(response, '/rss/feeds/titles/recent/', status_code=301)

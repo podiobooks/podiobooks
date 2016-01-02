@@ -10,7 +10,7 @@ class Command(BaseCommand):
     """
     help = "Clears the Cache"
 
-    def handle_noargs(self, **options):
+    def handle(self, **options):
         """Clears the Cache"""
         cache.clear()
         self.stdout.write('Cleared cache\n')

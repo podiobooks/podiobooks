@@ -50,7 +50,7 @@
     </script>
 </head>
 
-<body class='{% block body_class %}{% endblock %}'>
+<body class='{% block body_class %}{% endblock %}{% if debug %} debug{% endif %}'>
 <a href="#page-content" class="jump-to-content">Go to Page Content</a>
 <header class="head width clearfix">
 

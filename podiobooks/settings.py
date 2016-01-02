@@ -74,14 +74,14 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
-                'django.template.context_processors.debug',
                 'django.contrib.auth.context_processors.auth',
-                'django.template.context_processors.media',
-                'django.template.context_processors.static',
-                'podiobooks.core.context_processors.js_api_keys',
                 'podiobooks.core.context_processors.current_site',
+                'django.template.context_processors.debug',
                 'podiobooks.core.context_processors.feed_settings',
+                'podiobooks.core.context_processors.js_api_keys',
+                'django.template.context_processors.media',
                 'django.template.context_processors.request',
+                'django.template.context_processors.static',
             ],
             'debug': DEBUG,
         },
@@ -156,7 +156,7 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, "podiobooks", "themes", "pb2-jq", "st
 socket.setdefaulttimeout(2)  # 2 second timeout for grabbing feed
 
 # Email Settings
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_HOST = ""
 EMAIL_PORT = 587
 EMAIL_HOST_USER = ""

@@ -1,5 +1,5 @@
 celery[redis]>3.1.18,<3.2
-django>=1.9
+django>=1.9.1
 django-adminactions==1.0
 django-cache-purge-hooks==0.4.2
 django-debug-toolbar==1.4
