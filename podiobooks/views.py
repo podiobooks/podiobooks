@@ -1,13 +1,10 @@
 """ Django Views for the Overall Site"""
 
 from django.views.generic import RedirectView, TemplateView, View
-from django.views.decorators.cache import never_cache
 from django.http import HttpResponse, HttpResponseRedirect
 from django.conf import settings
 from django.http import Http404
 import os
-
-from podiobooks.feeds.tasks import hello_world
 
 
 class AccelView(View):
