@@ -32,7 +32,7 @@ CACHES = {
         'LOCATION': 'redis://redis:6379/1',
         'OPTIONS': {
             'DB': 1,
-	    "CLIENT_CLASS": "django_redis.client.DefaultClient",
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
         },
     },
 }
@@ -46,7 +46,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'x_robots_tag_middleware.middleware.XRobotsTagMiddleware',
-#        'podiobooks.feeds.middleware.ga_tracking.GATracker',
+    #        'podiobooks.feeds.middleware.ga_tracking.GATracker',
     'podiobooks.feeds.middleware.redirect_exception.RedirectException',
     'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -90,7 +90,7 @@ LOGGING = {
     'handlers': {
         'null': {
             'level': 'DEBUG',
-            'class': 'django.utils.log.NullHandler',
+            'class': 'logging.NullHandler',
         },
         'console': {
             'level': 'DEBUG',

@@ -8,20 +8,23 @@ from django.views.generic.base import View
 from podiobooks.core.queries import get_featured_shelf_titles, get_recently_released_shelf_titles, \
     get_toprated_shelf_titles, get_popular_shelf_titles
 
+
 # pylint: disable=W0613
+
 
 class FilteredShelf(View):
     """
     A 'shelf' of titled, filtered in some way(s)
     """
-    http_method_names = ('get', )
+    http_method_names = ('get',)
 
     def get(self, request, shelf_type, title_filter='all'):
         """
         Handle incoming GET requests
 
-        'shelf_type' should be a method of this class; 404 if not
-        'title_filter' is passed along to 'shelf_type' as an optional filter to apply to the shelf
+        :param request: HTTPRequest
+        :param shelf_type: should be a method of this class; 404 if not
+        :param title_filter is passed along to 'shelf_type' as an optional filter to apply to the shelf
         """
         try:
             method = getattr(self, shelf_type)
@@ -33,6 +36,7 @@ class FilteredShelf(View):
     def popular_by_category(self, category='all'):
         """
         Top rated titles, filtered by a category
+        :param category: category slug to show
         """
         popular_title_list = get_popular_shelf_titles(category)
         return render_to_response("core/shelf/tags/show_shelf_pages.html",
@@ -42,6 +46,7 @@ class FilteredShelf(View):
     def top_rated_by_author(self, author='all'):
         """
         Top rated titles, filtered by a contributor
+        :param author: author slug to show
 
         ** SHELF NOT CURRENTLY IN USE **
         """
@@ -53,6 +58,7 @@ class FilteredShelf(View):
     def recent_by_category(self, category='all'):
         """
         Display Recently Released Titles by Category
+        :param category: category slug to show
         """
         recently_released_list = get_recently_released_shelf_titles(category)
         return render_to_response("core/shelf/tags/show_shelf_pages.html",
@@ -62,6 +68,7 @@ class FilteredShelf(View):
     def featured_by_category(self, category='all'):
         """
         Featured titles, filtered by category (genre)
+        :param category: category slug to show
         """
         featured_title_list = get_featured_shelf_titles(category)
         return render_to_response("core/shelf/tags/show_shelf_pages.html",

@@ -17,6 +17,7 @@ def show_shelf(context, shelf_id, shelf_title, title_list, dropdown_form, base_c
         'dropdown_form': dropdown_form,
         'base_css_class': base_css_class,
         'ad_template': ad_template,
+        'no_ads': True
     }
 
 
@@ -29,6 +30,7 @@ def show_shelf_pages(context, shelf_id, shelf_name, title_list, ad_template=None
         'shelf_name': shelf_name,
         'title_list': title_list,
         'ad_template': ad_template,
+        'no_ads': True
     }
 
 

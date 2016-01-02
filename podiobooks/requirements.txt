@@ -1,7 +1,7 @@
 celery[redis]>3.1.18,<3.2
 django>=1.9
 django-adminactions==1.0
-django-cache-purge-hooks
+django-cache-purge-hooks==0.4.2
 django-debug-toolbar==1.4
 django-jenkins==0.18.1
 git+git://github.com/Brant/django-mub.git@master

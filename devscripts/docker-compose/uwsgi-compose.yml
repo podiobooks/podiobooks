@@ -1,13 +1,14 @@
 uwsgi:
   chdir: /code
   enable-threads: true
+  harakiri: 20
   logfile-chmod: 644
   logto: /code/logs/uwsgi.log
   master: true
+  max-requests: 5000
   pidfile: /code/logs/uwsgi.pid
   pythonpath: .
   http-socket: :7000
   vacuum: true
   workers: 4
   wsgi-file: podiobooks/wsgi.py
-
