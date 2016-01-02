@@ -5,4 +5,4 @@ gunicorn==19.4.3
 hiredis==0.2.0
 newrelic==2.60.0.46
 psycopg2==2.6.1
-redis==2.10.5
+redis==2.10.3
