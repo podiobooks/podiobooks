@@ -5,7 +5,7 @@
 
 # pylint: disable=E1120
 
-from django.conf.urls import patterns, url, include
+from django.conf.urls import url, include
 from django.contrib import admin
 from django.contrib.auth.views import login as login_view
 from django.contrib.admin.views.decorators import staff_member_required
