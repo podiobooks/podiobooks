@@ -70,7 +70,6 @@ MIDDLEWARE_CLASSES = [
 ]
 
 INSTALLED_APPS.remove('debug_toolbar')
-INSTALLED_APPS.append('redis_cache')
 
 if "GONDOR_DATA_DIR" in os.environ:
     GONDOR_DATA_DIR = os.environ["GONDOR_DATA_DIR"]
