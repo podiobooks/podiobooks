@@ -5,4 +5,4 @@ eventlet==0.17.3
 gunicorn==19.3.0
 hiredis==0.2.0
 psycopg2==2.6
-redis==2.10.3
+redis==2.10.5
