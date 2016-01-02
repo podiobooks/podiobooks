@@ -176,14 +176,6 @@ ACCEL_REDIRECT = False
 # Base Template <meta name="descripton"> default value
 BASE_META_DESCRIPTION = "Free audio books delivered as podcasts. Subscribe for free to any book and start from chapter one. Podiobooks.com"
 
-# Celery
-BROKER_URL = 'memory'
-CELERY_ALWAYS_EAGER = True  # Force immediate running of async tasks on dev
-CELERY_ACCEPT_CONTENT = ['json', 'msgpack', 'yaml']
-CELERY_TASK_SERIALIZER = 'json'
-CELERY_RESULT_SERIALIZER = 'json'
-CELERY_REDIS_DB = 0
-
 # Cover Rendition Generation
 LOCALIZED_COVER_PLACEHOLDER = STATIC_URL + "images/cover-placeholder.jpg"
 USE_COVER_PLACEHOLDERS_ONLY = False

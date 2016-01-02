@@ -52,6 +52,7 @@ class AccelView(View):
         """ Handle PATCH Requests"""
         return self.get(request, *args, **kwargs)
 
+
 class TextTemplateView(TemplateView):
     """Utility View to Render text/plain Content Type"""
     content_type = 'text/plain'
@@ -78,10 +79,3 @@ class BlogRedirectView(RedirectView):
 
     def get_redirect_url(self, **kwargs):
         return 'http://blog.podiobooks.com' + self.kwargs.get('url_remainder', '')
-
-
-@never_cache
-def test_task_queue(request):
-    """Uncached test view for celery"""
-    hello_world.delay()
-    return HttpResponse("hi")
