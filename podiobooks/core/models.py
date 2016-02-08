@@ -258,8 +258,6 @@ class Title(DefinedWidthsAssetsFromImagesMixin, models.Model):
     # Note: TitleCategory Objects (intermediate table) are available as titlecategories.all()
     category_list = models.CharField(max_length=1024, blank=True)  # This is a formatted cache of the categories
     awards = models.ManyToManyField('Award', blank=True, related_name='titles')
-    payment_email_address = models.EmailField(null=True, blank=True,
-                                              help_text='Email address to send payments or tips for this title.')
     libsyn_show_id = models.CharField(max_length=50, db_index=True, blank=True, verbose_name='LibSyn Show ID',
                                       help_text='Starts with k-')
     libsyn_slug = models.SlugField(max_length=50, db_index=True, blank=True, verbose_name='LibSyn Slug',
@@ -280,6 +278,8 @@ class Title(DefinedWidthsAssetsFromImagesMixin, models.Model):
     date_accepted = models.DateTimeField(null=True, blank=True,
                                          verbose_name='Date Terms for this Title Accepted by Rights Owner')
     tips_allowed = models.BooleanField(default=True, verbose_name='Collect Tips for this Title')
+    payment_email_address = models.EmailField(null=True, blank=True,
+                                              help_text='Email address to send payments or tips for this title.')
     scribl_book_id = models.CharField(null=True, blank=True, max_length=20, verbose_name='Scribl Book Id')
     scribl_allowed = models.BooleanField(default=True, verbose_name='Show this Title on Scribl')
     date_created = models.DateTimeField(auto_now_add=True, db_index=True, verbose_name='Date Created')
