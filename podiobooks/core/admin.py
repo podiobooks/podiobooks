@@ -164,10 +164,9 @@ class TitleAdmin(admin.ModelAdmin):
             'fields': (
                 'display_on_homepage', 'is_adult', 'is_explicit', 'is_family_friendly', 'is_for_kids', 'language')
         }),
-        ('Scribl and Tips', {
-            'classes': ('collapse',),
+        ('Rights, Scribl and Tips', {
             'fields': (
-                'scribl_book_id', 'tips_allowed', 'scribl_allowed', 'date_accepted', 'payment_email_address')
+                'rights_owner', 'agreement_url', 'scribl_book_id', 'tips_allowed', 'scribl_allowed', 'date_accepted', 'payment_email_address')
         }),
         ('Series', {
             'classes': ('collapse',),
