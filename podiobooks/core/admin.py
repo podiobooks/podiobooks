@@ -149,11 +149,11 @@ class TitleAdmin(admin.ModelAdmin):
     fieldsets = (
         ('Title Information', {
             'fields': (
-                'name', 'slug', 'old_slug', 'description', 'license', 'podiobooker_blog_url', 'cover', 'deleted')
+                'name', 'slug', 'old_slug', 'description', 'podiobooker_blog_url', 'cover', 'deleted')
         }),
         ('Rights, Scribl and Tips', {
             'fields': (
-                'rights_owner', 'agreement_url', 'date_accepted', 'scribl_book_id', 'scribl_allowed', 'tips_allowed', 'payment_email_address')
+                'rights_owner', 'agreement_url', 'date_accepted', 'license', 'scribl_book_id', 'scribl_allowed', 'tips_allowed', 'payment_email_address')
         }),
         ('Libsyn Information', {
             'fields': (
