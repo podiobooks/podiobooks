@@ -166,7 +166,7 @@ class TitleAdmin(admin.ModelAdmin):
         }),
         ('Rights, Scribl and Tips', {
             'fields': (
-                'rights_owner', 'agreement_url', 'scribl_book_id', 'tips_allowed', 'scribl_allowed', 'date_accepted', 'payment_email_address')
+                'rights_owner', 'agreement_url', 'date_accepted', 'scribl_book_id', 'scribl_allowed', 'tips_allowed', 'payment_email_address')
         }),
         ('Series', {
             'classes': ('collapse',),
