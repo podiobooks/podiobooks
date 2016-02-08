@@ -151,6 +151,10 @@ class TitleAdmin(admin.ModelAdmin):
             'fields': (
                 'name', 'slug', 'old_slug', 'description', 'license', 'podiobooker_blog_url', 'cover', 'deleted')
         }),
+        ('Rights, Scribl and Tips', {
+            'fields': (
+                'rights_owner', 'agreement_url', 'date_accepted', 'scribl_book_id', 'scribl_allowed', 'tips_allowed', 'payment_email_address')
+        }),
         ('Libsyn Information', {
             'fields': (
                 'libsyn_show_id', 'libsyn_slug', 'libsyn_cover_image_url', )
@@ -163,10 +167,6 @@ class TitleAdmin(admin.ModelAdmin):
             'classes': ('collapse',),
             'fields': (
                 'display_on_homepage', 'is_adult', 'is_explicit', 'is_family_friendly', 'is_for_kids', 'language')
-        }),
-        ('Rights, Scribl and Tips', {
-            'fields': (
-                'rights_owner', 'agreement_url', 'date_accepted', 'scribl_book_id', 'scribl_allowed', 'tips_allowed', 'payment_email_address')
         }),
         ('Series', {
             'classes': ('collapse',),
