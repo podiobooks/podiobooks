@@ -276,7 +276,7 @@ class Title(DefinedWidthsAssetsFromImagesMixin, models.Model):
     rights_owner = models.CharField(max_length=255, null=True, blank=True, verbose_name='Rights Owner',
                                            help_text='Name of the Person or Entity that Owns the Rights to this Audiobook')
     agreement_url = models.URLField(max_length=255, null=True, blank=True, verbose_name='Agreement URL',
-                                           help_text='Full URL to Agreement The Rights Owner Submitted')
+                                           help_text='Full URL to Terms Agreement The Rights Owner Submitted')
     # Note: episodes are available as episodes.all()
     # Note: media are available as media.all()
     # Note: promos are available as promos.all()
@@ -284,7 +284,7 @@ class Title(DefinedWidthsAssetsFromImagesMixin, models.Model):
     tips_allowed = models.BooleanField(default=True, verbose_name='Collect Tips for this Title')
     scribl_allowed = models.BooleanField(default=True, verbose_name='Show this Title on Scribl')
     date_accepted = models.DateTimeField(null=True,
-                                         verbose_name='Date Terms and Conditions for this Title Accepted by Author')
+                                         verbose_name='Date Terms for this Title Accepted by Rights Owner')
     date_created = models.DateTimeField(auto_now_add=True, db_index=True, verbose_name='Date Created')
     date_updated = models.DateTimeField(auto_now=True, db_index=True, verbose_name='Date Updated')
 
