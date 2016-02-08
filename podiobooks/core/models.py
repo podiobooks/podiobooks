@@ -276,7 +276,7 @@ class Title(DefinedWidthsAssetsFromImagesMixin, models.Model):
     rights_owner = models.CharField(max_length=255, null=True, blank=True, verbose_name='Rights Owner',
                                            help_text='Name of the Person or Entity that Owns the Rights to this Audiobook')
     agreement_url = models.URLField(max_length=255, null=True, blank=True, verbose_name='Agreement URL',
-                                           help_text='Full URL to Agreement The Rights Holder Submitted')
+                                           help_text='Full URL to Agreement The Rights Owner Submitted')
     # Note: episodes are available as episodes.all()
     # Note: media are available as media.all()
     # Note: promos are available as promos.all()
