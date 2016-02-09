@@ -273,6 +273,8 @@ class Title(DefinedWidthsAssetsFromImagesMixin, models.Model):
                                            help_text='Full URL to Blog Post Announcing Book - Used to Pull Comments')
     rights_owner = models.CharField(max_length=255, null=True, blank=True, verbose_name='Rights Owner',
                                            help_text='Name of the Person or Entity that Owns the Rights to this Audiobook')
+    rights_owner_email_address = models.EmailField(null=True, blank=True,
+                                              help_text='Email address of the Rights Owner.')
     agreement_url = models.URLField(max_length=255, null=True, blank=True, verbose_name='Agreement URL',
                                            help_text='Full URL to Terms Agreement The Rights Owner Submitted')
     date_accepted = models.DateTimeField(null=True, blank=True,

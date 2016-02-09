@@ -153,7 +153,7 @@ class TitleAdmin(admin.ModelAdmin):
         }),
         ('Rights, Scribl and Tips', {
             'fields': (
-                'rights_owner', 'agreement_url', 'date_accepted', 'license', 'scribl_book_id', 'scribl_allowed', 'tips_allowed', 'payment_email_address')
+                'rights_owner', 'rights_owner_email_address', 'agreement_url', 'date_accepted', 'license', 'scribl_book_id', 'scribl_allowed', 'tips_allowed', 'payment_email_address')
         }),
         ('Libsyn Information', {
             'fields': (
