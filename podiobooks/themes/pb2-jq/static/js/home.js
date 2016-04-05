@@ -1,7 +1,5 @@
 $(function () {
 
-	console.log("homepage!");
-
     var gaqPush = function (shelf, titlesDeep, perSlide) {
 
         var shelfPages = shelf.find(".shelf-pages");
