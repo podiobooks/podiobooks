@@ -7,8 +7,8 @@
 . ./.env/bin/activate
 pip install -r ./podiobooks/requirements_webfaction.txt
 git pull --rebase
-manage.py migrate --fake-initial --noinput
-manage.py collectstatic --noinput
-manage.py collectmedia
-manage.py mub_minify
-manage.py localize_title_covers
+./manage.py migrate --fake-initial --noinput
+./manage.py collectstatic --noinput
+./manage.py collectmedia
+./manage.py mub_minify
+./manage.py localize_title_covers
