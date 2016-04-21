@@ -12,3 +12,4 @@ git pull --rebase
 ./manage.py collectmedia --settings=podiobooks.webfaction_settings
 ./manage.py mub_minify --settings=podiobooks.webfaction_settings
 ./manage.py localize_title_covers --settings=podiobooks.webfaction_settings
+../apache2/bin/restart
