@@ -7,7 +7,7 @@ import urlparse
 
 from .settings import *
 
-DEBUG = eval(os.environ.get("DEBUG", "False"))
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ACCEL_REDIRECT = True
