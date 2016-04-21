@@ -30,7 +30,7 @@ DATABASE_POOL_ARGS = {
 }
 
 
-BROKER_URL = "redis://:%s@%s:%s/0" % ("redis", "127.0.0.1", 6379)
+BROKER_URL = "redis://:%s@%s:%s/0" % ("redis", "127.0.0.1", 18391)
 CELERY_ALWAYS_EAGER = False
 CELERY_REDIS_DB = 0
 
@@ -40,9 +40,8 @@ CACHE_MIDDLEWARE_SECONDS = int(os.environ.get("CACHE_MIDDLEWARE_SECONDS", 5200))
 CACHES = {
     'default': {
         'BACKEND': 'redis_cache.cache.RedisCache',
-        'LOCATION': "127.0.0.1" + ":" + str(6379) + ":" + "0",
+        'LOCATION': "127.0.0.1:18391:0",
         'OPTIONS': {
-            'PASSWORD': "redis",
             'DB': 1,
         },
     },
