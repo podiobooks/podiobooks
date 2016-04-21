@@ -7,9 +7,9 @@
 . ./.env/bin/activate
 pip install -r ./podiobooks/requirements_webfaction.txt
 git pull --rebase
-./manage.py migrate --fake-initial --noinput --settings=podiobooks.webfaction_settings
-./manage.py collectstatic --noinput --settings=podiobooks.webfaction_settings
-./manage.py collectmedia --settings=podiobooks.webfaction_settings
-./manage.py mub_minify --settings=podiobooks.webfaction_settings
-./manage.py localize_title_covers --settings=podiobooks.webfaction_settings
+./manage.py migrate --fake-initial --noinput --settings=podiobooks.settings_webfaction
+./manage.py collectstatic --noinput --settings=podiobooks.settings_webfaction
+./manage.py collectmedia --settings=podiobooks.settings_webfaction
+./manage.py mub_minify --settings=podiobooks.settings_webfaction
+./manage.py localize_title_covers --settings=podiobooks.settings_webfaction
 ../apache2/bin/restart
