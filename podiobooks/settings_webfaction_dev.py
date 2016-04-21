@@ -69,7 +69,7 @@ SERVER_EMAIL = os.environ.get("SERVER_EMAIL", "")
 MANAGERS = eval(os.environ.get("MANAGERS", "(('Podiobooks DEV', 'podiobooksdev@gmail.com'),)"))
 ADMINS = eval(os.environ.get("ADMINS", "(('Podiobooks DEV', 'podiobooksdev@gmail.com'),)"))
 SEND_BROKEN_LINK_EMAILS = eval(os.environ.get("SEND_BROKEN_LINK_EMAILS", "False"))
-ALLOWED_HOSTS = ['.podiobooks.com', 'pbdev.webfaction.com', 'wf-45-33-126-67.webfaction.com']
+ALLOWED_HOSTS = ['.podiobooks.com', 'pbdev.webfaction.com', 'wf-45-33-126-67.webfaction.com', '.reblender.com']
 REDIRECT_DOMAINS = ['wf-45-33-126-67.webfaction.com', 'pbdev.webfaction.com']
 
 GOOGLE_ANALYTICS_ID = os.environ.get("GOOGLE_ANALYTICS_ID", GOOGLE_ANALYTICS_ID)
