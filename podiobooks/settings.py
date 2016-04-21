@@ -21,7 +21,7 @@ PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 TEST_RUNNER = 'django.test.runner.DiscoverRunner'
 
 DEBUG = True
-TEMPLATE_DEBUG = DEBUG
+TEMPLATE_DEBUG_SETTING = DEBUG
 
 # List of Admin users to be emailed by error system
 MANAGERS = ()
@@ -49,7 +49,7 @@ STATIC_ROOT = PROJECT_ROOT + "/staticroot/"
 ACCEL_REDIRECT = False
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(PROJECT_ROOT, "themes", THE_THEME, "static"), ]
-TEMPLATE_DIRS = [os.path.join(PROJECT_ROOT, "themes", THE_THEME, 'templates'), ]
+TEMPLATE_DIRS_LIST = [os.path.join(PROJECT_ROOT, "themes", THE_THEME, 'templates'), ]
 LOCALIZED_COVER_PLACEHOLDER = STATIC_URL + "images/cover-placeholder.jpg"
 USE_COVER_PLACEHOLDERS_ONLY = False
 
@@ -57,22 +57,33 @@ USE_COVER_PLACEHOLDERS_ONLY = False
 FEED_URL = ""  # This will be overridden in prod conf with an alt protocol/domain
 
 # List of callables that know how to import templates from various sources.
-TEMPLATE_LOADERS = (
+TEMPLATE_LOADERS_LIST = (
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
 )
 
-# List of callables that add their data to each template
-TEMPLATE_CONTEXT_PROCESSORS = (
-    'django.core.context_processors.debug',
-    'django.contrib.auth.context_processors.auth',
-    'django.core.context_processors.media',
-    'django.core.context_processors.static',
-    'podiobooks.core.context_processors.js_api_keys',
-    'podiobooks.core.context_processors.current_site',
-    'podiobooks.core.context_processors.feed_settings',
-    'django.core.context_processors.request',
-)
+# Needed to configure Django 1.8+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': TEMPLATE_DIRS_LIST,
+        'OPTIONS': {
+            'context_processors': (
+                'django.contrib.auth.context_processors.auth',
+                'django.template.context_processors.debug',
+                'django.template.context_processors.media',
+                'django.template.context_processors.static',
+                'podiobooks.core.context_processors.js_api_keys',
+                'podiobooks.core.context_processors.current_site',
+                'podiobooks.core.context_processors.feed_settings',
+                'django.template.context_processors.request',
+                'django.contrib.messages.context_processors.messages',
+            ),
+            'debug': TEMPLATE_DEBUG_SETTING,
+            'loaders': TEMPLATE_LOADERS_LIST,
+        }
+    },
+]
 
 MIDDLEWARE_CLASSES = (
     'podiobooks.core.middleware.StripAnalyticsCookies',
@@ -83,7 +94,6 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'x_robots_tag_middleware.middleware.XRobotsTagMiddleware',
-#    'podiobooks.feeds.middleware.ga_tracking.GATracker',
     'podiobooks.feeds.middleware.redirect_exception.RedirectException',
     # 'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -116,7 +126,7 @@ INSTALLED_APPS = (
     'podiobooks.ratings',
 )
 
-### DATABASE SETTINGS
+# DATABASE SETTINGS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -130,7 +140,7 @@ DATABASES = {
 }
 FIXTURE_DIRS = {os.path.join(PROJECT_ROOT, "..", "..", "podiobooks_data")}
 
-### CACHE SETTINGS
+# CACHE SETTINGS
 CACHES = {
     # 'default': {
     #     'BACKEND': 'django.core.cache.backends.locmem.LocMemCache'

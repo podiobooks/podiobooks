@@ -30,11 +30,6 @@ class TopLevelUrlsTestCase(SimpleTestCase):
         response = self.client.get('/podiobooks/search.php', {'keyword': 'sigler'}, follow=True)
         self.assertRedirects(response, '/search/?q=sigler', status_code=301)
 
-    def test_sitemap(self):
-        response = self.client.get('/sitemap.xml')
-        self.assertEquals(200, response.status_code)
-        self.assertNotContains(response, 'error')
-
     def test_pb1_login_redirect(self):
         response = self.client.get('/login.php')
         self.assertEquals(301, response.status_code)
@@ -70,10 +65,6 @@ class TopLevelUrlsTestCase(SimpleTestCase):
     def test_pb1_legal_redirect(self):
         response = self.client.get('/legal.php')
         self.assertEquals(301, response.status_code)
-
-    def test_pb1_xml_redirect(self):
-        response = self.client.get('/index.xml')
-        self.assertRedirects(response, '/rss/feeds/titles/recent/', status_code=301)
 
     def test_blog_redirect(self):
         response = self.client.get('/blog')
@@ -129,5 +120,18 @@ class TopLevelUrlsTestCase(SimpleTestCase):
 
     def test_queue_test(self):
         response = self.client.get('/queue/test/')
+        self.assertEquals(200, response.status_code)
+        self.assertNotContains(response, 'error')
+
+
+class TopLevelUrlsTestCase(TestCase):
+    """Tests for URLs defined at the podiobooks level"""
+
+    def test_pb1_xml_redirect(self):
+        response = self.client.get('/index.xml')
+        self.assertRedirects(response, '/rss/feeds/titles/recent/', status_code=301)
+
+    def test_sitemap(self):
+        response = self.client.get('/sitemap.xml')
         self.assertEquals(200, response.status_code)
         self.assertNotContains(response, 'error')
