@@ -34,9 +34,9 @@ MEDIA_DOMAIN = ""
 # trailing slash if there is a path component (optional in other cases).
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
 if MEDIA_DOMAIN != "":
-    MEDIA_URL = "http://{0}/media/".format(MEDIA_DOMAIN)  # this maps inside of a static_urls URL in gondor.yml
+    MEDIA_URL = "http://{0}/media/".format(MEDIA_DOMAIN)
 else:
-    MEDIA_URL = "/media/"  # make sure this maps inside of a static_urls URL in gondor.yml
+    MEDIA_URL = "/media/"
 
 # Absolute path to the directory that holds media.
 # Note that as of Django 1.3 - media is for uploaded files only.
@@ -175,6 +175,7 @@ SECRET_KEY = 'zv$+w7juz@(g!^53o0ai1u082)=jkz9my_r=3)fglrj5t8l$2#'
 socket.setdefaulttimeout(2)  # 2 second timeout for grabbing feed
 
 ### DEBUG TOOLBAR
+DEBUG_TOOLBAR_PATCH_SETTINGS = False
 if DEBUG:
     MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
     INTERNAL_IPS = ('127.0.0.1',)

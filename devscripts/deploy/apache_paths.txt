@@ -1,0 +1,10 @@
+- /assets/static/:
+        root: site_media/staticroot/
+    - /assets/media/:
+        root: site_media/mediaroot/
+    - /images/:
+        root: site_media/staticroot/
+    - /jspb/:
+        root: site_media/staticroot/
+    - /sample/:
+        root: site_media/staticroot/
