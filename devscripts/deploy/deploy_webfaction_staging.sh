@@ -13,3 +13,4 @@ git pull --rebase
 ./manage.py mub_minify --settings=podiobooks.settings_webfaction_staging
 ./manage.py localize_title_covers --settings=podiobooks.settings_webfaction_staging
 ../apache2/bin/restart
+./manage.py clear_cache --settings=podiobooks.settings_webfaction_staging
