@@ -25,7 +25,7 @@ class LibsynImportViewsTestCase(TestCase):
         response = self.client.get('/libsyn/import/')
         self.assertEquals(200, response.status_code)
 
-    # def test_libsyn_results_view(self):
-    #     self.client.login(username='admin', password='pass')
-    #     response = self.client.post('/libsyn/import/', data={'libsyn_slug': 'earthcore'})
-    #     self.assertRedirects(response, '/libsyn/import/slug/earthcore/')
+    def test_libsyn_results_view(self):
+        self.client.login(username='admin', password='pass')
+        response = self.client.post('/libsyn/import/', data={'libsyn_slug': 'shadowmagic'})
+        self.assertRedirects(response, '/libsyn/import/slug/shadowmagic/')
