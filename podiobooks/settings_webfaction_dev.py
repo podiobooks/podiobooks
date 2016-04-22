@@ -29,7 +29,7 @@ CACHE_MIDDLEWARE_SECONDS = int(os.environ.get("CACHE_MIDDLEWARE_SECONDS", 5200))
 CACHES = {
     'default': {
         'BACKEND': 'django_redis.cache.RedisCache',
-        'LOCATION': "127.0.0.1:18391",
+        'LOCATION': "127.0.0.1:18391/1",
         'OPTIONS': {
             'DB': 1,
         },
