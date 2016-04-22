@@ -19,7 +19,7 @@ from django.views.decorators.vary import vary_on_headers
 from podiobooks.core.sitemaps import AwardDetailSitemap, CategoryDetailSitemap, ContributorDetailSitemap, TitleDetailSitemap
 from podiobooks.core.views import IndexView, DonationView, ReportsView, NoMediaReportView
 
-from .views import AccelView, BlogRedirectView, TextTemplateView, RobotsView, test_task_queue
+from .views import AccelView, BlogRedirectView, TextTemplateView, RobotsView
 
 sitemaps = {'AwardDetail': AwardDetailSitemap, 'CategoryDetail': CategoryDetailSitemap,
             'ContributorDetail': ContributorDetailSitemap, 'TitleDetail': TitleDetailSitemap}
@@ -68,7 +68,6 @@ urlpatterns = (
 
     # MUB
     url(r'^mub/', include('mub.urls')),
-    url(r'^queue/test/$', test_task_queue, name='test_task_queue'),
 
     # Robots, Favicon and Related
     url(r'^robots\.txt$', vary_on_headers('HOST')(RobotsView.as_view())),

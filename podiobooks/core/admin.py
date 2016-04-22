@@ -13,7 +13,6 @@ import adminactions.actions as actions
 
 from podiobooks.core.models import Award, Category, Contributor, ContributorType, Episode, License, Media, Series, \
     Title, TitleCategory, TitleContributor
-from podiobooks.feeds.util import cache_title_feed
 
 
 site.add_action(actions.export_as_csv)
@@ -182,16 +181,6 @@ class TitleAdmin(admin.ModelAdmin):
         queryset.update(cover=None, assets_from_images=None)
 
     clear_cover_image.short_description = "Clear cover images"
-
-    def freshen_feed_cache(self, request, queryset):
-        if len(queryset) <= 5:
-            for title in queryset:
-                cache_title_feed(title)
-        else:
-            self.message_user(request,
-                              "Please only freshen the feeds of 5 titles at a time. More will take quite a while.")
-
-    freshen_feed_cache.short_description = "Refresh RSS feed cache"
 
 
 class TitleContributorAdmin(admin.ModelAdmin):

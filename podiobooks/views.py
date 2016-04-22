@@ -7,8 +7,6 @@ from django.conf import settings
 from django.http import Http404
 import os
 
-from podiobooks.feeds.tasks import hello_world
-
 
 class AccelView(View):
     """ Let Nginx Return Static Files That Have To Map """
@@ -79,10 +77,3 @@ class BlogRedirectView(RedirectView):
 
     def get_redirect_url(self, **kwargs):
         return 'http://blog.podiobooks.com' + self.kwargs.get('url_remainder', '')
-
-
-@never_cache
-def test_task_queue(request):
-    """Uncached test view for celery"""
-    hello_world.delay()
-    return HttpResponse("hi")
