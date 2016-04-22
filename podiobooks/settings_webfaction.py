@@ -159,3 +159,8 @@ LOGGING = {
         },
     }
 }
+
+try:
+    from podiobooks.settings_local import *
+except ImportError:
+    pass
