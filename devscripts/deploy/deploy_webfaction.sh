@@ -5,8 +5,8 @@
 # This should be run from the project directory, not inside the project dir
 
 . ./.env/bin/activate
-pip install -r ./podiobooks/requirements_webfaction.txt
 git pull --rebase
+pip install -r ./podiobooks/requirements_webfaction.txt
 ./manage.py migrate --fake-initial --noinput --settings=podiobooks.settings_webfaction
 ./manage.py collectstatic --noinput --settings=podiobooks.settings_webfaction
 ./manage.py collectmedia --settings=podiobooks.settings_webfaction
