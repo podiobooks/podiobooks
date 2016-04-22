@@ -1,17 +1,18 @@
 """Copies Media from the mediaroot dir to MEDIA_ROOT"""
 
-import os, shutil
+import os
+import shutil
 from django.conf import settings
-from django.core.management.base import CommandError, NoArgsCommand
+from django.core.management.base import CommandError, BaseCommand
 
 
-class Command(NoArgsCommand):
+class Command(BaseCommand):
     """
         Copy media to MEDIA_ROOT
     """
     help = "Copy media files from local storage to MEDIA_ROOT"
 
-    def handle_noargs(self, **options):
+    def handle(self, **options):
 
         local_media = os.path.join(settings.PROJECT_ROOT, "mediaroot")
 
@@ -36,4 +37,4 @@ class Command(NoArgsCommand):
                 try:
                     shutil.copy2(os.path.join(local_path, item), os.path.join(dest_path, item))
                 except (shutil.Error, IOError) as error:
-                    print error
+                    print (error)

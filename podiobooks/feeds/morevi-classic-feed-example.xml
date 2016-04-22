@@ -31,7 +31,7 @@
 			<itunes:name>Evo Terra</itunes:name>
 		</itunes:owner>
 		<itunes:author>Tee Morris (with Lisa Lee)</itunes:author>
-		<itunes:category text="Arts"><itunes:category text="Literature"></itunes:category></itunes:category>
+		<itunes:category text="Arts"><itunes:category text="Literature" /></itunes:category>
 		<itunes:image href="http://www.podiobooks.com/images/covers/morevi-remastered.jpg"/>
 		<itunes:explicit>no</itunes:explicit>
 <!-- End iTunes tags -->

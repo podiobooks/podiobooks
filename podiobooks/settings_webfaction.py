@@ -3,7 +3,6 @@
 # pylint: disable=W0614,W0401,W0123
 
 import os
-import urlparse
 
 from .settings import *
 
@@ -11,7 +10,6 @@ DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ACCEL_REDIRECT = True
-
 
 DATABASES = {
     "default": {
@@ -100,7 +98,7 @@ if FEED_DOMAIN != "":
 else:
     FEED_URL = ""
 
-FILE_UPLOAD_PERMISSIONS = 0640
+FILE_UPLOAD_PERMISSIONS = 0o0640
 
 MUB_MINIFY = True
 

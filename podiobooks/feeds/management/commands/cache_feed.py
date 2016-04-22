@@ -39,8 +39,8 @@ class Command(BaseCommand):
                 raise CommandError("Unable to find title matching slug '%s'" % args[0])
 
             result = cache_title_feed(title)
-            print "%s: %s" % (title.name, result)
+            print ("%s: %s" % (title.name, result))
         else:
             for title in Title.objects.filter(deleted=False):
                 result = cache_title_feed(title)
-                print "%s: %s" % (title.name, result)
+                print ("%s: %s" % (title.name, result))

@@ -1,6 +1,6 @@
-from django.conf.urls import patterns, include
+from django.conf.urls import url, include
 from podiobooks.core.api import router
- 		 
-urlpatterns = patterns('',
-                  (r'', include(router.urls)),  # http://podiobooks.com/api/titles/
-                   ) 		
+
+urlpatterns = (
+    url(r'', include(router.urls)),  # http://podiobooks.com/api/titles/
+)

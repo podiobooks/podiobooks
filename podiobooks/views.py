@@ -52,6 +52,7 @@ class AccelView(View):
         """ Handle PATCH Requests"""
         return self.get(request, *args, **kwargs)
 
+
 class TextTemplateView(TemplateView):
     """Utility View to Render text/plain Content Type"""
     content_type = 'text/plain'

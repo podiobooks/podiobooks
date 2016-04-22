@@ -1,6 +1,6 @@
 """Validates The Feeds"""
 
-from django.core.management.base import NoArgsCommand
+from django.core.management.base import BaseCommand
 from podiobooks.core.models import Title
 from django.contrib.sites.models import Site
 from django.contrib.syndication.views import add_domain
@@ -8,13 +8,13 @@ import feedparser
 from django.core.urlresolvers import reverse_lazy
 
 
-class Command(NoArgsCommand):
+class Command(BaseCommand):
     """
         Validates All Feeds
     """
     help = "Validates All Feeds"
 
-    def handle_noargs(self, **options):
+    def handle(self, **options):
         """Validates All the Feeds"""
         titles = Title.objects.filter(deleted=False)
         bad_titles = []
@@ -25,9 +25,9 @@ class Command(NoArgsCommand):
                 bad_titles.append({title: result.get('bozo')})
 
         if len(bad_titles) > 0:
-            print "BAD TITLES FOUND"
-            print bad_titles
+            print ("BAD TITLES FOUND")
+            print (bad_titles)
         else:
-            print "ALL TITLES HAVE VALID FEEDS"
+            print ("ALL TITLES HAVE VALID FEEDS")
 
 

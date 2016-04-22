@@ -21,7 +21,7 @@ class AdScheduleTestCase(TestCase):
         self.schedule1 = AdSchedule.objects.create(
             name="Podiobooks Ad Schedule #1",
             description="Test Ad Schedule",
-            date_start=datetime.datetime(2013, 01, 01, 00, 00, 00, 00, timezone.utc),
+            date_start=datetime.datetime(2013, 1, 1, 0, 0, 0, 0, timezone.utc),
             date_end=datetime.datetime.now(timezone.utc) + datetime.timedelta(10)
         )
 
@@ -53,7 +53,7 @@ class AdScheduleTestCase(TestCase):
             name="Podiobooks Ad Schedule #2",
             description="Test Ad Schedule 2",
             priority=30,
-            date_start=datetime.datetime(2012, 01, 01, 00, 00, 00, 00, timezone.utc),
+            date_start=datetime.datetime(2012, 1, 1, 0, 0, 0, 0, timezone.utc),
             date_end=datetime.datetime.now(timezone.utc) + datetime.timedelta(10)
         )
 

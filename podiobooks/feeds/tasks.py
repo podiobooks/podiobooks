@@ -3,7 +3,7 @@ from __future__ import absolute_import
 
 import logging
 
-from urllib2 import URLError
+from future.backports.urllib.error import URLError
 from socket import timeout
 
 from pyga.requests import Event, Session, Tracker, Visitor

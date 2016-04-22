@@ -1,9 +1,10 @@
 """Django Search Views for FireTV"""
 
+from __future__ import unicode_literals
 import json
 from email.utils import formatdate
 from django.http import HttpResponse
-from django.views.generic import DetailView, View
+from django.views.generic import View
 from podiobooks.core.models import Category, Episode, Title
 
 TITLE_ID_OFFSET = 1000000
@@ -13,6 +14,7 @@ CATEGORY_ID_OFFSET = 2000000
 class FireTVView(View):
     """FireTV JSON"""
 
+    @staticmethod
     def get(self, request, *args, **kwargs):
 
         # ## Build Category & Root Folder Lists
@@ -68,7 +70,7 @@ class FireTVView(View):
                     'id': title.id + TITLE_ID_OFFSET,
                     'title': title.name,
                     'imgURL': title.libsyn_cover_image_url,
-                    'description': unicode(title.description),
+                    'description': title.description,
                     'contents': episode_entries
                 }
             )

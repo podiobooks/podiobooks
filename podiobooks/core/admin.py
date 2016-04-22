@@ -26,7 +26,7 @@ class HasCoverListFilter(SimpleListFilter):
     parameter_name = 'has_cover'
 
     def lookups(self, request, model_admin):
-        return (('y', 'Yes'), ('n', 'No'), )
+        return ('y', 'Yes'), ('n', 'No')
 
     def queryset(self, request, queryset):
         if self.value() == 'y':

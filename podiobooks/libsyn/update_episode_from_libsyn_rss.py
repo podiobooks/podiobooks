@@ -42,6 +42,6 @@ def update_episode_from_libsyn_rss(rss_feed_url):
             episode.duration = item.find('{http://www.itunes.com/dtds/podcast-1.0.dtd}duration').text
             episode.save()
         except (AttributeError, ValueError, ElementTree.ParseError, ObjectDoesNotExist, MultipleObjectsReturned) as e:
-            print "{0} Was Not Updated: {1}".format(title.slug, e)
+            print ("{0} Was Not Updated: {1}".format(title.slug, e))
 
     return title

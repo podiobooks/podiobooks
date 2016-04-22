@@ -22,7 +22,7 @@ from podiobooks.core.views import IndexView, DonationView, ReportsView, NoMediaR
 from .views import AccelView, BlogRedirectView, TextTemplateView, RobotsView, test_task_queue
 
 sitemaps = {'AwardDetail': AwardDetailSitemap, 'CategoryDetail': CategoryDetailSitemap,
-            'ContributorDetail': ContributorDetailSitemap, 'TitleDetail': TitleDetailSitemap,}
+            'ContributorDetail': ContributorDetailSitemap, 'TitleDetail': TitleDetailSitemap}
 
 urlpatterns = (
     # Home Page

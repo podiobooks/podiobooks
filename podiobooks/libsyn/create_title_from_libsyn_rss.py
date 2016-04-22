@@ -11,37 +11,9 @@ from django.template.defaultfilters import slugify
 from email.utils import mktime_tz, parsedate_tz
 import datetime
 import time
-from HTMLParser import HTMLParser
 from django.utils import timezone
 import re
-
-
-class MLStripper(HTMLParser):
-    """Hard-Core HTML Tag Stripper Class"""
-
-    def __init__(self):
-        """Initialize"""
-        self.reset()
-        self.fed = []
-
-    def handle_data(self, d):
-        """Append the stripped data"""
-        self.fed.append(d)
-
-    def get_data(self):
-        """Get the stripped data"""
-        return ''.join(self.fed)
-
-
-def strip_tags(html):
-    """Strip all HTML Tags and Entities"""
-    stripper = MLStripper()
-
-    if not html:
-        html = ''
-
-    stripper.feed(html)
-    return stripper.get_data()
+from podiobooks.core.util import strip_tags
 
 
 def create_title_from_libsyn_rss(rss_feed_url):
@@ -102,7 +74,7 @@ def create_title_from_libsyn_rss(rss_feed_url):
                 episode.url[episode.url.rfind('.') - 2:episode.url.rfind('.')])  # Use URL File Name to Calc Seq
             episode.media_date_created = start_date + datetime.timedelta(10, episode.sequence)
         except ValueError:
-            print episode.url
+            print (episode.url)
             episode.sequence = 0
         episode.save()
 

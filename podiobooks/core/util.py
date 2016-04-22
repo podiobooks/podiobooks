@@ -2,6 +2,7 @@
 import urllib
 import logging
 import os
+from future.backports.html.parser import HTMLParser
 
 from xml.etree import ElementTree
 from PIL import Image
@@ -95,3 +96,33 @@ def get_cover_url_at_width(title, width):
             return title.cover.url
 
     return settings.LOCALIZED_COVER_PLACEHOLDER
+
+
+class MLStripper(HTMLParser):
+    """Hard-Core HTML Tag Stripper Class"""
+
+    def __init__(self):
+        """Initialize"""
+        self.reset()
+        self.fed = []
+        self.strict = False
+        object.__init__(self)
+
+    def handle_data(self, d):
+        """Append the stripped data"""
+        self.fed.append(d)
+
+    def get_data(self):
+        """Get the stripped data"""
+        return ''.join(self.fed)
+
+
+def strip_tags(html):
+    """Strip all HTML Tags and Entities"""
+    stripper = MLStripper()
+
+    if not html:
+        html = ''
+
+    stripper.feed(html)
+    return stripper.get_data()

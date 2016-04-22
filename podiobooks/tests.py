@@ -124,7 +124,7 @@ class TopLevelUrlsTestCase(SimpleTestCase):
         self.assertNotContains(response, 'error')
 
 
-class TopLevelUrlsTestCase(TestCase):
+class SpecialUrlsTestCase(TestCase):
     """Tests for URLs defined at the podiobooks level"""
 
     def test_pb1_xml_redirect(self):

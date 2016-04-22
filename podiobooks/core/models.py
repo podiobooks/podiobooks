@@ -8,6 +8,7 @@ from django.template.loader import render_to_string
 
 from noodles.models import DefinedWidthsAssetsFromImagesMixin
 
+
 # pylint: disable=C0111,R0201,W0232,W1001
 
 
@@ -91,6 +92,7 @@ class ContributorType(models.Model):
     slug = models.SlugField()
     name = models.CharField(max_length=255)
     byline_text = models.CharField(max_length=255)
+
     # Note: TitleContributor Objects (intermediate table) are available as titlecontributors.all()
 
     class Meta(object):
@@ -260,27 +262,47 @@ class Title(DefinedWidthsAssetsFromImagesMixin, models.Model):
     awards = models.ManyToManyField('Award', blank=True, related_name='titles')
     libsyn_show_id = models.CharField(max_length=50, db_index=True, blank=True, verbose_name='LibSyn Show ID',
                                       help_text='Starts with k-')
-    libsyn_slug = models.SlugField(max_length=50, db_index=True, blank=True, verbose_name='LibSyn Slug',
+    libsyn_slug = models.SlugField(max_length=50,
+                                   db_index=True,
+                                   blank=True,
+                                   verbose_name='LibSyn Slug',
                                    help_text='Show Slug from Libsyn')
-    libsyn_cover_image_url = models.URLField(max_length=500, null=True, blank=True,
+    libsyn_cover_image_url = models.URLField(max_length=500,
+                                             null=True,
+                                             blank=True,
                                              verbose_name='Libsyn Cover Image URL',
                                              help_text='Full URL to Libsyn-hosted cover image.')
-    itunes_adam_id = models.IntegerField(null=True, blank=True, verbose_name='iTunes ADAM Id',
+    itunes_adam_id = models.IntegerField(null=True,
+                                         blank=True,
+                                         verbose_name='iTunes ADAM Id',
                                          help_text='From iTunes Page URL for Podcast')
-    itunes_new_feed_url = models.BooleanField(default=False, verbose_name='iTunes New Feed Url Tag',
+    itunes_new_feed_url = models.BooleanField(default=False,
+                                              verbose_name='iTunes New Feed Url Tag',
                                               help_text='Include <itunes:new_feed_url> tag in feed (Required if you are changing the slug)')
-    podiobooker_blog_url = models.URLField(max_length=255, null=True, blank=True, verbose_name='Blog URL',
+    podiobooker_blog_url = models.URLField(max_length=255,
+                                           null=True,
+                                           blank=True,
+                                           verbose_name='Blog URL',
                                            help_text='Full URL to Blog Post Announcing Book - Used to Pull Comments')
-    rights_owner = models.CharField(max_length=255, null=True, blank=True, verbose_name='Rights Owner',
-                                           help_text='Name of the Person or Entity that Owns the Rights to this Audiobook')
-    rights_owner_email_address = models.EmailField(null=True, blank=True,
-                                              help_text='Email address of the Rights Owner.')
-    agreement_url = models.URLField(max_length=255, null=True, blank=True, verbose_name='Agreement URL',
-                                           help_text='Full URL to Terms Agreement The Rights Owner Submitted')
+    rights_owner = models.CharField(max_length=255,
+                                    null=True,
+                                    blank=True,
+                                    verbose_name='Rights Owner',
+                                    help_text='Name of the Person or Entity that Owns the Rights to this Audiobook')
+    rights_owner_email_address = models.EmailField(null=True,
+                                                   blank=True,
+                                                   help_text='Email address of the Rights Owner.')
+    agreement_url = models.URLField(max_length=255,
+                                    null=True,
+                                    blank=True,
+                                    verbose_name='Agreement URL',
+                                    help_text='Full URL to Terms Agreement The Rights Owner Submitted')
     date_accepted = models.DateTimeField(null=True, blank=True,
                                          verbose_name='Date Terms for this Title Accepted by Rights Owner')
-    tips_allowed = models.BooleanField(default=True, verbose_name='Collect Tips for this Title')
-    payment_email_address = models.EmailField(null=True, blank=True,
+    tips_allowed = models.BooleanField(default=True,
+                                       verbose_name='Collect Tips for this Title')
+    payment_email_address = models.EmailField(null=True,
+                                              blank=True,
                                               help_text='Email address to send payments or tips for this title.')
     scribl_book_id = models.CharField(null=True, blank=True, max_length=20, verbose_name='Scribl Book Id')
     scribl_allowed = models.BooleanField(default=True, verbose_name='Show this Title on Scribl')
@@ -299,17 +321,17 @@ class Title(DefinedWidthsAssetsFromImagesMixin, models.Model):
 
     def get_dimensions(self):
         return [100, 300, 900, 1400]
-        
+
     def get_quality(self):
         return 85
 
     @models.permalink
     def get_absolute_url(self):
-        return ('title_detail', [self.slug])
+        return 'title_detail', [self.slug]
 
     @models.permalink
     def get_rss_feed_url(self):
-        return ('title_episodes_feed', [self.slug])
+        return 'title_episodes_feed', [self.slug]
 
     def net_promoter_score(self):
         total_count = self.promoter_count + self.detractor_count
@@ -362,7 +384,7 @@ def update_category_list(sender, instance, **kwargs):
     """ Update category list cache on titles when a new title category is added.
         Hooked to pre_save trigger for titlecategory below """
     categories = instance.title.categories.all()
-    category_list = render_to_string('core/title/title_category_list.html', {'categories': categories, })
+    category_list = render_to_string('core/title/title_category_list.html', {'categories': categories})
 
     instance.title.category_list = category_list
     instance.title.save()

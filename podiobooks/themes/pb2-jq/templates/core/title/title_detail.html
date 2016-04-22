@@ -50,7 +50,7 @@
             </header>
 
             <div itemprop="description">
-                {% autoescape off %}{{ title.description|linebreaks|removetags:"img" }}{% endautoescape %}
+                {% autoescape off %}{{ title.description|linebreaks }}{% endautoescape %}
             </div>
 
             {% if not 'Erotica' in title.category_list %}

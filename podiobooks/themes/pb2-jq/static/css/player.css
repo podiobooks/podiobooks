@@ -141,7 +141,7 @@
 
 /** Track List **/
 .ttw-music-player .tracklist {
-    padding: 10px 0px;
+    padding: 10px 0;
     border-radius: 6px;
     color: #777;
     font-size: .7em;

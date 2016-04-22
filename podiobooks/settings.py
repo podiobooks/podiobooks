@@ -184,14 +184,14 @@ SECRET_KEY = 'zv$+w7juz@(g!^53o0ai1u082)=jkz9my_r=3)fglrj5t8l$2#'
 # Set a default timeout for external URL grabs, such as for the comments and for Google Analytics from Feeds
 socket.setdefaulttimeout(2)  # 2 second timeout for grabbing feed
 
-### DEBUG TOOLBAR
+# DEBUG TOOLBAR
 DEBUG_TOOLBAR_PATCH_SETTINGS = False
 if DEBUG:
     MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
     INTERNAL_IPS = ('127.0.0.1',)
     INSTALLED_APPS += ('debug_toolbar',)
 
-##### Custom Variables Below Here #######
+# #### Custom Variables Below Here #######
 
 # Google Analytics ID
 GOOGLE_ANALYTICS_ID = "UA-5071400-1"
@@ -202,10 +202,10 @@ FACEBOOK_APP_ID = "155134080235"
 # <meta name="descripton"> default value
 BASE_META_DESCRIPTION = "Free audio books delivered as podcasts. Subscribe for free to any book and start from chapter one. Podiobooks.com"
 
-### TIPJAR
+# TIPJAR
 TIPJAR_BUSINESS_NAME = 'evo@podiobooks.com'
 
-### MUB
+# MUB
 MUB_CSS_ORDER = (
     ("jquery.pbshelf.css", "clear.css", "styles.css", "base-shelf.css"),
     ("ads.css", "gsc-overrides.css", "adaptive.css", "small-screen.css")

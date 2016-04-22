@@ -8,13 +8,15 @@ register = template.Library()
 
 @register.filter
 def modulus(number, dividedby):
-    """ Just a utiity function for modulus math """
+    """ Just a utility function for modulus math """
     return number % dividedby
+
 
 @register.inclusion_tag('core/tags/show_donate.html')
 def show_donate():
     """ Shows the global donation form/link """
     return {}
+
 
 @register.inclusion_tag('core/tags/show_browsebox.html')
 def show_browsebox():
@@ -76,7 +78,7 @@ def truncatewords_afterchar(value, limit=80):
         return value
 
     # Make sure it's unicode
-    value = unicode(value)
+    # value = unicode(value)
 
     # Return the string itself if length is smaller or equal to the limit
     if len(value) <= limit:
