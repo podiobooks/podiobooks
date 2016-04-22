@@ -1,0 +1,6 @@
+-r requirements.txt
+django-redis==4.3.0
+newrelic==2.60.0.46
+hiredis==0.2.0
+psycopg2==2.6.1
+redis==2.10.5

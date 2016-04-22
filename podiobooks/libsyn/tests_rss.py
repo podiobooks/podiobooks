@@ -47,10 +47,10 @@ class LibsynRSSUpdatesTestCase(TestCase):
         pass
 
     def test_update_episode(self):
-        title = update_episode_from_libsyn_rss.update_episode_from_libsyn_rss('http://earthcore.podiobooks.libsynpro.com/rss')
-        self.assertEquals(title.slug, 'earthcore')
-        self.assertEquals(title.episodes.all().count(), 23)
+        title = update_episode_from_libsyn_rss.update_episode_from_libsyn_rss('http://shadowmagic.podiobooks.libsynpro.com/rss')
+        self.assertEquals(title.slug, 'shadowmagic')
+        self.assertEquals(title.episodes.all().count(), 31)
         for episode in title.episodes.all():
-            print "Duration: {0}\n".format(episode.duration)
-        self.assertEquals(title.episodes.get(sequence=1).duration, '24:23')
-        self.assertEquals(title.episodes.get(sequence=23).duration, '41:01')
+            print ("Duration: {0}\n".format(episode.duration))
+        self.assertEquals(title.episodes.get(sequence=1).duration, '15:24')
+        self.assertEquals(title.episodes.get(sequence=23).duration, '22:36')
