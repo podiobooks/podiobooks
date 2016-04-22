@@ -3,11 +3,9 @@
 # pylint: disable=C0103,C0111,R0904
 
 from django.test import SimpleTestCase, TestCase
-from django.contrib.auth.models import User
 from podiobooks.core.models import Title
 from django.core.management import call_command
 from django.test.utils import override_settings
-from podiobooks.feeds.tasks import ping_analytics_for_feeds
 from celery.result import AsyncResult
 
 
@@ -44,15 +42,6 @@ class FeedUrlTestCase(TestCase):
 
         response = self.client.get('/rss/feeds/episodes/the-plump-buffet/')
         self.assertNotContains(response, '<itunes:new-feed-url>')
-
-
-class CeleryTasksTestCase(SimpleTestCase):
-    @override_settings(CELERY_EAGER_PROPAGATES_EXCEPTIONS=True,
-                       CELERY_ALWAYS_EAGER=True,
-                       BROKER_URL='memory')
-    def test_ping_analytics(self):
-        result = ping_analytics_for_feeds.delay('0.0.0.0', 'test', 'test', 'test')
-        self.assertIsInstance(result, AsyncResult, "Ping Didn't Return Async Result")
 
 
 class ManagementCommandsTestCase(TestCase):

@@ -5,13 +5,14 @@ from django.test import TestCase
 from podiobooks.core.models import Contributor, ContributorType, Title, TitleContributor
 from podiobooks.core.templatetags.title_templatetags import count_titles
 
+
 class TitleTagsTestCase(TestCase):
     """ 
     Test Title Tags
     """
 
     fixtures = ['test_data.json', ]
-        
+
     def test_count_titles(self):
         """
         Count the titles in a set, excluding ones marked 'deleted'.
@@ -24,5 +25,3 @@ class TitleTagsTestCase(TestCase):
         TitleContributor.objects.create(title=deleted_title, contributor=contributor, contributor_type=author_type)
         self.assertEqual(1, count_titles(contributor))  # One of the titles is deleted of the two total...
         self.assertEqual(2, contributor.title_set.count())
-        
-

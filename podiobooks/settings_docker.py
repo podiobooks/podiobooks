@@ -3,7 +3,6 @@
 # pylint: disable=W0614,W0401,W0123
 
 import os
-import urlparse
 
 from .settings import *
 
@@ -32,7 +31,7 @@ CACHES = {
         'LOCATION': 'redis://redis:6379/1',
         'OPTIONS': {
             'DB': 1,
-	    "CLIENT_CLASS": "django_redis.client.DefaultClient",
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
         },
     },
 }
@@ -46,7 +45,6 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'x_robots_tag_middleware.middleware.XRobotsTagMiddleware',
-#        'podiobooks.feeds.middleware.ga_tracking.GATracker',
     'podiobooks.feeds.middleware.redirect_exception.RedirectException',
     'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -70,7 +68,7 @@ GOOGLE_ANALYTICS_ID = os.environ.get("GOOGLE_ANALYTICS_ID", GOOGLE_ANALYTICS_ID)
 
 SECRET_KEY = os.environ.get("SECRET_KEY", 'zv$+w7juz@(g!^53o0ai1u082)=jkz9my_r=3)fglrj5t8l$2#')
 
-FILE_UPLOAD_PERMISSIONS = 0640
+FILE_UPLOAD_PERMISSIONS = 0o0640
 
 MUB_MINIFY = False
 

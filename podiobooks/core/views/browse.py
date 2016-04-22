@@ -26,7 +26,7 @@ class AwardListView(ListView):
         awards_list = []
         for title in awarded_titles:
             for award in title.awards.all():
-                if not award in awards_list:
+                if award not in awards_list:
                     awards_list.append(award)
 
         return Award.objects.annotate(
@@ -42,9 +42,10 @@ class AwardDetailView(ListView):
     context_object_name = "title_list"
 
     def get_queryset(self):
-        return Title.objects.prefetch_related("titlecontributors", "titlecontributors__contributor",
+        return Title.objects.prefetch_related("titlecontributors",
+                                              "titlecontributors__contributor",
                                               "titlecontributors__contributor_type"
-        ).filter(awards__slug=self.kwargs.get('slug'), deleted=False)
+                                              ).filter(awards__slug=self.kwargs.get('slug'), deleted=False)
 
     def get_context_data(self, **kwargs):
         award = get_object_or_404(Award, slug=self.kwargs.get('slug'))
@@ -74,9 +75,10 @@ class CategoryDetailView(ListView):
     paginate_by = 40
 
     def get_queryset(self):
-        return Title.objects.prefetch_related("titlecontributors", "titlecontributors__contributor",
+        return Title.objects.prefetch_related("titlecontributors",
+                                              "titlecontributors__contributor",
                                               "titlecontributors__contributor_type"
-        ).filter(categories__slug=self.kwargs.get('slug'), deleted=False)
+                                              ).filter(categories__slug=self.kwargs.get('slug'), deleted=False)
 
     def get_context_data(self, **kwargs):
         category = get_object_or_404(Category, slug=self.kwargs.get('slug'))
@@ -231,5 +233,4 @@ def get_comments(request, slug):
     except ObjectDoesNotExist:
         raise Http404
 
-    return render_to_response("core/title/title_comments.html", {"title": title},
-                              context_instance=RequestContext(request))
+    return render_to_response("core/title/title_comments.html", {"title": title})

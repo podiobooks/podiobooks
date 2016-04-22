@@ -48,7 +48,7 @@ class AdSchedulePosition(models.Model):
         return str(self.pk)
 
 
-### UTILITY FUNCTIONS
+# UTILITY FUNCTIONS
 def get_active_ad_scheds_for_title(title):
     """Return a list of active ad schedules for a title"""
 

@@ -118,13 +118,8 @@ class TopLevelUrlsTestCase(SimpleTestCase):
         self.assertEquals(302, response.status_code)
         self.assertFalse(response.has_header('X-Accel-Redirect'))
 
-    def test_queue_test(self):
-        response = self.client.get('/queue/test/')
-        self.assertEquals(200, response.status_code)
-        self.assertNotContains(response, 'error')
 
-
-class TopLevelUrlsTestCase(TestCase):
+class SpecialUrlsTestCase(TestCase):
     """Tests for URLs defined at the podiobooks level"""
 
     def test_pb1_xml_redirect(self):
