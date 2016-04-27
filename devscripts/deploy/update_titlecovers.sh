@@ -5,4 +5,4 @@
 # This should be run from the project directory, not inside the project dir
 
 . ./.env/bin/activate
-./manage.py manage.py localize_title_covers --force --settings=podiobooks.settings_webfaction
+./manage.py localize_title_covers --force --settings=podiobooks.settings_webfaction
