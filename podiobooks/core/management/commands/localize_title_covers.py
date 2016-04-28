@@ -38,7 +38,7 @@ class Command(BaseCommand):
         print ("%s covers to download..." % titles.count())
 
         for title in titles:
-            print ("Localizing cover for %s..." % title.name)
+            print (("Localizing cover for %s..." % title.name).encode('utf-8'))
 
             if options['force']:
                 title.cover = None
