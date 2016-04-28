@@ -89,31 +89,31 @@ urlpatterns = (
     url(r'podiobooks/search\.php', RedirectView.as_view(url='/title/search/', permanent=True, query_string=True)),
 
     # PB1 Authors Doc
-    url(r'authors/PBAuthoringGuide+', RedirectView.as_view(url='http://blog.podiobooks.com/wp-content/uploads/2012/09/PBAuthoringGuidev2.0.4.pdf', permanent=True)),
+    url(r'authors/PBAuthoringGuide+', RedirectView.as_view(url='http://podiobooks.com/blog/wp-content/uploads/2012/09/PBAuthoringGuidev2.0.4.pdf', permanent=True)),
 
     # PB1 Login Page
-    url(r'account|login\.php|Xlogin\.php|register\.php', RedirectView.as_view(url='http://blog.podiobooks.com/what-happened-to-my-login/', permanent=True)),
+    url(r'account|login\.php|Xlogin\.php|register\.php', RedirectView.as_view(url='http://podiobooks.com/blog/what-happened-to-my-login/', permanent=True)),
 
     # PB1 Charts Page
-    url(r'charts\.php', RedirectView.as_view(url='http://blog.podiobooks.com/what-happened-to-the-charts/', permanent=True)),
+    url(r'charts\.php', RedirectView.as_view(url='http://podiobooks.com/blog/what-happened-to-the-charts/', permanent=True)),
 
     # PB1 Authors Page
-    url(r'authors\.php|authors/pbpro\.php', RedirectView.as_view(url='http://blog.podiobooks.com/how-to-get-your-books-listed-on-podiobooks-com/', permanent=True)),
+    url(r'authors\.php|authors/pbpro\.php', RedirectView.as_view(url='http://podiobooks.com/blog/how-to-get-your-books-listed-on-podiobooks-com/', permanent=True)),
 
     # PB1 Staff Page
-    url(r'staff\.php', RedirectView.as_view(url='http://blog.podiobooks.com/podiobooks-staff/', permanent=True)),
+    url(r'staff\.php', RedirectView.as_view(url='http://podiobooks.com/blog/podiobooks-staff/', permanent=True)),
 
     # PB1 About Page
-    url(r'about\.php', RedirectView.as_view(url='http://blog.podiobooks.com/frequently-asked-questions/', permanent=True)),
+    url(r'about\.php', RedirectView.as_view(url='http://podiobooks.com/blog/frequently-asked-questions/', permanent=True)),
 
     # PB1 Donate Page
     url(r'donate\.php', RedirectView.as_view(url='/donate', permanent=True)),
 
     # PB1 Spread The Word Page
-    url(r'spreadtheword\.php', RedirectView.as_view(url='http://blog.podiobooks.com/why-you-should-donate/', permanent=True)),
+    url(r'spreadtheword\.php', RedirectView.as_view(url='http://podiobooks.com/blog/why-you-should-donate/', permanent=True)),
 
     # PB1 Legal Page
-    url(r'legal\.php', RedirectView.as_view(url='http://blog.podiobooks.com/privacy-and-legal-speak-in-plain-if-not-ill-formed-english/', permanent=True)),
+    url(r'legal\.php', RedirectView.as_view(url='http://podiobooks.com/blog/privacy-and-legal-speak-in-plain-if-not-ill-formed-english/', permanent=True)),
 
     # Hack Redirect
     url(r'submit', RedirectView.as_view(url='/', permanent=True)),
@@ -122,7 +122,7 @@ urlpatterns = (
     url(r'infected', RedirectView.as_view(url='/title/infected/', permanent=True)),
 
     # Author Start Page
-    url(r'start/?$', RedirectView.as_view(url='http://blog.podiobooks.com/how-to-get-your-books-listed-on-podiobooks-com/', permanent=True)),
+    url(r'start/?$', RedirectView.as_view(url='http://podiobooks.com/blog/how-to-get-your-books-listed-on-podiobooks-com/', permanent=True)),
 
     # Ad Redirect
     url(r'website/?$', RedirectView.as_view(url='http://a.strk.ly/7WS9s', permanent=True)),
