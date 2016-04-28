@@ -66,9 +66,9 @@ class TopLevelUrlsTestCase(SimpleTestCase):
         response = self.client.get('/legal.php')
         self.assertEquals(301, response.status_code)
 
-    def test_blog_redirect(self):
-        response = self.client.get('/blog')
-        self.assertEquals(301, response.status_code)
+#    def test_blog_redirect(self):
+#        response = self.client.get('/blog')
+#        self.assertEquals(301, response.status_code)
 
     def test_website_redirect(self):
         response = self.client.get('/website')
