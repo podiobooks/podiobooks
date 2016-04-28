@@ -77,7 +77,7 @@ urlpatterns = (
     url(r'^crossdomain\.xml', TextTemplateView.as_view(template_name='crossdomain.xml')),
 
     # Blog
-    url(r'^blog(?P<url_remainder>.*)', BlogRedirectView.as_view()),
+    # url(r'^blog(?P<url_remainder>.*)', BlogRedirectView.as_view()),
 
     # Sitemap
     url(r'^sitemap\.xml$', sitemap_urls, {'sitemaps': sitemaps}),
