@@ -94,10 +94,7 @@ FILE_UPLOAD_PERMISSIONS = 0o0640
 
 MUB_MINIFY = True
 
-if os.environ.get("INSTANCE_TYPE", "") == 'production':
-    X_ROBOTS_TAG = ['index', 'follow']
-else:
-    X_ROBOTS_TAG = ['noindex', 'nofollow']
+X_ROBOTS_TAG = ['index', 'follow']
 
 # ## DEBUG TOOLBAR
 # ## Replicated Here to Enable Picking Up Environment Setting
