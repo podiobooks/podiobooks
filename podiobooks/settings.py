@@ -20,11 +20,11 @@ PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
 # Explicitly Define test runner to silence 1_6.W001 Warning
 TEST_RUNNER = 'django.test.runner.DiscoverRunner'
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG_SETTING = DEBUG
 
 # List of Admin users to be emailed by error system
-MANAGERS = ()
+MANAGERS = (('Podiobooks DEV', 'podiobooksdev@gmail.com'),)
 ADMINS = MANAGERS
 
 # Domain Name to Prepend to MEDIA URL, used in feeds
@@ -33,10 +33,7 @@ MEDIA_DOMAIN = ""
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
-if MEDIA_DOMAIN != "":
-    MEDIA_URL = "http://{0}/media/".format(MEDIA_DOMAIN)
-else:
-    MEDIA_URL = "/media/"
+MEDIA_URL = "/media/"
 
 # Absolute path to the directory that holds media.
 # Note that as of Django 1.3 - media is for uploaded files only.
@@ -150,6 +147,7 @@ CACHES = {
     }
 }
 
+CACHE_MIDDLEWARE_SECONDS = 5200
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -180,6 +178,17 @@ SECRET_KEY = 'zv$+w7juz@(g!^53o0ai1u082)=jkz9my_r=3)fglrj5t8l$2#'
 
 # Set a default timeout for external URL grabs, such as for the comments and for Google Analytics from Feeds
 socket.setdefaulttimeout(2)  # 2 second timeout for grabbing feed
+
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+EMAIL_HOST = ""
+EMAIL_PORT = 587
+EMAIL_HOST_USER = ""
+EMAIL_HOST_PASSWORD = ""
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = ""
+SERVER_EMAIL = ""
+
+FILE_UPLOAD_PERMISSIONS = 0o0640
 
 # DEBUG TOOLBAR
 DEBUG_TOOLBAR_PATCH_SETTINGS = False

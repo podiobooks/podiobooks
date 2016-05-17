@@ -6,9 +6,6 @@ import os
 
 from .settings import *
 
-DEBUG = False
-TEMPLATE_DEBUG = DEBUG
-
 ACCEL_REDIRECT = True
 
 
@@ -22,8 +19,6 @@ DATABASES = {
         "PORT": "5432"
     }
 }
-
-CACHE_MIDDLEWARE_SECONDS = 5200
 
 # Cache Settings
 CACHES = {
@@ -52,59 +47,16 @@ MIDDLEWARE_CLASSES = (
     'podiobooks.core.middleware.PermanentRedirectMiddleware',
 )
 
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
-EMAIL_HOST = ""
-EMAIL_PORT = 587
-EMAIL_HOST_USER = ""
-EMAIL_HOST_PASSWORD = ""
-EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = ""
-SERVER_EMAIL = ""
-MANAGERS = (('Podiobooks DEV', 'podiobooksdev@gmail.com'),)
-ADMINS = MANAGERS
 ALLOWED_HOSTS = ['.podiobooks.com', 'wf-45-33-126-67.webfaction.com']
 REDIRECT_DOMAINS = ['wf-45-33-126-67.webfaction.com']
-
-GOOGLE_ANALYTICS_ID = ""
-
-SECRET_KEY = 'zv$+w7juz@(g!^53o0ai1u082)=jkz9my_r=3)fglrj5t8l$2#'
-
-INSTALLED_APPS += ()
 
 MEDIA_ROOT = "/home/pbdev/webapps/podiobooks_staging_media"
 STATIC_ROOT = "/home/pbdev/webapps/podiobooks_staging_static"
 
-MEDIA_DOMAIN = ""
-if MEDIA_DOMAIN != "":
-    MEDIA_URL = "http://{0}/assets/media/".format(MEDIA_DOMAIN)
-else:
-    MEDIA_URL = "/assets/media/"
-
+MEDIA_URL = "/assets/media/"
 STATIC_URL = "/assets/static/"
 
-# URL to use for Feeds
-FEED_DOMAIN = ""
-if FEED_DOMAIN != "":
-    FEED_URL = "http://{0}".format(FEED_DOMAIN)
-else:
-    FEED_URL = ""
-
-FILE_UPLOAD_PERMISSIONS = 0o0640
-
 MUB_MINIFY = True
-
-X_ROBOTS_TAG = ['noindex', 'nofollow']
-
-# ## DEBUG TOOLBAR
-# ## Replicated Here to Enable Picking Up Environment Setting
-if DEBUG:
-    MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
-    INSTALLED_APPS += ('debug_toolbar',)
-
-    DEBUG_TOOLBAR_CONFIG = {
-        'INTERCEPT_REDIRECTS': False
-    }
-    DEBUG_TOOLBAR_PATCH_SETTINGS = False  # Trying to get around gunicorn startup error
 
 LOGGING = {
     'version': 1,
