@@ -22,8 +22,6 @@ DATABASES = {
     }
 }
 
-CACHE_MIDDLEWARE_SECONDS = int(os.environ.get("CACHE_MIDDLEWARE_SECONDS", 5200))
-
 # Cache Settings
 CACHES = {
     'default': {
@@ -39,7 +37,6 @@ CACHES = {
 MIDDLEWARE_CLASSES = (
     'podiobooks.core.middleware.StripAnalyticsCookies',
     'django.middleware.gzip.GZipMiddleware',
-    'django.contrib.admindocs.middleware.XViewMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -61,18 +58,13 @@ EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD", "")
 EMAIL_USE_TLS = True
 MANAGERS = (('Podiobooks DEV', 'podiobooksdev@gmail.com'),)
 ADMINS = (('Podiobooks DEV', 'podiobooksdev@gmail.com'),)
-SEND_BROKEN_LINK_EMAILS = eval(os.environ.get("SEND_BROKEN_LINK_EMAILS", "False"))
 ALLOWED_HOSTS = ['.podiobooks.com', '.cyface.com']
 
 GOOGLE_ANALYTICS_ID = os.environ.get("GOOGLE_ANALYTICS_ID", GOOGLE_ANALYTICS_ID)
 
 SECRET_KEY = os.environ.get("SECRET_KEY", 'zv$+w7juz@(g!^53o0ai1u082)=jkz9my_r=3)fglrj5t8l$2#')
 
-FILE_UPLOAD_PERMISSIONS = 0o0640
-
 MUB_MINIFY = False
-
-X_ROBOTS_TAG = ['noindex', 'nofollow']
 
 LOGGING = {
     'version': 1,

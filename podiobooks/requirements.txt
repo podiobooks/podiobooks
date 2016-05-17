@@ -8,4 +8,4 @@ django-x-robots-tag-middleware==1.2
 feedparser==5.2.1
 pillow==3.2.0
 pyga==2.5.0
-python-dateutil==2.4.2
+python-dateutil==2.5.3
