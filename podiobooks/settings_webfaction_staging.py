@@ -23,7 +23,7 @@ DATABASES = {
     }
 }
 
-CACHE_MIDDLEWARE_SECONDS = int(os.environ.get("CACHE_MIDDLEWARE_SECONDS", 5200))
+CACHE_MIDDLEWARE_SECONDS = 5200
 
 # Cache Settings
 CACHES = {
@@ -39,7 +39,6 @@ CACHES = {
 MIDDLEWARE_CLASSES = (
     'podiobooks.core.middleware.StripAnalyticsCookies',
     'django.middleware.gzip.GZipMiddleware',
-    'django.contrib.admindocs.middleware.XViewMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -53,30 +52,29 @@ MIDDLEWARE_CLASSES = (
     'podiobooks.core.middleware.PermanentRedirectMiddleware',
 )
 
-EMAIL_BACKEND = os.environ.get("EMAIL_BACKEND", "django.core.mail.backends.console.EmailBackend")
-EMAIL_HOST = os.environ.get("EMAIL_HOST", "")
-EMAIL_PORT = os.environ.get("EMAIL_PORT", 587)
-EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER", "")
-EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD", "")
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+EMAIL_HOST = ""
+EMAIL_PORT = 587
+EMAIL_HOST_USER = ""
+EMAIL_HOST_PASSWORD = ""
 EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = os.environ.get("DEFAULT_FROM_EMAIL", "")
-SERVER_EMAIL = os.environ.get("SERVER_EMAIL", "")
-MANAGERS = eval(os.environ.get("MANAGERS", "(('Podiobooks DEV', 'podiobooksdev@gmail.com'),)"))
-ADMINS = eval(os.environ.get("ADMINS", "(('Podiobooks DEV', 'podiobooksdev@gmail.com'),)"))
-SEND_BROKEN_LINK_EMAILS = eval(os.environ.get("SEND_BROKEN_LINK_EMAILS", "False"))
-ALLOWED_HOSTS = ['.podiobooks.com', 'pbdev.webfaction.com', 'wf-45-33-126-67.webfaction.com', '.reblender.com']
-REDIRECT_DOMAINS = ['wf-45-33-126-67.webfaction.com', 'pbdev.webfaction.com']
+DEFAULT_FROM_EMAIL = ""
+SERVER_EMAIL = ""
+MANAGERS = (('Podiobooks DEV', 'podiobooksdev@gmail.com'),)
+ADMINS = MANAGERS
+ALLOWED_HOSTS = ['.podiobooks.com', 'wf-45-33-126-67.webfaction.com']
+REDIRECT_DOMAINS = ['wf-45-33-126-67.webfaction.com']
 
-GOOGLE_ANALYTICS_ID = os.environ.get("GOOGLE_ANALYTICS_ID", GOOGLE_ANALYTICS_ID)
+GOOGLE_ANALYTICS_ID = ""
 
-SECRET_KEY = os.environ.get("SECRET_KEY", 'zv$+w7juz@(g!^53o0ai1u082)=jkz9my_r=3)fglrj5t8l$2#')
+SECRET_KEY = 'zv$+w7juz@(g!^53o0ai1u082)=jkz9my_r=3)fglrj5t8l$2#'
 
 INSTALLED_APPS += ()
 
 MEDIA_ROOT = "/home/pbdev/webapps/podiobooks_staging_media"
 STATIC_ROOT = "/home/pbdev/webapps/podiobooks_staging_static"
 
-MEDIA_DOMAIN = os.environ.get("MEDIA_DOMAIN", "")
+MEDIA_DOMAIN = ""
 if MEDIA_DOMAIN != "":
     MEDIA_URL = "http://{0}/assets/media/".format(MEDIA_DOMAIN)
 else:
@@ -85,7 +83,7 @@ else:
 STATIC_URL = "/assets/static/"
 
 # URL to use for Feeds
-FEED_DOMAIN = os.environ.get("FEED_DOMAIN", "")
+FEED_DOMAIN = ""
 if FEED_DOMAIN != "":
     FEED_URL = "http://{0}".format(FEED_DOMAIN)
 else:
@@ -139,11 +137,6 @@ LOGGING = {
             "handlers": ["console"],
             'propagate': True,
             "level": "INFO",
-        },
-        'gunicorn': {
-            'handlers': ['console'],
-            'propagate': True,
-            'level': 'INFO',
         },
         'django': {
             'handlers': ['console'],
