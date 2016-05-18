@@ -53,8 +53,9 @@ REDIRECT_DOMAINS = ['wf-45-33-126-67.webfaction.com']
 MEDIA_ROOT = "/home/pbdev/webapps/podiobooks_staging_media"
 STATIC_ROOT = "/home/pbdev/webapps/podiobooks_staging_static"
 
-MEDIA_URL = "/assets/media/"
-STATIC_URL = "/assets/static/"
+MEDIA_DOMAIN = "staging.media.podiobooks.com"
+MEDIA_URL = "http://staging.media.podiobooks.com/assets/media/"
+STATIC_URL = "http://staging.media.podiobooks.com/assets/static/"
 
 MUB_MINIFY = True
 
