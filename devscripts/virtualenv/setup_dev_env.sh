@@ -6,4 +6,4 @@
 
 virtualenv --system-site-packages .env
 . ./.env/bin/activate
-pip install -r ./podiobooks/requirements_dev.txt
+pip install --upgrade -r ./podiobooks/requirements_dev.txt
