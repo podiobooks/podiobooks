@@ -8,4 +8,4 @@ pypm --non-interactive install virtualenv
 pypm --non-interactive install pil
 virtualenv --system-site-packages --distribute .env
 call .env\Scripts\activate.bat
-pip install -r podiobooks\requirements_dev.txt
+pip install --upgrade -r podiobooks\requirements_dev.txt
