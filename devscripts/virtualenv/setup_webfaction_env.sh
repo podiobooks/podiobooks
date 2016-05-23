@@ -6,4 +6,4 @@
 
 virtualenv --no-site-packages .env
 . ./.env/bin/activate
-pip install -r podiobooks/requirements_webfaction.txt
+pip install --upgrade -r podiobooks/requirements_webfaction.txt
