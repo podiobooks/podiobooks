@@ -54,7 +54,7 @@ STATIC_ROOT = "/home/pbdev/webapps/podiobooks_static"
 
 MEDIA_DOMAIN = "assets.podiobooks.com"
 MEDIA_URL = "http://assets.podiobooks.com/assets/media/"
-STATIC_URL = "http://www.podiobooks.com/assets/static/"
+STATIC_URL = "http://podiobooks.com/assets/static/"
 
 MUB_MINIFY = True
 
