@@ -26,6 +26,7 @@ TEMPLATE_DEBUG_SETTING = DEBUG
 # List of Admin users to be emailed by error system
 MANAGERS = (('Podiobooks DEV', 'podiobooksdev@gmail.com'),)
 ADMINS = MANAGERS
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 # Domain Name to Prepend to MEDIA URL, used in feeds
 MEDIA_DOMAIN = ""
