@@ -60,7 +60,7 @@ def download_cover_from_libsyn(title):
 
     except Exception as e:
         LOGGER.error("Error Getting Cover for %s, %s", title.name, e)
-        raise
+#        raise
 
     return title.cover
 
