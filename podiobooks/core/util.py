@@ -1,5 +1,5 @@
 """General Podiobooks Utilities"""
-import urllib
+import requests
 import logging
 import os
 from future.backports.html.parser import HTMLParser
@@ -10,6 +10,7 @@ from PIL import Image
 from django.conf import settings
 
 # pylint: disable=C0325
+from six import BytesIO
 
 LOGGER = logging.getLogger(name='podiobooks.util')
 
@@ -38,21 +39,21 @@ def download_cover_from_libsyn(title):
         LOGGER.info("Downloading new cover for %s...", title.name)
 
         rss_feed_url = "http://{0}.podiobooks.libsynpro.com/rss".format(title.libsyn_slug)
-        feed = urllib.urlopen(rss_feed_url)
-        feed_tree = ElementTree.parse(feed).getroot()
+        feed = requests.get(rss_feed_url)
+        feed_tree = ElementTree.fromstring(feed.content)
         title.libsyn_cover_image_url = feed_tree.find('channel').find('image').find('url').text
 
-        filename, httpresponse = urllib.urlretrieve(title.libsyn_cover_image_url)  # pylint: disable=W0612
+        response = requests.get(title.libsyn_cover_image_url)  # pylint: disable=W0612
 
-        img = Image.open(filename)
+        img = Image.open(BytesIO(response.content))
         if img.mode != "RGB":
             img = img.convert("RGB")
         img.save(upload_file_path, "JPEG", quality=100)
 
-        try:
-            os.remove(filename)
-        except OSError:
-            pass
+        # try:
+        #     os.remove(filename)
+        # except OSError:
+        #     pass
 
         LOGGER.info("Saving new cover in model for %s...", title.name)
         title.cover = cover_image_url
@@ -60,7 +61,7 @@ def download_cover_from_libsyn(title):
 
     except Exception as e:
         LOGGER.error("Error Getting Cover for %s, %s", title.name, e)
-#        raise
+        raise
 
     return title.cover
 
