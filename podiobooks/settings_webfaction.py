@@ -102,6 +102,11 @@ LOGGING = {
             'level': 'ERROR',
             'propagate': False,
         },
+        'podiobooks': {
+            'handlers': ['mail_admins'],
+            'level': 'ERROR',
+            'propagate': False,
+        },
     }
 }
 
