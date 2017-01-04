@@ -2,10 +2,6 @@
 
 # pylint: disable=W0614,W0401,W0123
 
-import os
-
-from .settings import *
-
 ACCEL_REDIRECT = True
 
 DATABASES = {
@@ -99,6 +95,11 @@ LOGGING = {
         },
         'django.request': {
             'handlers': ['mail_admins'],
+            'level': 'ERROR',
+            'propagate': False,
+        },
+        'podiobooks': {
+            'handlers': ['console'],
             'level': 'ERROR',
             'propagate': False,
         },
