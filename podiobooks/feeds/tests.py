@@ -31,15 +31,16 @@ class FeedUrlTestCase(TestCase):
         self.assertContains(response, 'Double Share')
 
     def test_feed_redirect(self):
-        response = self.client.get('/rss/feeds/episodes/double-share/')
-        self.assertRedirects(response, '/rss/feeds/episodes/trader-tales-4-double-share/', status_code=301)
+        response = self.client.get('/rss/feeds/episodes/double-share/', follow=True)
+        # self.assertRedirects(response, '/rss/feeds/episodes/trader-tales-4-double-share/', status_code=301) # decom
 
     def test_itunes_new_feed_url(self):
         response = self.client.get('/rss/feeds/episodes/trader-tales-4-double-share/')
-        self.assertContains(response, '<itunes:new-feed-url>http://example.com/rss/feeds/episodes/trader-tales-4-double-share/</itunes:new-feed-url>')
+        # self.assertContains(response, '<itunes:new-feed-url>http://example.com/rss/feeds/episodes/trader-tales-4-double-share/</itunes:new-feed-url>')
+        self.assertContains(response, '<itunes:new-feed-url>http://doubleshare.podiobooks.libsynpro.com/rss</itunes:new-feed-url>')  # decom
 
         response = self.client.get('/rss/feeds/episodes/the-plump-buffet/')
-        self.assertNotContains(response, '<itunes:new-feed-url>')
+#        self.assertNotContains(response, '<itunes:new-feed-url>') # decom
 
 
 class ManagementCommandsTestCase(TestCase):

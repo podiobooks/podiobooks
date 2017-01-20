@@ -44,7 +44,8 @@ class TitleFeed(Feed):
         return strip_tags(obj.description).replace('&amp;', '&')
 
     def item_link(self, obj):
-        return settings.FEED_URL + reverse('title_episodes_feed', args=[obj.slug])
+        #  return settings.FEED_URL + reverse('title_episodes_feed', args=[obj.slug])
+        return "{0}.podiobooks.libsynpro.com/rss".format(obj.libsyn_slug)
 
     def item_title(self, obj):
         return strip_tags(obj.name).replace('&amp;', '&')
@@ -92,7 +93,8 @@ class EpisodeFeed(Feed):
 
     def itunes_new_feed_url(self, obj):
         """Return boolean as to whether to include the '<itunes:new_feed_url>' tag in the feed"""
-        return obj.itunes_new_feed_url
+        # return obj.itunes_new_feed_url
+        return True  # Set to true to force all feeds to start picking up libsyn feed instead.
 
     def feed_copyright(self, obj):
         if obj.license:
@@ -126,7 +128,8 @@ class EpisodeFeed(Feed):
         return obj.get_absolute_url()
 
     def feed_url(self, obj):
-        return settings.FEED_URL + reverse('title_episodes_feed', args=[obj.slug])
+        # return settings.FEED_URL + reverse('title_episodes_feed', args=[obj.slug])
+        return "http://{}.podiobooks.libsynpro.com/rss".format(obj.libsyn_slug)
 
     def subtitle(self, obj):
         return u'A free audiobook by %s' % self.author_name(obj)
@@ -145,7 +148,8 @@ class EpisodeFeed(Feed):
         except ObjectDoesNotExist:
             obj = get_object_or_404(title_set, old_slug__exact=title_slug)
             if obj:
-                raise Http301(redirect_to=reverse_lazy('title_episodes_feed', args=[obj.slug]))
+                # raise Http301(redirect_to=reverse_lazy('title_episodes_feed', args=[obj.slug]))
+                raise Http301(redirect_to="http://{}.podiobooks.libsynpro.com/rss".format(obj.libsyn_slug))
 
         return obj
 
