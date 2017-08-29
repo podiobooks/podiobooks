@@ -7,9 +7,9 @@ Lead Developer: Brant Steen (brant@brantsteen.com)
 
 Team Lead Emeritus: Chris Miller (chris@ctmiller.net)
 
-Podiobooks is now part of Scribl.com!
+Podiobooks has merged into Scribl.com!
 =====================================
-Head over there to get your favorite audiobooks!
+Head over to http://scribl.com to get your favorite audiobooks!
 
 License
 -------
