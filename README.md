@@ -7,6 +7,10 @@ Lead Developer: Brant Steen (brant@brantsteen.com)
 
 Team Lead Emeritus: Chris Miller (chris@ctmiller.net)
 
+Podiobooks is now part of Scribl.com!
+=====================================
+Head over there to get your favorite audiobooks!
+
 License
 -------
 This software is licensed under a GPL v3.0 license. Please visit http://www.gnu.org/licenses/gpl-3.0-standalone.html for a full reading of the license. A full copy has also been included in this package, in LICENSE.txt.
