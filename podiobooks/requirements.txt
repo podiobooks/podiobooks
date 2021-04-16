@@ -1,6 +1,6 @@
 django>=1.11.11<2.0
 django-adminactions==1.1
-django-debug-toolbar==1.4
+django-debug-toolbar==1.11.1
 django-jenkins==0.18.1
 git+https://github.com/Brant/django-mub.git@master
 git+https://github.com/Brant/django-noodles.git@master
