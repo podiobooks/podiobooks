@@ -9,4 +9,4 @@ feedparser==5.2.1
 pillow==9.3.0
 pyga==2.5.0
 python-dateutil==2.5.3
-requests==2.12.4
+requests==2.20.0
